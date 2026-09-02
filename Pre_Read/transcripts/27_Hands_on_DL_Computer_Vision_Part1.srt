@@ -1,0 +1,3144 @@
+1
+00:00:00,000 --> 00:00:08,280
+ Hello everyone, I am Nilanjan, a PhD research scholar from CCDS, IIT Kharagpur and today
+
+2
+00:00:08,280 --> 00:00:12,760
+ I am going to take your deep learning applications in computer vision hands on.
+
+3
+00:00:12,760 --> 00:00:17,440
+ And before starting, I am just going to clarify some of the doubts that you are having that
+
+4
+00:00:17,440 --> 00:00:23,480
+ I heard regarding some of the evaluations of the assignments and the quizzes.
+
+5
+00:00:23,480 --> 00:00:29,280
+ So considering the quizzes, we have forwarded each of the quizzes, any any questions that
+
+6
+00:00:29,280 --> 00:00:34,960
+ you are having forwarded it to a particular professor who is responsible for that particular
+
+7
+00:00:34,960 --> 00:00:35,960
+ quiz, right.
+
+8
+00:00:35,960 --> 00:00:41,200
+ So it will be based on different professors who have given the quizzes and they will be
+
+9
+00:00:41,200 --> 00:00:42,960
+ solving your issue directly.
+
+10
+00:00:42,960 --> 00:00:47,800
+ So we have just forwarded it to them, so it will take some time before they can respond
+
+11
+00:00:47,800 --> 00:00:50,560
+ and you will get the feedbacks.
+
+12
+00:00:50,560 --> 00:00:57,520
+ And there are some issue with the programming assignments also that I came to know and like
+
+13
+00:00:57,520 --> 00:01:02,720
+ maybe some of the students got zero and you are having doubts like your code is running
+
+14
+00:01:02,720 --> 00:01:07,600
+ but yet you are not getting the same, you are not getting the good score.
+
+15
+00:01:07,600 --> 00:01:13,440
+ So the issue here is I am just going to point out is that each of this programming assignment
+
+16
+00:01:13,440 --> 00:01:15,760
+ is being calculated automatically.
+
+17
+00:01:15,760 --> 00:01:20,000
+ So there are some test cases, probably you have been given some test cases as well in
+
+18
+00:01:20,000 --> 00:01:22,000
+ the question paper.
+
+19
+00:01:22,000 --> 00:01:28,360
+ But during this testing part where you are given the scores, we are not using that particular
+
+20
+00:01:28,360 --> 00:01:33,240
+ evaluation criteria that that you have been given in the question paper.
+
+21
+00:01:33,240 --> 00:01:39,320
+ Basically we have different set of test and that particular test, I think it will be forwarded
+
+22
+00:01:39,320 --> 00:01:45,760
+ to you once the course is over basically the programming assignment is over, you will get
+
+23
+00:01:45,760 --> 00:01:50,480
+ like which particular test cases have been used to evaluate their assignments.
+
+24
+00:01:50,480 --> 00:01:56,400
+ Now like there could be like 5 test cases and maybe in some of the programming assignments
+
+25
+00:01:56,400 --> 00:01:58,840
+ we have selected all the 5 test cases.
+
+26
+00:01:58,840 --> 00:02:04,960
+ So in that case if you are for example program passes let us say 5 out of 5, you get a hundred
+
+27
+00:02:04,960 --> 00:02:09,920
+ score and it reduces as you get a lower number of passes.
+
+28
+00:02:09,920 --> 00:02:12,600
+ So this is for all the programming assignments.
+
+29
+00:02:12,600 --> 00:02:18,660
+ And there are some programming assignments where we pick just one test case and that is
+
+30
+00:02:18,660 --> 00:02:23,000
+ due to the limited time that we have to evaluate the programming assignments.
+
+31
+00:02:23,000 --> 00:02:27,280
+ Because some of the assignments for example deep learning models or machine learning models
+
+32
+00:02:27,280 --> 00:02:31,680
+ that take huge amount of time if you want to like test so many test cases.
+
+33
+00:02:31,680 --> 00:02:36,400
+ So in that case we pick a single test case from that and we evaluate.
+
+34
+00:02:36,400 --> 00:02:41,320
+ So you can understand if it is a machine learning or deep learning kind of assignment that you
+
+35
+00:02:41,320 --> 00:02:42,520
+ are solving.
+
+36
+00:02:42,520 --> 00:02:48,120
+ So any of the test cases if it fails that means there is a probability that you might get 0.
+
+37
+00:02:48,120 --> 00:02:54,080
+ So that you must know and all of these are very much transparent and we are sharing all
+
+38
+00:02:54,080 --> 00:02:59,120
+ the like test cases with you once you are submitting the assignments.
+
+39
+00:02:59,120 --> 00:03:03,520
+ And if you are having any doubts with the test cases of course you can reach out and we can
+
+40
+00:03:03,520 --> 00:03:05,440
+ have a discussion on that.
+
+41
+00:03:05,440 --> 00:03:11,760
+ So let us start our today's session and today we are going to as I told you discuss on the
+
+42
+00:03:11,760 --> 00:03:15,960
+ computer vision and you can see that I have given a picture here.
+
+43
+00:03:15,960 --> 00:03:23,000
+ So giving you a brief outline on what you will be able to do once this class is over.
+
+44
+00:03:23,000 --> 00:03:29,480
+ So we have an MNIST dataset which is a number written in handwritten format and you can
+
+45
+00:03:29,480 --> 00:03:33,960
+ see that there are 0 to 9 digits that has been given.
+
+46
+00:03:33,960 --> 00:03:39,080
+ And the idea here is if a handwritten digit is given then what will be its class and the
+
+47
+00:03:39,080 --> 00:03:42,000
+ class is basically nothing but its actual number.
+
+48
+00:03:42,000 --> 00:03:48,480
+ So 0 represents 0, 1 represents 1, 9 represents 9 it is as simple as that.
+
+49
+00:03:48,480 --> 00:03:53,120
+ So this is basically classification task and any classification task that you have done
+
+50
+00:03:53,120 --> 00:03:57,360
+ till now you know that we always need to have a training and testing set.
+
+51
+00:03:57,360 --> 00:04:04,080
+ So we will see that how we can import this MNIST dataset later part and then we will
+
+52
+00:04:04,080 --> 00:04:09,800
+ see that how we can devise this training partition and this testing partition separately.
+
+53
+00:04:09,800 --> 00:04:14,560
+ So basically this dataset will be partitioned into two sections where we will have this
+
+54
+00:04:14,560 --> 00:04:19,320
+ training and testing data and now we will pass it to a convolutional neural network.
+
+55
+00:04:19,320 --> 00:04:26,520
+ And this convolutional neural network as you can understand is basically two things combined.
+
+56
+00:04:26,520 --> 00:04:31,520
+ So first is the feature extraction part where you extract the features from the image and
+
+57
+00:04:31,520 --> 00:04:36,840
+ once this features are extracted we get to a dense classification layer where you just
+
+58
+00:04:36,840 --> 00:04:38,880
+ classify to different classes.
+
+59
+00:04:38,880 --> 00:04:43,720
+ So you can understand you can give this training data through the model and once you have this
+
+60
+00:04:43,720 --> 00:04:49,240
+ training data the model can actually extract the features from this particular this first
+
+61
+00:04:49,240 --> 00:04:54,360
+ section which is the feature extraction section and the classification section.
+
+62
+00:04:54,360 --> 00:04:59,640
+ And you can see that both of them are together so these are combined shared weights and once
+
+63
+00:04:59,640 --> 00:05:03,520
+ you are training the model the inter model is getting trained that means the feature
+
+64
+00:05:03,520 --> 00:05:07,720
+ extractor is also getting trained as well as this dense layer which is the fully connected
+
+65
+00:05:07,720 --> 00:05:09,800
+ layer which classifies.
+
+66
+00:05:09,800 --> 00:05:15,120
+ So the entire thing trains that is why the CNNs are very, very improved over any of the
+
+67
+00:05:15,120 --> 00:05:19,360
+ previous methods that we have seen like using the machine learning methods where we have
+
+68
+00:05:19,360 --> 00:05:23,480
+ to extract the features separately for each of the task.
+
+69
+00:05:23,480 --> 00:05:30,160
+ So we will see that how we can like work with this CNN models and which models are there.
+
+70
+00:05:30,160 --> 00:05:34,400
+ But before starting that we want to discuss about basically I want to discuss about this
+
+71
+00:05:34,400 --> 00:05:39,400
+ image thing what is an image if you do not know what is an image it is difficult to do
+
+72
+00:05:39,400 --> 00:05:41,840
+ some intensive tasks.
+
+73
+00:05:41,840 --> 00:05:47,080
+ So most use task you can understand the classification task or any of the regression task that you
+
+74
+00:05:47,080 --> 00:05:51,200
+ have done till now is very easy to perform because there are APIs that you can directly
+
+75
+00:05:51,200 --> 00:05:56,840
+ call there are libraries that you can directly use and these libraries you can just import
+
+76
+00:05:56,840 --> 00:06:01,400
+ them you can pass the training data and the testing data even they have like the training
+
+77
+00:06:01,400 --> 00:06:04,680
+ and testing partition functions also.
+
+78
+00:06:04,680 --> 00:06:08,680
+ And you can just give that data and it will give you the output as simple as that you have
+
+79
+00:06:08,680 --> 00:06:14,200
+ to have a system that you can run a model like this as easy as that.
+
+80
+00:06:14,200 --> 00:06:19,840
+ But when you are doing some research or doing some actual work in this field then you must
+
+81
+00:06:19,840 --> 00:06:25,200
+ know that how this model works or at least the basics of the model so that you can like
+
+82
+00:06:25,200 --> 00:06:27,720
+ go ahead and do some interesting stuff.
+
+83
+00:06:27,720 --> 00:06:29,320
+ So let us see what we can do.
+
+84
+00:06:29,320 --> 00:06:34,640
+ So initially I will just show you like okay let us just so I am storing all the data in
+
+85
+00:06:34,640 --> 00:06:40,440
+ Google Drive at this moment because we are sharing this through Collab.
+
+86
+00:06:40,440 --> 00:06:44,800
+ But before getting started I am just going so let the Google Drive load so I am just
+
+87
+00:06:44,800 --> 00:06:50,000
+ going to show you that probably you have received a link of my GitHub page where you can just
+
+88
+00:06:50,000 --> 00:06:54,160
+ go to this particular section DL applications and computer vision hands on.
+
+89
+00:06:54,160 --> 00:07:01,880
+ You can just go there this link here we have provided you this link just take your messages.
+
+90
+00:07:01,880 --> 00:07:10,320
+ And once you have this you will have this ipython file this assignment.pdf and this data.zip.
+
+91
+00:07:10,320 --> 00:07:16,200
+ So these are a few of the things that is present here and you can see that this data you can
+
+92
+00:07:16,200 --> 00:07:21,600
+ directly download or in this python file also if you are just running this it will download
+
+93
+00:07:21,600 --> 00:07:24,440
+ it automatically if you do not have that locally.
+
+94
+00:07:24,440 --> 00:07:27,800
+ So if you are able to download it you can just download it or you can just directly
+
+95
+00:07:27,800 --> 00:07:34,080
+ run it and I will always recommend that you must copy this code and run it in your environment
+
+96
+00:07:34,080 --> 00:07:38,960
+ or you can just open it in Collab and start it.
+
+97
+00:07:38,960 --> 00:07:44,040
+ So I know that you have already done the machine learning programs and I have also shown you
+
+98
+00:07:44,040 --> 00:07:45,960
+ that how Google Drive can be connected.
+
+99
+00:07:45,960 --> 00:07:52,640
+ So it is a simple one liner code that we use which is basically Google Collab import drive
+
+100
+00:07:52,640 --> 00:07:56,520
+ and we just mount the drive and the location we need to just provide.
+
+101
+00:07:56,520 --> 00:08:02,080
+ So this is the very essential thing that we need to do for this particular session.
+
+102
+00:08:02,080 --> 00:08:06,920
+ You can have your local system also if you are having running it in your local machine
+
+103
+00:08:06,920 --> 00:08:12,120
+ you can just store it any place in your drive and just share the location of the image files
+
+104
+00:08:12,120 --> 00:08:13,120
+ and all.
+
+105
+00:08:13,120 --> 00:08:18,480
+ So this is one of the image that I have created I will show you the image from here only.
+
+106
+00:08:18,480 --> 00:08:23,360
+ So let us just show this image to you okay not now.
+
+107
+00:08:23,360 --> 00:08:26,600
+ So this is the image and how we can load this image.
+
+108
+00:08:26,600 --> 00:08:32,640
+ So my image is stored in this particular location and I use this SK image library.
+
+109
+00:08:32,640 --> 00:08:35,520
+ Let us go to the SK image library you can see here.
+
+110
+00:08:35,520 --> 00:08:40,760
+ So it is essentially the same extension of the scikit-learn library which you use for
+
+111
+00:08:40,760 --> 00:08:46,600
+ machine learning but this scikit image is specifically designed for all the functions
+
+112
+00:08:46,600 --> 00:08:49,320
+ that you can get for image processing.
+
+113
+00:08:49,320 --> 00:08:54,440
+ So this is also a very widely used library for image processing.
+
+114
+00:08:54,440 --> 00:08:57,200
+ You can go ahead and check all the things that are present here.
+
+115
+00:08:57,200 --> 00:09:02,720
+ So we are going to use this library and you can import this library here by this command
+
+116
+00:09:02,720 --> 00:09:08,160
+ where you give this from SK image which is that particular library import I/O.
+
+117
+00:09:08,160 --> 00:09:12,680
+ So I was basically handles the input output operations from this library.
+
+118
+00:09:12,680 --> 00:09:17,040
+ So my image is a variable where I am going to store this image and I will just show you
+
+119
+00:09:17,040 --> 00:09:19,240
+ this image after some time.
+
+120
+00:09:19,240 --> 00:09:25,240
+ So to read this image I am just giving you that I/O.imread which is a function which takes
+
+121
+00:09:25,240 --> 00:09:31,400
+ the location parameter which takes this location parameter and it prints the output.
+
+122
+00:09:31,400 --> 00:09:38,040
+ So let us first print this thing which is the data type of this particular image file right.
+
+123
+00:09:38,040 --> 00:09:41,840
+ So let us run this.
+
+124
+00:09:41,840 --> 00:09:47,200
+ So you see that we are having a data type of unsigned integer 8.
+
+125
+00:09:47,200 --> 00:09:54,040
+ So what does it mean that this image is essentially a matrix of integer values.
+
+126
+00:09:54,040 --> 00:10:00,120
+ And ok let us see what is the range of the values that this integer value can hold basically
+
+127
+00:10:00,120 --> 00:10:05,720
+ it is 2 to the power 8 which is 256 that means each of the pixels can have a value that ranges
+
+128
+00:10:05,720 --> 00:10:10,760
+ between 0 and 255 so as simple as that.
+
+129
+00:10:10,760 --> 00:10:14,440
+ So why this is important that you will be understanding after some time.
+
+130
+00:10:14,440 --> 00:10:16,520
+ So let us print the image dimensions.
+
+131
+00:10:16,520 --> 00:10:21,720
+ So you can see that I have loaded this image and this image is an object of this SK image
+
+132
+00:10:21,720 --> 00:10:24,960
+ library and you can directly give some functions to it.
+
+133
+00:10:24,960 --> 00:10:29,600
+ For example this safe function right or this data type function d type function.
+
+134
+00:10:29,600 --> 00:10:34,200
+ So if you give my image dot safe it will give you the output dimensions directly.
+
+135
+00:10:34,200 --> 00:10:38,080
+ So let us see what is the output dimension.
+
+136
+00:10:38,080 --> 00:10:42,400
+ So the dimension of this image is kind of random because I have made it in a random way.
+
+137
+00:10:42,400 --> 00:10:48,120
+ So it is 6 to 2 into 1 0 0 1 into 3.
+
+138
+00:10:48,120 --> 00:10:49,320
+ So what does this mean?
+
+139
+00:10:49,320 --> 00:10:55,880
+ This means that it is the height of this image which is 6 to 2 1 0 0 1 which is the width
+
+140
+00:10:55,880 --> 00:10:58,640
+ of the image and 3 is the channels.
+
+141
+00:10:58,640 --> 00:10:59,640
+ What are the channels here?
+
+142
+00:10:59,640 --> 00:11:05,120
+ So this is a colored image and the 3 channel represents RGB basically the red, green and
+
+143
+00:11:05,120 --> 00:11:09,180
+ blue values associated with each of this images.
+
+144
+00:11:09,180 --> 00:11:12,040
+ Now we can just print this image.
+
+145
+00:11:12,040 --> 00:11:15,280
+ Let us see what printing this image gives us.
+
+146
+00:11:15,280 --> 00:11:21,720
+ So you can understand this printing this image gives us a matrix of like lots of numbers
+
+147
+00:11:21,720 --> 00:11:22,720
+ right.
+
+148
+00:11:22,720 --> 00:11:26,920
+ So what does this numbers actually mean is that these are the numerical representation
+
+149
+00:11:26,920 --> 00:11:29,720
+ of these dimensions right.
+
+150
+00:11:29,720 --> 00:11:33,800
+ So for each value we are having this 3 RGB values.
+
+151
+00:11:33,800 --> 00:11:35,320
+ So this is 1 pixel.
+
+152
+00:11:35,320 --> 00:11:46,040
+ So this selected thing is 1 pixel where 1 is ranging from 0 to 255 for red, another is
+
+153
+00:11:46,040 --> 00:11:48,200
+ for green and another is for blue.
+
+154
+00:11:48,200 --> 00:11:50,560
+ So these are the representation of the images.
+
+155
+00:11:50,560 --> 00:11:55,400
+ Not much interesting as I can understand but you have to know this if you are going to
+
+156
+00:11:55,400 --> 00:11:58,440
+ do some kind of analytical task later on.
+
+157
+00:11:58,440 --> 00:12:00,600
+ So this is how an image is formatted.
+
+158
+00:12:00,600 --> 00:12:04,440
+ So you have this image and now I am just going to display this image.
+
+159
+00:12:04,440 --> 00:12:06,160
+ So basically I am just going to show this image.
+
+160
+00:12:06,160 --> 00:12:08,960
+ Now it is going to get some more interesting.
+
+161
+00:12:08,960 --> 00:12:13,600
+ So matplotlib similarly we have used this library for plotting various graphs.
+
+162
+00:12:13,600 --> 00:12:17,800
+ So here we will use that same library for plotting the image or basically displaying
+
+163
+00:12:17,800 --> 00:12:18,880
+ the image.
+
+164
+00:12:18,880 --> 00:12:23,640
+ So from matplotlib we are going to import this pi plot which we have done earlier and
+
+165
+00:12:23,640 --> 00:12:29,560
+ we are naming it as PLT for shorter version and it is quite standard we use it always.
+
+166
+00:12:29,560 --> 00:12:35,320
+ So plt.imshow is another function that actually prints the images or show the images right.
+
+167
+00:12:35,320 --> 00:12:40,000
+ So we are just going to pass this image object from a scalar library and we can just run
+
+168
+00:12:40,000 --> 00:12:42,360
+ it and we can see that the image gets printed.
+
+169
+00:12:42,360 --> 00:12:43,640
+ So let us see what is this image.
+
+170
+00:12:43,640 --> 00:12:49,760
+ So this is an image that I have created in paint and you can see that the dimensions are given
+
+171
+00:12:49,760 --> 00:12:55,560
+ in this width values and the height values are given here and this is an image of different
+
+172
+00:12:55,560 --> 00:13:00,360
+ colors and some borders something like that and we are going to use this image for different
+
+173
+00:13:00,360 --> 00:13:04,600
+ kind of testing before we move on to this neural network or convolutional neural network
+
+174
+00:13:04,600 --> 00:13:05,960
+ stuff.
+
+175
+00:13:05,960 --> 00:13:11,000
+ So here I am just going to see what are the minimum values of the pixels that we have
+
+176
+00:13:11,000 --> 00:13:13,640
+ here and the maximum values of the pixel.
+
+177
+00:13:13,640 --> 00:13:18,600
+ So for that it is very very easy we are just going to take that my image variable and we
+
+178
+00:13:18,600 --> 00:13:22,560
+ are going to get the minimum and the maximum functions and let us see.
+
+179
+00:13:22,560 --> 00:13:26,280
+ So it is basically ranging from 0 to 255.
+
+180
+00:13:26,280 --> 00:13:32,000
+ So as we discussed now there is an interesting part and this is very very important because
+
+181
+00:13:32,000 --> 00:13:34,240
+ this is the night now an integer based image.
+
+182
+00:13:34,240 --> 00:13:39,000
+ So we have seen that this is an unsigned integer matrix.
+
+183
+00:13:39,000 --> 00:13:44,040
+ But with unsigned integer matrix it is very difficult to formulate some mathematical operations
+
+184
+00:13:44,040 --> 00:13:45,040
+ on this.
+
+185
+00:13:45,040 --> 00:13:47,640
+ It is possible but it will be very difficult.
+
+186
+00:13:47,640 --> 00:13:52,560
+ For that we solve it using float images or the values will be represented in float format.
+
+187
+00:13:52,560 --> 00:13:54,720
+ So let us see how we can do that.
+
+188
+00:13:54,720 --> 00:14:00,320
+ So this SK image library directly provides us with an IMG as float.
+
+189
+00:14:00,320 --> 00:14:06,280
+ So basically we want to convert the image to float from any other like type.
+
+190
+00:14:06,280 --> 00:14:11,320
+ So here it is we have imported this and it is as simple as just passing this my image
+
+191
+00:14:11,320 --> 00:14:19,040
+ object to this function of IMG as float and I am storing it as my float image right.
+
+192
+00:14:19,040 --> 00:14:23,440
+ So I am just going to print my float image minimum and maximum values that we did earlier
+
+193
+00:14:23,440 --> 00:14:28,200
+ for this one where we have this 0 and 255 value.
+
+194
+00:14:28,200 --> 00:14:32,320
+ And we are going to print the data type as well just like the previous time.
+
+195
+00:14:32,320 --> 00:14:39,400
+ And let us see what we get here is we get 0.0 and 1.0.
+
+196
+00:14:39,400 --> 00:14:45,080
+ So these are very simple steps you can just copy this parts from this link that we have
+
+197
+00:14:45,080 --> 00:14:48,240
+ provided and you can run this easily.
+
+198
+00:14:48,240 --> 00:14:53,520
+ So I think yeah so one more important thing is that we must connect to a GPU environment
+
+199
+00:14:53,520 --> 00:14:57,160
+ as you can see here I have connected to T4 environment.
+
+200
+00:14:57,160 --> 00:15:01,840
+ You also must do that because we are going to work with some deep learning models which
+
+201
+00:15:01,840 --> 00:15:05,000
+ training will take more time if you are using CPU.
+
+202
+00:15:05,000 --> 00:15:12,360
+ So here we are getting 0 and 0 1.0 what does this mean this means that now the pixel values
+
+203
+00:15:12,360 --> 00:15:19,240
+ each of the pixel values instead of ranging from 0 to 255 now ranges between 0 and 1.
+
+204
+00:15:19,240 --> 00:15:28,360
+ So now it is much easier for you to do mathematical operations on this floating point values.
+
+205
+00:15:28,360 --> 00:15:32,880
+ So this plot.image so again shows the image but right now I am just going to show you
+
+206
+00:15:32,880 --> 00:15:38,160
+ this my float image and you will see that this is the exact same image that we had earlier.
+
+207
+00:15:38,160 --> 00:15:43,280
+ Just the image internal formatting is changed from integer to float but the actual image
+
+208
+00:15:43,280 --> 00:15:46,520
+ has no change because it is the same image right.
+
+209
+00:15:46,520 --> 00:15:50,880
+ So let us see what are the mathematical operations that I was talking about right.
+
+210
+00:15:50,880 --> 00:15:53,040
+ So it is very very simple to do.
+
+211
+00:15:53,040 --> 00:15:59,040
+ So let us just keep a copy of our original image I am just zooming a bit for simplicity.
+
+212
+00:15:59,040 --> 00:16:05,880
+ So you can see that I am just copying this using this line of code you are probably know
+
+213
+00:16:05,880 --> 00:16:10,800
+ that there is a copy function where which you can use to copy various objects in python
+
+214
+00:16:10,800 --> 00:16:15,000
+ and if you do not keep a copy of it the original variable might change.
+
+215
+00:16:15,000 --> 00:16:20,440
+ So we have just copied this and let us call it my dark image and I am just copying this
+
+216
+00:16:20,440 --> 00:16:21,440
+ my float image.
+
+217
+00:16:21,440 --> 00:16:26,280
+ So I am taking the float version of the image that we have created and what I am doing now
+
+218
+00:16:26,280 --> 00:16:33,120
+ is that my dark image now becomes 0.5 into my dark image.
+
+219
+00:16:33,120 --> 00:16:34,440
+ What does this mean?
+
+220
+00:16:34,440 --> 00:16:42,040
+ We are multiplying 0.5 to each and every value that is present in the matrix of the image.
+
+221
+00:16:42,040 --> 00:16:49,040
+ So essentially previously our image has a range of 0 and 1 for this version where we
+
+222
+00:16:49,040 --> 00:16:54,720
+ are having this float version and now you will see that if you multiply it by 0.5 every
+
+223
+00:16:54,720 --> 00:16:57,440
+ value will be like half right.
+
+224
+00:16:57,440 --> 00:17:03,720
+ So if it is 1 it will become 0.5 if it is let us say 0 it will become 0.
+
+225
+00:17:03,720 --> 00:17:08,800
+ So it will just range the values like that and what significant changes we will have
+
+226
+00:17:08,800 --> 00:17:12,200
+ will have a darker version of the image the brightness will reduce.
+
+227
+00:17:12,200 --> 00:17:17,160
+ Let us see what we get here is that now so I am just printing this minimum and maximum
+
+228
+00:17:17,160 --> 00:17:23,840
+ values for your help so it is 0 and 0.5 instead of 0 and 1 right.
+
+229
+00:17:23,840 --> 00:17:27,840
+ So let us print this my dark image and see what we get here so you see that previously
+
+230
+00:17:27,840 --> 00:17:33,320
+ we had an image which is having a higher brightness but now the image is darker right.
+
+231
+00:17:33,320 --> 00:17:37,240
+ So as simple as that so you can understand what kind of mathematical operations I was
+
+232
+00:17:37,240 --> 00:17:43,160
+ talking about you can do any kind of mathematical operations on this matrix and you will get
+
+233
+00:17:43,160 --> 00:17:45,640
+ a similar kind of output that you want.
+
+234
+00:17:45,640 --> 00:17:50,220
+ So you can change this 0.5 to a different degree and you can get different versions of this
+
+235
+00:17:50,220 --> 00:17:53,160
+ brightness of the images as simple as that right.
+
+236
+00:17:53,160 --> 00:17:56,560
+ So in deep learning models there are some more complex operations that we will see you
+
+237
+00:17:56,560 --> 00:18:02,240
+ have already gone through this theory class and you have already seen that there is stride
+
+238
+00:18:02,240 --> 00:18:07,480
+ there is filter there are so many things and all of those are mathematical operations and
+
+239
+00:18:07,480 --> 00:18:12,160
+ we do it via this techniques only.
+
+240
+00:18:12,160 --> 00:18:18,240
+ So once we have this darker image now I am just going to add a filter to it just to show
+
+241
+00:18:18,240 --> 00:18:19,960
+ you that how this works.
+
+242
+00:18:19,960 --> 00:18:27,080
+ So again I am just making a copy of this image which is this my filter image and I am calling
+
+243
+00:18:27,080 --> 00:18:32,520
+ it as my filter image and now I am taking this my filter image and giving it some range
+
+244
+00:18:32,520 --> 00:18:33,680
+ let us see what are the range.
+
+245
+00:18:33,680 --> 00:18:39,180
+ So this is the range for this height object this is the range for the width of so you
+
+246
+00:18:39,180 --> 00:18:43,800
+ have to understand that it is always height then width and then the channels so we try
+
+247
+00:18:43,800 --> 00:18:45,720
+ to keep that consistent.
+
+248
+00:18:45,720 --> 00:18:52,440
+ So this is the height that we are considering so 200 to 500 right and you will see that
+
+249
+00:18:52,440 --> 00:18:57,080
+ the maximum value we have already calculated for the height in the dimensions.
+
+250
+00:18:57,080 --> 00:19:03,280
+ So in this dimension you will see that the dimension of this image we have calculated
+
+251
+00:19:03,280 --> 00:19:09,480
+ is 622 and the width of the image is 1001 so we are within this range.
+
+252
+00:19:09,480 --> 00:19:16,520
+ So we are trying to create some filter in this particular location as you can understand.
+
+253
+00:19:16,520 --> 00:19:24,480
+ So let us see how we can do that yeah so here you see we are just giving a range of values.
+
+254
+00:19:24,480 --> 00:19:30,520
+ So this is the height that we are considering for this filter right so this is a fixed height
+
+255
+00:19:30,520 --> 00:19:34,080
+ and now this is the width again a fixed width.
+
+256
+00:19:34,080 --> 00:19:43,000
+ So how we can provide a range so 200 then colon and then we are just giving this 500
+
+257
+00:19:43,000 --> 00:19:44,000
+ value.
+
+258
+00:19:44,000 --> 00:19:48,360
+ So if you give this value that means it ranges from 200 to 500 this is the height and this
+
+259
+00:19:48,360 --> 00:19:53,920
+ is the width and why these are so important that we will discuss in the next coding part
+
+260
+00:19:53,920 --> 00:19:55,200
+ right.
+
+261
+00:19:55,200 --> 00:20:00,280
+ So and this is what does this mean this mean all the channels are considered here and my
+
+262
+00:20:00,280 --> 00:20:04,280
+ filter image again I am considering that particular part.
+
+263
+00:20:04,280 --> 00:20:10,760
+ So what I am doing here is essentially I am replacing my filter image and essentially
+
+264
+00:20:10,760 --> 00:20:18,040
+ this part of the image which is a subsection of the image by this section we are just replacing
+
+265
+00:20:18,040 --> 00:20:20,920
+ this part with this part of the image.
+
+266
+00:20:20,920 --> 00:20:25,880
+ And what is the thing that we are replacing with it is the exact same image it is the exact
+
+267
+00:20:25,880 --> 00:20:31,920
+ same location but with a lower value of brightness.
+
+268
+00:20:31,920 --> 00:20:37,600
+ So all the values are cut off to 0.3 percent of the original image.
+
+269
+00:20:37,600 --> 00:20:42,680
+ So if we do that there is an expectation that this particular portion of the image will
+
+270
+00:20:42,680 --> 00:20:46,680
+ become darker where the rest of the image will be same.
+
+271
+00:20:46,680 --> 00:20:52,480
+ So let us see what we get so we have just plotted the image directly here so you see
+
+272
+00:20:52,480 --> 00:21:00,520
+ that we get a black spot in the middle which is a rectangular in size and the dimension
+
+273
+00:21:00,520 --> 00:21:05,080
+ is given here which looks something like this right.
+
+274
+00:21:05,080 --> 00:21:10,600
+ So this actually helps us to create a simple filter as you can understand this is a very
+
+275
+00:21:10,600 --> 00:21:14,640
+ simple filter that we have created and this is a darkening filter.
+
+276
+00:21:14,640 --> 00:21:19,480
+ So filters so the definition of filter might not be clear to many of you.
+
+277
+00:21:19,480 --> 00:21:27,480
+ So just to give you an idea a filter is nothing but that gives you what you need and does
+
+278
+00:21:27,480 --> 00:21:30,440
+ not give you what you do not need it is as simple as that.
+
+279
+00:21:30,440 --> 00:21:36,480
+ For example in sunny days we use sunglasses and the sunglasses block the sun rays and
+
+280
+00:21:36,480 --> 00:21:39,640
+ the ultraviolet rays right so it darkens it.
+
+281
+00:21:39,640 --> 00:21:43,880
+ So it does not allow the sunlight to enter here also filter does mean the exact same
+
+282
+00:21:43,880 --> 00:21:44,880
+ thing.
+
+283
+00:21:44,880 --> 00:21:49,080
+ So whatever we want we can pass it through and whatever we do not want we do not want
+
+284
+00:21:49,080 --> 00:21:50,320
+ to pass it through.
+
+285
+00:21:50,320 --> 00:21:54,960
+ So we want to make a filter here for this particular purpose we are making a filter
+
+286
+00:21:54,960 --> 00:21:59,240
+ which reduces the brightness that means we do not want much of the light coming through
+
+287
+00:21:59,240 --> 00:22:00,640
+ this portion.
+
+288
+00:22:00,640 --> 00:22:05,840
+ So this is the idea of this particular filter and convolutional neural networks in the same
+
+289
+00:22:05,840 --> 00:22:07,600
+ way uses this filter.
+
+290
+00:22:07,600 --> 00:22:12,680
+ So these filters are used by convolutional neural networks to pass some features and
+
+291
+00:22:12,680 --> 00:22:18,400
+ to restrict some features that way this kind of feature extraction takes place.
+
+292
+00:22:18,400 --> 00:22:23,760
+ Now let us just consider the same code and we are just making minor changes here.
+
+293
+00:22:23,760 --> 00:22:27,560
+ So the minor change here is only this channel right.
+
+294
+00:22:27,560 --> 00:22:32,760
+ So here we are just having this same exact same code but now I am just changing this
+
+295
+00:22:32,760 --> 00:22:33,760
+ channel.
+
+296
+00:22:33,760 --> 00:22:38,840
+ So now only one channel will be affected instead of all the channels and which is this channel
+
+297
+00:22:38,840 --> 00:22:40,920
+ this is the last channel 2.
+
+298
+00:22:40,920 --> 00:22:44,080
+ So there are 3 channels 0, 1 and 2 here right.
+
+299
+00:22:44,080 --> 00:22:48,960
+ So let us just see what we are doing we are doing the exact same operation but the input
+
+300
+00:22:48,960 --> 00:22:51,120
+ channel is 0.
+
+301
+00:22:51,120 --> 00:22:56,400
+ Basically we are changing this image on this filter and the output filter will be affected
+
+302
+00:22:56,400 --> 00:22:58,500
+ on the second filter.
+
+303
+00:22:58,500 --> 00:23:00,600
+ So this is also a very simple operation.
+
+304
+00:23:00,600 --> 00:23:05,000
+ So I am going to show you that how this kind of filters can affect.
+
+305
+00:23:05,000 --> 00:23:09,880
+ So you see that this is one filter that we have created right now and it allows or it
+
+306
+00:23:09,880 --> 00:23:13,880
+ passes this through an yellow filter.
+
+307
+00:23:13,880 --> 00:23:18,700
+ So if you pass an yellow colored light or yellow colored filter these lights will be
+
+308
+00:23:18,700 --> 00:23:20,200
+ passed.
+
+309
+00:23:20,200 --> 00:23:26,520
+ The white becomes yellow you can see that the white feature was there which now has translated
+
+310
+00:23:26,520 --> 00:23:27,520
+ to yellow.
+
+311
+00:23:27,520 --> 00:23:31,960
+ So it is our new feature this blue became green.
+
+312
+00:23:31,960 --> 00:23:36,160
+ So as you know that if you just combine blue color and yellow color you get a green color
+
+313
+00:23:36,160 --> 00:23:41,240
+ and similarly for all of this you can see that you are able to get a filter that gives
+
+314
+00:23:41,240 --> 00:23:46,520
+ you if it is an yellow it gives you the features of that yellow filter.
+
+315
+00:23:46,520 --> 00:23:54,080
+ So this is very simple example and easy to understand example for image processing tasks.
+
+316
+00:23:54,080 --> 00:24:00,320
+ Now let us just create a sliding filter and this is what happens in like the convolutional
+
+317
+00:24:00,320 --> 00:24:01,920
+ neural networks right.
+
+318
+00:24:01,920 --> 00:24:07,040
+ So just to give you an idea I am just going to show you here that what happens in this
+
+319
+00:24:07,040 --> 00:24:08,640
+ convolutional layers.
+
+320
+00:24:08,640 --> 00:24:15,360
+ So you have this image you have this image here and this image what we do is we so let
+
+321
+00:24:15,360 --> 00:24:21,240
+ us say this is an image of our digit of 0 and we are going to read this image.
+
+322
+00:24:21,240 --> 00:24:24,920
+ So we first have to consider a filter size.
+
+323
+00:24:24,920 --> 00:24:30,360
+ So there will be a filter size and the filter size represents the size of the filter that
+
+324
+00:24:30,360 --> 00:24:32,480
+ we are using.
+
+325
+00:24:32,480 --> 00:24:37,840
+ So what this filters essentially do we can use any filter which is the same size as the
+
+326
+00:24:37,840 --> 00:24:39,320
+ image also right.
+
+327
+00:24:39,320 --> 00:24:43,060
+ So we can use this filter which is exactly the same size of the image then what is the
+
+328
+00:24:43,060 --> 00:24:44,060
+ difference.
+
+329
+00:24:44,060 --> 00:24:50,840
+ The difference is that if you use a smaller filter size so this for example this one and
+
+330
+00:24:50,840 --> 00:24:58,720
+ then you slide it through this image basically you slide it like through some strides again
+
+331
+00:24:58,720 --> 00:25:01,240
+ you are sliding it through some strides.
+
+332
+00:25:01,240 --> 00:25:06,420
+ What you are essentially getting you are getting some localized features from here.
+
+333
+00:25:06,420 --> 00:25:11,960
+ So from each of this filter striding you are getting some localized features whereas if
+
+334
+00:25:11,960 --> 00:25:18,040
+ you use this entire filter together you might not get that enough information.
+
+335
+00:25:18,040 --> 00:25:24,760
+ So this filters will give you a very detailed feature extraction and this helps the model
+
+336
+00:25:24,760 --> 00:25:26,960
+ to learn quite faster also.
+
+337
+00:25:26,960 --> 00:25:32,480
+ That is why this filter techniques comes into play in convolutional neural network.
+
+338
+00:25:32,480 --> 00:25:37,120
+ As in the theory class it was explaining explained that if you take a filter like this.
+
+339
+00:25:37,120 --> 00:25:41,400
+ So if this is a filter the center values are calculated.
+
+340
+00:25:41,400 --> 00:25:42,400
+ So what does this mean?
+
+341
+00:25:42,400 --> 00:25:47,640
+ This means that you are taking all this row values so there are let us say many values
+
+342
+00:25:47,640 --> 00:25:52,880
+ in this matrix and you are essentially trying to smaller it down or basically extract the
+
+343
+00:25:52,880 --> 00:25:56,560
+ features from it and you are trying to make it a single feature.
+
+344
+00:25:56,560 --> 00:26:02,560
+ So you had let us say a matrix of dimension 3 cross 3 and you will end up having a matrix
+
+345
+00:26:02,560 --> 00:26:06,440
+ of just one dimension like 1 cross 1 right.
+
+346
+00:26:06,440 --> 00:26:10,600
+ So this is how we are going to do and I am just going to show you that how these kind
+
+347
+00:26:10,600 --> 00:26:15,680
+ of filters you can create by your own and why it is required at least.
+
+348
+00:26:15,680 --> 00:26:19,440
+ Let us see in this code so it is very very simple to do that.
+
+349
+00:26:19,440 --> 00:26:23,320
+ Let us just run this code and this is the exact same kind of code that we were working
+
+350
+00:26:23,320 --> 00:26:24,320
+ with till now.
+
+351
+00:26:24,320 --> 00:26:31,320
+ So I am just copying this float image now in sliding filter image variable and I am
+
+352
+00:26:31,320 --> 00:26:36,280
+ just taking this image dot shape which gives me this three different values which is the
+
+353
+00:26:36,280 --> 00:26:37,720
+ height width and depth.
+
+354
+00:26:37,720 --> 00:26:42,920
+ Let us see what are the values so these are the exact same values that we got right ok.
+
+355
+00:26:42,920 --> 00:26:49,600
+ So now what I want is I want to just create a sliding window kind of thing.
+
+356
+00:26:49,600 --> 00:26:54,960
+ We have previously created this window but now I am just going to create a sliding window
+
+357
+00:26:54,960 --> 00:26:58,100
+ to show you an example.
+
+358
+00:26:58,100 --> 00:27:00,200
+ So this is the sliding window filter.
+
+359
+00:27:00,200 --> 00:27:06,040
+ So I am just importing time why this is required I will just tell you in some time.
+
+360
+00:27:06,040 --> 00:27:11,120
+ So this is again this map plot pie plot but here what we are going to do is we are going
+
+361
+00:27:11,120 --> 00:27:18,120
+ to take two different classes from here which is this I am show and show.
+
+362
+00:27:18,120 --> 00:27:22,800
+ So these two classes I am importing separately and this is required because we are just going
+
+363
+00:27:22,800 --> 00:27:25,360
+ to iteratively print some of these images.
+
+364
+00:27:25,360 --> 00:27:29,760
+ I will maybe not able to print the entire image but probably we will get an idea what
+
+365
+00:27:29,760 --> 00:27:30,960
+ is happening.
+
+366
+00:27:30,960 --> 00:27:37,720
+ So here we are taking some parameters and you have to understand these parameters very well
+
+367
+00:27:37,720 --> 00:27:42,440
+ because you will see that these similar kind of parameters will be using in this convolutional
+
+368
+00:27:42,440 --> 00:27:46,360
+ neural network models that we will be working on.
+
+369
+00:27:46,360 --> 00:27:49,920
+ So this is this H stride.
+
+370
+00:27:49,920 --> 00:27:53,520
+ So H stride means here this horizontal stride.
+
+371
+00:27:53,520 --> 00:28:00,000
+ So stride means how much skips you are taking for this particular filters in each step.
+
+372
+00:28:00,000 --> 00:28:05,720
+ So this H stride gives you the stride values for horizontal values and V stride gives you
+
+373
+00:28:05,720 --> 00:28:08,600
+ the similar kind of thing for this vertical values.
+
+374
+00:28:08,600 --> 00:28:15,200
+ So V stride stands for the vertical value and we are taking 50 for this particular image
+
+375
+00:28:15,200 --> 00:28:17,240
+ and let us consider this filter size.
+
+376
+00:28:17,240 --> 00:28:22,680
+ Now filter size as you are able to see that we already created one filter earlier and that
+
+377
+00:28:22,680 --> 00:28:27,400
+ was our rectangular kind of feature but right now we are considering only a square kind
+
+378
+00:28:27,400 --> 00:28:29,120
+ of filter.
+
+379
+00:28:29,120 --> 00:28:33,560
+ In many models you will see that we are already using this square kind of feature.
+
+380
+00:28:33,560 --> 00:28:39,280
+ So we are just giving only one dimension it is nothing but 100 cross 100 right.
+
+381
+00:28:39,280 --> 00:28:45,480
+ So this filter size if we take that and this V stride and H stride we consider then we
+
+382
+00:28:45,480 --> 00:28:51,760
+ can go ahead and create a very simple pipe or like a flow right and this flow is nothing
+
+383
+00:28:51,760 --> 00:28:56,120
+ but we are creating an iteration of this height value.
+
+384
+00:28:56,120 --> 00:29:05,120
+ So essentially if I just show you this image so we are passing from so if this is the portion
+
+385
+00:29:05,120 --> 00:29:11,520
+ that we are working on so we are passing from here to this part then here to this part and
+
+386
+00:29:11,520 --> 00:29:16,160
+ here to this part so there are these three different stages.
+
+387
+00:29:16,160 --> 00:29:21,800
+ And what we need is we want to pass this first row we have one to just move through this
+
+388
+00:29:21,800 --> 00:29:27,200
+ first row and you have already done this kind of similar python like codes right.
+
+389
+00:29:27,200 --> 00:29:31,240
+ So we are just going to move from this and this is nothing but a matrix that that you
+
+390
+00:29:31,240 --> 00:29:39,040
+ must follow and these are the values of maybe 1, 2, 3, 4 and so on again 1, 2, 3, 4 so these
+
+391
+00:29:39,040 --> 00:29:46,240
+ are the numbers values and we are just going to pass from this side to this side again
+
+392
+00:29:46,240 --> 00:29:50,280
+ this side to this side again this side to this side right.
+
+393
+00:29:50,280 --> 00:29:55,120
+ And if you are going to do that we are going to take this step first basically we are going
+
+394
+00:29:55,120 --> 00:30:01,800
+ to traverse this width right and we are followed by that we are going to traverse this height.
+
+395
+00:30:01,800 --> 00:30:07,560
+ So we are just doing that same thing in this code what we are doing is we are just sliding
+
+396
+00:30:07,560 --> 00:30:12,880
+ through this width value where we have this width and this h stride.
+
+397
+00:30:12,880 --> 00:30:16,880
+ Now you can see that this h stride value is nothing but this horizontal stride we are
+
+398
+00:30:16,880 --> 00:30:24,360
+ keeping this value same for this particular section and you can always change this.
+
+399
+00:30:24,360 --> 00:30:29,620
+ This particular part is not present in your code in your shared library you will get this
+
+400
+00:30:29,620 --> 00:30:31,240
+ later on.
+
+401
+00:30:31,240 --> 00:30:35,480
+ But the thing is that you this is just for your visualizations or try to see what I am
+
+402
+00:30:35,480 --> 00:30:40,000
+ doing here you do not need to code because you have already coded this part that is essentially
+
+403
+00:30:40,000 --> 00:30:45,560
+ enough you do not need to do any coding you just need to see this part and how this is
+
+404
+00:30:45,560 --> 00:30:46,560
+ done.
+
+405
+00:30:46,560 --> 00:30:52,840
+ So here the j value actually represents the horizontal movement right so the horizontal
+
+406
+00:30:52,840 --> 00:30:58,320
+ movement is represented by j and this vertical movement that we are coming from top to bottom
+
+407
+00:30:58,320 --> 00:31:02,920
+ of this image matrix it is represented by i.
+
+408
+00:31:02,920 --> 00:31:04,440
+ And what does this mean?
+
+409
+00:31:04,440 --> 00:31:09,280
+ In this mean that we are starting from a value of 0 so we are starting from the extreme left
+
+410
+00:31:09,280 --> 00:31:14,400
+ and we are going so for this one we are starting from this extreme left and we are moving to
+
+411
+00:31:14,400 --> 00:31:19,000
+ this maximum width of the image which is basically the width of the image.
+
+412
+00:31:19,000 --> 00:31:24,040
+ And we are skipping some of the portions which is the stride, stride means skips some of
+
+413
+00:31:24,040 --> 00:31:30,840
+ the values right and this stride value each stride is for the horizontal one and we did
+
+414
+00:31:30,840 --> 00:31:34,560
+ the exact same thing for this vertical one right.
+
+415
+00:31:34,560 --> 00:31:39,040
+ So for this vertical one what we have done is we have started from 0 basically top and
+
+416
+00:31:39,040 --> 00:31:41,720
+ we are going to the bottom basically height of this image.
+
+417
+00:31:41,720 --> 00:31:46,280
+ And then we are going to stride it through this v stride variable which is again considered
+
+418
+00:31:46,280 --> 00:31:50,000
+ as 50 here so both of them are same.
+
+419
+00:31:50,000 --> 00:31:55,320
+ Now let us consider this sliding filter image this was the previous thing that we are doing
+
+420
+00:31:55,320 --> 00:32:00,680
+ now we are replacing this part of the image which part of the image this particular part
+
+421
+00:32:00,680 --> 00:32:06,960
+ of the image and we are replacing it by the same portion of the image and just multiplying
+
+422
+00:32:06,960 --> 00:32:09,280
+ it by 0.5.
+
+423
+00:32:09,280 --> 00:32:16,200
+ So we are going to check by a reduced like darkening filter we can say.
+
+424
+00:32:16,200 --> 00:32:19,120
+ So what is the dimension here now?
+
+425
+00:32:19,120 --> 00:32:25,600
+ You can see we start from i which is the height value that we have taken so this is this part
+
+426
+00:32:25,600 --> 00:32:28,160
+ is for height we all know that right.
+
+427
+00:32:28,160 --> 00:32:33,760
+ So we are starting from this i and we are taking from i to filter size i plus filter
+
+428
+00:32:33,760 --> 00:32:43,600
+ size so it takes the inter size of the filter right so this becomes your vertical dimension.
+
+429
+00:32:43,600 --> 00:32:49,760
+ Similarly we can get our horizontal dimension which is represented in j to j plus filter
+
+430
+00:32:49,760 --> 00:32:56,000
+ size and the filter size is same which is 100 we have taken and we have just changing
+
+431
+00:32:56,000 --> 00:33:01,240
+ the exact same portion of that image and we are multiplying it by 0.5 basically reducing
+
+432
+00:33:01,240 --> 00:33:03,760
+ that part of the image.
+
+433
+00:33:03,760 --> 00:33:09,400
+ And we are going to show this image by this imshow and then giving this variable name
+
+434
+00:33:09,400 --> 00:33:15,280
+ basically sliding filter image and show and as I was telling you that what is the use
+
+435
+00:33:15,280 --> 00:33:19,680
+ of this time I am just giving this time.slip function which is basically it waits before
+
+436
+00:33:19,680 --> 00:33:26,920
+ executing the next step to one second so that we can see the different steps that it is making.
+
+437
+00:33:26,920 --> 00:33:31,840
+ So this is a very interesting code you can just use it in many ways right and this gives
+
+438
+00:33:31,840 --> 00:33:37,760
+ you an analytical idea on how this sliding and filtering thing works in convolutional
+
+439
+00:33:37,760 --> 00:33:38,760
+ neural network.
+
+440
+00:33:38,760 --> 00:33:43,720
+ So let us run this code I am not going to run it for the entire time so you see that
+
+441
+00:33:43,720 --> 00:33:49,640
+ we are getting new images every time you see that we are getting new image every time right.
+
+442
+00:33:49,640 --> 00:34:00,800
+ And this image you can see that the filter is getting moved from left to right side.
+
+443
+00:34:00,800 --> 00:34:06,120
+ And once you get through all this features basically all this entire image you get one
+
+444
+00:34:06,120 --> 00:34:12,120
+ feature of that particular image and as many number of filters you are having you will get
+
+445
+00:34:12,120 --> 00:34:18,080
+ that many number of features we will see that in some time so I think I can stop this.
+
+446
+00:34:18,080 --> 00:34:23,760
+ So you can see what we have done here so if I just go to this very top of this image just
+
+447
+00:34:23,760 --> 00:34:31,320
+ to show you you see this is the first image that is created this is the first filter right
+
+448
+00:34:31,320 --> 00:34:36,520
+ this is the first filter and we have probably if you are doing some neural network stuff
+
+449
+00:34:36,520 --> 00:34:39,800
+ we will just keep this filter value stored in somewhere.
+
+450
+00:34:39,800 --> 00:34:44,200
+ And once we have this all this filtered value together we can just combine them to get the
+
+451
+00:34:44,200 --> 00:34:45,880
+ particular feature.
+
+452
+00:34:45,880 --> 00:34:51,800
+ So here this is one filter and in the next step you see that we have just moved from
+
+453
+00:34:51,800 --> 00:34:58,640
+ left to right stride of 50 I think right we have taken the stride 50 and since we have
+
+454
+00:34:58,640 --> 00:35:04,800
+ moved to this part this part becomes more darker why this part becomes more darker because
+
+455
+00:35:04,800 --> 00:35:06,320
+ it is more attentive.
+
+456
+00:35:06,320 --> 00:35:10,280
+ So we have attended this portion more times that is why it is much darker because there
+
+457
+00:35:10,280 --> 00:35:16,160
+ is already a filter there right and again we if we move just downwards you will see
+
+458
+00:35:16,160 --> 00:35:23,240
+ that the filter again moved to its right side and it is capturing all these features and
+
+459
+00:35:23,240 --> 00:35:28,000
+ if you just keep on moving you will see that we are essentially getting this filter moved
+
+460
+00:35:28,000 --> 00:35:29,760
+ from left to right side.
+
+461
+00:35:29,760 --> 00:35:35,360
+ And once this entire thing is done once we have moved to till the very end of this first
+
+462
+00:35:35,360 --> 00:35:42,680
+ row of this image you will see that we will reach to the next line so here.
+
+463
+00:35:42,680 --> 00:35:47,000
+ So here what we have done we have just moved through this entire first row of this matrix
+
+464
+00:35:47,000 --> 00:35:49,080
+ and then we have come to the second row.
+
+465
+00:35:49,080 --> 00:35:53,240
+ And you will see that the stride which is the basically the vertical stride is also we
+
+466
+00:35:53,240 --> 00:35:57,840
+ have considered 50 and it has moved from 0 to 50 now.
+
+467
+00:35:57,840 --> 00:36:03,880
+ And then again it will just run for this particular filter size and this will continue as we keep
+
+468
+00:36:03,880 --> 00:36:05,660
+ on running this loop.
+
+469
+00:36:05,660 --> 00:36:11,640
+ So once you have this entire image if you have this entire image then you will see that
+
+470
+00:36:11,640 --> 00:36:17,720
+ you can store this filter and you can have this version of this feature that you can
+
+471
+00:36:17,720 --> 00:36:21,160
+ use in some of the aspect of this model.
+
+472
+00:36:21,160 --> 00:36:26,880
+ So essentially we have gone through this initial portion which was required for understanding
+
+473
+00:36:26,880 --> 00:36:32,280
+ how images can be represented in floating format and why it is important, how a basic
+
+474
+00:36:32,280 --> 00:36:39,280
+ filter can be used and how the filter can be moved in a manner that a convolution neural
+
+475
+00:36:39,280 --> 00:36:40,460
+ network does.
+
+476
+00:36:40,460 --> 00:36:45,080
+ And here there are various parameters like the stride parameter, the filter size and
+
+477
+00:36:45,080 --> 00:36:46,320
+ how many number of filters.
+
+478
+00:36:46,320 --> 00:36:50,360
+ So basically the number of filters you can understand that here there is only one filter
+
+479
+00:36:50,360 --> 00:36:54,360
+ that we have used and which is the darkening filter as we have discussed.
+
+480
+00:36:54,360 --> 00:36:59,000
+ But in reality you will be using multiple filters and this multiple filters will give
+
+481
+00:36:59,000 --> 00:37:03,680
+ you multiple features from your model.
+
+482
+00:37:03,680 --> 00:37:05,440
+ So here are the different things.
+
+483
+00:37:05,440 --> 00:37:10,040
+ Now let us start with a model of convolutional neural network.
+
+484
+00:37:10,040 --> 00:37:13,480
+ It is an AlexNet, you will get this information anywhere.
+
+485
+00:37:13,480 --> 00:37:15,160
+ So what is an AlexNet?
+
+486
+00:37:15,160 --> 00:37:20,680
+ It is basically a very famous model and it is used by like almost many people if they
+
+487
+00:37:20,680 --> 00:37:25,520
+ are starting their research in this image processing field and this AlexNet is essentially
+
+488
+00:37:25,520 --> 00:37:31,320
+ a convolutional neural network which has different architecture format that we will discuss.
+
+489
+00:37:31,320 --> 00:37:35,800
+ Again it has this two different sections which is the feature extraction section where we
+
+490
+00:37:35,800 --> 00:37:40,080
+ have this input, the different convolutional layers, the pooling layers and once we have
+
+491
+00:37:40,080 --> 00:37:44,760
+ that we will pass it to a dense classification layer or a fully connected layer and we will
+
+492
+00:37:44,760 --> 00:37:49,520
+ finally have a classification output layers.
+
+493
+00:37:49,520 --> 00:37:55,800
+ So let us start with this libraries that we are going to import and if you are just new
+
+494
+00:37:55,800 --> 00:37:58,800
+ to this, you just go to this Torch library.
+
+495
+00:37:58,800 --> 00:38:03,240
+ It is widely used for deep learning models and this model, this particular library you
+
+496
+00:38:03,240 --> 00:38:07,720
+ will be using for various natural language processing tasks and all the different tasks
+
+497
+00:38:07,720 --> 00:38:09,840
+ that you can think of using deep learning.
+
+498
+00:38:09,840 --> 00:38:14,280
+ So this is a very important library that we will be using from now on and it gives you
+
+499
+00:38:14,280 --> 00:38:20,360
+ more functions that you need for any task that is involved in this deep learning classes.
+
+500
+00:38:20,360 --> 00:38:24,880
+ So we are just going to import all these different classes and I will discuss all these different
+
+501
+00:38:24,880 --> 00:38:27,160
+ classes in each of the sections.
+
+502
+00:38:27,160 --> 00:38:34,160
+ This is just the import section and you must import this Torch library here and let us start
+
+503
+00:38:34,160 --> 00:38:35,160
+ by seeding this.
+
+504
+00:38:35,160 --> 00:38:36,680
+ So what is this seed?
+
+505
+00:38:36,680 --> 00:38:39,860
+ So torch.manual seed we have given a value of 42.
+
+506
+00:38:39,860 --> 00:38:41,000
+ What does this mean?
+
+507
+00:38:41,000 --> 00:38:44,720
+ This means that we are going to seed this value basically we are going to freeze the
+
+508
+00:38:44,720 --> 00:38:47,360
+ operations that the model is performing.
+
+509
+00:38:47,360 --> 00:38:52,240
+ So as you can understand these are mathematical models, there are some random generations taking
+
+510
+00:38:52,240 --> 00:38:57,400
+ place in many places and this random generations will give you different output every time.
+
+511
+00:38:57,400 --> 00:39:01,560
+ So even if the model is same, even if the data set is same, you might not get the same
+
+512
+00:39:01,560 --> 00:39:06,720
+ output every time but for a testing environment we must make sure that the output that we
+
+513
+00:39:06,720 --> 00:39:12,280
+ are getting is quite fixed and this gives us that feature basically we can seed this
+
+514
+00:39:12,280 --> 00:39:17,400
+ so that any kind of random generations will take place will be exactly same as the previous
+
+515
+00:39:17,400 --> 00:39:18,800
+ one.
+
+516
+00:39:18,800 --> 00:39:24,520
+ So torch.manual seed and we can give any integer value and it will try to keep that frozen
+
+517
+00:39:24,520 --> 00:39:29,060
+ state for any of the random generations.
+
+518
+00:39:29,060 --> 00:39:33,240
+ So once we have gone through that we will give this data path.
+
+519
+00:39:33,240 --> 00:39:37,720
+ Now what is this data path data path is nothing but where we have stored this data and as
+
+520
+00:39:37,720 --> 00:39:43,320
+ I told you that I have shared this data in this collab where data.zip is there you can
+
+521
+00:39:43,320 --> 00:39:48,920
+ just copy it and unzip it in your local drive or in your Google drive and it will work and
+
+522
+00:39:48,920 --> 00:39:53,080
+ if you are not doing that you can just keep a function download equals to 2 that will
+
+523
+00:39:53,080 --> 00:39:54,080
+ be going.
+
+524
+00:39:54,080 --> 00:39:57,440
+ So it will download the code for you or the data set for you.
+
+525
+00:39:57,440 --> 00:40:00,640
+ So let us first see what the code means here.
+
+526
+00:40:00,640 --> 00:40:05,520
+ So this is this data path we have given this location of the data that we are talking about.
+
+527
+00:40:05,520 --> 00:40:24,720
+ Now this trans actually stores the transformation of this values.
+
+528
+00:40:24,720 --> 00:40:29,680
+ So this transpose is actually a transpose function or transforms function that we have
+
+529
+00:40:29,680 --> 00:40:31,240
+ imported here you can see here.
+
+530
+00:40:31,240 --> 00:40:36,840
+ So it is from this torch vision particular library and from this transforms class we
+
+531
+00:40:36,840 --> 00:40:40,120
+ are just importing this transforms function right.
+
+532
+00:40:40,120 --> 00:40:44,560
+ This transforms function what it do is basically normalizes the values that we are providing
+
+533
+00:40:44,560 --> 00:40:45,560
+ it to the model.
+
+534
+00:40:45,560 --> 00:40:49,760
+ Now normalization why is it important we have already discussed that is why we were talking
+
+535
+00:40:49,760 --> 00:40:54,720
+ about some mathematical stuffs previously because those were very very important in real life.
+
+536
+00:40:54,720 --> 00:40:59,960
+ So you will see that in a single line code you can do that but the idea here is that
+
+537
+00:40:59,960 --> 00:41:03,160
+ you might not get the idea if you are using the code directly.
+
+538
+00:41:03,160 --> 00:41:07,120
+ That is why we must know that how the things are working and this transformation function
+
+539
+00:41:07,120 --> 00:41:09,920
+ exactly does the same thing that we have done previously.
+
+540
+00:41:09,920 --> 00:41:14,160
+ We have converted this values to some normalizations.
+
+541
+00:41:14,160 --> 00:41:20,760
+ Now this trans is an object basically it takes care of this transformation and the transformation
+
+542
+00:41:20,760 --> 00:41:26,040
+ here is a normalized transformation between 0.5 and 1 right.
+
+543
+00:41:26,040 --> 00:41:34,360
+ So we are excluding values which is anything lower than 0.5 and this is the training set.
+
+544
+00:41:34,360 --> 00:41:39,200
+ So we are just going to store our training data in this full trained set variable and
+
+545
+00:41:39,200 --> 00:41:42,040
+ it is very very simple to get this data sets also.
+
+546
+00:41:42,040 --> 00:41:47,360
+ So d set is again another function that is provided by this torch vision data sets class
+
+547
+00:41:47,360 --> 00:41:51,720
+ and you can directly give some parameters and get the data set.
+
+548
+00:41:51,720 --> 00:41:58,120
+ So d set already gives you this MNIST class which takes the values of root which is the
+
+549
+00:41:58,120 --> 00:42:02,960
+ data path we have already discussed and this train value is true why what does this mean
+
+550
+00:42:02,960 --> 00:42:09,040
+ it will directly convert it to a training set and this transform function if we want
+
+551
+00:42:09,040 --> 00:42:11,320
+ to transform it in some way.
+
+552
+00:42:11,320 --> 00:42:16,000
+ So this I have shown you you might not transform it anyways but this is just for showing you
+
+553
+00:42:16,000 --> 00:42:21,320
+ like how this thing works directly without writing any special code that we did earlier
+
+554
+00:42:21,320 --> 00:42:22,320
+ right.
+
+555
+00:42:22,320 --> 00:42:26,160
+ So we had to code everything and that time but here you can just pass this parameters
+
+556
+00:42:26,160 --> 00:42:30,920
+ and it will work and then it takes again a parameter of download equals to true which
+
+557
+00:42:30,920 --> 00:42:36,400
+ means that it will just start the download for this particular file.
+
+558
+00:42:36,400 --> 00:42:41,800
+ So yeah so it will create this training set here and if you just say that train equals
+
+559
+00:42:41,800 --> 00:42:46,240
+ to false it will create a testing set as simple as that and nothing else is changed you can
+
+560
+00:42:46,240 --> 00:42:51,040
+ see we need to do the same transformation for the training set as well as the testing
+
+561
+00:42:51,040 --> 00:42:52,040
+ set.
+
+562
+00:42:52,040 --> 00:42:55,760
+ So it should not be like the training set is transformed in some way but the test set
+
+563
+00:42:55,760 --> 00:42:58,000
+ is in a different way right.
+
+564
+00:42:58,000 --> 00:43:02,040
+ And there is another parameter which is the batch size and this is the very very important
+
+565
+00:43:02,040 --> 00:43:06,340
+ parameter in any of the models that we will be working on in deep learning.
+
+566
+00:43:06,340 --> 00:43:13,320
+ So you can see that we have considered a batch size of 16 this batch size is very very interesting
+
+567
+00:43:13,320 --> 00:43:18,080
+ to like find for each of the systems because this is system dependent.
+
+568
+00:43:18,080 --> 00:43:23,600
+ You cannot just give your 200 right so if you give it 200 it will take that many resources.
+
+569
+00:43:23,600 --> 00:43:29,320
+ So as you increase this value the batch size it exponentially increases the memory consumption
+
+570
+00:43:29,320 --> 00:43:34,280
+ but the thing is that if you increase this batch size you get a positive effect on the
+
+571
+00:43:34,280 --> 00:43:39,440
+ model training also because you are taking more data together and you are trying to learn
+
+572
+00:43:39,440 --> 00:43:41,840
+ the more data parameters.
+
+573
+00:43:41,840 --> 00:43:46,920
+ So what is the difference between this batch size smaller batch size and the larger batch
+
+574
+00:43:46,920 --> 00:43:51,400
+ size here is that if you are taking a smaller batch size and if you have a system that is
+
+575
+00:43:51,400 --> 00:43:56,280
+ having lower resources of course you can run it in a lower batch size.
+
+576
+00:43:56,280 --> 00:44:01,200
+ The difference in the scores or model training will be very very insignificant but of course
+
+577
+00:44:01,200 --> 00:44:06,480
+ if you are using a very large data set you are using a large batch size and you are comparing
+
+578
+00:44:06,480 --> 00:44:12,040
+ it to a large data set with a small batch size it will take more time and the training will
+
+579
+00:44:12,040 --> 00:44:16,720
+ be less effective so this is how it transforms it to.
+
+580
+00:44:16,720 --> 00:44:21,080
+ So this batch size you have to fix it as per your system environment.
+
+581
+00:44:21,080 --> 00:44:26,680
+ In Google Colab the batch size of 16 per m nest is quite good that we have seen.
+
+582
+00:44:26,680 --> 00:44:33,440
+ So let us just see what is in the training data set let us just see what we get ok sorry
+
+583
+00:44:33,440 --> 00:44:46,920
+ I have not run this.
+
+584
+00:44:46,920 --> 00:44:52,440
+ So here we are going to store we will see that this training data set is nothing but
+
+585
+00:44:52,440 --> 00:44:57,280
+ there will be images of different classes as we told in MNIST.
+
+586
+00:44:57,280 --> 00:45:01,760
+ So there will be this level for example 0 and there will be different images that represent
+
+587
+00:45:01,760 --> 00:45:10,320
+ this 0 so handwritten like images ok.
+
+588
+00:45:10,320 --> 00:45:15,200
+ So I have just for an example I have just printed a single value from this full train
+
+589
+00:45:15,200 --> 00:45:16,200
+ set.
+
+590
+00:45:16,200 --> 00:45:20,600
+ So you will see that we have this tensor value so this represent different images there are
+
+591
+00:45:20,600 --> 00:45:25,160
+ different images here and at the end you will see that there is a class value.
+
+592
+00:45:25,160 --> 00:45:32,040
+ So there is this class so this image is from this 5 class so all the images present here
+
+593
+00:45:32,040 --> 00:45:37,480
+ represents the 5 image handwritten.
+
+594
+00:45:37,480 --> 00:45:40,560
+ Now let us see if we want to display this data right.
+
+595
+00:45:40,560 --> 00:45:43,280
+ So let us just display 2 images.
+
+596
+00:45:43,280 --> 00:45:46,120
+ So this is a very simple function that I have created.
+
+597
+00:45:46,120 --> 00:45:52,880
+ So we are again using this matplot library and from this matplot library I am just taking
+
+598
+00:45:52,880 --> 00:45:57,560
+ a parameter or we can call it as hyper parameter here which is show equals to 2 that we are
+
+599
+00:45:57,560 --> 00:46:00,200
+ going to show only 2 images here.
+
+600
+00:46:00,200 --> 00:46:03,720
+ And I am just iterating through this full train set so the training set that we were
+
+601
+00:46:03,720 --> 00:46:10,480
+ discussing and the current image can be accessed by this so I00 right.
+
+602
+00:46:10,480 --> 00:46:15,280
+ So I am taking 2 different classes here and of each of the class I am just going to show
+
+603
+00:46:15,280 --> 00:46:19,840
+ the first image that we are having I think that makes it clear and I am going to print
+
+604
+00:46:19,840 --> 00:46:23,840
+ this image value and this represents the class.
+
+605
+00:46:23,840 --> 00:46:30,840
+ So I00 represents all the images that we are having and I01 represents the class level
+
+606
+00:46:30,840 --> 00:46:33,280
+ of that image.
+
+607
+00:46:33,280 --> 00:46:38,920
+ Now plot that figure this actually gives us this image we are just going to print it and
+
+608
+00:46:38,920 --> 00:46:43,880
+ you can just copy this code from there and you can run and see what we are getting.
+
+609
+00:46:43,880 --> 00:46:49,080
+ So you see that this is class the class name is 5 and the first image that we get is of
+
+610
+00:46:49,080 --> 00:46:55,720
+ hand written digit 5 it looks something like S but it is 5 in reality and this is 0 the
+
+611
+00:46:55,720 --> 00:46:59,840
+ second one that we are taking you can see that this is hand written 0.
+
+612
+00:46:59,840 --> 00:47:06,920
+ So this is how the image data set of MNIST can be accessed if you want separately and
+
+613
+00:47:06,920 --> 00:47:13,440
+ this is important because the like program that you will be doing for your assignment
+
+614
+00:47:13,440 --> 00:47:19,200
+ you will need this kind of modifications in your code for it to work right.
+
+615
+00:47:19,200 --> 00:47:26,240
+ So these are very very essential in for this particular section and you see that this images
+
+616
+00:47:26,240 --> 00:47:30,300
+ does look like yellow, green, blue and something like that and why is it?
+
+617
+00:47:30,300 --> 00:47:35,480
+ So these are essentially nothing but grayscale images this MNIST data set grayscale means
+
+618
+00:47:35,480 --> 00:47:42,960
+ you have a value of 0 and 1 and between that you just give a scaling of this grayscale.
+
+619
+00:47:42,960 --> 00:47:51,040
+ So there is only 1 channel here and that represents a value of 0 to 255 for this integer values
+
+620
+00:47:51,040 --> 00:47:59,200
+ and 0 represents one of the extremes of black and 1 represents one of the extremes of white
+
+621
+00:47:59,200 --> 00:48:03,200
+ and you see that here we have this grayscale image.
+
+622
+00:48:03,200 --> 00:48:07,320
+ So how we can just plot this image in grayscale just just for showing you you can just see
+
+623
+00:48:07,320 --> 00:48:13,720
+ map to gray which is the actual format of this file and like I am plot library does
+
+624
+00:48:13,720 --> 00:48:16,520
+ it for you to maybe look it better.
+
+625
+00:48:16,520 --> 00:48:19,600
+ So here you can see that this is the actual image that we were talking about.
+
+626
+00:48:19,600 --> 00:48:24,880
+ So everything is black here everything here is black only this section is white and then
+
+627
+00:48:24,880 --> 00:48:27,680
+ again this section is black right.
+
+628
+00:48:27,680 --> 00:48:32,320
+ So here you will see that if this is the image this is the representation.
+
+629
+00:48:32,320 --> 00:48:38,040
+ So image and representation look like this and we have already seen this in our matrix
+
+630
+00:48:38,040 --> 00:48:39,040
+ thing.
+
+631
+00:48:39,040 --> 00:48:40,720
+ Now we are going to load this data.
+
+632
+00:48:40,720 --> 00:48:46,700
+ Now we have this raw data and we have seen how to view this raw data of image from this
+
+633
+00:48:46,700 --> 00:48:51,960
+ library and all and now you are going to use a model for training the model right.
+
+634
+00:48:51,960 --> 00:48:57,320
+ So for training we always require this data to be in a specific format that the model
+
+635
+00:48:57,320 --> 00:48:58,800
+ can handle.
+
+636
+00:48:58,800 --> 00:49:04,040
+ So Torch basically gives you this function and this data loader is a particular function
+
+637
+00:49:04,040 --> 00:49:09,280
+ that we are talking about is a very very important function which takes any data that you have
+
+638
+00:49:09,280 --> 00:49:14,720
+ basically raw data and it tries to transform it into a format that a model can understand
+
+639
+00:49:14,720 --> 00:49:15,720
+ directly.
+
+640
+00:49:15,720 --> 00:49:19,640
+ So you do not have to go through the hassle of changing it to specifically model it for
+
+641
+00:49:19,640 --> 00:49:22,040
+ your own model.
+
+642
+00:49:22,040 --> 00:49:25,760
+ So this train loader is nothing but our training data right now.
+
+643
+00:49:25,760 --> 00:49:30,920
+ So it is an object of course, but this train loader now contains all the data for our training
+
+644
+00:49:30,920 --> 00:49:35,680
+ set and how we are going to do that we are just importing this data loader from Torch
+
+645
+00:49:35,680 --> 00:49:41,760
+ Utils library and you will see that we will give this full training set data set will
+
+646
+00:49:41,760 --> 00:49:45,880
+ give this batch size and we will keep the shuffle.
+
+647
+00:49:45,880 --> 00:49:50,800
+ Now why we have keep the shuffle as false is because we do not need any kind of randomness
+
+648
+00:49:50,800 --> 00:49:51,800
+ here right.
+
+649
+00:49:51,800 --> 00:49:56,800
+ We have already sitting all the values of Torch also for that reason.
+
+650
+00:49:56,800 --> 00:50:01,040
+ Similarly for the test loader we are just using the exact same code and nothing else
+
+651
+00:50:01,040 --> 00:50:07,520
+ just changing the location to test set.
+
+652
+00:50:07,520 --> 00:50:14,040
+ So this data set is full train set we have just earlier created right this one.
+
+653
+00:50:14,040 --> 00:50:20,800
+ So this full test set and full train set and right.
+
+654
+00:50:20,800 --> 00:50:29,080
+ So here if we run this code you will see that we have already have this train loader and
+
+655
+00:50:29,080 --> 00:50:30,080
+ test loader.
+
+656
+00:50:30,080 --> 00:50:33,760
+ So these are the objects and these objects actually makes your life simpler for doing
+
+657
+00:50:33,760 --> 00:50:36,840
+ any kind of operations using this models.
+
+658
+00:50:36,840 --> 00:50:39,760
+ Now let us see what is this Alexian architecture.
+
+659
+00:50:39,760 --> 00:50:43,920
+ So this architecture actually shows you this input dimension.
+
+660
+00:50:43,920 --> 00:50:49,320
+ So this so before this convolution layer there is this input dimension we will see that in
+
+661
+00:50:49,320 --> 00:50:53,320
+ the level below and this is a convolutional layer.
+
+662
+00:50:53,320 --> 00:50:58,280
+ So what is a convolutional layer it essentially have all the filters right.
+
+663
+00:50:58,280 --> 00:51:03,000
+ So this filter this tried operation and all these are already performed all performed
+
+664
+00:51:03,000 --> 00:51:07,040
+ on this convolutional layer and you will see that there are multiple stages of this convolutional
+
+665
+00:51:07,040 --> 00:51:10,240
+ layer in this Alexianist model.
+
+666
+00:51:10,240 --> 00:51:13,480
+ Now there is this pooling layer also.
+
+667
+00:51:13,480 --> 00:51:19,240
+ So what is this idea of pooling layer is that if you have these values you want to get some
+
+668
+00:51:19,240 --> 00:51:22,040
+ of the features and you want to omit some of the features.
+
+669
+00:51:22,040 --> 00:51:26,320
+ For example in max pooling you are going to take only the maximum values that the convolutional
+
+670
+00:51:26,320 --> 00:51:29,920
+ layer provides and you will just omit the others.
+
+671
+00:51:29,920 --> 00:51:35,440
+ So this way you are creating different layers and sections and once you have all this featured
+
+672
+00:51:35,440 --> 00:51:40,400
+ extraction part where you have this convolutional pooling layer you can just feed it to this
+
+673
+00:51:40,400 --> 00:51:45,080
+ fully connected dense layers and you can finally have an output.
+
+674
+00:51:45,080 --> 00:51:49,800
+ So you will see that the dimension of the output here is 1 cross 10 that means we are
+
+675
+00:51:49,800 --> 00:51:54,680
+ going to predict this 10 digits that represent in this M-list data set.
+
+676
+00:51:54,680 --> 00:51:58,240
+ So this is a representation of for this particular work.
+
+677
+00:51:58,240 --> 00:52:04,000
+ Now you may ask like why this is the structure, why some not is something else.
+
+678
+00:52:04,000 --> 00:52:09,120
+ So for example there is convolutional layer 1, 2 then why not some other layers in between
+
+679
+00:52:09,120 --> 00:52:10,720
+ and why is this.
+
+680
+00:52:10,720 --> 00:52:15,840
+ So the idea is that the authors of this Alex-Net paper they have already discussed this thing
+
+681
+00:52:15,840 --> 00:52:21,160
+ if you go through the paper you will get it that the specific idea behind this model was
+
+682
+00:52:21,160 --> 00:52:26,440
+ if you make the model more deeper you are going to get much more features right.
+
+683
+00:52:26,440 --> 00:52:31,040
+ So they proved that if you increase this deeper model so for example this convolutional layer
+
+684
+00:52:31,040 --> 00:52:35,080
+ 3, 1, 3, 2, 1, 3, 3 which is basically the depth layers.
+
+685
+00:52:35,080 --> 00:52:39,800
+ If you do this kind of layering then the model will perform much better than a general convolutional
+
+686
+00:52:39,800 --> 00:52:40,800
+ layer model.
+
+687
+00:52:40,800 --> 00:52:47,160
+ So this is the general idea that was proposed in this paper and again this architecture is
+
+688
+00:52:47,160 --> 00:52:52,280
+ very very dependent dependent on the work that you are doing depend on the images some
+
+689
+00:52:52,280 --> 00:52:56,320
+ architecture may benefit from some of the images and some may not.
+
+690
+00:52:56,320 --> 00:52:58,000
+ So these are the different things.
+
+691
+00:52:58,000 --> 00:53:02,480
+ So now let us represent this image into an actual format that we can understand much
+
+692
+00:53:02,480 --> 00:53:08,560
+ more easy and this is very important if you are going through this image processing class
+
+693
+00:53:08,560 --> 00:53:09,560
+ right.
+
+694
+00:53:09,560 --> 00:53:13,600
+ We must know that how this filtering and different layers can be achieved.
+
+695
+00:53:13,600 --> 00:53:19,440
+ I think that these terms that are present here in the in this naming of the columns probably
+
+696
+00:53:19,440 --> 00:53:22,560
+ you are familiar with it by this point.
+
+697
+00:53:22,560 --> 00:53:28,760
+ So there is this layer and there is input layer nothing but this image that we are passing
+
+698
+00:53:28,760 --> 00:53:34,840
+ it to the model then there is this convolutional model layer which is convolutional 2D layer
+
+699
+00:53:34,840 --> 00:53:40,080
+ that we will call convolutional 2D and this is the max pool layer and there is different
+
+700
+00:53:40,080 --> 00:53:42,840
+ arrangements of this layer.
+
+701
+00:53:42,840 --> 00:53:48,080
+ And this last three layers where we are having this convolutional 2D three times is basically
+
+702
+00:53:48,080 --> 00:53:52,360
+ the depth operation of the depth thing that discussed in this Alexinate.
+
+703
+00:53:52,360 --> 00:53:56,880
+ So if you are having higher depth you are going to get good features and essentially
+
+704
+00:53:56,880 --> 00:53:59,640
+ you are going to have a good classification model.
+
+705
+00:53:59,640 --> 00:54:05,480
+ Then we have this filters right I will again explain you what this filters things actually
+
+706
+00:54:05,480 --> 00:54:06,480
+ does here.
+
+707
+00:54:06,480 --> 00:54:10,640
+ So here you can see this input does not have the filter or any of the other parameters
+
+708
+00:54:10,640 --> 00:54:16,560
+ of course, but this convolutional layer it has 96 filters in the first layer.
+
+709
+00:54:16,560 --> 00:54:24,120
+ The size of the filter is 11 essentially means it is a square filter 11 cross 11 and this
+
+710
+00:54:24,120 --> 00:54:30,280
+ is the stride is the movement that we have already seen that we have manually done and
+
+711
+00:54:30,280 --> 00:54:31,480
+ this padding.
+
+712
+00:54:31,480 --> 00:54:36,280
+ So padding is essentially what is the values that you are not going to take right you are
+
+713
+00:54:36,280 --> 00:54:38,120
+ going to pad some of the values.
+
+714
+00:54:38,120 --> 00:54:42,840
+ So I think these are the very common terms and should not be a problem.
+
+715
+00:54:42,840 --> 00:54:48,920
+ The feature size is the input size for this input image for this first layer basically
+
+716
+00:54:48,920 --> 00:54:54,240
+ if the image size is 1 cross 2 to 7 cross 2 to 7.
+
+717
+00:54:54,240 --> 00:54:57,640
+ So you will see that this is a little bit interchanged.
+
+718
+00:54:57,640 --> 00:55:03,560
+ So here 2 to 7 2 to 7 is of course, this height and width, but this channel information is
+
+719
+00:55:03,560 --> 00:55:07,360
+ on the left side which was previously on the right side.
+
+720
+00:55:07,360 --> 00:55:12,680
+ So why this represented here like this because in many models if you run this models they
+
+721
+00:55:12,680 --> 00:55:15,120
+ are represented in this way right.
+
+722
+00:55:15,120 --> 00:55:21,000
+ So this is the general idea first is this number of features or channels whatever you
+
+723
+00:55:21,000 --> 00:55:26,480
+ call it and then this is the resolution of this image or the dimension width and height
+
+724
+00:55:26,480 --> 00:55:28,040
+ of this image.
+
+725
+00:55:28,040 --> 00:55:34,600
+ And in the second layer you will see that the feature size is, filter size is 96 therefore
+
+726
+00:55:34,600 --> 00:55:39,640
+ now instead of one feature you are having 96 different feature of the exact same image.
+
+727
+00:55:39,640 --> 00:55:44,880
+ But the feature size will be reduced and why the feature size was reduced as we already
+
+728
+00:55:44,880 --> 00:55:50,120
+ discussed there was a matrix and if you apply this convolutional layer you are going to
+
+729
+00:55:50,120 --> 00:55:55,040
+ just take the center value right you are going to take the center value and this reduces
+
+730
+00:55:55,040 --> 00:55:59,840
+ the resolution of the image and how much the resolution of the image is reduced and what
+
+731
+00:55:59,840 --> 00:56:03,580
+ is the formula and all we will discuss that also.
+
+732
+00:56:03,580 --> 00:56:09,320
+ So similarly we will discuss this part and you will see that this is how we actually
+
+733
+00:56:09,320 --> 00:56:14,640
+ calculate the output size, output size is nothing but this feature size right.
+
+734
+00:56:14,640 --> 00:56:20,000
+ So this is a simple formula formulation where you have this output size will be this lower
+
+735
+00:56:20,000 --> 00:56:28,000
+ base for W minus F plus 2P by S which is basically this input height and width of the image which
+
+736
+00:56:28,000 --> 00:56:33,920
+ we consider square most of the time and this filter size again we are considering it square
+
+737
+00:56:33,920 --> 00:56:35,960
+ and this padding added to each other.
+
+738
+00:56:35,960 --> 00:56:40,800
+ So for the initial layer we have seen that there is no padding will keep it 0 and give
+
+739
+00:56:40,800 --> 00:56:44,800
+ the value of stride and you will get this output size.
+
+740
+00:56:44,800 --> 00:56:49,640
+ So this will be the output size of the image that we will get right so we will get something
+
+741
+00:56:49,640 --> 00:56:52,640
+ like 55 as an output.
+
+742
+00:56:52,640 --> 00:56:57,280
+ So for the max pooling layer so there will be no filters of course, but we will have
+
+743
+00:56:57,280 --> 00:57:02,840
+ a filter size so this filter size essentially does the same thing it takes the maximum values
+
+744
+00:57:02,840 --> 00:57:05,280
+ from a 3 cross 3 matrix.
+
+745
+00:57:05,280 --> 00:57:12,480
+ So if the filter size is 3 and stride is 2 basically it will skip 2 different cells and
+
+746
+00:57:12,480 --> 00:57:15,240
+ this there is no padding involved here also.
+
+747
+00:57:15,240 --> 00:57:19,240
+ And you will see that the number of filters is same therefore, the number of features
+
+748
+00:57:19,240 --> 00:57:25,680
+ will be same here and now instead of having a 55 cross 55 resolution the resolution is
+
+749
+00:57:25,680 --> 00:57:31,960
+ further decreased because we are again taking this center values and that is calculated using
+
+750
+00:57:31,960 --> 00:57:38,400
+ this formulation which is w minus f by s and this thing means the exact same thing as the
+
+751
+00:57:38,400 --> 00:57:39,400
+ previous one.
+
+752
+00:57:39,400 --> 00:57:46,880
+ So, w minus f by s plus 1 actually gives you the output feature size or resolution for
+
+753
+00:57:46,880 --> 00:57:50,360
+ the max pool layer or the pooling layer.
+
+754
+00:57:50,360 --> 00:57:56,960
+ So similarly we have this max pool to the layer again after that we have this convolutional
+
+755
+00:57:56,960 --> 00:58:03,700
+ to layer another convolutional layer and now we are seeing that there are 256 features.
+
+756
+00:58:03,700 --> 00:58:08,480
+ And then again it has been given some filter size some stride some padding values are given
+
+757
+00:58:08,480 --> 00:58:14,400
+ for this one and pad values might be required in some cases where the image size are not
+
+758
+00:58:14,400 --> 00:58:17,800
+ perfectly fine with the input layers.
+
+759
+00:58:17,800 --> 00:58:22,280
+ Because once the model is created for example, if you have created an Alex model it is not
+
+760
+00:58:22,280 --> 00:58:25,000
+ possible for you to change it later on also.
+
+761
+00:58:25,000 --> 00:58:30,120
+ So, so this feature size you will see now has become from 96 to 256 because now we are
+
+762
+00:58:30,120 --> 00:58:37,320
+ having 256 features and the resolution is now 27 cross 27 because from this max pooling
+
+763
+00:58:37,320 --> 00:58:42,040
+ layer we are not getting any kind of reduction in this dimension.
+
+764
+00:58:42,040 --> 00:58:47,600
+ Now let us see one thing so all of this layers actually passes through this activation function
+
+765
+00:58:47,600 --> 00:58:51,840
+ that you can see in the very right side of this cell columns.
+
+766
+00:58:51,840 --> 00:58:57,680
+ And this is basically the really rectified linear unit activation function that we are
+
+767
+00:58:57,680 --> 00:59:00,040
+ using for this task.
+
+768
+00:59:00,040 --> 00:59:05,760
+ And you will see that each of this convolutional layer passes through this activation layer
+
+769
+00:59:05,760 --> 00:59:08,800
+ and then it goes to this max pooling layer.
+
+770
+00:59:08,800 --> 00:59:12,080
+ So this is also an important part because these are the model things that you will need
+
+771
+00:59:12,080 --> 00:59:15,600
+ to implement in this model also.
+
+772
+00:59:15,600 --> 00:59:19,440
+ So you have this part and again we have this classifier part.
+
+773
+00:59:19,440 --> 00:59:25,800
+ So this is the feature extracted part which I have kept it separately because since we
+
+774
+00:59:25,800 --> 00:59:30,280
+ were discussing that these are separate things if we are doing it separately it makes more
+
+775
+00:59:30,280 --> 00:59:31,560
+ sense.
+
+776
+00:59:31,560 --> 00:59:35,700
+ And this is the classifier part where we have this different layers like drop out this linear
+
+777
+00:59:35,700 --> 00:59:39,760
+ layout and again there will be this activation functions.
+
+778
+00:59:39,760 --> 00:59:44,880
+ And this dense layer is the final output is 10 the feature size is 10 essentially because
+
+779
+00:59:44,880 --> 00:59:47,720
+ we want to convert it to this 10 different classes.
+
+780
+00:59:47,720 --> 00:59:51,120
+ So we want to train this model through this 10 classes.
+
+781
+00:59:51,120 --> 00:59:59,240
+ Now these are the overall thing that we are having and this is also one of the important
+
+782
+00:59:59,240 --> 01:00:01,240
+ aspect the different parameters.
+
+783
+01:00:01,240 --> 01:00:03,800
+ So we will see this parameter thing and all.
+
+784
+01:00:03,800 --> 01:00:14,000
+ So okay so before moving on to this model I think we can take a break of 5 minutes and
+
+785
+01:00:14,000 --> 01:00:20,160
+ then we can move ahead with this actual coding part of this AlexNet and we will train this
+
+786
+01:00:20,160 --> 01:00:20,920
+ AlexNet model.
+

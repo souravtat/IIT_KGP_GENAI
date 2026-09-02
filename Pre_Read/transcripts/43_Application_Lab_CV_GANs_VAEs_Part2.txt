@@ -1,0 +1,25 @@
+ [ Silence ]
+ Yeah. Yeah. So, the screen is presenting for the question to any session so you can take it up, sir.
+ Yeah, sure. Right. So, the first question is, is it possible to create our own generative image model?
+ Yes. It is, of course, possible. However, it has become challenging nowadays to reach the quality of some kind of models, say, what mid-journey has,
+ because it has gone through a lot of architectural tuning on their side and also it required a lot of training data to train those models.
+ So, instead of that, what is available nowadays, a lot of checkpoints and a lot of models are open,
+ imagination models are open source, so those are pre-trained checkpoints. So, you can either use those or if you want to train it for your particular purpose or application,
+ you can fine-tune those instead of starting from scratch. So, that will give you one way to create your own generative image model.
+ So, the next question is which generator is preferred, a GAN or VAE, and why does one have advantage over the other? Right.
+ So, at this point, so GAN has gone through a lot of innovation culture, as you saw, and even I did not show all the, like, largest-sized GANs that are available,
+ which mostly, like, NVDA has released a lot of large-scale GANs, and the same goes for VAE. So, both of those are nowadays equally capable,
+ but as I said, GANs might be a bit more unstable for training. So, if you want, like, want to use it beyond just using the models as black box,
+ say, if you want to train your own model or if you want to fine-tune it or something, VAE might be a better choice.
+ And there is also another class of models that I pointed to earlier called diffusion models.
+ So, that also allows creation of very high-fidelity images, and that usually has, like, allowed much more scale-up than VAE is even.
+ So, that can be also a consideration here. So, if I were to rank them in terms of ease of use or ease of fine-tuning, it would be diffusion models better than VAE, better than GAN.
+ Right. So, there are new texts now, like AI Agents and AgenTik AI Engineer.
+ Yes, that's correct. So, a lot of work is now going towards building agents. So, and that, of course, has its own research questions.
+ So, AgenTik development is slightly different from what the evolution of LNM required.
+ So, that's why I did not cover it, because it will require, like, it will definitely require more time.
+ So, the important or interesting research questions, there are, like, if you are trying to build an AgenTik system, there you have to think about how you orchestrate the steps to solve a particular problem.
+ Right. So, LNM can give you very good responses to a given query. But as soon as you start pipelining steps, that is what is required for these AgenTik things, it starts to perform poorly.
+ Because it cannot see the accuracy of the task beyond an individual prompt. Right. So, then you will have to bring in other evaluation metrics, maybe introduce multiple agents and have a pipeline which has evaluation in its intermediate steps.
+ So, all of those questions comes into play. So, definitely, that's a very interesting direction and has its own research questions.
+ Okay, I'll lift.

@@ -1,0 +1,494 @@
+ Hello good morning everyone, my name is Saurangshu Bhattacharya, I am a faculty member at the
+ computer science and engineering department in IIT Kharagpur and today I am going to discuss
+ foundations of neural networks and deep learning.
+ So let us go with the discussion, so yeah so just to highlight the topic once more,
+ we are going to discuss today foundations of neural networks and deep learning, okay.
+ So I think most of you would have heard about a neural network.
+ So what is a neural network?
+ A neural network is a computation model, so what is a computation model?
+ It is a particular way of performing a computation, okay, so it is a computation model inspired
+ by the structure and function of biological networks, okay.
+ So what do we mean by this?
+ So a neural network tries to emulate the process by which our brain or the human brain performs
+ computation, so as we know it does perform computations in order to do various tasks.
+ So for example in order to do perception tasks like visual perception or sensory perception
+ or auditory perception etc., so sound, you know senses, then sight, the visual perception
+ all these things, okay.
+ All these things are performed by the neural networks in our brain and elsewhere in our
+ body through a particular computational mechanism, okay.
+ And what we are going to discuss today is a particular computational mechanism which
+ emulates this process.
+ So it is not exactly same as our brain but it tries to emulate the same process, okay.
+ Now the important thing to notice here is that this is also very very different from
+ traditional computation model which is more logic based, okay.
+ So it is temporal logic based, so in your program when you write program, you write
+ them, so one logical step at a time, okay.
+ Here also there are logical steps but the more important or the more I would say the
+ more the predominant aspect of this neural network is that it is massively parallel.
+ So there are many many parallel computations which are going on which create a neural network.
+ So we will go into the details of that in a minute, okay.
+ So what is a neural network, okay.
+ So a neural network is a directed acyclic graph of something called neurons, okay.
+ So building so here you can see the structure of a neural network, each of these circles
+ are what are called neurons, okay.
+ So neurons are the basic building blocks of a neural network, okay.
+ And now what happens and to tell you this each neuron is a very simple performs a very
+ simple computation or is a very simple function, okay.
+ Now these neurons are connected in a graph in a certain structure and that structure
+ is called directed acyclic graph, okay.
+ So what is a directed acyclic graph?
+ A directed acyclic graph is a graph, so I am assuming all of you know what is a graph.
+ So a graph has nodes, so in this particular case the neurons are going to be the nodes
+ of the directed acyclic graph and a graph has edges or links, okay between different
+ nodes, okay.
+ And these nodes, these links in case of a neural network are going to be directed links
+ something like this, okay.
+ Now these directed links and nodes, so the nodes are connected by directed links and
+ these directed links are connected in a manner such that there is no cycle, okay.
+ So no cycle in the graph or to be specific there is no directed cycle.
+ So for example, this is not a valid neural network, so this kind of a graph is not a
+ valid neural network, okay.
+ So with this we know what is a neural network.
+ Now what happens, okay.
+ So a neural network takes a vector of data as input and produces one or more output.
+ So I told you one particular view of a neural network.
+ So let us see, so a neural network takes a vector of data as input, okay.
+ So what does this mean, this means that I can now say that a neural network takes as
+ input x, okay.
+ So what is x?
+ This is x, okay, this is the input x, okay.
+ It is a vector.
+ So here you have three values as input x1, x2 and x3, okay.
+ So x is equal to x1, x2 and x3, okay and it produces an output, let us call it y, okay.
+ y here there are two outputs y1 and y2, okay.
+ So another way of thinking about a neural network is it is a function approximator f,
+ y is equal to f of x, okay.
+ So this is another way of thinking about a neural network, okay, that each neural network
+ takes some input x, okay and produces an output y, okay.
+ Now these outputs depends on something called weights of the neural network, weights are
+ attached to the link, okay.
+ We will come to this in a minute when we go into these, okay.
+ And the important thing is that these weights can be learned, okay.
+ We will see what that means in a minute, okay.
+ Okay, so I gave you a very high level overview of a neural network, neural network, two ways
+ of thinking about it.
+ First is it is a network of neurons very similar to what our brain has, other way of thinking
+ about it is it is a function approximator y is equal to f of x, okay.
+ Now question is what is deep learning, okay.
+ So deep learning is nothing but learning with neural networks, but it is it has a specific
+ property that so there is no hard and fast difference between neural network and deep
+ learning.
+ The only difference is that the depth of the neural network that you use in deep learning
+ is very high.
+ Now what is depth?
+ So in this case you see the neurons are arranged in layers.
+ We will come to that in a minute, but you can think of this as the first layer of neurons,
+ this as the second layer of neurons and this as the third layer of neurons, okay.
+ So here the depth will be 2.
+ So actually if this is only input then you do not count, so this the input layer you
+ can count as 0.
+ So the output layer here is 2.
+ So the depth of this neural network is 2, okay.
+ So the number of layers that you have one after the other in the neural network is called
+ depth and we will see in a minute why this depth parameter is so important.
+ And after the advent of this deep learning paradigm, so neural networks have been around
+ for a long time, we will get into the history in a minute, okay.
+ But after the advent of this deep learning paradigm, it has revolutionized the field
+ of machine learning and also made neural networks more, much more popular than it used to be
+ earlier, okay.
+ So now that I have given you a basic introduction, let me give you a brief overview of how this
+ field of neural network developed, okay.
+ So the first important paper is by McCulloch and Pitts, it was published in 1943 and the
+ paper is called a logical model of the brain function, okay.
+ So this gave, so at the time people were studying neurons, so this is in neuroscience community
+ and people were studying how our brain performs this computation and so McCulloch and Pitts
+ came up with a logical model of the neuron like a math, so here you can think of this
+ logical as a mathematical model of the brain function which we will discuss in a bit, okay.
+ So this is the first thing that there was a mathematical model of a single neuron, okay.
+ Then came the perceptron model, okay, this came in 1962, this perceptron model was the
+ first application of this neural network model you can say to a particular learning task,
+ okay.
+ So we will discuss this, at the around the same time there were many competing things,
+ so along with perceptron there was this Adeline which is the adaptive linear model, okay.
+ So all these were becoming very, very popular and people were getting very, very excited
+ that you know neural networks will basically replace standard computer programming and then
+ I mean we will be able to simulate the brain and do whatever the brain can do, okay.
+ Now this particular paper by Minsky and paper showed that actually this kind of linear model
+ perceptron or Adeline, they cannot approximate many, many different functions, okay.
+ So for example, they cannot even approximate a simple ZOR function, okay.
+ And you can say this is like, you can say this caused what is called AI winter, okay.
+ It is called AI winter which is that, that people were very excited about this neural
+ network model and then they figured out no, it is actually not that good, okay.
+ Now parallelly around 6770, these two papers they started talking about multi-layer perceptron,
+ okay.
+ So the problem with single layer perceptron is that it is a very limited computation
+ model, okay.
+ So it can only approximate very few functions, okay.
+ But multi-layer perceptrons can approximate many, many different functions, okay.
+ But the problem is how to learn the weights of a multi-layer perceptron and for that even
+ today we use this algorithm called the back propagation algorithm we will see what it is,
+ okay.
+ So these ideas started coming in around 1950 and basically the whole thing sort of materialized
+ in this nature paper by Rumelhardt, Hinton and William in 1986.
+ So this is basically the time when neural networks were formally established as a good
+ model for learning, okay.
+ Now this continues so and people were using after this people, so this is also sometimes
+ called the second AI boom, okay.
+ And people started using neural networks to train many, many different models around this
+ time, okay but one of the main problem was that people very soon realized that the amount
+ of data available for us and the amount of computational power available for us is not
+ good enough to you know solve real world problem, okay.
+ So then people started looking at other models like support vector machines, etc. which were
+ much more efficient both computation wise and also data wise, okay.
+ So that caused you can say something like the second AI winter which is that for using
+ the technology of that time we could not train neural networks which were sufficiently useful,
+ okay.
+ And then came the use of GPUs and also the compute and storage all this became much,
+ much faster and this third AI revolution which is the deep learning revolution started around
+ 2013 and the final like it was already very, very popular in 2015 you with this 2015 paper
+ which is by Benjiro, Lekun and Hinton which is called the deep learning paper in it, okay.
+ So this is the brief history of how neural networks became the popular model that they
+ are today, okay.
+ So furthermore let us, so these are the two diagrams I have taken from this deep learning
+ paper, the initial deep learning paper, I think deep learning book, yeah.
+ And so if you see this shows the history of, so on the left it shows the history of the
+ data sets available, okay, so initially you had data sets, so here if you see the y axis
+ is the number of examples and it is in log scale.
+ So around 50s, 60s, till about 80s most of the data sets that you had were only few thousand.
+ So if you see it is 10 to the power 3 to 10 to the power 4 data sets, right, so this is
+ around this area, okay.
+ And then suddenly around 2000 there was a big after, just after 2000, so around maybe
+ 2005, 2006 as the compute power started increasing dramatically, the size of the data sets started
+ increasing dramatically and you see in this small amount of time there is an order of
+ magnitude increase in the number of training data points, okay.
+ So some of the very popular data sets like ImageNet, okay, very, very big data sets and
+ then ImageNet 10K came and the WMT data set which is a machine translation data set which
+ has 10 to the power 9 examples and so on and so forth, all these data sets came, okay.
+ So this large amount of data was one of the reasons or one of the necessary conditions
+ for this revolution, why is that?
+ The reason is that initially the traditional ML models performance on these, so these data
+ sets were not only large, they were also extremely complex data sets, so the tasks were extremely
+ complex and we realized that existing machine learning models were not able to perform very
+ well on these data sets, okay.
+ There was data, there was data as you know in machine learning gives us the information
+ to learn, okay.
+ So there is information in the data but we are not able to learn all that information,
+ okay.
+ So this is the first thing.
+ The second thing here is on the right hand side what we are showing is the size of different
+ models that we could train as a function of time, okay.
+ So you see, so this is a little bit old because it is showing mostly till 2015.
+ Now as you know, we can train, I mean anything between 70 billion parameter to much more
+ than that, okay.
+ Here we are just showing connections per neuron.
+ So what you can think is that the number of parameters will probably be like 2, 3 orders
+ of magnitude more than this, okay.
+ So already again you can see as the data set became more and more difficult, the models
+ also became higher and higher number of parameters.
+ So here you can see already we are talking about 6, 7 which are 10 to the power 3 connections
+ per neuron.
+ So each neuron is connected to thousand other neurons, okay.
+ This means that basically you will have probably around maybe like a million or like 500,000
+ parameter something like that, okay.
+ Then this one is this unsupervised convolutional neural network, okay.
+ And this has like, yeah, probably something like, yeah, so maybe 10 million parameter.
+ And nowadays if you see some of the foundation models, they have at least like the minimum
+ ones are start from something like 7 billion parameter, okay.
+ Maybe slightly smaller but yeah, and we do not even know how many parameters are there
+ for example in the GPT model, okay.
+ So this is the timeline of change of how the different model sizes evolved, okay.
+ And how the different data set sizes evolved, okay.
+ And you can see there is a connection between them, okay.
+ The third important thing is on the left side, bottom left, which is development of certain
+ software.
+ So there was the basic Torch software which was in 2002.
+ Then there was the Tiano which is a Python based software which is 2007.
+ Then there was TensorFlow and then there was PyTorch, okay.
+ So around 2015, 2016, we have the most popular framework that we use today, okay.
+ So this also led to the deep learning revolution which is that everybody started using these
+ deep learning models, okay.
+ So this is the third most important parameter.
+ And the reason is that firstly, they helped us use GPU and secondly, they made defining
+ and training neural networks very, very easy.
+ So for example, the back propagation algorithm was built in into the software, okay.
+ So let us go ahead and see how this whole ecosystem works, okay.
+ So we have already discussed this.
+ So what is a neuron?
+ Neuron is a basic processing unit of a neural network.
+ Each neuron has some input, okay.
+ So typically it will be written as a vector x.
+ So this is the input to a neuron.
+ Now each neuron also has this weight.
+ So there are these directed edges which are coming from other inputs or other neurons.
+ So these are the directed edges.
+ Along each directed edge of a neuron, there is a weight w, okay.
+ So if there are three inputs, there are three incoming edges to the neuron and for each
+ of these incoming edges, there is a weight, okay.
+ And there is a bias value b for each neuron, okay.
+ Now what happens at the neuron?
+ So the neuron performs what is called this kind of a computation.
+ So what is this computation?
+ It first computes the weighted sum of the input, okay.
+ So if xi's are the input and wi's are the, so let me just write this.
+ So if xi's are the input and wi's are the corresponding weight, then what we will do
+ is we compute sum over i.
+ So in this case i is equal to 1, 2, 3 wi xi.
+ Then we add the bias b to this, okay.
+ And then we pass it through this activation function called s, okay.
+ Sometimes denoted as x, sometimes denoted as sigma, okay.
+ So this activation function is actually represented here, okay and then it produces a single output
+ which is oi.
+ So the output is o.
+ So by the way, here the neuron produces a single output, okay, okay.
+ So yeah, so I think this is clear.
+ So this is the computation model of a neuron, this is also called the Maculagin-Pitts model,
+ okay.
+ So this is the 1943 paper that we were talking about, okay.
+ Now what is this activation function and what is the need for this activation function?
+ So you see in the previous, so let me come back here.
+ So how can I write this?
+ So I can write this particular transformation.
+ So for the time being if I ignore the b, I can simply write this transformation as w
+ transpose x, okay.
+ Both w and x are vectors here, right.
+ So I am now denoting the weights and the inputs as vector and then I have this linear transformation
+ of the input which is w transpose x and now this linear transformation is being passed
+ through this activation function s, okay.
+ Now there are two ways of thinking about this activation function, okay.
+ The first is what happens in our neurons, okay.
+ So what happens in our, in the neurons in our brain is that each neuron receives some
+ electrical signals, okay, some electrical signals from its input, okay.
+ And then it does the weighted aggregation of those electrical signals, okay.
+ And when let us say the signal crosses a particular threshold, this neuron fires, so it also sends
+ another electrical signal, okay.
+ So this is the model that our brain performs, okay.
+ So this particular mechanism of the input activation which is the w, the input, you know
+ the total input which is w transpose x, it causing a threshold is given by this threshold
+ function.
+ So what does the threshold function look like?
+ So the threshold function, if the input is less than 0, so this is the s function, right.
+ So s function if the input is less than 0, then the neuron will not fire, so the output
+ will be 0, okay.
+ The moment the input crosses 0, the output will be 1, okay.
+ So this is the threshold function, this is the hard threshold function, okay.
+ Now this function which is called the stignoid function which is the most commonly used function
+ is the soft threshold function or the smooth threshold function, okay.
+ So this is a continuous version of the threshold function and the reason this continuous version
+ of the threshold function is used is that this function is differentiable, okay.
+ This will become important when we actually try to derive the back propagation algorithm,
+ okay.
+ So this is why the threshold function is not used but instead its approximation the stignoid
+ function is used, okay.
+ Now two things to note here, firstly that right now it may seem like that from this diagram
+ that it is not a very good approximation of the threshold function but actually that is
+ not the case.
+ By changing this e to the power minus x, okay, so instead of x if you use e to the power
+ minus wx what can happen is this slope can change.
+ So your threshold function can look pretty much like this, so it can look very, very
+ close to, it can get in fact arbitrarily close to this threshold function.
+ So using the stignoid function is not really a problem in that sense, okay.
+ This is the first thing to note.
+ The second thing to note is that I said that if the input, so here input is w transpose
+ x, so if the input crosses 0 then only it fires, okay.
+ But that is not the case because you have another parameter which is b, okay.
+ So you can tune this b parameter which here I am writing as w0i parameter, okay to actually
+ move around this, so because you are applying w transpose x plus b here, okay.
+ The actual aggregation is w transpose x, okay.
+ So it is fine if w transpose x crosses minus b.
+ So the actual, so let me just remove this, okay.
+ So the actual place where this happens, this jump happens, thresholding happens is minus
+ b and this b is also tunable, okay.
+ So the position of the threshold is tunable and the, of course the weights are also tunable,
+ okay.
+ So in general, this is learning a non-linear transformation which aggregates the input
+ and then uses a squashing function, okay, okay.
+ So now these are some of the commonly used activation functions, the sigmoid I have already
+ talked about, tan hyperbole is very similar to sigmoid.
+ There is this relu activation function, okay.
+ It has become much more popular during the deep learning thing and the reason is that
+ you see the main problem of this sigmoid activation function is it is very, very prone to causing
+ vanishing or exploding gradients problems, okay, vanishing or exploding gradients problems.
+ And why is that?
+ You can see very well, right.
+ So what is the gradient of this function?
+ You see in this region the gradient is 0, in this region the gradient is 0, the gradient
+ is only available in a very small region, okay and that is the reason why it causes
+ the vanishing or exploding gradient problem more often, okay.
+ So this relu for example, it has positive or finite gradient in this whole positive
+ range, okay.
+ But it still has 0 gradient in the negative range.
+ So then you can use leaky relu.
+ So it further reduces the vanishing gradient problem compared to relu, okay.
+ And this max out is actually nothing but a generalization of relu, okay and so is elu,
+ okay.
+ Elu uses little bit of exponential tradeoff or exponential decay in the negative side
+ and it is like relu in the positive side, okay.
+ So these are some of the variants that people use, okay.
+ And the main purpose is to solve this vanishing or exploding gradient problem, okay.
+ We will see further what this is, okay.
+ So let me now describe first the perceptron model.
+ So what is the perceptron model?
+ Consider two class classification problems.
+ So what is a two class classification problem?
+ You have the class plus 1 and you have the class minus 1, okay.
+ And you have these data points which are vectors.
+ Right now I am showing them in the two dimensional space, okay.
+ Now the perceptron, what it does is it computes this.
+ So if x is the vector it will compute this quantity W transpose x, okay.
+ If W transpose x is greater than 0 it will predict class 1, okay.
+ If W transpose x is less than 0 it will predict class minus 1, okay.
+ So the boundary between the two predictions really is this W transpose x equal to 0, okay.
+ So let me mathematically state once more.
+ So the hypothesis function is this f of W transpose x, okay.
+ Now this is the prediction function as I told you, okay.
+ Now if you want to write it you can write it as sine of W transpose x.
+ So this sine function you can think of it as very similar to threshold function except
+ that in threshold function this output was 0 here it is minus 1, okay.
+ And this is for computational efficiency nothing else, okay.
+ So if I called this class as 0 class then it will be the same.
+ So this is because of if you have seen the SVM derivation or something like that this
+ is just for notational reason no other reason, okay.
+ So this sine function is very similar to the threshold function or the step function, okay.
+ So you can immediately see why this is a neural network, okay.
+ Why is this a neural network?
+ Because it is the most simple neural network which has only one neuron.
+ The neuron takes an input x, okay so this has one neuron.
+ The neuron takes an input x, x1 till xd let us say are the this is the x vector, okay.
+ And it has w1 till wd weight, okay and it produces this output y which is the same here
+ which is the sine of W transpose x, okay.
+ So this is clearly a neural network this is the simplest form of neural network, okay.
+ Now at the time that they propose this neural network, okay.
+ So they had this so they did not have the back propagation and this gradient and here
+ also you can see since it is a non-differentiable function you cannot actually use a back propagation
+ algorithm or the gradient descent algorithm to actually learn this, okay.
+ So instead they use what is called the perceptron learning rule to actually minimize the classification
+ error and they showed that in case of a linearly separable data set this will actually work,
+ okay so the perceptron learning rule will actually work, okay.
+ Now I want you to also understand what is going on here, right.
+ So this single neuron then is creating a decision boundary which is a linear decision boundary
+ because W transpose x is equal to 0 is the decision boundary and this is the equation
+ for a line in a or the actual term is in a higher dimensional plane this is called the
+ hyper plane, okay.
+ So this is the equation for a hyper plane, okay and this is in two dimensional plane
+ you can see that it is a line in three dimensional space it will be a it will be a plane and
+ in higher dimensional spaces it will be a hyper plane, okay.
+ Now what is this ZOR problem, okay so the ZOR problem is this particular two class classification
+ problem, okay so what is the two class classification problem, so the input is two dimensional so
+ you have x1 or x2 as input, okay.
+ So here in this particular diagram I am only showing the two input dimensions, okay so
+ each data point is in two dimensions so this point is 00 this point is 10 this point is
+ 0 or rather this point is 10 so this is 10 this is 01, okay and this point is 11, okay
+ and this point is 00.
+ Now what is the output of the ZOR function is when both of them are same that is when
+ it is 00 or 11 output is 0 otherwise it is 1, okay so that is the ZOR function, okay.
+ Now you can very easily see that there is no line, okay there is no line which can separate
+ these two classes, so the classes are output are also 0 and 1 but there is no line in this
+ two dimensional space which can separate these two classes.
+ And this is a very simple function, right this is a simple function widely used in many
+ many cases this ZOR function in fact ZOR function is used to implement addition in electronics
+ you know, right digital electronics so but this particular function cannot be implemented
+ and and OR function can be implemented but not this function, okay.
+ So this was a big setback for a single layer neural network, okay which is something like
+ a perceptron or a Adalian, okay that was the problem, okay, okay so that led to development
+ of what is called multilayered perceptron, okay so what is this multilayered perceptron
+ as you may have imagined it is a neural network, okay where the neurons are arranged in layers,
+ okay so what do we say, okay so many many so first of all many neurons are organized
+ into layer, okay this this we have discussed so this is the zeroth layer this is the input,
+ okay in the box nodes we are showing the input so layer 0 is simply input data, okay.
+ Then comes neuron taking input from the input data are called layer 1 neuron, okay so these
+ are the layer 1 neuron, okay what is their property all their inputs are directly connected
+ to the input data, okay so that is why these are called layer 1 neuron, okay then there
+ is the layer 2 neuron, so this is the layer 2 neuron, okay layer 2 neuron take all their
+ input from the output of layer 1 neuron, okay so layer 1 neuron whatever they are computing
+ that output is being fed into the input of the layer 2 neuron, okay so this is the architecture
+ of a multi layer perceptron, okay now let us say we denote here as we are denoting by
+ a so let us say we are denoting by a k, okay the input the input layer, okay so a k is
+ a vector, okay now if we try to see so I want to compute sorry not a k equal to I want to
+ compute let us say a j, okay and let us say some particular but neuron so a j is the whole
+ layer a j is again a vector, okay I want to compute the a j 0 let us say the 0 th entry
+ so this one is going to be let us say a j and then 0, how will I compute this I will
+ compute this as summation over w k j, okay and then I will take let us say L, okay the
+ L th neuron here w k j L, okay multiply it by a k L, okay what is a k a k is the vector
+ denoting the input, okay and sum over L is equal to 1 to something like d k which is
+ the number of neurons here d k so what am I doing I am taking the L th neurons input
+ multiplying by this w k j L, okay and then getting the output, okay so this w k j is
+ now this metric, okay how do I how do I how many weights do I have for this first layer
+ for each output neuron I have d k many weights, okay and there are let us say d j many output
+ neurons in this particular layer so the number of weights in this layer is going to be d j
+ times d k clear so in each layer the weights are going to be given by a matrix, okay which
+ is what are the dimensions of this matrix the dimensions of this matrix are number of
+ input layer number of number of neurons in the input layer, okay times number of neurons
+ in the output of output layer or number of output neuron yeah output neuron in that particular
+ layer, okay clear so so similarly here there is only one output so this w j i this is going
+ to be just 4 weight here there is going to be 1 2 3 4 5 6 7 8 9 10 into 4 so there is
+ going to be 40 weight, okay so there is going to be 10 cross 4 matrix in this particular
+ layer and this is going to be just a 4 cross 1 matrix, okay and this is the computation
+ of course there is going to be a activation function here, okay so this is how the computation
+ proceeds so it is very important to understand how the computation for a multi-layer perceptron
+ proceeds, okay so in particular layer n takes input from layer 0 to layer n minus 1 neuron,
+ okay so remember this, okay that if it can also happen that this neuron gives input to
+ here, okay so this kind of a input is also possible but that will not be called a multi-layer
+ perceptron that will be some other architecture, okay so that is a valid neural network architecture
+ but it will become a different neural network architecture, okay another thing also important
+ thing see here every neuron in the input of a particular layer is connected to every other
+ neuron in the output you can see this neuron is connected to this connected to this connected
+ to this and connected to this, okay so this kind of a connection is another thing in multi-layer
+ perceptron or fully connected network, okay so sometimes you will see this the layer in
+ a multi-layer perceptron is also called fully connected layer, okay so in when you write
+ programs you will see that what you are using is fully connected layer, okay so this is
+ about neural networks, okay so this further you know makes that particular computation
+ that I just showed clearer, okay so you can see here like G is the activation function
+ for each of the neurons, two input neurons are there input neurons are called I think
+ a1 and a2, okay so what you are doing is you are multiplying this w13 times a1 and w23
+ times a2 so w13 times a1 and w23 times a2 to get this particular let us call this a3,
+ okay so you get this a3 like this and so on and so forth, okay, okay so what is the hidden
+ layer here, okay so in any neural network all the layers which are not input or output
+ layer are called hidden layer, why are they called hidden layer because when you are actually
+ doing the computation these will remain inside the neural network as a person using the neural
+ network you will never see the output of these, okay so that is why these are called hidden
+ layer, okay so you will only give the input which is x and then in between there will
+ be lots of hidden layers and then there will be some output which is y, the way you think
+ about a neural network is y is equal to f of x, okay in between how many layers are
+ there that you when you are designing the neural networks you will use it but as a user
+ of the neural network you need not bother about this that is why these are called the
+ hidden layers of the neural network, okay so the question is can we solve the new how
+ many hidden layers do we need and what kind of hidden layers do we need, okay so that
+ is one of the main questions as a neural network designer what you have to answer is how many
+ hidden layer and what kind of hidden layer, okay so here is one architecture for solving
+ the ZOR problem so you know that ZOR problem a single layer cannot solve, okay so the question
+ is how can we solve the ZOR problem and here is a solution so the solution is that you
+ use one single hidden layer, okay and in this hidden layer you have only two neurons h1
+ and h2, okay now what is the formula for h1 h1 is simply so you know that x1 and x2 are
+ binary here so x1 and x2 they all belong to this set 0 comma 1, okay now you simply say
+ 20 x1 plus 20 x2 minus 10 what is this going to do so when both x1 and x2 are 0 this input
+ will be negative so this will be negative, okay but when both x1 and x2 are positive
+ it will be positive so these two will be positive, okay with h1 and similarly this one will also
+ be positive, okay so for h1 it will basically implement this yellow line can you see that
+ this one will be negative and all the other data points will be positive, okay so this
+ is the first one that h1 is implementing this yellow line of classification, okay now what
+ about h2, okay so h2 is minus 20 x1 minus 20 x2 plus 30, okay so opposite of what h1
+ was doing so when it is 0, 0 this is plus 30 so this will be positive, okay now if one
+ of x1 and x2 is 0 so if it is 1, 0 or 0, 1 these two will also be positive, okay but
+ this one will be negative, okay so it is implementing this blue line, okay now in the output layer
+ there is one more neuron here what is this neuron doing, this neuron is simply 20 times
+ h1 plus 20 times h2 minus 30, okay so what this will do, okay this is simply you can
+ say in one way of thinking about it is it is simply adding h1 and h2, okay so what this
+ does for this one and then it is subtracting 30 from that, okay so for this one both h1
+ and h2 were, sorry h1 was outputting negative but h2 was outputting positive, okay so this
+ sum is going to be 0, okay or like sum minus 30 is going to be 0 so h1 is actually going
+ to be h1 is going to be 0 and h2 is going to be 1, okay in the other case for this one
+ also same thing but the other way around h1 is going to be outputting 1 and h2 is going
+ to be outputting 0 in both these cases the overall output will be 0, okay only if both
+ h1 and h2 are outputting 1 then the output will be 1 and that is for these two points,
+ for these two points if you remember for these two points the green point both h1 and h2
+ are outputting 1, okay so this is one design of a neural network, okay for solving the
+ Zord problem here note that when we say design of a neural network we have manually substituted
+ W's and B's, right so we have manually shown what is W and B's in practice you simply
+ have to say what these connections will be the learning of the actual parameter will
+ be done by the learning algorithm, okay so this is just to demonstrate what kind of thought
+ process goes behind designing this neural network which is the question for multi layer
+ perceptron is how many hidden layers and what is the number of neurons in each hidden layer,
+ okay, okay now let me formalize so this is the key idea behind a neural network so what
+ I just demonstrated is the key idea behind the neural network, okay so okay so maybe
+ I will take a 5 minute break, okay and we will come back with this idea how to design
+ this neural network what is the thought process behind design of neural network, okay thank

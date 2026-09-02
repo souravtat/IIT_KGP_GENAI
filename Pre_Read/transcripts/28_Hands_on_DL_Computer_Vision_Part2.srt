@@ -1,0 +1,1716 @@
+1
+00:00:00,000 --> 00:00:08,120
+ back on our like thing that we were doing. So, let us see what are the things that we
+
+2
+00:00:08,120 --> 00:00:18,160
+ did yeah. So, now we will start with the creation of this creation of this AlexNet model and
+
+3
+00:00:18,160 --> 00:00:25,280
+ we were creating we had to create this particular model from this particular model. Let us see
+
+4
+00:00:25,280 --> 00:00:29,880
+ how we are going to do that. So, you see that this is an input layer. Now there are some
+
+5
+00:00:29,880 --> 00:00:34,480
+ modifications that we need to make. So, what are the modifications? So, we have already
+
+6
+00:00:34,480 --> 00:00:40,000
+ seen that the image that we were working with which is the MNIST image. You can see that
+
+7
+00:00:40,000 --> 00:00:46,080
+ we have just printed the image and it gives you a resolution of 28 cross 28. So, the dimension
+
+8
+00:00:46,080 --> 00:00:53,720
+ of the image is 28 cross 28. So, you can see this original this layer where we are having
+
+9
+00:00:53,720 --> 00:01:02,800
+ this convolutional layer it has a feature size of like input size of 227 and which is very
+
+10
+00:01:02,800 --> 00:01:07,000
+ very high compared to what is the image that we are having. So, to deal with that we are
+
+11
+00:01:07,000 --> 00:01:11,880
+ just creating a modified version of AlexNet which is exactly fine like we can do it anytime
+
+12
+00:01:11,880 --> 00:01:17,040
+ right. So, let us see how we are doing it. We are just building a trimmed version of
+
+13
+00:01:17,040 --> 00:01:22,720
+ AlexNet and let us consider this first layer. So, this is the model that we are going to
+
+14
+00:01:22,720 --> 00:01:31,720
+ build one by one in one step. So, the first layer is the convolutional layer with 256
+
+15
+00:01:31,720 --> 00:01:40,080
+ input features and this is the basically the color space that we are having the feature
+
+16
+00:01:40,080 --> 00:01:44,160
+ values that we are having the input feature we all know that it is one for this grayscale
+
+17
+00:01:44,160 --> 00:01:49,240
+ image and this is the 256 different filters that we are going to plan.
+
+18
+00:01:49,240 --> 00:01:53,600
+ So, let us see where we are starting from we are starting from at this stage right. So,
+
+19
+00:01:53,600 --> 00:01:59,640
+ so this conf 2d layer which is 1 2 3 4th number of conf 2d layer we are starting from that
+
+20
+00:01:59,640 --> 00:02:07,200
+ it has 256 filters each of the size of the filter is 5 the stride is 1 and there is a
+
+21
+00:02:07,200 --> 00:02:14,400
+ padding value of 2 right and it takes 27 cross 27 as input you can see. So, it is the exact
+
+22
+00:02:14,400 --> 00:02:19,540
+ same as what we are having in this image. So, we are just going to plant these values
+
+23
+00:02:19,540 --> 00:02:26,400
+ into the model and it again follows by a value activation right. So, just see how we can create
+
+24
+00:02:26,400 --> 00:02:31,680
+ that layer. So, this nn function which is a neural network function from this PyTorch
+
+25
+00:02:31,680 --> 00:02:37,480
+ library gives you direct access to this conf 2d layer. So, you can just give this conf
+
+26
+00:02:37,480 --> 00:02:42,080
+ 2d function and which takes these different parameters that we were talking about. So,
+
+27
+00:02:42,080 --> 00:02:47,560
+ this 1 is the input feature space the input feature space is of course, 1 because we are
+
+28
+00:02:47,560 --> 00:02:54,880
+ using this grayscale image and this 256 represent the new number of features or the kernels
+
+29
+00:02:54,880 --> 00:03:00,240
+ the number of kernels. This is the size of each of the kernel which is 5 cross 5 it is
+
+30
+00:03:00,240 --> 00:03:05,640
+ square kernel it is 5 value and the stride value is taken as 1 and the padding is 2.
+
+31
+00:03:05,640 --> 00:03:09,760
+ So, we have just copied the values from there and we have kept it here. And followed by
+
+32
+00:03:09,760 --> 00:03:15,360
+ this convolutional 2d layer we are having a Rayleigh layer and the Rayleigh we are doing
+
+33
+00:03:15,360 --> 00:03:20,900
+ it as nn dot Rayleigh and in place equals to true. This in place function gives us the
+
+34
+00:03:20,900 --> 00:03:25,760
+ adaptation like we just do not need to store it somewhere else we can just write this code
+
+35
+00:03:25,760 --> 00:03:30,080
+ and it will update the values right else if you are not using in place you are just going
+
+36
+00:03:30,080 --> 00:03:37,440
+ to store it somewhere and work on that. So, here you see we have created this model and
+
+37
+00:03:37,440 --> 00:03:40,800
+ I am just going to run this and I will just go to this different parts.
+
+38
+00:03:40,800 --> 00:03:46,160
+ So, let us see this is the part where we are writing it here is the class of AlexNet. So,
+
+39
+00:03:46,160 --> 00:03:50,600
+ we have created this class and this class belongs to a group of neural network modules
+
+40
+00:03:50,600 --> 00:03:58,440
+ from PyTorch. And this is the init function of that particular class and this init takes
+
+41
+00:03:58,440 --> 00:04:02,920
+ this num parameter and what is this num parameter and this is the parameter that I have added
+
+42
+00:04:02,920 --> 00:04:07,920
+ separately because you might need a model for different classes. Here we are using only
+
+43
+00:04:07,920 --> 00:04:13,120
+ 10 class classifications where it is the value is given as 10.
+
+44
+00:04:13,120 --> 00:04:18,720
+ And it initializes this particular model. So, super function gives you the access to
+
+45
+00:04:18,720 --> 00:04:22,560
+ this particular class which you are working with this basically the super class and you
+
+46
+00:04:22,560 --> 00:04:28,240
+ are going to initialize that. And we are having some features of this particular class the
+
+47
+00:04:28,240 --> 00:04:34,960
+ features are the functions are basically this feature right. So, this first feature is this
+
+48
+00:04:34,960 --> 00:04:39,480
+ neural network sequential layer and we are seeing that there are many layers. So, we
+
+49
+00:04:39,480 --> 00:04:44,400
+ will like uncomment each of them and see what happens. So, this is the general outline.
+
+50
+00:04:44,400 --> 00:04:48,720
+ So, this is the feature extraction part that is why it is called as feature. And then we
+
+51
+00:04:48,720 --> 00:04:54,600
+ have this classifier part which is the dense layer part. So, here you see that these two
+
+52
+00:04:54,600 --> 00:05:01,280
+ objects will be initialized once we initialize this Alex net class. We will go through this
+
+53
+00:05:01,280 --> 00:05:05,200
+ what is there. So, this is a function and this is a forward
+
+54
+00:05:05,200 --> 00:05:10,120
+ function. What does this forward function takes? It takes into account that we are going
+
+55
+00:05:10,120 --> 00:05:15,480
+ to forward our image which is the input image through this feature extraction. Once we have
+
+56
+00:05:15,480 --> 00:05:20,320
+ this feature extraction done we are going to pass it through some kind of transformations
+
+57
+00:05:20,320 --> 00:05:25,520
+ that will be required for this classification part. And once the transformation is done
+
+58
+00:05:25,520 --> 00:05:31,520
+ we are just passing it to this classification layer as simple as that. So, this forward
+
+59
+00:05:31,520 --> 00:05:37,240
+ function it actually creates the different stages of the model. So, essentially this forward
+
+60
+00:05:37,240 --> 00:05:42,320
+ function is our entire model right. So, this is the feature extraction part.
+
+61
+00:05:42,320 --> 00:05:47,700
+ So, self dot feature you are going to extract this features and once you have this features
+
+62
+00:05:47,700 --> 00:05:53,560
+ here. Once you have this features here you can transform it in some different ways we
+
+63
+00:05:53,560 --> 00:05:57,680
+ will see why this transformation it required. And we can pass this transformation to this
+
+64
+00:05:57,680 --> 00:06:02,640
+ classifier and then we can have this classification. So, this is the entire model and I have broken
+
+65
+00:06:02,640 --> 00:06:09,120
+ down this model for easier understanding of this particular model.
+
+66
+00:06:09,120 --> 00:06:15,480
+ So, here you see that we have created this model and I have discussed this part where
+
+67
+00:06:15,480 --> 00:06:20,840
+ we have just created the first convolutional to be layer. And this classifier we are not
+
+68
+00:06:20,840 --> 00:06:26,600
+ using right now because we have commented this section you can see. So, I am just returning
+
+69
+00:06:26,600 --> 00:06:34,440
+ in this forward layer the feature extraction part right. So, let us just start this model
+
+70
+00:06:34,440 --> 00:06:38,920
+ and here some of the interesting things comes into play. So, we are just creating an object
+
+71
+00:06:38,920 --> 00:06:43,920
+ of this AlexNet class that we have created. So, model equals to AlexNet and this bracket
+
+72
+00:06:43,920 --> 00:06:48,880
+ gives you this object. So, we are creating object of this class.
+
+73
+00:06:48,880 --> 00:06:56,280
+ So, once we have done that now we are going to do some accelerated computing. So, what
+
+74
+00:06:56,280 --> 00:07:01,240
+ is accelerated computing I think that needs some discussion here. So, here you see that
+
+75
+00:07:01,240 --> 00:07:06,480
+ we have just given a single line of code that actually tells us whether our system has a
+
+76
+00:07:06,480 --> 00:07:10,760
+ CUDA enabled GPU or not basically you have a GPU environment or not. Right now we are
+
+77
+00:07:10,760 --> 00:07:17,660
+ running a T4 environment. So, it should return GPU is available. So, let us run it separately
+
+78
+00:07:17,660 --> 00:07:23,760
+ and probably you can also run it separately to see whether your system has a GPU enabled
+
+79
+00:07:23,760 --> 00:07:30,320
+ or not. So, you have this GPU enabled system. So, here you can see that GPU is available
+
+80
+00:07:30,320 --> 00:07:36,480
+ is showing there. So, what I will do is now I will unload this model to the GPU. So, for
+
+81
+00:07:36,480 --> 00:07:42,320
+ unloading the model to GPU I will just write this line of code model dot CUDA right and
+
+82
+00:07:42,320 --> 00:07:48,400
+ if you are using a CPU based environment you have to like change some of the aspects of
+
+83
+00:07:48,400 --> 00:07:54,800
+ this because this is totally done in the CUDA environment. So, if this torch dot CUDA is
+
+84
+00:07:54,800 --> 00:07:58,840
+ available and I am just unloading everything to CUDA what is happening here right let us
+
+85
+00:07:58,840 --> 00:08:09,580
+ see what is happening. So, we have this two portions. So, this is a CPU portion which is
+
+86
+00:08:09,580 --> 00:08:19,920
+ a central processing unit I think I can zoom in a bit. So, this is the central processing
+
+87
+00:08:19,920 --> 00:08:26,120
+ unit of your system that that you can use for handling different tasks, but there is
+
+88
+00:08:26,120 --> 00:08:31,520
+ a GPU processing unit and in deep learning models you will probably find that this GPU
+
+89
+00:08:31,520 --> 00:08:37,040
+ is very very important. So, what is the idea behind a GPU and a CPU what is the difference
+
+90
+00:08:37,040 --> 00:08:41,480
+ specifically? So, here you will see that in CPU there will be let us say there will be
+
+91
+00:08:41,480 --> 00:08:47,320
+ 4 cores 18 cores 16 cores. So, there will be some like very limited number of cores.
+
+92
+00:08:47,320 --> 00:08:52,320
+ In GPU you can understand there will be millions of cores for example, there will be 10,000
+
+93
+00:08:52,320 --> 00:08:58,960
+ cores for each of the tasks that you are doing. Now, these 10,000 processors that are present
+
+94
+00:08:58,960 --> 00:09:05,960
+ in a GPU can parallely process the same mathematical operations. So, if your model for example,
+
+95
+00:09:05,960 --> 00:09:10,960
+ requires huge number of calculations this GPU can be used for accelerating that computations.
+
+96
+00:09:10,960 --> 00:09:16,520
+ So, here for example, in CPU the process will come it will consider this 4 cores it will
+
+97
+00:09:16,520 --> 00:09:21,160
+ perform this 4 different calculations and then it will take the second batch it will
+
+98
+00:09:21,160 --> 00:09:25,880
+ perform the calculations on that and so on. But here you can do 10,000 calculations at
+
+99
+00:09:25,880 --> 00:09:30,400
+ once right if you are having a GPU with let us say 10,000 cores.
+
+100
+00:09:30,400 --> 00:09:36,680
+ So, this GPU enabled systems are very very important in this deep learning models where
+
+101
+00:09:36,680 --> 00:09:41,680
+ we are just able to calculate these features together because there is no dependency on
+
+102
+00:09:41,680 --> 00:09:45,840
+ the other features. Because for example, if you are calculating a feature for a particular
+
+103
+00:09:45,840 --> 00:09:51,440
+ filter so, it is independent of the filters of the other filters. So, you can just create
+
+104
+00:09:51,440 --> 00:09:57,040
+ this GPU environment where you can calculate for one feature and the other features together
+
+105
+00:09:57,040 --> 00:10:03,080
+ without waiting for a CPU resources. So, this accelerated computing is very very important
+
+106
+00:10:03,080 --> 00:10:07,440
+ and see that there are many section in this code even in the training phase we are going
+
+107
+00:10:07,440 --> 00:10:11,280
+ to use that and this understanding is very very essential.
+
+108
+00:10:11,280 --> 00:10:16,760
+ So, this summary is another function from the spy torch we will see that we have you
+
+109
+00:10:16,760 --> 00:10:34,320
+ already imported this summary here. So, you can use this summary to see what is inside
+
+110
+00:10:34,320 --> 00:10:38,000
+ the model basically what are the different parameters of the model what is the structure
+
+111
+00:10:38,000 --> 00:10:43,320
+ of the model and how the model is performing. So, let us see see what is the thing we get
+
+112
+00:10:43,320 --> 00:10:48,000
+ here for our model. So, here in our model as I told you there is only this feature extraction
+
+113
+00:10:48,000 --> 00:10:52,480
+ with a single convolutional layer and a value activation function.
+
+114
+00:10:52,480 --> 00:10:59,400
+ So, just running this will create an object of this Alex net class it will load everything
+
+115
+00:10:59,400 --> 00:11:04,680
+ to this GPU environment and this model dot summary will take the model this is the model
+
+116
+00:11:04,680 --> 00:11:11,880
+ object and take an input dimension. Now, our input dimension is 1 into 28 cross 28 because
+
+117
+00:11:11,880 --> 00:11:16,660
+ the ms dataset is having a resolution of 28 and there is only one channel. So, this will
+
+118
+00:11:16,660 --> 00:11:22,400
+ be the input size and you see that once we pass this input we are just given this that
+
+119
+00:11:22,400 --> 00:11:27,440
+ the GPU is available and this is the layers. So, this is the layer convolutional 2D layer
+
+120
+00:11:27,440 --> 00:11:33,240
+ this is the first layer and this is the second or a rear activation layer and this is this
+
+121
+00:11:33,240 --> 00:11:37,520
+ output shape here and these are the number of parameters.
+
+122
+00:11:37,520 --> 00:11:43,080
+ Now, considering this number of parameters are essentially there are this trainable parameters.
+
+123
+00:11:43,080 --> 00:11:48,000
+ So, you are there are weights associated in the model. So, when you pass a training data
+
+124
+00:11:48,000 --> 00:11:52,600
+ through it the model will try to optimize that weight for your classification task or
+
+125
+00:11:52,600 --> 00:11:56,320
+ any task you are doing. So, these are the number of parameters that the model will be
+
+126
+00:11:56,320 --> 00:12:02,160
+ tuning during this training model. So, as you increase this number of parameters of course
+
+127
+00:12:02,160 --> 00:12:07,680
+ your model will be a bigger model will require huge amount of resources, but again will be
+
+128
+00:12:07,680 --> 00:12:11,080
+ a much better model than a smaller parameter model.
+
+129
+00:12:11,080 --> 00:12:16,800
+ So, this is the general idea and now if you want to know how this number of parameters
+
+130
+00:12:16,800 --> 00:12:22,520
+ are calculated again like there is this section where I have just kept this number of parameters.
+
+131
+00:12:22,520 --> 00:12:27,640
+ So, you can calculate this number of parameters using this simple formulations if required.
+
+132
+00:12:27,640 --> 00:12:35,080
+ So, let us consider this that we are just going to now change this model. Now, we are
+
+133
+00:12:35,080 --> 00:12:40,240
+ going to add the next layer. So, similarly I am just adding another extra layer right
+
+134
+00:12:40,240 --> 00:12:47,160
+ now and I am running the exact same code. Now, you see that there are these four layers
+
+135
+00:12:47,160 --> 00:12:51,120
+ that the model will be trained on and the model parameters now increase drastically.
+
+136
+00:12:51,120 --> 00:12:56,440
+ So, initially we had only 6000 parameters to be trained for the initial layer, but in
+
+137
+00:12:56,440 --> 00:13:02,140
+ the second layer where we have so many features our actually a convolutional 2D layer for
+
+138
+00:13:02,140 --> 00:13:08,720
+ this fourth layer actually has a very very high number of parameters which is like around
+
+139
+00:13:08,720 --> 00:13:15,640
+ 9 lakhs right. So, as you can understand if you increase this depth of this models you
+
+140
+00:13:15,640 --> 00:13:18,200
+ will end up with having a higher parameter model.
+
+141
+00:13:18,200 --> 00:13:26,400
+ So, now let us uncheck all of this. So, all of these layers. So, you will see that I have
+
+142
+00:13:26,400 --> 00:13:32,720
+ always kept these parameter values. So, this kernel size stride and padding and this if
+
+143
+00:13:32,720 --> 00:13:37,320
+ you do not give these values there are some default values that will be considered. So,
+
+144
+00:13:37,320 --> 00:13:43,160
+ in your assignment that will be given you must go through this actual models or basically
+
+145
+00:13:43,160 --> 00:13:49,240
+ this layers that the model provides in PyTorch and see what are the default values also right.
+
+146
+00:13:49,240 --> 00:13:54,560
+ In some cases you might not require this kernel size or stride values, because those will
+
+147
+00:13:54,560 --> 00:14:01,640
+ be by default let us say 1 right. So, here you see that we have unblocked all this models,
+
+148
+00:14:01,640 --> 00:14:07,760
+ but still we are not giving this classification layer a chance. So, just see this final feature
+
+149
+00:14:07,760 --> 00:14:13,800
+ extraction layer. So, this is the final feature extraction layer. So, this is how the feature
+
+150
+00:14:13,800 --> 00:14:20,640
+ extraction layer looks and if you compare this to our original like model that we were
+
+151
+00:14:20,640 --> 00:14:24,680
+ working with. So, this model you will find that it is very very it is the exact same
+
+152
+00:14:24,680 --> 00:14:30,440
+ thing just only that the first few layers we have not used and we have used this fourth
+
+153
+00:14:30,440 --> 00:14:36,040
+ layer we have used from this fourth layer. So, all these layers are present and before
+
+154
+00:14:36,040 --> 00:14:42,640
+ these layers we have omitted these layers, because our image was a smaller size image.
+
+155
+00:14:42,640 --> 00:14:55,160
+ So, this is one of the aspect and right. So, here you see that we are going to now work
+
+156
+00:14:55,160 --> 00:15:01,160
+ with this transformation of this values. Now, what is this transformation? You see that the
+
+157
+00:15:01,160 --> 00:15:08,520
+ output is 13 cross 13 and 256 right and let us just see what is the output it is the exact
+
+158
+00:15:08,520 --> 00:15:09,520
+ same.
+
+159
+00:15:09,520 --> 00:15:15,040
+ So, this is the output dimension from the feature extraction layer. So, once you have
+
+160
+00:15:15,040 --> 00:15:20,640
+ this AlexNet the feature extraction layer have passed. So, your feature dimension or
+
+161
+00:15:20,640 --> 00:15:27,800
+ the data dimension now becomes 13 cross 13 and 256 different filters. Now, we can input
+
+162
+00:15:27,800 --> 00:15:32,760
+ this to this fully connected layers how we are going to import this to a fully connected
+
+163
+00:15:32,760 --> 00:15:38,520
+ layers and essentially this fully connected layer is a single vector of let us say some
+
+164
+00:15:38,520 --> 00:15:45,160
+ dimension. So, how we can just transpose this function or this output dimension to that
+
+165
+00:15:45,160 --> 00:15:56,800
+ single vector right. So, here we are just unchecking this x dot view and we are just
+
+166
+00:15:56,800 --> 00:16:02,480
+ removing this part right and I am not changing anything here I will just show you what is
+
+167
+00:16:02,480 --> 00:16:11,800
+ present here. So, here what I have done is I have just changed this 256 into 13 cross
+
+168
+00:16:11,800 --> 00:16:22,840
+ 13 into a different dimension and the dimension is this 256 13 13 and 2048 right. So, now
+
+169
+00:16:22,840 --> 00:16:29,800
+ all these feature values will be converted to these features which will be input to our
+
+170
+00:16:29,800 --> 00:16:38,520
+ neural network classifier. So, here this part now will return me the classification function
+
+171
+00:16:38,520 --> 00:16:43,280
+ also let us consider what are the things that is inside the classification layer.
+
+172
+00:16:43,280 --> 00:16:49,320
+ So, in this diagram you see there is this dropout layer which is having a feature size
+
+173
+00:16:49,320 --> 00:16:56,280
+ of 4608, there is a linear layer which is having a value of 2048 again followed by a
+
+174
+00:16:56,280 --> 00:17:02,320
+ ReLU activation there is again dropout and then there are two this linear layouts right.
+
+175
+00:17:02,320 --> 00:17:09,360
+ So, let us understand this that if you are having this dropouts. So, in the real paper
+
+176
+00:17:09,360 --> 00:17:15,520
+ I think they have not used this dropout layers, but this dropouts essentially make it simpler
+
+177
+00:17:15,520 --> 00:17:23,000
+ for a smaller models to get rid of overfitting right. So, we are using MNIS dataset and this
+
+178
+00:17:23,000 --> 00:17:28,040
+ is already an well built model. If you do not use dropout and if you are training this
+
+179
+00:17:28,040 --> 00:17:33,280
+ model for a higher number of epochs there is a severe chance that it will overfit. So,
+
+180
+00:17:33,280 --> 00:17:37,440
+ we are trying to avoid overfitting and making the model more generalizable we have added
+
+181
+00:17:37,440 --> 00:17:42,880
+ this two dropout layers as I as this point like I could not remember whether this dropout
+
+182
+00:17:42,880 --> 00:17:47,760
+ is present in this original paper or not maybe they are just linear layers or maybe the dropout
+
+183
+00:17:47,760 --> 00:17:48,760
+ is present.
+
+184
+00:17:48,760 --> 00:17:54,680
+ But for this work we are using this dropout layer and the reason is we are going to use
+
+185
+00:17:54,680 --> 00:18:00,840
+ very small number of data set and do not want overfitting on those. So, first dropout layer
+
+186
+00:18:00,840 --> 00:18:05,240
+ then there is linear dropout linear linear let us see how we can code that exact same
+
+187
+00:18:05,240 --> 00:18:13,200
+ thing. So, here you see that we have this layer. So, NN dot dropout is a single function
+
+188
+00:18:13,200 --> 00:18:18,080
+ that gives you this dropout functionality and again you are having this neural network
+
+189
+00:18:18,080 --> 00:18:23,840
+ dot linear layer. So, we had a dropout layer then we had a linear layer then we had this
+
+190
+00:18:23,840 --> 00:18:29,200
+ activation function then we had this dropout again and then we had two linear layers.
+
+191
+00:18:29,200 --> 00:18:34,840
+ So, you see that we are having this Rayleigh layer and again in place is true exactly same
+
+192
+00:18:34,840 --> 00:18:39,720
+ as what you have done in this convolutional part feature extraction part and we are changing
+
+193
+00:18:39,720 --> 00:18:45,000
+ this feature dimension and how this feature dimensions are changed that is very simple
+
+194
+00:18:45,000 --> 00:18:50,840
+ thing and I think that you can understand by seeing the transformations that are happening.
+
+195
+00:18:50,840 --> 00:18:57,160
+ So, from 2048. So, this is 2048 is the output of this feature. So, this is the input feature
+
+196
+00:18:57,160 --> 00:19:04,680
+ dimension 13 13 and 256 that we had earlier 13 13 256 and the output dimension is 2048
+
+197
+00:19:04,680 --> 00:19:11,480
+ So, the model will return. So, basically this linear layer will return vector size which
+
+198
+00:19:11,480 --> 00:19:17,800
+ is having 2048 different unique values then it will pass through this activation function
+
+199
+00:19:17,800 --> 00:19:23,440
+ then there will be this dropout which are the weights added to this model as a bias and
+
+200
+00:19:23,440 --> 00:19:28,440
+ then there is this linear layer once again which takes the input from the previous layer.
+
+201
+00:19:28,440 --> 00:19:34,800
+ So, this is 2048 and this 2048 gives comes as an input to this linear layer. So, essentially
+
+202
+00:19:34,800 --> 00:19:39,520
+ we are just making the layer something like this. So, we are making it closer. So, here
+
+203
+00:19:39,520 --> 00:19:44,720
+ we had a higher dimension R value we are reducing its dimension. So, from a very high dimension
+
+204
+00:19:44,720 --> 00:19:51,520
+ we are just going to 10 dimension. So, 2048 1024 and finally, we are going to store this
+
+205
+00:19:51,520 --> 00:19:57,840
+ 1024. So, the final linear layer will be 1024 to this 10 different classes that we are going
+
+206
+00:19:57,840 --> 00:20:03,700
+ to predict. So, this is how the output becomes. So, you see that we had this similar kind
+
+207
+00:20:03,700 --> 00:20:12,880
+ of representation in this feature extraction also. So, this is the input features. So,
+
+208
+00:20:12,880 --> 00:20:17,720
+ these are the features that we are going to input to the model. So, 256 and the feature
+
+209
+00:20:17,720 --> 00:20:24,360
+ becomes 256 cross this resolution of the image and once you have given this as an input to
+
+210
+00:20:24,360 --> 00:20:30,240
+ the second model you will see that you have to specify the actual number of filters that
+
+211
+00:20:30,240 --> 00:20:36,760
+ we used in the previous one. So, it is basically 256 essentially you had one image which became
+
+212
+00:20:36,760 --> 00:20:46,640
+ 256 image and this 256 image will be now transformed to 384 image because now there are 384 different
+
+213
+00:20:46,640 --> 00:20:53,180
+ kernels and again you can see that for the next convolutional layer we pass this 384
+
+214
+00:20:53,180 --> 00:20:57,700
+ and we are keeping the dimension same. So, there is no dimension change in this last
+
+215
+00:20:57,700 --> 00:21:05,360
+ layer and before that last layer we are just changing it to 256. So, these are the different
+
+216
+00:21:05,360 --> 00:21:13,040
+ aspects of the model. Now, just for your information let us see we have an image.
+
+217
+00:21:13,040 --> 00:21:23,080
+ So, let us consider this to be an image of 0 as we had earlier and we have taken a filter
+
+218
+00:21:23,080 --> 00:21:31,920
+ size. So, let us consider a filter of so number of filters not filter size. So, we are considering
+
+219
+00:21:31,920 --> 00:21:41,760
+ a filter of let us say 4. So, we are considering that there will be 4 filters. So, what you
+
+220
+00:21:41,760 --> 00:21:58,320
+ will get? You will get let us say a green some filter which will capture only this part
+
+221
+00:21:58,320 --> 00:22:08,920
+ let us say this part of the image some of the filter will capture let us say
+
+222
+00:22:08,920 --> 00:22:16,240
+ any of this part. So, essentially this part. So, you can see that by using different filters
+
+223
+00:22:16,240 --> 00:22:25,280
+ you are generating different images right. So, you are creating different images. So,
+
+224
+00:22:25,280 --> 00:22:30,120
+ using filter force. So, there will be 4 filters; that means, you will get end up with different
+
+225
+00:22:30,120 --> 00:22:34,640
+ 4 features. Now, selecting of these features among these
+
+226
+00:22:34,640 --> 00:22:39,840
+ features which feature will be much more important to your model for a classification is what
+
+227
+00:22:39,840 --> 00:22:45,360
+ the model is learning right. So, you have these 4 features let us say you have trained
+
+228
+00:22:45,360 --> 00:22:51,120
+ the model and you are seeing that for a particular layer this particular feature was much more
+
+229
+00:22:51,120 --> 00:22:57,120
+ important it was giving a better accuracy. So, you will keep the weight of this particular
+
+230
+00:22:57,120 --> 00:23:03,680
+ higher while keeping the weights of other like filters lower. So, this is how you are
+
+231
+00:23:03,680 --> 00:23:09,920
+ essentially extracting the features. So, if you give this image once the training is done
+
+232
+00:23:09,920 --> 00:23:16,720
+ the model will pass this to this particular layer with more weight than the other layers.
+
+233
+00:23:16,720 --> 00:23:21,120
+ And once you have this information and once you have this training done you can just have
+
+234
+00:23:21,120 --> 00:23:28,480
+ this model to give you the output of the particular training samples great.
+
+235
+00:23:28,480 --> 00:23:40,560
+ So, now this model is created and we have already seen this part yeah. So, now we will
+
+236
+00:23:40,560 --> 00:23:46,160
+ get through one portion or the final portion where we are just going to train the model
+
+237
+00:23:46,160 --> 00:23:51,240
+ right. So, here we are going to train this model that we have already created. Now let
+
+238
+00:23:51,240 --> 00:23:54,880
+ us see what are the different things we will require to train the model.
+
+239
+00:23:54,880 --> 00:24:00,000
+ The first thing is the epochs. Epochs is basically the number of times the model will get trained
+
+240
+00:24:00,000 --> 00:24:05,520
+ with the new values that we will be passing. So, here the number of epochs is 2 right.
+
+241
+00:24:05,520 --> 00:24:10,680
+ If you increase the number of epochs the chances are that the model will be trained much better,
+
+242
+00:24:10,680 --> 00:24:17,040
+ but it is not always a great idea that is why we always keep a look at this loss function
+
+243
+00:24:17,040 --> 00:24:22,640
+ of the model. So, let us see what we can do we are just iterating through this epoch.
+
+244
+00:24:22,640 --> 00:24:27,480
+ So, right now the epoch value is set to 2. So, it will just iterate over 2 times and let
+
+245
+00:24:27,480 --> 00:24:32,080
+ us see this train function. So, where we are getting this train function from. So, there
+
+246
+00:24:32,080 --> 00:24:37,320
+ is this train function that we will discuss it takes this 4 parameters. The first one
+
+247
+00:24:37,320 --> 00:24:42,080
+ is this model the model is the Alexian model that we have created and the second is the
+
+248
+00:24:42,080 --> 00:24:48,480
+ optimizer let us see where is the optimizer. So, you see this is the optimizer it takes
+
+249
+00:24:48,480 --> 00:24:53,800
+ 2 different values and right now we are using stochastic gradient descent optimizers and
+
+250
+00:24:53,800 --> 00:24:58,480
+ we are getting it from again PyTorch library OPTIM it provides you with various optimizers
+
+251
+00:24:58,480 --> 00:25:02,720
+ and out of that we are using this stochastic gradient descent.
+
+252
+00:25:02,720 --> 00:25:07,440
+ So, we are taking this model parameters. So, what are this model parameters? So, we have
+
+253
+00:25:07,440 --> 00:25:12,000
+ created this model right we have created this model and you can see that there are this
+
+254
+00:25:12,000 --> 00:25:17,800
+ number of parameters trainable parameters. So, this model will be loaded to this particular
+
+255
+00:25:17,800 --> 00:25:22,600
+ function. So, it will take the model parameters because
+
+256
+00:25:22,600 --> 00:25:29,160
+ this is the optimizer and it has the responsibility to optimize the weights. So, it has the like
+
+257
+00:25:29,160 --> 00:25:35,280
+ thing to do to change the model weights to select a particular filter that we were discussing
+
+258
+00:25:35,280 --> 00:25:41,400
+ in the image. So, if you have 4 filters this model should be taking the particular one
+
+259
+00:25:41,400 --> 00:25:46,280
+ filter that actually performs well with the data and this is the learning rate again this
+
+260
+00:25:46,280 --> 00:25:52,840
+ is another hyper parameter like the batch size and this also depends on many aspects.
+
+261
+00:25:52,840 --> 00:25:58,320
+ Firstly, this depends on the data that we are using. So, if we have a statistical analysis
+
+262
+00:25:58,320 --> 00:26:04,280
+ of the data we can have some estimation of what the learning rate could be. So, we try
+
+263
+00:26:04,280 --> 00:26:11,600
+ to use a smaller learning rate if we are sure that the model will converge very fast and
+
+264
+00:26:11,600 --> 00:26:15,920
+ if it is not the case we are trying to increase this learning rate. So, it is also hyper parameter
+
+265
+00:26:15,920 --> 00:26:21,520
+ that needs to be tested for own purposes. So, every time it might change.
+
+266
+00:26:21,520 --> 00:26:29,080
+ So, once we have this model ready this optimizer is now initialized with the model Alexinate
+
+267
+00:26:29,080 --> 00:26:34,920
+ model that we have created with a particular learning rate and this is what we pass to
+
+268
+00:26:34,920 --> 00:26:39,840
+ the train function once again and this train function we have created and we will see that
+
+269
+00:26:39,840 --> 00:26:46,040
+ what this train function does again we are passing this train loader as a third parameter.
+
+270
+00:26:46,040 --> 00:26:51,840
+ Train loader is nothing but this PyTorch library optimized version of this data set that we
+
+271
+00:26:51,840 --> 00:26:57,920
+ were discussing right. So, we load this training data also and now we give this number of epochs
+
+272
+00:26:57,920 --> 00:27:01,940
+ or the current epoch that we are going and why this number of epochs required is just
+
+273
+00:27:01,940 --> 00:27:07,680
+ a very basic thing you will see there. So, let us just understand what is this train code
+
+274
+00:27:07,680 --> 00:27:16,320
+ where is the training code yeah right. So, this is the training code.
+
+275
+00:27:16,320 --> 00:27:22,400
+ So, this portion of the code actually deals with the function for the training and the
+
+276
+00:27:22,400 --> 00:27:28,520
+ testing part and during the training also you will require the testing part also because
+
+277
+00:27:28,520 --> 00:27:34,720
+ we are essentially going to take these values the input data and you are going to train
+
+278
+00:27:34,720 --> 00:27:39,520
+ the model and eventually you have to evaluate the model also to back propagate right. So,
+
+279
+00:27:39,520 --> 00:27:44,440
+ there there are these two things going together. So, these two functions will work together
+
+280
+00:27:44,440 --> 00:27:49,440
+ we will see how. So, there are these two lists for train losses and test losses that we are
+
+281
+00:27:49,440 --> 00:27:55,240
+ saving we can see this for testing whether our model is over fitting or not and whether
+
+282
+00:27:55,240 --> 00:27:59,560
+ it is training properly or not. Let us consider this train function it takes
+
+283
+00:27:59,560 --> 00:28:05,000
+ this four parameters we have discussed. Now, let us start with this model dot train right.
+
+284
+00:28:05,000 --> 00:28:10,000
+ So, model dot train actually starts the model training let us see what what we get in this
+
+285
+00:28:10,000 --> 00:28:15,720
+ training function. So, so this is the very first line in the code. So, this gives you
+
+286
+00:28:15,720 --> 00:28:20,560
+ the batch ID and the data and target. So, what what does this mean this means that this
+
+287
+00:28:20,560 --> 00:28:27,520
+ train loader is actually already keeping you all the batch information. So, you have already
+
+288
+00:28:27,520 --> 00:28:33,040
+ create a batch size of 16 that we have discussed and that batch is automatically loaded if you
+
+289
+00:28:33,040 --> 00:28:38,800
+ just enumerate this iterator of train loader. So, if you do that it will give you the index
+
+290
+00:28:38,800 --> 00:28:47,000
+ of the batch and their current data and targets right. So, this makes the batch process much
+
+291
+00:28:47,000 --> 00:28:50,840
+ more easier if you are working with like deep learning models.
+
+292
+00:28:50,840 --> 00:28:56,200
+ Now, the first thing that we are going to check is that if a GPU environment is available
+
+293
+00:28:56,200 --> 00:29:00,920
+ then we are trying to unload this data and target to that particular section. So, we
+
+294
+00:29:00,920 --> 00:29:06,180
+ are going to unload this to the GPU which will make our calculations faster. So, if
+
+295
+00:29:06,180 --> 00:29:12,280
+ we see that this condition is true we can just use this data dot CUDA function. Since
+
+296
+00:29:12,280 --> 00:29:18,320
+ these are already PyTorch objects you can directly use this CUDA function to transform
+
+297
+00:29:18,320 --> 00:29:24,240
+ it to this GPU environment. So, this data dot CUDA and this target dot CUDA actually changes
+
+298
+00:29:24,240 --> 00:29:29,280
+ or shifts this data and target to the CUDA environment from a CPU environment.
+
+299
+00:29:29,280 --> 00:29:36,360
+ Now, this data and target what you want is now you want the actual variables basically
+
+300
+00:29:36,360 --> 00:29:42,120
+ the data that you want right. So, these were object forms now if you just type this variable
+
+301
+00:29:42,120 --> 00:29:47,640
+ what it will do is it will take this data and it will take this target objects and it
+
+302
+00:29:47,640 --> 00:29:54,360
+ will return you the actual data and target from there. So, now you are ending up with
+
+303
+00:29:54,360 --> 00:29:58,120
+ this actual data and target let us see how this optimizer will work.
+
+304
+00:29:58,120 --> 00:30:03,840
+ Now, we will start with optimizer dot grid 0 grad what does this mean this means that
+
+305
+00:30:03,840 --> 00:30:09,640
+ we will reset all the optimizers weights. So, 0 grad will essentially mean that you are
+
+306
+00:30:09,640 --> 00:30:17,600
+ starting from 0 right. So, now output equals to model data. Now, we are passing this data
+
+307
+00:30:17,600 --> 00:30:24,720
+ to the model what is the model this is the Alex net model that we have created which
+
+308
+00:30:24,720 --> 00:30:27,960
+ we have passed through this train parameter we have seen earlier.
+
+309
+00:30:27,960 --> 00:30:34,000
+ Now, this model dot data will give you an output vector of 10 dimension as you can understand
+
+310
+00:30:34,000 --> 00:30:39,720
+ this is the output dimension right and out of that we want to measure the highest probability
+
+311
+00:30:39,720 --> 00:30:45,120
+ that it is having will represent the particular level of the data that we are training and
+
+312
+00:30:45,120 --> 00:30:50,360
+ we are going to train on that original level what will be the there and we are just going
+
+313
+00:30:50,360 --> 00:30:54,280
+ to take some kind of cross entropy measurement to calculate the loss.
+
+314
+00:30:54,280 --> 00:30:59,720
+ Let us see how the loss is calculated. So, the loss actually takes this target information
+
+315
+00:30:59,720 --> 00:31:04,520
+ that we have this is the target is basically the level original level of the data that
+
+316
+00:31:04,520 --> 00:31:10,880
+ you are training with and it takes the original output from the model and it essentially calculates
+
+317
+00:31:10,880 --> 00:31:16,480
+ how much different they are right. So, this cross entropy is a very easy function and
+
+318
+00:31:16,480 --> 00:31:22,120
+ is used widely for classification task and you see that this cross entropy function now
+
+319
+00:31:22,120 --> 00:31:27,640
+ takes this output and target and gives you a loss right.
+
+320
+00:31:27,640 --> 00:31:33,280
+ This loss you need to propagate through this gradient descent optimizer and if you propagate
+
+321
+00:31:33,280 --> 00:31:40,240
+ this loss through this optimizer the optimizer will try to reduce this loss or minimize this
+
+322
+00:31:40,240 --> 00:31:45,400
+ loss. So, this is the objective of this particular training function. So, let us see how we do
+
+323
+00:31:45,400 --> 00:31:50,520
+ that. So, train losses dot happen. So, I am just storing this train losses in this list
+
+324
+00:31:50,520 --> 00:31:56,900
+ as you can see here and we are just taking one item from this list and now this loss
+
+325
+00:31:56,900 --> 00:32:03,160
+ dot backward actually starts this gradient descent optimization. So, loss dot backward
+
+326
+00:32:03,160 --> 00:32:10,080
+ will optimize all the weights according to the loss and it will try to minimize the loss
+
+327
+00:32:10,080 --> 00:32:15,700
+ and optimizer dot step is another function that actually takes the next batch of items.
+
+328
+00:32:15,700 --> 00:32:22,680
+ Let us see what is the information. So, if batch id is 0 and ok. So, this is just for
+
+329
+00:32:22,680 --> 00:32:28,040
+ printing right. So, if the final one batch is complete. So, here what we are essentially
+
+330
+00:32:28,040 --> 00:32:32,200
+ doing is we are checking whether a single batch is complete or not. Once a single batch
+
+331
+00:32:32,200 --> 00:32:36,880
+ is complete we are just going to print the output that we are having. So, what we are
+
+332
+00:32:36,880 --> 00:32:40,920
+ going to print we are going to print the epoch number that is why we were passing this epoch.
+
+333
+00:32:40,920 --> 00:32:45,680
+ So, it is nothing else we are just going to print it that is why it is here. So, we have
+
+334
+00:32:45,680 --> 00:32:51,440
+ passed this epoch and then we are just printing this value of the loss function. So, the batch
+
+335
+00:32:51,440 --> 00:32:56,440
+ value and the loss function we are just going to have a print of that right.
+
+336
+00:32:56,440 --> 00:33:08,400
+ So, I think this portion is clear this is the model train part and let us see what is
+
+337
+00:33:08,400 --> 00:33:13,800
+ the testing part of the model. So, in test you will see that model takes these two parameters
+
+338
+00:33:13,800 --> 00:33:24,120
+ this model and this test loader right. So, it takes the model and the test loader and
+
+339
+00:33:24,120 --> 00:33:28,040
+ the very first thing that you will see that we will start with this model dot eval. So,
+
+340
+00:33:28,040 --> 00:33:36,480
+ these are essentially these models and it actually starts by evaluating the function.
+
+341
+00:33:36,480 --> 00:33:41,720
+ We are considering two different variables test loss equals to 0 and correct equals to
+
+342
+00:33:41,720 --> 00:33:46,080
+ 0. So, these are some parameters that we are using we will see why we are doing that.
+
+343
+00:33:46,080 --> 00:33:51,080
+ Again we are doing the same steps we have done for the training part we are just checking
+
+344
+00:33:51,080 --> 00:33:55,680
+ the test loader we are just taking the data from the test loader and we are checking whether
+
+345
+00:33:55,680 --> 00:34:00,840
+ there is a GPU available or not and if it is available we just shift this data and this
+
+346
+00:34:00,840 --> 00:34:07,240
+ target to this GPU environment. Again we are running this through this.
+
+347
+00:34:07,240 --> 00:34:12,400
+ So, one more thing is you will see that this is torch dot no grad. So, what does this mean
+
+348
+00:34:12,400 --> 00:34:18,120
+ is that it will try to not change any weights in the model. So, if you use with torch dot
+
+349
+00:34:18,120 --> 00:34:22,920
+ no grad; that means, there will be no change in the Pytor strain source. So, this data
+
+350
+00:34:22,920 --> 00:34:30,280
+ end target again we are loading from this test data right now test data loader. Now,
+
+351
+00:34:30,280 --> 00:34:36,600
+ output will be model data right now. So, this is the output of the model and the test loss
+
+352
+00:34:36,600 --> 00:34:43,840
+ again will be calculated using the cross entropy loss and it takes this output value the target
+
+353
+00:34:43,840 --> 00:34:48,120
+ value and the reduction and the reduction could be some or some other parameters and
+
+354
+00:34:48,120 --> 00:34:53,360
+ we are using some because it is a generally used.
+
+355
+00:34:53,360 --> 00:34:59,160
+ And we are taking this loss item that we have already taken like the previous one. And prediction
+
+356
+00:34:59,160 --> 00:35:04,360
+ now we will just going to store. So, this we are going to store this maximum value of
+
+357
+00:35:04,360 --> 00:35:11,520
+ the log probabilities. So, for example, you have a list of variables like vector or tensor
+
+358
+00:35:11,520 --> 00:35:18,940
+ we can say. So, from 0 to 10 0 to 9 and we will see that the probability of like 5 getting
+
+359
+00:35:18,940 --> 00:35:24,920
+ higher is like most. So, we are going to take the log probability of that particular value.
+
+360
+00:35:24,920 --> 00:35:30,120
+ So, it essentially returns as the actual level right. So, if for example, the probability
+
+361
+00:35:30,120 --> 00:35:34,560
+ is higher at level 10 then the output will be 10 here. So, in the prediction we will
+
+362
+00:35:34,560 --> 00:35:41,320
+ get that output. And we are just checking how many inputs are correct we are just going
+
+363
+00:35:41,320 --> 00:35:47,520
+ to test that. So, we are just taking this prediction dot eq function and it takes this
+
+364
+00:35:47,520 --> 00:35:53,680
+ target and we are just changing its view basically this prediction view in some form. So, that
+
+365
+00:35:53,680 --> 00:35:57,840
+ we can just load it into the CPU environment again because there are some functions which
+
+366
+00:35:57,840 --> 00:36:03,680
+ does not support this GPU calculation. So, we have to change this kind of things.
+
+367
+00:36:03,680 --> 00:36:09,720
+ Again we have a test loss and the test loss we are calculating here and we are appending
+
+368
+00:36:09,720 --> 00:36:14,920
+ this test loss exactly like we did earlier with the training thing and we are appending
+
+369
+00:36:14,920 --> 00:36:22,480
+ in test log list. And we are just going to print this test result and you can see that
+
+370
+00:36:22,480 --> 00:36:27,840
+ test accuracy will also be given and you will return this test accuracy. I think this is
+
+371
+00:36:27,840 --> 00:36:34,440
+ quite simple for this particular thing. So, let us start by running this code ok.
+
+372
+00:36:34,440 --> 00:37:01,280
+ So, let me run this first thing ok. So, I have not used this data. So, let me run this
+
+373
+00:37:01,280 --> 00:37:14,800
+ ok. So, if you see that we have started the model training. So, it will take less number
+
+374
+00:37:14,800 --> 00:37:18,640
+ of time because we are not using huge amount of data. So, let us let us the model train
+
+375
+00:37:18,640 --> 00:37:24,040
+ and understand what happens here. So, the model actually takes the input data from this train
+
+376
+00:37:24,040 --> 00:37:29,320
+ loader it essentially gives it input to the model that we have created the CNN model Alex
+
+377
+00:37:29,320 --> 00:37:35,720
+ net or semi Alex net model and it gives the output to the model. And we check it with the
+
+378
+00:37:35,720 --> 00:37:39,840
+ actual levels that we are having and we have seen how the levels can be accessed. We are
+
+379
+00:37:39,840 --> 00:37:45,400
+ taking a loss function that actually improves this classification accuracy and we are using
+
+380
+00:37:45,400 --> 00:37:49,600
+ stochastic gradient descent to optimize the model weights. These are the different steps
+
+381
+00:37:49,600 --> 00:37:55,480
+ that that are involved in this. So, I think once our objective will be to actually reduce
+
+382
+00:37:55,480 --> 00:37:59,620
+ the loss and you will see that the loss will keep on reducing as we go on different epochs
+
+383
+00:37:59,620 --> 00:38:06,440
+ and the number of epochs changes. So, till this we have actually completed in understanding
+
+384
+00:38:06,440 --> 00:38:12,880
+ like how the model can be used any model can be used from the PyTorch library for image
+
+385
+00:38:12,880 --> 00:38:18,320
+ classification task. And we have seen that how this different objectives of convolutional
+
+386
+00:38:18,320 --> 00:38:24,480
+ neural networks and different parameter values how that can affect the particular model.
+
+387
+00:38:24,480 --> 00:38:30,640
+ And just for a specific discussion on this particular session is that you are going to
+
+388
+00:38:30,640 --> 00:38:38,360
+ take a particular like we are going to give this assignment which essentially is the same
+
+389
+00:38:38,360 --> 00:38:41,480
+ thing that you have done in the class. So, if you have followed the class I think there
+
+390
+00:38:41,480 --> 00:38:47,960
+ should be no issue. So, you will be given a model information you will have to create
+
+391
+00:38:47,960 --> 00:38:52,560
+ the model there will be some data and we will just train on the data and you will get some
+
+392
+00:38:52,560 --> 00:38:56,680
+ output from the model that is it. So, this is this is the thing that we need
+
+393
+00:38:56,680 --> 00:39:01,720
+ from you and I think if you are having any questions any doubts here in this particular
+
+394
+00:39:01,720 --> 00:39:07,080
+ section please let me know and I will be happy to answer the questions. I think we can start
+
+395
+00:39:07,080 --> 00:39:31,440
+ with the question answering. So, once the training is done you will see that we are having this
+
+396
+00:39:31,440 --> 00:39:37,880
+ testing score also. So, we are getting an like 96 percent accuracy in the very first
+
+397
+00:39:37,880 --> 00:39:49,320
+ epoch. So, if you did not use this like dropouts you can see this 10 and 13 layer dropouts
+
+398
+00:39:49,320 --> 00:39:54,240
+ if you do not use them. So, it will over feed the data. So, we had to use that for this
+
+399
+00:39:54,240 --> 00:40:11,840
+ smaller. So, you can see in the second epoch only we are getting 98 percent accuracy. So,
+
+400
+00:40:11,840 --> 00:40:25,560
+ if you are having any doubts please ask it will be easier for you to understand.
+
+401
+00:40:25,560 --> 00:40:41,720
+ So, yeah there are some parts of this code like which is not present in the shared version
+
+402
+00:40:41,720 --> 00:40:57,920
+ it will share to you like after the class. What is the third parameter after h t comma
+
+403
+00:40:57,920 --> 00:41:07,480
+ width is being referred as channels. So, I do not know which particular portion is talking
+
+404
+00:41:07,480 --> 00:41:24,720
+ about. So, I think like this part. So, here you see that this feature size is present
+
+405
+00:41:24,720 --> 00:41:29,240
+ here. So, I think the screen will also be need to be shown. So, what I was essentially
+
+406
+00:41:29,240 --> 00:41:36,680
+ meaning is that in some cases there may be a representation where you use the channel
+
+407
+00:41:36,680 --> 00:41:41,360
+ representation first. So, channel into the resolution resolution is basically height
+
+408
+00:41:41,360 --> 00:41:47,080
+ into width. So, channel into height into width and in some cases you might end up with having
+
+409
+00:41:47,080 --> 00:41:51,520
+ this height into width and then the channel comes. So, height into width into channels.
+
+410
+00:41:51,520 --> 00:41:57,520
+ So, there could be this two different representations and in the model you will see that we represented
+
+411
+00:41:57,520 --> 00:42:03,520
+ using this format. If you just see this model we represent that first the channel comes then
+
+412
+00:42:03,520 --> 00:42:08,160
+ this resolution right. So, that is what why I was talking I think that was the question
+
+413
+00:42:08,160 --> 00:42:14,680
+ about I think we can move to next question. Is github the sliding filter code is not there
+
+414
+00:42:14,680 --> 00:42:19,720
+ where yes I as I told you that sliding filter code is not there it is present here, but
+
+415
+00:42:19,720 --> 00:42:27,520
+ I will share it with you like one the class over. So, why we are starting over fourth
+
+416
+00:42:27,520 --> 00:42:34,040
+ convolutional 2D layer yeah. So, I discussed that in this model. So, in this Alexinate
+
+417
+00:42:34,040 --> 00:42:40,680
+ model the initial layers the initial input layer is having a size of 277 right you can
+
+418
+00:42:40,680 --> 00:42:46,760
+ see it here. So, there are two ways of working on this model the first is you have the input
+
+419
+00:42:46,760 --> 00:42:53,200
+ of size 27 or 26 something like that and we can pair the inter values apart from that.
+
+420
+00:42:53,200 --> 00:43:00,200
+ So, we can create a 207 27 pixel image which it does not make sense that is why we have
+
+421
+00:43:00,200 --> 00:43:05,280
+ omitted the first two layers of the model and we have kept the actual part or idea of
+
+422
+00:43:05,280 --> 00:43:10,160
+ the model. The idea of the Alexinate model was that this convolutional layers if you
+
+423
+00:43:10,160 --> 00:43:14,360
+ are stacking them together you are making a depth of this convolutional layers actually
+
+424
+00:43:14,360 --> 00:43:20,400
+ performs better. So, we have done that only and we have just removed the first layer convolutional
+
+425
+00:43:20,400 --> 00:43:26,760
+ layer that we were working with that we gave us the input size of 27 as you can see in
+
+426
+00:43:26,760 --> 00:43:35,440
+ this side 27 which makes like our data set directly fit into the model right. So, we
+
+427
+00:43:35,440 --> 00:43:40,520
+ do not have to pad anything else and the model size is also lower. So, there are these benefits
+
+428
+00:43:40,520 --> 00:43:46,040
+ we are having again we are keeping the essence of this Alexinate by keeping this depth convolutional
+
+429
+00:43:46,040 --> 00:43:46,920
+ layers. Thank you.
+

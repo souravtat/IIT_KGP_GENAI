@@ -1,0 +1,429 @@
+ back on our like thing that we were doing. So, let us see what are the things that we
+ did yeah. So, now we will start with the creation of this creation of this AlexNet model and
+ we were creating we had to create this particular model from this particular model. Let us see
+ how we are going to do that. So, you see that this is an input layer. Now there are some
+ modifications that we need to make. So, what are the modifications? So, we have already
+ seen that the image that we were working with which is the MNIST image. You can see that
+ we have just printed the image and it gives you a resolution of 28 cross 28. So, the dimension
+ of the image is 28 cross 28. So, you can see this original this layer where we are having
+ this convolutional layer it has a feature size of like input size of 227 and which is very
+ very high compared to what is the image that we are having. So, to deal with that we are
+ just creating a modified version of AlexNet which is exactly fine like we can do it anytime
+ right. So, let us see how we are doing it. We are just building a trimmed version of
+ AlexNet and let us consider this first layer. So, this is the model that we are going to
+ build one by one in one step. So, the first layer is the convolutional layer with 256
+ input features and this is the basically the color space that we are having the feature
+ values that we are having the input feature we all know that it is one for this grayscale
+ image and this is the 256 different filters that we are going to plan.
+ So, let us see where we are starting from we are starting from at this stage right. So,
+ so this conf 2d layer which is 1 2 3 4th number of conf 2d layer we are starting from that
+ it has 256 filters each of the size of the filter is 5 the stride is 1 and there is a
+ padding value of 2 right and it takes 27 cross 27 as input you can see. So, it is the exact
+ same as what we are having in this image. So, we are just going to plant these values
+ into the model and it again follows by a value activation right. So, just see how we can create
+ that layer. So, this nn function which is a neural network function from this PyTorch
+ library gives you direct access to this conf 2d layer. So, you can just give this conf
+ 2d function and which takes these different parameters that we were talking about. So,
+ this 1 is the input feature space the input feature space is of course, 1 because we are
+ using this grayscale image and this 256 represent the new number of features or the kernels
+ the number of kernels. This is the size of each of the kernel which is 5 cross 5 it is
+ square kernel it is 5 value and the stride value is taken as 1 and the padding is 2.
+ So, we have just copied the values from there and we have kept it here. And followed by
+ this convolutional 2d layer we are having a Rayleigh layer and the Rayleigh we are doing
+ it as nn dot Rayleigh and in place equals to true. This in place function gives us the
+ adaptation like we just do not need to store it somewhere else we can just write this code
+ and it will update the values right else if you are not using in place you are just going
+ to store it somewhere and work on that. So, here you see we have created this model and
+ I am just going to run this and I will just go to this different parts.
+ So, let us see this is the part where we are writing it here is the class of AlexNet. So,
+ we have created this class and this class belongs to a group of neural network modules
+ from PyTorch. And this is the init function of that particular class and this init takes
+ this num parameter and what is this num parameter and this is the parameter that I have added
+ separately because you might need a model for different classes. Here we are using only
+ 10 class classifications where it is the value is given as 10.
+ And it initializes this particular model. So, super function gives you the access to
+ this particular class which you are working with this basically the super class and you
+ are going to initialize that. And we are having some features of this particular class the
+ features are the functions are basically this feature right. So, this first feature is this
+ neural network sequential layer and we are seeing that there are many layers. So, we
+ will like uncomment each of them and see what happens. So, this is the general outline.
+ So, this is the feature extraction part that is why it is called as feature. And then we
+ have this classifier part which is the dense layer part. So, here you see that these two
+ objects will be initialized once we initialize this Alex net class. We will go through this
+ what is there. So, this is a function and this is a forward
+ function. What does this forward function takes? It takes into account that we are going
+ to forward our image which is the input image through this feature extraction. Once we have
+ this feature extraction done we are going to pass it through some kind of transformations
+ that will be required for this classification part. And once the transformation is done
+ we are just passing it to this classification layer as simple as that. So, this forward
+ function it actually creates the different stages of the model. So, essentially this forward
+ function is our entire model right. So, this is the feature extraction part.
+ So, self dot feature you are going to extract this features and once you have this features
+ here. Once you have this features here you can transform it in some different ways we
+ will see why this transformation it required. And we can pass this transformation to this
+ classifier and then we can have this classification. So, this is the entire model and I have broken
+ down this model for easier understanding of this particular model.
+ So, here you see that we have created this model and I have discussed this part where
+ we have just created the first convolutional to be layer. And this classifier we are not
+ using right now because we have commented this section you can see. So, I am just returning
+ in this forward layer the feature extraction part right. So, let us just start this model
+ and here some of the interesting things comes into play. So, we are just creating an object
+ of this AlexNet class that we have created. So, model equals to AlexNet and this bracket
+ gives you this object. So, we are creating object of this class.
+ So, once we have done that now we are going to do some accelerated computing. So, what
+ is accelerated computing I think that needs some discussion here. So, here you see that
+ we have just given a single line of code that actually tells us whether our system has a
+ CUDA enabled GPU or not basically you have a GPU environment or not. Right now we are
+ running a T4 environment. So, it should return GPU is available. So, let us run it separately
+ and probably you can also run it separately to see whether your system has a GPU enabled
+ or not. So, you have this GPU enabled system. So, here you can see that GPU is available
+ is showing there. So, what I will do is now I will unload this model to the GPU. So, for
+ unloading the model to GPU I will just write this line of code model dot CUDA right and
+ if you are using a CPU based environment you have to like change some of the aspects of
+ this because this is totally done in the CUDA environment. So, if this torch dot CUDA is
+ available and I am just unloading everything to CUDA what is happening here right let us
+ see what is happening. So, we have this two portions. So, this is a CPU portion which is
+ a central processing unit I think I can zoom in a bit. So, this is the central processing
+ unit of your system that that you can use for handling different tasks, but there is
+ a GPU processing unit and in deep learning models you will probably find that this GPU
+ is very very important. So, what is the idea behind a GPU and a CPU what is the difference
+ specifically? So, here you will see that in CPU there will be let us say there will be
+ 4 cores 18 cores 16 cores. So, there will be some like very limited number of cores.
+ In GPU you can understand there will be millions of cores for example, there will be 10,000
+ cores for each of the tasks that you are doing. Now, these 10,000 processors that are present
+ in a GPU can parallely process the same mathematical operations. So, if your model for example,
+ requires huge number of calculations this GPU can be used for accelerating that computations.
+ So, here for example, in CPU the process will come it will consider this 4 cores it will
+ perform this 4 different calculations and then it will take the second batch it will
+ perform the calculations on that and so on. But here you can do 10,000 calculations at
+ once right if you are having a GPU with let us say 10,000 cores.
+ So, this GPU enabled systems are very very important in this deep learning models where
+ we are just able to calculate these features together because there is no dependency on
+ the other features. Because for example, if you are calculating a feature for a particular
+ filter so, it is independent of the filters of the other filters. So, you can just create
+ this GPU environment where you can calculate for one feature and the other features together
+ without waiting for a CPU resources. So, this accelerated computing is very very important
+ and see that there are many section in this code even in the training phase we are going
+ to use that and this understanding is very very essential.
+ So, this summary is another function from the spy torch we will see that we have you
+ already imported this summary here. So, you can use this summary to see what is inside
+ the model basically what are the different parameters of the model what is the structure
+ of the model and how the model is performing. So, let us see see what is the thing we get
+ here for our model. So, here in our model as I told you there is only this feature extraction
+ with a single convolutional layer and a value activation function.
+ So, just running this will create an object of this Alex net class it will load everything
+ to this GPU environment and this model dot summary will take the model this is the model
+ object and take an input dimension. Now, our input dimension is 1 into 28 cross 28 because
+ the ms dataset is having a resolution of 28 and there is only one channel. So, this will
+ be the input size and you see that once we pass this input we are just given this that
+ the GPU is available and this is the layers. So, this is the layer convolutional 2D layer
+ this is the first layer and this is the second or a rear activation layer and this is this
+ output shape here and these are the number of parameters.
+ Now, considering this number of parameters are essentially there are this trainable parameters.
+ So, you are there are weights associated in the model. So, when you pass a training data
+ through it the model will try to optimize that weight for your classification task or
+ any task you are doing. So, these are the number of parameters that the model will be
+ tuning during this training model. So, as you increase this number of parameters of course
+ your model will be a bigger model will require huge amount of resources, but again will be
+ a much better model than a smaller parameter model.
+ So, this is the general idea and now if you want to know how this number of parameters
+ are calculated again like there is this section where I have just kept this number of parameters.
+ So, you can calculate this number of parameters using this simple formulations if required.
+ So, let us consider this that we are just going to now change this model. Now, we are
+ going to add the next layer. So, similarly I am just adding another extra layer right
+ now and I am running the exact same code. Now, you see that there are these four layers
+ that the model will be trained on and the model parameters now increase drastically.
+ So, initially we had only 6000 parameters to be trained for the initial layer, but in
+ the second layer where we have so many features our actually a convolutional 2D layer for
+ this fourth layer actually has a very very high number of parameters which is like around
+ 9 lakhs right. So, as you can understand if you increase this depth of this models you
+ will end up with having a higher parameter model.
+ So, now let us uncheck all of this. So, all of these layers. So, you will see that I have
+ always kept these parameter values. So, this kernel size stride and padding and this if
+ you do not give these values there are some default values that will be considered. So,
+ in your assignment that will be given you must go through this actual models or basically
+ this layers that the model provides in PyTorch and see what are the default values also right.
+ In some cases you might not require this kernel size or stride values, because those will
+ be by default let us say 1 right. So, here you see that we have unblocked all this models,
+ but still we are not giving this classification layer a chance. So, just see this final feature
+ extraction layer. So, this is the final feature extraction layer. So, this is how the feature
+ extraction layer looks and if you compare this to our original like model that we were
+ working with. So, this model you will find that it is very very it is the exact same
+ thing just only that the first few layers we have not used and we have used this fourth
+ layer we have used from this fourth layer. So, all these layers are present and before
+ these layers we have omitted these layers, because our image was a smaller size image.
+ So, this is one of the aspect and right. So, here you see that we are going to now work
+ with this transformation of this values. Now, what is this transformation? You see that the
+ output is 13 cross 13 and 256 right and let us just see what is the output it is the exact
+ same.
+ So, this is the output dimension from the feature extraction layer. So, once you have
+ this AlexNet the feature extraction layer have passed. So, your feature dimension or
+ the data dimension now becomes 13 cross 13 and 256 different filters. Now, we can input
+ this to this fully connected layers how we are going to import this to a fully connected
+ layers and essentially this fully connected layer is a single vector of let us say some
+ dimension. So, how we can just transpose this function or this output dimension to that
+ single vector right. So, here we are just unchecking this x dot view and we are just
+ removing this part right and I am not changing anything here I will just show you what is
+ present here. So, here what I have done is I have just changed this 256 into 13 cross
+ 13 into a different dimension and the dimension is this 256 13 13 and 2048 right. So, now
+ all these feature values will be converted to these features which will be input to our
+ neural network classifier. So, here this part now will return me the classification function
+ also let us consider what are the things that is inside the classification layer.
+ So, in this diagram you see there is this dropout layer which is having a feature size
+ of 4608, there is a linear layer which is having a value of 2048 again followed by a
+ ReLU activation there is again dropout and then there are two this linear layouts right.
+ So, let us understand this that if you are having this dropouts. So, in the real paper
+ I think they have not used this dropout layers, but this dropouts essentially make it simpler
+ for a smaller models to get rid of overfitting right. So, we are using MNIS dataset and this
+ is already an well built model. If you do not use dropout and if you are training this
+ model for a higher number of epochs there is a severe chance that it will overfit. So,
+ we are trying to avoid overfitting and making the model more generalizable we have added
+ this two dropout layers as I as this point like I could not remember whether this dropout
+ is present in this original paper or not maybe they are just linear layers or maybe the dropout
+ is present.
+ But for this work we are using this dropout layer and the reason is we are going to use
+ very small number of data set and do not want overfitting on those. So, first dropout layer
+ then there is linear dropout linear linear let us see how we can code that exact same
+ thing. So, here you see that we have this layer. So, NN dot dropout is a single function
+ that gives you this dropout functionality and again you are having this neural network
+ dot linear layer. So, we had a dropout layer then we had a linear layer then we had this
+ activation function then we had this dropout again and then we had two linear layers.
+ So, you see that we are having this Rayleigh layer and again in place is true exactly same
+ as what you have done in this convolutional part feature extraction part and we are changing
+ this feature dimension and how this feature dimensions are changed that is very simple
+ thing and I think that you can understand by seeing the transformations that are happening.
+ So, from 2048. So, this is 2048 is the output of this feature. So, this is the input feature
+ dimension 13 13 and 256 that we had earlier 13 13 256 and the output dimension is 2048
+ So, the model will return. So, basically this linear layer will return vector size which
+ is having 2048 different unique values then it will pass through this activation function
+ then there will be this dropout which are the weights added to this model as a bias and
+ then there is this linear layer once again which takes the input from the previous layer.
+ So, this is 2048 and this 2048 gives comes as an input to this linear layer. So, essentially
+ we are just making the layer something like this. So, we are making it closer. So, here
+ we had a higher dimension R value we are reducing its dimension. So, from a very high dimension
+ we are just going to 10 dimension. So, 2048 1024 and finally, we are going to store this
+ 1024. So, the final linear layer will be 1024 to this 10 different classes that we are going
+ to predict. So, this is how the output becomes. So, you see that we had this similar kind
+ of representation in this feature extraction also. So, this is the input features. So,
+ these are the features that we are going to input to the model. So, 256 and the feature
+ becomes 256 cross this resolution of the image and once you have given this as an input to
+ the second model you will see that you have to specify the actual number of filters that
+ we used in the previous one. So, it is basically 256 essentially you had one image which became
+ 256 image and this 256 image will be now transformed to 384 image because now there are 384 different
+ kernels and again you can see that for the next convolutional layer we pass this 384
+ and we are keeping the dimension same. So, there is no dimension change in this last
+ layer and before that last layer we are just changing it to 256. So, these are the different
+ aspects of the model. Now, just for your information let us see we have an image.
+ So, let us consider this to be an image of 0 as we had earlier and we have taken a filter
+ size. So, let us consider a filter of so number of filters not filter size. So, we are considering
+ a filter of let us say 4. So, we are considering that there will be 4 filters. So, what you
+ will get? You will get let us say a green some filter which will capture only this part
+ let us say this part of the image some of the filter will capture let us say
+ any of this part. So, essentially this part. So, you can see that by using different filters
+ you are generating different images right. So, you are creating different images. So,
+ using filter force. So, there will be 4 filters; that means, you will get end up with different
+ 4 features. Now, selecting of these features among these
+ features which feature will be much more important to your model for a classification is what
+ the model is learning right. So, you have these 4 features let us say you have trained
+ the model and you are seeing that for a particular layer this particular feature was much more
+ important it was giving a better accuracy. So, you will keep the weight of this particular
+ higher while keeping the weights of other like filters lower. So, this is how you are
+ essentially extracting the features. So, if you give this image once the training is done
+ the model will pass this to this particular layer with more weight than the other layers.
+ And once you have this information and once you have this training done you can just have
+ this model to give you the output of the particular training samples great.
+ So, now this model is created and we have already seen this part yeah. So, now we will
+ get through one portion or the final portion where we are just going to train the model
+ right. So, here we are going to train this model that we have already created. Now let
+ us see what are the different things we will require to train the model.
+ The first thing is the epochs. Epochs is basically the number of times the model will get trained
+ with the new values that we will be passing. So, here the number of epochs is 2 right.
+ If you increase the number of epochs the chances are that the model will be trained much better,
+ but it is not always a great idea that is why we always keep a look at this loss function
+ of the model. So, let us see what we can do we are just iterating through this epoch.
+ So, right now the epoch value is set to 2. So, it will just iterate over 2 times and let
+ us see this train function. So, where we are getting this train function from. So, there
+ is this train function that we will discuss it takes this 4 parameters. The first one
+ is this model the model is the Alexian model that we have created and the second is the
+ optimizer let us see where is the optimizer. So, you see this is the optimizer it takes
+ 2 different values and right now we are using stochastic gradient descent optimizers and
+ we are getting it from again PyTorch library OPTIM it provides you with various optimizers
+ and out of that we are using this stochastic gradient descent.
+ So, we are taking this model parameters. So, what are this model parameters? So, we have
+ created this model right we have created this model and you can see that there are this
+ number of parameters trainable parameters. So, this model will be loaded to this particular
+ function. So, it will take the model parameters because
+ this is the optimizer and it has the responsibility to optimize the weights. So, it has the like
+ thing to do to change the model weights to select a particular filter that we were discussing
+ in the image. So, if you have 4 filters this model should be taking the particular one
+ filter that actually performs well with the data and this is the learning rate again this
+ is another hyper parameter like the batch size and this also depends on many aspects.
+ Firstly, this depends on the data that we are using. So, if we have a statistical analysis
+ of the data we can have some estimation of what the learning rate could be. So, we try
+ to use a smaller learning rate if we are sure that the model will converge very fast and
+ if it is not the case we are trying to increase this learning rate. So, it is also hyper parameter
+ that needs to be tested for own purposes. So, every time it might change.
+ So, once we have this model ready this optimizer is now initialized with the model Alexinate
+ model that we have created with a particular learning rate and this is what we pass to
+ the train function once again and this train function we have created and we will see that
+ what this train function does again we are passing this train loader as a third parameter.
+ Train loader is nothing but this PyTorch library optimized version of this data set that we
+ were discussing right. So, we load this training data also and now we give this number of epochs
+ or the current epoch that we are going and why this number of epochs required is just
+ a very basic thing you will see there. So, let us just understand what is this train code
+ where is the training code yeah right. So, this is the training code.
+ So, this portion of the code actually deals with the function for the training and the
+ testing part and during the training also you will require the testing part also because
+ we are essentially going to take these values the input data and you are going to train
+ the model and eventually you have to evaluate the model also to back propagate right. So,
+ there there are these two things going together. So, these two functions will work together
+ we will see how. So, there are these two lists for train losses and test losses that we are
+ saving we can see this for testing whether our model is over fitting or not and whether
+ it is training properly or not. Let us consider this train function it takes
+ this four parameters we have discussed. Now, let us start with this model dot train right.
+ So, model dot train actually starts the model training let us see what what we get in this
+ training function. So, so this is the very first line in the code. So, this gives you
+ the batch ID and the data and target. So, what what does this mean this means that this
+ train loader is actually already keeping you all the batch information. So, you have already
+ create a batch size of 16 that we have discussed and that batch is automatically loaded if you
+ just enumerate this iterator of train loader. So, if you do that it will give you the index
+ of the batch and their current data and targets right. So, this makes the batch process much
+ more easier if you are working with like deep learning models.
+ Now, the first thing that we are going to check is that if a GPU environment is available
+ then we are trying to unload this data and target to that particular section. So, we
+ are going to unload this to the GPU which will make our calculations faster. So, if
+ we see that this condition is true we can just use this data dot CUDA function. Since
+ these are already PyTorch objects you can directly use this CUDA function to transform
+ it to this GPU environment. So, this data dot CUDA and this target dot CUDA actually changes
+ or shifts this data and target to the CUDA environment from a CPU environment.
+ Now, this data and target what you want is now you want the actual variables basically
+ the data that you want right. So, these were object forms now if you just type this variable
+ what it will do is it will take this data and it will take this target objects and it
+ will return you the actual data and target from there. So, now you are ending up with
+ this actual data and target let us see how this optimizer will work.
+ Now, we will start with optimizer dot grid 0 grad what does this mean this means that
+ we will reset all the optimizers weights. So, 0 grad will essentially mean that you are
+ starting from 0 right. So, now output equals to model data. Now, we are passing this data
+ to the model what is the model this is the Alex net model that we have created which
+ we have passed through this train parameter we have seen earlier.
+ Now, this model dot data will give you an output vector of 10 dimension as you can understand
+ this is the output dimension right and out of that we want to measure the highest probability
+ that it is having will represent the particular level of the data that we are training and
+ we are going to train on that original level what will be the there and we are just going
+ to take some kind of cross entropy measurement to calculate the loss.
+ Let us see how the loss is calculated. So, the loss actually takes this target information
+ that we have this is the target is basically the level original level of the data that
+ you are training with and it takes the original output from the model and it essentially calculates
+ how much different they are right. So, this cross entropy is a very easy function and
+ is used widely for classification task and you see that this cross entropy function now
+ takes this output and target and gives you a loss right.
+ This loss you need to propagate through this gradient descent optimizer and if you propagate
+ this loss through this optimizer the optimizer will try to reduce this loss or minimize this
+ loss. So, this is the objective of this particular training function. So, let us see how we do
+ that. So, train losses dot happen. So, I am just storing this train losses in this list
+ as you can see here and we are just taking one item from this list and now this loss
+ dot backward actually starts this gradient descent optimization. So, loss dot backward
+ will optimize all the weights according to the loss and it will try to minimize the loss
+ and optimizer dot step is another function that actually takes the next batch of items.
+ Let us see what is the information. So, if batch id is 0 and ok. So, this is just for
+ printing right. So, if the final one batch is complete. So, here what we are essentially
+ doing is we are checking whether a single batch is complete or not. Once a single batch
+ is complete we are just going to print the output that we are having. So, what we are
+ going to print we are going to print the epoch number that is why we were passing this epoch.
+ So, it is nothing else we are just going to print it that is why it is here. So, we have
+ passed this epoch and then we are just printing this value of the loss function. So, the batch
+ value and the loss function we are just going to have a print of that right.
+ So, I think this portion is clear this is the model train part and let us see what is
+ the testing part of the model. So, in test you will see that model takes these two parameters
+ this model and this test loader right. So, it takes the model and the test loader and
+ the very first thing that you will see that we will start with this model dot eval. So,
+ these are essentially these models and it actually starts by evaluating the function.
+ We are considering two different variables test loss equals to 0 and correct equals to
+ 0. So, these are some parameters that we are using we will see why we are doing that.
+ Again we are doing the same steps we have done for the training part we are just checking
+ the test loader we are just taking the data from the test loader and we are checking whether
+ there is a GPU available or not and if it is available we just shift this data and this
+ target to this GPU environment. Again we are running this through this.
+ So, one more thing is you will see that this is torch dot no grad. So, what does this mean
+ is that it will try to not change any weights in the model. So, if you use with torch dot
+ no grad; that means, there will be no change in the Pytor strain source. So, this data
+ end target again we are loading from this test data right now test data loader. Now,
+ output will be model data right now. So, this is the output of the model and the test loss
+ again will be calculated using the cross entropy loss and it takes this output value the target
+ value and the reduction and the reduction could be some or some other parameters and
+ we are using some because it is a generally used.
+ And we are taking this loss item that we have already taken like the previous one. And prediction
+ now we will just going to store. So, this we are going to store this maximum value of
+ the log probabilities. So, for example, you have a list of variables like vector or tensor
+ we can say. So, from 0 to 10 0 to 9 and we will see that the probability of like 5 getting
+ higher is like most. So, we are going to take the log probability of that particular value.
+ So, it essentially returns as the actual level right. So, if for example, the probability
+ is higher at level 10 then the output will be 10 here. So, in the prediction we will
+ get that output. And we are just checking how many inputs are correct we are just going
+ to test that. So, we are just taking this prediction dot eq function and it takes this
+ target and we are just changing its view basically this prediction view in some form. So, that
+ we can just load it into the CPU environment again because there are some functions which
+ does not support this GPU calculation. So, we have to change this kind of things.
+ Again we have a test loss and the test loss we are calculating here and we are appending
+ this test loss exactly like we did earlier with the training thing and we are appending
+ in test log list. And we are just going to print this test result and you can see that
+ test accuracy will also be given and you will return this test accuracy. I think this is
+ quite simple for this particular thing. So, let us start by running this code ok.
+ So, let me run this first thing ok. So, I have not used this data. So, let me run this
+ ok. So, if you see that we have started the model training. So, it will take less number
+ of time because we are not using huge amount of data. So, let us let us the model train
+ and understand what happens here. So, the model actually takes the input data from this train
+ loader it essentially gives it input to the model that we have created the CNN model Alex
+ net or semi Alex net model and it gives the output to the model. And we check it with the
+ actual levels that we are having and we have seen how the levels can be accessed. We are
+ taking a loss function that actually improves this classification accuracy and we are using
+ stochastic gradient descent to optimize the model weights. These are the different steps
+ that that are involved in this. So, I think once our objective will be to actually reduce
+ the loss and you will see that the loss will keep on reducing as we go on different epochs
+ and the number of epochs changes. So, till this we have actually completed in understanding
+ like how the model can be used any model can be used from the PyTorch library for image
+ classification task. And we have seen that how this different objectives of convolutional
+ neural networks and different parameter values how that can affect the particular model.
+ And just for a specific discussion on this particular session is that you are going to
+ take a particular like we are going to give this assignment which essentially is the same
+ thing that you have done in the class. So, if you have followed the class I think there
+ should be no issue. So, you will be given a model information you will have to create
+ the model there will be some data and we will just train on the data and you will get some
+ output from the model that is it. So, this is this is the thing that we need
+ from you and I think if you are having any questions any doubts here in this particular
+ section please let me know and I will be happy to answer the questions. I think we can start
+ with the question answering. So, once the training is done you will see that we are having this
+ testing score also. So, we are getting an like 96 percent accuracy in the very first
+ epoch. So, if you did not use this like dropouts you can see this 10 and 13 layer dropouts
+ if you do not use them. So, it will over feed the data. So, we had to use that for this
+ smaller. So, you can see in the second epoch only we are getting 98 percent accuracy. So,
+ if you are having any doubts please ask it will be easier for you to understand.
+ So, yeah there are some parts of this code like which is not present in the shared version
+ it will share to you like after the class. What is the third parameter after h t comma
+ width is being referred as channels. So, I do not know which particular portion is talking
+ about. So, I think like this part. So, here you see that this feature size is present
+ here. So, I think the screen will also be need to be shown. So, what I was essentially
+ meaning is that in some cases there may be a representation where you use the channel
+ representation first. So, channel into the resolution resolution is basically height
+ into width. So, channel into height into width and in some cases you might end up with having
+ this height into width and then the channel comes. So, height into width into channels.
+ So, there could be this two different representations and in the model you will see that we represented
+ using this format. If you just see this model we represent that first the channel comes then
+ this resolution right. So, that is what why I was talking I think that was the question
+ about I think we can move to next question. Is github the sliding filter code is not there
+ where yes I as I told you that sliding filter code is not there it is present here, but
+ I will share it with you like one the class over. So, why we are starting over fourth
+ convolutional 2D layer yeah. So, I discussed that in this model. So, in this Alexinate
+ model the initial layers the initial input layer is having a size of 277 right you can
+ see it here. So, there are two ways of working on this model the first is you have the input
+ of size 27 or 26 something like that and we can pair the inter values apart from that.
+ So, we can create a 207 27 pixel image which it does not make sense that is why we have
+ omitted the first two layers of the model and we have kept the actual part or idea of
+ the model. The idea of the Alexinate model was that this convolutional layers if you
+ are stacking them together you are making a depth of this convolutional layers actually
+ performs better. So, we have done that only and we have just removed the first layer convolutional
+ layer that we were working with that we gave us the input size of 27 as you can see in
+ this side 27 which makes like our data set directly fit into the model right. So, we
+ do not have to pad anything else and the model size is also lower. So, there are these benefits
+ we are having again we are keeping the essence of this Alexinate by keeping this depth convolutional
+ layers. Thank you.

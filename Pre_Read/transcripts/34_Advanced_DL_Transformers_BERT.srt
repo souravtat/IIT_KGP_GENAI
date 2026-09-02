@@ -1,0 +1,4072 @@
+1
+00:00:00,000 --> 00:00:15,840
+ Okay, thank you, thank you all for joining the session, so we will be talking about advanced
+
+2
+00:00:15,840 --> 00:00:21,120
+ deep learning basically focusing on natural energy processing aspect of deep learning.
+
+3
+00:00:21,120 --> 00:00:27,460
+ Particularly, we will cover the topics of transformers and BERT, now you have already
+
+4
+00:00:27,460 --> 00:00:34,400
+ gone through certain lectures around NLP and also on deep learning, but I will just give
+
+5
+00:00:34,400 --> 00:00:39,560
+ a brief introduction to the topic before I will talk about the architectures here.
+
+6
+00:00:39,560 --> 00:00:46,920
+ So, what is NLP in general, I mean this is one way we can describe what is NLP, so typically
+
+7
+00:00:46,920 --> 00:00:51,920
+ you want to make computers understand what we are writing or speaking, so think about
+
+8
+00:00:51,920 --> 00:00:56,520
+ doing something for internet web pages, so it is already written by human, so the web
+
+9
+00:00:56,520 --> 00:01:00,100
+ pages you want to summarize that, so you have to first understand what is written and
+
+10
+00:01:00,100 --> 00:01:07,080
+ then you do something like understand what we write and make computers write and also
+
+11
+00:01:07,080 --> 00:01:13,240
+ speaking with that, so this typically covers most of the applications that we have in NLP,
+
+12
+00:01:13,240 --> 00:01:18,240
+ so you want them to understand what we are writing and we also want them to write.
+
+13
+00:01:18,240 --> 00:01:26,480
+ Now, why we talk about NLP, typically we are using NLP in our daily lives and so many applications
+
+14
+00:01:26,480 --> 00:01:31,600
+ so you want to design, implement and test systems that can process natural language
+
+15
+00:01:31,600 --> 00:01:36,240
+ for practical applications and these can be like numerous, you can think about like very
+
+16
+00:01:36,240 --> 00:01:45,880
+ early applications, machine translations and even web search, and to everything around
+
+17
+00:01:45,880 --> 00:01:56,240
+ summarization, question answering, dialogues, classification, there are so many applications
+
+18
+00:01:56,240 --> 00:02:01,640
+ where you would like to process natural language and this would be various practical application
+
+19
+00:02:01,640 --> 00:02:03,640
+ that you can come up with.
+
+20
+00:02:03,640 --> 00:02:09,160
+ Now, depending on the kind of applications that you are targeting there are certain paradigms
+
+21
+00:02:09,160 --> 00:02:14,760
+ that are defined, so for example, it may be about sentiment analysis, so you are given
+
+22
+00:02:14,760 --> 00:02:22,240
+ a piece of text and you want to find out what is the class, so maybe in sentiment analysis
+
+23
+00:02:22,240 --> 00:02:32,680
+ positive negative neutral and text can be the movie review or hotel review, right, news
+
+24
+00:02:32,680 --> 00:02:36,240
+ articles grouping, you are given lot of news articles, you want to group them according
+
+25
+00:02:36,240 --> 00:02:41,600
+ to various topics, so this is again a classification problem, so where you are given a piece of
+
+26
+00:02:41,600 --> 00:02:47,480
+ text and you want to classify into one of the predefined categories, there can be other
+
+27
+00:02:47,480 --> 00:02:53,600
+ paradigm for example, named anti recognition or code mixing part of speech tag where you
+
+28
+00:02:53,600 --> 00:02:58,640
+ are given a sequence and you need to find out what is the tag for each word like in
+
+29
+00:02:58,640 --> 00:03:06,480
+ part of speech tagging I went to the market, for each word you would like to give a tag
+
+30
+00:03:06,480 --> 00:03:11,320
+ like what is I, what is went to the market, for each word you want to define a tag, right,
+
+31
+00:03:11,320 --> 00:03:16,000
+ so this is not open the entire sentence, per word you are defining a tag, so this is what
+
+32
+00:03:16,000 --> 00:03:20,920
+ is called sequence labeling and then there are application where you generate the text
+
+33
+00:03:20,920 --> 00:03:25,120
+ as an output, like machine translation you are given a source language input and you
+
+34
+00:03:25,120 --> 00:03:30,000
+ want to generate something in the target language, translateration, abstract summarization, you
+
+35
+00:03:30,000 --> 00:03:34,960
+ are given an input document, you want to summarize in your own words, right, chatbots, you want
+
+36
+00:03:34,960 --> 00:03:40,320
+ to generate a response, so you are all text generation paradigms, so these are three main
+
+37
+00:03:40,320 --> 00:03:47,240
+ paradigms that we typically talk about in an LP and what kind of methods do we use,
+
+38
+00:03:47,240 --> 00:03:57,200
+ so you see very early methods were like Alizar that was a completely rule based pattern based
+
+39
+00:03:57,200 --> 00:04:02,440
+ chatbot that would converse with people and then slowly there were statistical language
+
+40
+00:04:02,440 --> 00:04:08,200
+ models, we went to Neal probabilistic language models and 2013 was the time when deep learning
+
+41
+00:04:08,200 --> 00:04:14,480
+ really took over in the field of NLT, right, before that we used to develop features for
+
+42
+00:04:14,480 --> 00:04:23,040
+ different problems and use models like SVMs and regression and CRFs, so in 2013 when word
+
+43
+00:04:23,040 --> 00:04:29,080
+ vectors were introduced that is where the field completely changed, so now you can have represent
+
+44
+00:04:29,080 --> 00:04:36,240
+ each word using a vector, right and that was what was used as an input to every other architecture
+
+45
+00:04:36,240 --> 00:04:40,080
+ of deep learning, whether it is recurrent neural networks or the transfer model that
+
+46
+00:04:40,080 --> 00:04:44,160
+ we will talk about, right, so how do you feed the words, you typically take the word embeddings
+
+47
+00:04:44,160 --> 00:04:49,080
+ for that and that is how you feed to the transfer model, so transfer model is one of the main
+
+48
+00:04:49,080 --> 00:04:59,360
+ like you say crucial points in this journey of NLP, so and then into the year 2018-19
+
+49
+00:04:59,360 --> 00:05:04,800
+ the bird came, so this introduced the idea of field training, so you see these are the
+
+50
+00:05:04,800 --> 00:05:11,760
+ two important terms when you talk about GPT, so you have pre-training, you have transformer,
+
+51
+00:05:11,760 --> 00:05:18,120
+ so in GPT P stands for pre-training and P for transformer and G is for generative, right,
+
+52
+00:05:18,120 --> 00:05:22,920
+ so that is where and I mean, so the main advances happen in this field, so we will talk about
+
+53
+00:05:22,920 --> 00:05:27,160
+ transfer model, we will talk about pre-training and GPT models are the generative models,
+
+54
+00:05:27,160 --> 00:05:34,280
+ okay and you all I mean know this field from chat GPT, right, now I am going to when it
+
+55
+00:05:34,280 --> 00:05:40,200
+ was introduced and then I mean, everyone came to know about this field of NLP, large language
+
+56
+00:05:40,200 --> 00:05:46,840
+ models and so on, right and I think this field is moving at a very fast pace, so much and
+
+57
+00:05:46,840 --> 00:05:52,520
+ so now I mean, we do not even interact with the code, I mean we can just interact through
+
+58
+00:05:52,520 --> 00:05:58,960
+ prompts, we can just give a prompt to the LLM like GPT 4 and so on and you can get your
+
+59
+00:05:58,960 --> 00:06:03,000
+ work done, right, so that is why I mean Karpathi had this very famous tweet, the hottest new
+
+60
+00:06:03,000 --> 00:06:08,920
+ programming language is English, so you can simply now prompt in English and you can expect
+
+61
+00:06:08,920 --> 00:06:15,640
+ to get your I mean task done, okay, so before transformers what was the main architecture
+
+62
+00:06:15,640 --> 00:06:20,280
+ that NLP was using, so they were mainly recurrent neural networks in the field of deep learning,
+
+63
+00:06:20,280 --> 00:06:25,200
+ so what is recurrent neural networks, you will feed the words using the word embeddings,
+
+64
+00:06:25,200 --> 00:06:30,760
+ so you feed the embeddings for each word and it will have some identity states, so
+
+65
+00:06:30,760 --> 00:06:36,000
+ you will feed the word embedding, it will go through a hidden state, so you keep on
+
+66
+00:06:36,000 --> 00:06:40,480
+ feeding new words, you keep on getting a recurrent hidden state that captures information up
+
+67
+00:06:40,480 --> 00:06:46,000
+ to that word, so that is what happens and any point of time if you want to get an output,
+
+68
+00:06:46,000 --> 00:06:51,520
+ you apply an output from that, so that is how this paradigm was used for all the different
+
+69
+00:06:51,520 --> 00:06:56,200
+ things, so like if you want to do classification for the antisequence, I will keep on getting
+
+70
+00:06:56,200 --> 00:07:01,840
+ the representation up to hn and then at the final representation, I will apply an output
+
+71
+00:07:01,840 --> 00:07:06,320
+ vector to get the final output, class output, if you are doing sequence labeling, I need
+
+72
+00:07:06,320 --> 00:07:12,360
+ output at every token, so fine I will, for each hidden state, I will apply an output
+
+73
+00:07:12,360 --> 00:07:17,320
+ matrix to get an output, if you are doing language modeling, that is you want to predict
+
+74
+00:07:17,320 --> 00:07:23,240
+ the next word, fine given the previous word, you predict the next word, yeah, and if you
+
+75
+00:07:23,240 --> 00:07:31,480
+ want to do tax generation, I first give my input, get the encodings and using the final
+
+76
+00:07:31,480 --> 00:07:36,800
+ hidden state in general, I use that as a context to start generating my output, so this is
+
+77
+00:07:36,800 --> 00:07:43,000
+ how RNN could capture all of these paradigms, right, using a simplified architecture, and
+
+78
+00:07:43,000 --> 00:07:51,440
+ yeah, 2017 was the time when transformers were introduced and since then they have been
+
+79
+00:07:51,440 --> 00:07:56,960
+ the go-to model for any architecture you can see recently, so this was the paper attention
+
+80
+00:07:56,960 --> 00:08:03,080
+ is all you need from mainly Google brain and University of Toronto, and we will discuss
+
+81
+00:08:03,080 --> 00:08:09,040
+ in detail about this architecture today, so along with transformer, the another model
+
+82
+00:08:09,040 --> 00:08:13,440
+ that, another idea that has become very, very important and prevalent is the pre-training
+
+83
+00:08:13,440 --> 00:08:20,920
+ idea, that I can pre-train in language model using a lot of data and then this can be used
+
+84
+00:08:20,920 --> 00:08:26,120
+ from various kind of tasks, right, so in general, I mean all of these models that you can see
+
+85
+00:08:26,120 --> 00:08:33,040
+ here, like including GPT-3, Palm models, Bloom, Chinchilla and Galactica, OPT and all, so
+
+86
+00:08:33,040 --> 00:08:38,760
+ they are all pre-trained models, and the reason is that I mean, why pre-training is so important
+
+87
+00:08:38,760 --> 00:08:43,400
+ along with transformer because just, it is not that transformers are always better than
+
+88
+00:08:43,400 --> 00:08:48,840
+ RNN, so what made them better was the idea of transfer learning and pre-training, that
+
+89
+00:08:48,840 --> 00:08:53,920
+ you can pre-train a large model, transformer model and then you can use that for variety
+
+90
+00:08:53,920 --> 00:08:58,960
+ of tasks, right, so transformers have become the go-to model for building large pre-trained
+
+91
+00:08:58,960 --> 00:09:06,480
+ language models, which can be adapted for various tasks, and I mean, so we have seen great results
+
+92
+00:09:06,480 --> 00:09:11,680
+ for transformer architecture, so you can see, I mean this is Chatbot Arena, one of the popular
+
+93
+00:09:11,680 --> 00:09:20,600
+ benchmarks of LLMs and the main models from Gemini, Claude and ChatGPT, they are all transformer
+
+94
+00:09:20,600 --> 00:09:25,560
+ based models, including the open source models like Lama 3 from Meta, they are all open source
+
+95
+00:09:25,560 --> 00:09:32,040
+ models, based on the transformer architecture, and it is not that they have worked only for
+
+96
+00:09:32,040 --> 00:09:38,160
+ language domain, they have shown very good results across domains, including say, proteins
+
+97
+00:09:38,160 --> 00:09:43,760
+ modeling, proteins modeling images, systems and different, different kind of data, right,
+
+98
+00:09:43,760 --> 00:09:48,560
+ so they are generalized architecture that can be used for different sorts of data, including
+
+99
+00:09:48,560 --> 00:09:58,080
+ images, audio and so on, okay, so then let us go back to the idea of transformers, so
+
+100
+00:09:58,080 --> 00:10:05,000
+ what is this model, how does it really work, what is the core principles behind this model,
+
+101
+00:10:05,000 --> 00:10:10,280
+ so the main idea behind this model is the idea of attention, right, so we will try to
+
+102
+00:10:10,280 --> 00:10:14,520
+ start defining it very simply and then we will see what is the actual formalism that
+
+103
+00:10:14,520 --> 00:10:18,520
+ the transformer uses for attention, so what is the idea of attention, see in general the
+
+104
+00:10:18,520 --> 00:10:23,000
+ way you can define it, is that suppose you are given a set of vector values, right, so
+
+105
+00:10:23,000 --> 00:10:32,840
+ you have some values v1 to vn, and let us say you have a query, what attention tells
+
+106
+00:10:32,840 --> 00:10:40,920
+ you is a method by which I can use a weighted average of these values dependent on the query,
+
+107
+00:10:40,920 --> 00:10:51,720
+ so I will do a weighted average of v1 to vn depending on the query, right, so if you change
+
+108
+00:10:51,720 --> 00:10:56,440
+ the query from q1 to q2, the weighted average you will get will be different, it is not
+
+109
+00:10:56,440 --> 00:11:01,920
+ a simply an average value of the vectors, you will get a different weighted vector depending
+
+110
+00:11:01,920 --> 00:11:08,280
+ on changing the query, right, so this is the general idea of attention, so this weighted
+
+111
+00:11:08,280 --> 00:11:13,120
+ sum you can think of it as a selective summary of the information that is contained in the
+
+112
+00:11:13,120 --> 00:11:19,080
+ values, right, and where the query will find out where to focus on, right, and another
+
+113
+00:11:19,080 --> 00:11:24,200
+ way you can see, see this n is not important, you can have a 5 different values, you can
+
+114
+00:11:24,200 --> 00:11:30,520
+ have 10 different values, 20 different values, so you can have an arbitrary set of representations,
+
+115
+00:11:30,520 --> 00:11:34,480
+ and this gives you a way in which you can get a fixed size representation from that,
+
+116
+00:11:34,480 --> 00:11:40,080
+ right, so this n is not important, n can be 10, 20, 50, 100, but I can still get a fixed
+
+117
+00:11:40,080 --> 00:11:45,360
+ size representation out of that, right, so this is another very important point about
+
+118
+00:11:45,360 --> 00:11:52,840
+ attention, now yeah we will come back to this, I mean how exactly attention works, so why
+
+119
+00:11:52,840 --> 00:11:58,960
+ is attention is the model that people consider, because in recurrent new networks what used
+
+120
+00:11:58,960 --> 00:12:10,240
+ to happen, so let us say this is the input, you are giving some input, so x 1 to x n,
+
+121
+00:12:10,240 --> 00:12:21,240
+ what you get, you get the hidden states h 1 to h n, I get hidden states corresponding
+
+122
+00:12:21,240 --> 00:12:27,280
+ to each word, and this hidden state captures information up to that particular word, right,
+
+123
+00:12:27,280 --> 00:12:35,680
+ the problem with this architecture was that I cannot compute h 2 unless I have h 1, right,
+
+124
+00:12:35,680 --> 00:12:40,040
+ so to get the hidden state of h 2 I need to have the hidden state of h 1, so there is
+
+125
+00:12:40,040 --> 00:12:45,000
+ a dependency, so I cannot compute all h 1 to h n in parallel, I have to do it sequentially,
+
+126
+00:12:45,000 --> 00:12:50,200
+ I will first compute h 1, use that to compute h 2 to h 3 and so on, so it is always sequential
+
+127
+00:12:50,200 --> 00:12:56,080
+ computation, but we know I mean when deep learning what is important is that to do things
+
+128
+00:12:56,080 --> 00:13:01,680
+ in parallel, you have to parallelize the things, so how do I ensure that I can still compute
+
+129
+00:13:01,680 --> 00:13:05,360
+ the representations for each word in parallel, right, and that is what was achieved through
+
+130
+00:13:05,360 --> 00:13:11,560
+ attention as we will see, so here I cannot compute a future RNA identity state unless
+
+131
+00:13:11,560 --> 00:13:18,000
+ I compute the past RNA identity states, right, so there is a dependency involved in RNA's,
+
+132
+00:13:18,000 --> 00:13:23,560
+ now transformer we will see, we will try to remove the dependency, how exactly we will
+
+133
+00:13:23,560 --> 00:13:29,160
+ do that, let us understand it, so what is a transformer architecture, so it was introduced
+
+134
+00:13:29,160 --> 00:13:33,600
+ in this paper as an encoder-decoder architecture, later on we will see, you can use it simply
+
+135
+00:13:33,600 --> 00:13:38,720
+ as an encoder, also simply as a decoder, right, so that is not so important, so it understand
+
+136
+00:13:38,720 --> 00:13:43,800
+ what is the core ideas behind this architecture, so this is a transformer and you can think
+
+137
+00:13:43,800 --> 00:13:50,680
+ of it as encoder-decoder architectures right now and later we will see encoder only and
+
+138
+00:13:50,680 --> 00:13:57,080
+ decoder only transformers also, so what does encoder do, right, what is the task of encoder,
+
+139
+00:13:57,080 --> 00:14:01,640
+ so we will use encoder-decoder whenever our task involves an input sentence, right, so
+
+140
+00:14:01,640 --> 00:14:08,120
+ this is an input sentence in French and I want to generate some text, right, so this
+
+141
+00:14:08,120 --> 00:14:14,080
+ can be translation, this is in another language, same English, so encoder will take the French
+
+142
+00:14:14,080 --> 00:14:19,760
+ sentence here and decoder will generate the English translation, now what is the task
+
+143
+00:14:19,760 --> 00:14:25,040
+ of the encoder, the task of the encoder is that it produces a very good representation
+
+144
+00:14:25,040 --> 00:14:30,600
+ of the input, so that means at the end, if you think of it as a black box, what you want
+
+145
+00:14:30,600 --> 00:14:36,200
+ to get are some good representations of the 3 words that you have provided as input, right,
+
+146
+00:14:36,200 --> 00:14:41,520
+ so this is what encoder will do, so a sophisticated representation of the source sequence, right,
+
+147
+00:14:41,520 --> 00:14:46,800
+ now this is what the decoder will focus on generate its output, so the decoder will use
+
+148
+00:14:46,800 --> 00:14:53,600
+ these representations to be able to generate its output, so I am a student, right and decoder
+
+149
+00:14:53,600 --> 00:14:58,280
+ in transformer generates output one word at a time, so I will first generate i, it will
+
+150
+00:14:58,280 --> 00:15:04,640
+ feed i here, generate m, feed m, generate a and so on and this is what we will typically
+
+151
+00:15:04,640 --> 00:15:12,880
+ call as auto-aggressive generation, I generate one word at a time, so this is what typically
+
+152
+00:15:12,880 --> 00:15:18,800
+ transformer decoder architecture looks like, now when we say encoder, decoder it is not
+
+153
+00:15:18,800 --> 00:15:24,480
+ a single layer, so you will have like multiple layers of encoders, multiple layers of decoder,
+
+154
+00:15:24,480 --> 00:15:30,200
+ so in the original transformer paper, so there were 6 encoders and 6 decoders, what it means
+
+155
+00:15:30,200 --> 00:15:35,360
+ there are 6 layers of encoders, 6 layers of decoders, okay, now we will understand the
+
+156
+00:15:35,360 --> 00:15:40,280
+ one particular layer, right and we will see the other layers are just a copy of that different
+
+157
+00:15:40,280 --> 00:15:46,760
+ weights, they do the same task, so what is one particular layer, so this is like one
+
+158
+00:15:46,760 --> 00:15:54,360
+ encoder layer, what actually happens in that one encoder layer, so I feed the words, how
+
+159
+00:15:54,360 --> 00:15:58,320
+ do I feed the words, I feed the words through embeddings, what are embeddings, they are
+
+160
+00:15:58,320 --> 00:16:02,920
+ dense representations of the word that captures semantics, so two similar words will have
+
+161
+00:16:02,920 --> 00:16:09,920
+ similar vectors, right, so I feed the embeddings for thinking and machines as the input, the
+
+162
+00:16:09,920 --> 00:16:15,040
+ first thing that happens in a layer, transformer encoder layer is that self-attention, so attention
+
+163
+00:16:15,040 --> 00:16:20,400
+ will ensure that the word thinking gets context of all the other words in the input and gets
+
+164
+00:16:20,400 --> 00:16:24,320
+ a good representation, context of representation, so this is the representation for thinking,
+
+165
+00:16:24,320 --> 00:16:28,560
+ similarly the machines will get the representations by looking at the surrounding words, so we
+
+166
+00:16:28,560 --> 00:16:34,400
+ will get the representation for machines, now this is the self-attention output, to that
+
+167
+00:16:34,400 --> 00:16:38,600
+ we apply feed forward neural network, okay, so we apply feed forward neural network that
+
+168
+00:16:38,600 --> 00:16:43,080
+ is the second thing that happens and we get the output of feed forward neural network,
+
+169
+00:16:43,080 --> 00:16:47,640
+ right, now there are certain things that are maintained in this, for example, let us say
+
+170
+00:16:47,640 --> 00:16:55,080
+ I feed a 512 dimension embedding, so this is 512 dimension, so I always maintain these
+
+171
+00:16:55,080 --> 00:16:59,480
+ dimensions whenever I have an output of a block, so that means this will also be 512
+
+172
+00:16:59,480 --> 00:17:05,640
+ dimension, this will also be 512 dimension and how does it help because now you see this
+
+173
+00:17:05,640 --> 00:17:10,680
+ output will become the input to the next layer, so to the second layer the input becomes this
+
+174
+00:17:10,680 --> 00:17:14,520
+ particular output of the first layer, it is the input to the next layer, so that means
+
+175
+00:17:14,520 --> 00:17:19,000
+ you have, you do not have to worry about thinking different dimensions of matrices across layers,
+
+176
+00:17:19,000 --> 00:17:23,920
+ you have the same dimensions in all the layers, so 512 dimension input across all the layers,
+
+177
+00:17:23,920 --> 00:17:28,520
+ 512 dimension output across all the layers, what you can vary is this 512, this is what
+
+178
+00:17:28,520 --> 00:17:35,000
+ we will define as a model dimension, so you can say I will use 1024, 768, I will vary
+
+179
+00:17:35,000 --> 00:17:39,880
+ this model dimension, fine everything else will change according to that, right, so this
+
+180
+00:17:39,880 --> 00:17:43,920
+ is what happens, right, so in the first layer you have the static token embeddings but then
+
+181
+00:17:43,920 --> 00:17:48,120
+ you get a representation through the processing of any layer and that becomes the input to
+
+182
+00:17:48,120 --> 00:17:54,440
+ the next layer and this keeps on happening across layers in the transformer, okay.
+
+183
+00:17:54,440 --> 00:17:58,600
+ Now let us go back to adhesion again, like what is the intuition, so think about the
+
+184
+00:17:58,600 --> 00:18:05,400
+ sentence, the chicken didn't cross the street road because it, right, now what should be
+
+185
+00:18:05,400 --> 00:18:12,400
+ the properties of it, what should be the representation for it, now it itself does not tell too much
+
+186
+00:18:12,400 --> 00:18:16,520
+ unless you know what it refers to, right, so suppose I have two different sentences,
+
+187
+00:18:16,520 --> 00:18:21,480
+ two different completions because it was too tired, it was too wide, right, so what do
+
+188
+00:18:21,480 --> 00:18:28,520
+ you see now, so in the first sentence the it should refer to too tired should be the chicken
+
+189
+00:18:28,520 --> 00:18:34,640
+ and too wide should be the road, right, it should represent the chicken enrolled in the
+
+190
+00:18:34,640 --> 00:18:40,840
+ two sentences, so and that is what you want to know, I mean in the self-adhesion you want
+
+191
+00:18:40,840 --> 00:18:44,840
+ to know which word I should focus on in the entire sentence, right, so that I can get a
+
+192
+00:18:44,840 --> 00:18:49,480
+ good representation of myself, otherwise it itself may not be sufficiently to tell you
+
+193
+00:18:49,480 --> 00:18:54,400
+ whether it refers to the chicken or the road, right, so you need that contextual representation
+
+194
+00:18:54,400 --> 00:18:59,720
+ for this, so this is what attention will do, it will build up a contextual embedding of
+
+195
+00:18:59,720 --> 00:19:04,480
+ a word by selectively integrating information from the surrounding words, right, and this
+
+196
+00:19:04,480 --> 00:19:08,600
+ is what we will say, a word attends to some neighboring words more often than others,
+
+197
+00:19:08,600 --> 00:19:13,880
+ so it is not a simple weighted average, I mean simple average of all the embeddings,
+
+198
+00:19:13,880 --> 00:19:17,360
+ it will see which word I should attend more on, right, we should, what I will focus more
+
+199
+00:19:17,360 --> 00:19:26,240
+ on to get a contextual representation, okay, and this is what the blog from Google showed,
+
+200
+00:19:26,240 --> 00:19:30,240
+ this was a picture from the blog itself, so they showed this actually happens, so suppose
+
+201
+00:19:30,240 --> 00:19:36,320
+ this is your layer K of the transformer and this is layer K plus 1, so in the layer K
+
+202
+00:19:36,320 --> 00:19:42,120
+ plus 1 the next layer it was found the word it referred to chicken in this case, it was
+
+203
+00:19:42,120 --> 00:19:47,300
+ too tired it actually referred to the chicken, right, more than the road, and this is what
+
+204
+00:19:47,300 --> 00:19:54,920
+ I mean was the ideal case, let us see another intuition for self-attention, right, so you,
+
+205
+00:19:54,920 --> 00:20:00,340
+ so now we will talk, introduce one more thing, so till now we talked about using a query
+
+206
+00:20:00,340 --> 00:20:04,320
+ we will take a weighted average of the values, but we use something else called key, so it
+
+207
+00:20:04,320 --> 00:20:09,960
+ has a key value and query, right, and this is very similar to what we do in retrieval
+
+208
+00:20:09,960 --> 00:20:16,640
+ system, so let us take a scenario, suppose you are searching for videos on youtube, right,
+
+209
+00:20:16,640 --> 00:20:22,400
+ so what you do you give a query, so you have a query that you type in the search bar, now
+
+210
+00:20:22,400 --> 00:20:26,920
+ how do you, how does the search work, typically each video, so in some video you call them
+
+211
+00:20:26,920 --> 00:20:31,680
+ the value, right, but the way search happens there are certain metadata with the video,
+
+212
+00:20:31,680 --> 00:20:37,000
+ for example the title of the video, description, call that the key of the video, so each video
+
+213
+00:20:37,000 --> 00:20:44,200
+ will have some metadata, say the key and its corresponding value, so k1v1, k2v2, k3v3
+
+214
+00:20:44,200 --> 00:20:49,200
+ across videos, so when you search what happens, you do not search with the values directly,
+
+215
+00:20:49,200 --> 00:20:54,360
+ you search with the keys, you match the query with the metadata, and let us say you find
+
+216
+00:20:54,360 --> 00:21:02,400
+ out this has the highest match, what you will do, you will retrieve the value v2, right,
+
+217
+00:21:02,400 --> 00:21:08,040
+ you will retrieve the value, or let us say somebody says you make a summary video from
+
+218
+00:21:08,040 --> 00:21:11,760
+ all of these, what you will do you say, which of these key has the highest value, let us
+
+219
+00:21:11,760 --> 00:21:19,240
+ say key 2 has a score of 0.8, k1 has a score of 0.1, and k3 has a score of 0.1, so what
+
+220
+00:21:19,240 --> 00:21:26,000
+ I will do I will take 80% of video 2, 10% of video 1, 10% of video 3 and create a summary,
+
+221
+00:21:26,000 --> 00:21:31,360
+ right, out of that, now that is what actually happens in attention, so you have query, you
+
+222
+00:21:31,360 --> 00:21:36,360
+ have a set of keys, set of values, you match the query with the keys, you find which key
+
+223
+00:21:36,360 --> 00:21:41,720
+ has the highest match with the query, and you will give a more weightage to its corresponding
+
+224
+00:21:41,720 --> 00:21:45,880
+ value, right, so this is a very good way to understand self-attention, so this is what
+
+225
+00:21:45,880 --> 00:21:52,920
+ will happen, so this word, we will have a query from this word, and all the words, they
+
+226
+00:21:52,920 --> 00:21:57,840
+ will, you will have a key as well as value for each word, right, and what you will do
+
+227
+00:21:57,840 --> 00:22:02,880
+ this query will, you will find a similarity of this query with all the keys and then take
+
+228
+00:22:02,880 --> 00:22:09,280
+ a weighted average of all the values, right, so each word will have a key and a value,
+
+229
+00:22:09,280 --> 00:22:16,600
+ okay, now how, in mathematical form, how does this attention really work, so now let us
+
+230
+00:22:16,600 --> 00:22:21,760
+ look into the detail, right, so we talk about theory, query, key and value, right, but what
+
+231
+00:22:21,760 --> 00:22:25,680
+ we have at our disposal right now is only the embedding, so when we have a word like
+
+232
+00:22:25,680 --> 00:22:35,440
+ chicken or the road, I only have the embeddings of that word, right, whatever I mean 512 dimension
+
+233
+00:22:35,440 --> 00:22:43,920
+ or whatever I choose as the model dimension, they will have some representation, right,
+
+234
+00:22:43,920 --> 00:22:49,080
+ now I want to use that to get all these query key and value, now how do I get that, right,
+
+235
+00:22:49,080 --> 00:22:54,720
+ so generally what is done, so say, okay, I want to use the same embedding to get query
+
+236
+00:22:54,720 --> 00:23:00,840
+ key and value, so fine, I use a learnable projection matrix to convert this into query
+
+237
+00:23:00,840 --> 00:23:07,560
+ key and value, so I learn three different projections, one is query matrix, key matrix
+
+238
+00:23:07,560 --> 00:23:12,320
+ and value matrix, three different matrices, right, so what will, what will happen with
+
+239
+00:23:12,320 --> 00:23:26,600
+ the query matrix, so say, my xi is 1 cross 512 and wq is 512 cross 64, I will get a 64
+
+240
+00:23:26,600 --> 00:23:32,240
+ dimension representation, right, so I multiply the embedding with this projection matrix,
+
+241
+00:23:32,240 --> 00:23:40,080
+ so that I can get a query, same way, this is 1 cross 512 and this may be 512 cross 64,
+
+242
+00:23:40,080 --> 00:23:49,520
+ I get again another 64 dimension representation, 1 cross 512, 512 cross 64, I get 1 cross
+
+243
+00:23:49,520 --> 00:23:54,840
+ 64 dimension representation, so that means I need three different learnable matrices
+
+244
+00:23:54,840 --> 00:24:00,080
+ that will convert my embeddings into query key and value for each word, so that means
+
+245
+00:24:00,080 --> 00:24:04,880
+ I will get this query key and value differently for each word because they depend on the embeddings
+
+246
+00:24:04,880 --> 00:24:11,440
+ and then they are multiplied with the three matrices, query key and value matrix, okay,
+
+247
+00:24:11,440 --> 00:24:18,820
+ so that means I have now three representations for a same word, query key and value, right,
+
+248
+00:24:18,820 --> 00:24:23,920
+ now see we want, given a word you want to focus on any neighboring word, so, so current
+
+249
+00:24:23,920 --> 00:24:29,800
+ element xi would like to find its similarity with qj, so what is done, so I want to find
+
+250
+00:24:29,800 --> 00:24:34,400
+ similarity of current element with everything else, so I generate the query from here, so
+
+251
+00:24:34,400 --> 00:24:41,240
+ query is used from here and from the jth word I use the key and value, so kj and vj comes
+
+252
+00:24:41,240 --> 00:24:47,320
+ from here, right, query comes from the word that you want to match with everything else
+
+253
+00:24:47,320 --> 00:24:52,840
+ and for every other word you will get the query and the key and the value, right and
+
+254
+00:24:52,840 --> 00:24:58,400
+ how do you find similarity, you can simply use a dot product, so I find qi times kj is
+
+255
+00:24:58,400 --> 00:25:05,040
+ the dot product and each summing of xj we will sum up vj, we will take a weighted average
+
+256
+00:25:05,040 --> 00:25:12,160
+ of vj, right, now let us look at it like it from an example, so suppose you sentences
+
+257
+00:25:12,160 --> 00:25:17,120
+ the beetle drove off, so what I do I first get the embeddings for each word, I have
+
+258
+00:25:17,120 --> 00:25:22,080
+ the embedding for the embedding for beetle, embedding for drove, embedding for off, then
+
+259
+00:25:22,080 --> 00:25:27,520
+ what I will do, I will multiply these embeddings with the three matrices, query key and value,
+
+260
+00:25:27,520 --> 00:25:34,180
+ you see the same matrix across all the words, for all the words, so I do not have different
+
+261
+00:25:34,180 --> 00:25:38,740
+ query key value for each word, right, for all words we have the same matrix, so find
+
+262
+00:25:38,740 --> 00:25:50,760
+ I will multiply the embedding with this matrix and I get k1, sorry q1, k1, v1, q2, k2, v2,
+
+263
+00:25:50,760 --> 00:25:57,760
+ q4, k4, v4, I get the query key and value for all the words, right, this is the first
+
+264
+00:25:57,760 --> 00:26:12,680
+ step that I do, next let us say I am interested in one word, so my focus is on the word beetle,
+
+265
+00:26:12,680 --> 00:26:16,880
+ so I will use beetle to find the selective summing from all the neighbors, so where will
+
+266
+00:26:16,880 --> 00:26:22,760
+ my query come from, query will come from beetle, right, this will be my query and they will
+
+267
+00:26:22,760 --> 00:26:26,460
+ my keys come from, because I want to match similarity of query with all the keys, keys
+
+268
+00:26:26,460 --> 00:26:31,920
+ will come from all the words in the sentence, so this will be k1, even including this word
+
+269
+00:26:31,920 --> 00:26:41,560
+ k2, k3, k4, so I find similarity of q with k1, k2, k3 and k4, this is the next step
+
+270
+00:26:41,560 --> 00:26:49,240
+ I do, okay, then what I want to add finally as the output the values, right, remember
+
+271
+00:26:49,240 --> 00:26:54,880
+ the idea of searching on YouTube, so I want to compare my query with all the metadata,
+
+272
+00:26:54,880 --> 00:26:59,680
+ the keys, then whichever has the highest similarity I take corresponding value, now what may happen
+
+273
+00:26:59,680 --> 00:27:03,800
+ when I do similarity, similarity can be a cosine similarity, this can be in the range from minus
+
+274
+00:27:03,800 --> 00:27:15,580
+ 1 to 1, right, so I can get a similarity like 0.8, 0.9, minus 0.2, 0.5, so how do I use
+
+275
+00:27:15,580 --> 00:27:19,720
+ them to get a weighted average of the values, right, now sometimes they are negative and
+
+276
+00:27:19,720 --> 00:27:23,940
+ sometimes positive, right, so what I do I convert them to a probability distribution,
+
+277
+00:27:23,940 --> 00:27:29,160
+ so that I can convert, I can my weights are all positive and they add up to 1, so how
+
+278
+00:27:29,160 --> 00:27:33,960
+ do I convert any real numbers, a set of real numbers into a probability distribution, so
+
+279
+00:27:33,960 --> 00:27:38,480
+ they are very standard take that we use in deep learning, it is a softmax take, so what
+
+280
+00:27:38,480 --> 00:27:44,200
+ is softmax I will simply take e to the power 0.8, e to the power 0.9, e to the power minus
+
+281
+00:27:44,200 --> 00:27:49,680
+ 0.2, e to the power 0.5, you know once we put exponential to the power something it
+
+282
+00:27:49,680 --> 00:27:53,840
+ is all positive, right, so they are all positive things and then because they would not add
+
+283
+00:27:53,840 --> 00:28:02,200
+ up to 1 as it is, so I divide by this normalization, summation of all these values, right, I add
+
+284
+00:28:02,200 --> 00:28:09,480
+ over all the values, right and that is all, so I have this attentionist course, right,
+
+285
+00:28:09,480 --> 00:28:15,760
+ the similarity for each word divide by similarity for all the words, but exponential, softmax.
+
+286
+00:28:15,760 --> 00:28:22,760
+ So lambda 2, lambda 3, lambda 4 now are all greater than 0 for sure and they will add
+
+287
+00:28:22,760 --> 00:28:28,880
+ up to 1, now that we have this lambda, I will take a weighted average of all the values
+
+288
+00:28:28,880 --> 00:28:33,840
+ that will be my self attention output, so I will take a weighted average lambda i v i
+
+289
+00:28:33,840 --> 00:28:40,560
+ of all the 4 values and that will give me the output, this is the output for this word.
+
+290
+00:28:40,560 --> 00:28:48,160
+ Now, now coming back to the question, right, remember in what we said, given a word its
+
+291
+00:28:48,160 --> 00:28:53,400
+ hidden representation cannot be completed in parallel, so you have to first compute
+
+292
+00:28:53,400 --> 00:28:59,840
+ h 1, use that to compute h 2 and so on, can you do in parallel and transformers, yes,
+
+293
+00:28:59,840 --> 00:29:04,040
+ because there is no dependence between how you compute the output of beta versus how
+
+294
+00:29:04,040 --> 00:29:08,680
+ you compute the output for the, because for output of the you will take the query from
+
+295
+00:29:08,680 --> 00:29:14,880
+ the and you will multiply with the keys for all other words, right and this has no dependence
+
+296
+00:29:14,880 --> 00:29:19,040
+ on whatever you are doing with the beta, so you can do attention self attention computation
+
+297
+00:29:19,040 --> 00:29:25,200
+ in parallel for all the words, right. So, I can in parallel compute all the self attention
+
+298
+00:29:25,200 --> 00:29:30,400
+ because they do not interact with each other, right, so that is why this is very, very efficient
+
+299
+00:29:30,400 --> 00:29:35,640
+ you can parallelize this operation. Now in equations, I mean this has been called
+
+300
+00:29:35,640 --> 00:29:42,440
+ as one of the most important formula in deep learning, like since 2017, 18, so what you
+
+301
+00:29:42,440 --> 00:29:49,600
+ do in terms of equation, fine, from each word you have the embeddings, now you multiply
+
+302
+00:29:49,600 --> 00:29:54,680
+ these embeddings with these 3 matrices query k and value, now for 2 words x i and x j what
+
+303
+00:29:54,680 --> 00:30:01,640
+ is the attention score, you take the query from x i, you take the key from x j and multiply
+
+304
+00:30:01,640 --> 00:30:05,480
+ them, now there is also a normalization that happens that is divided by square root of
+
+305
+00:30:05,480 --> 00:30:11,120
+ d k is called a scaling factor, what is d k dimension of the keys, right, we will discuss
+
+306
+00:30:11,120 --> 00:30:15,320
+ briefly why we divided by square root of d k, but we divided by the square root of the
+
+307
+00:30:15,320 --> 00:30:20,960
+ dimension of the keys, right. And now once I have the score for x i, x j,
+
+308
+00:30:20,960 --> 00:30:26,840
+ I use that to compute my final softmax, so I use a score, take a softmax over all the
+
+309
+00:30:26,840 --> 00:30:31,640
+ scores of x i with all the other words and compute the attention and then I take a weighted
+
+310
+00:30:31,640 --> 00:30:36,480
+ average of all the values, sigma alpha i j v j, this gives me the attention output for
+
+311
+00:30:36,480 --> 00:30:42,960
+ the word x i, right, left just shows a very nice tweet telling the equation like one of
+
+312
+00:30:42,960 --> 00:30:50,000
+ the most important formula in deep learning, okay, now let us try a problem, so this becomes
+
+313
+00:30:50,000 --> 00:30:55,800
+ very clear to you, so let us say we have 2 words flying an arrow and you are given some
+
+314
+00:30:55,800 --> 00:31:00,960
+ 6 dimension embeddings for each, right, so flying has 6 dimension vector, arrow also
+
+315
+00:31:00,960 --> 00:31:07,400
+ has a 6 dimension vector, suppose you want to use self-prediction to represent the word
+
+316
+00:31:07,400 --> 00:31:12,600
+ flying, right, in the first encoder, now see to represent this I need to know what is my
+
+317
+00:31:12,600 --> 00:31:19,560
+ projection matrices, the w, q, w, k, w, what are my 3 projection matrices, now in this
+
+318
+00:31:19,560 --> 00:31:26,960
+ toy example we have taken a very simplistic way that is for the first attention had the
+
+319
+00:31:26,960 --> 00:31:31,600
+ query key and value are just the 2 dimension from the input, so I will take the first
+
+320
+00:31:31,600 --> 00:31:41,400
+ 2 dimension this becomes my query, right, so my q 1 is simply 0, 1, my k 1 is simply
+
+321
+00:31:41,400 --> 00:31:53,080
+ the next dimension that is 1, 1, v 1 is 1, 0, similarly q 2 is 1, 1, k 2 is 0 minus 1
+
+322
+00:31:53,080 --> 00:31:58,800
+ and v 2 is minus 1, right. Now, so this is the first step you need, right,
+
+323
+00:31:58,800 --> 00:32:03,280
+ you need to get that query key and value, now you can also ask me what was the corresponding
+
+324
+00:32:03,280 --> 00:32:08,720
+ matrix w, q such that you get this, right, so what will be that, so this will be you
+
+325
+00:32:08,720 --> 00:32:16,800
+ have this let us say the first one 0, 1, 1, 1, 1, 0, so this is 1 cross 6 and you want
+
+326
+00:32:16,800 --> 00:32:26,400
+ to get a 2 dimension output you have to multiply the 6 cross 2 matrix, right, because this
+
+327
+00:32:26,400 --> 00:32:30,640
+ matrix is ensuring that you take the first 2 dimensions only, so what should be that
+
+328
+00:32:30,640 --> 00:32:38,400
+ the values, so you can work it out it will be 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, so
+
+329
+00:32:38,400 --> 00:32:42,200
+ that when you multiply what will be the output, here you take just the first dimension that
+
+330
+00:32:42,200 --> 00:32:46,920
+ is where you have the 1 and then you take the second dimension that is where you have
+
+331
+00:32:46,920 --> 00:32:54,600
+ the 1, so answer will be 0 and 1 that is my q 1, right, that is the matrix in this particular
+
+332
+00:32:54,600 --> 00:32:58,080
+ toy example. Now, so once you have the query key and value
+
+333
+00:32:58,080 --> 00:33:02,400
+ for both the words, what is the next step, what do you want to do, I want to get the
+
+334
+00:33:02,400 --> 00:33:07,240
+ self-condition output for the word flying, the first word, right, so what do I need,
+
+335
+00:33:07,240 --> 00:33:15,540
+ I need query for this word, I need key for both the words, I need value for both the
+
+336
+00:33:15,540 --> 00:33:22,280
+ words, right, if I have that I can compute the output, so let us see, so we have this
+
+337
+00:33:22,280 --> 00:33:27,520
+ is the query for the word and these are the 2 words, the keys for both the words and these
+
+338
+00:33:27,520 --> 00:33:34,080
+ are values for both the words, so how does it work, so let us say you are doing scaling,
+
+339
+00:33:34,080 --> 00:33:41,360
+ so let us compute, so we have query 1 dot k 1 divided by square root of dk, so what
+
+340
+00:33:41,360 --> 00:33:47,440
+ is dk dimension of the key, that is 2, right, so q 1 dot k 1 will be 0 times 1 plus 1 times
+
+341
+00:33:47,440 --> 00:33:57,400
+ 1, 1 divided by square root of 2, fine, what will be q 1 dot k 2, so q 1 dot k 2 will be
+
+342
+00:33:57,400 --> 00:34:04,960
+ minus 1 by square root of 2, right, so you have 2 different outputs, the dot product outputs,
+
+343
+00:34:04,960 --> 00:34:11,000
+ what you will do next, you convert them to softmax, you take a softmax over this, so
+
+344
+00:34:11,000 --> 00:34:21,000
+ this will be roughly 0.7 and minus 0.7, so you take e to the power 0.7, e to the minus
+
+345
+00:34:21,000 --> 00:34:31,680
+ 0.7 divided by e to the power 0.7 plus e to the minus 0.7, right, and you get 2 values
+
+346
+00:34:31,680 --> 00:34:37,160
+ x 1 and 1 minus x 1, they will add up to 1, right, you can compute what is x 1, so you
+
+347
+00:34:37,160 --> 00:34:44,120
+ get 2 values, x 1 1 minus x 1, right, they will add up to 1, now what is x 1, you try
+
+348
+00:34:44,120 --> 00:34:48,800
+ to compute, now what is my output for the first foot, I will take a weighted average
+
+349
+00:34:48,800 --> 00:35:00,000
+ of the values, what are the weights, x 1 times v 1 plus 1 minus x 1 times v 2, this will
+
+350
+00:35:00,000 --> 00:35:10,840
+ be x 1, first dimension will be x 1 minus 1 minus x 1, second dimension will be just
+
+351
+00:35:10,840 --> 00:35:17,080
+ 1 minus x 1, that will be the output, right, if once you get the value of x 1, you can
+
+352
+00:35:17,080 --> 00:35:22,320
+ get the final output of your attention, that is your a 1, this is how the attention works,
+
+353
+00:35:22,320 --> 00:35:25,720
+ right, and this you can do for the second word also, you can now take the query from
+
+354
+00:35:25,720 --> 00:35:29,800
+ second word, key from both the words, you can compute, you get the output, what will
+
+355
+00:35:29,800 --> 00:35:38,280
+ be a 2, so you try this on your own, ok, now given this idea of attention, what is the
+
+356
+00:35:38,280 --> 00:35:42,520
+ next thing, so how does, so we have, so now coming back to the whole picture, we are still
+
+357
+00:35:42,520 --> 00:35:47,300
+ talking about the first encoder of transformers, we are trying to understand how does the self
+
+358
+00:35:47,300 --> 00:35:52,520
+ attention work, right, so we talked about self attention, but in general what is done,
+
+359
+00:35:52,520 --> 00:35:57,480
+ you have multiple hats for self attention, right, so this is called multi hat attention,
+
+360
+00:35:57,480 --> 00:36:02,440
+ so what it means is that you do not just work with a single set of query key and value matrices,
+
+361
+00:36:02,440 --> 00:36:07,200
+ you have multiple set of query key and value matrix, so you can have one set hat 1, attention
+
+362
+00:36:07,200 --> 00:36:17,080
+ hat 1, WQ1, WK1, WV1, you may have attention hat 2, which is WQ2, WK2, WV2, a separate
+
+363
+00:36:17,080 --> 00:36:26,920
+ set of the query key and value matrices and so on, whatever hat K, WQ, KWK, KWUK, right,
+
+364
+00:36:26,920 --> 00:36:35,240
+ you may have K different hats, so K different tuples of this query key and value matrices,
+
+365
+00:36:35,240 --> 00:36:39,120
+ and that means that also means I will get different outputs from each of these, so here
+
+366
+00:36:39,120 --> 00:36:47,000
+ this may be the output from the first hat, second hat and up to whatever the last hat,
+
+367
+00:36:47,000 --> 00:36:52,400
+ so how do I use that together to make a final representation, very easy, I will say I simply
+
+368
+00:36:52,400 --> 00:36:56,880
+ concatenate, concatenation means just putting them one after another, so one after another
+
+369
+00:36:56,880 --> 00:37:04,720
+ I put them, so let us say each of these output, what is the dimension for each of the output,
+
+370
+00:37:04,720 --> 00:37:09,120
+ what am I doing an average of, I am doing an average of all the values, so each output
+
+371
+00:37:09,120 --> 00:37:16,400
+ is of the dimension of dV, right, and let us say we have h attention hats, so dV times
+
+372
+00:37:16,400 --> 00:37:25,240
+ h, so this output is of dimension h times dV, now remember I have to always convert them
+
+373
+00:37:25,240 --> 00:37:29,720
+ output into the same model dimension D that I started with, if this was D I have to bring
+
+374
+00:37:29,720 --> 00:37:37,880
+ it back to D, that is why I have another matrix WO that will take this h dV back to D, so
+
+375
+00:37:37,880 --> 00:37:47,840
+ this WO dimension is h dV times D, h dV times D, so it will convert it back to the D dimension
+
+376
+00:37:47,840 --> 00:37:54,080
+ output of self-denial, so you may have this question like why do we need to do multi hat
+
+377
+00:37:54,080 --> 00:37:58,320
+ attention, why cannot we simply use one hat, so we talked about one generation hat, WQ,
+
+378
+00:37:58,320 --> 00:38:04,200
+ KW, why do we need to have multiple copies, the reason typically this is seen in deep
+
+379
+00:38:04,200 --> 00:38:09,880
+ learning I mean, so if you have just one way of projection here, forces the model to only
+
+380
+00:38:09,880 --> 00:38:14,360
+ find one way in which you can project an input to query gain value, you can only focus on
+
+381
+00:38:14,360 --> 00:38:20,160
+ one aspect, right, so what if I want to look at multiple present the sentence at once on
+
+382
+00:38:20,160 --> 00:38:25,120
+ different different aspects, right, let us say for bird eye, I may want to focus on differentiate
+
+383
+00:38:25,120 --> 00:38:30,840
+ for different regions, so for all these different regions we will try to define different of
+
+384
+00:38:30,840 --> 00:38:36,720
+ Q, K and V matrices, right, and each attention hat performs the computation independently
+
+385
+00:38:36,720 --> 00:38:43,040
+ and then output of each hat, all the hats are combined by concatenation, so each hat looks
+
+386
+00:38:43,040 --> 00:38:50,920
+ at different things, for example this paper I tried to do this analysis that they can
+
+387
+00:38:50,920 --> 00:38:55,000
+ be hats, for example positional hats that will simply look at the neighbors, they will focus
+
+388
+00:38:55,000 --> 00:38:59,600
+ more on the neighbors, there are syntactic hats that will point to tokens with a specific
+
+389
+00:38:59,600 --> 00:39:05,720
+ syntactylation like a word may focus on the subject or an object and so on, adjective
+
+390
+00:39:05,720 --> 00:39:11,240
+ to add to the noun and so on, and they can be hats that point to the rear words in the
+
+391
+00:39:11,240 --> 00:39:16,000
+ sentence, so you can have different hats that have different tasks, and that is why your
+
+392
+00:39:16,000 --> 00:39:24,960
+ each of the projection matrices are independent, so you have WQ1, WK1, WV1 for head 1, and
+
+393
+00:39:24,960 --> 00:39:33,160
+ another hat you can have WQI, WKI, WVI, right, so you can have different attention hats different
+
+394
+00:39:33,160 --> 00:39:39,960
+ matrices for that, they are all variable parameters, so how does it look like, so you see I start
+
+395
+00:39:39,960 --> 00:39:45,440
+ with the 1 cross D dimension input embedding, right, the input, and I have it for all the
+
+396
+00:39:45,440 --> 00:39:54,760
+ words in the sentence, for different attention hat I compute WK1, WV1, WQ1, head 1, head
+
+397
+00:39:54,760 --> 00:40:01,240
+ 2, WK2, WV2, WQ2, and by that I get an output, so I have an output for the first hat 1 cross
+
+398
+00:40:01,240 --> 00:40:09,580
+ DV, second hat 1 cross DV, head 8, 1 cross DV, each hat I have output of 1 cross DV dimension,
+
+399
+00:40:09,580 --> 00:40:15,680
+ so together I concatenate all of these, I get a 1 cross HDV output, dimension output,
+
+400
+00:40:15,680 --> 00:40:20,840
+ now I want to convert it back to D, so I have a matrix WO that is HDV times T that converts
+
+401
+00:40:20,840 --> 00:40:25,480
+ it back to 1 cross DV, you see I come back to the same dimension as my input, and this
+
+402
+00:40:25,480 --> 00:40:32,880
+ is the output of self-admission block, so we have many linear parameters, all of these
+
+403
+00:40:32,880 --> 00:40:39,560
+ WKW, QW, WV across all the hats are learnable, and this final WO is also linear parameters,
+
+404
+00:40:39,560 --> 00:40:44,080
+ right, so now if you try to find out I mean more on dimensions, in the original transform
+
+405
+00:40:44,080 --> 00:40:50,520
+ paper the D was 512, the modern dimension was 512, the query key in value each was 64
+
+406
+00:40:50,520 --> 00:40:57,880
+ dimension each, right, that means what is the dimension of WQ1, that will be 512 cross
+
+407
+00:40:57,880 --> 00:41:09,360
+ 64, same with WKWB, right, for each hat the output is DV dimension, that is 64 dimension,
+
+408
+00:41:09,360 --> 00:41:17,240
+ and I had 8 attention hats that means totally this output is 512 dimension, now what will
+
+409
+00:41:17,240 --> 00:41:24,960
+ be the dimension of W2, WO this will be 512 cross 512, now if you try to find out what
+
+410
+00:41:24,960 --> 00:41:29,120
+ are the number of parameters I need here, let us see what are the number of parameters
+
+411
+00:41:29,120 --> 00:41:41,760
+ I need a single encoder, number of parameters for self-admission, so let us say I have a
+
+412
+00:41:41,760 --> 00:41:52,600
+ model dimension D, so D is my model dimension, so H is the number of attention hats, and
+
+413
+00:41:52,600 --> 00:42:05,880
+ let us say DQ, DK, DV are the dimensions of query key in value, for simplicity what is
+
+414
+00:42:05,880 --> 00:42:17,240
+ done, so we take DQ as DK as DV as DYH, generally that is what is done, okay, but in general
+
+415
+00:42:17,240 --> 00:42:21,920
+ you do not need to ensure this, because you are taking a dot product of Q and K, so Q
+
+416
+00:42:21,920 --> 00:42:31,400
+ and K should always be the same, but you are allowed to use a different DV, but I mean
+
+417
+00:42:31,400 --> 00:42:37,760
+ that will just complicate the things, so by default they are all kept the same as DYH,
+
+418
+00:42:37,760 --> 00:42:41,600
+ so now how many parameters you need, you have H attention hats, for each of the attention
+
+419
+00:42:41,600 --> 00:42:48,640
+ hat you have 3 matrices, query key in value what are the dimensions of these, D times
+
+420
+00:42:48,640 --> 00:43:01,760
+ D by H, right, plus you have a WA matrix that take H times DV times D, right, so what is
+
+421
+00:43:01,760 --> 00:43:10,600
+ it come out to be, so this is 3D square plus H times DV, DV is D by H, H times D by H cross
+
+422
+00:43:10,600 --> 00:43:21,100
+ D which is also D square, so totally there you have 4D square parameters for self attention
+
+423
+00:43:21,100 --> 00:43:30,040
+ and D is 512 if you take D is equal to 512, if you take D is equal to 512, 512 cross 512
+
+424
+00:43:30,040 --> 00:43:41,040
+ will be like 2.25 million into 4, roughly 1 million, so roughly you have 1 million parameters
+
+425
+00:43:41,040 --> 00:43:47,520
+ if you have model dimension as 512, in just the self attention 1 million parameters, fine,
+
+426
+00:43:47,520 --> 00:43:54,000
+ now what next, so what you did, you took the input embeddings and used the neighboring
+
+427
+00:43:54,000 --> 00:43:59,440
+ words to get a self attention output, but till now there are no non-linearities that you
+
+428
+00:43:59,440 --> 00:44:04,680
+ did, they are all linear transformation that you did, so self attention is simply performing
+
+429
+00:44:04,680 --> 00:44:09,120
+ a re averaging of the value vectors, nothing else right, you are doing a re averaging of
+
+430
+00:44:09,120 --> 00:44:14,000
+ the value vectors by different ways, so how do I introduce some non-linearities, so typically
+
+431
+00:44:14,000 --> 00:44:19,080
+ what is done, once you have the output of self attention, you apply a feed forward model,
+
+432
+00:44:19,080 --> 00:44:25,640
+ feed forward layer to the output of attention and that will give a non-linear activation,
+
+433
+00:44:25,640 --> 00:44:29,960
+ so how is it done, so let us say this is the self attention output, so D dimension output
+
+434
+00:44:29,960 --> 00:44:38,440
+ of self attention, you apply an up projection, so you have an up projection, then you apply
+
+435
+00:44:38,440 --> 00:44:51,160
+ a non-linearity and then you have a down projection and this dimension is same as D, that is what
+
+436
+00:44:51,160 --> 00:44:57,760
+ is done, so let us say you need two matrices to go from the self attention output to the
+
+437
+00:44:57,760 --> 00:45:04,680
+ hidden layer and then another matrix W to go to hidden layer to the output of feed forward,
+
+438
+00:45:04,680 --> 00:45:12,400
+ so what are the dimensions of each, typically by default this W 1 is 4, I mean, so you have
+
+439
+00:45:12,400 --> 00:45:19,560
+ this 1 cross D and you do D cross 4 D, so you take it to 4 D dimension right, 4 times
+
+440
+00:45:19,560 --> 00:45:26,560
+ dimension of the original input and then W 2 is again 4 D cross D, bring it back to D
+
+441
+00:45:26,560 --> 00:45:32,400
+ dimension right, there are some bias terms that we are not considering too much here,
+
+442
+00:45:32,400 --> 00:45:40,920
+ so how many parameters you need, W 1 is D cross 4 D, 4 D square and W 2 is again 4 D
+
+443
+00:45:40,920 --> 00:45:47,480
+ cross D, that is 4 D square, totally you need 8 D square parameters right, so 1 million
+
+444
+00:45:47,480 --> 00:45:53,520
+ in the self attention and roughly this will be roughly 2 million, so that means each encoder
+
+445
+00:45:53,520 --> 00:46:05,360
+ block needs roughly 3 million parameters right, with a model dimension of 512, okay, now the
+
+446
+00:46:05,360 --> 00:46:11,800
+ next problem that comes in fine, I am doing it, I have multiple layers in the encoder,
+
+447
+00:46:11,800 --> 00:46:17,880
+ how do I ensure that this will work seamlessly and I do not come up with various issues when
+
+448
+00:46:17,880 --> 00:46:26,120
+ I train with deep networks, so there are various tricks that I use, so like in CNNs it was
+
+449
+00:46:26,120 --> 00:46:29,640
+ found when you increase the layers, it does not work and that is why you have to do some
+
+450
+00:46:29,640 --> 00:46:33,560
+ skip connections, residual connections, so you apply this trick also to transformers,
+
+451
+00:46:33,560 --> 00:46:38,360
+ the residual connections and because you do residual connections, you do skip connections,
+
+452
+00:46:38,360 --> 00:46:43,240
+ you have to normalize again, so you do layer normalization and then you have the scale
+
+453
+00:46:43,240 --> 00:46:48,720
+ dot plot attention that we anyway talked about, so let us see the tricks briefly, so first
+
+454
+00:46:48,720 --> 00:46:52,440
+ is the residual connection, so what is the idea, so you see what is happening, you take
+
+455
+00:46:52,440 --> 00:46:59,520
+ the original embedding, at the self attention you get the output of self attention, so this
+
+456
+00:46:59,520 --> 00:47:07,160
+ is the embedding and you have the self attention output right, self attention output of X i,
+
+457
+00:47:07,160 --> 00:47:12,880
+ this is your X i and then you want to directly apply feed forward, so in residual connection
+
+458
+00:47:12,880 --> 00:47:18,920
+ you avoid that what you say okay, I will add X i to this, so that is why you have an add,
+
+459
+00:47:18,920 --> 00:47:24,760
+ so plus X i, this is called skip connection, you add this input back and this is what is
+
+460
+00:47:24,760 --> 00:47:29,880
+ become the input to the next block, so this gives you a skip connection, a direct connection
+
+461
+00:47:29,880 --> 00:47:34,960
+ from the input to here right by doing this addition, otherwise you may have completely
+
+462
+00:47:34,960 --> 00:47:38,680
+ lost this input, you have simply take a self attention, but you have forgotten the original
+
+463
+00:47:38,680 --> 00:47:44,440
+ input embedding, so this will add the original input embedding to this and now to this you
+
+464
+00:47:44,440 --> 00:47:50,440
+ apply the feed forward right, so this is the addition, so you do the addition of the input
+
+465
+00:47:50,440 --> 00:47:54,680
+ and you keep on doing it, so once you have some vector here, you get the feed forward
+
+466
+00:47:54,680 --> 00:48:00,760
+ on this, you again add back this chip, so this in principle what it is doing, the original
+
+467
+00:48:00,760 --> 00:48:06,480
+ input is going directly to the last layer right and this keeps on happening every layer,
+
+468
+00:48:06,480 --> 00:48:11,360
+ so you have this addition, this is your connection part in transformers and this also prevents
+
+469
+00:48:11,360 --> 00:48:16,380
+ network from forgetting the original embedding, because you are feeding it back right, as
+
+470
+00:48:16,380 --> 00:48:23,640
+ X i is just a transformation, you are feeding the original input again adding to that okay,
+
+471
+00:48:23,640 --> 00:48:26,720
+ then what is the second trick, because you are doing addition, so what may happen you
+
+472
+00:48:26,720 --> 00:48:31,560
+ keep on increasing the values right, you are keeping original the output of self attention,
+
+473
+00:48:31,560 --> 00:48:35,920
+ you add X i to that, so you keep on increasing the values, so you somehow have to bring them
+
+474
+00:48:35,920 --> 00:48:42,480
+ back to the some standard mean and standard deviation, so this is done by layer normalization
+
+475
+00:48:42,480 --> 00:48:49,120
+ right, so you because the input they keep shifting, you are adding the input again and
+
+476
+00:48:49,120 --> 00:48:54,600
+ again, so you the mean and value standard deviation will keep on shifting, so the solution
+
+477
+00:48:54,600 --> 00:48:59,080
+ is that you can normalize to 0 mean and standard deviation always, so once you do addition
+
+478
+00:48:59,080 --> 00:49:04,000
+ you again come back to 0 mean and standard deviation and the idea is very simple, you
+
+479
+00:49:04,000 --> 00:49:08,800
+ take all the vectors, find the mean, find the standard deviation and then given a vector
+
+480
+00:49:08,800 --> 00:49:13,480
+ you say okay, I will subtract the mean and divide by the standard deviation plus an epsilon,
+
+481
+00:49:13,480 --> 00:49:17,800
+ so that there is no whenever they are all uniform, you are not dividing by 0, this is just a
+
+482
+00:49:17,800 --> 00:49:31,040
+ small positive quantity, to avoid division by 0 right, so you do that and you get the
+
+483
+00:49:31,040 --> 00:49:38,080
+ output self attention output, I mean the output at every layer after normalization, subtract
+
+484
+00:49:38,080 --> 00:49:44,200
+ the mean divide by the deviation and you get the output okay, so suppose you are like mean
+
+485
+00:49:44,200 --> 00:49:48,600
+ this are the values, what you will do, you will take the mean of each, you will take
+
+486
+00:49:48,600 --> 00:49:58,480
+ the mean, you will take the standard deviation and then what will be the corresponding output
+
+487
+00:49:58,480 --> 00:50:06,160
+ after normalization, you will say okay 1 minus the mean 4 divide by standard deviation right,
+
+488
+00:50:06,160 --> 00:50:15,400
+ for this 3 minus 4 divide by 2.03, 5 minus 4 divide by 2.03, so you will take them to
+
+489
+00:50:15,400 --> 00:50:21,000
+ some very mean 0 standard deviation 1 right and you work with that, so that even you keep
+
+490
+00:50:21,000 --> 00:50:24,960
+ on adding the input, you are bringing them back to mean 0 standard deviation, it becomes
+
+491
+00:50:24,960 --> 00:50:31,800
+ easy to train your model, so these are the tricks that I used when you train large models
+
+492
+00:50:31,800 --> 00:50:39,920
+ and then you do scale dot product attention, so what is that, so you have, remember we
+
+493
+00:50:39,920 --> 00:50:47,160
+ talked about q i dot k j divide by square root of d k right, so why do you need to divide
+
+494
+00:50:47,160 --> 00:50:54,240
+ by square root of d k, so idea is this that okay, your q i and k j had let us say they
+
+495
+00:50:54,240 --> 00:51:01,480
+ were mean 0 standard deviation 1, I want to ensure that the value I get as a real to dot
+
+496
+00:51:01,480 --> 00:51:06,960
+ product is also mean 0 standard deviation 1 right, but that does not happen right, so
+
+497
+00:51:06,960 --> 00:51:15,920
+ when you do q dot k, so what is q dot k, q dot k is q 1 k 1 plus q 2 k 2 and so on.
+
+498
+00:51:15,920 --> 00:51:21,000
+ Now if its mean is again 0, because if you once you take an expectation of this, this
+
+499
+00:51:21,000 --> 00:51:28,680
+ will be expectation of q 1 k 1 plus q 2 k 2 and they are independent, so you say expectation
+
+500
+00:51:28,680 --> 00:51:35,440
+ of q 1 times expectation of k 1 which are both 0, this is fine, the problem comes in
+
+501
+00:51:35,440 --> 00:51:44,000
+ the variance, so what will be variance, this will be expectation of q dot k square minus
+
+502
+00:51:44,000 --> 00:51:53,960
+ q dot k square minus expectation of q dot k square right, variance is expectation of
+
+503
+00:51:53,960 --> 00:51:58,760
+ x square minus expectation of x square, now expectation of q dot k is 0, so this comes
+
+504
+00:51:58,760 --> 00:52:04,240
+ terms out to be 0, but what is expectation of q dot k square right, now q dot k square
+
+505
+00:52:04,240 --> 00:52:13,440
+ will have terms like q 1 square k 1 square up to q n square k n square plus cross terms
+
+506
+00:52:13,440 --> 00:52:24,560
+ to q 1 k 1 q 3 k 3 like that right q i, so these cross terms will all go to 0 when you
+
+507
+00:52:24,560 --> 00:52:29,240
+ do expectation, but expectation of each of these is 1 right, so then what will happen
+
+508
+00:52:29,240 --> 00:52:34,480
+ because this is the variance, so one you keep on adding 1, how many times as the dimensions
+
+509
+00:52:34,480 --> 00:52:40,360
+ are there in q and k right, that is why this instant division becomes the variance becomes
+
+510
+00:52:40,360 --> 00:52:47,040
+ dk dimension of the key, you could have also said it as dq dimension of query because they
+
+511
+00:52:47,040 --> 00:52:52,600
+ are the same, now you want to bring it back to variance 1 what you have to do divide by
+
+512
+00:52:52,600 --> 00:52:56,640
+ square root of dk, so once you divide by square root of dk what will happen, so q 1 square
+
+513
+00:52:56,640 --> 00:53:03,240
+ k 1 square divide by dk right, so you will have 1 by dk 1 by dk dk times you get a variance
+
+514
+00:53:03,240 --> 00:53:09,200
+ of 1 right, that is the essential idea of dividing by square root of dk okay, so now
+
+515
+00:53:09,200 --> 00:53:14,400
+ let us we are ready to look at the entire transfer block, so we start with the words
+
+516
+00:53:14,400 --> 00:53:19,240
+ the beetle drove off, we get the embeddings for each word, I apply multi hat self-attention
+
+517
+00:53:19,240 --> 00:53:24,360
+ which will give me the same dimension output, next I do skip connection, I add it back right,
+
+518
+00:53:24,360 --> 00:53:30,280
+ so I have the skip connection and because I am doing adding this back residual connection
+
+519
+00:53:30,280 --> 00:53:35,040
+ I have to normalize it, so I have a layer normalization right and this will become the
+
+520
+00:53:35,040 --> 00:53:42,400
+ input to my feed forward network, so I apply feed forward layer here, again I do the same
+
+521
+00:53:42,400 --> 00:53:48,320
+ thing I do a skip connection, I do a normalization layer normalization right, so this I have
+
+522
+00:53:48,320 --> 00:53:52,760
+ to keep on repeating this every time I do an operation, so I do a skip connection, I
+
+523
+00:53:52,760 --> 00:53:56,920
+ do a normalization, now this is where I get the output of the first layer, so this is
+
+524
+00:53:56,920 --> 00:54:03,560
+ from the first layer right and this will become the input to the second layer right and so
+
+525
+00:54:03,560 --> 00:54:08,040
+ on and then the second layer will process similarly with different set of weights and
+
+526
+00:54:08,040 --> 00:54:12,880
+ the output of the second layer will become the input to the third layer right, so this
+
+527
+00:54:12,880 --> 00:54:18,880
+ is one way you can see it it transform a block, you get the embeddings, you apply self-attention
+
+528
+00:54:18,880 --> 00:54:25,040
+ layer, you add the original input back and normalize and then you apply feed forward
+
+529
+00:54:25,040 --> 00:54:30,880
+ to this, add it back and normalize right, so this is how you can see the all the operations
+
+530
+00:54:30,880 --> 00:54:36,600
+ in a transformer and go to block okay, so this is how an complete transformer block
+
+531
+00:54:36,600 --> 00:54:44,320
+ looks like, now there is still a major problem, I hope you can spot that, so that is right
+
+532
+00:54:44,320 --> 00:54:51,720
+ now the representation of a beetle we know this can be computed in parallel right for
+
+533
+00:54:51,720 --> 00:54:58,000
+ all the words, but it does not depend on position, if I change the position of the words I permute
+
+534
+00:54:58,000 --> 00:55:03,600
+ them and I say drove of the beetle I will get the same representation for all the words
+
+535
+00:55:03,600 --> 00:55:10,080
+ right, so it does not depend on the position of the each word in the sentence, so the order
+
+536
+00:55:10,080 --> 00:55:16,560
+ does not matter here, so how do I bring in the position of a word into the picture right,
+
+537
+00:55:16,560 --> 00:55:21,480
+ so what do I need to do so that the position also becomes important right and comes into
+
+538
+00:55:21,480 --> 00:55:26,480
+ consideration, so that is why we introduce the position encoding of the words, so what
+
+539
+00:55:26,480 --> 00:55:31,300
+ I will do I will have the word embedding plus I will add some additional information that
+
+540
+00:55:31,300 --> 00:55:36,080
+ will tell me what is the position of that word, so I explicitly encode the position
+
+541
+00:55:36,080 --> 00:55:39,800
+ information of the words, so that when I am taking dot products and everything I know
+
+542
+00:55:39,800 --> 00:55:45,080
+ okay I am taking a dot product of the word that is three positions before me or two positions
+
+543
+00:55:45,080 --> 00:55:50,520
+ after me and so on right, so I add a fixed quantity to the embedding activations and
+
+544
+00:55:50,520 --> 00:55:56,800
+ is what I call as the position embedding okay, now how do I compute this position embedding
+
+545
+00:55:56,800 --> 00:56:01,240
+ I mean there are various ways of doing that the original transformer paper said okay you
+
+546
+00:56:01,240 --> 00:56:06,800
+ can use some sign and cosign of different periods, now what is the idea, so you see first of
+
+547
+00:56:06,800 --> 00:56:12,000
+ all what how many values do you need for position embeddings, so there will be something like
+
+548
+00:56:12,000 --> 00:56:17,520
+ how many positions a model can support, let us say model can support up to 512 positions
+
+549
+00:56:17,520 --> 00:56:25,680
+ I have position 1, 2, 512 right or let me call it a different value, so let us say 500
+
+550
+00:56:25,680 --> 00:56:33,400
+ positions a model let us say can only support up to 500 positions right, then in each position
+
+551
+00:56:33,400 --> 00:56:40,640
+ I have a embedding right, so in each position I have 512 dimension embedding, so that means
+
+552
+00:56:40,640 --> 00:56:45,900
+ I need 512 cross 500 parameters as a position embedding parameters, each position in each
+
+553
+00:56:45,900 --> 00:56:50,440
+ dimension of them any what should be the value, so there are two things one is the position
+
+554
+00:56:50,440 --> 00:56:55,160
+ second is the dimension, so what was the trick that they followed they said okay for each
+
+555
+00:56:55,160 --> 00:57:00,400
+ dimension I will use a separate sine wave or cosine wave right, so this is like for dimension
+
+556
+00:57:00,400 --> 00:57:04,620
+ 4 I will follow this wave, dimension 5 I will follow this wave, dimension 6 I will follow
+
+557
+00:57:04,620 --> 00:57:10,360
+ this wave, dimension 7 yeah whatever I mean each dimension have a separate wave with different
+
+558
+00:57:10,360 --> 00:57:19,020
+ period right, alternatively sine and cosine, so in one position sine, cosine and non right
+
+559
+00:57:19,020 --> 00:57:25,000
+ the dimension right, so dimension is done what will I do of the positions right, so
+
+560
+00:57:25,000 --> 00:57:28,840
+ for each dimension I will have a separate wave, so this is like let us say these are
+
+561
+00:57:28,840 --> 00:57:37,920
+ the 512 dimensions of the ith words position embedding, but how will the across positions
+
+562
+00:57:37,920 --> 00:57:42,840
+ how will the values change across position 1 to 500, so this is okay you just take the
+
+563
+00:57:42,840 --> 00:57:47,360
+ value of this embedding different position this is let us say I am focusing on dimension
+
+564
+00:57:47,360 --> 00:57:55,560
+ 4 right, at position 1 I will take its value, position 2, position 3, position 4 and so
+
+565
+00:57:55,560 --> 00:58:01,240
+ on, position 20 right, so I will sample this wave at different positions I will get the
+
+566
+00:58:01,240 --> 00:58:06,160
+ value and now you can do the same for all the other waves, so at position 20 what is
+
+567
+00:58:06,160 --> 00:58:12,720
+ the value of dimension 5 this is the value, dimension 4 this is the value, dimension 7
+
+568
+00:58:12,720 --> 00:58:19,280
+ is the value and dimension 6 this is the value right, so you have this 500 plus 512 things
+
+569
+00:58:19,280 --> 00:58:27,320
+ by taking different waves for different dimensions and sampling at different positions right,
+
+570
+00:58:27,320 --> 00:58:40,000
+ so you get this 500 plus 512 thing, 512 other dimensions and 500 are the number of positions
+
+571
+00:58:40,000 --> 00:58:47,680
+ right, it is starting from 01 to 499 and so on, so I have this matrix completely decidable
+
+572
+00:58:47,680 --> 00:58:54,920
+ I mean you completely know this matrix by this particular form, so you fix those right,
+
+573
+00:58:54,920 --> 00:58:58,760
+ now one can also say fine like this is one way but I can also learn them like what is
+
+574
+00:58:58,760 --> 00:59:04,280
+ the best possible position embeddings, so later models also try to learn this, so what
+
+575
+00:59:04,280 --> 00:59:10,680
+ you can do you can learn a position embedding matrix right of shape 1 cross n right and
+
+576
+00:59:10,680 --> 00:59:17,720
+ so each position you have a 1 cross n that is 512 dimension embedding and you learn it
+
+577
+00:59:17,720 --> 00:59:22,400
+ for all the positions that you need, so that means you can have 500 cross 512 as the additional
+
+578
+00:59:22,400 --> 00:59:31,080
+ level parameters and that means once I train it with the model, the model tells you what
+
+579
+00:59:31,080 --> 00:59:35,080
+ are the best values of these positions and the word fish for example, if it comes at
+
+580
+00:59:35,080 --> 00:59:40,600
+ position 3 versus position 17 I can have different embeddings, position embeddings for that right,
+
+581
+00:59:40,600 --> 00:59:43,520
+ so that means what will happen finally for each one I will have the word embedding, I
+
+582
+00:59:43,520 --> 00:59:49,120
+ will have the position embedding right and then I simply add them, so take a word like
+
+583
+00:59:49,120 --> 00:59:54,280
+ thinking machines, I take the embedding for the word plus I add the position embeddings,
+
+584
+00:59:54,280 --> 01:00:01,360
+ I get this as the input to the block and then I apply my normal self-attention, air normalization
+
+585
+01:00:01,360 --> 01:00:07,040
+ feed forward and this is my output, so you apply position embedding only at the layer
+
+586
+01:00:07,040 --> 01:00:12,600
+ 1 input, you do not need to apply it again and again right and this can be either learned
+
+587
+01:00:12,600 --> 01:00:20,040
+ or you can use some tricks like sinusoidal embeddings. So now, so this is how you can
+
+588
+01:00:20,040 --> 01:00:25,640
+ see a transfer with two encoders, you can put the output here as the input to the next
+
+589
+01:00:25,640 --> 01:00:30,600
+ encoder and so on, you can have 6 encoders, 12 encoders and so on and then I can now start
+
+590
+01:00:30,600 --> 01:00:37,280
+ applying the decoder also to that right, so this is now the encoder block and this is
+
+591
+01:00:37,280 --> 01:00:42,760
+ the decoder block, decoder block is slightly different, I mean nearly the same there are
+
+592
+01:00:42,760 --> 01:00:47,960
+ certain changes that you have that you will see in decoder compared to the encoder right,
+
+593
+01:00:47,960 --> 01:00:55,080
+ so how is the decoder different, so I think we will see that after a small break, so we
+
+594
+01:00:55,080 --> 01:01:01,680
+ will take a small break now and after the break we will come back and start understanding
+
+595
+01:01:01,680 --> 01:01:06,360
+ what is a decoder architecture and transformer, how it is different from the encoder that
+
+596
+01:01:06,360 --> 01:01:13,560
+ we have seen till now okay, yeah we will come back after the break, so till now what we
+
+597
+01:01:13,560 --> 01:01:20,200
+ have discussed the transformer encoder architecture, so where the main modules for multi head self
+
+598
+01:01:20,200 --> 01:01:33,600
+ attention and a feed forward network, of course we had other things like add and normalize,
+
+599
+01:01:33,600 --> 01:01:39,280
+ we had the position embeddings right and together defines my encoder and we saw this
+
+600
+01:01:39,280 --> 01:01:49,320
+ as roughly 4d square plus 8d square, so that is 12d square parameters per layer and each
+
+601
+01:01:49,320 --> 01:01:52,840
+ layer will have same number of parameters, so if you want to find out number of parameters
+
+602
+01:01:52,840 --> 01:01:58,760
+ in an encoder you can simply say 12d square into number of layers right, like if you take
+
+603
+01:01:58,760 --> 01:02:05,040
+ the original transformer, so you will have 3 million into 6, so 18 million parameters
+
+604
+01:02:05,040 --> 01:02:11,240
+ in just the encoder right, now how is decoder different right, I mean if you see here the
+
+605
+01:02:11,240 --> 01:02:18,000
+ decoder has 3 things, self attention looks similar, feed forward looks similar, but there
+
+606
+01:02:18,000 --> 01:02:22,320
+ is one extra thing called encoder decoder attention, why, because what is the task the
+
+607
+01:02:22,320 --> 01:02:27,080
+ decoder, see encoder will finally produce some contextual representation of the input,
+
+608
+01:02:27,080 --> 01:02:33,880
+ the decoder is supposed to look at that right and produce its output, at the same time it
+
+609
+01:02:33,880 --> 01:02:38,040
+ will also look at its previous word that they generated, that is why you had 2 attention,
+
+610
+01:02:38,040 --> 01:02:47,520
+ one is to focus on only the previous generation and second to focus on the encoder representation,
+
+611
+01:02:47,520 --> 01:02:50,760
+ that is why you have 2 different attention here, self attention and also encoder decoder
+
+612
+01:02:50,760 --> 01:02:57,160
+ cross attention and after that you do for feed forward right, so even in self attention
+
+613
+01:02:57,160 --> 01:03:03,560
+ there is slight change why, because when you are training you want to feed do things in
+
+614
+01:03:03,560 --> 01:03:10,600
+ parallel right, so what you will do, so I will feed the word like I am a student, this
+
+615
+01:03:10,600 --> 01:03:16,800
+ in your generation I am a student, so you know this is what you have to generate right,
+
+616
+01:03:16,800 --> 01:03:24,080
+ so and you want to start computing a loss in the decoder, so decoder will anyway do its
+
+617
+01:03:24,080 --> 01:03:31,320
+ self attention and everything feed cross attention, feed forward layer by layer, finally at the
+
+618
+01:03:31,320 --> 01:03:39,560
+ last layer you will generate some cross entropy loss, you will have cross entropy loss, what
+
+619
+01:03:39,560 --> 01:03:47,520
+ is that minus log probability of the next token say m, cross entropy loss minus log
+
+620
+01:03:47,520 --> 01:03:51,800
+ probability of the next token that you want to generate and you know what is the token
+
+621
+01:03:51,800 --> 01:03:56,540
+ I have to generate anyway at the training time, so this phenomena as you know is called
+
+622
+01:03:56,540 --> 01:04:04,160
+ teacher forcing, so you force the ground to token to be the input to the next, so that
+
+623
+01:04:04,160 --> 01:04:08,680
+ means you already know what is the input to an entire sequence right, so just like encoder
+
+624
+01:04:08,680 --> 01:04:14,940
+ I could compute in parallel right, I do not have to do one by one, so I can compute everything
+
+625
+01:04:14,940 --> 01:04:18,720
+ in parallel at the training time because I know the entire sequence at the input, so
+
+626
+01:04:18,720 --> 01:04:24,360
+ I can compute in parallel all the representations, the problem there is the different thing I
+
+627
+01:04:24,360 --> 01:04:29,720
+ have to do here is, if I know that the next word is a and my task is also the next word
+
+628
+01:04:29,720 --> 01:04:36,520
+ is a does not make sense, so at m if I know my next word is a through position I am reading
+
+629
+01:04:36,520 --> 01:04:41,440
+ and I have to predict the next word as a that means I already have information I can I am
+
+630
+01:04:41,440 --> 01:04:46,680
+ not learning much, so I have to somehow ensure that the transfer model does not look at the
+
+631
+01:04:46,680 --> 01:04:50,860
+ future words right, I mean it only looks at the current word and the previous words that
+
+632
+01:04:50,860 --> 01:04:56,160
+ is all in the decoder, so the only thing you do in the decoder in the attention is that
+
+633
+01:04:56,160 --> 01:05:01,600
+ I do not allow the any token to look at the future tokens and everything else is same,
+
+634
+01:05:01,600 --> 01:05:06,640
+ so how do you do that you say ok I have this attention matrix, so let us say I have attention
+
+635
+01:05:06,640 --> 01:05:14,840
+ matrix square matrix each word I which word j it can look at and if I cannot look at j
+
+636
+01:05:14,840 --> 01:05:19,720
+ I will put minus infinity, so what you do in all the future things you put minus infinity
+
+637
+01:05:19,720 --> 01:05:30,680
+ right, so this can only look at itself this can look at previous word itself up to itself
+
+638
+01:05:30,680 --> 01:05:35,280
+ right cannot look at future token and this is what is done minus infinity right, so
+
+639
+01:05:35,280 --> 01:05:39,640
+ that it is just in the upper triangle you put it to minus infinity, so it cannot look
+
+640
+01:05:39,640 --> 01:05:45,440
+ at future tokens but the things can happen in parallel right, so and you compute your
+
+641
+01:05:45,440 --> 01:05:49,960
+ loss everything right in parallel you do not have to do auto regressively during training
+
+642
+01:05:49,960 --> 01:05:56,560
+ at decoding at inference time you will still have to do in auto regressively one by one,
+
+643
+01:05:56,560 --> 01:06:01,240
+ so this is one thing the self-admission is masked you put a mask minus infinity to the
+
+644
+01:06:01,240 --> 01:06:04,620
+ future tokens, second thing so this is how it will look like the upper triangle will
+
+645
+01:06:04,620 --> 01:06:10,560
+ be set to minus infinity right, the second thing that happens in decoder is that encoder
+
+646
+01:06:10,560 --> 01:06:17,760
+ decoder attention, so that means the decoder will focus on that encoder repentations, so
+
+647
+01:06:17,760 --> 01:06:22,280
+ let us say the other encoder repentations and at some point of decoder I am I have the
+
+648
+01:06:22,280 --> 01:06:27,960
+ output of the self-admission, how would I focus all on the encoder remember, so this
+
+649
+01:06:27,960 --> 01:06:33,680
+ would my query will have to come from here and where will key and value come from because
+
+650
+01:06:33,680 --> 01:06:44,600
+ I have to focus on the encoder the key and value will have to come from here, that means
+
+651
+01:06:44,600 --> 01:06:50,520
+ the key and value are residing here and the query matrix will be here right, so again I
+
+652
+01:06:50,520 --> 01:06:57,000
+ need query key and values right and then query key values and W O everything, so that my
+
+653
+01:06:57,000 --> 01:07:04,360
+ self-attention encoder decoder attention output is also obtained right, so in decoder first
+
+654
+01:07:04,360 --> 01:07:09,800
+ I will have the self-attention output then I will have the encoder decoder attention output
+
+655
+01:07:09,800 --> 01:07:14,640
+ and then I apply feed for pretend, so what is encoder decoder definition very similar
+
+656
+01:07:14,640 --> 01:07:19,360
+ except that the query will come from the decoder and key and value will come from the encoder
+
+657
+01:07:19,360 --> 01:07:29,040
+ right, so you will have again same learnable matrices W Q for encoder decoder W K for encoder
+
+658
+01:07:29,040 --> 01:07:37,080
+ decoder W V for encoder decoder right and then you will also have W O for encoder decoder
+
+659
+01:07:37,080 --> 01:07:42,280
+ same matrices multiple hats all of this will again repeat right except that the key and
+
+660
+01:07:42,280 --> 01:07:45,920
+ value is coming from encoder and query is coming from the decoder right, that is the
+
+661
+01:07:45,920 --> 01:07:54,120
+ only change that happens okay, now in decoding so you will keep on doing self-attention cross
+
+662
+01:07:54,120 --> 01:08:00,040
+ attention cross attention feed forward right and finally across after all the layers you
+
+663
+01:08:00,040 --> 01:08:09,080
+ get the output embedding output embedding, now I want to compute the loss right, I know
+
+664
+01:08:09,080 --> 01:08:14,640
+ my ground tooth is I at the start I my ground tooth is I I want to generate I, so how do
+
+665
+01:08:14,640 --> 01:08:21,200
+ I convert an embedding that is say 512 dimension, how do I use that to compute the loss right,
+
+666
+01:08:21,200 --> 01:08:25,520
+ I know the ground tooth is I, so the way it is done is that I project it to the vocabulary
+
+667
+01:08:25,520 --> 01:08:38,120
+ space my vocabulary space is may be huge 50,000 words 100,000 unique words and I get a distribution
+
+668
+01:08:38,120 --> 01:08:42,680
+ probably distribution I need the distribution for the ground tooth work and I take minus
+
+669
+01:08:42,680 --> 01:08:48,600
+ log probability of the ground tooth work as my loss cross entropy loss, so I keep on accumulating
+
+670
+01:08:48,600 --> 01:08:54,640
+ this so this is minus log probability of I minus log probability of m a student I keep
+
+671
+01:08:54,640 --> 01:09:00,080
+ on accumulating it that becomes my loss and all these parameters that you are seeing here
+
+672
+01:09:00,080 --> 01:09:04,600
+ are trained via this loss, so you keep on accumulating this loss and train all these
+
+673
+01:09:04,600 --> 01:09:10,920
+ parameters via this right, so something like I have this embedding output I have a linear
+
+674
+01:09:10,920 --> 01:09:15,520
+ layer that will project in the vocabulary size right, now these will be some real values
+
+675
+01:09:15,520 --> 01:09:22,640
+ so apply softmax, softmax will convert into probabilities and I take the I have the ground
+
+676
+01:09:22,640 --> 01:09:28,920
+ tooth token, so I take the minus log probability of this the ground tooth token index and that
+
+677
+01:09:28,920 --> 01:09:36,040
+ will become my loss right, it is as simple as that, so softmax is again coming in the
+
+678
+01:09:36,040 --> 01:09:40,120
+ picture for converting the real values into distribution probability distribution from
+
+679
+01:09:40,120 --> 01:09:46,600
+ which you can compute your loss ok, now transformers can also be used as language models what
+
+680
+01:09:46,600 --> 01:09:51,980
+ is a language model you simply predict the next word right, so you see it is very easy,
+
+681
+01:09:51,980 --> 01:09:59,280
+ so once I have the words I have the final, so this because I am predicting the next word
+
+682
+01:09:59,280 --> 01:10:04,040
+ this will come into the decoder transformer only as a decoder, so I will simply use a
+
+683
+01:10:04,040 --> 01:10:10,580
+ transformers as a decoder model and I keep on getting the representation for each word
+
+684
+01:10:10,580 --> 01:10:15,480
+ and wherever I need the next word what I will do, this is a d dimension I convert it to
+
+685
+01:10:15,480 --> 01:10:21,160
+ my vocabulary dimension, so how, so I had an embedding matrix that converted the original
+
+686
+01:10:21,160 --> 01:10:28,280
+ input into embedding dimensions, so to convert a model dimension into vocabulary I use an
+
+687
+01:10:28,280 --> 01:10:36,240
+ embedding layer d cross b right, so I will get a v dimension projection and I get a distribution
+
+688
+01:10:36,240 --> 01:10:40,640
+ from that probabilities and from that I can generate a word right, the word with the highest
+
+689
+01:10:40,640 --> 01:10:48,660
+ probability, so typically that is what is done, so why we use an embedding, so remember
+
+690
+01:10:48,660 --> 01:10:57,600
+ so we did not specify in the beginning, so what will happen, so suppose I have an input
+
+691
+01:10:57,600 --> 01:11:05,220
+ I am a student, so I you can simply feed as a one hot, I is one everything else is zero
+
+692
+01:11:05,220 --> 01:11:15,960
+ in your vocabulary right and then you have an embedding matrix that will take that will
+
+693
+01:11:15,960 --> 01:11:20,520
+ give me the actual embedding for the word I, so this will give me the d dimension, this
+
+694
+01:11:20,520 --> 01:11:25,840
+ v dimension d dimension and this is some d cross v dimension embedding matrix, so this
+
+695
+01:11:25,840 --> 01:11:30,680
+ can also be a learnable parameter in your model, so this embedding matrix, so that given
+
+696
+01:11:30,680 --> 01:11:35,280
+ any word one hot representation you get this embedding right, so this is what is done in
+
+697
+01:11:35,280 --> 01:11:41,000
+ the embedding side, we simply took it as if it is given to us, but you can have this matrix,
+
+698
+01:11:41,000 --> 01:11:45,200
+ now when you want to generate the output at the final decoder you have a d dimension output
+
+699
+01:11:45,200 --> 01:11:51,000
+ right, I want to convert into a vocabulary dimension, so you can see I can again reuse
+
+700
+01:11:51,000 --> 01:11:57,040
+ this matrix, so e transpose this will convert this d to vocabulary dimension, so here it
+
+701
+01:11:57,040 --> 01:12:02,400
+ converted a v to d, now I can convert it from d to v using the transpose of this embedding
+
+702
+01:12:02,400 --> 01:12:07,040
+ and this is what we can call it as an embedding layer right, because in language modeling
+
+703
+01:12:07,040 --> 01:12:11,600
+ what is my task given the sequence till now predict the next word, so I simply predict
+
+704
+01:12:11,600 --> 01:12:15,840
+ the next word right from the output of decoder what is the next word, I take the word with
+
+705
+01:12:15,840 --> 01:12:26,120
+ the highest probability and this becomes my next word right, so now I take the output
+
+706
+01:12:26,120 --> 01:12:33,400
+ at the final token, I multiplied with an embedding layer, I get q logits, I apply softmax, I get
+
+707
+01:12:33,400 --> 01:12:37,640
+ the probabilities, now if you are training I will take the minus log probability of the
+
+708
+01:12:37,640 --> 01:12:43,040
+ correct token, if I am finally doing inference I will take the word with the highest probability
+
+709
+01:12:43,040 --> 01:12:48,280
+ and there are many other decoding methods along with that that one can use right, so
+
+710
+01:12:48,280 --> 01:12:53,680
+ this is how a transformer language model looks like, so suppose this is my i th word, i ferries
+
+711
+01:12:53,680 --> 01:12:58,920
+ embedding, position embedding, I go through multiple layers, get the representation at
+
+712
+01:12:58,920 --> 01:13:05,160
+ the final layer once I get the representation, I apply this unembedding matrix, I apply softmax,
+
+713
+01:13:05,160 --> 01:13:13,680
+ I have the probabilities for all the tokens, I sample a token from that as per the distribution,
+
+714
+01:13:13,680 --> 01:13:18,040
+ so now if you want to look at what are the number of parameters I will have in transformer
+
+715
+01:13:18,040 --> 01:13:25,480
+ encoder decoder, so encoder we saw will be 12 D square into L, L is the number of layers
+
+716
+01:13:25,480 --> 01:13:30,720
+ right because 4 D square in self-attention, 8 D square in the feed forward per layer,
+
+717
+01:13:30,720 --> 01:13:36,320
+ what about decoder, see decoder has again self-attention is must, but number of parameters
+
+718
+01:13:36,320 --> 01:13:41,880
+ do not change because of that, so it will have 4 D square per layer, feed forward again
+
+719
+01:13:41,880 --> 01:13:49,240
+ will have 8 D square, what extra it has, it has encoder decoder attention, so for encoder
+
+720
+01:13:49,240 --> 01:13:54,160
+ decoder it will have again the same thing except that query will reside here and key
+
+721
+01:13:54,160 --> 01:13:58,920
+ and value will be at the encoder output, so you will have n w o, so you will again have
+
+722
+01:13:58,920 --> 01:14:05,240
+ 4 D square parameters for the cross-attention, so total you have 16 D square per layer, so
+
+723
+01:14:05,240 --> 01:14:10,920
+ 16 D square into L, so that means if you are using encoder decoder architecture for L layers
+
+724
+01:14:10,920 --> 01:14:18,520
+ you may need 12 D square plus 16 D square that is 28 D square parameters per layer right
+
+725
+01:14:18,520 --> 01:14:23,640
+ into L, now if you are simply using a decoder only transformer, how many parameters you
+
+726
+01:14:23,640 --> 01:14:29,860
+ need, so decoder does not need an encoder decoder attention, decoder means there is only decoder,
+
+727
+01:14:29,860 --> 01:14:34,440
+ so you use that when you have a simply language model right, you are simply given the previous
+
+728
+01:14:34,440 --> 01:14:40,400
+ words you are generating the next word, there is no encoder right, so there is no encoder
+
+729
+01:14:40,400 --> 01:14:45,920
+ decoder attention, so decoder only have mask self-attention, it has feed forward network,
+
+730
+01:14:45,920 --> 01:14:51,200
+ that means it has simply 12 D square into number of layers that many parameters, so that means
+
+731
+01:14:51,200 --> 01:14:55,640
+ the number of parameters in encoder only model and decoder only model are the same, but if
+
+732
+01:14:55,640 --> 01:14:59,560
+ you have encoder decoder model, you will have more parameters because of cross-attention
+
+733
+01:14:59,560 --> 01:15:00,560
+ ok.
+
+734
+01:15:00,560 --> 01:15:06,440
+ So, now given this idea about the transformer architecture, let us see how do you pre-train
+
+735
+01:15:06,440 --> 01:15:17,000
+ these architectures and we will see an example from bird, so how do you pre-train, what is
+
+736
+01:15:17,000 --> 01:15:22,880
+ the idea of pre-train right, so in general how does the deep learning typically works,
+
+737
+01:15:22,880 --> 01:15:27,440
+ so let us say I have a task of spam detection right, so that means I have a text and I have
+
+738
+01:15:27,440 --> 01:15:33,720
+ some labels right, so I will pass this text to some neural network and I will train it
+
+739
+01:15:33,720 --> 01:15:40,480
+ to predict the correct label in that spam not spam and I will train its weights right,
+
+740
+01:15:40,480 --> 01:15:46,400
+ so typically start from random weights and I train it to some weights that are fine tuning
+
+741
+01:15:46,400 --> 01:15:50,600
+ or whatever you want to call it, so you use these weights at the inference time to detect
+
+742
+01:15:50,600 --> 01:15:56,200
+ with the detection, the problem is that in NLP there are huge number of applications
+
+743
+01:15:56,200 --> 01:16:00,720
+ and huge number of domains, so I can talk about say customer support application where
+
+744
+01:16:00,720 --> 01:16:04,880
+ I have given being given some E manuals and I have some question I want to answer the
+
+745
+01:16:04,880 --> 01:16:10,720
+ question, so this is a domain of E manuals, I may have legal domain, I have given a contract,
+
+746
+01:16:10,720 --> 01:16:15,000
+ I want to extract certain clauses from that, I may be given financial domain, I want to
+
+747
+01:16:15,000 --> 01:16:20,960
+ extract what is the XPLL tag for each numeral, I may be given biomedical domain where I have
+
+748
+01:16:20,960 --> 01:16:24,560
+ to do what are the proteins genes, what are interactions between that, so you see there
+
+749
+01:16:24,560 --> 01:16:30,520
+ are so many domains, so many applications in each domain, so many languages, if I have
+
+750
+01:16:30,520 --> 01:16:35,160
+ to follow this pattern right, I mean what I have to do for every problem I will start
+
+751
+01:16:35,160 --> 01:16:41,880
+ from scratch right, I will get lot of data and I will get some model, I will get some
+
+752
+01:16:41,880 --> 01:16:46,080
+ model, but this model does not work for any other problem right, so I will start from
+
+753
+01:16:46,080 --> 01:16:52,200
+ scratch, I will get one model for classification right, theta classification, say financial
+
+754
+01:16:52,200 --> 01:16:56,840
+ domain, another model for theta classification in biomedical domain and so on, another model
+
+755
+01:16:56,840 --> 01:17:01,200
+ for Hindi and Bengali and so on, so you will have different models for each domain, each
+
+756
+01:17:01,200 --> 01:17:06,480
+ language and for doing all that you need lot of data and for every task, every domain,
+
+757
+01:17:06,480 --> 01:17:11,400
+ every language you need lot of data right and that is not scalable, I mean how do you
+
+758
+01:17:11,400 --> 01:17:18,080
+ get such huge amount of data right, we are not so cheap, so and that is what is the issue,
+
+759
+01:17:18,080 --> 01:17:24,480
+ I mean so in the new networks, so typically when you have a sentence, I need the word
+
+760
+01:17:24,480 --> 01:17:29,520
+ embeddings, so let us say I can get word vectors directly, but then I have a whole lot of architecture
+
+761
+01:17:29,520 --> 01:17:35,800
+ of the self-prediction and feed forward layer like so many parameters we saw, every task
+
+762
+01:17:35,800 --> 01:17:39,720
+ you need separate data for training all of these will be like huge amount of data required
+
+763
+01:17:39,720 --> 01:17:46,440
+ right, you may need 100 million parallel sentences for each pair, language pair translation,
+
+764
+01:17:46,440 --> 01:17:52,480
+ so right and that means the data I have should be sufficient enough, so that I can learn
+
+765
+01:17:52,480 --> 01:17:57,800
+ all aspect of a language just from the data right, if I do random initialization, so that
+
+766
+01:17:57,800 --> 01:18:01,040
+ is why the idea came, why do I need to do random initialization always right, why cannot
+
+767
+01:18:01,040 --> 01:18:06,960
+ I do something else, so can I not obtain a good enough initialization first and from
+
+768
+01:18:06,960 --> 01:18:13,960
+ there I start for any task right, so this is where the pre-training fine-tuning paradigm
+
+769
+01:18:13,960 --> 01:18:21,000
+ took over, I mean so idea was that okay, so what you do, you take a model start from scratch,
+
+770
+01:18:21,000 --> 01:18:25,200
+ but you pre-train it starting from random rate on some very general data, where you
+
+771
+01:18:25,200 --> 01:18:30,440
+ have abundance right available, so huge data available and you do not need people to label
+
+772
+01:18:30,440 --> 01:18:35,920
+ the data for you right, so what can we task like predict the next one, you do not need
+
+773
+01:18:35,920 --> 01:18:39,320
+ people to tell you what is the next word, you take any Wikipedia article you know what
+
+774
+01:18:39,320 --> 01:18:43,320
+ is the next word from the previous sequence, so I simply train a model to predict the next
+
+775
+01:18:43,320 --> 01:18:48,520
+ word right or something similar and you train it, so that it learns a lot about the language
+
+776
+01:18:48,520 --> 01:18:54,160
+ already and that means and then after that you say okay, now you give me a task like
+
+777
+01:18:54,160 --> 01:18:58,840
+ classification, I will simply change the model around the pre-trained weights and tune it
+
+778
+01:18:58,840 --> 01:19:07,400
+ for classification, sentiment analysis or summarization all these applications, so how
+
+779
+01:19:07,400 --> 01:19:13,760
+ does the field change, so in transfer learning, so I want to train a new network language
+
+780
+01:19:13,760 --> 01:19:21,360
+ model on washed corpus where I do not need human labels right and so I do not need no
+
+781
+01:19:21,360 --> 01:19:29,040
+ human labels required and once I have learned this pretend this, I use this knowledge to
+
+782
+01:19:29,040 --> 01:19:35,920
+ transfer to any target task right and this has become a has been a very successful idea,
+
+783
+01:19:35,920 --> 01:19:40,320
+ so because if I do simply so much learning, I need like millions of examples thousands
+
+784
+01:19:40,320 --> 01:19:47,800
+ of example for every task right and but if you take a language model as a starting point
+
+785
+01:19:47,800 --> 01:19:52,140
+ a pre-trained model, you get much smaller examples, you need much smaller number of
+
+786
+01:19:52,140 --> 01:20:00,720
+ examples to do that, so what is a model learn from pre-training, so text you see what we
+
+787
+01:20:00,720 --> 01:20:04,920
+ are doing, we are taking a large body of text and simply asking model to predict the next
+
+788
+01:20:04,920 --> 01:20:11,760
+ word right, now if I do it over the enormous data like what kind of knowledge the model
+
+789
+01:20:11,760 --> 01:20:16,280
+ can really learn right, so for example let us say this will be one sentence, there can
+
+790
+01:20:16,280 --> 01:20:22,060
+ be canines everywhere, one dog in the front roof and two and you have to predict the next
+
+791
+01:20:22,060 --> 01:20:28,240
+ word dogs, so what do you learn, you learn the plural of dog is dogs right, similarly
+
+792
+01:20:28,240 --> 01:20:35,040
+ here it was not just big, it was enormous right, you need from big how do you get superlative
+
+793
+01:20:35,040 --> 01:20:41,160
+ of big enormous right, the author of a rumor one's own age, so you need you learn what
+
+794
+01:20:41,160 --> 01:20:45,160
+ who is the author, you need real world knowledge while doing next word prediction right, this
+
+795
+01:20:45,160 --> 01:20:51,680
+ is all your training signal, you are training the model to predict wolf after given the
+
+796
+01:20:51,680 --> 01:20:57,920
+ sentence, the doctor told me that predicting the pronoun right, and you can see this can
+
+797
+01:20:57,920 --> 01:21:03,120
+ also introduce biases like you may have lot of data that is telling that here you are
+
+798
+01:21:03,120 --> 01:21:08,120
+ predicting he rather than she and that can also introduce bias in your model that we
+
+799
+01:21:08,120 --> 01:21:13,460
+ hear a lot about, so you are doing a lot of different kind of prediction, the square
+
+800
+01:21:13,460 --> 01:21:18,280
+ root of 4 is 2 right, I mean you are learning also mathematics by doing this prediction,
+
+801
+01:21:18,280 --> 01:21:22,580
+ so that is why language model it is pretend on a huge amount of data, it is doing next
+
+802
+01:21:22,580 --> 01:21:26,600
+ word prediction for all kind of things right, so it is gaining different different kind
+
+803
+01:21:26,600 --> 01:21:32,400
+ of knowledge, grammatical knowledge, mathematical knowledge, domain specific knowledge, names
+
+804
+01:21:32,400 --> 01:21:38,160
+ of entities, names of people associating different things, so it learns all that through pre-training
+
+805
+01:21:38,160 --> 01:21:47,200
+ right, and this can be transferred to in a task right, where it needs that, and this
+
+806
+01:21:47,200 --> 01:21:51,600
+ is what is the pre-training fine-tuning paradigm, so you take you start from scratch right,
+
+807
+01:21:51,600 --> 01:21:57,400
+ you start from scratch and but you do pre-training first things like language modeling, so what
+
+808
+01:21:57,400 --> 01:22:02,320
+ you do you keep on passing a word and predict the next word, if you does not predict you
+
+809
+01:22:02,320 --> 01:22:07,480
+ compute cross entropy loss, update your parameters right, I mean minus loc probability of correct
+
+810
+01:22:07,480 --> 01:22:12,160
+ token, update your parameters, for training you only need the loss right, and then you
+
+811
+01:22:12,160 --> 01:22:18,240
+ feed teacher forcing predict to complete loss, keep on committing loss, train the model,
+
+812
+01:22:18,240 --> 01:22:25,280
+ so theta goes to theta pre-trained, now once you have a pre-trained model, you simply fine
+
+813
+01:22:25,280 --> 01:22:29,840
+ tune it with small number of examples for different task, I want to now the theta fine
+
+814
+01:22:29,840 --> 01:22:38,240
+ tune on classification, theta fine tune on sequence labeling right, and this will be
+
+815
+01:22:38,240 --> 01:22:43,020
+ very small number like something like 1 K example, and this may be like millions and
+
+816
+01:22:43,020 --> 01:22:54,800
+ billions of words, but this is done only once, and this you will do many times right, pre-trained
+
+817
+01:22:54,800 --> 01:22:59,880
+ ones fine tune many times, compare it to where originally what you have to do, if you have
+
+818
+01:22:59,880 --> 01:23:05,520
+ to start from theta and you have to directly go to theta classification, theta sequence
+
+819
+01:23:05,520 --> 01:23:12,000
+ labeling, there you need like thousands of data like 100 K, 1 million right data points,
+
+820
+01:23:12,000 --> 01:23:16,560
+ and this was very difficult to get so much data for each task, each language, each domain,
+
+821
+01:23:16,560 --> 01:23:21,840
+ but now this is easy, so you can simply go from here to pre-trained model, once right
+
+822
+01:23:21,840 --> 01:23:26,100
+ you do pre-training, release the model, and then everyone can go and fine tune right,
+
+823
+01:23:26,100 --> 01:23:31,320
+ so that is what happened with BERT, so people fine tune BERT once, it was released like
+
+824
+01:23:31,320 --> 01:23:36,080
+ it was used hundreds and thousands of times, since it was released, because you can now
+
+825
+01:23:36,080 --> 01:23:41,960
+ simply start from that and tune it for a particular task, now when you talk about pre-trained
+
+826
+01:23:41,960 --> 01:23:50,360
+ they can be two three different architectures, like I can pre-train only decoders, yeah there
+
+827
+01:23:50,360 --> 01:23:55,840
+ is a slight issue here, so you can read like that, so I will tell this is decoder model,
+
+828
+01:23:55,840 --> 01:24:01,480
+ you pre-train only encoders, there is an encoder decoder right, an example of just a decoder
+
+829
+01:24:01,480 --> 01:24:08,200
+ select GPD model, GPD is just a decoder model, Claude is just a decoder model, Lama, Mistal
+
+830
+01:24:08,200 --> 01:24:13,240
+ they are all decoder models, encoder you have the BERT family, BERT is an encoder model,
+
+831
+01:24:13,240 --> 01:24:18,840
+ and encoder decoder you have Flanty 5 and BERT are the examples of encoder decoder models,
+
+832
+01:24:18,840 --> 01:24:24,160
+ so encoder decoder has both, encoders has only encoders, so it will have bi-directional
+
+833
+01:24:24,160 --> 01:24:28,440
+ and decoder will only go from, will only look at the previous token, not the future token,
+
+834
+01:24:28,440 --> 01:24:35,880
+ so this is causal attention right, so three different architectures, and how do I pre-train
+
+835
+01:24:35,880 --> 01:24:40,440
+ them, so I can pre-train encoders only, encoder decoder only, decoders only, so I will start
+
+836
+01:24:40,440 --> 01:24:44,480
+ with just an encoder architecture, I have to understand what is the loss, how do I complete
+
+837
+01:24:44,480 --> 01:24:50,680
+ the loss, so that I can update all my parameters, same for encoder decoder, decoder, and what
+
+838
+01:24:50,680 --> 01:24:55,320
+ is my constraint, I do not need, I do not want to use human labels, I need to use all
+
+839
+01:24:55,320 --> 01:25:03,720
+ the data available on the web, I do not need want to get human labels, just take the data
+
+840
+01:25:03,720 --> 01:25:11,240
+ on the web and compute some loss, update my parameters, now among three which of the,
+
+841
+01:25:11,240 --> 01:25:16,760
+ which architecture do you think is the easiest to pre-train, if you have all the data on
+
+842
+01:25:16,760 --> 01:25:21,160
+ the web, now you may think about it, but it looks like decoder is the easiest, because
+
+843
+01:25:21,160 --> 01:25:25,600
+ in decoder what you will do, you will simply predict the next word, so I can predict the
+
+844
+01:25:25,600 --> 01:25:32,360
+ next word every time, why can't I do that in encoder, because encoder has bi-directional
+
+845
+01:25:32,360 --> 01:25:39,360
+ context, so I cannot predict the next word, because I have to get context from both previous
+
+846
+01:25:39,360 --> 01:25:44,360
+ words and the future words, so I cannot predict the next word, because I already know the
+
+847
+01:25:44,360 --> 01:25:50,160
+ next words here, so how do I use encoder, how do I pre-train encoder, so this was again
+
+848
+01:25:50,160 --> 01:25:58,640
+ very interesting, so you see what will happen, let us say I went to the market, if I want
+
+849
+01:25:58,640 --> 01:26:04,760
+ to pre-train encoder I have to actually feed all of this in the encoder as the embedding,
+
+850
+01:26:04,760 --> 01:26:13,240
+ and the last layer I get the representation of the last layer, and then I have to get
+
+851
+01:26:13,240 --> 01:26:21,800
+ some loss, but all the sentences already known to me, so what will I really predict, so what
+
+852
+01:26:21,800 --> 01:26:27,600
+ is the idea that they did, they said fine, I will use masks, I mean they had this very
+
+853
+01:26:27,600 --> 01:26:32,880
+ nice idea that I will use masks, so yeah before corona times, so this is what, so what was
+
+854
+01:26:32,880 --> 01:26:39,800
+ the masking here, so they said okay, say I went to the store, was the original sentence
+
+855
+01:26:39,800 --> 01:26:43,360
+ in my data, so what did they say okay I have to predict some words, let me remove some
+
+856
+01:26:43,360 --> 01:26:47,240
+ words and mask them, that means the model does not know what is the input, I do not
+
+857
+01:26:47,240 --> 01:26:51,560
+ know they were bent here, I do not know there is store here, so what is the word I will
+
+858
+01:26:51,560 --> 01:26:57,160
+ put there, I will put a mask, a placeholder mask, so that means my input is I mask to
+
+859
+01:26:57,160 --> 01:27:04,960
+ put a mask, okay now I will do my encoding like my self-attention feed forward and all,
+
+860
+01:27:04,960 --> 01:27:13,040
+ I get the final representation, then what will I do, the task is now at the final representation
+
+861
+01:27:13,040 --> 01:27:18,000
+ at this token, you predict what was the input, what should have been the input, the input
+
+862
+01:27:18,000 --> 01:27:23,440
+ should have been bent, at here you predict the input should have been stored, how will
+
+863
+01:27:23,440 --> 01:27:28,600
+ the model figure that out, so idea is that if you have a good contextual representation,
+
+864
+01:27:28,600 --> 01:27:31,760
+ you can know what should have been the word at this particular point, given the surrounding
+
+865
+01:27:31,760 --> 01:27:35,400
+ words, that is the idea, but given the surrounding words you predict what should have been the
+
+866
+01:27:35,400 --> 01:27:40,520
+ word at this position and that is why it is called a masked language model, you are not
+
+867
+01:27:40,520 --> 01:27:45,880
+ predicting the next token, you are predicting the token that you have masked already, right,
+
+868
+01:27:45,880 --> 01:27:51,280
+ so and how exactly they did that, they said okay if I simply do this, if I simply mask
+
+869
+01:27:51,280 --> 01:27:57,400
+ some tokens and predict that, the model may get complicit and say I will only give good
+
+870
+01:27:57,400 --> 01:28:02,040
+ representation whenever there is a mask in and I will predict the word, but otherwise
+
+871
+01:28:02,040 --> 01:28:06,720
+ I will not care, but my huge case will be attached time, you are giving me a sentence,
+
+872
+01:28:06,720 --> 01:28:11,280
+ I want to get a good contextual representation, right, I will not have mask at the run time,
+
+873
+01:28:11,280 --> 01:28:15,320
+ so what will I do, so they say okay to ensure that the model gives a good representation
+
+874
+01:28:15,320 --> 01:28:21,440
+ for all the words, they said okay to randomly sometimes I will replace a word with a random
+
+875
+01:28:21,440 --> 01:28:24,600
+ word, you see I pitch that to the store, I mean pitch that does not make sense in the
+
+876
+01:28:24,600 --> 01:28:30,080
+ sentence and I will predict what is the output, that means the model should figure out at
+
+877
+01:28:30,080 --> 01:28:35,200
+ this point they should have been went and sometime I will keep the word as it is and
+
+878
+01:28:35,200 --> 01:28:39,800
+ I still predict, so that the model has to make a good representation at all the words,
+
+879
+01:28:39,800 --> 01:28:45,160
+ right, including mask or even if there is a normal word it has to make a good representation,
+
+880
+01:28:45,160 --> 01:28:51,000
+ so they did it like some 15 percent of tokens total out of this 15 percent 80 percent times
+
+881
+01:28:51,000 --> 01:28:57,640
+ they masked, that means overall 12 percent times a token was masked, 10 percent of times
+
+882
+01:28:57,640 --> 01:29:03,320
+ it was rib based with a random token that means 15 into 10, 1.5 percent and 10 percent
+
+883
+01:29:03,320 --> 01:29:06,600
+ of the times you leave the word unchanged but you still figure that out, so that means
+
+884
+01:29:06,600 --> 01:29:12,480
+ again 1.5 percent time out of 15, so that is how they and they will only compute loss
+
+885
+01:29:12,480 --> 01:29:20,720
+ for this 15 percent of the tokens, right, so that is for the BERT model and BERT model
+
+886
+01:29:20,720 --> 01:29:25,480
+ they had released like a base model, a large model, base model had 12 layers, 768 model
+
+887
+01:29:25,480 --> 01:29:30,520
+ dimension, 12 attention heads, 110 million parameters and BERT large had 12, 24 layers,
+
+888
+01:29:30,520 --> 01:29:36,280
+ 1024 dimension, 16 attention heads and 340 million parameters and it used a vocabulary
+
+889
+01:29:36,280 --> 01:29:41,760
+ of 30,000, now this is very small because it is used the idea byte pair encoding, so
+
+890
+01:29:41,760 --> 01:29:50,200
+ it did not use the words but the sub words, so it used the sub words, so a long word will
+
+891
+01:29:50,200 --> 01:29:54,480
+ be broken into its sub words to represent in the vocabulary, right and it was trained
+
+892
+01:29:54,480 --> 01:30:00,480
+ on book corpus and English Wikipedia you see already 3.3 million words and it was done
+
+893
+01:30:00,480 --> 01:30:06,800
+ on a that time it took like roughly 4 days on 64 TPU chips, but then I mean you pretend
+
+894
+01:30:06,800 --> 01:30:13,400
+ only once and then it was fined in like many, many times, so yeah another view of seeing
+
+895
+01:30:13,400 --> 01:30:20,560
+ the word BERT model, so you you have the sentence or is the sentence in your data you mask some
+
+896
+01:30:20,560 --> 01:30:28,040
+ tokens and you play some token by some random words and you predict what should have been
+
+897
+01:30:28,040 --> 01:30:32,960
+ the word at these positions after you get that good representation and from there you
+
+898
+01:30:32,960 --> 01:30:38,840
+ have the loss minus the probability of the correct token, from the loss you train all
+
+899
+01:30:38,840 --> 01:30:43,480
+ your parameters, so you do the sufficient number of times you have the good parameters
+
+900
+01:30:43,480 --> 01:30:47,560
+ with you, right and then once you have the parameters then you can use that for any task
+
+901
+01:30:47,560 --> 01:30:54,200
+ later on, like in the paper what they showed they can use for task like sentence pair classification
+
+902
+01:30:54,200 --> 01:31:00,760
+ you are given two sentence classified whether they are similar sentence whether they are
+
+903
+01:31:00,760 --> 01:31:05,200
+ contradicting each other and so on, how do you feed two sentence they said ok you have
+
+904
+01:31:05,200 --> 01:31:11,320
+ a CLS token sentence 1, separator sentence 2 and you get the embedding for all the tokens
+
+905
+01:31:11,320 --> 01:31:17,760
+ you predict the label, how do you do classification I have a specific token CLS token I feed the
+
+906
+01:31:17,760 --> 01:31:23,680
+ entire sentence token 1 to n and for the CLS token I will predict the representation and
+
+907
+01:31:23,680 --> 01:31:29,360
+ from that I will predict the class, right and similarly for question answering I will
+
+908
+01:31:29,360 --> 01:31:34,880
+ CLS token I put question, separator, paragraph and predict what is the span in the paragraph
+
+909
+01:31:34,880 --> 01:31:41,920
+ that answers my question and I may have some sentence tagging task where I am given a sentence
+
+910
+01:31:41,920 --> 01:31:49,880
+ each word I have to predict what is the label for that word, so remember we talked about
+
+911
+01:31:49,880 --> 01:31:54,280
+ we will first pretend it, so bird was a pretending part but to use it for any of these tasks
+
+912
+01:31:54,280 --> 01:32:01,200
+ you have to do fine tuning, so you are pretending followed by fine tuning, so what is this fine
+
+913
+01:32:01,200 --> 01:32:06,360
+ tuning involved right, so pretending already gave you the all the weights but now I want
+
+914
+01:32:06,360 --> 01:32:12,360
+ to fine tune it for a particular task, so let us say I am doing single sentence classification,
+
+915
+01:32:12,360 --> 01:32:15,920
+ so what will happen I am given a sentence and I have to classify into one of the labels
+
+916
+01:32:15,920 --> 01:32:31,160
+ let us say I have three labels positive negative neutral, so I have a sentence, so let us say
+
+917
+01:32:31,160 --> 01:32:37,400
+ token 1 to token n, this is a sentence, now in bird while pre-turning they had introduced
+
+918
+01:32:37,400 --> 01:32:43,880
+ a specific token called CLS token, so you put CLS before the center sequence, right,
+
+919
+01:32:43,880 --> 01:32:49,140
+ so this is your input, now you went go through the entire transform a bird pre-tent model,
+
+920
+01:32:49,140 --> 01:32:55,120
+ so after the last layer you will get a the same dimension output, so bird used the model
+
+921
+01:32:55,120 --> 01:33:02,560
+ dimension of 768, so you have a 768 dimension output at for each of the input, right and
+
+922
+01:33:02,560 --> 01:33:08,920
+ the CLS token was specially designed for classification, so what you will do, so from the 768 dimension
+
+923
+01:33:08,920 --> 01:33:14,360
+ CLS token embedding, now you try to predict the class, so that means I just need to predict
+
+924
+01:33:14,360 --> 01:33:23,200
+ use a fully connected layer 768 cross 5 that cross 3 there are three labels that will convert
+
+925
+01:33:23,200 --> 01:33:29,520
+ the 768 dimension into 3 class output, right and you do softmax, right over there you get
+
+926
+01:33:29,520 --> 01:33:33,920
+ the probabilities and you have the minus law probability for the correct class, so I only
+
+927
+01:33:33,920 --> 01:33:41,160
+ read this additional 768 cross 3 parameters and then I can find in my model, now you have
+
+928
+01:33:41,160 --> 01:33:46,040
+ option whether you want to fine tune and architecture also, so people do that sometime
+
+929
+01:33:46,040 --> 01:33:51,600
+ or you want to leave it as it is only train this additional parameters, right and that
+
+930
+01:33:51,600 --> 01:33:55,840
+ is how you do for all other tasks like pair by sentence classification, there is some
+
+931
+01:33:55,840 --> 01:34:01,440
+ pattern by which you feed it CLS token, sentence 1, separators, sentence 2 and predict for the
+
+932
+01:34:01,440 --> 01:34:08,760
+ class labels at C, sequence labeling you are predicting for every token, so every token
+
+933
+01:34:08,760 --> 01:34:14,160
+ you have the representation and then you predict a label for every token, right, so you will
+
+934
+01:34:14,160 --> 01:34:19,560
+ have the number of parameters additional parameters you need will depend on what are the different
+
+935
+01:34:19,560 --> 01:34:25,080
+ tags that you have, so if you are using 50 different tags I will use 768 dimension and
+
+936
+01:34:25,080 --> 01:34:32,200
+ convert it to 50 dimension, 768 cross 50 that is how I can use some additional parameters
+
+937
+01:34:32,200 --> 01:34:38,680
+ to fine tune for sequence labeling task K times dh, dh is the model dimension and K is
+
+938
+01:34:38,680 --> 01:34:47,640
+ the number of tags that you have, part of speech tagging very similar you get the representation
+
+939
+01:34:47,640 --> 01:34:55,320
+ you apply a layer that will convert the representation to the number of tags dimension, so all of
+
+940
+01:34:55,320 --> 01:34:59,120
+ this becomes very easy once you have a between model you only need a small amount of data
+
+941
+01:34:59,120 --> 01:35:06,120
+ and they did a benchmarking over this standard blue architecture and that had multiple tasks
+
+942
+01:35:06,120 --> 01:35:11,680
+ like linguistic accessibility, COLA task, sentiment analysis task, paraphrase detection
+
+943
+01:35:11,680 --> 01:35:17,960
+ task, sentence similarity task, analy task and so on and they try to find out what are
+
+944
+01:35:17,960 --> 01:35:22,800
+ the performance of birth compared to the previous architectures that were there, so what they
+
+945
+01:35:22,800 --> 01:35:28,480
+ found that across tasks the birth base and large models but outperforming the previous
+
+946
+01:35:28,480 --> 01:35:33,640
+ models that were proposed, right and you see I mean on an average they are much high improvements
+
+947
+01:35:33,640 --> 01:35:38,320
+ that compared to the previous models and that is where the birth model became very very
+
+948
+01:35:38,320 --> 01:35:43,200
+ popular, the same model could be used for all the tasks that you have in the benchmark,
+
+949
+01:35:43,200 --> 01:35:47,640
+ right and this was simply pretend encoders, right, pretend encoder you can use it for
+
+950
+01:35:47,640 --> 01:35:53,680
+ any classification task, sequence labeling task, sentence payer task, question answering,
+
+951
+01:35:53,680 --> 01:35:59,560
+ right everything, now the other two ways you can do pretending is if I take encoder decoder
+
+952
+01:35:59,560 --> 01:36:04,840
+ models or the decoder models, now encoder decoders if I take the question is how do
+
+953
+01:36:04,840 --> 01:36:09,880
+ I convert an input sentence, see in the data I just have sentences into some input and
+
+954
+01:36:09,880 --> 01:36:15,080
+ some output, right there are various ways of doing that, so how exactly they did this
+
+955
+01:36:15,080 --> 01:36:19,280
+ they said okay let us say this is my sentence, thank you for inviting me to your party last
+
+956
+01:36:19,280 --> 01:36:23,560
+ week, so I have to convert some input and some output from here, so what will my input
+
+957
+01:36:23,560 --> 01:36:28,360
+ they said okay let me corrupt this sentence, so I removed something, so I removed foreign
+
+958
+01:36:28,360 --> 01:36:33,440
+ writing put it by some sentinel X, removed large put by sentinel Y, so this will be
+
+959
+01:36:33,440 --> 01:36:38,400
+ my input to the model, what is the output, output will be what should come under X what
+
+960
+01:36:38,400 --> 01:36:44,080
+ should come under Y, so what will be X will have foreign writing Y should have last and
+
+961
+01:36:44,080 --> 01:36:48,400
+ then you end with G, so now once you input output you know what to fill in encoder, this
+
+962
+01:36:48,400 --> 01:36:53,720
+ will go into encoder and this will be the predicted by the decoder, right, so once you
+
+963
+01:36:53,720 --> 01:36:57,520
+ know what is predicted by the decoder you can compute the loss, decoder loss is easy
+
+964
+01:36:57,520 --> 01:37:01,720
+ minus the probability of the correct token, so keep on computing the loss for the decoder
+
+965
+01:37:01,720 --> 01:37:06,240
+ add it and train all your parameters, so like that you can take huge data and train your
+
+966
+01:37:06,240 --> 01:37:12,920
+ encoder decoder architecture, so this is what was T5 model, so text to text transfer transformer
+
+967
+01:37:12,920 --> 01:37:16,960
+ they train in that manner and then they showed they can use it for different different tasks
+
+968
+01:37:16,960 --> 01:37:22,400
+ like I can use for translation, I put source at the input, target at the output, I can
+
+969
+01:37:22,400 --> 01:37:28,120
+ use it even for things like I have two sentences, find out similarity, my decoder can even generate
+
+970
+01:37:28,120 --> 01:37:33,320
+ a number, similarity is 3.8, right, I have a sentence at the input, a document as the
+
+971
+01:37:33,320 --> 01:37:39,640
+ input and you summarize it, you generate the summary at the output, so encoder decoder architecture,
+
+972
+01:37:39,640 --> 01:37:44,840
+ so and then finally decoder is the simplest, training decoder is the simplest because you
+
+973
+01:37:44,840 --> 01:37:48,960
+ want to simply predict the next word, so you take the data and keep on predicting the next
+
+974
+01:37:48,960 --> 01:37:55,760
+ word, so I feed the data W1 predict W2, teacher forcing, put it back predict next word, so
+
+975
+01:37:55,760 --> 01:37:59,800
+ keep on doing that, I do not need to do any changes and I can compute loss for all 100
+
+976
+01:37:59,800 --> 01:38:03,960
+ percent of the tokens, that I was not able to do with encoder models, every token predict
+
+977
+01:38:03,960 --> 01:38:11,160
+ next word, compute loss and use that, right, so and the GPT model this came very same same
+
+978
+01:38:11,160 --> 01:38:17,320
+ time as BERT roughly, so very similar architecture, it had slightly more parameters, why because
+
+979
+01:38:17,320 --> 01:38:23,000
+ they used slightly higher vocabulary, so they had roughly 10 K more tokens in vocabulary
+
+980
+01:38:23,000 --> 01:38:27,880
+ and 10 K into 768, if you do this will be roughly like 7 million difference from the
+
+981
+01:38:27,880 --> 01:38:33,760
+ BERT parameters, so this was the GPT model and then slowly all other models like GPT,
+
+982
+01:38:33,760 --> 01:38:40,080
+ GPT 2, GPT 3, chat GPT and all came in, right, now I am not going into details about the
+
+983
+01:38:40,080 --> 01:38:45,320
+ other architectures, the focus of this lecture was mainly to introduce the transformer architecture
+
+984
+01:38:45,320 --> 01:38:51,000
+ and tell you what is pre-training and briefly discuss what is a BERT architecture, right,
+
+985
+01:38:51,000 --> 01:38:57,840
+ so where you pre-train encoders, so we talked about all these interesting ideas, I hope
+
+986
+01:38:57,840 --> 01:39:04,760
+ this became clear to you, so overall to conclude, so transformer architecture along with the
+
+987
+01:39:04,760 --> 01:39:10,040
+ pre-training idea has transformed the field of AI, particular in the field of NLP and
+
+988
+01:39:10,040 --> 01:39:15,080
+ this has been backbone for most of the foundation models that we see in text, vision, multimodal
+
+989
+01:39:15,080 --> 01:39:31,200
+ and so on, so with that I will end now and we can take some questions.
+
+990
+01:39:31,200 --> 01:39:59,800
+ Could you please explain where the dimension 1 cross dv changing to 1 cross h dv, right,
+
+991
+01:39:59,800 --> 01:40:07,640
+ so what I will do, I will just use one of the slide where there is some space to explain
+
+992
+01:40:07,640 --> 01:40:18,400
+ this, so let me know what happens in self-attention, so in single hat, so you have h hats, so think
+
+993
+01:40:18,400 --> 01:40:25,240
+ about one hat, right, one hat, you are what you are doing, you are taking a query key
+
+994
+01:40:25,240 --> 01:40:30,560
+ and value and your output is a weighted average of all the values and each values of dimension
+
+995
+01:40:30,560 --> 01:40:38,520
+ dv, so single hat you have dv dimension output, right, dv is the dimension of the value, now
+
+996
+01:40:38,520 --> 01:40:47,320
+ think about having h hats, so each hat has dv dimension output, now what do you do with
+
+997
+01:40:47,320 --> 01:40:52,520
+ that, you simply concatenate them one after another, right, so output of first hat, second
+
+998
+01:40:52,520 --> 01:40:56,920
+ hat, hatchet hat and you concatenate them one after another, so how many dimensions you
+
+999
+01:40:56,920 --> 01:41:01,000
+ will have, you will have h dv, so that is how the 1 cross dv from a single attention
+
+1000
+01:41:01,000 --> 01:41:14,360
+ hat got transformed to 1 cross h dv for h attention hats, right, I hope that is clear.
+
+1001
+01:41:14,360 --> 01:41:19,840
+ Why do we consider taking dq is equal to dk, is it by convention, very good question you
+
+1002
+01:41:19,840 --> 01:41:27,960
+ see, so why do we take dq is equal to dk, see depends on how you are computing your
+
+1003
+01:41:27,960 --> 01:41:36,160
+ self-attention, so what is the self-attention formulaism, so you take a vector, so you take
+
+1004
+01:41:36,160 --> 01:41:46,600
+ two words x i and x j, I get the key value and query from the for i th word, the query
+
+1005
+01:41:46,600 --> 01:41:53,440
+ key and value from the j th word, right, now for self-attention let us say I take from
+
+1006
+01:41:53,440 --> 01:41:58,480
+ the i th word and j th word, query comes from the i th word and the key comes from the j
+
+1007
+01:41:58,480 --> 01:42:08,560
+ th word, so that means I will do q i dot q j divide by square root of dk, now I am doing
+
+1008
+01:42:08,560 --> 01:42:17,680
+ a dot root of query from i and key of j, now what is the dimension of query i, so query
+
+1009
+01:42:17,680 --> 01:42:26,920
+ i's dimension is dq, so q i is dimension dq and k j is dimension dk, so if I am doing
+
+1010
+01:42:26,920 --> 01:42:31,640
+ a dot product they too have to have the same dimensions, that is why we take dq is equal
+
+1011
+01:42:31,640 --> 01:42:36,240
+ to dk, and I mean of course there are other formulations of attention that were not so
+
+1012
+01:42:36,240 --> 01:42:40,760
+ popular in transformers where you put some multiplicative matrix in between, so you can
+
+1013
+01:42:40,760 --> 01:42:47,040
+ have q i, k j and put some matrix in between, now if you put a matrix in between what can
+
+1014
+01:42:47,040 --> 01:42:51,120
+ happen you can now use the matrix to change the dimensions, so then you may be allowed
+
+1015
+01:42:51,120 --> 01:42:56,240
+ to use different dimensions, but if you use the standard self-attention framework you have
+
+1016
+01:42:56,240 --> 01:43:07,320
+ to have the same dimensions, so that you can use a dot product between them, no other questions.
+
+1017
+01:43:07,320 --> 01:43:13,400
+ Okay then, so yeah thank you all for participating and we will have a hands on session following
+
+1018
+01:43:13,400 --> 01:43:14,400
+ this, thank you.
+

@@ -1,0 +1,522 @@
+ So, welcome back. So, in the last half we have discussed that how to summarize the data
+ in a descriptive format which is a mere summarization. It cannot capture the whole feature of the
+ data. Two of the dataset might have the same summary variables but there might be inherent
+ features are different for different datasets. So, one step ahead to capture all the features
+ of the data is through the empirical distribution function which is very easy to construct but
+ it has a very nice feature. The empirical distribution function f and t which is may
+ counting how many observations are there in the sample which are less than equals to t
+ divided by the total number of observations which in a sophisticated notation you can
+ write that indicator variable x i less than equal to t. So, this I mean bold 1 x i less
+ than equal to t can take either value 0 or 1. So, it will scan on all x i values, it
+ will check whether it is less than equal to t or not less than equal to t. If the condition
+ satisfied x i less than equal to t it will consider one otherwise 0. So, it is a sum
+ of the string binary string either 0 or 1 and ultimately we divide the thing by n so
+ it is the average. So, depending on this number you can see that if you take that value of
+ t very very less I mean like going to minus infinity this number will be definitely 0
+ and if you take a very large value of t then this number is going to be 1. So, that within
+ that restriction which is the feature of probability, probability always lying between 0 and 1
+ you can have this step function where if you consider very less number of observations
+ 10 observations then it is a jump over different locations where the data are jump amount
+ of jump is everywhere 1 upon n wherever there is a data there is a jump and the jump amount
+ is 1 upon n. So, and the entire graph is going from 0 to 1.
+ Now, if you increase the sample size the red graph becomes the green one the more finer
+ jump 1 upon 100, but that also have the same feature it is going from 0 to 1 non decreasing
+ way and if you make it 10000 then you can see that you get the blue graph and this blue
+ graph is almost overlapping on the true graph which is the black one. So, what you can visualize
+ that this simple function will approximate the probability as n goes to infinity.
+ So, if you have a large sample the probabilistic feature of the data that means how many observations
+ less than equal to a certain number that is very nicely and tightly captured by this empirical
+ distribution function. So, every time we if you want to check say within say a to b within
+ a to b within a to b may be say here a equal to 0.1 to here it is say 1 within this range
+ how many how much probability is there. So, theoretically it should be the height
+ cap based on the black graph. So, height cap based on the black graph, but from the data
+ itself if you consider the blue one then from this number of the blue graph to this number
+ of the blue graph that much gap is good enough to estimate how many observations are here
+ and that can be done for any value a and b. So, this is how probabilistic structure of
+ the data can be very easily computed from the given data set.
+ Now let us move on for this mile per gallon data set of the car data if you consider the
+ number based on the number of cylinders. So, there are three categories of cars with
+ 4 cylinders, 6 cylinder and 8 cylinder. The proportionate value for 4 cylinder is 3.37
+ something for 6 cylinder is 2.2187 and 8 cylinder is 0.475. So, if you want to construct
+ empirical CDF from that data. So, this one. So, before any below 4 everything 0 at 4 there
+ is a jump and this amount of jump is same as this one. So, this the next amount of jump
+ is the value associated to this one and the final jump is the largest jump. So, that value
+ is associated to this one. So, empirical CDF is a step function by construction and it
+ is continuous from this side. So, if you approach from top or the right it is continuous in
+ this way, but here the jump discontinuity is happening.
+ You can have another categorization whether it is manual or automated. So, if we consider
+ manual here and the automated here. So, binary classification of the data either it is manually
+ operated or automatic operated. So, then also the proportional deviation gives you another
+ empirical CDF and these are the data for discrete valued random variable.
+ Now, if you want to see the continuous valued structure for the all 32 observations at the
+ mile per gallon, if you want to calculate the empirical CDF function it will be looking
+ like this. So, this one I have not described here so that part I am not considering. So,
+ is this information transferable in a summarized form? Look whatever we are doing here we need
+ to track all of the data point and the jump. So, that also it is summarizing whatever we
+ are willing to summarize, but it computational cost or the if you want to see everything
+ in terms of the knowledge transfer or the information transferring it is same as the
+ entire data set nothing summarized as such. So, the next way of summarization that we
+ are invoking here is based on the probability distribution function which is a theoretical
+ version of the empirical CDF. So, why not the graph that we are seeing we will have
+ a smooth approximation of that and that smooth approximation will be easily transferable
+ information for us. So, in that case if we have a theoretical object which is a function
+ capital F which is moving from real number to 0 to 1 because it is a probability and
+ it will capture the probability capital X less than equal to small x or x belongs to
+ minus infinity to x for any real number x and that is known as the cumulative distribution
+ function. So, here we have a very easy toy example suppose
+ you roll on two dice and consider the sum of the phase values. So, the values can be
+ between 2 to 12. So, it can be 1 1. So, it is 2 and it can be at most 6 6. So, it is
+ 12. So, if you consider that experiment. So, from here very easily you can see that all
+ possible combinations we have 2 to 12 all the probabilities are assigned here this part
+ we will call later on at as a probability mass function or probability density function.
+ But on the other hand the right hand side whatever you are seeing nothing but the CDF
+ as it is a discrete value random variable this empirical CDF is almost looking like
+ the the usual CDF. But for continuous valued random variable I am coming with the example
+ first. So, for continuous valued random variable if this the smooth curve is the CDF and the
+ contribution from different segment of the data the green part is contributing here the
+ dark yellow part is contributing here the blue part is contributing from here to here
+ the purple or the pink part is contributing from here to here and then again yellow is
+ here and then the gray in the top one. So, this change is a very gradual change and now
+ we are trying to track back. So, first try to see how we are approaching we are approaching
+ from the data from the any data set we can always construct the empirical CDF.
+ Now if we have an empirical CDF can we have an approximation of that function if it is
+ a discrete valued random variable nothing to be approximated. If it is a continuous
+ valued random variable we have we are willing to have an approximation for that one maintaining
+ a certain thing like this that if I integrate or some one function I will get the CDF and
+ this function is a non-negative function if I integrate that one over the range I will
+ get the CDF. So, this this function either in this integration form or in the summation
+ form it is known as the probability density function.
+ So, if it is discrete it is in terms of the summation if it is continuous it is in terms
+ of the integration not a big deal that one, but the advantage of this. So, if you if we
+ consider from this diagram A to diagram B. So, the first jump is of amount this the second
+ jump is of amount this and so on and so forth. So, this is how if you consider the sum of
+ the height of the first pillar and second pillar you will you are supposed to reach
+ here and second pillar third pillar fourth pillar you are supposed to reach here. So,
+ in that way PDF and PMF for discrete value random sorry CDF and PMF of the discrete
+ value random variables are associated with it.
+ On the other hand if you have the continuous value random variable. So, this is the PDF
+ of standard normal normal 0 1s and distribution if you integrate this function you will get
+ this CDF this CDF often might not have a closed form. So, the construction of the PDF from
+ the data is nothing but a back calculation back calculation in the way if you have a
+ smooth approximation for the CDF curve FX get a derivative it will give you the PDF
+ or in the other hand you have the histogram you smooth it out whatever may be the way
+ integration minor that thing sorry FX you will get. So, either we do the approximation
+ here or we do the approximation here. So, this is the fundamental structure of obtaining
+ a probabilistic characterization of a distribution from the data whatever textbook distribution
+ that you see from say normal gamma weibull log normal everything is originated through
+ the approximation of the real data with a known function which is easy to deal with nothing
+ extra has been done then there are certain property of transformation which can give
+ the genesis of the other from the old one that is a separate mathematical construction.
+ But inherently starting from this normal distribution it is always or the scientist always has tried
+ to do that you approximate the histogram with a known function which is a non-negative function
+ very nicely easily integrable function and you integrate that function you will get the
+ probability distribution that is how the thing works it is simply a back calculation.
+ Now, we are moving another aspect which is a which is the linear algebra part. So, next
+ day we will combine this probabilistic approach and the linear algebra part whatever we are
+ going to discuss now together and we will discuss multivariate structure as well as
+ at its estimation and application part ok. So, the thing why we are going to introduce
+ you this vector structure because we will not only discuss about only one variable whatever
+ we have studied so far often we will have more than one variables together and as a
+ consequence we need to hold all the data together we have to analyze all the data together ok.
+ So, it is not a component wise analysis can lead us to the correct information we have
+ to analyze more than one variables together and for that we need some matrix algebra very
+ basic matrix algebra not a advanced one. So, we consider the vector addition. So, here
+ vector by vector we mean a component which or a mathematical object which has more than
+ one component. So, typically this u is a vector if you multiply a constant with u you will
+ get another vector v is another vector you multiply another constant you will get another
+ vector. So, it is eventually scaling A, U, B, V they are the scaling of the value of
+ U in with different magnitude after that if you add them. So, that is nothing but vector
+ addition that you have learned from long back I hope it will help you to revise and visualize
+ the thing. So, depending on the vector itself it has a magnitude and a direction as simple
+ as that and then again scaling to the vector it inflates or shrinks the magnitude then
+ after that you will do the addition. Then what mathematically we get we get a linear
+ combination linear combination. So, linear combination how it is important or applicable
+ to us because we are willing to get information from the data.
+ So, how we give the weightage to different features that is important. So, giving weightage
+ to different features it can be done only through linear combination the name can be
+ differently used in different subjects, but mathematically it is known as the if people
+ also call it is a weighted average yes this is true the linear combination weighted average
+ is a special case of linear combination. So, linear combination is the more general
+ structure you can do many thing taking average requires some restriction on the weight.
+ So, the important aspect that it is also because addition is commutative the linear combination
+ is also commutative in this structure. Scalar multiplication to a vector is turn by turn
+ multiplication. If I multiply alpha to a vector each component of a vector is multiplied.
+ Now, let us come to the and this will consider all possible applications like sum of the
+ vector sum of the vector very easily you can observe this is it. Suppose if I want to write
+ sum over xi I run from 1 to n which I can write 1 vector transpose x vector where x vector
+ is x 1 x 2 x n whole transpose and 1 vector is all component 1 whole transpose. So, as
+ a consequence this entire thing we can combine together which is nothing but 1 vector dot
+ product x vector. So, sum you can write in this way average if you want to take average
+ or sample mean that is 1 upon n 1 upon n 1 upon n which is x power. So, vector representation
+ makes the thing much more easier. Now, let us variable selection how can you do? Suppose
+ I want to choose 3 variables out of or 2 variables out of 3 variables. So, say for example if
+ I have a matrix with 3 variables that is the example will be of matrix multiplication as
+ well. So, say for example I have 3 variables first variable x 1 second variable x 2 third
+ variable. So, 3 feature vectors I have. So, x 1 1 x 1 2 x 1 n sorry I should write in
+ may be x11, x21, xn1, x second column, 1, 2, x22, xn2, x13, x23, xn3. So suppose this
+ is a matrix of feature vector and the matrix has dimension n cross 3. I am not willing
+ to take all the feature vector, I am willing to take only the first feature vector and
+ the third feature vector.
+ Now what I need at the end is the outcome as n such observation with two components.
+ So here I need to multiply with another matrix which is again 3 cross 2. So 3 cross 2 how
+ can we construct? The first feature vector I am looking for 1, second feature vector
+ I do not want, third feature vector I do not want. Then the next feature vector what I
+ want is the third one. So first feature vector I do not want, second feature vector I do
+ not want, third one I want. So if you multiply now you will get x11 will come, x21 will
+ come and xn1 will come. Similarly, x13 will come, x23 will come, xn3 will come. So deliberately
+ we can remove the second column. But it is not necessary that we will have such a easy
+ construction that only one feature vector I will be extracting out. We might have instead
+ of 3 we might have 30,000 feature vectors and may be say 200 we are willing to extract
+ from there or we are willing to have a linear combination of all of them.
+ So I need to combine, I can have a vector here which will give the linear combination
+ of all of the features and it will construct another one. So this thing will be applicable
+ for say principal component regression or even principal component analysis itself variable
+ selection. So all this stuff you can do with the matrix multiplication. And matrix multiplication
+ eventually happening row multiplied with column and that is the thing what we have
+ just mathematically written here matrix multiplication as well as well as their addition, subtraction
+ I hope this is pretty simple for you. Addition if we do for a matrix then it is term by term
+ addition or subtraction. If we do matrix multiplication then definitely we go for this
+ way the row and column interaction whatever we have. Now another important aspect is block
+ matrix, block matrix eventually splits the entire matrix into say in this way 4 or even
+ more than that blocks. Now block matrix product can follow this structure but where the block
+ matrix is important definitely variable selection is one important aspect because we need not
+ require all the feature vectors often.
+ Another important aspect is if we are willing to predict a subset of vector given the other
+ subset of vector. So suppose the x vector has component x1, x2, xk, xk+1 up to xn.
+ Now given the value of xk+1 up to xn I am willing to predict the value of this part.
+ It is in that case the application of this block matrix or the inversion of this block
+ matrix will be very much useful. This is a very genuine problem because we may not always
+ require to predict only one value. We may require to predict more than one values together
+ which is often important for image classification and the predictive value of or classification
+ of the image and the prediction of the image.
+ Next transpose by operation it is very easy for understanding. So each row becomes column.
+ So whatever is the first row here that becomes the first column here where the second row
+ that is the second column and third row is the third column. By construction it is very
+ simple but by application it is important because most of the cases when we are dealing
+ with regression problem we have the number of observation is much more compared to the
+ number of feature vector. And as a consequence the matrix or the linear system of equations
+ that we need to solve there the number of variables present is comparatively less compared
+ to the number of observation or the number of equation.
+ And then you come up with a matrix which is something like this that this is x matrix
+ feature matrix then beta vector and then y vector which is the response vector well added
+ some error but you notice that this is n cross say k plus 1 or if there are k features then
+ it is n cross k plus 1 and in this case n is much much larger than k. And as long as
+ it is a square it is a rectangular matrix you have no scope to invert it.
+ And the beta vector beta vector is an element from it is a k plus 1 component vector and
+ this x being a rectangular matrix you cannot invert it. But on the other hand x transpose
+ x which is a k plus 1 cross k plus 1 matrix it might be invertible. So the transpose has
+ a very important role in regression analysis and many other applications.
+ And its symmetry also helps us a lot. Trace of a matrix. Trace of a matrix mathematically
+ means only the sum of the diagonal elements. But in terms of application what does it mean?
+ So say for example if I study the variation of more than one random variable such that
+ their variances are captured so say for example x1, x2, x3 and their variances variance of
+ x1 variance of x2 variance of x3. This part we have not defined so we are not going to
+ in discussion. But if we consider the sum of the diagonal elements that is the trace
+ and as an application if we study the dispersion matrix of a vector then so dispersion matrix
+ or the variance covariance matrix of a vector then the trace of that matrix is eventually
+ giving us the total variation of the entire system.
+ And that total variation of the system again you can see that it is interchangeable that
+ means variance of x1 plus x2 plus x3 it is the sum. So sum is commutative. So trace of
+ a is same as trace of a transpose not only that trace of a plus b equal to trace of b
+ plus a it is same as trace of a plus trace of b not even trace of a b equal to trace
+ of b a. So although the dimension of a b need not be the same of the dimension of b a but
+ still trace of a b equal to trace of b a let me give you one example which is very common
+ and very frequently used. So say for this very easy vector 1 vector column vector all
+ component 1 okay and what is 1 transpose 1 that means this is first this is a row vector
+ 1, 1, 1, 1, 1 and then column vector 1, 1, 1, 1, 1 a trivial to see that it is n okay.
+ But so as n is a 1 cross 1 matrix right here if you consider this is a matrix it is 1 cross
+ 1 matrix. So the trace of this quantity is nothing but same as n nothing special about
+ it. But you consider the other way round trace of 1 vector as a column vector 1 vector as
+ a row vector. Now if you do the multiplication you will get a matrix all component 1. Now
+ implement the definition of trace of 1 transpose 1 it is nothing but the sum of all diagonal
+ elements and that is n. So that is same as trace of 1 transpose 1 is a simple example
+ but it is a something which is striking and it has immense use in statistics and also
+ the data science. Doing many calculations become much more easier using this property
+ of the trace and many results become analytically interpretable.
+ So matrix inverse I have told you notice one thing most of them are just formula few remark
+ I want to make here. It is a process where A B inverse is B inverse A inverse provided
+ A and B both are invertible okay. That means both of them are square matrix and both of
+ them are having non-zero determinant okay. So determinant of A not equal to 0 determinant
+ of B not equal to 0 and they are square matrix definitely. On the other hand A B inverse is
+ B inverse A inverse it is sometime we call it as a socks and shoe law because when we
+ wear first we wear the socks and then we wear the shoe but when we do the reverse process
+ the remove then first we remove the shoe and then we remove the socks. So remember this
+ operational identity.
+ Next thing that I want to tell you that already I have told that when you have a block matrix
+ it is inverse will be very much applicable when you are trying to predict a vector given
+ another vector and there you need to use this formula for the computational ease I am not
+ going for the derivation or anything. The third one either the last one is a very important
+ has very important application because often the error computation or the evaluation of
+ the process is done in such a way which is often known as a jackknife method or live
+ one out method. Live one out method means you have a data set and you have want to fit
+ a model for the entire data set you want to cross check whether the fitted model is good
+ one or not for that what we do is first we remove one observation from the entire data
+ based on n minus 1 observation we fit the entire data and then whatever data we have
+ kept aside we predict the value of the data and cross check how much gap is happening.
+ The next step remove the second data do the entire calculation based on the n minus 1
+ data and again you predict the second data and cross check how much gap is happening
+ between the data. In that way you complete the entire set with n elements and end of
+ the day you will have a very nice assessment of how good the model fitting is and that
+ is often known the statistics it is known as the jackknife evaluation or it is popularly
+ known as the live one out method.
+ Now you see that if we go for this evaluation process it requires a huge computational
+ cost because based on n minus 1 observation you are fitting the same model or estimating
+ the parameters of the same model or learning the parameters of the same model again and
+ again and again. So it requires a huge cost in terms of space and time, memory and time
+ and that thing in linear regression analysis you can directly avoid that computation you
+ can completely avoid through this result.
+ So here if you have the entire matrix if you want to remove one column or one row so that
+ row and that row transpose will be coming here. So suppose in that structure it will
+ be x transpose x and the row that you are willing to remove may be the ith row and the
+ ith row transpose then the decomposition of this entire quantity inverse I think I have
+ made a mistake this should be inverse. So this quantity inverse will be this one.
+ So as a consequence whatever the recomputation process leaving one data out that will be
+ at your hand just knowing or fitting the entire model only once together for the all data
+ rest all computational outcome will be governed by this analysis. So it helps us to reduce
+ the cost and time a lot. So these mathematical expressions are very much useful for ease
+ of computation and the inversion formula is pretty easy that if whatever the matrix you
+ need to take the adjoints of them and divided by the determinant of the entire matrix and
+ as this quantity comes in the denominator you also need to maintain that the determinant
+ of A naught equals to 0 and that is how you get the inverse.
+ The challenge comes when theoretically it is determinant is not equal to 0 but computationally
+ the determinant is close to 0 very very close to 0 that definitely whatever elements you
+ are getting as an inverse they often gives us trouble and in statistics and mathematics
+ we have technique to deal with in statistics we call it a singular value decomposition.
+ In mathematics we call it singular value decomposition in statistics we have its application in terms
+ of PCA. So we will touch upon all those stuff.
+ So to do PCA or the singular value decomposition what we require we require the compute the
+ Eigen values of a square symmetric matrices or at least the square matrices we require.
+ The trace has a nice connection with the Eigen values the sum over diagonal element is same
+ of the Eigen values and the determinant of a matrix is the product of the Eigen values
+ and the power matrix directly transfer to the power of the Eigen values inverse of Eigen
+ of a matrix is Eigen values of the inverse of a matrix is 1 upon the Eigen values provided
+ none of them are 0. So it is trivially true but because any Eigen value is 0 that means
+ the determinant itself is 0 because the determinant of a matrix determinant of a matrix is nothing
+ but the product of the Eigen values. So if any Eigen value is 0 so product is 0 determinant
+ is 0 the matrix is not invertible if all of them are non-zero then definitely you have
+ this structure that the inverse of the Eigen inverted matrix as the Eigen value is same
+ as the reciprocal of the Eigen value. So here is a very nice toy example of computation
+ of Eigen value suppose a is a matrix it is a square matrix need not be a symmetric matrix
+ then the Eigen value of this matrix is nothing but the determinant of a minus lambda i. So
+ here it is 2 cross 2 matrix that determinant equals to 0 and this equation this is a equation
+ in lambda and this equation is known as the characteristic equation characteristic equation
+ to after solving this equation the solution of lambda we get is 5 and minus 2 here you
+ can give work it out it is very simple so 1 minus that means the determinant of this
+ matrix 1 minus lambda 2 minus lambda so 1 minus lambda into 2 minus lambda minus 4 into
+ 3 equals to 0. So this is the characteristic equation we call it q lambda then 4 into 3
+ so maybe I should ok so that is good. So now you solve it and you solve after solving
+ this you will be getting the solution and after getting the solution we need to reconstruct
+ the equation that means in the form of first you focus here that suppose if we take lambda
+ equal to 5 then 1 minus lambda becomes minus 4 and 2 minus lambda becomes minus 3.
+ So 4 minus 4 3 minus 3 and x that equals to 0 so it row sum equal to 0 column sum equal
+ to 0. So to take the row sum we just need sorry this row sum is 0 the first row sum
+ is 0 second row sum is 0 so for that I just need a vector 1 1 you have already seen the
+ example that if you need to take the sum of a vector you just need to use the vector 1
+ 1 1 each and you do the dot product it will give you this.
+ Similarly if you use lambda equal to minus 2 you will get this set of equation and if
+ you want to solve them so 3 4 4 3 just similar magnitude with opposite sign so minus 4 3
+ I think that is that is 1 will be good enough for having the other value of the eigenvector.
+ Now what is the importance so this eigenvalue and eigenvector here it tries to say that
+ for this matrix we have 2 associated eigenvectors which one is this one another is this one
+ such that if I multiply this matrix with this vector then it is equivalent to multiply
+ this vector with this eigenvalue. So in the multiplication of this vector by this matrix
+ is same as multiplying so you see that 1 4 3 2 1 4 3 2 this is the matrix multiply with
+ one of the eigenvector which is 1 1 which is coming as 1 4 multiply it is 5 5 which
+ is eventually 5 times 1 1 so multiplying this vector by a matrix is same as multiplying
+ the same vector with a constant lambda. So matrix multiplication eventually becomes a
+ equivalent to a constant multiplication and when that thing happens then that vector is
+ the eigenvector of that matrix and the associated value is the eigenvalue of that vector. So
+ this is how geometrically the interpretation of eigenvalue and eigenvector is. The application
+ is definitely the well studied principal component analysis regression analysis okay gradually
+ we will talk about that.
+ So principal component analysis what we do is that when we have a huge amount of data
+ or variables like you can consider the handwritten image classification problem or the iris data
+ that we have in many software the built-in data that setosa, varsical or virginica these
+ three categories and petal length, petal width, seper length, seper width all these variables
+ are present. So all four variables need not be important for classification purpose or
+ prediction purpose. So we can do a principal component analysis like this we can construct
+ the matrix X transpose X or the variance covariance matrix and from there we can calculate the
+ eigenvalues and eigenvectors. So just to give a sketch may be later on so eigenvectors lambda
+ 1 greater than lambda 2 greater than lambda 3 so on and so forth lambda k is greater than
+ equals to 0 we are not preferred and corresponding to lambda 1 the eigenvector is V1 corresponding
+ lambda 2 eigenvector is V3 so on and so V2 so on and so forth.
+ Now we need to stop somewhere the stopping rule we will discuss later on we will not
+ consider all of them but some of them we will consider and the data will be projected on
+ all these eigenvectors or eigendirections. So X dot product with this eigenvector so
+ this is the score one then again X vector projected or the eigendirection that is S2.
+ So in this way you will get another vector for data X and that you can do for each X
+ as a consequence what you will get is nothing but a matrix calculated by all these vectors
+ V1 V2 up to V say M as many you want to incorporate and here you have the entire data matrix.
+ So matrix multiplication with this one you will get another set of feature vectors which
+ is of lesser dimension but important information will be captured there. So as you can understand
+ that the variable selection matrix multiplication and through eigenvalue identifications all
+ these things are important for data analysis part. So when you will do hands on you will
+ be able to connect all those stuff very easily projection is another thing which is the generalized
+ notion of regression we let me see how much content I have left with so we can cover.
+ So projection means in physics perspective or geometry perspective suppose I have a vector
+ here and I have this XY plane and consider another vector which I if you will be nice
+ if I have certain color maybe this is the color. Suppose this is a vector I have and
+ I want to project this vector on XY plane so that means eventually I am looking in this
+ way that I have a light source here which is projecting this arrow on this XY plane.
+ And that means the shadow is falling on this XY plane and if the shadow is falling in this
+ XY plane now suppose this is a new object on the XY plane what will be the shadow of
+ the shadow it will be nothing but itself it will be nothing but itself. So if you have
+ a free vector in the entire large space its projection in a smaller subspace will bring
+ that vector in that smaller subspace but if you are in that smaller subspace if you consider
+ the projection on that subspace you will get the same vector itself.
+ So the that operation this projection operation we can do with a matrix multiplication very
+ easily and this matrix multiplication this suppose this will give some vector v and and
+ that suppose this is z vector and we get this v vector but again p of v is again v and that
+ is true for all z because p of v means p of p of z equal to v and that is true for all
+ z that means p of z equal to v p of z equal to v p of v equal to v so p square v equal
+ to oh sorry just a second okay so sorry and v v is nothing but p of z okay.
+ So this is the thing happening and that is happening for all z as a consequence we have
+ the identity p square equal to p the projection matrix always satisfies this identity and
+ this feature is known as p is an idempotent matrix and if p is an idempotent matrix then
+ one identity minus p is also idempotent matrix the trace idempotent matrix has Eigen values
+ either 0 or 1 so the trace computation of that idempotent matrix becomes much more
+ easier in that scenario and the entire regression is nothing but a game of projection okay.
+ So whatever you do the regression analysis is a projection of that data the response
+ variable y in the regress in the space of the regressor variable we cannot go beyond
+ that whatever we want to do okay so that is how they are connected with each other.
+ Now let us consider few more things which are important so already we have considered
+ about the dot product and in more sophisticated technical aspect we call it inner product
+ people often write in this way sorry a b does not matter so in for real value vector it
+ is a transpose b that is sum over a i p i. Now if you consider a transpose a that is
+ sum over a i square but here what you can see that it is the Euclidean distance from
+ 0 vector to this a any component a so if you have this the length square is nothing but
+ this quantity.
+ Now notice that always this measure of distance might not be useful for us okay we need to
+ consider more generalized version of notion of error which typically want to use the scale
+ adjustment okay and sometimes make it unit free. Here notice that sum over a i square
+ a transpose a that thing hypothetically I can write a vector transpose identity vector
+ identity matrix a vector I hope all of you will agree with it. But this identity is very
+ nice to deal with but it may not consider all the necessary information suppose each
+ of the component of ai's have different scaling and that scaling is giving us impact so one
+ measurement in kilometer and another measurement is micrometer okay suppose a has two component
+ a 1 and a 2 one measurement is in kilometer another measurement is in micrometer.
+ So if we consider sum over a i square only the observation in terms of kilometer that
+ will lead to the conclusion the impact of the micrometer might not be so impactful.
+ So say for example the change in a parts of a vehicle that change has happened a little
+ bit change and it is affecting in kilometer the mileage okay so as a consequence the if
+ we want to have a combined impact or combined variation if I go by this measurement it will
+ be always driven by the kilometer but the root cause of the change is the change happened
+ in the parts and that is more important that thing is not reflecting here.
+ So if I can have a matrix m which is scaling down these two things say for example m if
+ I consider say 1 upon say sigma 1 square 1 upon sigma 2 square which is which could
+ be the scaling factor then if I use a transpose m a vector which will be nothing but using
+ this formula a transpose m a equal to a i a i a j m i j which is nothing but say a 1
+ square by sigma 1 square plus a 2 square by sigma 2 square.
+ Now you can see that the scaling has been adjusted for both of the variable they have
+ now a reasonable impact on the final conclusion not only that if here I have assumed that
+ these two quantities are 0 if they are non-zero quantity then also this general expression
+ will be able to help us so for that we need a matrix m which is symmetric that means m
+ transpose equal to m and determinant of m is greater than 0 if I replace this identity
+ matrix with a matrix m like this then I can still have a reasonable notion of the distance
+ and this structure is known as the quadratic form why it is quadratic form consider that
+ this m i j are the coefficient and a i a j they are variable each a i and a j has power
+ 1 so in this expression all component has power 2 this is power 1 this is power 1 so
+ all component has power 2 that is why it is known as a quadratic form.
+ Well based on the quadratic form we can also obtain the maximum eigenvalue or the minimum
+ eigenvalue it has again application on the PCA and normalization of the data in ridge
+ regression lasso regression all those types you will be able to see and finally we have
+ the data and we do the rotation through a matrix or a transformation with a matrix which
+ has the particular property such that its columns are orthonormal to each other and
+ that one is giving a transpose equal to a inverse leading to a transpose a transpose
+ equal to a transpose a equal to identity. Now if you take the determinant of a transpose
+ which is same as the determinant of a determinant of a transpose and equal to the determinant
+ of identity which is 1 now determinant of a and a transpose they are same so determinant
+ of a square equal to 1 as a consequence determinant of a is either plus or minus so this one is
+ an impact of I mean of a situation where it preserves the square norm.
+ That means if you consider the norm in this form the square distance that is preserved
+ with this transformation which is often important technically it is known as an isometric transformation
+ but for simplicity you can in terms of Euclidean norm. So Euclidean norm on the square norm
+ is preserved through this orthogonal transformation and the advantage or you can see this is a
+ rotation matrix any object we have you can rotate the so any object you have you can
+ rotate the object with angle theta entire object for that purpose this you can use this matrix
+ but again more generally for this idempotent sorry this orthogonal matrix what as it is
+ preserving the norm so distance between any two point on this body rigid body the distance
+ remains same. So as a general perspective for the rigid
+ body transformation you can use this rotation matrix in statistics or data science we have
+ its application through PCA because when we do PCA we get a rotation of the entire data
+ with the data driven coordinate system and then we do the projection so whatever eigenvectors
+ that we have discussed so far for this principle this one I hope I have done here.
+ So this one this V1 V2 Vk if based on that whatever matrix if we can construct based
+ on all these vectors V1 V2 Vk they will construct an orthogonal matrix and rest of the job will
+ become much more easier because it will give us uncorrelated variables.
+ I think with that and this is few not even calculation help such that you can do the
+ matrix differentiation and it has huge application to the optimization problem if you go do
+ the gradient descent if you do the least square whatever you want to do you need to do the
+ vector differentiation so you can make use all of them.
+ I think with that note I should stop here if you have any query I will be happy to take
+ the questions and based on your feedback and all those stuff we will go for. So you can
+ see my home page for few I think it is not clear few books suggestions are given there
+ in the front page and if you have so one book I am definitely suggesting David C. Lay linear
+ algebra and its application. So it is a very nice book easy reading book without any help
+ of any instructor with very nice diagrams and applications.
+ So anybody and everybody can read this one and few statistics books are also suggested
+ there Miller and Miller will be a good one to start with without any background. So if
+ you want and the probability lecture note is also there so you can have a look there.
+ Rest now let us have some questions if we have can numerically countable data set be
+ a numerical countable data be function as well. Yes of course because the countable data
+ is a function of the input of the random variable.
+ So here we consider the random variable as I have told that the person we choose and
+ the number of sibling the person has. So this number is a random number the person has associated
+ with. So the input is the person information the output is the number of siblings. So definitely
+ it is a function of which input is the identity of that person the output is the number of
+ sibling of that person. So in that case it is definitely a function.
+ Will there be any possibility that the data can be classified as a combination of categorical
+ and numeric. Yes of course there are situations where the variables are categorical as well
+ as numerical and in that case we can still do the classification problem. I think the
+ question data can be classified as combination of categorical and numerical. Well some component
+ can be categorical some component can be numerical of course and if you have those type of situation
+ where you have category and the categories are measured by numerical then that is a very
+ easy example of nominal data sorry ordinal data.
+ And most of the cases we do Poisson regression type of analysis for those types. What is
+ the difference between the random vector or feature vector. So well the random vector
+ is definitely from a perspective of little bit more theoretical aspect. The random vector
+ means a vector valued outcome of a single input in the construction of the random variable.
+ Feature vector is the realized value of the random vector used for the further data analysis.
+ So eventually the random vector is used as a feature vector for the further data analysis.
+ Random vector is a theoretical object. Feature vector is the realized value of the random
+ vector. Why should we consider the square error, not cube error or any other power.
+ Can I have the screen once again. So why we are using square error instead of cube error.
+ The thing is square error always have a Euclidean notion is useful. So eventually the error notion
+ is norm. I mean first we have the difference x and y. Then it is absolute value and then
+ it is power. So power could be 1, power could be 2, power could be 3. So if they are vector
+ it is x minus y vector. So this is another vector. Take term by term absolute value.
+ Then if the absolute value power 1 that is usually known as L1 norm, L2 norm. So L1 norm
+ is sum over xi minus yi i running from 1 to n. It is also known as a taxi cab distance
+ like this or going like this. It is known as a taxi cab distance. Either you go from
+ here in this way or you go directly here and go there or it is also known as a Manhattan
+ distance. L2 norm is eventually going by the radius. So this is x1 y1, this is x2 y2.
+ So the x1 minus x2 square plus y1 minus y2 square root of that and that is L2 norm.
+ Now you can make it general for any in functional analysis usually it is given as an LP norm.
+ So you can have x minus y their absolute value after that power p or often they write in
+ the topic. So they write in this way LP norm. So any power you can use but remember first
+ you take the absolute distance and then take the power. If you do not take the absolute
+ distance there will be positive negative component and if you raise by the power or by an odd
+ number then the sign will have an impact you will not get a proper notion of the distance.
+ What is the real application and reason for finding the skewness or interquartile distance
+ or peakness or cutoff. So the skewness means say for example the tilt of the distribution
+ either it is have a longer tail to the larger value or the longer tail to the less value
+ and if that tilt is present in the data we need not or not prefer to go by the mean.
+ Mean in that case the if the data is upward bias mean will not be always be pulled by
+ the upward bias the central part of the data will not be well represented by the mean.
+ So to deal with the data which have positive or negative skewness we will prefer to go
+ by its different quantities not by the mean in that case. So skewness and skewness measure
+ gives us that warning that we should not always go by the mean in that case. Interquartile
+ distance is all another application because in interquartile distance is a distribution
+ free measurement for measuring skewness and kurtosis skewness also can be captured by
+ the quartile. This measurement theoretically assumes that the moments are finite like mean
+ median variance and all other higher order moment they are finite but interquartile distance
+ is a distribution free measure for any distribution you can make use of that.
+ So this is more like non parametric structure and skewness as I have told that the skewness
+ keeps the assurity that if the skewness is very high then the very very high then the
+ data will almost behave like a constant compared to the other values which have very less
+ skewness okay. So skewness less means we have to be careful and take care of its scaling
+ and the variation more I mean more seriously than the skewness if the skewness is high
+ you be relaxed with that part of the data but if the skewness is low you have to be
+ very much careful and incorporating all details of that part of the data in a thoroughly and
+ properly in your analysis that is the ground level indication from the measurement of skewness
+ okay. Thank you.

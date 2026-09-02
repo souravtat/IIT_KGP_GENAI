@@ -1,0 +1,633 @@
+ Okay, good morning all of you.
+ So I'm going to talk about deep learning in particular the transfer learning from deep
+ pretend models.
+ So transfer learning has a very long history and I'm not going to talk about the other
+ kinds of transfer learning but I'm primarily going to focus on the kind of transfer learning
+ that we do from deep learning models.
+ So I will briefly touch upon what is transfer learning and then I'll directly come into
+ the deep learning best models and try to show you what are the things that we do in deep
+ learning to transfer, what are the different challenges, the computational issues, the
+ changes that you need to make in the model parameters, the model architectures, some
+ applications of transfer learning and then I will end up with some of the very well known
+ open source pretend models which are the backbone of any kind of transfer learning in deep learning.
+ So before I get into transfer learning I quickly review the deep nets because this is something
+ on which we will be standing our entire talk, so the foundation for the kind of talk that
+ we are going to do today.
+ So as you know the deep learnings are extremely effective, so sorry there is a spelling mistake
+ it should be effective primarily because they can learn representation automatically for
+ specific tasks.
+ So if you recall the conventional machine learning, the traditional machine learning what happens
+ in this case that the future engineering is typically done by the human expert, somebody
+ who knows the domain, for example somebody who understand image very well or somebody
+ who understand the language very well, so they can extract the features from the corresponding
+ domain and then it comes to the typical machine learning models like support vector machine,
+ logistic regression, decision tree and all sorts of things.
+ The good thing about deep learning is that we do not need to do all kinds of stuff, the
+ future engineering is done automatically, specific to a particular task, the model itself
+ will learn the representation based on the data and based on the objective function that
+ we have, so that gives the power, the main power.
+ So very little or no manual intervention required and I will come to this particular point when
+ I talk about things where we need very little or very little manual intervention in situation
+ like this.
+ So the typical structure I believe this people have been talking about these things for quite
+ some time in the last few lectures, I just quickly give the basics of these deep nets.
+ So deep net is nothing but a very big and complex mathematical function and typically
+ they have millions and billions of parameters which we call weights and biases and so on
+ and so forth.
+ And the parameters they do everything for you.
+ So they are the real workhorse for all the things that you did learning.
+ So if you get them right then they can do good things for you.
+ So in order to get them right we need to train these things very nicely and that itself is
+ a very big challenge not only computationally but at the same time it requires lot of data
+ to do it.
+ And one of these major motivations for using transfer learning is to minimize the necessity
+ of data and we would like to transfer a particular knowledge or representation from the other
+ domains and try to adapt it.
+ Now all of you probably know that there are various kinds of deep nets.
+ First that comes to our mind is the vanilla neural network which we also call the feed
+ forward neural network.
+ So basically what you have you have that all the layers are connected with the next layer
+ and also and so forth fully connected layers and you simply perform computation from left
+ to right and predict something.
+ So this is good for the tabular data.
+ We assume that the features are already in good form and we can do lots of the traditional
+ tasks that the conventional machine learning people do.
+ The second most important thing is the convolutional neural network.
+ So this kind of neural network is very useful for image and video data.
+ In this case we need much more sophisticated future engineering than the tabular data.
+ So we have lot of layers you know these convolutional layers, max pooling layers, fully connected
+ layers and all sorts of things and they will extract some interesting features for the task
+ that we are dealing with and then they can do the magic for you.
+ The third category of models recurrent neural nets specifically for temporal data.
+ So by temporal data I mean the time series data or where the things have sequences.
+ For example the natural language text which is a very good example of sequence data because
+ the words are dependent and if you change the word the order of different words then
+ they can carry different meanings.
+ So for those kind of tasks for example something that you have to deal with the natural languages
+ the recurrent neural nets are extremely good models.
+ Now more recently and I think something that is ruling the entire deep learning community
+ is the attention based nets in particular the transformer and its different variants.
+ So unlike recurrent neural nets they are not that recursively dependent different states.
+ This can be done in parallel with the concept called self-attention which can capture extremely
+ powerful dependencies between different symbols appeared in the input data and then you can
+ basically do all sorts of things.
+ So the generative BI for example the chat GPT and other things essentially relying on
+ the transformer model.
+ In all of these cases we will see how these architectures can be changed or modified to
+ achieve the transfer learning.
+ So the essence of deep learning is basically representation learning.
+ So that's the power main power of deep learning.
+ So the input data could be like image, video, text or audio and then you have this model
+ involving a billion sometimes millions and billions of parameters and they will produce
+ a hidden vector of some dimension fixed dimension typically the numerical the real number vectors
+ and these vectors will finally help us to produce the final output.
+ Now the vectors that we get from these models is not human understandable in the sense that
+ if we try we cannot really make sense out of it.
+ So all the machines do they know that how this can be used different models the computational
+ models they understand how this can be used to achieve the final goal.
+ So to give you a little bit of sense of these vectors created by the deep learning models.
+ So ultimately what they do they follow discriminative sort of the learning paradigm.
+ So if two objects are very different to each other then the vectors produced by the deep
+ learning models will be very different so angle between them will be very high or distance
+ between them will be very high or something like that.
+ So the typical deep learning model as I mentioned will involve a millions and billions of parameters
+ you know and these parameters typically are organized in a particular way so that you
+ can do the lot of feature engineering and so on and so forth.
+ So whenever I talk about the parameters I will denote by this set of parameters W typically
+ the weights and B for the biases.
+ So typically these two sets of parameters that you have in the deep learning models will
+ determine everything for you.
+ So general belief is that higher the number of parameters better capability that they
+ have but the downside is that higher the model more computational power will be required
+ more data will be required and that is where transfer learning comes into picture.
+ The first question that we encounter in transfer learning why transfer learning.
+ So the first assumption on which transfer learning stands is that there are many tasks
+ that we do often they share common knowledge.
+ For example the linguistic representations of text fragments will share some common things
+ and that can be exploited to achieve different text processing applications.
+ For example if we are dealing with say natural language text we may need to classify the
+ particular text into a particular category.
+ We may need to group the text in different groups.
+ We may need to find out the orientation of the text for example whether this is positive
+ or negative and so on and so forth.
+ So although they have different tasks they do share the common linguistic characteristics
+ that can be exploited in this case.
+ Now coming to images for example many images will share the structural similarities.
+ For example the shape of an image is an extremely powerful signal which can be used to do many
+ downstream tasks for example image classification, image captioning, segmentation and so on and
+ so forth.
+ Now the same feature for example in case of image the edges can be used to many other
+ domains.
+ So the question is why can't we exploit the common representation that the tasks share
+ so that we can minimize the computational requirements, we can minimize the necessity
+ of data and so on and so forth.
+ The second and one of the most important sort of the motivations behind transfer learning
+ is the annotation cost of data.
+ So in order to train a very big deep net you require a lot of data and often the data requires
+ annotation and the annotation is not only time consuming at the same time it's expensive
+ and at the same time more data that you have there will be a lot of noise and processing
+ pre-processing data and cleaning up things will also be extremely challenging.
+ So what we do we basically make use of HMAS supervision as available to us and then try
+ to modify on top of this sitting on top of this to achieve something.
+ The third important point is building large models from scratch is extremely time consuming.
+ They are computationally very heavy.
+ So not only computationally very heavy they also consume a lot of power so that also is
+ kind of damaging for the environment, generates a lot of carbon, footprints and so on so forth.
+ So for many different perspective that if you could minimize the computational burden
+ for training the deep networks we can do lot of good things and this is one of the major
+ objectives of the transfer learning that we are dealing with.
+ Now to give a pictorial view of transfer learning.
+ Now on the left side you can see the traditional machine learning model.
+ So you have different tasks for example task 1, task 2, task 3 and then you have annotated
+ data for example.
+ These are the annotated data that you have.
+ So all the data annotations for different tasks and then there is a model, the different
+ learning systems for different data and so on so forth.
+ And for each task the machine learning model will learn a new model based on the task and
+ the data and they do not share anything between themselves.
+ And contrast in transfer learning what happens is that say you have a source task and then
+ you have some annotated data in the source task we know and then you have another target
+ task for which we do not have annotated data.
+ So something that we learn from the source task for example in terms of knowledge in
+ terms of particular system and also on so forth can be exploited in this case.
+ So we are not going to train the models from scratch every time we encounter a new task.
+ What we do we try to figure out often what is the closest possible existing task where
+ the model is there.
+ Do they share any structural similarity, semantic similarity if the answer is yes.
+ We will take that the existing model we will try to modify this in some way or the other
+ and then we basically try to apply this on a new task.
+ Now of course there are a lot of downsides of it and I will discuss while I talk about
+ all of these things later on in few minutes.
+ So what are the key questions in transfer learning?
+ The first question is what to transfer.
+ So it is not very easy that you take something and then go and straight away apply on a new
+ task and so on so forth.
+ So that may not give you the desired result.
+ So the first question that we should be asking ourselves what to transfer.
+ So in doing so what we need to do we need to identify which portion of knowledge is source
+ specific and what is common between the source and the target.
+ So once you identify that then you can target that common representation of the common knowledge
+ and modify with respect to the task that we are dealing with and so little bit of like
+ changes we can made to the big existing model.
+ The second question went to transfer.
+ So the ultimate objective is to improve in some way or the other.
+ Computationally of course we do not want to degrade the accuracy substantially that something
+ has to be kept in mind.
+ So our objective would be to utilize transfer learning to improve the target tasks and results
+ and we certainly do not want to degrade them.
+ So then we have to basically keep in mind when we can do the transfer learning so that
+ we can achieve this one.
+ Now when I am saying that not degrade them that means I am not saying that you cannot
+ degrade them numerically.
+ So even if like often in fact we will see that the transfer learning models they do degrade
+ performance if you transfer the knowledge compared to if you try to do things from scratch
+ using lot of data and big models.
+ But the amount of degradation should be minimal.
+ If there is substantial amount of degradation then the transfer learning is not going to
+ serve the purpose.
+ And the third question is the technical question of building these models, training these models
+ and all of these things how to transfer.
+ So we have to transfer one model to the other tasks and therefore what are the changes that
+ you have to make to the existing algorithms and different techniques and how you can train
+ and re-train them what are the minimal amount of data that we make use of, computational
+ challenges and so on so forth.
+ So these three key questions that we need to be very clear about before we try to apply
+ transfer learning.
+ So these pictures give you the sort of this taxonomy of transfer learning strategies.
+ So the lot of things that we know about transfer learning and depending upon the availability
+ of data we can categorize a particular thing into a particular category.
+ So first of all that we can assume that the label data are available in a target domain.
+ So we have a source domain, that's the paradigm we are operating on and we have a target domain.
+ And the source domain basically something where we have the original model in this case.
+ Then the models comes to the target domain, basically we will try to apply for this one.
+ So all basically we are going to do, we are going to this particular model that we have
+ in the source domain and in this case if we have some label data available in the target
+ domain what we should do.
+ So in a setup like this we can apply inductive transfer learning.
+ So inductive transfer learning again there are various cases.
+ So no label data in a source domain, so what we do we apply something like the source self
+ transfer learning, in case we have the label data available in the source domain we can
+ apply the kind of learning where the source and the target tasks can be learned simultaneously.
+ And all of the things that we do in this case is called multi task learning and I will touch
+ upon that particular issue later in this particular lecture.
+ In the second scenario the label data are available only in a source domain and the
+ no label data available in the target domain.
+ In a situation like that what we can do, we can do transductive transfer learning, this
+ another branch of transfer learning.
+ So the main assumption that we make in this case is that the different domains but single
+ task, the same task but the domains are different.
+ So what we can do, we can do a thing called the domain adaptation.
+ The other assumption that we can make is that the single domain and single task, then in
+ that case also we can do the sample selection bias, there could be a lot of issues sample
+ selection bias, covariance shift and so on and so forth.
+ The third situation in transfer learning the no label data in both source and target domain.
+ So in neither of these domain the label data available.
+ So in this particular situation we simply do the unsupervised transfer learning, no label
+ data is typically used and we can basically transfer one model, the source model to the
+ target domain without using any kind of data.
+ Now coming to the transfer learning, so again I would like to reiterate that you learn one
+ particular task and then transfer to another task.
+ So that is the kind of setup we are operating on.
+ So broadly we have two major components for this one.
+ One is pre-training a particular model and then we would like to adopt this particular
+ model for the kind of application we are targeting.
+ So pre-training will give you the initial base model on top of which we will be standing
+ and modifying.
+ So I am just showing few examples, there are a lot of examples one can pick.
+ So one of the oldest thing in somewhat close to deep learning is what to make.
+ So the objective was to create the vectors of the words from a natural language text.
+ This is one of the pre-trained model in unsupervised training is done based on a very big natural
+ language corpus and then at the end of it we create a vectors for each of these words
+ in a particular language.
+ The objective is basically if two words are appearing in different context in a big corpus
+ then the vectors between them should have very high angle.
+ If they are appearing in the same context that means probably they are meaningfully same.
+ So the vectors should have very small angle between them.
+ GPT is something that we all know, so it is a transformer based model created by OpenAI
+ and that is something we like everybody is using nowadays.
+ So that again is a language model which is trained on a very huge volume of data of different
+ tasks and so on and so forth and at the end of it we have a language model, again it is
+ a vector manipulation on all sorts of things.
+ But the bi-regional transformer which is basically the backbone of GPT and all modern language
+ models in deep learning.
+ So again you go and create the hidden representations for different words, sentences, paragraphs
+ and so on and so forth.
+ So these are all like some of the pre-trained models available and given a particular task
+ for example say I would like to achieve classification on text or say I would like to perform classification
+ on the product reviews or I would like to classification say news items and all sorts
+ of things.
+ So which is a kind of supervised learning setup and often you need lot of data to do
+ that.
+ So what we can do basically we can choose one of the speed and models like what to make
+ GPT or BART and then you can use little bit of data from classification, the domain of
+ classification we are targeting, we modify this particular vectors little bit and get
+ things done.
+ Similarly question answering is also another popular task, extremely powerful task in NLP
+ and what we do basically we take these vectors and then we can basically modify these vectors
+ based on the questions and the answers that we have and build our new models.
+ Text leveling for example if you give a particular sequence, for example you spot the name, dentities
+ in a text and so on.
+ So how you can basically do that leveling task and so on.
+ So one thing I once again re-iter and that is very important to remember is that in deep
+ learning is basically the objective is to do given the input data we would like to give
+ the end goal, I mean end task.
+ But in the middle the entire the objective of training, processing and everything goes
+ into creating the good high quality vectors from the raw data.
+ So everything that you do in deep learning is in vector form.
+ So image is converted to vector, audio is converted to vector, text is converted to
+ vector, video is converted to vector, vectors of real numbers, that is what the machines
+ can understand and all we do basically we take the input data convert this into vector
+ and then we use this vector to achieve the final goal.
+ So the vector does not make any sense to a human being, not understandable because often
+ this is very high dimensional but what we know is that if two things are different the
+ angles between or the distance between these two vectors will be different, that's all
+ we know and then on top of this basically we can apply some kind of this mathematical
+ models to predict the final end goal.
+ So coming to the pre-training in little bit of more detail, so one is basically unlabeled
+ data and cell supervision and that is something extremely very popular nowadays because the
+ unlabeled data is widely available on the web elsewhere and when we have to do pre-training
+ based on the unlabeled data we have to apply the self-supervision mode, we cannot do supervised
+ mode.
+ So for example it is easy to gather the large corpus from Wikipedia, news, web crawls, social
+ media and et cetera, et cetera, anybody can go and crawl the data, you do not need any
+ kind of supervision to do that, you also do not need any kind of annotation, so you simply
+ go and pick them up.
+ So what the main, the hypothesis behind this approach is that the training assumes that
+ the things which are appearing in the same context are distributionally similar, which
+ is called distributional hypothesis.
+ So in supervised pre-training, which is pretty common in computer vision, so what we have
+ is essentially that computer vision, machine translation and so on and so forth.
+ So we have explicit access to the training data in the sense that we have the original
+ input data, say for example an image and its corresponding levels, say for example this
+ is cat, this is dog, this is human being, this is a green field and so on and so forth.
+ So we have explicit access to all the data that we have and the levels which you can
+ make use of.
+ Now in machine translation for example we have the source language text, say in English
+ we have the corresponding translation available in target language, say for example in Hindi
+ or in Bengali and then we can basically make use of to learn the association between the
+ source language and the target language.
+ In question answering for example, say we have some question answering data set in say
+ news for example, news domain, then can we basically use that same thing, similar thing
+ in medical domain for example.
+ So all of these things can be done through the supervised pre-training.
+ Now self-supervision is something extremely powerful and most of the today's the big language
+ models are basically driven by the self-supervised paradigm.
+ And so I will talk about those things later in this particular lecture.
+ So for example, the BART, GPT and all of these things they use huge amount of self-supervision
+ while they are learning these models.
+ So just to give you a little bit of sense and I believe deep learning basics have been covered
+ in this particular series and I would like to briefly touch upon that just to make things
+ little like continuous between different lectures.
+ So word embedding methods, what they do, they learn one vector per word and fixed dimensional
+ vectors.
+ So every word will be converted to a fixed dimensional vector.
+ So all of these entries, this is 0.9, this is 0.1 and so on so forth.
+ So all these vectors will have some, all the real number vectors.
+ And the objective as I mentioned is that, that if two words are meaningfully, semantically
+ not similar, they must have different vectors.
+ That's all we know.
+ If you try to make some sense out of these vectors, that is going to be challenging because
+ you do not know what they are.
+ But you can do some kind of processing like these computing similarity, computing distances
+ and so on so forth and you try to understand that the quality of vectors and so on so forth.
+ So they are once again relying on the distributional assumptions in deep learning, or in most of
+ the language processing tasks, that if two words are distributionally similar in terms
+ of the context, they should have the same vectors.
+ And the vectors will have the same dimension.
+ So for example, this is another example, so we have vectors like for example cat and dog
+ and so on so forth.
+ And we have a sentence like say, I love my cat and dog.
+ And we like to basically, you know, annotate this data, like for example, we would like
+ to tag this particular sequence of things in terms of verbs, in terms of, for example,
+ the nouns and so on so forth, which we can parse with this tagging.
+ And in this kind of application, we can actually make use of these vectors that we have.
+ So as I mentioned, the things basically are not very independent.
+ So for example, the meanings of words again, context dependent.
+ So in the previous case, typically what we do, we create one vector for each word, you
+ know, from a very large corpus, we train it, then we get the vectors and so on so forth.
+ But that has very limited application and utility in the sense that in language, often
+ the words and the meanings are basically they depend on the context in which they are appearing.
+ So these two sentences make things very clear that we have two cats or it is running cats
+ and dogs.
+ So what ideally we should be doing in a situation like this, we must have the different vectors
+ for the word cats because they are appearing in different context.
+ So these are basically some of these examples.
+ We are moving from the fixed vector to, for example, these words in context and we will
+ adapt these kind of vectors to make sure that they represent the context adequately.
+ So language modeling is something that we apply a lot and all generative say these models
+ that we see today, GPT, question answering, all sorts of things, they essentially rely
+ on the language modeling.
+ So to simply define this term language modeling, we like to learn the probability of a piece
+ of text that we see or we generate.
+ The simple example is, for example, when you are typing something on say word, MS word,
+ if you make some mistake, for example, you've forgotten a particular article or preposition,
+ you wrongly use some say tense of a particular verb and all sorts of things, the system will
+ flag it that this is not the right thing to do.
+ So how do they understand?
+ The simple logic is that, that they use a huge volume of say clean text, the correct
+ language text and they try to understand that given some text, what is the probability
+ that the next word or some other word appearing in the text basically, you know, happened
+ in the text that we have seen so far in a clean text.
+ So if this is linguistically correct thing to do, then the probability of the text that
+ you are trying to predict for would be extremely high given the other text.
+ If not, they are going to be wrong.
+ So they will generate some kind of probability distribution given some text, whether this
+ is possible to generate the other text and so on and so forth.
+ And all these models that we do right now, the GPT, the transformers and all sorts of
+ things essentially make the model language in a specific way so that they can solve the
+ target purpose.
+ So the good thing about this one is that, that it doesn't require any human annotation.
+ We can go and collect good quality text, for example, the news items and all so on and
+ so forth and we can basically use those things straightaway without requiring any manual intervention.
+ And so typically like languages, every language that we know, most of these popular languages,
+ they have enough text available and that actually helps us to learn the high capacity model
+ because all these models will require lot of data to train rightly.
+ Okay now, deep learning models are basically, as I mentioned previously, that they are full
+ of parameters.
+ Okay?
+ They are a very big mathematical models.
+ The mathematics is simple, but the way things are organized often not that easily understandable
+ to human being.
+ Like we understand little bit partly or some like, you know, what we are trying to do in
+ a particular neuron or so on and so forth, but we don't fully understand what they do
+ at the end of it.
+ But intuitively what we typically try to do is that, that we try to combine the raw data
+ in a form which will help us to achieve the end goal.
+ And the combination only takes place through some mathematical models.
+ For example, the linear regression, what we typically do is assume that this basically
+ the final prediction will depend on the linear combination of the input features.
+ Okay?
+ Or a logistic regression, what we assume is that, that the things can be separated using
+ a linear decision boundary and so on and so forth.
+ So under any deep learning model, we make certain assumptions, okay?
+ And then we basically try and explore and try to see whether this is serving our purpose
+ for the end goal, okay?
+ So one of the very fast model in language modeling is basically this created by the Benjiro,
+ one of the pioneers of modern AI.
+ So in this case, what they did, they basically used a very shallow neural network using this
+ different words, what you can see that different words here, okay?
+ And then using this context, they are trying to create, for example, this probability of
+ a particular word appearing in a particular situation, given the context vector, okay?
+ So the context in this case is basically a vector, okay?
+ So the context of a particular vector, we encode the entire thing in the form of a vector
+ of some dimension.
+ And given this particular vector, is it possible to generate a particular word?
+ And we simply try to measure the similarity.
+ If the similarity is very high, that means the context can rightly generate the word
+ and therefore the word can be placed in this particular position, okay?
+ If the probability is low, then we know that context is not capable of generating the particular
+ word and something is wrong, so we flag it, okay?
+ So that's the kind of shallow network that the initial model that people have developed.
+ Now of course the shallow networks have a lot of limitations because they are not able
+ to capture extremely intricate complex dependencies between different things, okay?
+ Now stepping aside for a moment, if we pose this question even to somebody who understand
+ human language very well, that if you give him a piece of text and ask him to say whether
+ this text is reflecting a positive thing about somebody or a negative thing about somebody,
+ okay?
+ Now anybody who understand language little bit, he or she should be able to answer this
+ question straight away that this is positive, this is negative and all sorts of because
+ we have some prior knowledge about the language we are dealing with.
+ Now the moment you ask the human being the same person that how did you decide it, okay?
+ You tell us a methodology through which you have decided this is negative but this is
+ positive.
+ It is very difficult and nearly impossible to come up with a particular method and algorithm
+ to tell that this is the way I have decided it, okay?
+ Therefore you cannot teach that particular thing to somebody that this is how you should
+ take the decision.
+ So in a nutshell, we are very good at doing the end goal, okay?
+ On the input data but we do not understand the internal mechanism through which we achieve
+ this, okay?
+ And that is where all these deep models comes into picture.
+ So now how to achieve this one?
+ The only thing that we have here some numbers because machines have machine only understand
+ numbers and then from one set of numbers we would like to achieve another set of numbers.
+ So the only way you can manipulate these things through mathematical models and to combine
+ different things in a particular way and a layer basically nothing but combines information
+ in a particular way.
+ So more layers means more combination.
+ More combinations means more intricate dependencies, okay?
+ So for example, when you are trying to judge the orientation of a particular sentence,
+ then there could be three, four words in a particular sentence which in combination will
+ help us decide that this is negative, this is positive.
+ So you need to capture that kind of dependencies.
+ So the deep models that we basically often play with is very good at capturing those kind
+ of dependencies.
+ So the typical assumption behind most of the deep learning models is that they deeper the
+ models and better they are in capturing those kind of dependencies.
+ So we basically then explored these deeper models and something that is extremely popular
+ is called BART is a bi-directional encoder from transformers.
+ So once again is primarily for the language processing tasks but people also apply this
+ on images as well.
+ So there they use multiple layers to capture many kind of dependencies using attentions
+ and so on and so forth.
+ Okay, now we talked about the embedding of words and all deep learning models essentially
+ embed words or text.
+ So once again, the embedding means that a vector representing a particular word, sentence
+ or anything like for image or everything else.
+ And that's the main building block of this deep learning, modern deep learning models
+ and AI models.
+ The question is why embedding?
+ I mean why we really would like to do embedding of words, images and all sorts of things.
+ So the fundamental assumption behind embedding is that the embeddings are basically parameters
+ okay and they are unknown initially and therefore we can use some learning mechanism to learn
+ them okay.
+ So they are learnable and that basically gives us the main power from the raw data.
+ Second thing is that there are many tasks that we deal with often, they share representations
+ okay.
+ So if that is the case, then why not simply use these embeddings from one task to another
+ one okay.
+ And third and most importantly, embedding typically gives you a lower dimensional compact
+ vector, dense vectors okay, say 100, 200, 300 so on and so forth okay.
+ And most of the entries in these vectors have some non-zero numerical value okay, that's
+ why you call dense vectors and that makes the things very efficient you know.
+ We can efficiently manipulate these things because at the end of anything we have to
+ compute the similarities between different vectors.
+ So if we have these small dimensional vectors with like the compact dense vectors then you
+ can manipulate them efficiently and this gives us computational power okay.
+ So coming back to our previous one, the neural language modeling stuff.
+ So we basically pre-tend the language and then create these word vectors.
+ So we call it pre-tend word vectors and so on and so forth.
+ This is one architecturally extremely popular.
+ The other kind of stuff that we know of is like multitask word embeddings okay.
+ So in multitask word embedding, what happens is that we simultaneously try to learn embeddings
+ okay for different tasks.
+ And as you know that basically we use different kinds of layers.
+ So I believe that in our previous lectures on deep learning touched upon different kinds
+ of layers.
+ So for example, so this is one architecture and there is no end of variation of different
+ architectures okay.
+ So this is one architectures that work pretty well.
+ So convolutional layer followed by the max pooling layer, followed by the classical, the
+ fully connected layer, then softmax layer and so on and so forth.
+ So at the very fast layer okay, what you have the input data okay.
+ So if you are dealing with languages, you can give the words in a sentences or in paragraphs
+ and so on and so forth.
+ If you are dealing with images, then you can give images.
+ If you have audio signals, you can give audio signals something like that.
+ And on top of this basically you apply many many layers.
+ So in this particular architecture, they decided to use convolution, then max pooling, then
+ the fully connected layer, then the softmax layer and finally the end goal okay.
+ And because the two tasks are being learned simultaneously in this particular setup, we
+ are calling this multitask learning and in this way for example, if you apply this one
+ a language processing tasks, we can get the embeddings based on this multitask learning.
+ So these other important things, sentence and document vectors, you know, not only that
+ what vectors we deal with, we also deal with sentence and document vectors okay.
+ So this is one of the very oldest, very old work on the unsupervised paragraph embedding.
+ So what we have in this case that we would like to, so basically do the paragraph embedding
+ using a distributed memory.
+ So we basically feed the entire paragraph to a particular model and then we create this
+ word vectors and so on and so forth.
+ We create some kind of average of this word vectors and finally produce this final output
+ okay.
+ There are other approaches as well that people have followed but the broad goal of this one
+ is basically given a piece of text is a paragraph typically, we would like to create a vector
+ which will represent the meaning or semantics whatever you can call it of the piece of text
+ given in the paragraph okay.
+ Just like the word embedding, you have the paragraph embedding and this is pretty common
+ in the modern AI NLP.
+ Now another popular task, next sentence prediction.
+ So you have a sentence okay and then you would like to see whether the next sentence is coherent
+ with the previous sentence.
+ Now often when we write like the languages like say paragraphs and all sorts of things
+ and so on and so forth, it is important to understand whether the sentence which is coming
+ next is a good one compared to the like given the context that we are dealing with okay.
+ So for this kind of stuff what we need to have, we need to have an architecture say
+ for example this is the previous sentence okay and given the previous sentence, we like
+ to predict the next sentence that means the words of next sentence and whether they could
+ basically come next okay and this kind of model so called the sequence to sequence model.
+ Now we also do pre training on auto encoders okay so auto encoders means that I do not
+ need any supervised data to create the encodings or encodings of the original data.
+ So what we try to do basically we have some input data and how we can represent for example
+ in this case this is the input data and then what model we can learn from this so that
+ the model will again generate the original data.
+ That is why we are calling this an auto encoder you know I do not need any supervised learning
+ setup I do not need any annotated data nothing like that so it will just convert the original
+ data into a vector form and again we will use that vector form to generate the original
+ data in the same form.
+ So if the new data that we generate from the original data can be generated very nicely
+ or as is then the encoding that we have generated is a good one okay and that is also very popular
+ very well known approach in pre training you know unsupervised pre training where no manual
+ intervention required at all okay.
+ All what vectors once again the real power house for all modern the language processing
+ tasks you know GPT and all sorts of things that we see okay.
+ So this is for example you know one such example taken from a particular vector created by
+ one of the very popular molecular glove so these are the basically the nearest neighbor
+ vectors for word play you know verbs are basically playing played nouns are game games players
+ football adjective multiplayer and so on so forth.
+ So if you like to answer the question something like that given a particular word find out
+ different sorts of things parser speech etcetera which are very close to this particular word
+ then you can actually use this pre trained word vectors to achieve this goal okay.
+ Once again basically we apply the contextual word vectors okay not a fixed word vector
+ for a particular word in a given language.
+ Now the key idea in context vector is this okay.
+ So instead of learning one vector per word we like to learn a vector that depends on
+ the context okay.
+ So for example in this case so given the context the kids play a game in the park so this is
+ my context the text context given okay.
+ I like to learn a vector for word play this must be unequal to the vector that you get
+ if the context is the broad way play premiered yesterday okay.
+ So although the word we are interested in play for which we would like to create context
+ vector the context are different and therefore the vector should be different and that is
+ extremely useful to capture the meaning of text because text is basically very difficult
+ to understand often because of its varying semantics depending upon the situation and
+ so on so forth okay and for this like there are many approaches in fact load of language
+ models are available using deep learnings where things are used to create the context
+ vector contextual vector for different words okay and that helps us to determine the meanings
+ of different things and very useful in application like question answering reasoning and all
+ sorts of things okay.
+ So one of the interesting architectures is tag LM so tag language model and I will always
+ use this like this you know acronym LM for language modeling next onwards.
+ So in this case what they are trying to do they pre-train two language models one in
+ forward direction another in backward direction okay so there are two language models that
+ we have in this case so this is the forward direction language model this is the backward
+ direction language model okay and then we are basically using these things to a sequence
+ tagger for example that we would like to tag a particular sentence like their parser speech
+ and so on and so forth okay.
+ So the reason that we do it because we would like to capture the context from both direction
+ okay typically if you go from one direction to the other left right for example you can
+ capture the left context very nicely but we may not be able to capture the right context
+ so we need to basically capture this one.
+ So what this particular model has done they have taken two identical language models the
+ sequence models okay but the way they have used this raw data okay is something like
+ this and one model will take the context from left to right the other model will take the
+ context from right to left so the model will generate two kinds of vector for each word
+ because they have two different contexts and then we combine these two vectors to produce
+ a final vector for each of these words and then we use this for any downstream task like
+ sequence tagging and semantics and all other things okay.
+ So in these two situations so we basically use this context vector to speed up things
+ to achieve other things and so on and so forth okay so unsupervised pre-training for sequence
+ to sequence models so we have say for example we have the pre-training encoder and decoder
+ with language models so in this case we basically have this encoding and then decoding and we
+ have multiple layers of this particular model and often we use a softmax layer at the end
+ of it that's pretty common which is just before the prediction layer and so on so forth.
+ Quickly coming to GPT something is ruling the world so we also heavily rely on these
+ pre-trained models so it's a very complex model based on transformer so we have so
+ on the left side what we can see is basically the transformer block I'm not getting into
+ details of transformer because that is something probably will be covered in language modeling
+ thing so just to give you a sense of what it is without getting into the details a transformer
+ is basically a very complex combination of different layers okay so you have the embedding
+ layers where you are taking these embeddings of these words then you try to see the similarity
+ between different embeddings then you combine weights with this one so on so forth you normalize
+ these things little bit then you apply a feed forward network so that you can exchange information
+ then you apply layer normalization to squash this values little bit and so on so forth and
+ then you stack up multiple such things in this case 12 such things you stack up to produce
+ this final thing okay and these vectors the final vectors produced by GPT is typically
+ used for many many different applications for example classification entailment computing
+ similarity between takes to understand whether they reflect the same thing or not answering
+ multiple size questions fill in the blanks and all sorts of things okay and the GPT something
+ is basically you know although they do use some level of supervision but bulk of the
+ thing that in GPT uses basically the unsupervised data okay data without any annotation from
+ the raw text okay so quickly coming to BART architecture so again I am not getting into
+ details of BART because that is not within the scope of my particular lecture but just
+ to give you a sense of what they do so in pre training what we do basically you know BART
+ is again bidirectional transformer so you use the same architecture but once again you
+ take from left to right left context and then from the right context and then you basically
+ mask few words okay and try to predict those masks word so nicely and so how we can adjust
+ this vectors so that we can create those things okay and then basically we can go and fine
+ tune these vectors because they are all generic fine tune these vectors for individual tasks
+ for example question answering, name data recognition, language understanding and all
+ sorts of things okay now okay now I will come to one of the most important part of
+ this transfer learning which is adaptation and in this particular segment I will talk
+ about how to actually adapt different models existing models depending up on the tasks
+ that you are dealing with okay so before we get into that we take a short break and then
+ we come back and talk about different approaches for adaptation.

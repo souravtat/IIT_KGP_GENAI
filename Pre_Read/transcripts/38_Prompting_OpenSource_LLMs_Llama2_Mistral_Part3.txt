@@ -1,0 +1,49 @@
+ How to handle case when the input context is higher than the input context window what
+ techniques can be used ok.
+ So, in general the context window defines the amount of takes that you can fit to the
+ LLM.
+ So, suppose your context window is of 50 words then you can fit maximum 50 words.
+ So, if you just fit it a document having 100 then rest of the 50 that is the last 50 they
+ will be truncated.
+ Now if you think that you have to fit the entire document at once one of the ideas could
+ be chunking; that means, you split the documents into two chunks of 50 50 and you pass them
+ one by one and then basically combine, cut in it or combine the information in some way
+ ok.
+ There are different ways of combining this, but what you are basically losing that if
+ you are basically fitting the entire document it will capture the entire context, but if
+ you have to split it into two then the first part cannot get the context information from
+ the second one that is the part we are losing.
+ So, in general that is why we are looking for the models having the larger context window
+ ok.
+ In top underscore catcher where likelihood weight comes from ok.
+ So, the likelihood weight comes from your probability distributions we have basically this language
+ models of this like we have this trigram or bigram models that you learn from the large
+ corpus.
+ So, that means if we are talking about the trigram so, like it is a continuation of three
+ words.
+ So, here we are checking that given the previous two words what is the probability of getting
+ the third word.
+ So, from a large corpus you gather this kind of probabilities that basically gives you
+ the likelihood that is what is the probability of appearing the next word given and that
+ probability we are using for the likelihood part that you are getting from the large corpus
+ of the vocabulary.
+ So, in top underscore K what if probability is very close or equal for two words.
+ So, it is basically equal you can go with the any of this ok and if it is not equal
+ you can go with the highest one generally this LLM they follow the greedy strategy in
+ the prompting.
+ So, whatever is the best it basically goes with that in the top underscore K.
+ Then you tokenize are LLMs considering the memory each token takes or just number of
+ tokens.
+ LLMs from like open AIs have limit for number of tokens for free and paid versions what
+ does it means technically again the number of tokens is basically related to a context
+ window.
+ So, if it is a free LLM in that case whatever the context window you cannot go beyond that.
+ So, rest of the tokens will be truncated now in open AIs they have their paid version.
+ So, basically in the free they basically fix max document length that you can give as input
+ that is why they put this constant and for the paid version; obviously, you have different
+ kind of schemes and based on that you can feed different kind of documents or basically
+ different document lengths.
+ But when you come to the free LLMs considering the memory each token takes or just the number
+ of tokens.
+ No, it does not consider the memory it consider the number of tokens that you are feeding
+ fine and thanks everyone.

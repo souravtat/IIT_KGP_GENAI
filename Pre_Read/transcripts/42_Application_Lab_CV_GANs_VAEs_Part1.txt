@@ -1,0 +1,792 @@
+ screen, click on stack and again click on stack mode and enable full screen mode in
+ below options. So, this will show you the full screen mode of the center. Please put
+ your queries in Q&A. So, please be assured that if professors are unable to attend all
+ your queries in Q&A session, it will be answered and approved in our discussion room. The raw
+ recording session will be available at the end of the day and the editor recordings will
+ be available on Monday that is the day after tomorrow. The assignment availability for the
+ week 14 assignment will be enabled at 2 p.m. and week 14 assignment submission deadline
+ on 25th of May 2025 Sunday till 11 p.m. and solution for the assignment will be available
+ on 26th of May that is on Monday. Today we have a quiz 13. So, we will be quiz 13 will
+ be available today Saturday 17th of May 2025 between 5 p.m. till 7 p.m. the duration of
+ the quiz is 30 minutes. Next topic, fronting with open sources LLMS. If you face any issues
+ during the quiz, attending the quiz, please reach out to us in 4.tcsionhab.tcs.com/service-stats.
+ So, they will help you out in case of any issues we found. The results for the assessment
+ that is quiz will be available at 9 p.m. the same day. So, to view the marks obtained click
+ on mark attempts taken it will show the status of the cells. So, they are trained to update
+ yourage profile on that already we have given. So, in case of any issues please reach out
+ to us in 4.tcsionhab.tcs.com. So, thank you. So, over to you.
+ Thank you so much. Thank you very much. I hope the screen is visible. Yes, it is visible.
+ So, good morning everyone. My name is Vishal and today I will go over some details on practical
+ image and language generation models. So, all of you have by now become familiar with
+ various image generation models and language generation models or even text image models.
+ But those practical systems are far more different than what you would see in say like the research
+ literature and it has gone through multiple iterations of improvements after which we
+ are in this stage where you have such useful applications based on this technology. So,
+ we will try to understand how the research has moved through different iterations as to
+ what the original proposal was and how did the researchers modify them to come to this
+ current stage where like they perform as well as they do now. So, let us first take a talk
+ of fire we started at. So, this slide shows the progression of how image generation has
+ improved over the time and the current wave on which we are at, this started around the
+ 2014 with VA's and GANs and you can see like the first version of this was not even the
+ first paper but the image qualities that we used to get around that time was something
+ like on the left. It was very grainy, it was not able to handle the color and also like
+ it was not complex either. So, it was just like one face image and you could generate
+ such simplistic images only either digits or faces things like that. But compared to that
+ you come to 2018 and beyond like this is major news most recent versions and you can see
+ the amount of detail in these images and this is like extremely different from 2014 and
+ now it is almost indistinguishable from real like photo taken by camera. So, how like what
+ enabled this thing. So, you might be familiar with GANs or VA's the original architectures
+ but how do they come to make them so effective in practice that is what we will try to look
+ at today. And the same story kind of holds for text generation also text generation or
+ text understanding or text image any application that involves text for that matter. So, this
+ like wave also started for text around 2013 and so, we started seeing various neural network
+ for deep learning models which are very effective at doing very specific tasks in the period
+ of 2013 to 2018 and 19. And after that we kind of had like within few years we had the breakthroughs
+ of GPT models GPT3 models and then we have so many different models like Lama mid-journey
+ all these things. Who can now process any general takes general instruction beyond any
+ specific task definition. So, like this also has its own independent story which is slightly
+ different from what you see in the image domain and we will try to go through both of these
+ in the slideshow. And so, these technologies have become so good in recent times that there
+ they can be found anywhere in many different applications for example in you can see in
+ Google photos or any like iOS photo apps that you can now take a picture and remove anything
+ that you don't want in the photo like you can remove noise or you can even edit photos
+ in any way you want while keeping the main subject intact. And then you also have various
+ applications like text to image generation such as mid-journey that I mentioned earlier.
+ So, they are also so good that you can create art in any style for any like complexity any
+ level of detail using just a textual prompt. And so, all of these are like very high quality
+ like highly advanced technologies that are being used in our day-to-day lives. So, lot
+ of engineering has gone into this and we will try to understand that. And so, it's kind
+ of a similar story in text generation also but one thing that I want to highlight here
+ is that it's not perfect here nothing. So, all the technologies that we have right now
+ they also have their challenges. For example, one thing that we are showing that by using
+ CADGEPD or any of these kind of systems or any image generation systems initially they
+ might seem perfect but there are always some shortcomings that we are still trying to address.
+ So, all of these even though they are such advanced and like they might seem like match
+ your technologies they still have a lot of gaps that we still are trying to and want
+ to cover. So, for example, you can see like in reasoning and in mathematical reasoning
+ or in following instructions or like when to listen to a human how to argue with a human
+ all those kind of in all those kind of settings the LLMs don't really understand what to do
+ what value system to follow. So, with that with the instruction covered now let's get
+ into the specifics of image generation models and how we got from like initial GAN architectures
+ to something that are so useful today right. So, this is what so you might have come across
+ this basic architecture of how a generative adversarial network or GANs look like. So,
+ this was the original architecture that was proposed and it simply kind of gave a recipe
+ of how we can train image generation networks without going much into the details. So, here
+ you can see that you have one generator which tries to create new images from random noise.
+ So, this is like a fake image generator you can think of it like that. So, image that
+ is not coming in from some data set and then you have another channel which is a real image
+ possibly taken from some web source or some camera taken photo and you have a discriminator
+ network which tries to distinguish between these two photos and this is the whole learning
+ pipeline and you can think of how you can train this is for the generator the goal is
+ to create images that the discriminator will not be able to distinguish and the role of
+ the discriminator is to understand like which one is the real image and which one is the
+ generated creator image and you can see this as a minimax game which is also the loss function
+ that we optimize for training these models. So, what you are doing is so the generator
+ G and the discriminator D are kind of competing each other. So, that's why it's called the
+ minimax game. So, their objectives are opposing and because they are opposing you can take
+ like you can once you start optimizing them they will start going towards the solution
+ which is better for both of these networks right and the loss function can be written
+ in two parts. So, one is for the like this full thing can be seen as the loss function
+ for the discriminator where there are two components one is the data component. So, samples coming
+ in from the actual real data and the second part is so you can see like the Z is sampled
+ from a probability distribution. So, this is where this random noise distribution is
+ coming in. So, in the second part you are trying to for the discriminator you are trying
+ to make sure that the discriminator identifies it as a fake image right and so that is how
+ the discriminator will see this loss function but the generator will see the loss function
+ slightly differently. It does not look at the real images in this context. So, it just
+ looks at the second part because that is where the G function is involved and here it tries
+ to see whether the discriminator loss is or the discriminator score is minimized. So,
+ it is trying to make sure that discriminator is not able to understand that it is a fake
+ image. So, that is how this min max game is created and in this you can think of all of
+ these things like d theta and g phi the discriminator generator network are all any kind of neural
+ networks that can take in a certain input dimension. So, here example it is random noise and gives
+ out some output dimension right. So, it can be a simple feed for a neural network which
+ just matches the dimension at the input and output. So, this was this is what the original
+ paper proposed and as we saw earlier the image quality like it was able to create image but
+ it is not perfect. So, people had to come up with better solutions right. So, this is
+ basically how as I explained how this optimization works and so, for training the discriminator
+ you have the full loss function and you are kind of trying to optimize the parameters
+ of the discriminator and this is the second component which is which is only needed for
+ the generator training and you can see like this using this you are trying to optimize
+ the weights only of the generator right. But, this approach was not perfect while this gave
+ like a starting point but and this was one of the first networks which was able to create
+ images that was somewhat sensible but it had many problems. So, like the first problem
+ that become very noticeable was oscillations between generator and discriminator right.
+ So, if you look at the original diagram. So, these two networks are kind of computing
+ each other. So, if you do not have a very strong discriminator then the generator can
+ easily full the discriminator and the discriminator will kind of keep chasing the generator around
+ right and even if an ideal setting it can happen that the model goes to a degenerate
+ solution where it is just kind of like in each iteration of discriminator and generator
+ optimization it just flips around. So, you have the generator getting better in one iteration
+ and in the next iteration the discriminator getting better right but it is not really
+ getting to a like finding a good solution. So, that can happen and that is what is called
+ the oscillation problem. Then there can be a mode collapse problem. So, what can happen
+ here the generator can sometimes just find one particular type of images that it continues
+ to generate and that image can be noise as well and somehow if the discriminator fails
+ to identify that image properly. So, the discriminator will be kind of like suck at accuracy 0 or
+ 100% and the generator will be stuck just generating that kind of images. So, this is
+ what is called mode collapse. So, that is basically in the space of all images you find
+ one mode and you just are stuck there. So, that is why it is called mode collapse and
+ there can be other problems also. So, if the networks are not well balanced or the training
+ is not stable for example, if the discriminator is too strong then the gradient for the generator
+ will just vanish because the discriminator will give perfectly classify the all the real
+ and fake images. So, the generator will not see any gradient coming through the discriminator.
+ So, this is also another problem and the other scenario might also happen on the discriminator
+ is we the generator can produce non-realistic images even though it does not look like image
+ it can still fool the discriminator very easily. So, the main thing that you are noticing here
+ is there are lot of stability problems that were there with the original gain architecture
+ and also it was not able to create very high fidelity images that we might want to from
+ these ones. So, these are kind of some example outputs from the original models and as you
+ can see the top two are rather simplistic images. So, it was able to create MNIST visit
+ because it is not a very complex scene. Similarly, for face images it is just a phase that it
+ had to generate and there was not much diversity in the faces data sets. So, there also it
+ was able to learn something sensible. But when it comes to these two settings like the
+ setting C and D, these were based on the C4 data set where you have more complex images,
+ complex scenes and that is where the original gain totally collapsed. It was not able to
+ learn very good thing and you can see like it is very heavy mixture of different kinds
+ of suppressants and you cannot make out what the object is. So, the first kind of big breakthrough
+ that happened in this space was through the DCGAN architecture and the key thing of the
+ DCGAN architecture was that instead of the originally proposed neural networks for the
+ generator and the discriminator functions, DCGAN proposed that you should use CNNs because
+ it was well understood that CNNs are the kind of networks that are good at processing images
+ because of their inductive biases of how they process local regions and then try to gather
+ global features through Pune. So, this paper proposed that what you can do is you can have
+ two CNNs, one for the generator and one for the discriminator and that will help you process
+ images and get like extract both global and local features very easily. And they removed
+ all the fully connected layers and they also like did some training optimization through
+ batch normalization and all of these things together kind of lead to significant improvement
+ in the image qualities that were generated. So, now when it comes to CNNs, the traditional
+ CNN that you might have seen is how you process input image and find the output vector or
+ output score. So, that is the traditional structural flow of image like you start processing
+ an image and go by 3 by 3 or 5 by 5 kernels and process them down to a smaller sized vector.
+ So, it usually does a dimension reduction and that works okay for the discriminator because
+ the input of the discriminator is an image and you are trying to find the score out of
+ it. So, that perfectly fills the discriminator network. But the problem appears in the generator
+ network where you have to start from a random vector as you saw in the original GAN architecture.
+ You have to start from a random vector and you have to reach like an actual image dimension.
+ So, which can be say a 64 cross 64 image with three channels if it is an RGB image. So,
+ how to do that? So, they came up with a novel solution called fractional striding or a transpose
+ convolution which is kind of the reverse process of what the convolution does. So, this is
+ what a normal convolution kernel looks like for you and the all the normal CNN networks
+ for say image classification use this. And here what you see is that for the image you
+ kind of slide around 5 by 5 or any kind of size kernel over that image and you get scores
+ for each of the cells. And if you notice if you don't have this padding, what you will
+ get? You will get a smaller image. So, this will be more clear. So, in this case you have
+ a stride 1. So, it's just moving one box at a time. So, that's why you also have a padding.
+ So, you are seeing an image output that is the same dimension as the input. But let's
+ you make the stride 2. So, you are kind of moving the kernel faster over the image. So,
+ you are jumping one cell in between. So, then you can see if you start with a 5 by 5 or
+ 6 by 6 image, you end up in a 3 cross 3 image. So, you kind of have the dimension of the
+ image. So, this is what happens with stride. So, if you increase stride by something, your
+ image kind of becomes smaller and smaller by that factor. So, now what you can think
+ of? You just see the inverse process of this. So, what you did earlier, you were jumping
+ pixels. So, if you had processed say the first pixel in the first kernel, you will skip the
+ in between and go to the next one. So, just to invert the process, what you can do is
+ you can wait in between. So, essentially how is that achieved? You take the original image
+ and you kind of put empty spaces in between. So, this is same as padding as you do like
+ empty cells, which you can assign like a zero score or a nearest neighbor score or any kind
+ of heuristic you can apply there. But the main idea is that you kind of put the actual
+ image pixels further apart. And that is what is called a fractional stride because within
+ each move, you are not going to the next pixel, but rather you are going to the next pixel
+ into three moves or two moves or three moves. So, that's why it becomes like a fractional
+ stride. And if you have some image of the three cross three, your output would become
+ larger. So, this is the main idea behind how to start from a smaller dimensional vector
+ and actually reaching a larger sized image matrix, which has to be like a larger kind
+ of a tensor structure, say 64 cross 64 cross three. So, those optimization kind of figuring
+ out how to run convolution in the opposite directions was to create images and then using
+ convolutional networks for both the generator and discriminator significantly moved the
+ needle ads. So, if you see in these images, you can actually start to make out very like
+ proper shapes. So, for example, these are bad images and you can clearly make out that,
+ okay, this is one consistent photo of a bit, which has some patterns or some colors and
+ most of the scenes are also like somewhat complex. You can see make out multiple objects.
+ So, if there is a window, there is a bed. So, this was not possible in the previous architecture,
+ but was now possible to create, right? But even in this generation, if you see why the
+ objects are becoming clearer, it was still not perfect as what a image or what a human
+ would consider as a real good quality image. So, some more improvements are required. So,
+ the next kind of big step that happened in this space is something called progressive
+ gas. So, what was observed in the previous models is that you were trying to generate
+ the image in one shot. So, you have some random noises input for the generator and you try
+ to go to the image by just going through one network and there is one optimization being
+ done at the final thing, final image, right? So, what this paper proposed is instead of
+ going to the higher dimension that you are targeting for, for example, say 64 cross 64,
+ how do you, what happens if you go through it step by step? So, instead of going jumping
+ to 64, what if you first created a 16 by 16 image, then 32 cross 32. So, that way you
+ can think of you first, I did the image, what the image should contain and then kind of you
+ are adding more and more details to that image as you are going to higher and higher resolutions.
+ So, this is what is why it is called progressive gas, where you are kind of like growing the
+ generator and discriminator in size throughout the training process. So, how do you achieve
+ this? So, basically you train the network step by step to generate image at every resolution.
+ Right? So, for example, you can start at the very minimum size, so which is 4 cross 4,
+ you first start training the model, the generator and the discriminator both for that dimension
+ and once the model stabilizes there like your loss is kind of saturated, then you go ahead
+ and add some new components. So, as now the training process starts happening at 8 cross
+ 8. So, what this does is that it does not load the model to learn all the feature complexities
+ or like the processing that request to happen within the generator in a single go. So, it
+ can happen step by step in multiple phase training process and what was observed in this paper
+ that using this process you can go to a much larger dimension like 1,024 cross 1,024 pixel
+ which is like what you generally use. So, we usually take photos around the resolution
+ of 1,000 to 4,000 pixels with an height and we are able to for the first time reach this
+ dimension through a GAN generation process and the earlier bound were like 32 cross 32
+ or 64 cross 64. So, this was like a significant jump in improvement. Right? So, how was this
+ like achieved technically? So, you can imagine like you can just do the training and start
+ adding layers to the process, but it does not work that well if you just do that blindly.
+ So, there are few things that this paper did. So, the initial, so the phase 2 and 3 that
+ I explained. So, basically you start with phase 1 and phase 2 and 3 is where you kind
+ of grow the process and that is what is shown here. Just suppose you are at this stage,
+ so some training has happened and you are kind of at this stage where you have a 16
+ cross 16 dimension output on both sides and you want to take it to like 32 cross 32. So,
+ if you just slap in the intermediate layer of say the deconvolution and convolution to
+ 32 dimension, it will not work because this layer will be random and the model will not
+ be able to train again. So, like this initial part of the network is trained, but the intermediate
+ layer is random way. So, what will happen is that the full model will almost like start
+ training from beginning again. So, what the paper proposed is that you can kind of slowly
+ move from the previous network to the next network. So, you do this by creating a routing
+ layer. So, for example, you have this original 2 RGB which is the 1 cross 1 convolution path
+ which is giving you the 16 cross 16 image. You take that as it is and you do some, so
+ you have this 2X which is nearest neighbor filtering. So, you just take this 16 cross
+ 16 image and with a very basic interpolation you make it 32 cross 32. So, that will at
+ least look like image and to that you add this output of the 32 cross 32 pipeline which
+ is somewhat noise and somewhat image and which is what you want to train. And you start with
+ the alpha value of 0. So, what will happen? The network will first see only this bypass
+ and once you start training and start increasing the alpha magnitude, the model will start
+ seeing this like secondary path and it will start to train this. And as you like finally
+ settle on alpha equals to 1 through training, you can then throw out this 2 RGB path and
+ you can finally get to the actual larger network. And you can keep repeating this process as
+ much as you want. So, you can go to like 10242048 or even 4K images using this process. So,
+ this solves a lot of problems that were kind of distilled from the original model. So,
+ the original model had the problems of mode collapse and everything. But since this architecture
+ like beyond using the CNN this architecture kind of showed how you can learn the complexities
+ in step instead of trying to learn them together. And this was what was the reason for the original
+ models mode collapse. So, because you are trying to learn a very complex distribution
+ at one go, that's why it was always like converging to or collapsing to one particular
+ kind of images or random noise. But if you kind of do this training progressively as
+ this paper did, you can see that it is able to learn this distribution of multiple modalities
+ very nicely. So, this problem of mode collapse was kind of gone and that helped in increasing
+ the fidelity significantly. And as you can see from this again, this was like a significantly
+ large jump and you can actually like so these are 1024 cross 1024 dimensional images and
+ you can make out the details very easily. So, now another so that was kind of the progression
+ of GAN and GAN actually was a very unstable architecture and it took a lot of effort like
+ say five, six years worth of effort to come to like come from the original GAN architecture
+ to the final GAN architecture that we saw. So, GAN always have this stability problem
+ and even with the newer architectures, if you increase the complexity or if you go to
+ a new domain for doing image generation. So, for example, you want to do medical image
+ generation, a lot of tuning again comes back into the picture because the GAN models do
+ not work that well out of the box because of their instability and we always need to
+ start with a lot of hyper parameter tuning and adjustment of the architecture. So, another
+ architecture which kind of solved that problem is known as VQVA. So, this was not a GAN based
+ model but had a similar idea key. You start from a noise and come back to an image but
+ this architecture was much more stable compared to the GAN architectures just in two generations.
+ So, VQVA was the original architecture and after that they came up with VQVA too which
+ was like almost at the final stage of what GAN was able to achieve. So, what does this
+ architecture do is, so from the name you can understand that this is kind of expanded
+ out in an autoencoder fashion. So, you have a encoder network which takes in any image.
+ It goes through a CNN and you get a representation and you are training a decoder network to
+ take the representation. So, if you forget about the intermediate layer, you just take
+ that representation and try to decode that. So, what this essentially doing like what
+ essentially autoencoder does is that you try to learn a bottleneck or a intermediate representation
+ which is a low dimensional representation of the original image space. And what this
+ paper is essentially doing is kind of making use of that fact you can do that. So, this
+ was the original autoencoder architecture but if you just take an autoencoder architecture
+ you still cannot generate an image. So, you will have this intermediate representation
+ from the encoder but how do you, so at inference time how do you get a new representation for
+ creating a new image, right? So, you might have a text or something based on which you
+ want to create an image or you might just want to sample a new image. So, you cannot
+ do that if you just have autoencoder architecture. So, that's where the VAE or variational autoencoder
+ architecture comes in and so that's a older like that's a older existing architecture.
+ What this paper specifically proposed is something called vector quantize variational autoencoder.
+ So, it kind of combines two things one is the idea of variational autoencoder and the
+ second is quantization, right? So, first of all what variational autoencoder will do is
+ instead of going from the like representation directly it tries to learn a distribution
+ of representation instead in between, right? So, given an image you try to figure out what
+ is the latent representation in an intermediate space. So, if you have that then you can start
+ sampling, right? So, that's how the intermediate representation or intermediate distribution
+ helps. So, that is where the variational part comes in and then you have the vector quantization
+ part and why you do this is in traditional autoencoders or variational autoencoders the
+ distribution, the nature of the distribution is actually rather simple. So, you will use
+ something like a Gaussian distribution which only has a single modality. Now, if you put
+ so, instead of that if you use a vector quantize set up what will happen all of these embeddings
+ that you have in the quantize dictionary the vector which is called the code book are independent
+ to be learned that you kind of move away from the like the Gaussian assumption or the normal
+ distribution assumption also. So, that's why this kind of performs very nicely. So, since
+ you have this code book it kind of allows you to learn independent highly like they
+ have like immense amount of freedom to choose what this vector is. So, the network can do
+ that and because of that this model can learn like very high quality intermediate distribution
+ which is which does not have to like conform to any existing distribution structure like
+ any traditional distribution structure. So, how did the training work then? So, the loss
+ function was quite linear but also simple. So, it just had 3 components that you kind
+ of intuitively need to do. So, the first thing obviously is a reconstruction loss. So, what
+ reconstruction does is you have some representation as the input you want the decoder to be able
+ to convert that input to an image. So, this is almost like the generator thing that you
+ do like almost like the generator network. So, by doing this you are ensuring that you
+ have a decoder network which given an embedding of something coming or sample from somewhere
+ would be able to create a image or draw image. So, this is the first part but that just solves
+ one part of the problem. So, you also need to figure out the right space for the representation
+ and also the right code book. So, that is what is done in the next two steps. So, the
+ first step is kind of say that whatever code book you have your embedding should come close
+ to this code book. So, this you will have access to this code book during the inference
+ process. So, you want the encodings that you have from some existing images during the
+ training time should fall close to the code book. So, that is what is done here. So, if
+ you just forget about the sd term it is z of ex minus e. So, you are kind of minimizing
+ the distance between the embedding and some chosen code from that code book. And the stop
+ gradient comes in to help because then you will just optimize for the embedding. So,
+ the gradient will only flow to the encoder network and not will not update the code book
+ in this part. And the second or the third term here is kind of doing the opposite thing.
+ So, here you do a stop gradient on the embedding side. So, here what you are saying, okay,
+ I have an image embedding. Now, bring my code book closer to the image embedding. So, you
+ are kind of allowing the network to move both of these things together closer together so
+ that there is less fluctuation during training. So, this both of these loss function terms
+ kind of stabilizes the training process in terms of what encoding you are getting from
+ the network, right? Otherwise, it can fluctuate a lot because your initial embedding space
+ would be very random, right? And another detail here that is important is how to come up with
+ this individual codes. So, that is very simple. So, you just encode a given input image say
+ is what we are calling Xi or Ej and you just find out which is the nearest vector within
+ this code book. So, suppose you have one million code vectors within this code book and you
+ just find out the one nearest embedding and that is sufficient for like training this
+ network, right? So, you can make this code book as large as possible, as big as possible
+ so that will increase your parameter size of the network, but it will not increase the
+ latency because the lookup is kind of fixed time using various optimizations that you
+ can do for vector search, right? So, that is how you train the like that is how the original
+ VQVA idea looked like and you can train this using this loss function, but this still had
+ some shortcomings. It was able to get to like really good quality pictures, but there was
+ still some shortcomings because of this fixed CNN network as we saw in the progressive scan
+ also. Having a single network to come like come and go from the embedding level to the
+ final image is slightly difficult. So, this paper also kind of came up with a similar
+ idea where you try to learn a layered process of generating the image. So, what it allows
+ you to do first to come up with lower level features and also like learn those lower level
+ features and from there to expand out the actual details within the image, right? So,
+ this is what was called the VQVA to architecture and what did what this did is it like at the
+ beginning itself, it initialized several layers of hierarchy from the image. So, if you see
+ how the image was processed here through a single block of encoder, instead of that,
+ you just imagine that it goes through multiple layers of encodings, right? So, first you
+ will do a encoding, you will go to a feature map which is much larger in size because it's
+ a CNN and then if you add another layer of CNN that feature map will reduce slightly in
+ size. So, that will be like a more high level or abstract representation of the image, but
+ also like it will be more compressed, right? So, that is what is like happening exactly
+ here. So, you have multiple levels of encoder and you supervise at every layer of the representation
+ or like some layers of the representation even if not all, right? And what you do for
+ training is that now once you have that, you try to train the VQVA network at every stage,
+ right? So, you have this like bigger feature map, you go there from the, through the quantization
+ process and you train that quantization process to go back to a decoder to the actual image.
+ You add another layer of encoder, you get a lower, like a higher level representation
+ which is smaller in size and then you go through the, go through another VQVA quantizer and
+ get something back, right? So, what this is giving you, like it will give you multiple
+ levels of code books quantizations, which kind of have a hierarchical structure. So,
+ you can always first start with a higher level VQ like quantization during sampling, from
+ that figure out what is the lower level quantization and from there you can go to the reconstruction.
+ And this is what the sampling process on the right here does is once you have trained this
+ network, you can just throw away the encoder that is not required anymore and you can fit
+ another network to go through this hierarchy. So, it basically starts by sampling from the
+ highest level of representation and step by step figures out what is the next level of
+ representation. And this kind of give you a hierarchical decoding process which finally
+ goes to a very high quality high fidelity image and this network was able to create images
+ which are, which are like much more detailed and could handle much more complexities in
+ the images, right? So, as you can see, this is what the different levels of hierarchy
+ look like, like as you decoded them. And as you can see, like the higher level feature
+ we will have will kind of dictate what is the object and what is the scene content.
+ And as you go through the layers of the hierarchy, it will add more and more detail like the
+ cares and the leaves in the background, right? So, what this architecture kind of did is
+ first of all, it allowed you a lot of flexibility in the latent space by having that code book.
+ So, now you are not restricted to say something like a guardian representation which was often,
+ which can often create bloody images but not like very highly detailed images. So, these
+ network was for the first time able to get like a lot of detail into the generated images
+ and this paper also proposed a novel loss function that was able to train this VQVI architecture
+ in a very efficient and optimal manner, right? So, this, yeah, so with this I will kind of
+ end the image part, like the imagination part and this was around 19, 2020 and this kind
+ of became like the final point of imagination through GAN or VAE kind of architectures.
+ After this also, many different GAN models are proposed but beyond this, a new architecture
+ kind of came into picture which is called diffusion models and that is what is used nowadays.
+ And diffusion models also allows you a lot of flexibility and it's kind of similar to
+ theoretical decoding that you learn during the process. So, I will not cover that but
+ you can go check out like the recent advancement in that field also, right? And other than
+ the, just other, like other than the architectures that we are developing here, there are other
+ interesting research questions also which was kind of solved fairly. So, there are a
+ lot of metrics developed because when you are going to such high quality images, standard
+ error metrics or loss functions stop working very well. Like for example, if you have mean
+ squared error, that can understand the difference between a real image and a fake image when
+ the difference is large. But if the images are very close, they will not be able to detect
+ like the smaller discrepancies that are there in the generated images. So, like later on
+ metrics like FID and inception scores, these things are proposed. So, these are model based
+ metrics which were able to understand how, what was the fidelity level of the images,
+ how detailed were the images, all these things. So, there are questions like this that were
+ also simultaneously solved. There are architectural questions that were solved, like system side
+ architectural questions that were solved. So, all of these things also happened together
+ and this kind of led to the final like the high quality image generator that we see today.
+ So, okay. So, now we will move on to the like the large language generation section and this
+ also has kind of become important in the last like six, seven years with the evolution of
+ creativity and this kind of models and the applications of those models that we are seeing
+ now like almost in every application. Right. And this is, this also went through kind of
+ a similar trajectory of how you took the original architecture or original idea of language modeling
+ that was present, the kids back and how it came to the stage that we have today. Right.
+ So, what are elements basically? So, large language models are simply models that can
+ generate language and can talk to humans in a way. Right. So, if you have a very perfect
+ language model, you can make it to generate anything. Right. And this technology has recently
+ become very popular and very successful and with models like cloud, productivity, Gemini,
+ Lama, like various applications have also popular and it's like known to almost everyone
+ who are not working in this domain also. Right. But coming to like, coming to this recent
+ state of LLMs was a much more mixed process of development. Like lot of improvements happened
+ in many different spaces that we are seeing this. So, it was not just an architectural
+ improvement here. So, a lot of other things also needed to improve to kind of get to where
+ so this was slightly more complex than the landscape of image generation. So, we'll look
+ at a few of these challenges that research was facing and how did they come to solve
+ those problems. Right. So, I will first quickly define like what the basic language modeling
+ are like looked like initially before say 2018, 2019 and like what was the transition
+ that happened after that. Right. So, the idea of language model was very old. So, it started
+ around 1950s and 1980s popular building statistical language models based on say n-grams or other
+ hand designed features. And the goal was to basically fit a distribution to any human
+ language. Right. So, it didn't have any fancy goal back then. We are just trying to learn
+ a parametric model that can say given a context what is the next possible probable word. Right.
+ And so, that can be just seen mathematically as if you have a context like this, you are
+ trying to come up with the next token in a way or like the next character in the text
+ sequence. Right. And this was important because if you have a parametric model like this,
+ you can do a lot of things like you can of course, you can generate new text and you
+ can also do certain statistical studies of these models. You can understand how distribution
+ varies between various languages and within even within a language how the like what is
+ the distribution of various word sentences and all of these things. Right. So, it had
+ some linguistic importance. And so, the original kind of original effort towards building these
+ language models are focused first on n-grams before MLPs or neural networks. Then there
+ are a lot of neural network based language models which was still trying to kind of model
+ these kind of like or trying to approximate these kind of a function. But they are still
+ like not as powerful because there are a lot of assumptions that were going into the picture.
+ Like for n-grams, you were not able to fit very long input sequences. You were truncating
+ them off at say 2-gram or 3-grams. So, it cannot like generate as complex a model and
+ it was also tabularized in a way. So, you were not fitting any neural network at that point.
+ But then with MLPs, you tried fitting ANNs or what like ANNs to this to learn this n-gram
+ model. But there also, you were having challenges because you can fit again a fixed length context
+ window even though that was bigger than a statistical n-gram model that was still limited.
+ And then what to make was, so it was exploiting this idea of language modeling to learn representations
+ or vector representations for these words or sentences. So, this is like one of the biggest
+ applications that we are still able to exploit. So, all of these kind of came before and these
+ were seen as a tool for solving other problems but were never like directly usable. And one
+ of the major reason was because like this language itself is very complex, but the underlying
+ models that we are using either statistical or a simple neural network were not complex
+ enough to learn the distribution. But after that, we started seeing complex networks like
+ ANNs, LSTMs, or transformers. So, the key thing that changed between this and this is
+ that your context window became infinite almost. So, now you are able to factorize the model
+ language models as by just simple change rule of probability and there is no approximation
+ that is happening in this factorization. So, that gives a lot of power to these models.
+ So, one of the important key things of human language is that you can have very long conversations
+ and can remember things from like past situations. Hey, so that is what these like long factorizations
+ can allow and that is what became possible with these kind of models that they were able
+ to capture very long context and our systems like GPUs and servers have become powerful
+ enough to handle these kind of highly complex models. So, this is what a standard like a
+ block diagram of this model should look like. So, you have input context of some n number
+ of words and this can be any length in modern architectures and you are trying to just predict
+ the next word that you can have. And how do you train this is something called maximum
+ likelihood estimate. So, what you are trying to see you if you come up with the distribution
+ of the next word from the network say by applying a softmax over a set of logits then you can
+ just see what is the probability of the ground truth token that I have in my dataset and
+ just focus on maximizing that. So, this is what is traditionally known as maximum likelihood
+ estimate finding the maximum likelihood estimate and also called as the cross-entropy loss
+ in general in the natural language literature. And so, this is like the standard training
+ procedure that is still being followed in all of the networks. So, this is in slight contrast
+ to what you saw in the image generation. So, there you saw that the loss function also
+ needed to evolve but here the key loss function for training the raw language model has almost
+ remained the same. It is still this probability of the ground truth token that you are trying
+ to maximize. And once you have trained this network inference is also very simple you
+ can just pass in the context get the distribution for the next token take the max or sample
+ from it and you can look through it and you can start generating languages. And also the
+ intermediate vectors that you get from such models again can be used as a representation
+ for the text and that is also used in many different applications like if you have any
+ sort of classifiers or recommendation systems that you see use these sort of embeddings
+ as features for doing classification and stuff. So, now with the like so basically you had
+ the loss function in place from long back. So, that cross-entropy loss function was used
+ even if you go back like 10 years from now that loss function was still being used for
+ training RNNs and LSTM based language models. But what kind of change in these factors where
+ lots of developments in other areas. So, one of the key area of implement that was necessary
+ was the tokenizer. So, if you see in the original architecture I kind of intuitively gave the
+ input context as like by splitting them into words as the input to the network. So, that
+ is where the sequence is coming from. And if you think about this, this works if you
+ don't have a language where say the character space is there or if you have word switcher
+ very common. But if you have word switcher complex for example long words like tokenizer
+ then you have either have to make the vocab size very large or you have to somehow figure
+ out like how to handle these words. Otherwise what will happen is this will just be treated
+ as unseen words and you will have like a fixed representation for each of these unseen words.
+ So, that is not very good for training neural network models you want to have representation
+ for everything that is part of your network. So, to solve that problem one intuitive approach
+ is that you start representing each character as a token. So, then what you can do is you
+ can break this input sequence simply just in terms of character instead of words. So,
+ that will take care of having no out of distribution or out of vocab token. But the problem that
+ it creates is that it will make the sequences very long and the modern architectures like
+ transformers are kind of quadratically dependent on the like have quadratic time complexity
+ on the sequence length. So, if you make the sequence length by having characters say five
+ times longer your model training time and inference time will become almost 25 times
+ longer. So, that is prohibitive. So, we needed some other solutions. So, that is where this
+ idea of tokenizer comes in and like some improvements like key improvements in tokenizer kind of
+ enable the modern models to process any kind of words any novel words in the context.
+ So, the main idea is that you have full words which can go out of vocab because you cannot
+ store all possible words of a language. There can be millions of words possible and if you
+ try to store so many things the complexity of the embedding there would be very large
+ and on the other hand you have the characters. Characters will make your sequence length
+ very long. So, you need a middle ground between them and that is where ideas like subwords
+ and byte pairs came in and which essentially almost solved this problem.
+ So, what the idea of byte pair encoding or a subword tokenization is that if you have
+ a text corpus you will see some like groups of characters which are sometimes words or
+ sometimes can be subwords that appear very frequently. For example, here you can see
+ the pair of characters or like the PO is coming very frequently in the vocab then you also
+ have like the KE as a pattern that is repeating in the vocab. So, what byte pair encoding
+ does is that it essentially figures out all such patterns that occur frequently in the
+ dataset and just creates a vocab out of that. Now, you can intuitively think that what kind
+ of token patterns that will be most frequently seen. So, obviously very common words like
+ the me, I, your. So, all of all these kinds of words will be very frequently seen in a
+ corpus. So, this would automatically be captured by this tokenization process. So, BPA kind
+ of includes the most frequent words by default and it will also have certain constituent
+ subwords that would help you to later reconstruct bigger words that you have not seen before.
+ So, that allows you to avoid the out of vocab problem when you don't have not seen the vocab
+ during printing data and it also kind of allows you to handle that if there is some word like
+ let's say for index. So, if you let's say this is a word that is coming in from some
+ specific domain for which you have not even seen the intermediate patterns that exist
+ within that word. So, the BPA tokenizer still contains the individual character and will
+ tokenize any unseen words by at least at a character level. So, it can start from full
+ words then to subwords if it has not seen that and if it's a very novel word that it
+ has like not even seen the patterns within it, it will just break it down to all characters
+ and it will always allow the transformer model or the language model to have a unique representation
+ for those. So, and how is this built is essentially you start with, so you first start with the
+ array of all the characters that you want to cover. So, this is for example the character
+ essentially English alphabet or any other language alphabet and then you start figuring
+ out what are the most common patterns that you want to add to the vocab. So, if you have
+ the first character, if you first have the characters in your list of vocab, then what
+ you can do, you can start looking at pairs of these characters and see which ones are
+ next most frequent in the dataset and then you can repeat the process to formulate bigger
+ and bigger patterns and then you will also have words and subwords all included in the
+ vocab and you can stop at some vocab size V so that you have the most common things
+ up until that point included in the vocab and anything that is beyond that will be reconstructed
+ using the tokenization mechanism. So, basically this BP tokenizer or subword tokenization
+ kind of solved a big problem that was lingering for like almost a decade but this didn't solve
+ all like many other problems also which are still kind of existing problems and people
+ are trying to come up with like intelligent solutions. So, one is that you have to keep
+ in mind which languages you want to support and if you build a tokenizer based on say
+ English corpus or even a mixed language corpus, you may miss out certain languages during
+ the inference time. So, this always becomes a tradeoff to which languages you are using,
+ which corpus you are using for building this corpus will dictate performance of uncertain
+ languages at the inference time. So, this is a very important thing to keep in mind and
+ then there is also inference latency that you have to consider. So, suppose you start
+ like build a tokenizer vocab of size 40,000 tokens then your vocab might not be large
+ enough that your some of the sequences are becoming very long. So, your inference latency
+ might still be high but if you start in increasing the tokenizer vocab size then your inference
+ latency will go down but you might start seeing some very unique long words which are not
+ very frequent in the training set. So, in that case you might have to figure out how
+ to get good representation for them. So, there are still some challenges in these approaches
+ too and then there is one interesting challenge that as newer and newer governments are being
+ covered for example, say if you want to include code generation, if you want to do mathematical
+ reasoning. So, the kind of tokens or words that you see in those domains may not be covered
+ in the tokenizer that you have built in now. So, that becomes another challenge as to how
+ to cover like newer domains, what sort of tokenizers to build in the specific domains
+ that also is a interesting challenge and then recently there have been introduction of image
+ and speech in transformer models. So, people are trying to build tokenizers for this kind
+ of data also where you can think of certain basis patterns that can exist in the image
+ or speech vectors would be useful as entity within the tokenizer. So, that was the tokenizer
+ story and so another problem that this language model evolution was kind of facing is how
+ to evaluate these models. So, the natural loss function that is used which I showed earlier
+ it is basically the log probability of this probability function. So, you are always optimizing
+ for this thing right. So, this is your loss function in a way and you can observe whether
+ this particular metric is improving as you are training your models. So, this naturally
+ becomes a metric but what people noticed is that this is not a perfect evaluation metric
+ for the actual downstream task. So, traditionally this is known as perplexity. So, perplexity
+ is nothing but the two to the power the cross entropy loss with some normalization factor
+ and this was good for understanding whether the training process of a language model is
+ going well. So, for example, if you want to do cross validation you can do it using this
+ metric but this was not indicative of any downstream performance that you might want
+ to understand. So, if you have say accuracy on a sentiment classification benchmark or
+ accuracy on a mathematical reasoning task in a long generation context right. So, that
+ will not be covered by will not be understood by a metric like this. So, people tried to
+ find out which sort of metric you can design for those. So, that is also a big area of
+ research. So, one like interesting thing that I would want to comment here is if you see
+ like the initial evolution of language models from say LST based models RNN based models
+ to start of the GPT evolution which is GPT 2. So, you can see like there are significant
+ drops in the perplexity metric right. So, it was noticeable but as soon as you started
+ going beyond 29 into the more recent models see how the improvement in your perplexity
+ has kind of decayed down to a few points. So, what is happening here is as you cross
+ this GPT 2 model this like the language generation became very good. So, after that point you
+ will not see much change in the actual distribution that this language model is creating but there
+ would be very nuanced differences between the distributions from say GPT 2 to GPT 2 fine
+ tuned which will make a big difference in the downstream task or the quality of the generations
+ right. So, that is what the test perplexity was failing to cover and why we needed this
+ evaluation metrics right. So, to solve this what people did is they came up with something
+ called leaderboard based evaluations. So, in this leaderboard based evaluations you have
+ multiple tasks that are kind of hidden from the researcher. So, there are in the background
+ there are tasks like certain generation quality arithmetic reasoning logical reasoning as
+ I have shown in this kind of on the right figure. So, these are the individual tasks
+ and that is what you are kind of trying to see how these models perform on. So, if you
+ have a new model for example GPT 4.01 what you do is you would take that model and run
+ the forms that is there in the leaderboard or the task that is there in the leaderboard
+ and you would submit them here and someone then would come like some evaluated human
+ evaluator would come and see whether the outputs from this new model was any better than the
+ older models. However, they are not allowed to see which model it was. So, you are kind
+ of doing a blind anonymized comparison between models. So, this is basically a human mediated
+ voting based evaluation mechanism which allows you to understand downstream performance of
+ these newer and newer models right and goes much beyond perplexity. And as you can see
+ with the new models that are coming up. So, this is what has become a challenge and what
+ this lot of modern language model papers are kind of trying to solve is if you propose
+ a new model for example GPT 4.0 you can see it kind of improved on algebraic reasoning
+ but at the same time just lost all its performance on logical reasoning and numeric common sense
+ right. So, this always keeps happening and this is what we are trying to like the research
+ community is now trying to figure out how to align or like fix these language models
+ in a way that they perform or understand all the requirements of human applications that
+ might we might have. So, now we will look at one final thing which is the data aspect
+ of language model 20. So, like we have gone through several aspects right now. So, we
+ looked at evaluation matrix we looked at the pre-training loss function and we also looked
+ at the like the organization approach. So, with all of this also there is still like
+ lot of gaps to close. So, what researchers in mainly in open AI and sort of like anthropic
+ notice is that as you increase the size of the training data that kind of gives non-linear
+ improvements in your downstream task. So, this is what we came to know as emergence that
+ as you are increasing the size of your training data set size and the size of your model the
+ performance on the downstream task or the evaluation matrix that we showed earlier it would just
+ go up exponentially right. So, that is where the requirement to understand and improve pre-training
+ data became very important. So, the original models like the BERT or the GPT2 models were
+ trained on very clean purpose that we had access to from earlier like corpus that was
+ built for this kind of purposes before. So, that usually included book corpus or Wikipedia
+ which usually contain like very clean text. But now as this like after more and more pre-training
+ data came into the picture that how do you increase say how do you go from a billion
+ token for pre-training to a trillion token corpus that becomes challenging. So, now you
+ cannot do like even if you crawl Wikipedia you will not have that much data. So, what
+ people started doing they started crawling the web as it is right. So, now when you start
+ crawling the web a lot of noisy data start coming into picture. So, as you can see in
+ this example like there will be if like this if you are crawling say HTML page. So, you
+ will get text like this which will have a lot of JavaScript code which will have a lot
+ of HTML code into the picture and your language model would be trained on that. Then say if
+ you are looking at PDF it will have certain binary headers that the model will get trained
+ and trained that. And if you are say having looking at other different domains also say
+ GitHub Stack Overflow they will start seeing codes. So, as you increase data of course
+ your scope of learning increase give what which sort of domains you are able to cover
+ but it also created a problem of unclean data. So, filtering kind of became important and
+ people started by doing heuristic filtering say if we just filter data based on certain
+ websites you are else. That is one way to clean things. So, will likely certain websites
+ which does not give you clean data. So, you started filtering it this way but that also
+ became prohibitive because after certain scale you will kind of run out of ideas to apply
+ heuristics and heuristics will always be kind of very strong. So, it will take out a lot
+ of data. So, at some point you started like not caring about filtering but trying to find
+ out other approaches as to how to do. And the problem that happened with this that if
+ you let go of all filter and when you say need to get like 10 trillion token purpose
+ you included that in the LLM. What will start happening is LLMs will also start generating
+ uncontrolled generations like this right. So, you will give it some prompt but you will
+ not know which structure or what kind of output it will give. So, it can look like that way
+ it can be HTML page it can be anything because that has a finite probability in your language
+ model. Right and even with the GPT-4 model GPT-3 model that we know now to be so successful
+ the researchers of OpenAI revealed that the original models were actually not that great
+ in terms of control. So, for example if you gave a prompt like explain the moon landing
+ to a six year old it will start generating other questions instead of going to answer.
+ So as you can see like we had a very strong probabilistic model parametric model for the
+ distribution of language but we did not know what was like if we sample from it what would
+ get generated because everything was possible like every other valid generation was possible
+ from the distribution. Right so that's where this idea of post training came into the picture
+ because as I said you can go so far with quality filtering and that becomes challenging as
+ you increase the size of the corpus too much. So, people started looking at not constraining
+ the corpus for pre training but rather thinking about how we can portray post train or fix
+ the model itself after it has been pre trained and that is where this concept of alignment
+ came into picture. So, the first so what alignment tries to do is if you have a raw language
+ model after training the raw language model on the full pre training corpus you show it
+ the clean data that you wanted it to generate and that's showing the clean data to the model
+ is what become the research question key because these are very large language models how do
+ you show this clean data and what should be the amount of clean data that you show what
+ should be the approach to training become very challenging right. So, the basic approach
+ that you can think of and is also still part of this alignment process is you basically
+ do supervised fine tuning. So, say if you have good answers to questions like explain the
+ moon landing to a six year old or things that children or like things that user would ask
+ you give it such a data set of clean samples that would usually be like fifty thousand
+ or hundred thousand samples and you just do supervised fine tuning of the data set right.
+ But as you can understand these models have billions of parameters in them and so rich
+ in knowledge that no matter how much such like how much such corpus you curate it will
+ not be able to cover all kind of all of this kind of data right all of these kind of domains
+ within your models knowledge. So, that creates a problem that your supervised fine tuning
+ might address some problems it will not address all problems and then there is also the problem
+ that since your models are so over parameterized the model can just remember these data points
+ right. So, it will not actually align or it will not actually improve its probability
+ distribution, but it rather remember these samples and would just start to hallucinate
+ in a desert way that you again have no control over right. So, to solve that what people
+ did is they both like started looking for solution in the reinforcement learning literature
+ because what reinforcement learning allows you to do is kind of create samples in like
+ in in an online process you can always create samples and then somehow process them or grade
+ them using human evaluators to see which ones to prefer and which ones not to prefer. So,
+ what this allowed is that you can have two different models or two different generations
+ from a raw language model you can create multiple examples like A, B, C, D and you can then tell
+ ask the human to rank these options or which one is the best way to respond to a human
+ query right. So, this way what you are doing is this so this kind of introduces a exploration
+ phase which ensures that you are covering the full parameter space or the full knowledge
+ space of the language model right and based on that you can have you can like get what
+ is called a preference data. So, for each query you will have multiple generations and
+ then there would be order between them that generation one was better than generation
+ two better than generation three and based on that you can create what is called a reward
+ model. So, this is basically a ranking model or a scoring model which is by look this by
+ looking at input input query and and the generation would just tell you how good that is so it
+ will give you a score and then once you have this so you kind of did the first phase of
+ exploration using this trained reward model you can do another phase of exploration where
+ you take the reward model and start generating more samples from the language models right
+ and once you have this generation you will see more and more reward values using the
+ reward model based on that you can further optimize this language model. So, this kind
+ of expanded the possibility of how much you can train with the finite amount of data into
+ a large amount of data by just doing sampling right. So, this kind of covered the ground
+ of the problems of hallucinations that we had earlier because we do not anymore want
+ to fine tune on the data directly to just maximize the probability right. So, this is
+ what was called as RLHF or reinforcement learning human feedback and this is the loss function
+ that is usually used. So, this is a traditional reinforcement learning loss function where
+ you have the expectation over some generated samples from your language model and you are
+ trying to maximize the reward function that you have trained here the reward model and
+ this is a regularization parameter is that is just saying that when you are doing this
+ training you should not move too much away from the reference model and just stay close
+ to that because if you train again based on the reward model too much it can start to
+ hack the reward model or overfit to the reward model which again would be problematic. So,
+ this overall function is what is like the traditional mechanism of training using RLHF
+ and ensured that you are able to move beyond what the SFT was allowing you to do right.
+ So, another kind of proposal another interesting direction that was developed based on this
+ RLHF idea is that since the RLHF process was based on this fixed loss function that
+ we kind of know of and the fixed data set. So, even if you are doing the sampling process
+ it was found out that this essentially amounts to optimizing a fixed loss function without
+ doing the sampling. So, you can just do a specific kind of fine tuning which as you can
+ see it is very different from SFT but it takes into account that what sort of regularization
+ you are trying to have what sort of reward process like sampling process you are doing
+ in the RLHF process and it combined that to a single fine tuning process. So, you have
+ this data set of preferences and you can just optimize this loss function on that preference
+ data set and that amounts to doing the same thing as the longer RLHF process. So, this
+ was useful in terms of kind of minimizing the training load and doing it more efficiently.
+ So, you do not have to do the sampling process but it still does not get a lot of things
+ perfect. So, there is still so RLHF is still in use. So, there are important things that
+ you can do in RLHF like you can do credit assignment of intermediate steps in the process
+ when you are doing reasoning. So, all of these are still being explored but DPO kind of allows
+ you to do a quick fine tuning once you have a lot of preference data. So, both of these
+ things have been combined in many follow up papers and just to quickly understand the
+ loss function what this essentially is doing it is contrasting between the two generations
+ that you have. So, if your preference data said that for the prompt x or the input x
+ y w was better than y n what you are essentially doing is that pi theta or the trained model
+ like the tuned model that you are getting should have a higher probability of y w over
+ the reference and that gain should be more than the gain in the while like the bad generation.
+ So, essentially you kind of increase the probability of y w in comparison to y n as it was in the
+ reference model. So, you are kind of slightly tuning the model to have better probabilities
+ for the winning solutions. So, that is kind of like all the things that I wanted to discuss.
+ So, there are a lot of things that we did not discuss here and but are still like interesting
+ directions to explore. So, there are a lot of system optimizations that have happened
+ in the like in parallel in the background because of which we are able to do this kind
+ of training center able to use this kind of models. So, for example, GPT4 or Claude models
+ are so large in size that you cannot hold them in one GPU or even in four GPUs that
+ you can have in one system. So, you need thousands of GPUs in a cluster on multiple like multiple
+ computers to able to be able to host a single instance of say a GPT4 model right. So, there
+ are a lot of effort went into GPTGP parallelization networking between these nodes to be able to
+ do these kind of inference where a model is hosted between like a cluster of computers
+ right. Then there are a lot of improvements made in terms of model parallelization is
+ if you were to split this model into multiple systems how to do inference like because some
+ layers are sitting in some of the GPUs and some other layers sitting in some other GPUs.
+ So, the forward pass becomes different and if you have multiple data points across multiple
+ nodes that also becomes difficult. So, like to reduce the throughput issues to reduce like
+ how much communication is done between the nodes a lot of optimizations were required
+ like for this also right and then we have also seen a lot of effort that has gone towards
+ lower and mixed precision training and inference because as your model becomes larger and larger
+ if you want to do say a local hosting or if you want to keep your data private. So, you
+ might want to host these models in smaller GPUs or smaller systems and they are lower
+ mixed precision inference because very helpful where instead of operating in the float 32
+ or 32 bit integer mode you kind of quantize the points down or the parameters down to
+ something like 4 bit or 8 bit integers right. That way your model size becomes smaller so
+ you can do inference of a Lama model on a 16 GB single 16 GB GPU also right. So, that
+ is what it allowed. So, similarly there are other optimizations for attention mechanism.
+ So, flash attention is like used almost everywhere nowadays. Then there are optimizations then
+ that came into the libraries also like fighters and TensorFlow and there are other open questions
+ also. So, lower fine tuning was proposed to allow like smaller to tune this model for
+ smaller tasks when you don't have much data then there is SLM distillation methods when
+ you don't want to use the like don't want to give the cost of GPT-4 for a small task
+ you can distill how to distill that capability of a larger model into a smaller model. All
+ of these things have been explored and like what you are seeing nowadays in terms of these
+ usable platforms like GPT-4 cloud is a result of all of these like innovations. So, with
+ that I will end my talk and thank you. So, if there are any questions I can thank them.
+ Thank you.
+.
+ Hi. So, for the questions should I access the chat from someone or.
+ I think you will share the screen sir. Sorry. Okay. I will take it. I will stop sharing.
+ Thank you.

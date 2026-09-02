@@ -1,0 +1,461 @@
+ Hello. Good afternoon everyone. So, I am Dr. Plabun Kumar Bhomik and you will be having
+ with me Mr. Atil Varshan. So, both of us belong to the department of Artificial Intelligence
+ at Kharagpur. So, today we are going to talk about inference with pre-trained models. So,
+ let me talk about a cooking a bit before I proceed on to the topic. So, think about
+ your cooking say meat. I am really apologetic to the vegan people. But anyway, so let us
+ say we are cooking meat and when one way to do that is that you do the whole process marinate
+ etcetera etcetera. The other process you can follow that you boil the meat and steam it
+ and keep it somewhere and then you use that later to mix spices with that. And if you
+ go to the next the second process the benefit is that you will be requiring a very less
+ amount of time to prepare a dish right. So, of course we are not going to talk about cooking
+ today, but I think I will be talking about a very important recipe in the modern deep
+ learning or machine learning domain which we call as dealing with pre-trained models.
+ So, the topic that we are going to discuss is inference with pre-trained models. Now
+ whenever we talk about pre-trained models. So, that means something has that has already
+ been trained and if we try to think about how machine learning works. So, we have a
+ kind of model which we train with some data and we deploy that in the production setting
+ where we predict something we do some inference, but we are adding a kind of prefix we in terms
+ of pre. So, that means we do something prior to training and that is what we are going
+ to discuss right. So, the agenda for this module is. So, first we will be talking about
+ a very important connection between pre-training and transfer learning I guess the just last
+ lecture that was delivered today was about transfer learning and we will see that there
+ is a kind of very close connection between pre-training and transfer learning and we
+ will be talking about different pre-trained models in at least two domains one is vision
+ other is the language and finally, we will go into the inference with pre-trained models
+ what are the kind of inference tasks and what are the kind of recipes there and finally,
+ at if we will take you through this different kind of implementations and experimentation
+ with pre-trained models.
+ So, if we look at a typical machine learning workflow basically we are talking about supervised
+ machine learning. So, you need to have a set of annotated data set and you pick up a model
+ and train that data then that model with that annotated data set and finally, if you are
+ happy with the training accuracy and maybe the validation accuracy you will go to deploy
+ the model right. Now, if your model is very large that means the model has got large number
+ of parameters and by all means in the today's machine learning, deep learning or AI domain
+ most of the models are significantly large having large number of parameters and to avoid
+ overfitting we need to have large amount of annotated data set to train the model.
+ Now think about a scenario. Now whenever you are talking about training the model you need
+ to have this annotated data set that is a kind of prerequisite right. Now you have a kind
+ of abundance of data set. So, you think about social network every second you have thousands
+ or tens of thousands of posts in terms of text, video, audio and there are different
+ surveillance data in terms of video recording and there are online learning platforms where
+ you can track students behavior and as these online platforms are very popular nowadays
+ there are if you think about the data data is quite large. So, there is no scarcity of
+ data and they are available in different modalities. So, text, video, image, audio whatever you
+ can think about but as it comes in the terms of annotation of the large data set it is
+ really very challenging. First of all it is very costly you have to employ experts who
+ are kind of I mean conversant with that application area of the domain and of course it is time
+ consuming and it is not like that you get your data annotated by a single person and you
+ have to think about the reliability of the annotation because a single annotator may
+ be biased towards some annotation or a single annotator may not be error free. So, that
+ is why you want to get your data set annotated by multiple persons and then get an aggregated
+ annotation. So, but again you see that that is really costly and time consuming and that
+ is why perhaps we have less amount of annotation though we have huge amount of data in different
+ form. Now let us say for the sake of argument we assume that we have huge amount of annotated
+ data but even with that there are some challenges. Now whenever you have a big data and a large
+ model to train you need to have a very powerful computing facility and you see that this super
+ power computing facility is restricted to some big organizations like Google, Meta,
+ Microsoft and so forth. But majority of the AI community they do not have access to this
+ high compute facility. So, even though if you have large amount of annotated data you
+ may not be able to use it because of the lack of computation. Now in some cases how hard
+ you try you may not get large amount of annotated data and you always want your model to exhibit
+ out of distribution generalization. So, what do you mean by that? So, let us see your you
+ have trained your model with some data set and always we think that our test data would
+ be kind of picked up from the same distribution which has generated the training data. So,
+ theoretically that is ok but practically the test data may belong to a different distribution.
+ These two distributions may be overlapping but you may not guarantee you cannot guarantee
+ that they are coming from the same distribution. But in spite of that you want your model to
+ work good or better in the test data as well. But in some domains like say medical domain
+ let us say you want to record or do some task or perform some task taking as input the MRI
+ images of some cancer patients for example. Now you see there is a kind of it is a kind
+ of you cannot really get the data in a very large amount you cannot really collect the
+ data in large amount. So, the question is can we achieve generalization with limited
+ amount of data? Now whenever we train a model we always have a kind of assumption or goal
+ to have a model which is more general and pervasive and it will work for every setting
+ every individual. But you see every individual has got his or her own peculiarities and behavior
+ and ideally a person would want the model to work as per his or her own behavior. But
+ as you are training the model to be serving a kind of general purpose application or inference,
+ so this individual peculiarities may not be kind of tapped or individual behavior cannot
+ cannot be kind of model using this trained model. So, the question is let us say we have
+ a general model and can we use that to derive personal the models which can cater to the
+ personal needs. So, there comes the utility of this particular idea transfer learn.
+ So, let us say I have some general ideas about a particular domain and while I am training
+ a model I train the model to capture those general ideas of the concepts and whenever
+ I am trying to fine tune that to cater to the need of a very specific application then
+ we can somehow retrain it or fine tune it to solve this application specific or domain
+ specific trains. So, basically what we want to have we will
+ pre train a model and then we will use the feature representation of that pretend model
+ and using the feature representation we will try to derive another model which will solve
+ domain specific problems or applications. So, this is how the scenario looks like.
+ So, let us say we have a huge amount of data available to us. So, they may be annotated
+ or may not be annotated. So, this data set that you are taking looking at. So, let us
+ say they can be kind of image data sets where you have labels for each image or it can be
+ a kind of free text data where you do not have any specific label and with that we train
+ a backbone network. So, for example, I pick up say race net to be our backbone network
+ and we have a huge amount of image data and again as I told you earlier it may be labeled
+ or it may not be labeled. So, we just pre train the source model using
+ some training strategy which we will talk about later to derive a source model. And
+ of course, as we do not have any specific application in mind this source model basically
+ captures some general traits about the domain from which data has been picked up or collected.
+ Now, whatever knowledge that has been captured in this model that can be transferred to basically
+ if we think about in a very loose or maybe very lucid perspective. So, this we are copying
+ this model to form this target model. But as we want to capture very domain specific
+ trait. So, you will need to have some amount of data and again this data may not be very
+ large as we have done for this pre training part. We can use a very small amount of annotated
+ data and train this target model. And in that case we want this small amount of data to
+ be annotated. Now, you see we are kind of addressing the challenges that we have discussed
+ in the last few slides. So, it is addressing the challenges of like not having access to
+ large amount of annotated data. We need just need a very small amount of annotated data.
+ And again as we are training with small data it is not like that I will need a very powerful
+ computing facility right. And again I can really look at this personalized models if
+ we think about targeted data to be collected from the personal behavior or something like
+ that. So, this particular idea as you can see it is able to address the challenges that
+ we have or practical challenges that we have just mentioned few slides back. So, the left
+ hand side as we can see this is the part what we call as pre training. Here we do not have
+ any domain specific objective training objective in mind. But of course, as we are training
+ it we should have some objective and maybe we will be talking about those kinds of objective
+ training later. And the right side of it where we are using
+ a small amount of domain specific data and to derive this target model this is what we
+ call as adaptation. We are adapting an existing trained or pre trained model to fit to the
+ niche domain requirement. So, the general recipe for pre training is that first you
+ need to collect raw data and as we talked about earlier raw data is available in huge
+ amount in the form of web data, social media data and it will set some pre training objective.
+ So, this pre training objective can be supervised. So, for example if you are training your model
+ using image net data which has got huge amount of labeled images. So, there this pre training
+ objective can be supervised. But sometimes when the labels are not available then we
+ can use some technique what we call as self supervised training objective.
+ And the third thing that you need to find out which particular backbone model we will
+ be using to pre train. And there are plenty of options there as you know there are too
+ many architect architectures available and depending on the modality of the data you
+ can pick up image related architecture or vision related architecture or text related
+ architecture and sometimes some more general architectures like transformer.
+ So, let me talk about pre trained vision models. So, as I have given a very bird's eye view
+ of the requirements or the general recipe of pre training I am following that idea in
+ this slide as well. So, you need to have access to huge amount of data and this data is available
+ in vision domain in different forms from different organizations. So, image net is I think the
+ most popular image data set out there. So, there you have around 14 million images with
+ 21000 object classes, 10 cent machine learning images, JFT 300 million image set, Facebook
+ Instagram image set. So, the point is there is a kind of huge amount of image data set
+ which you can make use to pre train some models. Now as the choice of the backbone network
+ one can make use of race net if someone wants to build a small models. So, it has got parameters
+ in the range of 25 million to 65 million and if you want to go further you can make use
+ of vision transformers. So, there are different options to pick up the backbone network which
+ can be pre trained. Now again as per as the training objectives
+ are concerned. So, if you are using image net you can make use of something some training
+ objective like supervised and sometimes if the label is not available you can make use
+ of self supervised techniques. So, there are other ideas while we are deriving this pre
+ trained model for vision modality. So, one such idea is mass auto encoder. So, here the
+ idea is you take an image and mask some of the regions and with the remaining region
+ you learn a feed that to an encoder, learner representation and the representation will
+ be fed to a decoder and the decoder will now try to reconstruct the masked region of the
+ image. Now in that way the network will find out
+ a very good representation it will be resilient to missing out some of the regions in the image.
+ And here you can see that we are not really using any label. So, I am not telling that
+ this image is an image of a parrot or pigeon. I am just giving the images input to the network
+ and we are just masking some regions. So, as we are not using any labels explicitly
+ this does not belong to the supervised strategy. Mostly it will belong to this self supervised
+ strategy where we are not using and you see this is not similar to unsupervised learning.
+ So, here we are using the supervision signal from the image itself. So, what is the supervision
+ signal this masked region they are our supervision signal. So, your representation will be good
+ if you can faithfully reconstruct the masked region. So, that is why we call it as self
+ supervised training. So, this Dino V2 is another popular architecture
+ which has made a very good innovation in curating the training data set. So, again you can have
+ a very less amount of curated data or a moderate amount of curated data, but or annotated data.
+ But what you have you have a large amount of unannotated data. So, what can be done?
+ One can learn some representation for all of these curated as well as uncurated images
+ using some architectures like say vision transformer. And then what we can do we can remove some
+ duplicates and why that is necessary. If we remove the duplicates then perhaps we can add
+ diversity to the training examples and that is very important you do not want your model
+ to be biased towards some segment of data. So, you have to diversify into multiple regions
+ or regions of different difference right. Now after this duplication, duplicate detection
+ has been done we can remove this duplicates and then we can take a curated data or image
+ for which we know the label and we can do a kind of similarity search to find out the
+ images which are similar to this input image for which the label is available and perhaps
+ assign this labels the same label to the retrieved images for which we did not have the label
+ earlier. So, in that way we can increase our data set to a larger volume and again we can
+ use a kind of any backbone network to retain our vision model.
+ Now as far as the languages are concerned, so we follow something called distributional
+ semantics. So, here our basic idea is that we want to somehow represent the basic units
+ of text and this basic units may be words or they may be some fragments of the words
+ which we call as sub words. But whatever it is we will understand the meaning of a word
+ if we know which are the other words this current word is co-occurring with. So, the
+ basic idea is that the meaning of a word is distributed into multiple words which are
+ co-occurring with the current word. So, that is what the basic hypothesis of this all these
+ language models.
+ So again we use a kind of self supervised technique to pretend this language model. So, what we
+ have with us we have with us a huge amount of text. So, they may be news articles they
+ may be Facebook post or whatever it is. Now we will pick up individual words and we will
+ try to find out what are the other words that are co-occurring with it. So, we will term
+ or designate a particular word to be the center word and the co-occurring word to be the
+ context word and we will try to learn a model where we try to maximize the probability of
+ the context word given the center word or we can look that in a reverse way also. So,
+ here we are putting the training objective to maximize the probability of seeing a context
+ word given the center word and this probability should be very high if a pair like a center
+ word and the context word is a valid pair. Now, we can take a kind of window based approach
+ where we will fix a window size let us say so, so basically what we are trying to maximize
+ we are maximizing maximizing the probability of seeing the context word given the center
+ word. Now, this will help us to learn the representation of the words and we can see
+ that this representation is reflected in this relationship between the pair of words.
+ So, for example, you can see that China and Beijing is related the same way the Russia
+ and Moscow are related. So, we can see that these vectors are really parallel to each
+ other the relationship they are really parallel to each other. So, not only that we can represent
+ this relationship we can also represent the grammatical relationship with this pretend
+ language model. But there are certain difficulties with this kind of learning. So, what are the
+ difficulties? So, let us say I have a kind of word apple and this word apple is may appear
+ in different context. So, it may appear in the context of gadgets branding or it may appear
+ in the context of say fruit or other different kind of context.
+ Now, while we are collecting the context we are merging different types of context while
+ we are trying to find out finding out thus the context word given the center word apple.
+ Now, as this different kind of context words are mixed up then we are having a single representation
+ of apple and that is not really good because it now we are really confused whenever I am
+ having a representation whether that representation is valid for the representation that needs
+ the apple brand to be representation represented or apple fruit to be represented. So, that
+ is why we talk about the other architecture which is really capturing this context and
+ this the first step toward this direction was this BRT. So, this is what we call as bi-directional
+ encoder representation through transformer. So, here we try to segregate the context in
+ which a particular token appears. Now, here we can have two different representation for
+ apple depending on the context in which it is appearing. If it is appearing in the context
+ of say branding or so, it is if it is appearing in the context of the apple company or something
+ like that. So, then the representation will be different than if it is appearing in the
+ context of fruit. So, here the idea is that we are looking at the left context and the
+ as well as the right side context of a token and we get a representation as we pass the
+ token through the layer and these are the kind of derived representation that we are
+ getting. Now, in this architecture we have a special
+ token which is what we call the CLS and that token is used to perform some prediction task
+ on this pretend model. And I think there are some other modules where this kind of architectures
+ will be dealt in detail. So, that is why I will not be going in depth with this architecture.
+ But what I like to talk about how to pretend this kind of language models. So, a very important
+ pretending objective that we set a strategy that we set what we call as must language
+ model and there we use something called 80-10-10 corruption. So, what is that? So, for taking
+ this corpora or text data training data with us, we will be picking up around 15 percent
+ of the tokens or words and out of this 15 percent we will be replacing 80 percent of
+ this 15 percent token with the token special token mask.
+ So, for example, if I have a kind of sentence heavy rain caused the flood, I will mask a
+ certain word like say rain with this token mask and we will want the model to predict
+ this mask token to be a correct token to be rain. Or what we can do? 10 percent time
+ we can replace this particular target word with a kind of random word. So, for example,
+ we can replace rain with cup or remaining 10 percent we can keep it unchanged. So, sometimes
+ we may not really want to change this particular token.
+ So, this is what we call as self-supervised pre-training in while we are training a language
+ model. So, there is another training objective or self-supervised training objective what
+ we call as next sentence prediction. So, again if you think about a training data, you can
+ think this as a sequence of sentences and you really do not have need to have explicit
+ annotation which sentence appears after which sentence and that comes for free that comes
+ automatically. So, what we can do? We can set a training objective like whether the model
+ can predict what would be the whether that for a pair of sentence whether the second
+ sentence is a is the next sentence for the first sentence.
+ So, as you can think of here we our input is the man went to the store to and the next
+ sentence he see bought a gallon of milk. Now, here you can see that we are kind of mixing
+ up two things one is next sentence prediction as well as a mass language model and what
+ we want to say that these two sentences they are a correct next sentence candidate. So,
+ I can say that he bought a gallon of milk is a correct next sentence for the sentence
+ are the man went to the store right. But the next example which says the man went
+ to the store and the coming up sentence is penguins are flightless birds and as you can
+ see the second sentence is not a natural next sentence for the first sentence and you can
+ see that this can be used as a supervision signal though we do not have explicitly annotated
+ data. So, if we mix these two training objectives together that means, the make mass language
+ model as well as next sentence pair prediction. So, the architecture will go like this or
+ the training process will go like this. So, we have the tokens for a sentence a and the
+ tokens for the sentence b and as you can see some of the tokens in sentence a can be massed
+ and some of the tokens in the sentence b can be massed and we pass these two sentences
+ through this BART architecture and then finally, we have the CLS level the representation for
+ the CLS level and we use that representation to predict whether this pair is a valid next
+ sentence pair or not and in some and whenever we have massed a particular token and for
+ that token we will output what would be the correct token for that right.
+ Now, it may be possible that you can pre train a model using a mixed modality. So, here we
+ can mix a vision as well as a language modality to come up with a pre training model which
+ can model both vision and language. So, here the pre training objective can be many. So,
+ for example, we have this image and we have some objects detected in the image and we
+ can design some task around this image. So, for example, I can have a task which is visual
+ question answering and here the question that we are asking what color is the child's
+ outfit. So, here the answer is orange. Now, we can feed this together to the model and
+ try to do a correct prediction that given this image and given the question what color
+ is the child's outfit and we should have the result to be or answer to be orange.
+ We can also design a task what we call as predicting the referring expressions or finding
+ out the referring expressions. So, what do you mean by that? So, again we have got different
+ objects in this image. So, we have a sheep, we have a child, we have a basket whatever
+ so and so forth and we have some linguistic expression or language expressions like child,
+ sheep, basket, people sitting on chair and we will try to align which token or which
+ phrase aligns to which object in the image. The third task that we can talk about what
+ we call as multimodal verification. Now, here we will be asking some question true false
+ question out of this image. So, for example, we are asking the child is petting a dog.
+ So, we are having a statement and we have to predict the truth value of the sentence.
+ So, here we are the correct truth value is false. So, you need to train your network
+ in such a way that it will predict for this given. So, here you see that the input to
+ this network is the image as well as the sentence or the sequence of tokens like the child is
+ petting a dog and your answer should be false a prediction should be false or we can think
+ about caption based image retrieval you can give a as query a string of or a phrase or
+ a sequence of words and as a result you would be able to retrieve the image which represents
+ that particular phrase or you can generate the caption of the image.
+ So, let say you are given with the image and you want to generate the caption in a phrase
+ or in a sentence manner. So, there have been quite a large amount of work in this vision
+ language models. So, for example, Facebook, Google, Microsoft, they have come up with
+ very efficient models in down the I mean starting from say 2019 and still this racing this going
+ on.
+ So, nowadays people talk about models like lava deep seek vision language model. So,
+ this open AI GPT V4. So, they are now having this multimodal capabilities as well. Now,
+ again for this kind of vision language model what kind of pre training objective we can
+ set right. So, here we are setting a pre training objective like so, we have this image and
+ we have this description we need to align these two. So, so, given this image we need
+ to come up with this description we should be able to generate this description. So,
+ this is a kind of training example which is put to the model.
+ Now, there might be different self supervision objective. So, one such self supervision objective
+ can be simply mass language model as we have seen earlier. So, what we are seeing here?
+ So, in this kind of model we are feeding the patches of the images and as well as the paired
+ sentence as we have seen in the training example. So, we have this image and this paired sentence
+ right. So, we are feeding both, but as you can see that we are masking some tokens in
+ the sentence and the pre training objective would be to predict this token correctly right.
+ Or else what we can do? We can mask some region in the image. So, these are the patches of
+ this image. Now, we are masking certain region of the image we are keeping this sentence
+ intact and we want to reconstruct the masked region. So, this is what we call as masked
+ region modeling. So, third thing what we can do? We can do kind
+ of image text matching. Now, as we are giving this image as well as the text associated
+ with that. Now, this pair can be a positive pair. So, for example, the pair what we have
+ seen earlier is a positive pair, but the pair that we are seeing in this example that the
+ bus is. So, now this text is talking about some bus related thing though we are talking
+ about a man with his dog on a couch. So, this is not a positive pair and it should be outputting
+ 0 instead of 1. So, this is what we call as image text matching.
+ Now, while we are let us say we have done this pre training with all these three elements
+ in the recipe, accessing the data, finding out or choosing the architecture and fixing
+ the pre training objective and with that we pre train our model. Now, we will be talking
+ about how to make use of this pre trained model. Now, there are different ways we can
+ follow. So, the first strategy is that we have this pre trained model and we will be
+ freezing all the parameters. So, as we can see in the left hand side the blue region
+ all the parameters of this model they have been trained earlier with some data set and
+ training objective. Now, I want to use these to solve some problems related to a different
+ application domain having annotated data. So, what we can do? We can take out the final
+ layer representation of this pre trained model and feed that to a prediction head which can
+ be another architecture. So, let us say we have a kind of multilayer perceptron or kind
+ n number of layer network and what we do? We will be kind of fine tuning the parameter
+ of this model. We will be tuning the parameters of this particular part of the architecture
+ which is in the yellow part. And we will be optimizing the loss based on the limited data
+ set that is given to us. And we will be fixing the parameter of this part only leaving out
+ all the parameters that we are having in the blue part right.
+ So, this is one strategy. Now, the second strategy is we freeze some of the parameters
+ maybe in the very initial layers, but we leave the other parameters of this pre trained network
+ to be fine tuned. And along with that we have this prediction head network which will be
+ again fine tuned as well. So, here we are not really fine tuning the all the parameters
+ of the base model or the pre trained model. So, what is the kind of benefit of these two
+ kind of architectures. So, as you can see in the first strategy here. So, the number
+ of parameters that are needed to be tuned are very less. We are just looking at updating
+ the parameter of this part right. But in this remaining part this strategy 2 we are updating
+ a kind of more number of parameters than the strategy 1. So, we are updating the parameters
+ of this part as well as updating the parameters of this part right.
+ So, these are these two strategies have kind of advantages and disadvantages right. Now,
+ in the first strategy in the strategy 1 as we see that we have have less number of parameters
+ to tune. So, it will be converging faster right and may be it will take less amount
+ of compute right or the time to update the parameters would be pretty much low. But as
+ you can see here in the strategy 2 as the number of parameters that are to be tuned
+ has increased. So, you have to run it for longer epochs or longer time or train it for
+ longer time to converge that is one thing. The other thing is that as you are updating
+ many parameters or more parameters than the strategy 1. So, may be it will require more
+ compute power than the strategy 1 right. Now, why should we use strategy 2 then.
+ Now, think about a scenario where we are kind of we are not given with this pretend model
+ we are just given with this level data and someone tells me that well you train this
+ network from scratch. So, that is also kind of strategy I will just throw all the parameters
+ of the model I will train from the scratch. And if we train from the scratch perhaps it
+ will capture better the domain related integracies than freezing the entire model just updating
+ a few parameters. So, may be as it is capturing the domain related
+ structure very efficiently the training from the scratch model. So, there we might get
+ a better accuracy than the model where we are using a pretend model and fine tuning
+ a part of it or not even fine tuning the entire part right. So, now this strategy 2 is a kind
+ of middle ground. So, here we are not really throwing away all the parameters of the pretend
+ model we are leaving some space for the network to learn the domain related integracies.
+ But what we are making use of we are making use of representation of the initial layers
+ the question is how does that help. Now, think about an image related prediction
+ model and let us say we are training your model to classify birds right. Now, your initial
+ layer will try to learn very basic features like say edges there would be some edges in
+ the images. Now, if you go forward the then the next layer will be maybe it will be learning
+ the different shapes like circle or triangles one so forth. But as you are going forward
+ to the deeper layer they will be learning more abstract features which are very much
+ aligned to the domain for which you have used the training data.
+ Now, keeping these initial layers intact that means you are using lower level features and
+ this lower level features are very common to different applications. So, if you are
+ classifying birds you will be requiring a kind of edge detector and if you are classifying
+ the curves there also will be requiring edge level detectors or edge features. So, that
+ is why you can keep the initial layers intact we will not be updating the parameters. Now,
+ as this penultimate layers or the layers closer to the penultimate layer they are kind of
+ capturing the abstract and domain dependent feature. If we update them using domain dependent
+ data they will be capturing the domain related feature much better.
+ So, that is why we take a middle ground we do not train from scratch or we really do
+ not freeze all the parameters of the pretend model. So, we take a middle ground we keep
+ some parameters frozen for the pretend model and keep the remaining parameters which are
+ closer to the penultimate layer to be updatable or fine tunable.
+ Now, again we can take the final layer representation of the pretend model and put that in a prediction
+ head prediction network and with that we can perform different tasks like image classification,
+ object detection, semantic segmentations and so forth. So, as far as the pretend language
+ models are concerned we can make use of them to in different prediction tasks. So, for
+ example, we can use them to do some classification tasks that involves a sentence space. So,
+ for example, I want to detect whether two questions are paraphrases with respect to each
+ other or not or given a pair of sentence one being the premise other being the hypothesis
+ you want to check whether the premise or a hypothesis can be entailed by the premise
+ or not. So, these tasks are concerning a pair of
+ sentences and we want to classify again whether a pair of sentences are paraphrases or not
+ or in the natural language inference domain for a given pair whether they are a kind of
+ entailed pair or contradicting pair or they are neutral right or given a pair of sentences
+ whether they are semantically similar or not. So, the bottom line is that the input to the
+ network is a pair of sentences again we transform them into the tokens into the embeddings
+ and we pass this through a set of encoder layers which are kind of implemented via transformer
+ architecture and we have the final layer representation and we use the CLS token representation
+ and we feed that to another multi layer or a linear layer to predict the class level.
+ So, for example, for a paraphrase detection the class level might be yes it is a paraphrase
+ no it is not a paraphrase. Now there might be classification tasks which involve only
+ a single sentence as input. So, here we are trying to check whether a given sentence whether
+ that represents a positive emotion or a negative emotion. So, we can think about a task like
+ sentiment detection we can think about a task like a grammaticality of a sentence. So, given
+ a sentence as input we need to predict whether the sentence is grammatically correct or not.
+ So, this is what we call as the COLA task. So, again as we did earlier we will be passing
+ this single sentence tokenize it and then we get the embeddings of the individual tokens
+ and finally, we will be using the representation of the CLS token to predict whether it is
+ depicting a positive or negative or neutral emotion.
+ So, this prediction task may involve they may be in the token level. So, for example,
+ if we think about question answering task. So, here input is a question which is again
+ a sequence of tokens and a paragraph again a sequence of tokens and we need to predict
+ for this given question what are the tokens present in the paragraph which are the span
+ that we are marking is a potential answer to the question. So, here we can see that
+ our prediction would be in the token level. So, for example, this T 1 prime is the start
+ of the answer and say T m prime is the end of the answer.
+ We can think about solving this named entity recognition task where again the input is
+ a single sentence and we need to mark the token whether it is inside a named entity
+ or outside a named entity sequence. So, again we can talk about inference using
+ pretend vision language models. So, here for example, we are talking about visual question
+ answering we have again as input the image and question and using that we need to find
+ out the answer. So, for example, we are asking for this given image what color are her eyes
+ and your model should predict it to be black. So, there are other tasks in vision language
+ model. So, for example, we can think about a task like entailment. So, for example, given
+ this image we can state different facts. So, this is our premise in an inference or entailment
+ problem we have two sentence or two entities one is a premise other is the hypothesis.
+ And in this case we have the premise to be an image and we have different hypothesis
+ in the form of sentences. So, for example, we are saying that two women are holding packages.
+ So, here we need to predict that this is a correct entailment pair. So, that means this
+ is true given that premise is true or we can say that the sisters are hugging goodbye while
+ holding to go packages after just eating lunch. So, here we are saying that this is having
+ no way close relation or very tied or coherent relation with this image. So, we are marking
+ this as neutral or the third sentence the men are fighting outside a deli. So, this
+ is really a contradiction. So, given this image which is true we cannot say that this
+ sentence is true. So, the way to make an inference out of this.
+ So, what we have again we will be feeding these two as input the image and the sentence
+ and this should predict for the CLS token whether the CLS token can be classified into
+ entail neutral or contradict class. We can perform visual reasoning as well. So, for
+ example, we are given with a pair of images a left side image and the right side image
+ and the left side image we have got two dogs and the right side image we have got one dog.
+ Now, we are asking the left image contains twice the number of dogs as the right image
+ and at least two dogs in total are standing. So, here this result of the prediction would
+ be true. So, whatever that is there in the image the pair of images this particular sequence
+ of words are correctly capturing that. So, in that case the output should be true.
+ Now, here we are feeding one image the left side image along with the entire text in one
+ unit and the right side image and again the same text in the another unit and we will
+ pass these pairs at this individual units will be coming out coming up with the representation
+ of the CLS token and we have a kind of CLS token for the left hand side image and a CLS
+ token for the right hand side image we concatenate that and we predict either true or false.
+ So, again I think I have given a very brief overview of what we mean by pre-training and
+ what are the kind of recipe for pre-training to be done and how these pre-trained models
+ can be used in different modalities like text, vision and this multimodal setting. So, there
+ are a kind of huge amount of resources available. So, for example, for pre-trained vision model,
+ pre-trained language model, pre-trained vision language model now you see nowadays these pre-trained
+ models are pretty much abundant and I think hugging face is a very good framework or platform
+ where these pre-trained models are maintained quite elegantly and as you see nowadays we
+ are talking about small language models and what one can do download these pre-trained
+ language models and then fine tune this language models using small amount of annotated data.
+ So, I think I am done with the theory part and I guess we can go forward with the hand
+ transition and for that I would like to invite Artif. So, I think we will be having a break
+ for 5 minutes and then we will be going on with this hand transition. Thank you very much.

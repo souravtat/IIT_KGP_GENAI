@@ -1,0 +1,2144 @@
+1
+00:00:00,000 --> 00:00:10,520
+ So, sorry for the delay we will go to the today's topic straight away which is Declining
+
+2
+00:00:10,520 --> 00:00:19,680
+ applications in computer vision. So, as many of you might be knowing that one of the most
+
+3
+00:00:19,680 --> 00:00:26,760
+ important architecture that is used for the computer vision task are the convolutional
+
+4
+00:00:26,760 --> 00:00:32,760
+ neural network architecture. So, I believe up till now you have seen
+
+5
+00:00:32,760 --> 00:00:39,000
+ feed forward neural network architecture as which I have discussed in the last class and
+
+6
+00:00:39,000 --> 00:00:45,880
+ possibly you have also done some programming with the feed forward neural network architecture.
+
+7
+00:00:45,880 --> 00:00:53,880
+ So, today we are going to first discuss the convolutional neural network architecture
+
+8
+00:00:53,880 --> 00:01:01,340
+ and then we are going to discuss how to solve a different computer vision problem using
+
+9
+00:01:01,340 --> 00:01:09,440
+ this convolutional neural network architecture. So, in order to motivate the convolutional
+
+10
+00:01:09,440 --> 00:01:18,480
+ neural network architecture let us first discuss a few properties of the image data ok. So,
+
+11
+00:01:18,480 --> 00:01:25,420
+ the first property that I want to discuss. So, I just want to mention that these properties
+
+12
+00:01:25,420 --> 00:01:35,760
+ of the image data are important for understanding the image and these are also specific to image.
+
+13
+00:01:35,760 --> 00:01:42,640
+ So, other kind of data. So, for example, if you take some sort of a demographic data or
+
+14
+00:01:42,640 --> 00:01:48,680
+ if you take time series data or those kind of things all these properties may not be
+
+15
+00:01:48,680 --> 00:01:56,440
+ present ok. So, what are these properties? So, the first property is the topology property
+
+16
+00:01:56,440 --> 00:02:08,200
+ ok. So, what is the topology property? So, what is the topology property? So, the topology
+
+17
+00:02:08,200 --> 00:02:17,680
+ property says that so, suppose so, you can so, here you can see in the left this image
+
+18
+00:02:17,680 --> 00:02:31,960
+ right. So, this image you can think of it as a grid like this ok, a grid like this ok,
+
+19
+00:02:31,960 --> 00:02:40,400
+ where each of this pixels has a value let us say for simplicity we can say that this
+
+20
+00:02:40,400 --> 00:02:48,000
+ is between 0 to 255 ok that is how. So, it can be slightly more complicated, but that
+
+21
+00:02:48,000 --> 00:02:56,400
+ is how it is stored ok. So, now, the first thing is that the pixels
+
+22
+00:02:56,400 --> 00:03:05,860
+ in an image are like aligned in this way in a grid or they are placed in a grid. So,
+
+23
+00:03:05,860 --> 00:03:14,960
+ what does the grid have? It has a size ok. So, for example, it may be let us say 1024
+
+24
+00:03:14,960 --> 00:03:20,120
+ into 768 let us say this is the image size I am just saying I am saying some number.
+
+25
+00:03:20,120 --> 00:03:28,800
+ So, basically the column indices are varying from 1 to 1024 and the row indices here are
+
+26
+00:03:28,800 --> 00:03:39,040
+ varying from 1 to 768 in this particular image ok. So, every pixel so, the image data size
+
+27
+00:03:39,040 --> 00:03:52,880
+ is going to be 1024 into 768 ok. Now, whatever this particular size is that many 18 bit values
+
+28
+00:03:52,880 --> 00:03:59,960
+ or 1 byte values are going to be there in this image ok and now for these that many
+
+29
+00:03:59,960 --> 00:04:08,040
+ values they are not arranged in one row ok. So, they are not arranged like this that you
+
+30
+00:04:08,040 --> 00:04:16,040
+ start with 1 here and then you go to 1024 into 768 it is not like that it is arranged
+
+31
+00:04:16,040 --> 00:04:23,960
+ in a grid in this manner and which pixel is close to which other pixel that information
+
+32
+00:04:23,960 --> 00:04:31,680
+ is important ok and that information is called the topology of the pixels.
+
+33
+00:04:31,680 --> 00:04:39,120
+ So, a particular pixel will have some neighboring pixel. So, for example, this pixel will have
+
+34
+00:04:39,120 --> 00:04:52,640
+ a neighboring pixel. So, let me just take another color here maybe yeah. So, this pixel will
+
+35
+00:04:52,640 --> 00:04:59,680
+ have this pixel as a neighbor the blue pixel this pixel as a neighbor this pixel as a neighbor
+
+36
+00:04:59,680 --> 00:05:08,200
+ and this pixel as a neighbor. So, these are called 4 neighbors ok. So, up down left right
+
+37
+00:05:08,200 --> 00:05:19,880
+ ok. So, 4 neighbors ok there are going to be also 8 neighbors sometimes. So, this this
+
+38
+00:05:19,880 --> 00:05:28,480
+ this and this. So, up down left right and also the 4 corners ok. So, they will include the
+
+39
+00:05:28,480 --> 00:05:34,800
+ 8 neighbors of a particular pixel. What is the pixel? The pixel is the center pixel ok.
+
+40
+00:05:34,800 --> 00:05:43,480
+ So, this particular formation where each pixel has some neighborhood this is called the topology
+
+41
+00:05:43,480 --> 00:05:51,040
+ of the pixels. So, this is the first important property of images which is not there in other
+
+42
+00:05:51,040 --> 00:05:57,400
+ types of data ok. Now, the second class of important properties
+
+43
+00:05:57,400 --> 00:06:03,600
+ are what are called translation invariance or scale invariance ok. So, what is the translation
+
+44
+00:06:03,600 --> 00:06:12,920
+ invariance? You see this particular. So, you see the top row of images here ok. So, the
+
+45
+00:06:12,920 --> 00:06:22,080
+ top row of images here they have or or even even more let us say let us take these images
+
+46
+00:06:22,080 --> 00:06:28,560
+ ok. They are describing as a human being we know that they are describing the same thing
+
+47
+00:06:28,560 --> 00:06:34,640
+ which is there is a can of some cold drinks some some sort of a drinks which is lying
+
+48
+00:06:34,640 --> 00:06:43,640
+ in a grass right, but if you see from the image point of view in this image it is somewhat
+
+49
+00:06:43,640 --> 00:06:49,080
+ towards the top side in this image may be somewhere else it has come ok.
+
+50
+00:06:49,080 --> 00:06:57,860
+ So, what is happening is the image is translating ok. So, the position of the object is moving.
+
+51
+00:06:57,860 --> 00:07:04,040
+ So, the the image is translating, but the topology of many of the pixel most of the
+
+52
+00:07:04,040 --> 00:07:08,800
+ pixels the important pixels or the pixels around this particular object let us say they
+
+53
+00:07:08,800 --> 00:07:15,080
+ may be same they may be remaining same. Another thing is if you look at let us say let us
+
+54
+00:07:15,080 --> 00:07:24,000
+ say let me erase the things. So, let us say if you look at this this image may be this
+
+55
+00:07:24,000 --> 00:07:31,560
+ image and then this image right. So, again maybe there is also a little bit of translation,
+
+56
+00:07:31,560 --> 00:07:36,560
+ but more importantly you see there is a zooming in ok. So, the camera is zooming in to the
+
+57
+00:07:36,560 --> 00:07:43,880
+ object ok. So, the object itself has become bigger progressively from here to here then
+
+58
+00:07:43,880 --> 00:07:49,640
+ here to here and so on and so forth ok. So, this is called the scale invariant ok.
+
+59
+00:07:49,640 --> 00:07:59,360
+ So, so both of these are invariance properties ok, then there may be other invariances for
+
+60
+00:07:59,360 --> 00:08:05,860
+ example, lightning or contrast. So, here you can see it is the same thing, but the lighting
+
+61
+00:08:05,860 --> 00:08:11,680
+ is a bit different. So, the glass is looking slightly more yellow in this whereas, in this
+
+62
+00:08:11,680 --> 00:08:18,200
+ one the glass is looking slightly more green and so on and so forth ok ok.
+
+63
+00:08:18,200 --> 00:08:26,080
+ So, these are some of the properties of the image data and why are we discussing this
+
+64
+00:08:26,080 --> 00:08:32,040
+ properties? We are discussing this properties because whatever neural network we design
+
+65
+00:08:32,040 --> 00:08:39,720
+ ok, we have to design by keeping these properties in mind. So, that is the important thing that
+
+66
+00:08:39,720 --> 00:08:45,400
+ we have to design the neural network by keeping these properties in mind ok.
+
+67
+00:08:45,400 --> 00:08:54,380
+ So, how can we do that? So, just a brief description. So, computer vision is the field of artificial
+
+68
+00:08:54,380 --> 00:09:02,120
+ intelligence that focuses on enabling machines to interpret and understand visual information
+
+69
+00:09:02,120 --> 00:09:09,940
+ which is that if I give you a image you should be your program. So, artificial intelligence
+
+70
+00:09:09,940 --> 00:09:17,000
+ program that you design which is the field of computer vision it should be able to interpret
+
+71
+00:09:17,000 --> 00:09:20,480
+ and understand the information that is there in that image.
+
+72
+00:09:20,480 --> 00:09:26,960
+ So, put in layman's terms if I give this particular image let us say it should be able to say
+
+73
+00:09:26,960 --> 00:09:34,880
+ that this image is something like a coke can or a cold drink can which is there on a grass
+
+74
+00:09:34,880 --> 00:09:40,600
+ or this image if I give it should be able to say that it is a football on a grass ok.
+
+75
+00:09:40,600 --> 00:09:48,440
+ So, that is the job of computer vision. So, that is what you are going to do ok.
+
+76
+00:09:48,440 --> 00:09:54,880
+ Now, in order to achieve that what do you have to do? You have to do two broad categories
+
+77
+00:09:54,880 --> 00:10:03,080
+ of task what is that? The first one is that you have to develop neural network models
+
+78
+00:10:03,080 --> 00:10:10,120
+ for different application ok and second is you have to also develop data sets and algorithms
+
+79
+00:10:10,120 --> 00:10:16,040
+ for the application ok. Now, in this particular lecture we will mostly focus on the first
+
+80
+00:10:16,040 --> 00:10:22,120
+ one because the second one is already given in all probability you will not be developing
+
+81
+00:10:22,120 --> 00:10:27,040
+ when you are applying a new thing. There is a high chance that you will not be developing
+
+82
+00:10:27,040 --> 00:10:32,440
+ new data sets or you will not be developing new application, but you will be developing
+
+83
+00:10:32,440 --> 00:10:38,600
+ new model for the application as the case ok.
+
+84
+00:10:38,600 --> 00:10:45,920
+ Now, so as I mentioned this particular model will be called convolutional neural network
+
+85
+00:10:45,920 --> 00:10:52,080
+ model as opposed to feed forward neural network model. Now, in feed forward neural network
+
+86
+00:10:52,080 --> 00:10:58,040
+ what happens? So, any neural network you know every neural network is organized as layer.
+
+87
+00:10:58,040 --> 00:11:06,800
+ So, this is one layer. So, let us say layer 1 ok and every layer has some activation right.
+
+88
+00:11:06,800 --> 00:11:12,200
+ Now, this will be layer 2. So, this is I am talking about feed forward neural network
+
+89
+00:11:12,200 --> 00:11:23,680
+ ok. Now, in in feed forward neural network every like every pixel is connected to every
+
+90
+00:11:23,680 --> 00:11:29,480
+ other pixel ok and this connections carry weightage as you know and then there is a summation
+
+91
+00:11:29,480 --> 00:11:37,360
+ etcetera ok. In convolutional neural network the layer is there ok. So, if I were to try
+
+92
+00:11:37,360 --> 00:11:43,840
+ and erase these things ok. So, the layers are there. So, this is layer 1, this is layer
+
+93
+00:11:43,840 --> 00:11:55,760
+ 2 ok, but two things are happening. First is that these layers are arranged in the topographic
+
+94
+00:11:55,760 --> 00:12:02,840
+ format ok. So, now, if I if I were to try and let me erase this and if I were to try
+
+95
+00:12:02,840 --> 00:12:18,320
+ and say. So, this is let us say layer 1 ok. So, this is layer 1, this is going to be layer
+
+96
+00:12:18,320 --> 00:12:30,160
+ 2 ok. So, this is how it is going to be of course, there will be activation ok, but there
+
+97
+00:12:30,160 --> 00:12:36,560
+ is another thing that the connections are now not fully connected ok and we will come
+
+98
+00:12:36,560 --> 00:12:45,040
+ to why the connections are not fully connected, but they are actually in the form of a convolution
+
+99
+00:12:45,040 --> 00:12:51,600
+ operation ok. So, what is the convolution operation ok?
+
+100
+00:12:51,600 --> 00:13:00,120
+ Convolution operation involves a kernel ok. Now what happens? So, kernel is basically instead
+
+101
+00:13:00,120 --> 00:13:07,280
+ of earlier there was one weight per connection. Now, the kernel there will be just one kernel
+
+102
+00:13:07,280 --> 00:13:14,240
+ between each layer. So, there will be one kernel here ok. Using this kernel we will
+
+103
+00:13:14,240 --> 00:13:22,640
+ do the convolution operation from this layer and calculate the layer 2 from layer 1 using
+
+104
+00:13:22,640 --> 00:13:30,480
+ the convolution operation ok. Now, this kernel is something like this ok. So, this is the
+
+105
+00:13:30,480 --> 00:13:39,400
+ kernel ok, this is the kernel ok. What is it? It is a grid of weight. So, so this is
+
+106
+00:13:39,400 --> 00:13:46,200
+ the input input means input image. So, just like your input image is there in a grid.
+
+107
+00:13:46,200 --> 00:13:53,720
+ So, this is a 3 by 3 grid your kernel or the weights are also arranged in a grid ok. So,
+
+108
+00:13:53,720 --> 00:14:00,600
+ in the convolution layer the input, the output and the learnable weights which are defined
+
+109
+00:14:00,600 --> 00:14:07,440
+ using this kernel ok, all of them are arranged in a grid ok. So, this is the first thing
+
+110
+00:14:07,440 --> 00:14:14,800
+ ok. So, this kernels are also sometimes called filters ok.
+
+111
+00:14:14,800 --> 00:14:26,640
+ Now, what this kernel does is this kernel gets overlaid on a grid. So, let me see here
+
+112
+00:14:26,640 --> 00:14:38,840
+ ok. So, let me first show you what overlaying mean in this thing. So, you can see that this
+
+113
+00:14:38,840 --> 00:14:46,280
+ blue thing is a kernel ok. So, the blue thing is a kernel. Now, the pink thing is a kernel
+
+114
+00:14:46,280 --> 00:14:53,160
+ ok and it is getting overlaid on top of the pixel ok. So, the kernel is getting overlaid
+
+115
+00:14:53,160 --> 00:14:58,840
+ on top of the pixel. So, this is what is meant by overlaying ok.
+
+116
+00:14:58,840 --> 00:15:07,480
+ Let us come back to our slides ok. So, now suppose you are overlaying this particular
+
+117
+00:15:07,480 --> 00:15:14,120
+ kernel ok let me erase this. So, suppose you are overlaying this particular kernel on this
+
+118
+00:15:14,120 --> 00:15:23,160
+ input, then what will the convolution operation do? Convolution operation will multiply the
+
+119
+00:15:23,160 --> 00:15:30,280
+ corresponding numbers with each other ok. So, let me see how that goes. So, this is
+
+120
+00:15:30,280 --> 00:15:39,080
+ the calculation ok. So, this kernel is getting overlaid on top of this input. So, 3 is getting
+
+121
+00:15:39,080 --> 00:15:45,000
+ multiplied by minus 1. So, this is 3 and this is minus 1, they are getting multiplied ok.
+
+122
+00:15:45,000 --> 00:15:51,320
+ 2 is getting multiplied by 0 and so on and so forth ok. So, all these multiplications
+
+123
+00:15:51,320 --> 00:15:57,960
+ are happening ok. Now, after this all these are added together
+
+124
+00:15:57,960 --> 00:16:05,560
+ ok, all these numbers are added together and then you come up with a particular number
+
+125
+00:16:05,560 --> 00:16:12,440
+ ok. What is the position where this number will be put? The position where this will
+
+126
+00:16:12,440 --> 00:16:19,360
+ be put in the output is in the center of this whole overlay process ok. So, this overlay
+
+127
+00:16:19,360 --> 00:16:25,640
+ process will happen many many times because in a practical case your input will be very
+
+128
+00:16:25,640 --> 00:16:31,640
+ big, your kernel will be very small as I was describing earlier. So, this is one particular
+
+129
+00:16:31,640 --> 00:16:38,320
+ overlay of the kernel ok. There can be another overlay of the kernel which is something like
+
+130
+00:16:38,320 --> 00:16:48,000
+ this ok. There can be another overlay of the kernel which is something like this ok. So,
+
+131
+00:16:48,000 --> 00:16:55,000
+ the kernel is the same ok, but 3 different overlays on the image. So, this is the image
+
+132
+00:16:55,000 --> 00:17:08,400
+ ok. So, let me go back to blue ok. This is the image and these are all kernels ok, this
+
+133
+00:17:08,400 --> 00:17:13,760
+ is one kernel, this is another kernel. So, these are not different kernels, but the overlay
+
+134
+00:17:13,760 --> 00:17:18,840
+ of the same kernel in different position ok. I hope. So, this is the crucial thing to be
+
+135
+00:17:18,840 --> 00:17:25,880
+ clear ok. So, that is what we have written here that output over the centered pixel is
+
+136
+00:17:25,880 --> 00:17:36,120
+ going to be summation over all the pixels in the kernel ok W p times pixel p ok. Now,
+
+137
+00:17:36,120 --> 00:17:41,640
+ the area on which this overlay happens, this particular area of the image where the overlay
+
+138
+00:17:41,640 --> 00:17:49,060
+ is happening, this area will be called the receptive field sorry the this area will be
+
+139
+00:17:49,060 --> 00:18:03,240
+ called the receptive field ok. So, this area will be called the receptive field ok. So,
+
+140
+00:18:03,240 --> 00:18:10,080
+ this is the idea. Now, these kernels and convolutions have traditionally been used in image processing
+
+141
+00:18:10,080 --> 00:18:14,800
+ many many times ok. So, let me show. So, these are some of the operations ok. So, let me
+
+142
+00:18:14,800 --> 00:18:23,840
+ show some tradition and kernel ok. So, this is a very traditionally used Gaussian blur
+
+143
+00:18:23,840 --> 00:18:31,600
+ kernel ok. So, so this performs the blurring operation blurring operation means what? Suppose
+
+144
+00:18:31,600 --> 00:18:38,840
+ you can see on the left this is your input image, on the right this is a blurred image.
+
+145
+00:18:38,840 --> 00:18:46,920
+ So, blurred image what happens? Basically if you see very carefully some of the boundaries
+
+146
+00:18:46,920 --> 00:18:52,840
+ the object boundaries they have become a little bit fuzzy ok. So, the object boundaries have
+
+147
+00:18:52,840 --> 00:19:01,560
+ become a little bit fuzzy ok. Now, this particular kernel does the blurring
+
+148
+00:19:01,560 --> 00:19:08,280
+ operation. Why does this problem kernel does the blurring operation? Because if you see
+
+149
+00:19:08,280 --> 00:19:16,440
+ what this kernel does is it has a weightage of 1 in the neighboring pixels and the weightage
+
+150
+00:19:16,440 --> 00:19:23,920
+ of 4 in the center pixel ok. So, it is giving equal weightage to the value of the center
+
+151
+00:19:23,920 --> 00:19:30,960
+ pixel ok. So, let us say center pixel is red ok. Maybe top pixel is also red, this side
+
+152
+00:19:30,960 --> 00:19:38,000
+ pixel left side pixel is also red, but let us say right and down pixels are blue. So,
+
+153
+00:19:38,000 --> 00:19:54,180
+ what will happen? This will have 6 parts red and 2 parts blue ok. So, the value the value
+
+154
+00:19:54,180 --> 00:20:03,000
+ of this pixel has now changed a bit and hence you see the edges have become a little bit
+
+155
+00:20:03,000 --> 00:20:08,840
+ blurred ok. So, this is one thing. Opposite thing is this particular kernel you see it
+
+156
+00:20:08,840 --> 00:20:14,960
+ is a sharpening kernel. So, what is happening? It is giving a high importance to the center
+
+157
+00:20:14,960 --> 00:20:25,280
+ pixel and also deducting whatever is there in the pixel surrounding it. So, for example,
+
+158
+00:20:25,280 --> 00:20:33,340
+ if I just erase this. So, suppose center pixel is a little bit combination of red and blue
+
+159
+00:20:33,340 --> 00:20:40,200
+ ok. What will happen is and let us say all the pixels in the side are blue, then what
+
+160
+00:20:40,200 --> 00:20:46,960
+ it will do is it will reduce the blue intensity of this pixel. So, it will very very sharply
+
+161
+00:20:46,960 --> 00:20:54,560
+ define the edges. So, here is an example. So, the left image is the normal image and
+
+162
+00:20:54,560 --> 00:21:01,680
+ the right image is the sharpened version of the image ok. And this is a much more intensified
+
+163
+00:21:01,680 --> 00:21:08,160
+ version of the sharpening kernel. So, I am just giving you. So, these numbers inside
+
+164
+00:21:08,160 --> 00:21:13,200
+ the kernel right now are manually chosen, but when you design your neural network you
+
+165
+00:21:13,200 --> 00:21:18,160
+ do not have to manually choose these numbers. These numbers will automatically be lured
+
+166
+00:21:18,160 --> 00:21:26,200
+ ok. I am just telling these particular kernels to give you an intuition as to how the kernel
+
+167
+00:21:26,200 --> 00:21:34,760
+ operates on the entire image ok ok. So, now, here are some more. So, this is a vertical
+
+168
+00:21:34,760 --> 00:21:41,840
+ line detector. So, if your image has a vertical line this can be detected, this is a horizontal
+
+169
+00:21:41,840 --> 00:21:46,320
+ line detector, this is a corner detector and so on and so forth. And you can work it out
+
+170
+00:21:46,320 --> 00:21:52,300
+ and you can see why these are all these kinds of detectors ok ok.
+
+171
+00:21:52,300 --> 00:21:59,160
+ Now, what do convolutional neural networks do? So, first of all we have to understand
+
+172
+00:21:59,160 --> 00:22:07,320
+ that each layer of a convolutional neural network performs a some type of a convolution
+
+173
+00:22:07,320 --> 00:22:15,160
+ ok. Now, what does this convolution do? The convolution create some visual features out
+
+174
+00:22:15,160 --> 00:22:23,160
+ of the image ok. So, maybe it is detecting edges ok. So, edges are some visual features.
+
+175
+00:22:23,160 --> 00:22:31,520
+ So, from this particular cat it may be detecting some some edges let us say here, here, here,
+
+176
+00:22:31,520 --> 00:22:39,600
+ maybe it will detect some edges for the stripes of the cat and so on and so forth ok. So,
+
+177
+00:22:39,600 --> 00:22:47,000
+ these are some of the edges ok. Now, what you will get at the end of this edge detection
+
+178
+00:22:47,000 --> 00:22:53,120
+ is another image which will only have the edges ok. So, I will show you a example in
+
+179
+00:22:53,120 --> 00:23:00,840
+ a minute ok. Now, if you give that particular image to another convolutional layer, maybe
+
+180
+00:23:00,840 --> 00:23:08,320
+ it will be able to detect shapes ok. What are shapes? Shapes are basically you know these
+
+181
+00:23:08,320 --> 00:23:14,040
+ are formed by combination of different edges. So, maybe it will detect a circular shape here,
+
+182
+00:23:14,040 --> 00:23:21,840
+ maybe it will detect the eye shape here ok, maybe it will detect the nose shape here and
+
+183
+00:23:21,840 --> 00:23:30,760
+ so on and so forth ok. So, this is a thought experiment that cat has let us say. So, you
+
+184
+00:23:30,760 --> 00:23:37,280
+ have to understand that this particular image is that for a cat ok that is the task. So,
+
+185
+00:23:37,280 --> 00:23:43,400
+ how will you understand this? You will understand that there are two eyes which are in certain
+
+186
+00:23:43,400 --> 00:23:52,360
+ positions in relation to one another ok plus maybe there is a cat fur texture ok. Now,
+
+187
+00:23:52,360 --> 00:23:58,960
+ eyes are maybe a dark circle inside another circle ok and circle may be a particular combination
+
+188
+00:23:58,960 --> 00:24:06,000
+ of edge detectors, maybe this is a very some sort of a approximation of a circle. So, so
+
+189
+00:24:06,000 --> 00:24:16,720
+ this kind of 8 edge detectors may be used to get a approximation of a circle ok. Similarly,
+
+190
+00:24:16,720 --> 00:24:23,200
+ fur may be a certain kind of pattern ok that may be detected by certain kind of kernel
+
+191
+00:24:23,200 --> 00:24:32,640
+ ok. So, what convolutional neural networks do is they build up these features ok. So,
+
+192
+00:24:32,640 --> 00:24:39,800
+ that is the key idea ok. So, primary ideas let the neural network learn
+
+193
+00:24:39,800 --> 00:24:46,520
+ which kernels are the most useful. So, as you learn a kernel it will detect some kind
+
+194
+00:24:46,520 --> 00:24:51,720
+ of a features you do not know what features. So, it could be edges it could be something
+
+195
+00:24:51,720 --> 00:25:01,120
+ else ok, but whatever it is the training process will ensure that these features are useful
+
+196
+00:25:01,120 --> 00:25:09,000
+ in detecting the cat ok or doing the ultimate task which is which it is given ok.
+
+197
+00:25:09,000 --> 00:25:15,800
+ Now, we use the same set of kernels across the entire image ok. So, this makes use of
+
+198
+00:25:15,800 --> 00:25:21,080
+ the property of translation invariance which I was telling that the kernel may be a small
+
+199
+00:25:21,080 --> 00:25:27,800
+ size kernel like 3 cross 3 or 5 cross 5 ok. The entire image may be thousands of pixels,
+
+200
+00:25:27,800 --> 00:25:35,040
+ but the translation invariance property will ensure that the same kernel gets used in the
+
+201
+00:25:35,040 --> 00:25:44,320
+ entire image ok. Now, why do we do this ok. So, another very important practical consideration
+
+202
+00:25:44,320 --> 00:25:51,040
+ here is that as you can understand. So, let us say suppose you have a 200 cross 200 image
+
+203
+00:25:51,040 --> 00:25:57,160
+ ok this is a very small size image this is probably the smallest size image you can get.
+
+204
+00:25:57,160 --> 00:26:04,880
+ How many pixels are there? There is 40000 pixels ok, output layer also let us say there
+
+205
+00:26:04,880 --> 00:26:13,040
+ is 40000 pixels. So, if you try to use a feed forward layer how many how many weights do
+
+206
+00:26:13,040 --> 00:26:22,080
+ you have to use? You have to use 40000 cross 40000 weights this is a humongous number of
+
+207
+00:26:22,080 --> 00:26:31,880
+ weights you can understand right. So, it is 160 million weights sorry 1600 million weights.
+
+208
+00:26:31,880 --> 00:26:38,200
+ So, 1.6 billion weights 1.6 billion weights each weight is the number a floating point
+
+209
+00:26:38,200 --> 00:26:45,120
+ number. So, this is a huge number ok. This many weights you cannot learn ok it is impossible
+
+210
+00:26:45,120 --> 00:26:51,000
+ to learn this many weights and also the computation is going to be very very expensive ok. So,
+
+211
+00:26:51,000 --> 00:26:58,720
+ instead what you do you use this convolutional kernels and the translation invariance property
+
+212
+00:26:58,720 --> 00:27:08,520
+ of the image to maybe use maybe you have to use just 7 cross 7 which is 49 weight ok.
+
+213
+00:27:08,520 --> 00:27:14,360
+ Maybe there is 1 for every channel. So, there may be many channels also. So, let us say
+
+214
+00:27:14,360 --> 00:27:21,480
+ there are input 3 channels or maybe output 10 channels still it is 49 into 30. So, this
+
+215
+00:27:21,480 --> 00:27:28,960
+ is a much smaller number of weights that you have to learn and store compared to this 1.6
+
+216
+00:27:28,960 --> 00:27:34,920
+ billion weights for the same computation ok. And how is this possible? This is possible
+
+217
+00:27:34,920 --> 00:27:43,480
+ because you are using the translation invariant property to use same weight across the entire
+
+218
+00:27:43,480 --> 00:27:48,360
+ image by overlaying the kernel on different positions of the weight ok.
+
+219
+00:27:48,360 --> 00:27:55,120
+ So, this is the idea this idea is illustrated here this I have already shown ok. So, in
+
+220
+00:27:55,120 --> 00:28:02,560
+ real images you will typically have 3 channels of data ok. So, the left hand side here shows
+
+221
+00:28:02,560 --> 00:28:09,760
+ the 3 channels of data RGB. So, red green and blue ok red green and blue channel ok and
+
+222
+00:28:09,760 --> 00:28:17,960
+ output also will be in different channels ok. Now, here the output is being shown in
+
+223
+00:28:17,960 --> 00:28:30,080
+ different channels ok. Maybe here this one is blue cyan yellow and black or maybe yeah
+
+224
+00:28:30,080 --> 00:28:40,720
+ maybe this is cyan magenta yellow and black ok. So, output is in 4 channels ok. In practice
+
+225
+00:28:40,720 --> 00:28:46,840
+ the output different output channels will capture the different first level features.
+
+226
+00:28:46,840 --> 00:28:53,000
+ So, maybe this one is a horizontal edge detector this one may be a vertical edge detector this
+
+227
+00:28:53,000 --> 00:29:03,600
+ one may be a fur texture detector or something like that ok. So, this is the whole idea ok.
+
+228
+00:29:03,600 --> 00:29:14,240
+ Now what do you specify when you specify this convolutional layer when you are you know writing
+
+229
+00:29:14,240 --> 00:29:22,640
+ the code right. So, you basically specify first the height and the width ok. So, height
+
+230
+00:29:22,640 --> 00:29:29,640
+ and the width. So, this is 3 cross 3 this is 1 cross 3 and this is 3 cross 1 kernel
+
+231
+00:29:29,640 --> 00:29:37,560
+ ok. So, this is the first thing ok. Now second thing you will specify is what is called the
+
+232
+00:29:37,560 --> 00:29:45,880
+ padding ok. Now let me go into why you need padding. So, first you take a look at this
+
+233
+00:29:45,880 --> 00:29:53,120
+ particular image. So, on the left hand side this is the input ok. In the middle is the
+
+234
+00:29:53,120 --> 00:30:01,280
+ kernel and what we are doing is we are doing the simple basic convolution without any padding
+
+235
+00:30:01,280 --> 00:30:10,320
+ without any stride to fill up the output ok. So, what happens first thing that you will
+
+236
+00:30:10,320 --> 00:30:22,640
+ fill up is this left most position in the grid and that will give this output and so on and
+
+237
+00:30:22,640 --> 00:30:29,200
+ so forth it will go. If you do that what you will see is that the first image that becomes
+
+238
+00:30:29,200 --> 00:30:36,560
+ the center pixel is this particular image. So, the first center pixel is this image.
+
+239
+00:30:36,560 --> 00:30:46,320
+ So, what happens this whole circle around it does not get to become a center pixel ok.
+
+240
+00:30:46,320 --> 00:30:52,120
+ If you use the normal convolution ok. So, all the outer rim of the image does not get
+
+241
+00:30:52,120 --> 00:30:59,360
+ to become the center pixel. As a result your output your input size was 5 cross 5 now it
+
+242
+00:30:59,360 --> 00:31:07,080
+ has reduced to 3 cross 3 ok. So, in order to solve this problem what we do we introduce
+
+243
+00:31:07,080 --> 00:31:14,840
+ a padding 0 padding ok. So, what is this 0 padding this. So, suppose your kernel size
+
+244
+00:31:14,840 --> 00:31:21,960
+ is let us say 3 cross 3. So, very often you will see that in image processing people will
+
+245
+00:31:21,960 --> 00:31:29,120
+ use odd size kernels ok that is for this particular reason that if you have a 3 cross 3 kernel
+
+246
+00:31:29,120 --> 00:31:34,660
+ then you know that you are missing one full circle outside ok.
+
+247
+00:31:34,660 --> 00:31:42,000
+ If you have a 5 cross 5 kernel as input you will be missing a 2 pixel wide circle outside
+
+248
+00:31:42,000 --> 00:31:48,360
+ ok because your center pixel if you take if you come here let me erase this. If you have
+
+249
+00:31:48,360 --> 00:31:54,200
+ a 5 cross 5 kernel basically this will be your first center pixel. So, all these guys
+
+250
+00:31:54,200 --> 00:32:00,840
+ you will miss ok. So, you will miss 2 rows of this thing ok.
+
+251
+00:32:00,840 --> 00:32:09,680
+ So, how do you do how do you solve this problem whatever you just pad you just assume that.
+
+252
+00:32:09,680 --> 00:32:16,680
+ So, this is your actual input sorry this is your actual input image ok this portion is
+
+253
+00:32:16,680 --> 00:32:23,880
+ your actual input image, but you assume that there are these 0 pixels all around it. How
+
+254
+00:32:23,880 --> 00:32:31,780
+ many if your kernel size is 3 normally you would say 1 if your kernel size is 5 you will
+
+255
+00:32:31,780 --> 00:32:40,040
+ assume 2 and so on and so forth ok. Now, if this is the case then you see your input original
+
+256
+00:32:40,040 --> 00:32:47,440
+ input was also 5 cross 5 your output is also 5 cross 5. So, this kind of edge effect does
+
+257
+00:32:47,440 --> 00:32:56,400
+ not matter ok. So, essentially if your kernel size is let us say k. So, here k is 3 you
+
+258
+00:32:56,400 --> 00:33:04,360
+ do a padding of k minus 1 by 2 and you pad it generally with the 0 pixel ok. So, this
+
+259
+00:33:04,360 --> 00:33:09,200
+ is padding. So, this is another thing that you specify when you define a convolutional
+
+260
+00:33:09,200 --> 00:33:14,400
+ layer. What is the third thing that you specify when you define a convolutional layer that
+
+261
+00:33:14,400 --> 00:33:19,840
+ is the stride ok. So, what is the stride? So, let me go here.
+
+262
+00:33:19,840 --> 00:33:30,520
+ Now, you see earlier my first position was this from this the second position I moved
+
+263
+00:33:30,520 --> 00:33:38,880
+ the receptive field by 1 pixel right I moved the receptive field by 1 pixel. Now, what
+
+264
+00:33:38,880 --> 00:33:44,320
+ if you do not want to move the receptive field by 1 pixel you want to maybe take a larger
+
+265
+00:33:44,320 --> 00:33:52,080
+ movement you may be want to move it by 2 pixels ok. What will happen every time you will move
+
+266
+00:33:52,080 --> 00:33:58,600
+ it by 2 pixels ok. So, that is called the strided convolution ok. If you do that what
+
+267
+00:33:58,600 --> 00:34:08,080
+ will happen is that you can let me just erase this you can see that ok. What will happen
+
+268
+00:34:08,080 --> 00:34:17,600
+ is all your all your images or your output image even though you are using a padding
+
+269
+00:34:17,600 --> 00:34:26,680
+ your output will be reduced by a particular size. So, in this particular case your input
+
+270
+00:34:26,680 --> 00:34:37,200
+ was 5 cross 5, but now because you are using a stride of 2 your output has reduced by reduced
+
+271
+00:34:37,200 --> 00:34:48,920
+ to 3 ok. So, the question is how do you do this calculation ok. The way to do this calculation
+
+272
+00:34:48,920 --> 00:34:56,680
+ is suppose for the time being assume that you are not using any padding ok. If you are
+
+273
+00:34:56,680 --> 00:35:08,120
+ not using any padding then what do you do basically if n is your image size and if f
+
+274
+00:35:08,120 --> 00:35:16,160
+ is your kernel size f is for filter. So, kernel and filter are the same. So, if kernel slash
+
+275
+00:35:16,160 --> 00:35:28,120
+ filter size is f ok. Then what will happen is the final output size will be n minus f
+
+276
+00:35:28,120 --> 00:35:33,760
+ by stride ok. So, you can see if stride is 1 and suppose
+
+277
+00:35:33,760 --> 00:35:43,680
+ your filter size is let us say 3 and let us say n is 7 ok. What will happen your output
+
+278
+00:35:43,680 --> 00:35:50,940
+ size will be 5 ok. You can see this you can draw 7 cross 7 grid and see that this is indeed
+
+279
+00:35:50,940 --> 00:36:02,280
+ the k ok. Now, if you use a stride of 2 what will happen is n minus f by 2 is basically
+
+280
+00:36:02,280 --> 00:36:13,080
+ your 4 by 2 which is basically 2 plus 1. So, this becomes 3 ok. So, this was 4 plus 1 5
+
+281
+00:36:13,080 --> 00:36:21,280
+ this is 2 plus 1 3 ok. So, you see the image size has now reduced a lot the output image
+
+282
+00:36:21,280 --> 00:36:28,120
+ size ok. This is very very useful there are other ways to reduce the image size also I
+
+283
+00:36:28,120 --> 00:36:35,800
+ will come to it in a minute, but this is very very useful if you think your input image
+
+284
+00:36:35,800 --> 00:36:45,040
+ is of a very high very high resolution ok, but it does not have so much information ok.
+
+285
+00:36:45,040 --> 00:36:49,860
+ So, you can skip some pixels basically. So, you do not need to process each and every
+
+286
+00:36:49,860 --> 00:36:56,600
+ pixel as the center pixel ok. Now, with stride another thing comes which is that suppose
+
+287
+00:36:56,600 --> 00:37:04,920
+ you try to take a stride of 3 what happens you see 7 minus 3 by 3 is a fractional number
+
+288
+00:37:04,920 --> 00:37:11,640
+ it is 1.33 ok. So, this particular stride is not allowed.
+
+289
+00:37:11,640 --> 00:37:19,840
+ So, if you do this particular stride your output will be something which is not understandable
+
+290
+00:37:19,840 --> 00:37:25,240
+ because your output number of pixels is a fraction that does not make them ok. So, when
+
+291
+00:37:25,240 --> 00:37:33,280
+ putting stride you have to be very careful as to put the stride such that using this
+
+292
+00:37:33,280 --> 00:37:42,600
+ formula you are able to get a you know a whole sized output rather than just the this thing.
+
+293
+00:37:42,600 --> 00:37:53,360
+ Now another thing is that suppose with this you are using a padding of 2 right. So, suppose
+
+294
+00:37:53,360 --> 00:38:04,440
+ you are using a padding of 2 ok. What will happen if you use or let us say padding of
+
+295
+00:38:04,440 --> 00:38:13,520
+ not 2 let us say in general padding of p ok. Then what will this formula become? This formula
+
+296
+00:38:13,520 --> 00:38:20,440
+ see you are using padding means on both sides of the image you are adding this padding.
+
+297
+00:38:20,440 --> 00:38:29,980
+ So, then your n becomes n plus 2 p ok. So, your formula will become you have we will
+
+298
+00:38:29,980 --> 00:38:40,760
+ have to use this modified formula n plus 2 p minus f by stride plus 1 ok. So, you have
+
+299
+00:38:40,760 --> 00:38:51,760
+ to specify the padding and the stride value such that this number is a whole number ok.
+
+300
+00:38:51,760 --> 00:38:56,720
+ So, as I mentioned this is an example of a convolutional layer. So, what is there in
+
+301
+00:38:56,720 --> 00:39:03,320
+ a convolutional layer? So, first of all the layer itself will have a image as input and
+
+302
+00:39:03,320 --> 00:39:09,520
+ output will also be a image ok. It may not be an image that we understand many a time,
+
+303
+00:39:09,520 --> 00:39:15,680
+ but it will be a in the form of a image ok. Now, the layer will have this filter. So,
+
+304
+00:39:15,680 --> 00:39:23,720
+ let us say there is the 5 cross 5 cross 3 filter ok which means. So, remember if now
+
+305
+00:39:23,720 --> 00:39:30,560
+ this part is called the depth ok. So, depth means the number of channels ok. So, the number
+
+306
+00:39:30,560 --> 00:39:37,440
+ of input channels should match with the number of channels of the filter otherwise it is
+
+307
+00:39:37,440 --> 00:39:49,280
+ an error ok. So, this is the first one ok. So, with this you will get a 28 cross 28 cross
+
+308
+00:39:49,280 --> 00:39:57,800
+ 1 output activation map ok. So, if you have a 32 cross 32 cross 3 image with a 5 cross
+
+309
+00:39:57,800 --> 00:40:05,240
+ 5 cross 3 filter you can do the calculation and you will get a 28 cross 28 cross 1 ok.
+
+310
+00:40:05,240 --> 00:40:13,600
+ Now, this is one particular filter ok. Now, let us say you have another filter this is
+
+311
+00:40:13,600 --> 00:40:19,600
+ blue colored filter this is green colored filter. So, this is showing the filter ok.
+
+312
+00:40:19,600 --> 00:40:26,000
+ You can have another filter again you will get another activation map like this. So,
+
+313
+00:40:26,000 --> 00:40:34,440
+ in general the number of filters number of output filters that you use that will create
+
+314
+00:40:34,440 --> 00:40:41,840
+ the depth of the output channel ok. So, the number of output filters. So, in this case
+
+315
+00:40:41,840 --> 00:40:55,760
+ if you use let us say so, if I use this 5 cross 5 cross 3 this filter with let us say
+
+316
+00:40:55,760 --> 00:41:04,800
+ here there are 6 output channels ok. So, I am using 5 cross 5 cross 3 cross 3 3 cross
+
+317
+00:41:04,800 --> 00:41:15,280
+ 6 convolutional layer. Then your if your input is 32 cross 32 cross 3 your output will become
+
+318
+00:41:15,280 --> 00:41:24,480
+ 28 cross 28 cross 6 ok. Now, here we are not using any padding if we had used a proper
+
+319
+00:41:24,480 --> 00:41:32,680
+ padding of 2 then the output will be 32 cross 32 ok. So, this we discussed.
+
+320
+00:41:32,680 --> 00:41:37,500
+ Another important thing is what is called a pooling layer. So, suppose you want to reduce
+
+321
+00:41:37,500 --> 00:41:42,800
+ the size of the image, but you do not want any learnable parameter because you see in
+
+322
+00:41:42,800 --> 00:41:47,040
+ convolution there are learnable parameter, but instead you do not want any learnable
+
+323
+00:41:47,040 --> 00:41:53,600
+ parameter ok. So, what you can do is you can use a max pooling or an average pooling layer.
+
+324
+00:41:53,600 --> 00:41:58,760
+ So, usually people use max pooling layer. So, what happens? This is the 2 cross 2 max
+
+325
+00:41:58,760 --> 00:42:06,680
+ pooling layer with stride 2. So, the pooling works just like convolution. So, here this
+
+326
+00:42:06,680 --> 00:42:16,080
+ is the 2 cross 2 pooling. So, the kernel size is 2 cross 2, but instead of doing convolution
+
+327
+00:42:16,080 --> 00:42:23,840
+ it will calculate the max from this and put it here and then it will stride by 2. So,
+
+328
+00:42:23,840 --> 00:42:30,480
+ it will come here calculate the max here and put 5 here and so on and so forth ok. So,
+
+329
+00:42:30,480 --> 00:42:35,680
+ that is what the pooling layer pooling layer is used mainly to shrink the size of the image
+
+330
+00:42:35,680 --> 00:42:46,520
+ nothing more ok. So, what is now a convolutional network ok. So, it is basically a sequence
+
+331
+00:42:46,520 --> 00:42:52,160
+ of convolution layers like this as I mentioned. This is the first input layer, then there
+
+332
+00:42:52,160 --> 00:42:57,520
+ are some first input image, then there are some convolutional layers here, then the second
+
+333
+00:42:57,520 --> 00:43:04,800
+ layer the first layer output and then here the second layer, second layer output here
+
+334
+00:43:04,800 --> 00:43:10,440
+ and so on and so forth ok. So, this is a convolutional neural network this is how a convolutional
+
+335
+00:43:10,440 --> 00:43:16,200
+ neural network works ok. It builds up the different feature representation one after
+
+336
+00:43:16,200 --> 00:43:26,560
+ the other ok. So, this is an example of a convolutional neural network you see this is a car and now
+
+337
+00:43:26,560 --> 00:43:32,960
+ I am only showing the outputs of the convolutional layers. So, this is an actual convolutional
+
+338
+00:43:32,960 --> 00:43:40,720
+ neural network which has been used to classify this particular image and I am showing the
+
+339
+00:43:40,720 --> 00:43:47,320
+ output of different convolutional layer at each stage. So, you can see maybe this particular
+
+340
+00:43:47,320 --> 00:43:54,760
+ convolutional filter. So, here the input is of course, whatever the size of this image
+
+341
+00:43:54,760 --> 00:44:03,080
+ is. So, maybe let us say 250 cross 250 cross 3. Here how many output channels are there
+
+342
+00:44:03,080 --> 00:44:14,520
+ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10 output channels are there ok. So, the so this is a convolutional
+
+343
+00:44:14,520 --> 00:44:22,160
+ layer with 3 input channels and 10 output channels and whatever is the size of the convolutional
+
+344
+00:44:22,160 --> 00:44:26,960
+ kernel that will come here ok. So, size of the convolutional kernel ok.
+
+345
+00:44:26,960 --> 00:44:34,200
+ And these are showing some of the feature maps you can understand how the feature map
+
+346
+00:44:34,200 --> 00:44:41,080
+ is basically getting created ok. You can see that different types of features are being
+
+347
+00:44:41,080 --> 00:44:51,040
+ understood and then finally, when you have this feature map this. So, you typically use
+
+348
+00:44:51,040 --> 00:45:01,680
+ a lot of pooling layer ok. Now, this has become a relatively low dimensional. So, this may
+
+349
+00:45:01,680 --> 00:45:09,440
+ have 10 channels ok this may have 10 channels, but let us say input was 255 cross 255 and
+
+350
+00:45:09,440 --> 00:45:15,680
+ you have used pooling 3 times ok. Every time let us say you have made it half the size let
+
+351
+00:45:15,680 --> 00:45:22,440
+ us say or may be one third the size then this will become this divided by 3 to the power
+
+352
+00:45:22,440 --> 00:45:28,840
+ the number of pooling layer that you have used which is a much lower number right.
+
+353
+00:45:28,840 --> 00:45:37,800
+ So, if you have used 3 pooling layer it is basically 3 into 3 into 3 which is basically
+
+354
+00:45:37,800 --> 00:45:48,320
+ I think 27 right. So, it will roughly be 10 numbers ok. So, output will be of size 10
+
+355
+00:45:48,320 --> 00:45:59,200
+ into 10. Now, this 10 into 10 will be fed as an input for to a fully connected layer
+
+356
+00:45:59,200 --> 00:46:03,680
+ or feed forward layer ok. Fully connected layer we have already discussed.
+
+357
+00:46:03,680 --> 00:46:11,680
+ So, now you can see that your output is let us say size 5 and this 10 into 10 is basically
+
+358
+00:46:11,680 --> 00:46:18,680
+ 100. So, it in the end you are using a 100 cross 5 fully connected layer which requires
+
+359
+00:46:18,680 --> 00:46:25,440
+ only 500 weights ok. So, this is the purpose of the pooling layer to reduce the size of
+
+360
+00:46:25,440 --> 00:46:35,680
+ the image ok. So, this is the PyTorch implementation of maybe not the same, but a similar kind
+
+361
+00:46:35,680 --> 00:46:43,320
+ of neural network. So, what you can see is this is you define a class just like earlier
+
+362
+00:46:43,320 --> 00:46:51,560
+ you have seen and this 2D is the 2D convolution that I was just describing there is also 3D
+
+363
+00:46:51,560 --> 00:46:57,040
+ convolution we will not get into that ok. So, and then there is Rayleigh. So, typically
+
+364
+00:46:57,040 --> 00:47:06,160
+ after a convolution layer you apply a Rayleigh activation function to actually make it you
+
+365
+00:47:06,160 --> 00:47:12,400
+ know do the thresholding. So, here you can see that after the thresholding.
+
+366
+00:47:12,400 --> 00:47:17,720
+ So, this is before the thresholding and this layer is after the thresholding. So, after
+
+367
+00:47:17,720 --> 00:47:24,080
+ the thresholding only the important things survive and the not so important things they
+
+368
+00:47:24,080 --> 00:47:32,160
+ go away ok only the important feature survive ok. So, this is the first convolutional layer,
+
+369
+00:47:32,160 --> 00:47:41,360
+ second convolutional layer and then pooling layer ok. Now of course, you have to define
+
+370
+00:47:41,360 --> 00:47:46,120
+ the forward function you already know. So, the forward function is this. So, every time
+
+371
+00:47:46,120 --> 00:47:53,880
+ you take the input x it is passed by the convolutional layer and then passed by the Rayleigh layer
+
+372
+00:47:53,880 --> 00:47:59,080
+ to produce the output x. Then again that x is put into the convolutional
+
+373
+00:47:59,080 --> 00:48:09,080
+ layer and the Rayleigh layer to get the output y and then you simply do a apply the pooling.
+
+374
+00:48:09,080 --> 00:48:16,580
+ Now, the pooling generally does not have a learnable parameter ok, but this is the pooling
+
+375
+00:48:16,580 --> 00:48:28,440
+ layer that you have ok. Now, this was so we are trying to implement this particular convolutional
+
+376
+00:48:28,440 --> 00:48:35,680
+ neural network ok. Now, what we just showed is this convolution
+
+377
+00:48:35,680 --> 00:48:42,300
+ convolution pooling block ok. So, this is one CCP block. So, that is what is implemented
+
+378
+00:48:42,300 --> 00:48:51,000
+ in this class. Now, in this class we have 3 CCP blocks followed by a fully connected
+
+379
+00:48:51,000 --> 00:48:57,440
+ block ok. So, this is basically describing this particular layer where there is a CCP
+
+380
+00:48:57,440 --> 00:49:01,880
+ block. So, this is the first CCP block, this is the second CCP block, this is the third
+
+381
+00:49:01,880 --> 00:49:09,800
+ CCP block and then there is a fully connected layer ok. And this is the design of a convolutional
+
+382
+00:49:09,800 --> 00:49:14,880
+ neural network and this can this this can this is fairly good like this is this can
+
+383
+00:49:14,880 --> 00:49:25,600
+ do a classification ok. So, this is the this is how the convolutional
+
+384
+00:49:25,600 --> 00:49:35,840
+ neural network works or this is how you can design it ok. Now, let us go back. So, so
+
+385
+00:49:35,840 --> 00:49:45,120
+ you can design many many different convolutional neural network architecture, but in the history
+
+386
+00:49:45,120 --> 00:49:51,640
+ there have been some very important convolutional neural networks which people have designed
+
+387
+00:49:51,640 --> 00:49:58,860
+ ok. And this revolution you can stay this is the. So, this is the deep learning revolution
+
+388
+00:49:58,860 --> 00:50:07,320
+ you know deep learning. So, so this change the field of computer vision drastically drastically
+
+389
+00:50:07,320 --> 00:50:14,760
+ influence the field of computer vision and it started around 2013 I would say ok. And
+
+390
+00:50:14,760 --> 00:50:21,480
+ by 2017 we had some of the best models. I would say maybe instead of 2013 I would say
+
+391
+00:50:21,480 --> 00:50:30,680
+ maybe 2012 it started and by 2017. So, in these 5 years some very good models were developed
+
+392
+00:50:30,680 --> 00:50:38,080
+ and those are the models for many tasks they are very very useful ok. So, let us let us
+
+393
+00:50:38,080 --> 00:50:44,160
+ see some of these models ok. So, before we go into the model I just want
+
+394
+00:50:44,160 --> 00:50:53,640
+ to mention another thing which is this imaginate large scale visual recognition challenge. So,
+
+395
+00:50:53,640 --> 00:50:58,720
+ this was a competition. So, it is called a challenge ok. So, this competition was held
+
+396
+00:50:58,720 --> 00:51:08,840
+ yearly I do not know if it is still held, but at that time it was very very good competition
+
+397
+00:51:08,840 --> 00:51:21,520
+ in the computer vision community ok. And you can see around 2011, 2011 the best accuracy.
+
+398
+00:51:21,520 --> 00:51:26,440
+ So, so what is the challenge? The challenge is that you have images like the image that
+
+399
+00:51:26,440 --> 00:51:34,440
+ I showed of a cat ok. And this image belongs to a particular class may be a cat chair,
+
+400
+00:51:34,440 --> 00:51:42,040
+ airplane, fridge any of these ok. It could be a natural object it could be a artificial
+
+401
+00:51:42,040 --> 00:51:50,920
+ man made object. So, there were about 1000 different classes ok. So, 1000 different objects
+
+402
+00:51:50,920 --> 00:51:59,960
+ you have to classify ok. And now what you did is so, what the best approach
+
+403
+00:51:59,960 --> 00:52:08,200
+ non deep learning approach at that time its accuracy was 25 percent ok. So, that was the
+
+404
+00:52:08,200 --> 00:52:16,480
+ accuracy. So, like roughly you can sorry the error rate was 25 percent; that means, roughly
+
+405
+00:52:16,480 --> 00:52:24,120
+ 3 out of 4 images those methods were able to classify correctly yeah others it were
+
+406
+00:52:24,120 --> 00:52:33,360
+ getting wrong ok. Now the first architecture that came in 2012 was called the Alex net
+
+407
+00:52:33,360 --> 00:52:37,680
+ architecture. So, this was the deep learning architecture and will show the architecture
+
+408
+00:52:37,680 --> 00:52:49,320
+ in a minute ok. This reduced the error from 25 to 16 percent ok. So, huge improvement ok.
+
+409
+00:52:49,320 --> 00:53:00,720
+ The next very important improvement came which was this VGG net and Google net and it reduced
+
+410
+00:53:00,720 --> 00:53:10,280
+ from error from 16 percent to 7 percent or 6 percent 6 to 7 percent ok. So, again nearly
+
+411
+00:53:10,280 --> 00:53:19,400
+ made it half ok and 6 to 7 percent error is you can see it very less error ok. And then
+
+412
+00:53:19,400 --> 00:53:27,480
+ finally, came the ResNet model which reduced the error from 6 to 7 percent let us say 7
+
+413
+00:53:27,480 --> 00:53:32,480
+ percent to about 3 and a half percent ok again made it half ok.
+
+414
+00:53:32,480 --> 00:53:41,280
+ So, these are the three steps from shallow to Alex net Alex net to VGG or Google net
+
+415
+00:53:41,280 --> 00:53:52,200
+ and VGG or Google net to ResNet ok. In these years basically we could. So, this 3 percent
+
+416
+00:53:52,200 --> 00:54:02,240
+ is better than human ok. So, if you give these images to humans they will make more than
+
+417
+00:54:02,240 --> 00:54:09,120
+ 3 percent error roughly 5 percent errors on this images in categorizing ok. So, the computer
+
+418
+00:54:09,120 --> 00:54:14,160
+ was doing better than the human this is a very low error rate for this kind of a challenging
+
+419
+00:54:14,160 --> 00:54:20,040
+ task ok. So, let us see what the first architecture was.
+
+420
+00:54:20,040 --> 00:54:26,320
+ So, first architecture was this ok. So, you had the Alex net architecture you had the
+
+421
+00:54:26,320 --> 00:54:33,960
+ convolutional layer then a max pool layer then a normalization layer. So, this normalization
+
+422
+00:54:33,960 --> 00:54:44,120
+ layer is used to make the optimization faster ok. So, this is one block then the same block
+
+423
+00:54:44,120 --> 00:54:51,160
+ repeated convolution max pool normalization. Then now there is no pooling required it is
+
+424
+00:54:51,160 --> 00:54:57,000
+ already somewhat low. So, you have this three convolutional layer. So, you get more and
+
+425
+00:54:57,000 --> 00:55:04,840
+ more features out of this ok and then finally, you have a max pool layer and then there were
+
+426
+00:55:04,840 --> 00:55:16,120
+ three fully connected layer ok ok. So, this was basically the architecture and yeah. So,
+
+427
+00:55:16,120 --> 00:55:29,240
+ you can see that yeah. So, the first layer was like this it had 96 11 cross 11 filters
+
+428
+00:55:29,240 --> 00:55:40,800
+ applied at stride 4 ok. So, that was the this thing ok and this reduced to 16 percent as
+
+429
+00:55:40,800 --> 00:55:48,920
+ I told ok ok. So, how many parameters for this layer around 35 k parameters ok 11 cross
+
+430
+00:55:48,920 --> 00:56:04,320
+ 11 cross 3 cross 96 ok ok. Now, so one thing which I did not mention. So, this 35 k and
+
+431
+00:56:04,320 --> 00:56:12,280
+ if you see this whole architecture the total number of parameter was in million. So, I
+
+432
+00:56:12,280 --> 00:56:24,240
+ think it was about 100 million 100 to 120 million something like that parameter ok and
+
+433
+00:56:24,240 --> 00:56:31,200
+ the reason it was so high is because of these three fully connected layer ok. So, it was
+
+434
+00:56:31,200 --> 00:56:38,160
+ all good, but still there were three fully connected layer ok and most of the parameters
+
+435
+00:56:38,160 --> 00:56:44,360
+ were because of this fully connected layer. So, it was not a highly optimized architecture
+
+436
+00:56:44,360 --> 00:56:50,880
+ ok ok. So, now, so these were some of the innovations
+
+437
+00:56:50,880 --> 00:56:57,800
+ that they did. So, first is they used relu they use norm layer they use dropout ok they
+
+438
+00:56:57,800 --> 00:57:08,160
+ use data augmentation etcetera ok ok. Now, so two problems was there with them first
+
+439
+00:57:08,160 --> 00:57:15,480
+ is it was deep neural network, but it was relatively shallow only about 8 layer ok.
+
+440
+00:57:15,480 --> 00:57:22,520
+ What VGG and Google net did is increase the depth to 19 and 22 layers respectively ok.
+
+441
+00:57:22,520 --> 00:57:28,880
+ So, these are much more deeper network. Now, what does that mean? That means each layer
+
+442
+00:57:28,880 --> 00:57:35,200
+ adds parameters. So, if you have a high number of parameters then the model size increases
+
+443
+00:57:35,200 --> 00:57:40,080
+ the number of parameters increases and so your training complexity will also increase
+
+444
+00:57:40,080 --> 00:57:46,320
+ because as you know if you have more have to learn more parameters then you have to
+
+445
+00:57:46,320 --> 00:57:53,000
+ use more data to learn those more parameters ok. So, both problems go hand in hand ok.
+
+446
+00:57:53,000 --> 00:58:01,640
+ So, this increase the size by. So, so almost you can say more than doubled actually the
+
+447
+00:58:01,640 --> 00:58:10,280
+ size ok. So, how did they achieve this? So, the first thing they did is what is called
+
+448
+00:58:10,280 --> 00:58:18,680
+ this small convolution and then composition of this. So, this is the main innovation of
+
+449
+00:58:18,680 --> 00:58:30,880
+ this VGG filter which is that you use only 3 cross 3 filter ok stride 1 padding 1 ok
+
+450
+00:58:30,880 --> 00:58:38,000
+ and you use 2 cross 2 max pool with stride 2 of course ok, but you see the architecture
+
+451
+00:58:38,000 --> 00:58:43,280
+ many of the convolutional layers are one after the other ok.
+
+452
+00:58:43,280 --> 00:58:50,960
+ What does this do? So, let us see ok. So, what this does is this increases what is called
+
+453
+00:58:50,960 --> 00:59:00,320
+ the receptive field size of the convolution. So, so if you have 11 cross 11 convolution
+
+454
+00:59:00,320 --> 00:59:05,960
+ filter ok or let us take this example that we have here. So, suppose you have 2 options
+
+455
+00:59:05,960 --> 00:59:14,840
+ ok one is 7 cross 7 convolutional filter, other is 3 cross 3 convolutional filter. What
+
+456
+00:59:14,840 --> 00:59:20,560
+ is the receptive field size of this? The receptive field size is 7 receptive field means at a
+
+457
+00:59:20,560 --> 00:59:27,560
+ time how much of the image are you looking at ok that is the receptive field size ok.
+
+458
+00:59:27,560 --> 00:59:34,000
+ And here you are having a receptive field size of 3 cross 3. So, at a time you are looking
+
+459
+00:59:34,000 --> 00:59:42,560
+ at a 3 by 3 portion of the image. Now higher receptive fields are better because you have
+
+460
+00:59:42,560 --> 00:59:50,640
+ more context whenever you are doing the convolution operation you are predicting for the center
+
+461
+00:59:50,640 --> 00:59:59,120
+ pixel ok, but if you are looking at the neighboring only 3 pixels ok then you are looking at far
+
+462
+00:59:59,120 --> 01:00:06,280
+ less information than if you can look at neighboring 7 cross 7 grid right. So, the receptive field
+
+463
+01:00:06,280 --> 01:00:13,920
+ size higher is better, but as you increase the receptive field size what happens is your
+
+464
+01:00:13,920 --> 01:00:20,480
+ number of weights increases ok. So, if the number of weights increases. So, here for
+
+465
+01:00:20,480 --> 01:00:35,000
+ example, 7 cross 7 cross like so, so, so, before this I just want to mention that if
+
+466
+01:00:35,000 --> 01:00:43,240
+ you use 3 3 cross 3 layer then you actually get a receptive field size of 7 cross 7 now
+
+467
+01:00:43,240 --> 01:00:51,160
+ why is that ok. So, first let us see. So, this is let us say 1, 2, 3, 4, 5, 6, 7, 8,
+
+468
+01:00:51,160 --> 01:00:58,240
+ 9 let us say ok. Now let us say this is a center pixel ok. If you use a 3 cross 3 filter.
+
+469
+01:00:58,240 --> 01:01:04,440
+ So, I am just showing a one dimensional representation here you can interpolate it is extrapolated
+
+470
+01:01:04,440 --> 01:01:11,440
+ to 2 dimension. Your receptive field size is this much ok and now this is one output
+
+471
+01:01:11,440 --> 01:01:19,560
+ of this filter ok 1, 2, 3, 4, 5, 6, 7. Now let us say this is the center pixel that
+
+472
+01:01:19,560 --> 01:01:28,280
+ it is outputting ok. Now you are again using another 3 cross 3 filter here. What is it
+
+473
+01:01:28,280 --> 01:01:34,240
+ looking at? It is looking at this output pixel, this output pixel and this output pixel these
+
+474
+01:01:34,240 --> 01:01:41,080
+ are linear transformations remember ok. Now how was this output pixel calculated? This
+
+475
+01:01:41,080 --> 01:01:49,640
+ output pixel was calculated because you use this particular convolution overlay right.
+
+476
+01:01:49,640 --> 01:01:56,560
+ So, for the first layer it was only looking at this ok, but now it is also looking at
+
+477
+01:01:56,560 --> 01:02:07,560
+ this and this because here it is looking at this ok ok. So, what is this by using? So,
+
+478
+01:02:07,560 --> 01:02:15,840
+ this is convolutional layer 1, this is convolutional layer 2 by using 2 convolutional layer you
+
+479
+01:02:15,840 --> 01:02:23,520
+ have used increased. So, convolutional layer size is 3 this is 3 this is also 3 both convolutional
+
+480
+01:02:23,520 --> 01:02:31,240
+ layer sizes are 3, but you have increased the effective receptive field to 5 you can
+
+481
+01:02:31,240 --> 01:02:37,560
+ see this right. So, you have increased the effective receptive field to size 5 if you
+
+482
+01:02:37,560 --> 01:02:43,960
+ use 3 layers of it you increase the effective receptive field to size 7 ok.
+
+483
+01:02:43,960 --> 01:02:57,160
+ Now you see how many filter weights do you need? Here you need 7 square times c square.
+
+484
+01:02:57,160 --> 01:03:06,680
+ So, this is 49 c square ok. Here how many do you need? Each layer each of the 3 layers
+
+485
+01:03:06,680 --> 01:03:16,840
+ need 3 square many filter weights. So, 9 9 into 3 9 into 3 is how much 27. So, here you
+
+486
+01:03:16,840 --> 01:03:24,000
+ need 49 c square parameters, here you need only 27 c square parameter. You are having
+
+487
+01:03:24,000 --> 01:03:30,360
+ the same receptive field, but your number of parameters has decreased by about half
+
+488
+01:03:30,360 --> 01:03:40,280
+ ok. So, this is the main innovation of this VGG net use smaller filters, but many filters
+
+489
+01:03:40,280 --> 01:03:49,360
+ one after the other ok. So, here 2 at a time here 3 at a time ok. So, 2 at a time means
+
+490
+01:03:49,360 --> 01:03:56,240
+ effectively you are using a 5 cross 5 filter, here effectively you are using a 7 cross 7
+
+491
+01:03:56,240 --> 01:04:02,640
+ filter ok. So, this is the first thing that happened ok.
+
+492
+01:04:02,640 --> 01:04:10,080
+ I am not going into the architecture of Google net too much, but what it did is it further
+
+493
+01:04:10,080 --> 01:04:16,080
+ optimized it said that you do not have to use the same size filter. So, what VGG net
+
+494
+01:04:16,080 --> 01:04:21,680
+ did this? It used the same size filter in each layer which is 3 cross 3. This guy says
+
+495
+01:04:21,680 --> 01:04:25,760
+ for some of the channels you can use lower size filter, some of the channels you can
+
+496
+01:04:25,760 --> 01:04:31,920
+ use higher size filter ok. And they came up with this inception module and this was even
+
+497
+01:04:31,920 --> 01:04:39,840
+ more optimized than compared to the VGG module ok ok.
+
+498
+01:04:39,840 --> 01:04:47,880
+ Now, this was the second leap. So, now, we are at 7 percent error rate right, 7 percent
+
+499
+01:04:47,880 --> 01:04:55,680
+ error rate at what depth at depth of about 20 layers ok. Now, why were we not going
+
+500
+01:04:55,680 --> 01:05:05,760
+ above 20 layers? Because of what is called a vanishing gradient problem. What does vanishing
+
+501
+01:05:05,760 --> 01:05:12,900
+ gradient problem do? What it does is that if you have a extremely deep neural network
+
+502
+01:05:12,900 --> 01:05:18,960
+ and then you have a loss at the end of it, what will happen is the initial layers of
+
+503
+01:05:18,960 --> 01:05:25,920
+ the neural networks will have very small values of gradients and as you know these gradients
+
+504
+01:05:25,920 --> 01:05:30,720
+ are what is used to train the neural network. So, it will become extremely difficult or
+
+505
+01:05:30,720 --> 01:05:37,840
+ extremely slow to train the initial layers of a very deep neural network ok.
+
+506
+01:05:37,840 --> 01:05:45,440
+ So, this problem was solved by what is called this residual network ok. So, how did they
+
+507
+01:05:45,440 --> 01:05:53,760
+ solve this problem? They solve this problem. So, this is what happens ok. So, if you use
+
+508
+01:05:53,760 --> 01:06:02,640
+ so what happens is then due to the vanishing gradient problem, what happens is that you
+
+509
+01:06:02,640 --> 01:06:14,960
+ will see that the training error will reduce very very slowly. So, this is the 56 layer
+
+510
+01:06:14,960 --> 01:06:22,640
+ neural network, this is the 20 layer neural network ok and x axis is the number of training
+
+511
+01:06:22,640 --> 01:06:29,400
+ iterations. So, what will happen is you will see that the smaller number of layers is actually
+
+512
+01:06:29,400 --> 01:06:35,760
+ doing better because it is learning faster. Ultimately this may go down more ok, but the
+
+513
+01:06:35,760 --> 01:06:43,120
+ amount of time required for this 56 layer neural network to go down is so large that
+
+514
+01:06:43,120 --> 01:06:48,080
+ for all practical purposes it was actually doing worse than the 20 layer neural network
+
+515
+01:06:48,080 --> 01:06:53,000
+ ok. So, that is the key idea ok. So, what did
+
+516
+01:06:53,000 --> 01:07:02,880
+ ResNet do? So, ResNet simply said each layer will not learn the feature representation.
+
+517
+01:07:02,880 --> 01:07:09,480
+ It will learn what is called the residuals of feature representation ok, residuals of
+
+518
+01:07:09,480 --> 01:07:16,040
+ feature representation. What does this mean? This means that suppose your for any given
+
+519
+01:07:16,040 --> 01:07:23,560
+ layer suppose your input is x and your output feature is h of x. So, what people wanted?
+
+520
+01:07:23,560 --> 01:07:30,080
+ They wanted that I will learn h of x. ResNet says no I do not want to learn h of x, I want
+
+521
+01:07:30,080 --> 01:07:37,200
+ to learn this f of x which is h of x minus x and then how will I do computation? I will
+
+522
+01:07:37,200 --> 01:07:45,680
+ simply says my output is f of x plus x ok. So, this is what the computation is. So,
+
+523
+01:07:45,680 --> 01:07:54,800
+ instead of normal this neural network what the residual block does is it does what is
+
+524
+01:07:54,800 --> 01:08:02,920
+ called this short circuit connection or residual connection ok. So, it connects the input to
+
+525
+01:08:02,920 --> 01:08:09,520
+ the output and then predicts f x. So, if your neural network here is predicting the function
+
+526
+01:08:09,520 --> 01:08:20,120
+ f x ok, this is actually outputting f x plus x ok and this is all it took and they could
+
+527
+01:08:20,120 --> 01:08:28,160
+ using this ok, they could scale it to 152 layers and this is the architecture, the actual
+
+528
+01:08:28,160 --> 01:08:34,280
+ architecture is not important. The idea is this that you can actually use these different
+
+529
+01:08:34,280 --> 01:08:39,920
+ convolutional blocks. So, this is a one convolutional block followed by a skip connection, then
+
+530
+01:08:39,920 --> 01:08:45,480
+ again another convolution block followed by a skip connection and so on and so forth till
+
+531
+01:08:45,480 --> 01:08:54,760
+ you reach the output layer. So, what happens is your effective depth decreases a lot and
+
+532
+01:08:54,760 --> 01:09:00,000
+ you are able to train this neural network very very fast ok.
+
+533
+01:09:00,000 --> 01:09:09,280
+ So, you can you train till 152 layers and you got very high accuracy which is the close
+
+534
+01:09:09,280 --> 01:09:20,700
+ to 97 98 percent right ok. So, ok. So, we will take a short maybe it 5 minute break here
+
+535
+01:09:20,700 --> 01:09:29,040
+ and we will come back and I will describe some applications of these neural networks,
+
+536
+01:09:29,040 --> 01:09:30,800
+ real world application ok.
+

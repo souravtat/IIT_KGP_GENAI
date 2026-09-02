@@ -1,0 +1,623 @@
+ So, we are good to go, right?
+ Yeah, audio is ok, they have said from their side.
+ Ok.
+ So, let us begin today's session.
+ So, my name is Suman Kumar Bhera, I am one of the research scholars in IIT, Kharagpur.
+ I had a session last week on the basics of Python and how to use some of the platforms
+ like Anaconda's Jupyter Notebook and Google's Collab to do Python programming.
+ So, now in this session today, what we will be learning, we will be learning two of the
+ most important libraries named NumPy and Pandas, which are mainly used for data handling and
+ data manipulations.
+ So, apart from your course in artificial intelligence and machine learning, apart from using the
+ machine learning models, you would be able to convert the data into those machine learning
+ compatible formats.
+ And even after getting the output, you may need to do some operations on the output to
+ get it in the desired format.
+ So, for those purposes, these two libraries are very much important.
+ So, I hope everybody is with me and today I will be demonstrating the code in Google
+ Collab.
+ So, as you may remember from the last week's session that you would be required to login
+ to your Google account in your Google Chrome browser.
+ So, if I can have my screen on the display, I hope this font is good enough for everybody
+ to view.
+ So, here as you can see, I have my account logged in.
+ So, if you are not logged in, so you will not have the facility provided by Google through
+ this Collab platform which is used for Python programming.
+ So, I would request everybody to login to their Google Collab, Google account and if
+ they are not already logged in and open the Collabs link that has been already shared
+ with you.
+ So, I will just wait for one minute, so just to get everybody ready if they are already
+ not.
+ So, please open this Collab notebook that link has been shared to you.
+ So, I hope everybody is okay with their Google account logged in.
+ So, from here what I would want you to do?
+ I want you to open a new notebook where you would actually code for yourself taking help
+ of this notebook and whatever I am telling in this session.
+ So, here coming on this file, what you in the third option there is new notebook in
+ Drive.
+ So, if you click this option a new notebook will be created and it will be the notebook
+ will be automatically saved into your drive, your Google Drive through your login ID.
+ So, coming here clicking on file you create a new notebook in Drive.
+ So, here what we have clicking on this file and new notebook in Drive we have a fresh
+ new notebook.
+ Here you can change the name of the notebook suppose it is currently untitled 0 IP NYB
+ that means IPython notebook.
+ So, you go click on that name and delete whatever written is there that is written there and
+ you change the name to NumPy Pandas or whatever you feel like you can give it any other name
+ as per your choice.
+ So, and here is a cell just let me give a recap.
+ So, here there are two options one is code and another one is text.
+ So, you just if you just want to put some description in it like in a cell like here
+ a text cell has popped up because I clicked on this plus text.
+ So, here you can write like this so, we will today and you just you do not need to do anything
+ you just click enter and you have this so, this is the text you put on and if you click
+ on this code a code cell will pop up with this kind of a button a play button type of
+ thing.
+ So, when you click on this play button the code that you have written in this particular
+ cell gets executed.
+ And here there is a connect button if you click on this connect then Google collab provides
+ you the facility of RAM and CPU so, that you can execute your program.
+ So, as you can see it is connecting and say you have your RAM and disk displayed here.
+ So, you as you can see connected to Python 3 Google compute engine backend.
+ So, let us start so, today as in the previous session also you have become familiar with
+ this ID's data set.
+ So, now in this course we will be in very depth learn what is this ID's data set what
+ are the values that are present in here and the pre processing that are required before
+ directly jumping into a machine learning algorithm or so.
+ So, just to give you the brief introduction here in this cell here in this cell there
+ is a link provided there is a link provided and if you just click on this link if you
+ copy this link, if you copy this link and paste on your browser like this let us see
+ what you can see.
+ So, this link provided right here in this cell this cell right below this image of flowers
+ and if you click on copy this link and paste it on your browser you will be redirected
+ to something like this and if you zoom in you see some values some values.
+ So, here this is one row and you will see a lot of rows present here, but one thing
+ you need to you have to notice that the number of columns in each of this rows is similar
+ that what is the number of columns present in here.
+ So, first column, second column, third column, fourth column and fifth column.
+ So, there are five columns in each of this rows if you scroll down there are five columns
+ each of this rows.
+ So, and there are these like floating point values like 5.1, 3.5, 1.4, 0.2 some of these
+ values like till now not very much human understandable that what they are representing.
+ And at the last column if you notice something like this iris setosa and if you scroll down
+ down down down something like iris versicolor and if you scroll further down iris virginica.
+ So, these are written in the last column.
+ So, coming back to the Google Colab so, here what we have we have a picture ok.
+ So, these iris setosa, iris versicolor and iris virginica these are actually three kind
+ of flowers.
+ So, these are the pictures of the flowers they are quite similar quite similar not exactly
+ similar, but quite similar.
+ So, there is a significant difference between an iris setosa and a rows that is very much
+ evident, but iris setosa and iris versicolor has relatively less similarity compared to
+ suppose some other flower like jasmine or rows somewhat like this.
+ So, and in these flowers what do we have we have a petal and a sepal ok.
+ So, this is a very nice picture and here we have petal and sepal.
+ So, you understand what these three kind of flowers is and what are petal and sepal.
+ So, I hope everybody is clear till this part they understand.
+ So, getting back to the data set we were contemplating so, here what do we have we have certain values
+ corresponding to it.
+ So, now what do you have if you have when you are you want to do some machine learning
+ deep learning thing you will have a lot of data ok.
+ So, this data you need to understand that what is the input corresponding to that input
+ what do we expect the machine learning algorithm to perform that is the output ok.
+ So, for that purpose just to show you how to gain information regarding that till now
+ we do not know what are these things like what are these values ok.
+ So, this archive ok this archive I want you to look at this URL this archive I request
+ you to this request you to go to this UCI machine learning repository that has the iris
+ data set.
+ So, if you just copy this part like this part that has been highlighted so, actually let
+ me give this in the notebook so, link to UCI.
+ So, if you actually go to this link copy it and you paste it.
+ So, you are.
+ So, this is the archive.
+ So, you can see this is the link that I have posted and if you go to this link you will
+ be redirected to this page you would be redirected to the page that has like check this out popular
+ data sets new data sets etcetera ok.
+ Now, when we are talking about iris let us click on this iris data set so, we are here.
+ So, I will wait for 2 minutes for anyone who has not caught up till now ok.
+ So, this is the data set and the link I have posted there and I request you to go to this
+ UCI repository and click on the iris data and you will have something like this and those
+ who have already opened it I would request them to go through whatever written in this
+ page.
+ So, this is the data set.
+ So, this is the data set.
+ So, I guess we can proceed further now I hope everybody is on the same page with me.
+ So, here what do we have if we just take a minute to go through whatever in this page.
+ So, this iris data set that is a very old data set, but that is popular.
+ So, when you are forming the basis of machine learning a lot of examples come with this
+ data set ok.
+ So, here what you have see we are talking about some flowers, their petal, sepul.
+ So, this subject area is biology the associated task that machine learning task that is associated
+ with this is classification the feature type is real because if you remember the values
+ provided here they are like real values ok instances 150 ok.
+ So, if you actually check that there are actually 150 rows present in here 150 rows and number
+ of features 4.
+ So, actually when I was telling you that there are 5 columns in here and the last column
+ is what type of flower it is and the other 4 are features.
+ So, number of features 4 ok and if you scroll down so, here what you see variable type table
+ ok, here what we have we have the information regarding to that those 4 columns.
+ So, what do those 4 columns that contain those real values actually have.
+ So, here you can see variable length, sepul length, sepul width, petal length and petal
+ width.
+ So, if you remember from the picture that is there on the colab notebook that has the
+ picture that what is petal and sepul and corresponding to that petal and sepul their length and width
+ are provided ok.
+ So, for 150 samples they are petal length and petal width is provided and the unit is
+ centimeter ok and here you have a nice description see missing values know and there is this last
+ thing called class target categorical.
+ So, there are 3 different kind of flowers iris setosa, iris versical and iris virginica
+ ok.
+ So, these things are provided ok and this is the baseline model performance that these
+ things that you will be familiar in the upcoming classes ok.
+ See exeboost classification has achieved this much accuracy if I zoom out of it.
+ So, here is like 95 percent 100 percent like accuracy calculation.
+ So, exeboost classification support vector machines the you will be familiar in the next
+ classes using neural network classification how what type of accuracy they are achieving
+ and finally, A would be to beat this accuracy.
+ So, coming back to this like strange file now we have some understanding regarding the
+ data.
+ So, first 4 columns are sepul length, sepul length, sepul width, petal length and petal
+ width for a corresponding sample of iris setosa in this line.
+ So, we know what this row means this first row that is highlighted in blue first row
+ means for a specific sample of iris setosa flower we have the sepul length 5.1, the sepul
+ width 3.5, the petal length 1.4 and the petal width 0.2 ok.
+ So, jumping on to our code here what we have we are importing some libraries let us copy
+ this and paste it in the this blank notebook we have created ok.
+ So, even if I forget to copy something from that original notebook to this notebook that
+ we are working out right now.
+ So, I would encourage you to obviously copy and run it if you are not actually typing
+ the code.
+ So, the best thing is learning it from there and typing the code all by yourself, but if
+ you need to just copy paste something do it not a problem, but actually execute each and
+ every individual cell.
+ So, you would be getting the idea that what these things are.
+ So, here what we have we are importing something import numpy as np.
+ So, what this thing is as I said this numpy numpy is used for numbers numpy is used for
+ numbers.
+ So, we have a lot of numbers so, as you see as you have gone through the data set already.
+ So, there are a lot of numbers we need to manipulate it and perform operations on to
+ it.
+ In the last session also you learned like if I take the easiest of the examples like
+ you have lot of data you want to calculate the mean, median, mode all those things.
+ So, these operations and a lot of important operations like calculating eigenvalue, eigenvector
+ all those things are work of this numpy library.
+ So, it has it has it is a library that has a lot of facilities a lot of things can be
+ performed using this numpy and how we are actually calling it in our code like we have
+ this notebook for ourselves and we want to call that numpy library on to it.
+ So, here you write import numpy as np and if you just check the version of it
+ you get some version like 1.26.4.
+ So, those who are familiar with C code it is somewhat similar to has include stdio.h
+ something like this when you write C program you include this that has the function definition
+ of printf scanf all those things.
+ So, in python we actually import things import the word import you understand general meaning
+ and we are checking the version of numpy and as np that is not a big thing as np means
+ for every line when we would be using numpy we just do not want to write numpy n-u-m-p-y
+ everywhere.
+ So, we just want to write n-p so, you can put any name here this is just a alias.
+ So, even if you write numpy as np import numpy as hey hello something like this if you give
+ it a strange name or you can play around with writing anything here and check the version
+ it will give the same result see the same result is coming.
+ So, just to give you a reminder so, if you are executing a particular cell use control
+ enter that would control enter that would give you the execution of that cell or what
+ you can do you can click on this play button type of thing here and that would run.
+ So, usually do not I would not recommend you to write any name as alias here just use n-p
+ because if you are going through a big code that is already there and you are trying to
+ understand how things are going on in there you would find the np that is the normal practice
+ that is the convention.
+ So, you would find it here so, we are importing numpy as np and in the similar fashion what
+ we are doing we are importing pandas as pd and these two would not be necessary as we
+ proceed further in this course I would explain you that what are those things those are mainly
+ used for plotting something ok. So, here what we have we have a comment that says load the
+ ish data set ok. So, what we would like to do we would like to load the data and we have
+ a url. So, in the url that link is provided where the data set was there some strange
+ floating point values and corresponding to it class and now since we have gone through
+ the website and we have learnt the details of the data what do we have we know the column
+ names already ok. So, we have the column names which says sepal length sepal width petal
+ length and petal width and the last one is species like each of those samples would belong
+ to a species that is the label there and what we are doing using pd see this pd is the alias
+ of pandas and read csv. Actually this file is that file if you actually download it if
+ you actually download it you would be able to notice that it is a csv file and he from
+ here also you would be able to notice that this is a csv csv means comma separated value.
+ So, here 5.1 comma 3.1. So, all these values are comma separated. So, that is why that
+ type of name that csv comma separated value you give the url the url where the data is
+ provided and you provide the name of the columns that you have you already know about the data.
+ So, if you write till this and if you actually execute it let us check what it gives. So,
+ now it is somewhat understandable. So, what do we have we have the column description
+ right there that first column is sepal length second is width petal length petal width and
+ species and d 0 then 1 this 2 these are just row numbers and we have nice 3.5 these values
+ corresponding to these things and we have a species corresponding to this id setosa.
+ So, now you have a data set loaded with you. So, I will wait for 1 minute for anyone who
+ has not caught up till this part and then we will jump to other things.
+ So, here is the data set of the data set of the data set of the data set of the data set. So,
+ here is the data set of the data set of the data set of the data set of the data set of the data
+ set. So, I guess everybody is with me on the same page. So, now the thing is when we have
+ this data set suppose this we have this data set that we wish to work on.
+ So, suppose suddenly you wish to know the column names the columns that are present in the data.
+ So, here you need to be familiar with one other like machine learning related term
+ terminology that these things that are the values provided here are actually features
+ and this thing is a label. You might be a little confused by now that what actually
+ features and what actually label is if you are very much new in machine learning,
+ but eventually you would learn so that is not a problem. So, suppose you wish to know the columns.
+ So, column the columns are both feature names and label names. So, here you have the data set
+ iris.df you click just put a dot right here and you write columns.
+ And you execute that cell as I told you earlier using this play button or control enter and here
+ you would have the column names. So, we have all the column names.
+ And here as we proceed further you would be able to learn that this whole data set this whole data
+ set this iris data set it is used mainly for classification tasks. So, what classification
+ tasks like you have already seen there are three different kind of flowers and corresponding to
+ those three different kind of flowers sepal length, sepal width, petal length and petal width values
+ are provided. So, and as I told you the other terminology that something there exists called
+ features and something there exists called label. So, all these four values like sepal length,
+ sepal width and petal length, petal width these are features and corresponding to that the label
+ species is provided. Now, suppose you do not know how many different species are corresponding to
+ machine learning problem how many different labels are provided suppose there were four labels
+ provided. So, we just wish to know that how many labels are there corresponding to which
+ we need to do the classification. So, we have a certain code here to click to get to a new code
+ cell what you can do you can click code here or you can when you are present here like this
+ cursor is blinking you press escape and B. So, a new code would be there and you just
+ write your code here. So, what do we have here? So,
+ like even with English like language understanding you can understand it like we have written
+ irish df. So, this irish df has all the data set and inside of it we are writing what species.
+ So, you can intuitively understand that the species of this irish df this gives us the species that
+ are provided like species you remember the names the isetosa iris fussy color all those things
+ and what we are doing and on those values we just wish to have the unique values dot unique.
+ So, that is a function that would give from all those values the unique one. So, if you
+ actually executed what is what this is giving irisetosa iris fussy color iris virginica.
+ So, these 3 values are provided. So, I will wait for 2 minutes for everybody to catch up till this
+ part.
+ So,
+ I hope everybody has proceeded till this far. So, I hope we can like proceed further.
+ So, just to give you a recap we imported these 2 important libraries numpy np and pandas and we
+ from this website where this machine learning data set is provided and understanding the data set
+ from the website reading some going through some documents we understand these some of
+ these column names which should be later be recognized with the terms features and level.
+ We are getting the data from this read csv command from this pandas pd library because those are
+ comma separated values. So, all the values are separated by comma and we are getting the column
+ names and we are getting the unique values that are present in the label. So, now getting back here
+ what we need to do we need to learn a few basics related to numpy and pandas. So,
+ so after we learn a few basics we will get back to that problem that we are handling
+ regarding this iris data set because some of this some of this basic numpy and pandas operation
+ will be necessary for you to understand the things that on high level for machine learning is used.
+ So, here what we have we have the first example of numpy. So, remember we had in the last class
+ we learned something called list. So, intuitively you can understand the list means a lot of maybe
+ similar or dissimilar things. So, I guess in the previous example previous day I gave this
+ list example list of the nano like all the fruits you need to buy from the grocery store
+ and says things like that whatsoever. So, and you can understand in the similar manner we can
+ create obviously create a list like this that will have all the numbers that we wish to work with.
+ But this list things are somewhat slow somewhat slow this lists are. So, what we do we switch to
+ arrays. So, not just because of slow these arrays have a lot of upper hand compared to
+ lists because they provide us a lot of extra facilities that you would be able to understand
+ eventually as we proceed further and as you develop your machine learning knowledge.
+ So, what do we have here in this first line with the name that is a variable array 1d
+ is equals to np dot array and this parenthesis inside this parenthesis like
+ this is a parenthesis and this is a bracket and this is a curly brace. So,
+ keep in mind do not be confused how the syntax is. So, if you mess up in this syntax. So,
+ you will get a syntax error here. So, in this np dot array that means you are trying to create a
+ numpy array with these numbers what you have you have inside this parenthesis
+ a bracket and in that bracket you have some numbers. So, this is just an array full of numbers 1, 2,
+ 3, 4, 5, 1 dimensional. So, you have a collection of numbers you can understand it like this you
+ have a collection of numbers 1, 2, 3, 4, 5. Now, if you go to the second line that is written
+ array 2d here also you can witness the same syntax np dot array and there is a parenthesis.
+ This parenthesis I am talking about this start of the parenthesis and at the end of the line
+ it is closing and here what do we have we have a 2d array. So, if you are not familiar with the term
+ 2d array. So, you must be familiar with this term matrix. So, 2d array is essentially a matrix
+ these parenthesis and brackets these are just fancy ways of writing a matrix like in a computerized
+ way of writing a matrix. So, and here like let me give you let me explain this theoretically,
+ but when actually you would execute the code you would be able to understand that what these things
+ are. So, here the whole thing the whole matrix is enclosed by this bracket this bracket that
+ is highlighted and it is closed at the end and each individual row each individual row of the
+ matrix is enclosed in another bracket like 1, 2, 3 this is the first row that is enclosed
+ in a bracket then 4, 5, 6 that is the second row that is enclosed in another bracket and
+ in the same manner 7, 8, 9. So, you would be very much clear when you when we actually
+ execute this. So, if you run this cell like I would encourage you if you have not already like
+ coded this thing in the blank notebook. So, that is the first thing you should code that in the
+ blank notebook by yourself and if you haven't already. So, you can copy paste it and when you
+ actually execute it you get something like this. So, 1, 2, 3, 4, 5 list of numbers and 2D array now
+ it is somewhat looking like a matrix isn't it. So, I hope all of you are familiar with what a
+ matrix is. So, this is somewhat looking like a matrix still not properly how we write matrix in
+ our mathematics in with pen and paper, but yeah somewhat like and that matrix is essentially
+ let me check if I have a picture. So, this is the matrix that we are very much familiar with
+ in our mathematics that same thing is written there just I told you that enclose this first row
+ in a bracket the second row also in a bracket and third row also in a bracket and separate those
+ brackets using commas and this whole thing is enclosed the whole matrix is enclosed in another
+ bracket that is they are also the same technique is used. So, just 30 seconds I would be waiting
+ for everybody to complete this part to get the understanding of 1D array and 1D array is also
+ known as a vector. So, 1D array or vector and 2D array 2 dimensional array or matrix just to be
+ familiar with please execute this cell.
+ So, I hope we can proceed further. So, coming down to this coming down to the next cell what
+ do we have like intuitively. So, if you are if you do not even belong to like coding background
+ what I would encourage you I would encourage you to understand the coding things that are
+ like with analogy to natural language like English like language. So, here what this thing print
+ shape and array 2D dot shape. So, the 2D array that we have created we just want to know the shape
+ of it the shape of it. So, here you can understand that how many rows and how many columns are present
+ in that matrix or 2 dimensional array. So, we can understand that there are 3 rows 1 row 2 row
+ 3rd row rows are enclosed by brackets. So, there are 3 rows and corresponding to those 3 rows 3
+ columns. So, what this should actually give us array 2D dot shape it should be 3 and 3. So,
+ it is 3 comma 3 this is the type of input. So, we have 3 rows and 3 columns that is the
+ output here and coming to the second line print data type array 2D dot D type D type means data type.
+ So, the things that are present in the array 2D what is their data type. So,
+ dot D type gives you the data type of the elements and then what is this number of dimensions.
+ So, how many dimensions like of what dimension that particular array is. So, I told you about
+ this 1 dimensional array or vector then that is dimension is 1 then I told you about this
+ 2 dimensional array or matrix. So, the dimension of a matrix is 2. So, you would get this value.
+ So, I would encourage you to if you have not actually written this all by yourself. So,
+ you can what you can do you can copy and paste and you can check its execution in the blank
+ new book that you are working out. So, let us wait just for 30 seconds and then we will be back to
+ 3D arrays.
+ So, I hope everybody has understood the 1 dimensional arrays or vectors and 2 dimensional
+ arrays and matrices. So, we would like to jump to 3D arrays. So, for understanding 3D arrays what
+ I would suggest you I would suggest you to think about Rubik's cube. So, a Rubik's cube is very
+ much of a good example of a 3D array. So, as I was saying that like when we have a Rubik's cube
+ we can imagine that as a 3D array made of 3 2D arrays. So, what a Rubik's cube necessarily is
+ a 3D array composed of 3 2D arrays. So, one on top of the other. So, 3 matrix like things
+ on top of each other is forming a Rubik's cube. So, what we are doing in the same manner we are
+ creating the 3D array. So, array is equals to NP dot array. So, we are putting these values.
+ So, here what you see 1 2 3 that is itself a row and 4 5 6 that is another row of a matrix that
+ matrix is enclosed till this part this highlighted part is a matrix a 2D array and another one just
+ right beside it there is this is other 2D array and the whole thing the whole thing is enclosed
+ the whole 3D array is enclosed by another bracket. So, if anybody is actually very much new to
+ programming I would like encourage them to be very much cautious regarding these brackets.
+ So, these brackets form how like what dimensional array you are actually creating and after these
+ brackets inside though that parenthesis of NP dot array function what we are writing after the array
+ we are putting a comma and we are writing D type int 32. So, if you remember from the previous cell
+ the data type was integer 64. So, that is by default given integer 64,
+ but now we do not want integer 64 we want integer 32. So, this is the bit number actually 32 is the
+ number of bits. So, only 4 bytes will be reserved and for that purpose 8 bytes will be reserved.
+ So, here so, please write the code for the 3D array in the blank notebook that you are
+ using and if you get any error writing it by yourself then copy, but first please try to
+ write it all by yourself. And here now the name of the array 3D array
+ and we are checking the data type of it see the data type it is providing is integer 32.
+ And check the dimension also.
+ See when I check ARR dot end beam it is giving me 3. So, I will wait for 30 seconds to for
+ everybody to catch up till now.
+ So,
+ so.
+ So, now proceeding further I would request you to come to this cell that says something
+ like this print first row of 2D array. If you actually remember the shape of the 2D array.
+ If you actually remember the shape of the 2D array it looked something like this.
+ So, this first thing was first row and remember one thing in Python numbering starts with 0.
+ So, this row is indicated by 0, this row is indicated by 1 and this row is indicated by 2.
+ And here if you come at the first statement first row of 2D array is
+ inside that bracket what is what you need to provide row and column. So, now in place of row
+ what is written 0. So, what I want I want the 0th row what I want I want the 0th row. And
+ in column column columns place giving giving the column just like that gives that means all the
+ columns. So, that means all the columns and in the second statement if it is it is written
+ first column of 2D array 2D colon then 0. So, at place of row a column is given
+ colon is given that means consider all the rows and 0 that means only the 0th column.
+ So, 0th column is 147 first column is 258 and the second column is 369. So, that is given here.
+ So, I would request you request everyone to catch up till this part and play with these indices.
+ Instead of 0 try putting try giving 1 and try giving 2 and check what happens and around this
+ colon also I would request you to give values like 1, 2 play with it by then. So, we will meet after
+ this short break.
+ So, I will see you in the next video. Thank you.
+ Thank you.
+.
+.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Thank you.
+ Okay. So, welcome back everybody. Am I audible?
+ Super, super fine. So, I hope I am audible. So, so far we have learned arrays of one dimension,
+ two dimension and three dimension. Now, suppose what we want to do, we want to create a matrix
+ like this. That is, I hope that is clearly visible on your screen, this matrix, right? That has the
+ first row as 1.5, 2.5, 3.5, second row as 4.5, 5.5 and 6.5 and the third row as 7.5, 8.5 and 9.5.
+ So, we have the picture of the matrix clear on your hand. So, I need to scroll down because
+ the visual space is like quite limited. So, here what we are doing, we are creating this matrix.
+ So, this is the name we are giving to the matrix says float array. And what we are doing, NP that
+ numpy as I told you before that numpy has a lot of nice functions that we can be using while
+ manipulating a lot of numbers. So, here one of the example is like this, np.arrange.
+ So, what we are doing, we are arranging number
+ from a certain value to a certain value. So, if you actually look at the first matrix,
+ you are able to see the value starts from 1.5 and ends at 9.5.
+ So, here what we have written, 1.5 at the start then a comma and then 10.5. So,
+ we are starting from 1.5 and ending at 10.5. So, here actually instead of you need to notice this,
+ instead of 9.5 we are giving 10.5. Because in the for loop also you have noticed if we are
+ giving the range from 0 through 10, it goes from 0 to 9. So, you have to be careful about that
+ and data type as floating point 64. And then what we are doing, intuitively you can understand
+ dot reshape 3 comma 3. Because the shape of this matrix or two-dimensional array or two-dimensional
+ vector also you can say is 3 cross 3; that means, 3 rows and 3 columns. So, we are arranging these
+ numbers from 1.5 to 10.5 and we are reshaping it to 3.3 comma 3. And we are printing the
+ floating point array. So, it would look something like this. So, there are actually 9 elements. So,
+ 9 elements are reshaped into 3 comma 3 size array. So, let us play with this just for a single minute.
+ So, suppose I am giving here 1 then 8. Let us give 1 then 9. And let us remove this reshape
+ function and let us print it. Check what it gives. It gives me from 1 through 8 all these numbers.
+ And there is a dot right beside every number. So, this dot actually means that 8.0. So,
+ floating point because we have given the d type; that means, data type as floating point.
+ If we change the floating 64 to integer 64 then this dot would disappear.
+ I hope this thing will clear all your doubts if you were having anything by now. So, how many
+ elements do we have? We have 8 elements. Now, suppose we wish to use this reshape function.
+ So, using this reshape function on top of an array that has 8 elements, what shape we can derive?
+ Like a matrix of how many rows and how many columns. We can give this like 4 comma 2.
+ Now, what 4 comma 2 would mean? Like 4 rows and 2 columns. So, we are writing a reshape type of
+ thing reshape R E S H P E reshape 4 comma 2 the intended value. So, if we execute this.
+ So, I have written the spelling round. So, are we getting a matrix of 4 rows and 2 columns?
+ So, think about this if we write 4 comma 3 here would that be successful?
+ I want you to think for think this for a while like for 10 seconds just think about it if we
+ give the reshape to 4 comma 3. Those who have guessed like this would be wrong
+ are correct because 4 comma 3 that would mean a row of a matrix of 4 rows and 3 columns that would
+ have 12 elements. So, we actually do not have 12 elements. So, it would run into an error.
+ But what we can do? We can write 2 comma 4 right 2 rows and 4 columns.
+ And when you are specifying a row size like given here with 2 column size would automatically
+ can automatically be determined. You can understand that corresponding to a specific row size column
+ size would be like already known you cannot put arbitrarily value right there. So, sometimes
+ if you go through machine learning code you would encounter something like negative 1.
+ So, what negative 1 does is essentially the same thing as explicitly mentioning the
+ value. So, and one other thing you can do with this 8 element
+ array. So, 2 comma 2 comma 2 if you write it like this and execute it what you would have
+ just check this out what we have right try understanding the brackets. Those who have
+ guessed correctly that we are getting a 3D matrix 3 dimensional matrix are correct. So,
+ so this concept this reshaping concept would be important for you when you are working with
+ data sets like like when you would be learning deep learning and convolutional neural networks
+ all those thing then this like when you have a grayscale image that would be considered as a
+ 2D 2 dimensional arrays with all those grayscale values and when we are talking about a an RGB image.
+ So, for 3 different R, G and B 3 channels you have separate matrices of values. So,
+ that would be considered as a 3D array. So, at that time you maybe need to use this reshape
+ kind of thing and there a lot of time this negative 1 is used. So, what else you can do
+ you can create a 0 arrays. So, now I hope I have given you the flavor of coding like how to understand.
+ So, 0 array np dot 0s. So, you wish to make a an array full of 0s. So, 0 0 0 0 0 0 0 something
+ like that and of what shape say 2 comma 3 shape and what would be the data type of those elements
+ that is integer 64 ok in the same manner 1 array. So, array full of 1s ok. So, np dot 1s 2 comma 3
+ of that same shape, but all the elements are now 1 instead of 0 and what is this full array. So,
+ 2 of 2 comma 2 shape, but all the elements would be 99 ok and you can print those things. So,
+ I would encourage you to please do this coding all by yourself. So, you would be able to understand
+ I am printing the 0 array that has 2 rows and 3 columns all 0. So, please code it with me please
+ or at least copy it and execute in your blank notebook to check the things that are going on
+ 1 array and full array ok. So, let me wait for 1 minute.
+ So, I hope everybody is done now we will jump back to the problem that we were tackling at the
+ beginning of dot that irish data set.
+ So, now in this cell what we are doing we had in irish data frame if you remember something
+ called sepal length. So, the column that contains the sepal length for all those 150 samples we are
+ taking that and we are converting that to a numpy array np dot array and we are in this
+ variable what we are getting that array sepal length and in the same manner sepal width ok.
+ So, please code this and what we are doing we are calculating the mean sepal length from all
+ those 150 samples using this function np dot mean. So, as I was saying that compared to list
+ arrays provide the numpy arrays provide a lot of facilities one of the some of those facilities
+ you have already come across like reshaping like arranging value from in between ranges
+ and now this is mean. So, you are getting the mean np dot mean. So, you do not need to explicitly
+ write a program of calculating mean from all the values that we have what you can do you
+ can just write this np dot mean and you would have a mean value and np dot std you can understand
+ this is the standard deviation ok. So, what we are doing we are calculating the mean and standard
+ deviation of sepal length and sepal width ok. So, we what we are printing we are printing the
+ mean of sepal length and standard deviation of sepal width. So, this is coming something like this.
+ So, this is like some linear algebra type of things that can be performed with numpy.
+ So, let us wait for 30 seconds for everybody to catch up.
+ So, proceeding further what we have we are doing some operation that has the we have already had
+ all the sepal lengths in this variable right sepal length and for all the values in this
+ sepal length variable which are greater than mean sepal length of 5.84 would be marked as true
+ right here and the remaining would be false. So, all these operations are done using these
+ facilities see just by using this greater than sign we can achieve this and we are printing
+ there those large sepal. So, these particular flowers would have like already have large
+ sepal lengths ok. I would request you to get the picture clear. So, at the so please code this
+ on your own or copy paste and check out the output. So, by the time I would recapitulate a few things.
+ So, what you had you had flowers 150 flowers and from those flowers you had the sepal lengths
+ and you had it in a data frame of different columns. So, you had this column named sepal length and
+ what we calculated we calculated the mean of all those values. So, the mean is saved in this
+ variable mean sepal length and all the values that are present in that column if those values are
+ greater than this mean sepal length then we are saving it in large sepal variable ok and we are
+ printing it. So, it would have some true and false values true for large sepal that are greater than
+ the mean and false for small sepal that are lower than the mean. And we are printing flowers with
+ large sepal in the sepal length putting this large sepal value. So, here these are the
+ large sepal you can check all these values are greater than 5.84 that was actually the mean
+ sepal length ok. So, now here some pandas operations are described. So, Irish DF try to get the picture
+ clear in your head Irish DF this part this had all the data set the big data set that you
+ downloaded no not downloaded using the URL you had the data ok. Now, there is this bracket
+ and inside this bracket what we are writing Irish DF and sepal length. So, you have all the sepal
+ length and if those sepal lengths on those rows is greater than the mean sepal length then show me
+ those rows from this Irish DF whole data set. So, here you see this 50, 51, 52 all these values
+ then these values like 70 rows out of 150 rows have like a sepal length that is greater than
+ the mean of those values ok. So, in this manner you will have it let me wait for 30 seconds for everybody to code it.
+ So,
+ ok I hope everybody has done till this part. So, here what we would be witnessing would be
+ witnessing a few facilities provided by this pandas library. So, you have the whole Irish
+ data set in this Irish DF data frame and what you are doing you are using this describe function
+ using this describe function to describe intuitively you can understand describe all those
+ things. So, you have this four columns and I told you that there are count 150 means 150
+ samples are there and you have the mean corresponding to all those columns standard deviation all those
+ things ok. And then what we are doing we are exploring some more pandas facilities here what
+ we have write we have write dot head; that means, the first 5 values let me see ok. So,
+ with this head what we are getting we are getting the first 5 check this out the row index 0, 1,
+ 2, 3, 4; that means, 5 total 5 values are being shown here ok. And this is you probably have
+ already understood see in the data frame also if you give a starting index and an ending index
+ you would able to you would be able to get those values. So, here I hope you would be able to
+ understand when we are giving 0 colon 10 from 0 through 9 we would be able to see ok. So,
+ and here print the info we are printing the info that what whatever is present there and
+ data types ok. So, some info would be there like range index 150 because 150 samples are here and
+ entries starting from 0 through 149 ok. And when we are checking the d types corresponding to the
+ data frames what we are getting the sample length is floating point 64 all these things are floating
+ point 64 and species since it is in a string like format not integer not floating point
+ that is why its d type is given as object. And there are total 150 values and null count means
+ all the values are completely fulfilled in the data frame. So, none of the values are empty
+ or given null or NAN not a number those type of things and how much memory it is using and all
+ those things ok. And suppose we wish to get specific specifically how many
+ values are there in the data frame of a specific species suppose we wish to have the number of
+ iris setosa samples. So, here what like intuitively please try to understand if you are new iris df
+ then species. So, species that was giving you the three kind of species and this is equals to is
+ equals to means is that equal to. So, is that equal to iris setosa. So, if it is iris setosa
+ then save it in the iris s. So, when we are giving iris s dot shape then that means actually
+ 50 samples and five columns corresponding to it that is why the five value five columns
+ for each of these rows we were having that is why. So, in the same manner you can get the
+ versicolor also the same code is repeated here for versicolor that we just encountered for iris
+ setosa ok. So, please do till this much and let me wait for one minute.
+ So,
+ ok. So, I hope everybody has done till that part. So, here what we are doing suppose all the
+ feature values that were already provided in a data set you are not like satisfied with this
+ and suppose you are your machine learning model does not work very well with all those
+ corresponding values and you wish to include new features represented by columns in the data set.
+ So, what you can do using this pandas. So, suppose here we had several lengths and several width.
+ So, like multiplying several length with several width would obviously give you something like
+ several area. So, I this is just an example I actually do not know that several area something
+ like several area would actually be good for like for a machine learning model to understand
+ the difference between three type of petals or three type of flowers or not. But just to show you
+ how things take place. So, iris df several lengths and times several width and we are
+ saving it in a new column called several area ok. So, we have several length several area
+ and at the end we have a new column named several area, several area would be this times this several
+ length time several width ok. So, I will wait for 30 seconds for you to check how you can
+ generate a new column corresponding to some new values.
+ So, I hope everybody is done. So, now we are at the like almost at the end of our session.
+ So, here what we are trying to do we are trying to plot the data that we were having
+ using some visualization things. So, here though those import libraries would be necessary
+ like import mat plot lib and import c borne as sn sns ok. So, what we are doing we are doing a
+ scatter plot with the data sns dot scatter plot like scatter the values like this and
+ data is iris data x the x coordinate is several length the y coordinate is several width
+ and u is species. So, you have the species here corresponding to each color and plt dot title
+ means give the title give this title to the image. So, let us try to view this let me zoom out. So,
+ here you have the thing. So, in blue color you have the scatter plot of iris setosa in orange
+ you have iris versey color and in green you have iris virginica ok. So, just like out of nowhere
+ try to imagine since we were like since the beginning we were considering this as a classification
+ task that means classify between these three classes of flowers. So, suppose you have this
+ scatter plot and think about this that you can clearly draw a line right here check out where
+ the mouse is moving you can clearly draw a line right here and separate the iris setosa.
+ Isn't that possible like you can easily separate this iris setosa because they are like far apart
+ from this mixture of virginica and versicolor right. So, you understand this right by visualizing
+ the data you would be able to understand the patterns of those data and those patterns would
+ be later help you understanding the machine learning algorithm how those function ok.
+ So, now what we are doing this pair plot is a nice thing pair plot means corresponding to
+ each individual feature compare it with the other feature and plot it. So, intuitively you
+ you would be able to understand if you visualize this whole image we are giving this iris df whole
+ thing and use the hue. So, we would be able to understand it. So, previously we were plotting
+ something like this something like this right corresponding to petal length and
+ suppose sepal length sepal width something like this this was the image. So, in this image
+ please check out the cursor in the in this image like the blue ones can be separated.
+ Suppose just think about it taking a pencil you wish to draw a line on this image. So,
+ drawing a line would separate the blue, but drawing a line would not separate how would you
+ draw the line a straight line it is tough to draw a straight line right here right.
+ So, now coming to this picture. So, here you can draw a straight line separating the blue values
+ and see a straight line at this point between this mixture of orange and green would also
+ separate this somewhat better than the previous one right. A line here and another line here
+ somewhat it would better differentiate ok. So, corresponding to these values and check out
+ all the other plots I would request you when you actually study this part.
+ Check out how different type of features sepal width petal length would give you different
+ visualizations through which like consider this this image right there it is very bad right.
+ So, draw a line to separate the blue dot green dot from the orange dot it would be a messed up
+ task right. So, these features like sepal width and sorry sepal width and sepal area that is a
+ like bad feature and compare if you compare it with this one like petal width and petal length
+ petal length is written here petal width is written here just two straight line one here and one here
+ do your job right. So, coming to this part what we are doing we are plotting a correlation matrix
+ ok. So, correlation you must have learned it in the mathematics session. So, corresponding to each
+ feature and other feature what is the correlation. So, here you can see correlation of sepal length
+ with sepal length is obviously one. So, sepal length with petal length see how the correlation is high
+ between sepal length and petal length. So, that is a like these two are good features
+ comparing petal length with sepal width this is bad right. In this manner you would be able to
+ understand and at the end we are just using this C bond we are plotting this in a nice picture the
+ same thing is in this colorful picture here and the last thing for now for today is when you have
+ when like in the label section in the species column here in this dataset you have three
+ values like the name of three flowers when you are actually training a machine learning model the
+ model would not understand the names like that what you will have to do you will have to map
+ those names onto numbers like sound fancy, but nothing tough like wherever in the dataset
+ there is iris setosa write 0 there wherever there is iris versicolor in the dataset write 1 here
+ there and wherever it is virginica write 2 there ok and using this code like iris df and I said map
+ this is mapping right corresponding to a specific label you are mapping a number to it.
+ So, map this thing and you will have if you print the head the first five values you will
+ get here. So, here in the species you see all 0s because the top columns top rows were iris setosa
+ and we have mapped 0 corresponding to 8. So, this much for today we will take a short break
+ of two minutes and we will get back to question answer session I would encourage you to do these
+ coding by again in the blank notebook that you have created.
+ [BLANK_AUDIO]

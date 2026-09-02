@@ -1,0 +1,485 @@
+ Good afternoon everyone, my name is Athef Hassan and I am a PhD student at the Department
+ of AI at IIT Kharagpur and I will be taking you through the hands-on session today.
+ So before we begin with the hands-on session, I would like to talk about some good coding
+ practices. So the most important thing here is object-oriented programming. So the thing
+ is that we want to build modular code. Now why is that important? Because modular code
+ allows you to do a lot of things with ease in a plug-and-play manner and this is how
+ most of the code is implemented on other libraries as well such as Hugging Face and other PyPy
+ Torch, TorchVision and so on. So what we will see first is how to write good code so that
+ later on you don't face any issues in writing code or using other libraries. So the first
+ and foremost thing that when you write a deep learning code is that you need a model, right?
+ You need a model that will train on and what will you train on? You will train on data.
+ So you need the data as well. So these are the two most important aspects and the best
+ part about modular code is that you can actually take, let's say for example, the data module
+ and then you can pass in certain parameters that allow you to change the type of data,
+ the different normalization methods that you use to normalize your data and so on. Similarly
+ for the model, you can actually change the stride when you are using convolution, you
+ can change the stride, you can change the number of parameters and so on with a lot
+ of ease and allows you to do a lot of things. For example, in ensemble learning where you
+ have to have multiple models, so instead of writing multiple functions, you can just have
+ a single class and then call that class multiple times that is creating objects of that class.
+ And then finally we need a driver function which is the main file or the main function
+ where we basically create the model object, we create the data object and then we train
+ the model. So these are the three things that are mostly required for training any deep
+ learning model. So the first thing as you can see in the my model class, there are few
+ things here that I would like to go over quickly before we start working on the deep learning
+ hands on session. So what we have here is the my model class and the my model class consists
+ of a constructor. So if you are people who are aware, who have worked with Java are aware
+ of something called the constructor. So the idea here is that in the constructor you define
+ all the variables or all the parameters that you want to use in the model. So all of the
+ parameters supposed to be registered or created in the init function which is the constructor
+ in Python. Once you have defined your constructor, you need to define your forward function.
+ So what is this forward function? So we will be using PyTorch library, we are not using
+ TensorFlow. So in the PyTorch library, the forward function is basically a way of defining
+ how your data would forward propagate through the model. Because PyTorch essentially, if
+ you boil everything down PyTorch is essentially a back propagation method, a back propagation
+ library or an auto differentiation library. So it allows you to differentiate things.
+ So for differentiation to take place, you need to define the equations. So once you
+ define the equations, differentiation automatically happen for you. So the forward function here
+ takes all of those equations. The way you want, for example, in residual connections,
+ you want to add some input to the output of the next to next layer. So that is one way
+ of defining your equations. In VGG, for example, it is a completely sequential. So one input
+ goes to the output of one layer goes to the input of another layer and so on. So there
+ are many ways of defining how you want to perform the forward pass or how you want the
+ data to forward propagate through the model. And all of that logic needs to go into the
+ forward function. And this forward function, the PyTorch will use to auto differentiate
+ and get you all the gradients. There are three other functions that I usually define. And
+ it is good practice. In fact, there's a very famous library called PyTorch Lightning, which
+ is built on PyTorch. And it's a very nice library in the sense that it allows you to
+ modularize your code and it reduces a lot of mess. And its signature of working is defining
+ these three extra functions, which is called configure optimizers training step and validation
+ step.
+ In the configure optimizers, we define what sort of optimizer we want to use. For example,
+ stochastic gradient descent, add them add them w and so on. I believe all of these things
+ have already been taught or have been covered in previous classes. Then we have training
+ step, which defines how, what you're going to do in a single iteration. And then finally
+ we have the validation step, which is again, what you want to do in each iteration on the
+ validation data itself. So these are the few functions that are part of the class model.
+ Then we come to the data module class. So the data module class as well again has the
+ init function, but we also define a few other functions like prepare data, set up train
+ data loader and valid data loader. So in the prepare data, we do all the pre-processing,
+ like downloading the data and loading it in whatsoever manner we wish. Then we have the
+ set up where we create the data set. So all the pre-processing, such as normalization
+ of the data will go into prepare data and then the set up part, which is basically creating
+ the data set. And we'll see what creating the data set means a little later. So you
+ create the data set and once you've created the data set, the train data loader and valid
+ data loader is simply helper function that you use to return the data loaders that you
+ create. Finally, we have the main function where we call the my model class, where you
+ call the data model class and then we write the training logic. That's it. So this is
+ a broad overview of how you're supposed to write code. I mean, this is the best method
+ that I believe will help you write code efficiently. But there are other ways as well. You can
+ always try that out. This is my personal preference.
+ So now we will be looking at two things or two experiments rather. We'll be going through
+ two notebooks. So Plavansar talked about a lot of pre-trained models and we'll pick some
+ of those ideas and we'll try to convert them into practical code. Now, the first thing
+ that we would like to see is what sort of pre-trained data is best for your current
+ data set. So obviously, as you can understand, there are millions and n number of data sets
+ out there. And you will find a lot of pre-trained models as well. But is one sort of pre-training
+ data set good for your particular data set or not? Or in other words, we can say that
+ is the knowledge from one data set transferable to another data set? This we would like to
+ see and understand. So for this purpose, what we'll do is we'll pick up ImageNet, that
+ will be a pre-trained model. So our model is pre-trained on the ImageNet 1K data set,
+ very general data set. And what we'll do is we'll train, we'll use the model pre-trained
+ on ImageNet and we'll try to look at how the knowledge from ImageNet adapts to CIFAR
+ 10 and fashion MNIST. These are two separate data sets. So this is one sort of set of experiments.
+ We will try to see whether a pre-trained, the data set that the pre-training data set
+ that we have, the knowledge that we gain from that pre-training data set, whether that is
+ transferable to all data sets. That is one thing that we'll see. And then the next problem
+ that we'll face is the shallow versus deep fine tuning versus training from scratch,
+ which is again something that Lawans have talked about. So what we'll try to see is that which
+ one works better? When you have a full pre-trained model for your, and you want to use this model
+ for your data set, which one works better? Should we simply tune only, should we tune
+ the entire data set, entire model? Should we tune only a part of the model? Should we tune
+ only just the head of the model? And you'll see what the head actually means here. Or
+ should we train the entire model from scratch without using the knowledge of the pre-trained
+ data set? So we'll go over all of these, we'll go over all of these experiments and
+ hopefully this will clear things out for you. So just a quick look at what the ImageNet
+ and the CIFAR-10 or CIFAR-100 data set will look like. So you can see the ImageNet data
+ set is a very general data set and it contains a lot of images from varied sources. As you
+ can understand, we're using only a subset of ImageNet, which is called ImageNet-1K,
+ which is, this is one of the more popular data sets, or popular subsets of the entire
+ ImageNet data set. So that is the idea. And then CIFAR-10 or CIFAR-100 is another data
+ set. It's much more lower resolution. So I believe this is 32 by 32, while ImageNet-1K
+ goes up to 512 by 512, or even bigger sometimes. But CIFAR-10, CIFAR-100, these are very, these
+ are nicely behaved data sets in the sense that you get, all of the images are of the
+ same size. And there are, in CIFAR-10, there are 10 classes and in CIFAR-100, those classes
+ are basically much more fine grained. So for example, if you have a DAW class, you'll
+ have much more fine grained classes. For example, within the DAW class, whether you
+ have Poodle or Labrador and all of those classes. So CIFAR-100 is a more fine grained version
+ of CIFAR-10. So these are the data sets that we'll be looking at. So now we'll move on
+ to the notebooks. So I hope my screen is visible. So we'll start off, we'll start off with a
+ domain adaptation problem, which is whether using a particular pre-trained data set or
+ a model from a particular pre-trained data set, whether that is applicable to your data
+ or not. This is a very important question and this can make or break the performance
+ of the model on your data set. So we'll see which one, what sort of pre-trained data set
+ is good for your particular data set. So first of all, what you are going to do is, you are
+ going to import all the necessary libraries and we'll be using these libraries. So the
+ rest assured, I'll be explaining everything. So first of all, what we are going to do is,
+ we are going to set up the data set class that we just talked about. So in our case,
+ we are using the CIFAR-10 and the fashion MNIST data set. So the fashion MNIST data set is
+ kind of like the MNIST data set, which is a data set of hand digits recognition. So it
+ basically consists of handwritten digits. The fashion MNIST is a drop in replacement
+ for MNIST in the sense that instead of having handwritten digits, it now has boots, shirts,
+ trousers and all of these images. And again, it has 10, just like the MNIST data set, it
+ has 10 classes. So it has bags, handbags basically, boots or shoes, trousers, these are all separate
+ classes. So first we are going to set up the data set. So we are creating the class, the
+ data module class. Again, if whenever you create a class, you need a constructor. So in the
+ constructor, we have a particular keyword or variable called fMNIST. So if you set this
+ to true, what is going to happen is that it's going to, so if self.fMNIST is true, we are
+ going to have certain different types of transformations on the data set. And if fMNIST is false, then
+ we are going to have certain different transformations on the data set.
+ So the first thing is we have to call the super function, which is basically the inherited,
+ so we are obviously inheriting. So PyTorch expects you to make sure that you inherit
+ or call the constructor of the super class or the class from which you are inheriting.
+ Next up is we are defining the batch size, then we have this function, variable called
+ self.mNIST. So the self keyword here basically allows us to refer to the current object.
+ So you can have multiple objects, right? So the Python needs a way to understand which
+ object you are referring to. So self allows you to do that. So we have self.fMNIST equals
+ to fMNIST. So we are assigning whatever fMNIST value we want. The default is set to false,
+ but you can obviously assign whatever value you want.
+ Next up we are going to define some augmentations on the data. So what do we mean by augmentations?
+ As you can understand, you have set of images. Now if you train these images as is and you
+ do not provide any changes in the images itself, the model has a very limited scope of understanding.
+ So for example, I give you a very short analogy. So the idea was that for, I do not know, this
+ is probably a fiction, but we will go over the story. So the story goes like this that
+ during World War, one of the scientists said that he can actually build an AI that can
+ help the Americans or the Europeans or the Allied forces basically to recognize where
+ those Panzer tanks, the tanks from Germany are in forests. So those German tanks were
+ very good at camouflaging. So people went and they clicked a lot of photos and then they
+ sent those photos to the scientists and the scientists build an artificial intelligence
+ model, a kind of pseudo neural network and it was actually performing really well. It
+ was able to identify from those forests, from the trees it was able to identify where a
+ particular tank is available or where the tank is standing. But the problem was that
+ the images that were taken were taken in broad daylight. So now what happened was that whenever
+ there were tanks under shadow or during nighttime, the model did not work at all because the
+ images that it were fed were just for images in daylight. So that was a very big problem
+ and that is where this idea of augmentation stems. So the idea is that you do not want
+ to give images of only one kind to the model, you want to diversify the images as much as
+ possible. Now if you want to diversify images, you need to click pictures of the same subject
+ under shadow or during nighttime or during daytime, during noon time when you have no
+ shadows for example when it is cloudy and all of these situations that is very difficult
+ to do. So instead can we take one picture, let us say we take a picture of a person in
+ daylight and can we actually apply augmentation such that we can replicate all of these scenarios
+ without having to click more photos. So that is what augmentation, the idea of augmentation
+ is. So what are these types of augmentations we are applying? Well we are applying some
+ basic augmentations. So we are taking resize, so the idea is we are taking this 32 by 32
+ image of let us say C for 10 or 28 by 28 image of fMNIST and we are going to resize it 256
+ by 256. So we are making the image bigger and why are we doing that is because the model
+ is trained on ImageNet, compress the images that are like 512 or maybe even 1024 in size.
+ They push it down or compress it down to 256. So the default training is 256 by 256 for
+ the models that we are going to use. Obviously there are other ways of going about it. There
+ are other models that use 224 by 224 or they use 384 by 384 and so on. But the idea is
+ that you want to resize your images to whatever version your pre-trained model was trained
+ with. So in this case because a pre-trained model, whatever model we are going to use
+ later on, that model was pre-trained using 256 by 256 size. So we are going to use that.
+ Then we have random crop. So we are going to randomly crop the image. So it can be cropped
+ from any side. So that will induce some sort of camera clicking angle. So there are sometimes
+ you can click a person from far. Sometimes you can click a person from near. So we want
+ to use that information as well. We want to simulate that as well. So random crop helps
+ us in doing so. Then we have random horizontal flip. So sometimes we are going to flip the
+ image to the left or to the right and so on. And then we have two tensors which is basically
+ going to take those images which will be loading as PIL images. We will be converting them
+ to tensors and then finally we are going to normalize those images. Now why are we normalizing
+ and what does these numbers mean? So we are expecting three channel images or RGB images.
+ So these three values denote the three channel. So what we are going to do is we are going
+ to normalize or we are going to subtract these values which is basically the mean of channel
+ 1, mean of channel 2 and finally mean of channel 3. So we are going to subtract these means
+ from all these three channels and these are the variances of the standard deviation. So
+ we are going to take the standard deviation and we are going to divide each channel with
+ these. So we are basically standardizing each channel in our dataset. Why are we doing this?
+ It is because the values of the images are pretty large. Usually it is between 0 to 255
+ for each channel where 0 means complete blackness and 255 means white. So when you have RGB,
+ 255 in R would mean complete red, in G it would mean complete green and in D it would
+ mean complete blue. So these are very large values and training our model initialization
+ usually starts from between -1 to 1. So you would have to train whenever you are training
+ a model, the model parameter values need to increase to a large number so that you can
+ accommodate training these values. So instead what we can do is we can actually normalize,
+ standardize and make sure our images are also between -1 to 1. So it does not take a lot
+ of time for training the model to convergence rather it quickly converges. So that is the
+ whole idea of normalization. So this is for training as you can understand but for validation
+ as you can understand we probably do not need to randomly crop the image neither do we need
+ to randomly flip the image. It is because you want to test the model on the images that
+ you are providing which is the test set of the validation set. So the only thing that
+ you want to do is you want to resize the images so that there is no difference in the distribution
+ of the images in terms of size between the validation and the training data set.
+ Then again we have to convert these images to tensors and then we have to normalize.
+ So these three lines make sure that our validation of the test data set is not distributionally
+ different from the training data set. Now if the data is FMNIST you want to add some
+ extra transformation which is the grayscale transformation. So now the FMNIST as I said
+ is a drop in replacement of MNIST and MNIST is a grayscale data set that is it contains
+ only one channel. So we have only blacks and whites or grays but we want to make sure that
+ we have three channels because of model as we have already said we will be using model
+ pre-trained on the image net data set which is an RGB data set. So we need three channels.
+ So the grayscale and in brackets 3 what this means is that it is going to take the image
+ and it is going to convert it into grayscale and it is going to copy that one channel which
+ because we have one channel into three channels. So now you have three channels albeit all
+ of them are exactly the same. So in effect we have three channels and then we are going
+ to apply whatever transformations that we have explained here.
+ So that was our init function now we have we have all the transformations that are
+ required we will go we will now go into the prepare data and we will set up our data set.
+ So in the prepare data function what we are doing is we have the self-rot train set again
+ here we are defining three separate two separate variables the train set and the validation
+ set. So now what does the train set contains it contains the data set. So what is this
+ data set this data set is basically an iterable so when you have a large amount of data PyTorch
+ provides you a way of converting that data into an iterable.
+ So what you will be doing is what PyTorch will be doing is when you are given an iterable
+ it take batches of data extract batches of data and provide it to you. So the fashion
+ eminence this is basically a data set it is derived from the PyTorch data set class this
+ is already been built for us and where does this come from. So if you look at the import
+ you will find that we have the fashion eminence and cfr10 from torchvision.datasets. Torchvision
+ is again a very nice library that is available to us by PyTorch and you can use it has a
+ lot of functionality for vision related tasks. So it already provides us with the fashion
+ eminence data set as well as the cfr10 data set. So we do not have to define our own iterable
+ but rather we can use the iterable provided by torchvision itself.
+ So we are going to use fashion eminence we are going to pass whatever the data we have
+ downloaded exists the train set and the validation set so true and false and if it is not available
+ we do not have the data you can also download it and it will get saved in this directory
+ and whatever transformation we require can be applied using the transformation that we
+ have just talked about. Finally once we have we have prepared the data set we will go into
+ the setup function where we create the data loader. So once we have an iterable the data
+ loader it uses that iterable to pick batches of data. Once it picks batches of data you
+ can use that batch of data to do whatever you want with the model. So this comes from
+ the data loader class which requires a data set and whatever batch size you want and whether
+ you want shuffle to be true or not so we are going to shuffle the data set to make sure
+ that the model does not learn in a particular sequence rather we are providing different
+ sequences to the model.
+ And finally we have these two functions as I talked about these are simply helper functions
+ that will return the data loader that you have trained and that you have created. So
+ once our data class is generated created we will go to the model class. Now in the model
+ class what we have is we are taking a few hyper parameters so the first thing is number
+ of classes this will be used later on I will show where then we have pre-trained equals
+ to 2 so whether we want to use the pre-trained model or not by default it is set to 2 because
+ in this example we want to use the pre-trained model and see where this model is more applicable
+ to which data set and then we have number of unfreeze layers again we will go over what
+ this means in the next set of experiments not this experiment here.
+ So if pre-trained is true what we will do is we will use the ResNet 18 model again provided
+ by TorchVision so if you go up here we will see that the ResNet 18 model is provided by
+ TorchVision and it is models class. So we are going to load the ResNet 18 model and
+ the weights are going to be the ResNet 18 weights default which basically is a keyword
+ for saying we are going to use the latest ImageNet weights for ResNet 18. So we now
+ have a pre-trained model that is ready but what we want to do is we want to make sure
+ that we are not training the entire model we are only training the head.
+ So again what the head means I will explain that just in a bit but first thing is that
+ we want to make sure that the entire model is frozen as Sir had talked about. So the
+ way of doing that is you want to take the variable where you have stored the model and
+ you want to set its required grad to false. So what happens is that each parameter is
+ going to be frozen. Now what this means will go over in the next set of experiments and
+ if you are not using pre-trained then again we will have the ResNet 18 model but our weights
+ is going to be none so we are loading the model from scratch and we are going to have
+ all of the parameters we are going to make sure that PyTorch generates gradients for
+ all of the parameters. Finally what you will see here is that we are replacing the top
+ most layer so as you can understand in ImageNet 1k the 1k stands for 1000 classes alright.
+ So there are 1000 classes in the ImageNet 1k subset of the ImageNet dataset and the
+ model was trained to identify 1000 classes but in our case we are using fMNIST and CIFR10
+ and both of them have only 10 classes. So there is a mismatch right so our model is
+ going to produce 1000 classes as output but you want only 10 classes. So what can we do?
+ We can replace the top most layer which we call the head. So we are going to replace the
+ head with a new linear layer which is going to take input as 512 and going to output the
+ number of classes. So why 512? It is because that is the last output from the last convolution
+ layer in the ResNet 18 model sorry. So the model outputs a 512 vector for a single image
+ and we are going to take that 512 vector and apply a matrix or a linear layer which takes
+ that 512 and converts it into the number of classes alright. So if you are going to freeze
+ the entire model and replace the only the head so that is the only part which we need
+ to train the entire rest of the model which is the convolution which has saved the generalized
+ features from the pre-trained data set that is not going to change.
+ Finally we have we are defining a few more things. We have the criterion which is basically
+ the loss function of the objective function that you want to use and certain metrics which
+ is strain accuracy and validation accuracy. So this comes from the torch metrics class
+ again you will see that it is available here. So torch metrics is another nice library that
+ allows us to use different metrics for example F1 score, accuracy, recall, precision and so
+ on. You do not have to write all of that code yourself you can use it from torch metrics
+ library so that is what I have done here. So in the accuracy class when you create the
+ object of the accuracy class you need to pass what type of task you are using. So in this
+ case you are using a multi-class task and then what are the number of classes.
+ The function that we have talked about previously in the slide which is configure optimizers
+ here we are going to use the SGD optimizer with given number of parameters so which is
+ basically whatever the model parameter that you have defined in the init function. Then
+ we have the learning rate and momentum that you want to set. And finally we have the scheduler
+ so the idea of a scheduler is that you do not want to use the exact same learning rate
+ throughout the training period rather you want to change that learning rate because when
+ you are training the models right at the beginning trains very quickly and then later on the
+ performance improvements start saturating. So in that period of initially you want to
+ use a large learning rate so you can maximize the performance gain and then as the learning
+ rate starts to saturate, as the training performance starts to saturate you want to use smaller
+ and smaller learning rate because you are getting closer and closer to the final local
+ minima. So that is the idea of the scheduler.
+ Then we have the forward function. In the forward function as we have talked about we
+ are just going to take all of that data and we pass it through the backbone. Now this
+ backbone variable the ResNet18 that particular object already has a forward function defined
+ within it. So we can just call the surf.backbone and when we pass this data x, the variable
+ x contains the data. When we pass this through the model it will automatically call the models
+ forward function and the data will pass through there. And whatever output we get is going
+ to be returned. Then we have the iteration. What happens when single iteration? So we
+ will first zero out the gradients from the computation graph. So PyTorch creates a computation
+ graph whenever you create a model and the idea is that you want to make sure that this
+ computation graph is empty. So there are no gradients in the graph. So you are zeroing
+ out otherwise the problem will be that there might be some gradients remaining, some values
+ on those on the edges of those computation graph which might cause calculation or computation
+ issues for the next iteration when you are calculating gradients for the next iteration.
+ Then we have the forward function which creates the forward pass. Once you get the predictions
+ from the model which is going to be the number of classes that we have just defined. What
+ we will be doing is we are going to use these predictions to update the training accuracy.
+ Finally we are going to pass that whatever predictions we have we are going to pass it
+ to the objective function that we have defined. So we have the target, we have the predictions,
+ we will pass it to the cross entropy loss and get the loss value. Then we are going
+ to perform back propagation. So we will calculate the loss for each of the parameters using
+ the chain rule and then the optimizer dot step what this will do is it will update the
+ values and update the parameters using the loss values that you have calculated using
+ the chain rule. Finally we are returning the loss dot item. So this is a helper function
+ that will basically allow us to print out the loss and see what happens.
+ Now there are some other functions, extra functions that I have defined so on training
+ epoch and so what happens once the training completes or one epoch of the training completes.
+ So what is one epoch? It is basically a complete pass over your entire data once. So when you
+ are iterating you are iterating over single batches. So once all of the batches are complete
+ that is what we call an epoch. So what happens at the end of the training over one epoch
+ when we are going to print out the accuracy that you have just calculated.
+ Similarly for the validation step here you do not need the loss all you need to do is
+ update the accuracies. So that is what we have done. By not requiring the loss I mean
+ you do not need to update the parameters or calculate or perform chain rule calculation
+ and so on. There is no back propagation required. So I will just calculate the loss and return
+ it. And again what happens at the end of the validation over a single epoch so we just
+ print out the accuracies. And then the reset matrix is used to reset the matrix that we
+ have used for a single epoch. So once after a single epoch you still have those values
+ with the accuracy values you want to reset them so that you can calculate a fresh for
+ the new epochs. So we now have the data class and we have the model class. Now we put everything
+ together. So for CIFAR 10 we are using these particular hyper parameters. So we generate
+ the data module, we prepare the data, we set it up and we load our data loaders. These
+ variables we are going to use these variables to store the accuracies so that we can plot
+ it out later on. Then we will define the model which again will use all of these hyper parameters
+ and we will define in the configure optimizers function we will pass all of these hyper parameters
+ as well. Finally what we are going to do is we are going to train the model. So as I said
+ previously in the slides in the main function we will be calling, we will be defining the
+ logic on how to train your model over the entire training period.
+ So the first thing is in each epoch whatever number of epochs you have defined your model
+ to train we have defined I believe here it is 10, yes it is 10 here. So we will set a
+ model into training phase. So what does it, what does this mean model.train it is going
+ to take your model and set it to training phase. So what is the difference between train and
+ then model.eval model.train. So there are a lot of other layers such as batch norm or
+ dropout. For example in dropout you randomly drop certain neurons in your model. Now when
+ you set it to model.train dropout will work as is but when you want to validate you do
+ not want to apply dropout. So in order to do that you have to set the flag model.eval.
+ So what PyTorch does is that in this model.eval function it sets the eval flag to 2 when the
+ eval flag is set to 2 meaning evaluation the model needs to be evaluated dropout is set
+ to false automatically. So you do not have to do you know you do not have to write code
+ separately for your batch normalization or your dropout rather you can just do model.eval
+ and the PyTorch will take care of it by itself.
+ So for each epoch we pick up the batch. So for each iteration we pick up a batch of data
+ and then we pass it to the training step and we get our loss and we create an average of
+ the losses and we also have the training accuracy which we are saving and we will save the c
+ fat whatever training loss we are getting we are saving that into the particular variable.
+ So we do the same thing for the validation as well and finally we are going to reset
+ the matrix so that in the next epoch again we can use the same matrix. So I have already
+ trained this it takes some time to train so I have already trained this before and as
+ you can see our training accuracy starts from 77% top 1 and 96% top 5 and our validation
+ accuracy starts from 89% because we are using the pre-trained model so model already has
+ a lot of that information stored in itself. So finally we will see that we get a validation
+ accuracy of 95% and top 5 is basically nearly 100% accuracy.
+ So this is for CIFAR 10 and the idea is that we expect this performance improvement because
+ the CIFAR 10 as I have shown in the slide is reminiscent of the ImageNet dataset itself
+ because the ImageNet is a very dataset and a lot of information on natural images. Similarly
+ CIFAR 10 although it is small and lower resolution but it also comes from natural images. So we
+ expect that whatever models pre-trained on the ImageNet dataset will actually whatever
+ knowledge the pre-trained model has taken from the ImageNet 1K dataset that will be
+ transferable to CIFAR 10 because both of them contain subsets of naturally occurring images.
+ But what do we expect for fashion MNIST? Fashion MNIST as I have said is a grayscale image
+ first of all so it does not have RGB channel it has only one single channel. Second of all these
+ are not natural images rather these are images of boots and trousers they have nothing to do with
+ images occurring naturally. So what we expect is that the data the knowledge is not very transferable
+ from the ImageNet 1K dataset to fashion MNIST. So ideally what we should be seeing is that the
+ performance improvements that we have seen on CIFAR 10 that is achieving such high accuracies
+ should not be possible for fashion MNIST. That is the logic behind this experiment.
+ So again we have already defined everything that we need so we will just define the hyper
+ parameters write out create the data model write out the training loop again and then train the model.
+ So once training is complete we will compare the loss and we will compare the validation
+ accuracy how are we doing that we are using the C-Born library for this the matplotlib and C-Born
+ library. So we pass the loss values that we have we had saved for CIFAR 10 and for FMNIST
+ right. So this should the label should have been FMNIST rather than MNIST.
+ So once we do that we will plot we will perform a we will create a line plot for the training
+ loss and we will create a line plot for the validation accuracy and see what happens.
+ So for the training loss as we can see that for CIFAR 10 the training loss reduced much more than
+ for FMNIST while on the validation accuracy front you can see that the fashion MNIST accuracy
+ wasn't as high or rather there is quite a big difference between the fashion MNIST accuracy
+ and the CIFAR 10 accuracy. So what was the what is the conclusion of the take home message from
+ this entire experiment the take home message is that you need to use there are many pre-trained
+ pre-training data sets of pre-trained models available you need to carefully choose which
+ pre-trained model you require for your particular data set. So for example in this case ImageNet was
+ a very very good candidate for CIFAR 10 but not so much for fashion MNIST probably models that
+ have been trained on let's say grayscale images might have been a better pre-training idea for
+ fashion MNIST. So that's the entire take home message from this particular experiment we now
+ move on to the next and final experiment set of experiments which is fine tuning and training
+ from scratch. So here we want to understand so right now you understood what sort of pre-training
+ data set you want to go for now we want to see in terms of from the model perspective how much
+ of the model do you want to tune or whether you want to retrain the entire model from scratch.
+ So we have already defined everything in this particular case we will be using the CIFAR
+ 100 data set instead of CIFAR 10 or fashion MNIST. So this is just purely CIFAR 100 and we are going
+ to use the ImageNet data set as a pre-trained model. So the data model is going to remain the same
+ that we have explained already in the model class there are certain things that were left out which
+ you want which I would like to explain right now. So we've already defined if it's pre-trained what
+ you want to do but now we look at what num freeze unfreeze layers means. So here what you want to
+ do you want to make sure that we want to unfreeze all of the final layers so layers from the beginning
+ from the end. So what do I mean by the end so you can imagine we have a model so on the left side
+ is our training is our initial layer which is basically the input layer and on the right side
+ we have the output layer. So you want to start from the rightmost layer or the final layer and you
+ want to move towards the initial layer while unfreezing and why is that as as Plavansar had
+ already talked about the initial layers contain very general information that is probably applicable
+ to almost all data sets which is basically edges and small shapes and so on. But as you
+ move as you keep moving ahead move towards the final output layer these shapes transform into
+ more general and abstract features until you start seeing whole objects that you want to actually
+ identify. So based on this logic which layers are more applicable to your data set according to
+ this logic you want to save as much information as possible from the initial layers which are more
+ general layers and you want to change the layers right at the end or the final layers because they
+ are not applicable to your particular data set. So how do we do that if num unfreeze layers is
+ greater than 0 we first find the number of layers so we count the number of layers which is convolution
+ 2d's and linear's and so on. So whether we have batch norm whether we have linear layer or whether
+ we have convolutions we are going to count those as each layer and once we have the number of layers
+ we will start unfreezing them. So the unfreezing counter starts from whatever
+ start unfreezing counter we have set which is number of layers minus number of unfreeze layers.
+ So for example in ResNet 18 if you total up all the linear layers the batch norms in the convolution
+ there are about 50 layers in total I believe it is 52. So when you are setting the number of
+ unfreeze layers to 31 we are doing 52 minus 31 whatever value we get that is the point where
+ we start to unfreeze all of the layers and that is exactly the logic that we have written here.
+ So as soon as the counter it becomes greater than the unfreezing counter which is I believe in this
+ case 20 21 yeah 21 we start to unfreeze all of those layers. The rest of the stuff is the same
+ as we have already explained now we put it all together so we have we will create the data module
+ class or we will create the object of the data module and we will start with shallow fine tuning.
+ So in shallow fine tuning we have set pretend root 2 and we are setting num unfreeze less to 0
+ which means that we are only using the final head right we replace because in ImageNet you
+ have again 512 cross 1000 what we require is 512 cross 100. So we are going to replace that the
+ head but all of the other layers are going to remain the same that you are not going to free
+ unfreeze any of the layers and the we define the training and the validation loops as usual
+ and once training is complete we will get some results and we will see what results we have got.
+ Now we will go with deep fine tuning so in deep fine tuning what we are going to do is we are going
+ to set the number of unfreeze layers to 31 all right and we are going to use the pre-trained model
+ as usual. So now we are going to unfreeze 31 layers after 21 okay so the final 31 layers
+ are going to be unfrozen again we have the same training loop and the validation loop
+ again it trains and we will see what results we are going to get because we are if you see the
+ logic here we are saving all the losses okay so we will see what what results we get.
+ Now what we are going to do is we are going to train from scratch so we are going to set pretend
+ to false and obviously number of unfreeze layers is set to 0 because this is not really required for
+ this particular experiment we are going to set the pre-trained to false so now we are going to
+ we are not going to use the image net weights so again we have the same training loop we train
+ the model and finally once we are done with all this we look at the comparison so we will compare
+ the training losses and we will compare the validation accuracy so as you can see when you
+ are doing shallow fine-tuning it performs kind of well but then it starts to saturate the performance
+ starts to saturate and the training from scratch in terms of loss takes over so as you can see
+ that image net is a great pre-training data set and it is also transferable for c500 but at some
+ point in time you need to also you need also you need to make sure that the model learns
+ general or targeted information from your data set as well this is the reason why training from
+ scratch even though it's we have thrown away or cast away all of that general information from the
+ image net data set we can still achieve good performance because we are now learning those
+ general features as well as targeted features for your particular data set hence it starts to
+ perform better than shallow fine-tuning but deep fine-tuning still performs much better
+ in terms of loss than both paradigms so here training from deep fine-tuning is taking information
+ the general information from the image net and taking targeted information from your data set
+ or in this case the c400 data set what so what happens in terms of validation accuracy we exactly
+ see the same thing so training from scratch at some point takes over the shallow fine-tuning case
+ but as you can see deep fine-tuning always performs better than all other paradigms so
+ a hybrid approach between training from scratch and shallow fine-tuning is deep fine-tuning
+ and this has been shown to usually work better than almost all cases and another more parameter
+ heavy version of this would be complete fine-tuning which is fine-tuning the entire model itself
+ so that is the so what is the take-home message from this particular experiment the take-home
+ message is that we want to use we want to use a hybrid approach that is neither training from
+ scratch nor shallow fine-tuning are the best paradigms rather deep fine-tuning or fine-tuning
+ come the entire model is the best approach so where we can use the general information from
+ the pre-trained data set and the targeted information from your current data set as well
+ so yeah that's about it thank you

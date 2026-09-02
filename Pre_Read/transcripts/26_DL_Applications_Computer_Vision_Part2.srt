@@ -1,0 +1,904 @@
+1
+00:00:00,000 --> 00:00:11,160
+ So, welcome back. So, let us start. So, we were discussing. So, the next. So, up till
+
+2
+00:00:11,160 --> 00:00:18,240
+ now we have discussed one neural network architecture where you have the input image. So, let me
+
+3
+00:00:18,240 --> 00:00:39,360
+ just make it here. So, let me go back. So, we have an input image here. So, we have the
+
+4
+00:00:39,360 --> 00:00:51,760
+ input image and then we have the convolutional neural network and then output comes a class
+
+5
+00:00:51,760 --> 00:00:59,720
+ level. So, there can be multiple class level. So, if there are let us say 1000 classes there
+
+6
+00:00:59,720 --> 00:01:15,800
+ will be 1000 many outputs. So, this is called the image classification task. So, this is
+
+7
+00:01:15,800 --> 00:01:24,000
+ the image classification task and this task you can say this is one of the basic tasks
+
+8
+00:01:24,000 --> 00:01:31,520
+ and it can be useful for many, many obvious things you can say like what is this image
+
+9
+00:01:31,520 --> 00:01:37,520
+ about like is it does it have a cat, does it have you know what kind of things does it
+
+10
+00:01:37,520 --> 00:01:43,440
+ have and the image net challenge basically is all about that ok.
+
+11
+00:01:43,440 --> 00:01:49,800
+ But these are not the only applications that you have with images ok. So, let me show some
+
+12
+00:01:49,800 --> 00:01:57,000
+ more applications ok. So, the image classification application is what we have already discussed
+
+13
+00:01:57,000 --> 00:02:04,080
+ ok. Now, the second application is what is called semantic segmentation ok. So, what
+
+14
+00:02:04,080 --> 00:02:11,080
+ is semantic segmentation? So, suppose you have this left image as the input ok. What
+
+15
+00:02:11,080 --> 00:02:20,120
+ do you want to do? You want to have suppose this is let us say some let us say 250 cross
+
+16
+00:02:20,120 --> 00:02:28,760
+ 250 images image ok this input image. Your output should be also a 250 cross 250 image
+
+17
+00:02:28,760 --> 00:02:38,760
+ ok same size as the input image and each pixel should have a class level. So, earlier there
+
+18
+00:02:38,760 --> 00:02:46,720
+ was only one class level for the entire image for semantic segmentation you have one class
+
+19
+00:02:46,720 --> 00:02:54,920
+ level for every pixel ok. So, what can be the class level? So, for example, this can
+
+20
+00:02:54,920 --> 00:03:06,380
+ be sky ok, this can be let us say grass ok, this can be cat ok and this can be let us
+
+21
+00:03:06,380 --> 00:03:12,800
+ say trees or forest trees or forest something like this ok.
+
+22
+00:03:12,800 --> 00:03:25,400
+ So, these are the class levels ok. So, class level remember is for every pixel ok. What
+
+23
+00:03:25,400 --> 00:03:31,120
+ is the utility? You have seen for example, the biggest utility you may have seen already
+
+24
+00:03:31,120 --> 00:03:39,160
+ is what is called a your autonomous driving task or different kind of tracking tasks etcetera
+
+25
+00:03:39,160 --> 00:03:46,540
+ ok. There you will see that the entire image you want to know in general what are the things
+
+26
+00:03:46,540 --> 00:03:51,880
+ that are present in different portions of the image. So, if you can 0 in on a particular.
+
+27
+00:03:51,880 --> 00:03:58,440
+ So, once you have this particular level you can 0 in on a portion and then you have a
+
+28
+00:03:58,440 --> 00:04:05,820
+ description of what is there in that part of image rather than the whole image ok. So,
+
+29
+00:04:05,820 --> 00:04:13,940
+ this is the first thing ok. Now, second thing second task is what is called
+
+30
+00:04:13,940 --> 00:04:21,360
+ the object detection task ok. So, what is this object detection task? Object detection task
+
+31
+00:04:21,360 --> 00:04:30,560
+ is suppose now your image has more than one maybe in this particular case let us say three
+
+32
+00:04:30,560 --> 00:04:39,400
+ ok different objects of interest ok. Two of them are dogs one of them is cat ok. What
+
+33
+00:04:39,400 --> 00:04:47,000
+ do you want? You want two things. First you want to identify that there are two dogs and
+
+34
+00:04:47,000 --> 00:04:55,840
+ one cat ok. Secondly you want what is called a bounding box ok bounding box like this.
+
+35
+00:04:55,840 --> 00:05:04,600
+ You want a bounding box around each of these dogs and cats ok. So, then what is the output?
+
+36
+00:05:04,600 --> 00:05:14,520
+ So, whatever input image you have you will have a list of objects ok list of objects
+
+37
+00:05:14,520 --> 00:05:20,280
+ get the corresponding bounding box. So, this is going to be the output for object detection
+
+38
+00:05:20,280 --> 00:05:28,400
+ ok. And finally, there is the problem of instance segmentation. So, what is the problem of instance
+
+39
+00:05:28,400 --> 00:05:35,760
+ segmentation? It is same as object detection ok. So, you will have a list of objects, but
+
+40
+00:05:35,760 --> 00:05:44,200
+ now instead of bounding boxes around the object you will actually have the pixels ok. So,
+
+41
+00:05:44,200 --> 00:05:51,400
+ you can see here the actual pixels which will describe that object. So, you can in a sense
+
+42
+00:05:51,400 --> 00:05:58,760
+ say that if you do the instance segmentation problem the object detection problem is basically
+
+43
+00:05:58,760 --> 00:06:06,960
+ solved ok. So, this instance segmentation problem is a slightly more you can say like
+
+44
+00:06:06,960 --> 00:06:15,720
+ a more nuanced version of the object detection problem ok. So, the question is can you use
+
+45
+00:06:15,720 --> 00:06:20,200
+ convolutional neural networks to do these tasks also ok. So, these tasks as you can
+
+46
+00:06:20,200 --> 00:06:26,520
+ see they are very important tasks right. So, how can you use convolutional neural networks
+
+47
+00:06:26,520 --> 00:06:33,640
+ to actually do this task? So, first let us look at the semantic segmentation task ok.
+
+48
+00:06:33,640 --> 00:06:42,840
+ Now what will you do? So, the first thing is that what you can say that you use a small
+
+49
+00:06:42,840 --> 00:06:50,120
+ patch. So, for every pixel you have to classify a label ok. So, you take a pixel like this
+
+50
+00:06:50,120 --> 00:06:58,760
+ ok and you take a image around this particular pixel ok. And then you design a convolutional
+
+51
+00:06:58,760 --> 00:07:08,080
+ neural network which will predict a label ok. Now the question is what should be the
+
+52
+00:07:08,080 --> 00:07:13,560
+ size? So, these are sometimes also called patches ok. So, you can see. So, the receptive
+
+53
+00:07:13,560 --> 00:07:18,320
+ field or the patch. So, it is basically a portion of the image ok.
+
+54
+00:07:18,320 --> 00:07:24,520
+ So, the first question that will come is what should be the size of this patch ok. Nobody
+
+55
+00:07:24,520 --> 00:07:32,000
+ knows how much context do you need. So, clearly from this particular example you can see suppose
+
+56
+00:07:32,000 --> 00:07:38,200
+ your patch size is very small there is no way for you to tell that this is part of a
+
+57
+00:07:38,200 --> 00:07:47,280
+ cow ok, but this is actually part of a cow ok. So, you need the bigger context ok. So,
+
+58
+00:07:47,280 --> 00:07:55,080
+ first of all you need the bigger context and you do not know what should be your patch
+
+59
+00:07:55,080 --> 00:08:04,640
+ size. So, what should be the solution? The solution is that you have a CNN ok, you have
+
+60
+00:08:04,640 --> 00:08:16,320
+ a CNN and then. So, here first of all. So, this particular slide it is proposing a solution
+
+61
+00:08:16,320 --> 00:08:24,160
+ where you extract a very big patch and then you sort of classify ok. So, maybe in this
+
+62
+00:08:24,160 --> 00:08:29,400
+ particular case this center pixel will be classified as cow. In this patch also center
+
+63
+00:08:29,400 --> 00:08:34,720
+ pixel will be classified as cow, but in this patch the center pixel will be classified as
+
+64
+00:08:34,720 --> 00:08:38,040
+ grass. Now what is the problem with this two problems?
+
+65
+00:08:38,040 --> 00:08:42,960
+ One is you do not know what is the appropriate size of patch. Here you can see, but in a general
+
+66
+00:08:42,960 --> 00:08:47,620
+ image how will you know what is the appropriate size of patch. So, that is the first problem.
+
+67
+00:08:47,620 --> 00:08:53,860
+ The second problem is you see these patches have to be overlapping. So, for every patch
+
+68
+00:08:53,860 --> 00:09:00,640
+ you have to run a CNN ok. So, that is wasteful because most of the patches are overlapping
+
+69
+00:09:00,640 --> 00:09:09,960
+ with each other ok. So, what is a good solution? A good solution is that you pass the entire
+
+70
+00:09:09,960 --> 00:09:16,440
+ image through a convolutional neural network. Get the output of the convolutional neural
+
+71
+00:09:16,440 --> 00:09:23,800
+ network and then use this output. So, do not use the fully connected layer at the end.
+
+72
+00:09:23,800 --> 00:09:29,920
+ Just use the convolutional neural network get the output and then after that you use
+
+73
+00:09:29,920 --> 00:09:36,560
+ the fully connected neural network for each patch separately ok. So, that way your entire
+
+74
+00:09:36,560 --> 00:09:41,840
+ CNN computation does not have to be repeated. Only the final layer computation has to be
+
+75
+00:09:41,840 --> 00:09:49,000
+ repeated for every patch right. So, this is a much better architecture ok.
+
+76
+00:09:49,000 --> 00:09:55,560
+ Now the question is can you use the existing CNN architecture? The answer is no, why not?
+
+77
+00:09:55,560 --> 00:10:02,640
+ Because if you see the CNN architecture that we just designed for image classification those
+
+78
+00:10:02,640 --> 00:10:08,520
+ architectures they reduce the size of the image a lot. So, maybe a 250 cross 250 image
+
+79
+00:10:08,520 --> 00:10:14,400
+ comes to a 10 cross 10 images something like that right. Now then there is not enough information
+
+80
+00:10:14,400 --> 00:10:22,160
+ to classify every pixel in the original neural network ok. So, what is the solution? Use
+
+81
+00:10:22,160 --> 00:10:29,760
+ another CNN in which you do not use any stride or you do not use any pooling layer. So, then
+
+82
+00:10:29,760 --> 00:10:33,900
+ the size will remain the same you use the appropriate padding then the size will remain
+
+83
+00:10:33,900 --> 00:10:41,680
+ the same as the input size ok. What is the problem with that? The problem is that the
+
+84
+00:10:41,680 --> 00:10:47,520
+ computational overhead will be a lot see 1 or 2 layers you can do computation at the
+
+85
+00:10:47,520 --> 00:10:52,960
+ highest resolution, but if you have to do many many different layers let us say 10 layers
+
+86
+00:10:52,960 --> 00:11:01,240
+ of computation at the highest resolution it will be a lot of overhead ok. So, what is
+
+87
+00:11:01,240 --> 00:11:09,760
+ the solution? The solution is yeah. So, this is what I was saying. So, the solution is
+
+88
+00:11:09,760 --> 00:11:19,480
+ that you do down sampling and then you do up sampling ok. So, what is this up sampling
+
+89
+00:11:19,480 --> 00:11:28,360
+ idea? The up sampling idea is that instead. So, so first of all down sampling you can
+
+90
+00:11:28,360 --> 00:11:33,800
+ use two techniques as I have mentioned either you can use a strided convolution or you can
+
+91
+00:11:33,800 --> 00:11:45,000
+ use a pooling ok. Generally people use a normal convolution and then a pooling ok. Now the
+
+92
+00:11:45,000 --> 00:11:52,680
+ question is what is this up sampling right. So, up sampling is simple it is the opposite
+
+93
+00:11:52,680 --> 00:11:59,000
+ of pooling ok. So, it is the opposite of pooling that is every pixel you blow up let us say
+
+94
+00:11:59,000 --> 00:12:07,720
+ into 4 more pixels ok and then you apply a convolution on these blown up image ok. So,
+
+95
+00:12:07,720 --> 00:12:14,800
+ this architecture also there are some more things, but you may have heard about something
+
+96
+00:12:14,800 --> 00:12:20,800
+ called the unit architecture ok. So, this is the architecture that is used this is somewhere
+
+97
+00:12:20,800 --> 00:12:27,040
+ here that you have a down sampling and then you have a up sampling and there are some
+
+98
+00:12:27,040 --> 00:12:33,520
+ more tricks like in unit which is that basically there are some training tricks which we are
+
+99
+00:12:33,520 --> 00:12:41,920
+ not going into which is that basically every layer is you basically train a auto encoder
+
+100
+00:12:41,920 --> 00:12:48,980
+ kind of network with the input layer and the output layer. So, the intermediate weights
+
+101
+00:12:48,980 --> 00:12:54,600
+ they get trained ok, but the important thing is that you use this kind of a down sampling
+
+102
+00:12:54,600 --> 00:13:01,680
+ and then up sampling architecture if you want to generate convolutional feature map at the
+
+103
+00:13:01,680 --> 00:13:11,720
+ original image scale ok. So, this is the first thing that you do ok. So, and then after this
+
+104
+00:13:11,720 --> 00:13:21,040
+ you use like prediction layer to predict the pixel width ok. So, this is the first thing
+
+105
+00:13:21,040 --> 00:13:26,400
+ and you can get a semantic segmentation ok.
+
+106
+00:13:26,400 --> 00:13:34,080
+ Now, the next problem that we discussed is the object detection problem right. So, object
+
+107
+00:13:34,080 --> 00:13:41,560
+ detection problem is what that you have to predict two things ok. First is you have to
+
+108
+00:13:41,560 --> 00:13:48,440
+ predict. So, you have to first of all predict multiple objects ok. Now, what are these multiple
+
+109
+00:13:48,440 --> 00:13:55,200
+ objects? These multiple objects are localized in different parts of the image. There may
+
+110
+00:13:55,200 --> 00:14:01,200
+ be overlap between these objects, the bounding boxes between the objects may overlap, but
+
+111
+00:14:01,200 --> 00:14:07,040
+ largely they will be separated. Otherwise it does not make it is not possible for you
+
+112
+00:14:07,040 --> 00:14:14,400
+ to detect two objects right, maybe one object can be inside another object that is possible
+
+113
+00:14:14,400 --> 00:14:26,040
+ ok ok. So, now how do you do the how do you do this kind of object detection? Again, so
+
+114
+00:14:26,040 --> 00:14:32,280
+ suppose you now have a convolutional backbone it is called a convolutional backbone which
+
+115
+00:14:32,280 --> 00:14:39,120
+ is that you have done the down sampling and up sampling in the and you have generated
+
+116
+00:14:39,120 --> 00:14:48,520
+ features for the original image at the scale that you have the at the scale of the original
+
+117
+00:14:48,520 --> 00:14:53,240
+ image ok. Now, how can you do this object detection?
+
+118
+00:14:53,240 --> 00:15:00,280
+ So, a simple solution is again you have a patch. So, you start with this x y ok, x y
+
+119
+00:15:00,280 --> 00:15:08,120
+ is the upper left corner ok and you have height and width. So, you have x y height and width
+
+120
+00:15:08,120 --> 00:15:14,920
+ that will give you a particular bounding box ok. So, you have x and y and height and width
+
+121
+00:15:14,920 --> 00:15:21,320
+ and you have this bounding box ok. And now this particular bounding box defines
+
+122
+00:15:21,320 --> 00:15:32,840
+ a patch ok, you take this patch and you classify like you you predict some classification ok
+
+123
+00:15:32,840 --> 00:15:38,920
+ and most of these will not be classifying anything. So, if you take for the example in
+
+124
+00:15:38,920 --> 00:15:44,760
+ this image just this particular bounding box it will say no object. So, in the classification
+
+125
+00:15:44,760 --> 00:15:51,360
+ you have one option which is no object ok. So, it will not predict, but if it predict
+
+126
+00:15:51,360 --> 00:15:58,480
+ some object ok then basically for example, in this particular case this bounding box
+
+127
+00:15:58,480 --> 00:16:04,680
+ it will predict the cat ok. So, this way you can do object detection,
+
+128
+00:16:04,680 --> 00:16:09,440
+ but what is the problem? There is a problem with this. What is the problem? The problem
+
+129
+00:16:09,440 --> 00:16:15,760
+ is that the number of such bounding boxes is very very large ok. So, if you have to
+
+130
+00:16:15,760 --> 00:16:22,120
+ do this the number of such bounding boxes becomes very very large ok. So, the question
+
+131
+00:16:22,120 --> 00:16:35,080
+ come can we speed up this and how to speed it up? So, so basically so here another thing
+
+132
+00:16:35,080 --> 00:16:41,720
+ I forgot to mention is that you see this now uses what is called a multitask loss which
+
+133
+00:16:41,720 --> 00:16:49,400
+ is that how correctly are you able to predict the bounding box and once you are able to
+
+134
+00:16:49,400 --> 00:16:54,480
+ predict the bounding box ok, how correctly are you able to predict the label. So, the
+
+135
+00:16:54,480 --> 00:16:58,040
+ two are related. So, suppose you start with an initial bounding
+
+136
+00:16:58,040 --> 00:17:05,080
+ box of something like this ok, you may want to change or predict a correction over the
+
+137
+00:17:05,080 --> 00:17:11,920
+ bounding box ok. So, this is what is called the correction over the bounding box ok. So,
+
+138
+00:17:11,920 --> 00:17:26,320
+ this is the first thing ok ok. Now, so now there are all these problems that are coming
+
+139
+00:17:26,320 --> 00:17:34,200
+ ok. So, so so the problem is you will have many many different bounding boxes, you also
+
+140
+00:17:34,200 --> 00:17:40,000
+ do not know what kind of bounding boxes to consider. So, for example, consider this particular
+
+141
+00:17:40,000 --> 00:17:46,880
+ image for predicting the big duct you need a very big size bounding box ok. For detecting
+
+142
+00:17:46,880 --> 00:17:53,720
+ each of this small ducts you need very very small size bounding box ok. So, this is also
+
+143
+00:17:53,720 --> 00:17:58,720
+ another problem ok. So, what size bounding box do you use ok.
+
+144
+00:17:58,720 --> 00:18:02,480
+ What is the solution to all these problems? So, many many different bounding boxes and
+
+145
+00:18:02,480 --> 00:18:10,840
+ also many many different sizes of bounding boxes. The solution is what is called a region
+
+146
+00:18:10,840 --> 00:18:19,120
+ proposal network ok. So, what happens? So, this particular network you simply train the
+
+147
+00:18:19,120 --> 00:18:27,440
+ network using some bounding boxes of objects and non-objects ok. So, you just take some
+
+148
+00:18:27,440 --> 00:18:36,240
+ objects. So, these 2 for example, are objects and these 2 are non-objects ok and your network
+
+149
+00:18:36,240 --> 00:18:46,480
+ should simply be able to say whether a particular bounding box has an object or not ok and this
+
+150
+00:18:46,480 --> 00:18:53,520
+ should be done very very fast ok. So, the region proposal network runs very very fast
+
+151
+00:18:53,520 --> 00:18:58,840
+ and it does not consider all the bounding boxes. It takes the entire image feature as
+
+152
+00:18:58,840 --> 00:19:07,560
+ input and predicts something like let us say top 200 2000 region proposals ok. So, there
+
+153
+00:19:07,560 --> 00:19:14,320
+ are both deep learning based solutions and shallow solutions to that, but this. So, this
+
+154
+00:19:14,320 --> 00:19:19,840
+ is the approach that instead of considering all bounding boxes you consider let us say
+
+155
+00:19:19,840 --> 00:19:32,640
+ about 2000 different bounding boxes which have a high charge of getting a object ok ok.
+
+156
+00:19:32,640 --> 00:19:41,600
+ So, now how does your architecture come then here? So, first of all you have the backbone
+
+157
+00:19:41,600 --> 00:19:52,040
+ the CNN backbone which gives you this. So, this was so by the way these kind of architectures
+
+158
+00:19:52,040 --> 00:20:01,440
+ are called RCNN or region CNN ok ok. So, there are basically different versions of it. So,
+
+159
+00:20:01,440 --> 00:20:08,320
+ the first is that you take these region proposals ok and for each region proposal you run it
+
+160
+00:20:08,320 --> 00:20:16,800
+ through a CNN and then predict the class label and the bounding box ok. So, this is called
+
+161
+00:20:16,800 --> 00:20:22,080
+ the slow RCNN. So, this is one of the earlier RCNN architecture.
+
+162
+00:20:22,080 --> 00:20:28,540
+ A better architecture is what is called a fast RCNN architecture which is that you have
+
+163
+00:20:28,540 --> 00:20:36,240
+ a common convolutional bottleneck ok. Then you have a separate region proposal network
+
+164
+00:20:36,240 --> 00:20:45,920
+ which proposes the regions ok regions of interest ok and then for each of these regions of interest
+
+165
+00:20:45,920 --> 00:20:55,480
+ you again have another CNN through which you predict either you predict like something
+
+166
+00:20:55,480 --> 00:21:05,400
+ like the object category and the bounding box ok. Note that the object category prediction
+
+167
+00:21:05,400 --> 00:21:11,920
+ is a classification problem ok whereas, the bounding box prediction it is a regression
+
+168
+00:21:11,920 --> 00:21:17,000
+ problem ok. So, it is not a classification problem because you have to predict some numbers
+
+169
+00:21:17,000 --> 00:21:23,880
+ ok. So, you have to predict basically x y height and width ok you have to predict these
+
+170
+00:21:23,880 --> 00:21:34,480
+ numbers ok. So, this is the other thing ok. There is an even faster network which what
+
+171
+00:21:34,480 --> 00:21:45,280
+ it does is instead of having a separate you know region proposal it uses the output of
+
+172
+00:21:45,280 --> 00:21:53,920
+ the same CNN backbone to actually first compute the region proposal and then compute the bounding
+
+173
+00:21:53,920 --> 00:22:01,800
+ boxes ok. So, classification loss and bounding boxes and in between it is also it also does
+
+174
+00:22:01,800 --> 00:22:06,440
+ what is called a region. So, the region proposal gives what is called
+
+175
+00:22:06,440 --> 00:22:13,080
+ region of interest ok region of interest. So, these are as you can see these are some
+
+176
+00:22:13,080 --> 00:22:20,440
+ of the regions of interest ok. The further classification and bounding box prediction
+
+177
+00:22:20,440 --> 00:22:31,080
+ happens only on the regions of interest ok. So, yeah. So, and these also do what is called
+
+178
+00:22:31,080 --> 00:22:37,160
+ the region of interest alignment ok or ROI pooling. These are the basically something
+
+179
+00:22:37,160 --> 00:22:47,760
+ similar things ok and then what you can what you can get is the prediction ok.
+
+180
+00:22:47,760 --> 00:22:58,360
+ And of course, if you use this kind of an architecture ok you can just add another neural
+
+181
+00:22:58,360 --> 00:23:05,020
+ network on top of this. So, earlier you had only this portion of the neural network ok.
+
+182
+00:23:05,020 --> 00:23:12,240
+ Now, you can add another this additional mask prediction neural network on top of the ROI
+
+183
+00:23:12,240 --> 00:23:19,280
+ pooling layer which can basically predict these masks and perform the instant segmentation
+
+184
+00:23:19,280 --> 00:23:29,920
+ task also ok. So, these are some of the some of the important applications of CNN. So,
+
+185
+00:23:29,920 --> 00:23:38,240
+ you can do object detection and instant segmentation with mask RCNN which is. So, it gives very
+
+186
+00:23:38,240 --> 00:23:41,960
+ good results and it is one of the state of the arts network.
+
+187
+00:23:41,960 --> 00:23:49,600
+ The only problem with this mask RCNN network is that it is a bit slow. So, there are another
+
+188
+00:23:49,600 --> 00:23:55,320
+ class of neural networks called YOLO neural networks which are also very popular. They
+
+189
+00:23:55,320 --> 00:24:03,280
+ are slightly less accurate than this mask RCNN network, but they are much faster ok.
+
+190
+00:24:03,280 --> 00:24:11,840
+ So, as you can see we can do a lot of different computer vision tasks using these different
+
+191
+00:24:11,840 --> 00:24:18,960
+ kinds of CNN architecture ok. So, these are some of the references and I will stop and
+
+192
+00:24:18,960 --> 00:24:36,800
+ take some questions.
+
+193
+00:24:36,800 --> 00:24:43,480
+ How would we identify what should the kernel matrix for a given input is there any recommended
+
+194
+00:24:43,480 --> 00:24:49,360
+ approach to proper kernel. So, the answer to this question is we do not need to right
+
+195
+00:24:49,360 --> 00:24:54,760
+ you just need to identify the size of the kernel. So, what do you need to specify you
+
+196
+00:24:54,760 --> 00:25:01,360
+ need to specify the size of the kernel, how many what is the width and the height and
+
+197
+00:25:01,360 --> 00:25:11,760
+ that too for most applications if you simply use as a starting point the VGG network or
+
+198
+00:25:11,760 --> 00:25:18,040
+ something like UNET if you are doing image scale prediction or if you are using even
+
+199
+00:25:18,040 --> 00:25:23,240
+ something like ResNet one of the ResNet architecture this is very good ok.
+
+200
+00:25:23,240 --> 00:25:29,600
+ So, what you can do is you can use that particular architecture and then you can simply fine
+
+201
+00:25:29,600 --> 00:25:39,240
+ tune for your application ok. If you have to identify the kernel size I would say you
+
+202
+00:25:39,240 --> 00:25:47,640
+ follow something like the VGG thing which is that you use 3 cross 3 convolution and
+
+203
+00:25:47,640 --> 00:25:53,080
+ then you use two layers or three layers or four layers of 3 cross 3 convolution as you
+
+204
+00:25:53,080 --> 00:26:00,640
+ want your receptive field size to change and you also have to specify the number of number
+
+205
+00:26:00,640 --> 00:26:05,840
+ of output channels right every time input channels will be same as the number of input
+
+206
+00:26:05,840 --> 00:26:10,480
+ channels, but the number of output channels you have to specify. So, that is basically
+
+207
+00:26:10,480 --> 00:26:18,560
+ something like you can specify like a few 10s like maybe 20 30 how many ever features
+
+208
+00:26:18,560 --> 00:26:27,280
+ you want to detect hope that answers the question, did not understand center pixel in manually
+
+209
+00:26:27,280 --> 00:26:53,320
+ designed kernel ok. So, can I go back to my slide, can I show my slide.
+
+210
+00:26:53,320 --> 00:27:09,480
+ Yeah. So, see so this image will make it clear right. So, whenever you are yeah maybe the
+
+211
+00:27:09,480 --> 00:27:19,200
+ slide should come. So, whenever you are whenever you are overlaying so this is the kernel ok
+
+212
+00:27:19,200 --> 00:27:26,280
+ this is the kernel whenever you are overlaying this kernel on top of a receptive field. So,
+
+213
+00:27:26,280 --> 00:27:32,860
+ this is the receptive field now the center pixel of this receptive field is this pixel
+
+214
+00:27:32,860 --> 00:27:38,880
+ the output will be predicted. So, every time you do a overlay only one output value is
+
+215
+00:27:38,880 --> 00:27:45,200
+ produced by the convolution kernel right only one output value ok this particular output
+
+216
+00:27:45,200 --> 00:27:49,680
+ value in this particular case is 2 you can do the computation. So, you multiply this
+
+217
+00:27:49,680 --> 00:27:56,920
+ times minus 1 this times 1 this times 2 and so on and so forth ok.
+
+218
+00:27:56,920 --> 00:28:03,280
+ Center pixel determines where in the output grid this particular pixel will be placed
+
+219
+00:28:03,280 --> 00:28:09,240
+ ok. So, that is the center pixel. So, it is the center of the receptive field where the
+
+220
+00:28:09,240 --> 00:28:21,000
+ output will be placed I hope this is clear. How is output calculated with the help of
+
+221
+00:28:21,000 --> 00:28:26,840
+ the kernel I mean the mathematical matrix calculation is used yes. So, this particular
+
+222
+00:28:26,840 --> 00:28:33,160
+ calculation we have already shown if you just this is very important to understand this
+
+223
+00:28:33,160 --> 00:28:38,280
+ this is the convolution operation ok. It is very important to understand this computation
+
+224
+00:28:38,280 --> 00:28:55,840
+ which is given I if there was one slide yeah in this slide it is given. So, you can just
+
+225
+00:28:55,840 --> 00:29:00,080
+ do the computation and you will understand how. So, this is the convolution operation
+
+226
+00:29:00,080 --> 00:29:08,040
+ ok ok. So, thank you very much yeah bye.
+

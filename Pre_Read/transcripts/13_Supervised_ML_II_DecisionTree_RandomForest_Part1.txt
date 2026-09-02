@@ -1,0 +1,486 @@
+ Hello everyone, good morning, welcome to the second session of today's lectures.
+ So here we I am going to talk about supervised machine learning which we started discussing
+ last week and today particularly I am going to cover decision tree and random forest.
+ So before that let us just get a quick recap.
+ I know that you have been working on this even through the hands-on tutorial.
+ You have been looking at the classification problems but still just a little recollection.
+ So classification is essentially a mapping between set of features to a set of level
+ or a particular level.
+ So in case of binary classification for example we have a record where each record has x which
+ are the attributes or features or independent variable whatever we may want to call it and
+ y is the class or the level or the output and in binary y is either 0 or 1.
+ In case of multi-class classification y can take more than two classes.
+ Classification task is to learn a model that maps the attribute set to the corresponding
+ class level so that whenever a new data point comes we can immediately through the model
+ we can immediately predict what is the likely level for this particular input test.
+ Now if you recall last week we have talked about three classifiers, knife base, nearest
+ neighbor and support vector machines.
+ Today we are going to talk about decision tree and we would talk about ensemble classifiers.
+ Example network or deep neural network which is like more popularly known as deep learning
+ that will be covered in subsequent lectures.
+ So let us first look at decision tree.
+ So before that let us take an example classification problem and this classification problem is
+ a simple problem.
+ So here we want to decide whether to play tennis on a particular day, so this is our
+ model or this is the model which we want to build that given the weather condition of
+ a particular day the model is going to predict whether there will be a tennis match or not.
+ Now in order to train this model let us say the club where the tennis is being played
+ they have collected last 14 days of data, the weather condition on those 14 days and
+ the corresponding status like whether actually a match was played or not.
+ So as you can see for example you look at day 1, day 1, in day 1 the outlook was sunny
+ temperature was hot, humidity was high and wind was weak and on that day there was no
+ game which was played.
+ On the other hand if you look at day 4 outlook was rain, temperature was mild, humidity was
+ high, wind was weak on that day a match was played.
+ So similarly you have such a history of 14 days and every day what was the weather condition
+ and whether a match was played or not.
+ Now since we are dealing with two levels here, one is whether a match was played or another
+ is whether the match was not played yes or no, so this is a binary classification problem
+ and this outlook, temperature, humidity and wind these four are the features.
+ So they are also called categorical features because they can pick values from certain
+ fixed categories.
+ So for example the outlook can be sunny, overcast or rain, temperature can be hot, mild or cool.
+ So similar like that, it can also have numerical features, now in this example there was no
+ such example of numerical features but let us say if instead of bucketizing the temperature
+ as like hot or mild or cool, if we just use the centigrade temperature like exactly the
+ temperature is less than 20 degree centigrade or 30 degree centigrade or 40 degree centigrade
+ in that case it would have been a numerical feature.
+ Now with this background let us see how a decision tree can be built using this training
+ data which we have.
+ So essentially we are going to construct a decision tree like this that where this is
+ a node, so this is also called a root node, these are internal nodes and these are the
+ leaf nodes.
+ So decision tree essentially enforce a hierarchical hierarchy of rules to make a prediction.
+ So this internal nodes and the root node they test the rule and in the leaf node you see
+ that ultimate decision is there.
+ So decision tree learning is essentially learning such a tree from the level training data as
+ we saw earlier those like 14 days of match data whether a match was played or not depending
+ on the weather condition.
+ Now the basic idea behind decision tree is generally very simple.
+ We would like to recursively partition the entire training data into homogeneous regions.
+ Now what is meant by homogeneous region?
+ homogeneous region is one where all the training input will have the same level.
+ So let us just see one example.
+ So let us say this is our entire training data with the corresponding levels.
+ So here as the picture suggests there are three levels red, blue and green and the training
+ data like all these dots denote a particular data point.
+ Now the goal of or in this case a homogeneous region is to divide the entire training space
+ or the data space into regions where only one type of level is present.
+ So for example here this is one homogeneous region because here there is only blue levels.
+ Similarly here there is there are only red data points.
+ Similarly you can continuously divide and eventually after this division like we have
+ just divided the entire training data space into smaller subspaces which we are calling
+ as homogeneous region where essentially there is just like one single class level data with
+ a single class level is present.
+ Now do we always want such a scenario like where all the points are just one class level?
+ Ideally yes but in reality they may still have some training data point which do not
+ belonging to the exactly one class level but the majority of the levels in a particular
+ region will be of one type and that constitutes a homogeneous region.
+ So now if we can let us say divide the entire training data into such homogeneous regions
+ in that case within each group we can simply fit a supervised learner and that supervised
+ learner is going to predict the majority level.
+ Now we will come or we will discuss this in more detail a little later.
+ Now let us look at what happens when a particular test input is given and how its level is predicted.
+ So let us say that we have divided the whole region into this homogeneous regions and essentially
+ homogeneous region means that each of the this black lines which have created the homogeneous
+ regions they correspond to some rule.
+ So the first rule is let us say that in terms of feature 1 or X1 our this line this black
+ line correspond to this rule whether X1 value is greater than 3.5 or not.
+ You see that actually this rule divides the entire space into this part and this part.
+ Now of course this itself is not sufficient.
+ So you need to also consider the feature 2 or X2.
+ So my first line here the line here this correspond to X2 is equal to 2.
+ So we are defining another rule whether X2 is greater than 2 or not.
+ If yes then we are talking about this region if no we are talking about this region.
+ Now if no we are talking about this region then this entire thing is only red.
+ So if a particular input falls here then we will immediately predict that has to be red.
+ On the other hand if you look at this particular region in this region X1 is greater than 3.5
+ X2 is also greater than 2.
+ So X1 greater than sorry this should be X1 greater less than 3.5 it is not greater than
+ so sorry for the typo.
+ So if X1 is less than 3.5 and X2 is greater than 2 we are essentially in this particular
+ region.
+ So there are a lot of red dots there.
+ So let me just change the color a little bit or also just like remove this.
+ So essentially we have now yeah so we have one rule whether X1 is less than 3.5 so that
+ actually that correspond to this particular line.
+ So this divides the entire space into two regions the right hand side and the left hand
+ side.
+ Now in the left hand side now our first rule is this line so this line correspond to X2
+ is equal to 2.
+ So if X2 is greater than 2 then we are talking about this region if X2 is less than 2 we
+ are talking about this region correct.
+ Now if X2 is greater than 2 in that case X2 is greater than 2 and X1 is less than 3.5
+ so that is this particular region.
+ So if any point comes here in that case it will be predicted as red.
+ When X1 is less than 3.5 and X2 is greater than 2 then we are talking about this particular
+ region and as the color suggest that region is green.
+ So now let us move to the right part so this correspond to X1 which is okay I am I think
+ sorry I am just making some silly mistakes.
+ So essentially this is actually 3.5 more than 3.5 so I just like didn't notice the yes
+ and no level.
+ So when X1 is 3.5 we are essentially in this region and in that region if X2 is greater
+ than 3 that means this.
+ So this is dividing it into again 2 regions the one lower and the one upper.
+ In the lower region our X1 value is greater than 3.5 and X2 value is greater than 3.
+ So in that case we are predicting so in that case we are predicting green otherwise we
+ are predicting red.
+ Now let us see for a particular test input what happens in this case the test input is
+ actually belonging to the green point like the test input is denoted as the black dot
+ here.
+ Now after this decision 3 is created now I am just going to predict what happens with
+ the test input.
+ Now see the test input the X1 value is greater than 3.5 that is not correct.
+ So it goes to the left hand side X2 is greater than 2 that is yes.
+ So in that case this actually followed this path and we make the decision that here the
+ class level is green.
+ So you see that once the decision tree is constructed properly it is a very efficient
+ algorithm at the test time.
+ So if you look at this particular example when a particular test input has come we just
+ made 2 comparisons we checked whether a particular feature X1 whether it is greater than 3.5
+ and whether another feature X2 whether that is greater than 2 that is it.
+ Only 2 feature value comparisons we have made.
+ On the other hand if we were to use something like a K nearest neighbor the K nearest neighbor
+ would have compared distances from all the training input.
+ So that way it is much, much costly at the test time because if there are in this example
+ there are so many training inputs.
+ Now if a particular test input has come in that case the test input would have been compared
+ with all the training inputs then we would have found the nearest let us say 5 or 6 neighbors
+ or 7 neighbors and then picked the level which is majority in the neighborhood.
+ But the initial comparison to figure out who are the actual neighbors that would have
+ costed a lot of time.
+ Now here the root node essentially actually consists of all the training input and it
+ decides like where to go as we move down the tree each internal node also deals with a
+ subset of training inputs and effectively the leaf nodes deal with the least possible
+ training input where there is not much variability in terms of the class levels.
+ So mostly the leaf nodes we try to make them deal with only homogeneous regions.
+ Now there are still some considerations when we are building decision trees what should
+ be the size of the shape of the tree.
+ So for example like what should be the number of internal nodes and leaf nodes.
+ So see that there is no rule saying that you have to only have two decisions against a
+ particular internal node.
+ So you could have had another decision like this.
+ So it is not necessary that every tree just need to have like two decisions.
+ So that is one the branching factor of internal node as I mentioned.
+ Then how many leaf nodes do you want to have?
+ How many internal nodes do you want to have?
+ What is going to be the depth of the tree?
+ Like is it going to be let us say three depth or four levels or five levels?
+ How much deep do you want to make the tree?
+ Then the second question is the split criteria at the internal node.
+ So we have a rule like earlier the point like where I was getting a little confused was because
+ of this comparison either the answer is yes or no and accordingly you would take one particular
+ root through the tree or path through the tree.
+ So to determine which is going to be this rule or which is going to be the condition
+ on which we are branching to different leaf nodes.
+ So that itself is something which we will have to decide.
+ So that is the split criteria.
+ So should we go for another classified to determine the split criteria or should we just do some
+ simplest test to just identify whether we are doing it correctly or not.
+ What to do at the leaf node?
+ So leaf node is making the final decision but if all are all levels are the same like
+ if it is truly homogeneous then there is no problem but sometimes you may not be able to
+ distinguish it very cleanly.
+ So you may have a mix of two class levels even in a leaf node.
+ So what to do in that case like should we make a constant prediction for each test input
+ which comes there or should we use something like a nearest neighbor based prediction but
+ only looking at the inputs which are there at the leaf node.
+ So these are many different options which we have.
+ The question is which one to pick.
+ Often time cross validation which we discussed in the last class cross validation is typically
+ used to decide many of these questions like whether we want to go with a particular size,
+ we want to go through a particular depth.
+ So all these things are typically decided based on the cross validation performance.
+ Now let us look at or let us spend a little bit more time on the split criteria what can
+ be done to figure out like how to split at internal nodes.
+ Now recall that root node deals with the entire training set when we come to the internal
+ nodes they typically receive a subset of all the training inputs.
+ But our idea is that whatever the splitting criteria may be we would want a scenario where
+ after the split it is made then in the next branch we want to reduce impurity as much
+ as possible.
+ So what is meant by impurity or on the other hand what is meant by a pure group or purity?
+ A pure group means that most of the inputs for that group will have the same level or
+ output.
+ So let us just look at two examples.
+ So let us say this was the internal node and in internal node we have four red data points
+ and four blue data points so this is the distribution.
+ So as you see that when the training data points came here you have equal number of
+ red data points equal number of blue data points.
+ Now suppose your criteria is such that it ended up having in the left hand side you ended
+ up having two red nodes and two or let us say two examples which are red and two blue
+ examples.
+ On the right hand side also you have two red examples two blue examples.
+ So this is not a very good split because you started with a uniform distribution of class
+ levels in that particular internal node if even after you split them if you end up getting
+ the same uniform distribution then there is no value of this splitting you are not helping
+ in the classification process rather compared to that a much better split is such which
+ even if it takes an uniform distribution of equal number of blue and red nodes but it
+ ends up dividing them in groups such that in each group either you get like a majority
+ of red levels and a minority of blue levels or you get a majority of blue levels and a
+ minority of red level.
+ So that way although you started with a uniform distribution you end up with a skewed distribution.
+ So this is actually considered as a good split and this intuition is utilized when we start
+ building a decision tree.
+ Now how do we measure this purity?
+ So purity is measured using a particular metric called entropy.
+ Entropy is a measure of purity.
+ So in very simple terms what entropy measures is the randomness in distribution alright.
+ So for example when we are dealing with a uniform distribution there is very high randomness
+ why so let us say that you close your eyes and you try to pick a sample from a particular
+ set of let us say set of balls.
+ Now the balls are either blue balls or red balls.
+ Now when there is a very high randomness and my eyes are closed there is almost equal probability
+ that I will pick a red ball or a blue ball.
+ You cannot say for certain or you cannot be certain that you are going to pick only one
+ colored ball because like your distribution is uniform so you have almost equal number
+ of red balls and blue balls so you have almost like 50% probability that you will pick a
+ red ball or a blue ball.
+ So in such cases where the randomness is very high the entropy measure will be high I will
+ come to how it is exactly measured but I am just giving you an intuition.
+ On the other hand let us say that you know that a particular set has most of the balls
+ there are blue.
+ Let us say 90% are blue balls and 10% are red balls.
+ In that case you are essentially dealing with even if you are just picking one ball randomly
+ there is a very high chance that the ball will be blue.
+ So here the randomness is much lower so in other words if you see that the probability
+ of both the options are almost equal in that case there is very high randomness.
+ If you see that the probability of one option is much higher than the probability of another
+ there is lower randomness.
+ So in the first case the entropy would be much higher.
+ In the second case the entropy would be much lower and this is why you started with uniform
+ distribution here.
+ So there the entropy was very high you ended up with a skewed distribution and in the skewed
+ distribution the entropy is low.
+ So we want a split which goes from high entropy to low entropy.
+ So low entropy means that there is high purity less uniform level distribution and we want
+ the split that give the highest or largest reduction in entropy before split versus after
+ split.
+ In fact this reduction is also called information gain.
+ So again going back to our example of this blue balls and red balls so essentially when
+ you are just blindly picking a ball there is a 50% in the initial case there was a 50%
+ chance that you pick a red ball versus a blue ball correct.
+ Now in the next distribution where you have 90% blue balls and 10% red balls you are more
+ certain.
+ So you have more information about what you are going to pick.
+ So you are now more confident about picking a blue ball.
+ So you have gained some inside information about like although you do not know for like
+ 100% certainty that you are going to pick a blue ball but you are now much well equipped
+ to predict that I am going to pick a blue ball alright.
+ So this gain in information is defined as information gain this is another measure and
+ entropy as I mentioned entropy actually measures the purity of the distribution alright.
+ So let us now look at them in a bit more formal manner.
+ So we will cover the exact formula for them in just like in a couple of slides.
+ So basically the technique to split at internal node is such that every node decides which
+ outgoing branch and input should be sent to and this can be done by testing the value
+ of single feature at a time.
+ So in this case let us say I am just determining whether I am going to pick a particular single
+ feature and accordingly I am going to divide.
+ Now with this approach so on other hand like in one approach you just make a horizontal
+ split and in that approach all features and all possible values of each feature need to
+ be evaluated and we need to select the feature which we want to pick at every internal node
+ and on the other hand like you can also try to learn a classifier where we would have
+ to every internal node the decision is based on actually learning a decision boundary and
+ based on the decision boundary we will send it to the left child or the right child.
+ Now in general these are more common like where we look at a single feature pick the
+ one which is giving you the maximum benefit and in fact all ID3 C4.5 algorithm these are
+ very popular algorithms they all use this a single feature at a time concept.
+ On the other hand more advanced decision tree methods also use some internal classifiers
+ at every internal node so for example let us say you actually run a simple SVM to determine
+ the classes or the split at the internal level so this happens only at a advanced TT method.
+ So for now we are going to stick to this particular method where we are picking a single feature
+ at a time but the goal is to identify which feature is giving us the best possible result.
+ So for example here one feature may lead to an horizontal split of the training data another
+ feature may lead to a vertical split of the training data.
+ We have to compute the entropy before the split the entropy after the split and we are
+ going to pick the feature which leads to the highest possible or largest possible drop
+ in entropy as we mentioned in the earlier slide.
+ So essentially like there can be multiple questions for example given some training data so let
+ us say this training data was given and we ended up getting this particular decision
+ tree but how do we know whether this decision tree is the best possible or optimal decision
+ tree.
+ Now in general constructing decision tree is a very complex algorithmic problem in fact
+ those of you who have done some quotes on theoretical computer science would understand
+ that this problem is called NP heart problem.
+ So these are problems which are quite hard to solve and often time we use some kind of
+ a greedy strategy to construct a good decision tree.
+ Now to do this we use the training data to figure out which rules should be tested at
+ every node we will show some example there.
+ Now the question is that like how to decide which rules to test and in what order.
+ So we apply this so we look at the training data to figure out which rules to be tested
+ and we apply the same rules on the test input to route them along the tree until they reach
+ some leaf node where the prediction is going to be made.
+ So these rules are organized in the decision tree such that most informative rules are
+ tested first.
+ So note the word most informative so this actually gives you the intuition that we want
+ to go after information gain that means the drop in entropy before the split and after
+ the split.
+ So the rules are this is kind of decided based on that so as the animation such is like how
+ to assess the informativeness of a rule.
+ So essentially informativeness of a rule is of related to the extent of the purity.
+ More informative rules yield purer splits as we will see here in the example.
+ So again we are back to the playing tennis example.
+ So let us say that every internal node in the decision tree which we are building for
+ the playing tennis example is going to test the value of one feature.
+ So if you remember there are these features like outlook, temperature, humidity and wind
+ and based on these features and the corresponding values we are making a decision whether game
+ will be played or not and we want to come up with a decision tree like this.
+ But the question is that whether outlook should be the root node or should humidity be the
+ root node or wind should be the root node.
+ So now we will have to decide why does it make more sense to test the feature outlook
+ first or in other words like to put outlook in the root node.
+ So here the answer is that of all the features it is most informative.
+ Now of course like I am not an oracle like who can tell that without actually computing
+ this so we are going to compute this but for the moment just assume that outlook is the
+ most informative feature and that is why we have put outlook in the root node.
+ In fact it has the highest information gain as the root node.
+ Now let us come to formally define entropy and information gain.
+ So let us just assume that we have a set of labeled input S.
+ So this S you can think of your training data set and we have C classes.
+ So C in case of binary classification C means 2 classes like class 1 and class 2.
+ If it is multiclass classification you may have multiple classes like class 1, class 2,
+ class 3 and PC you can get as the fraction of inputs which belong to class C.
+ So there is a particular class C and we are defining the input.
+ Now entropy of this whole set is defined as hs to be minus summation of P log P or in
+ other words PC is the fraction of class C inputs we take that and then we multiply that by
+ logarithmic of PC and we sum all of them up and this is a negative sum.
+ So we take the negative of that and then sum all of them.
+ Now suppose so this is what we are getting so this we are getting at the set S level.
+ So this is let us say set S, this has class let us say cross and tick.
+ For every class we are determining the fraction of class C inputs.
+ So for example here the fraction of class cross input is half, this is the fraction
+ of class tick input this is also half.
+ So we are just going to take like half log half and 2 times this and then we are going
+ to take the sum.
+ So sum is essentially in this case so when I say sum so this is essentially we are when
+ we are just like summing it up like half log half it we are talking about like 2 additions
+ of this is 2 and then we put a minus.
+ So this is going to be the entropy of this particular set S.
+ Now suppose this S set is then further divided to be 2 subset S1 and S2 and S1 let us say
+ we have 1 tick and 1 cross, S2 we have 1 tick and 1 cross.
+ Basically we are going to compute the entropy of S1 entropy of S2 and then we are going
+ to compute information gain as the reduction of entropy after split.
+ So HS we know HS is that original entropy which we computed then we computed HS1 HS2
+ so we are taking HS1 we are taking HS2 and we are normalizing with respect to the number
+ of data points went to each of this subsets.
+ So we are now just computing this so this was our original entropy this is the resultant
+ entropy after the split and we are taking an weighted sum of that and information gain
+ is the difference between these two.
+ So this was after split and this is before split so this is before split this is after
+ split we take the difference as information gain.
+ Now in general uniform sets like where all classes are roughly equally present actually
+ have very high entropy.
+ Just recall the red ball blue ball example which I gave that when there is high randomness
+ so then there is high entropy but when the distribution is skewed the entropy is lower.
+ So if you can go from a higher entropy system to a lower entropy system we will have more
+ information gain and we will try to get rules which can lead to this.
+ So in our earlier example we see that we actually went so in one kind of split so in this split
+ we started with an uniform distribution we ended up having two uniform distributions.
+ So this is not a very good split because here the entropy decay was not much in fact in
+ this case like you can compute and see that it is almost like information gain is 0.
+ Well on the other hand here you are starting with an uniform distribution but you ended
+ up with two skewed distribution so it has very high entropy these two are having low
+ entropy so here the information gain will be much higher.
+ So this is a much better split compared to this split.
+ So whatever feature is giving us a split like this we are going to pick that compared to
+ another feature which are giving us split like this.
+ So this is a no this is yes when we are trying to select a feature on which we want to split.
+ Now let us try to work it out using our tennis example.
+ So first for this whole data we have 4 features again outlook, temperature, humidity, wind.
+ Now let us just for example take the feature wind and let us try to consider whether taking
+ feature wind as the root node that will lead to a good reduction in entropy that means
+ a high information gain.
+ Now root contains all the examples so in this case if you just work it out the H s will
+ become 0.94 when we are taking the wind.
+ So why out of 14 days there were nine days for which the game was played sorry so out
+ of nine days so you had the wind weak wind on nine of the days and in five of the days
+ you had wind was strong.
+ Now so that is why like you got this kind of entropy when you are only considering once
+ again let me just clear this out once and then we can just start again.
+ So let us just use this example let us take what happens when we take let us say wind
+ as the root node.
+ So now root contains all the examples now in this case wind has two data points like
+ either the wind is strong or wind is weak and you have two scenarios whether the match
+ was played or the match was not played.
+ Now nine out of 14 days the match was played and five out of 14 days the match was not
+ played.
+ So this was the overall entropy value when we are considering all the training data.
+ So this is 9 by 14 because this is the case for which match was played log 9 by 14 and
+ then like you know that this is a negative sum.
+ So again like minus 5 by 14 log 5 by 14 and you get an entropy of 0.94.
+ Now based on the feature wind we now just distinguish them between weak and strong.
+ So this is the set of inputs where the wind was weak and this is the set of inputs where
+ the wind was strong out of all the cases where wind was weak six days match was played two
+ days match was not played.
+ So this has an entropy 0.811 on the other hand is strong that means the cases where
+ the wind was strong three days match was played three days match was not played the entropy
+ is one.
+ So if you look at the overall information gain when we use wind as the root feature
+ it is HS minus S weak S strong and this boils down to 0.048.
+ So this was my information gain.
+ In the similar procedure we can compute the information gain for outlook if we used outlook
+ as the root feature we can compute the information gain for humidity if we used humidity as the
+ root feature and temperature as the root feature.
+ Now we combine the information gain of wind was 0.048, outlook was 0.246, humidity was
+ 0.151 and temperature was 0.029.
+ Now if we compare all of them we can see that 0.246 was the highest value.
+ So the outlook feature actually gave the best possible information gain and hence, hence
+ we pick outlook as the root node.
+ Now this is just to compute the root node.
+ We will also have to compute the internal nodes.
+ So how to grow the tree that what to do at the next level, what would be the internal
+ node or what would be the feature which we will use as the splitting criteria.
+ So we actually iterate this whole process for every node along the line.
+ So once we select the root node then we follow it up with like other internal nodes and we
+ continue doing that and we continue growing the tree.
+ So first it was outlook, then we have to decide what to take.
+ So we compute, so for the level 2 we can compute the information gain again.
+ So for temperature the information gain was 570, for humidity the information gain was
+ 970 and wind the information gain was 0.019.
+ Now since humidity led to the highest information gain, so we pick humidity as the next feature
+ at level 2 left node.
+ Similarly for level 2 right node we will pick another one.
+ Now here for example there was one extra leaf node or one leaf node where we got a scenario
+ where every point here was leading to one class level ES.
+ So if you look at this when outlook is overcast we have 4 days and all 4 days match was played.
+ So this particular case we do not need any further split because it is already we are
+ at a point where every class level here is pointing to ES.
+ So we are only concerned about the left node and right node.
+ For left node we got humidity which actually led to the best highest information gain.
+ We will do it for the right hand side and we can verify by computing the information
+ gain that here taking the feature wind actually leads to highest information gain.
+ So here we take wind.
+ Now this can go on and on right.
+ So we will have to also stop growing a tree.
+ So we started with the root node, we now have multiple internal nodes, we also got some
+ leaf nodes.
+ At certain time we will have to decide that okay enough of it we just stop the process
+ of building the tree at this point.
+ So what is the stopping criteria?
+ So we stop when either the node consists of only training examples having the same level.
+ So if it has become pure, I mean there is no way we can further divide it or we have
+ although like the set has not become pure but we have tried out all possible features.
+ So there is no more features to test.
+ Third is that the decision tree starts to overfit.
+ Now this is something earlier Sabasachi was alluding in his the demonstrations that look
+ at certain time your model can also overfit like where you can do very well with your
+ training data but as soon as you hit a test data point then your accuracy start going
+ low.
+ In fact this can be checked by looking at the validation set accuracy that ideally the
+ validation set accuracy should be high like we do not want to do very well only with the
+ training data, we want to do well with the test data.
+ So now if we continue trying to fit the model so that it does very well with the training
+ data we may lose out on the test time performance.
+ So this is called overfitting and at certain point the decision tree will start to overfit
+ and we close or we stop growing the tree at that point.
+ So here if we can look at let us say this is the test accuracy and this is the validation
+ accuracy you see at certain point the test accuracy may continue to grow but the validation
+ accuracy may start dropping and at that point we should stop growing the tree further.
+ And one thing is important is that like if we want to obsess too much on purity then
+ it can lead to overfitting.
+ So we might be okay with let us say a scenario where 80% of the class levels are of one type
+ and 20% are of another type that is okay because that will help us prevent the tree from going
+ too much.
+ So it is okay to have leaf node that is not fully pure let us say that the probability
+ of red can be 3 by 8, probability of green can be 5 by 8 and we can simply take the majority
+ value and that is perfectly fine.
+ So at this moment let us just take a small break and let us convene again after 5 minutes

@@ -1,0 +1,1172 @@
+ Hello, good morning to all of you, am I audible clearly?
+ So, today we are going to start about the supervised learning, so basically last class
+ already we have got the very good exposure in terms of the theoretical development.
+ So, Dr. Avigran Chakravarti has spoken about the different techniques, tools and techniques
+ related to supervised learning for example, he has already spoken about the support vector
+ machine KNN and Nape-based classifier, so already you got those idea that how to implement
+ them and how to explore them on those angles, now this particular session will be basically
+ based on the hands-on experience, so already Mr. Shumon Kumar Berra beautifully has taken
+ your python session, so myself I have a PhD research scholar from Center for Computational
+ Data Sciences of IIT Kharagpur, so I will also cover up the basic aspects of this supervised
+ machine learning, so there you will learn how to explore the python or pythonic platforms
+ in Google Colab to execute certain problems related to machine learning using the tools
+ like support vector machine, KNN as well as Nape-based classifier, so all of you are quite
+ accustomed with the IIT data set I believe, I will also give you some idea, so we will
+ continue with the same type of the data set, so that all of you can align yourself where
+ Shumon has left during his last hands-on session, so let us start, so those who are new to Google
+ Colab, I believe that all of you got some exposure for the classes of the March, February 15
+ and February 22 about the Google Colab during the hands-on session of Shumon, but I am also
+ giving you some idea that how to explore, use it, so those who remember it fine directly
+ open it, those who still feeling some confusion just follow my instruction, so in Google simply
+ type Google Colab and then you open it up, so for example if I open up like the Colab
+ notebook, so you can just click on it, so basically what you can do, you can go to the
+ file section and then click on the new notebook in drive, so it will open up in new window,
+ so this is my original notebook and from this particular notebook, I will use it and will
+ show you that how to run certain chunk of code in Colab cells, so this is for example
+ I can put some name, this is a new notebook, I can put some name like for example demo1,
+ you can give something like that, like demo1 or demo ml, something like that you can put
+ some name there, so this particular segment as you can see plus code plus text, these
+ two options are given, so plus text option you can use if you want to put some text there,
+ like for example if I want to write SVM just for example, so I can keep it there, for example
+ as you can see it is appearing here, so this is how text can be written or like for example
+ you want to bold it, so that is also doable, so you can select it, you can click on plus
+ b that stands for bold and you can make it bold, so as you can see it has appeared in
+ bold, so in this way whenever you are coming again you see a plus code plus text buttons
+ are given there, so you can click on plus code and you can run your portion, you can
+ write the code and then run this particular portion with the help of clicking on this
+ run cell button, this portion is called the run cell, so it will show you the execution
+ time, while running it not only it will, if you can run successfully the green tick button
+ will appear and it will show some time like 2 second, 1 second in this way, so this is
+ the original notebook, so those who are new to it I will always request all of you to
+ type it, I will wait for all of you, nothing to worry about it, so I will give you some
+ time to execute the code and you just try to type it or those who have access, those
+ who got the link of my GitHub account, they can directly access the code from my GitHub.
+ So this is basically a repository for those who are new to it for them I am showing, this
+ is the basically the repository as you can see, so those who directly got it fine, those
+ who do not got it just I am just showing you, you can directly even access to the Google
+ by Google search, so suppose I am over the GitHub if you type, you can directly get it
+ from here also, so I am just showing those who got the link fine, those who are still
+ in confusion for them I am just showing it, so if you go to the repository, so repository
+ ml using python is at the top, so you go to that repository and then this one, SVM different
+ kernels just above the simple linear regression and below the random search, just click on
+ it and directly you can open and you can also access the code from there, so this is the
+ code you can download also by clicking this particular button download raw file, you can
+ download the notebook.
+ So these are the way you can directly download the codes from my GitHub fine and then let
+ us start executing one by one and another interesting file you can open up if you wish,
+ so this particular file is basically the explanation of the code which I am going to use now.
+ So I have shared this notebook and this particular PDF file to all of you, so it is available
+ in the TCS and portal, so you can access it and you can also download apart from that
+ you can also download by clicking on this download raw file.
+ So here I have added the codes and relevant other relevant explanations for supervised
+ learning part one, so those who are new to it nothing to worry about it, I have given
+ all the relevant information and during the hands on session I request all of you kindly
+ type it and those who already know this particular portion please consider this as a good practice
+ or good revision, so that those who are new they can get some chances to explore it because
+ those who are new for them they need some time to type, they need some time to grab the concept.
+ So because of that I request those who are already well known to this or familiar to
+ this kindly have their patience and consider this as a good practice so that others can
+ also get some scope to learn it.
+ So let us make the session ubiquitous for all, so let us start.
+ So now for example at first we are importing the necessary Python packages, so from your
+ basics from your basic knowledge of Python already you have got idea that we need to
+ import certain packages whenever we start exploring.
+ So for example import numpy as NP, so what it will do it will give you some opportunity
+ to explore the array related operations in Python or Python platforms.
+ So for example in Colab you can run the course related to Python and Python platforms like
+ TensorFlow, Keras, PyTorch etc. then for example we can import pandas spd.
+ So it will give you all data frame related operations, manipulations you can do here.
+ Then import matplotlib.pyplotsplt, so what does it do?
+ It will basically help the Python platforms to act like matlab like environment, so that
+ you can easily draw the plots and all those things.
+ For Seaborn as SNS, so during the confusion matrix when you will form the confusion matrix
+ you will see the use of Seaborn, if you do not use you will not get the extra opportunity
+ of exploring the color collects, matplotlib will give you the idea of the opportunity
+ to plots the figures, but Seaborn gives you the additional color pledges by operating
+ over matplotlib to generate the very beautiful colorful plots.
+ For example in today's session during drawing the confusion matrix you will learn about it
+ and then from sklearn.metric will import accuracy score, confusion matrix as well as the classification
+ report.
+ So this particular segment those who are new to it nothing to worry about it, you will
+ get the, when you will study you will get the recorded version of this particular session
+ and not only that for learning purpose I have added this portion.
+ So here you see the explanation of NumPy which I have explained now, pandas, scikit-learn,
+ matplotlib as well as pyplot and then the Seaborn till now whatever I have explained
+ everything is present there.
+ So for your assistance purpose sometime I will switch to this particular window as well
+ so that I can show you that all the relevant information is present in this particular
+ PDF file which is loaded in my Github.
+ So that you can easily get the access and understand the concept.
+ So now let us let me show you the execution.
+ So let me go back to the demo window and let us click on the run cell button.
+ So it will execute and when the execution is done successfully a green thing will appear
+ along with the execution time.
+ So it is now what is the time, it is now 9.11.
+ So please finish this simple step by 9.13.
+ So two more minutes will be good enough to finish it up.
+ So let us go back to the demo window.
+ So already you can see this green tick has appeared and two second execution time has
+ been shown as two seconds.
+ It may shown as zero second, one second so in this way you will see it.
+ So please explore this and once you are done then we shall proceed to the next step.
+ So I encourage all of you please type it.
+ You will already have the access of the codes and all those things but however I will suggest
+ that those who are new to it will get lot of confidence when you type it.
+ So please type it.
+ So I shall wait for another more minute and then we shall move to the next step of downloading
+ the iris data set.
+ So through this particular step in the next step you will learn about how to access the
+ online data set directly from the web link.
+ This is an art.
+ So there are many options like you can load the external data set, you can directly access
+ the data set from the web link.
+ So this particular case or today's session you will learn how to access the web link
+ and then explore and process the data.
+ So as you can see in this notebook also like for the first step at first we are importing
+ the necessary Python packages or for example in the next step when we are going to explore
+ the let us download the iris data set from its web link as follows.
+ So all the necessary text has been added there so that you can easily smoothly learn about
+ the steps.
+ In the next step there is one online link is available so I request you to post the link
+ in the comment box section because it will be difficult for them to type especially those
+ who are new they may make mistake.
+ So that is why to avoid the mistake it will be better if we can put the link only put
+ the link there.
+ So once you type in the next step whenever you are typing just keep path equals to and
+ then copy the link given in the comment section.
+ So do not forget to keep the double code and then put it put the link there.
+ So has it been given fine so already moderator has given it there.
+ So from our side moderator is Mr. Devjit Bishas so he will try to give you all kind of support.
+ So let us download the iris data set from its web link this is our next step.
+ So already all of you got the link in the comment box section please look into the comment
+ box section.
+ So path equals to you just type it path equals to and then you can put it there and those
+ who are directly accessing from GitHub they can directly get it.
+ So then just run this particular portion so as you can see if I go to the demo window
+ it has run smoothly and you can see this printing has appeared and the time is also given the
+ 0 second.
+ So I shall wait for 1 minute and then we shall move ahead.
+ So it is now 9.16 so I will wait for 9.17 so that everyone get the opportunity to explore
+ this particular code and then what we will do we shall start the next portion to assign
+ the column names to the data set.
+ In the next portion we shall assign the column names to the data set.
+ So please complete this step and then we shall move to the next portion.
+ Well I shall wait for few more seconds before we go to the next step I hope that most of
+ you already have completed it and those who are doing it please finish it.
+ Well so let us go to the next step now it is time to move forward and let us see the
+ next step.
+ Now what we will do we will assign the column names to the data set as follows.
+ So already path is given there web link has been assigned to the path and then what we
+ will do in the next section header names equals to sepal length sepal width petal length petal
+ width and class.
+ So there are 5 columns in the iris data set 150 rows and 5 columns that we will see whenever
+ we are going to process a new data set we will see the overall structure of the data
+ to understand number of rows columns present in the data, what are the features present
+ in the data.
+ So here sepal length sepal width petal length petal width these are basically the features
+ which are present in the data and class is basically the labeling whether it is iris
+ setosa iris virginica or iris versicolor.
+ So if you check this particular description present in the data set so you can see for
+ your assistant purpose also added the GitHub link to go to that particular notebook and
+ the data set description if you see what I have written there that this particular data
+ set was used in a classic paper by R.A. Fisher in 1936.
+ And this is also available in the UCI machine learning repository actually from that particular
+ web link you have access the data in the present session.
+ And then like I mentioned that there will be total 150 samples and within this 150 samples
+ each category is present as 50 samples like for example iris setosa or iris versicolor
+ or iris virginica and python is a zero indexing language.
+ So that is why the index value will range from 0 to 149 simple calculation.
+ So 0 to 149 will be for values for the iris setosa sequentially it will go.
+ So what will happen if we go by sequentially so 0 to 149 will be iris setosa 50 to 99 index
+ values will be iris versicolor and 100 to 149 will be iris virginica.
+ But still I have mentioned those things very clearly so that those who are new they can
+ easily learn from it.
+ It will be easier to follow if certain reference text is there in front of you.
+ So in this way you can do it.
+ So let us now explore the header names.
+ So now let us proceed.
+ So as we see as we are proceeding to the demo window so again two options will appear plus
+ text plus code.
+ So all of you know what you have to do you have to click on the plus code button and
+ then you can put it there and run by clicking on the run button.
+ So you can see easily it has run and the execution time is 0 second.
+ So I request all of you it is now 920 by 922 complete this step.
+ So I am giving you some time and do it very carefully because those who are new they will
+ take some time for them to type so please do not get fear.
+ The more you will type the more you will practice you will gain the confidence.
+ So this is the policy.
+ In programming there is no shortcut you have to practice to master on it.
+ So nowadays you have lot of options in your hand to get the reference code from GitHub
+ source code from GitHub also you have the options like chat GPT to correct your codes
+ but you should have the coding intuition within you.
+ So that you can understand whatever the code you are accessing whether it will work for
+ it or not or what are the changes you need to do to run the code smoothly.
+ So that type of the insight will only grow when you practice it understand the logic
+ of the code and you are practicing it.
+ So there is no shortcut in it.
+ So hard work practice and applying your common sense your intuition that will help you to
+ gain the success.
+ So I am requesting all of you kindly type it.
+ I hope most of you already have completed it and those who are doing it please finish
+ it but while typing type carefully see the screen carefully and do it or already those
+ who are accessing directly my GitHub so they can easily see the reference code.
+ So please do it carefully while typing.
+ So it is already 9.23 so I shall wait for few more seconds and then move to the next
+ step.
+ So let us move to the next step.
+ So now what we will do this is another interesting way like I told you that in pandas basically
+ what we will do it helps us to access the data frame and other manipulating operations.
+ So what you can do you can type already we have load the pandas as PD if you remember
+ to go to the top you see import pandas as PD.
+ So that is why we are using PD.
+ So data equals to PD dot read underscore CSV.
+ So first argument section what will be within the function path because you have to show
+ the data path it is given there and names equals to header names and then you click
+ on data write data dot shape.
+ So what you will get you will get the entire data shape what are the number of rows what
+ are the number of columns will be there it will be there.
+ So this is the very simple step which you can explore.
+ So again all of you know what you have to do you have to click on plus code button and
+ then you just put the code there or type it and then you get the result.
+ As you can see again the green tick has appeared and execution time is 0 second and as you
+ can see there are 150 rows and 5 columns like I mentioned during the data set description.
+ Whenever you do any analysis with a new data set always try to see the data what is the
+ data structure look like what is the data set description how it has been captured.
+ So for example whenever we are downloading data set from some web link or loading the
+ excel file to analyze the data these all data sets are the secondary data set because you
+ have not yourself have not got the data set through certain experiments or through survey
+ it is already present there you are accessing it sometimes people also buy data set from
+ others.
+ So these all are the secondary data set so then what is primary data set primary data
+ set is basically when through certain experiment you are collecting data in your lab you are
+ doing some experiments and you are collecting data or through some IOT setup or internet
+ of thing setup you are collecting some real time data or it can be some survey data as
+ well in certain area you are doing survey and collecting data.
+ So these are the good examples of the primary data.
+ So that is why when you do the analysis you always have to remember that how the data
+ has been collected so that during the preprocessing step you can understand that if there are certain
+ lacuna's present within the data which you can overcome during the preprocessing.
+ So there can be some sort of the noise may present in the data or there are some sort
+ of the you may have to do the background extraction in the data.
+ So those things are possible when you understand entirely about the data especially for the
+ secondary data in primary data yourself is collecting it.
+ So you have certain idea that what are the instruments or the tools techniques you have
+ used to collect the data but for the secondary data set data set description is very important
+ and that is why you may see in during accessing the data from Kaggle or GitHub the scholar
+ person always put some data set description.
+ So that is why I am telling that to follow the data set description is very important.
+ So today's class is for the new learners for the beginners who are starting their journey
+ in machine learning.
+ So we are going through this type of the example but whenever you will gradually whenever you
+ will get some experiences yourself will be able to understand why I am mentioning that
+ and why understanding the data set is important.
+ So it is now 9.27 so please complete this step within next 2 minutes 9.29.
+ Thank you.
+.
+ So while typing be careful so that there should not be any error so make sure you are doing
+ it carefully.
+ So I shall wait for few more seconds and then move to the next step.
+ So I believe most of you already have completed it and those who are doing it please finish
+.
+ So let us move to the next step.
+ Now let us observe the data.
+ So in Python or any programming languages you always have certain option because you see
+ to observe lengthy data is very difficult as if it is data set is long.
+ So better to follow first few observations or last few observations while observing the
+ data in data science domain there are two popular programming languages.
+ One is R another one is Python.
+ In R and Python in both the cases you have that type of the opportunity to observe first
+ few rows of the data set or last few rows of the data set in R programming head tell function
+ options are there along with the data.
+ In Python also analogously you have that option.
+ In Python the interestingly if we put data dot head operation so you will be able to
+ see first few first five rows.
+ As I mentioned that Python is a zero indexing language so it will always start from zero.
+ So already you know that there are 150 rows.
+ So when you do the data dot head operation it will give so you first five rows so that
+ means the index value will be 0 to 4 what you can observe in the left hand side 0, 1,
+ 2, 3, 4.
+ Already I told you that there are features like sepal length, sepal width, petal length,
+ petal width and the class column you have the levellings of the three species.
+ So from 0 to 49 it is iris setosa, sequentially it is there, then 52, 99 iris virginica,
+ 100 to 149 iris versicolor so those who forget for them I am just showing this line you see.
+ I already have mentioned it there 0 to 49 for the iris setosa, 0 iris versicolor 52,
+ 99 iris virginica, 100 to 149.
+ So obviously if you are seeing first five observations so definitely all of them will
+ be iris setosa.
+ It is quite apparent from our common sense.
+ So let us implement this portion.
+ So it is a very small chunk of code, you will require only a few seconds to run it but still
+ that is the beginner session so I will wait for a minute.
+ So it is now 931 please finish this by 932.
+ So I believe all of you can complete it by 932 so it is just a small chunk of code just
+ execute it and check the data overall data how the data look like.
+ So let us move to the next step.
+ Now we will see the very basic step of data preprocessing, how to do the data preprocessing.
+ Let us see like I told you in any data say data preprocessing is the utmost important
+ step.
+ So this purpose what we will do we will take data dot iloc, iloc stands for the integer
+ location to accessing the index values.
+ So this particular explanation is also added there.
+ If you want to check for them I am just showing what I mentioned now you see I have highlighted
+ what is iloc function.
+ So this is already mentioned.
+ Now what we will do data dot iloc colon comma so left hand side of the comma while accessing
+ the index colon means you are taking all the rows in consideration but in column section
+ colon minus one dot values because whenever you are forming the predictor variables to
+ avoid the class column because this is the target variable class column is the target
+ variable we will not consider it.
+ So for that purpose colon minus one and then to define the target variable why data dot
+ iloc colon four dot values why colon in the left hand side of the comma I already told
+ you are taking all the rows but in right hand side four means this is the fourth index value
+ because column wise it is a zero indexing language Python I already told you.
+ So it will start from zero zero one two three four so class is basically the fourth index
+ so because of that it is already four.
+ So data y equals to data dot iloc colon comma four dot values that is why it is the y is
+ the target variable and x is your predictor variable.
+ So that you have to define what is your predictor variable what is your target variable then
+ only you can proceed so that is how you define x and y.
+ So now it is nine thirty four so finish this simple step by nine thirty six.
+ So it has run successfully and you can see the execution time zero second.
+ So finish this step and then we shall move to the next part.
+ Let me go to the original notebook and do it.
+ In the next step we will do the ten test split.
+ So for example in this data set we will take the seventy percent for the training thirty
+ percent for the testing.
+ In your case in generally the machine learning conventions as per the machine learning operations
+ those who are the practitioner as per their recommendations seventy percent in general
+ we keep for the training thirty percent for the testing or for example you may also keep
+ eighty percent for the training and twenty percent for the testing.
+ So whatever you may do you have to mention in the code that we will see very soon first
+ you finish the step and then we will see that operations.
+ How we are defining whether to take twenty percent or thirty percent of the test data.
+ So that we will see.
+ So I shall wait for another more minute and then move to the next step.
+ So I request all of you to finish it those who already have done it fine those who are
+ still doing it I will finish it.
+ Thank you.
+ Well so let us move to the next step I believe all of you have been able to finish the step.
+ Now like I mentioned that in this step I also added the explanation there if you can see
+ that we are dividing the data into train and test split where seventy percent we are considering
+ of the entire data set for the training and thirty percent for the testing.
+ So as this is there are data size is 150 150 rows.
+ So by our mental calculation if you calculate in mind thirty percent of 150 will be 45.
+ So 45 samples will be for test data size and 105 remaining 105 will be for your training.
+ So from a scale on okay this is I already mentioned that cycle learn is used for the
+ machine learning related operations to provide the support related to machine learning okay.
+ So from a scale on dot model underscore selection we shall import the train test split.
+ So that we can do this ten test split operation and then we will assign the ten test split
+ function over x and y.
+ X is your target variable y is your predicted variable and then test size.
+ So as we are taking thirty percent.
+ So that is why we have mentioned that test size is 0.30.
+ If you have taken that twenty percent or twenty five percent it would have been 0.20 or 0.25
+ respectively.
+ So accordingly the size you are choosing you define it there okay and then it will be stored
+ under the X test X train X test Y train Y test okay and their explanations also added
+ in the it is already present in the data set okay.
+ So that you can check in this particular file okay so just a second.
+ Let me just put this execution here.
+ So all of you know what will be the next step it will be the plus code button you just put
+ it there and then you click on the run cell button and it has done successfully.
+ So you can see the green tick has appeared and it is showing the execution time at 0
+ second okay.
+ So it is now nine thirty eight so finish this step within next two minutes by nine forty
+ so that we can move to the next execution okay.
+ So I believe all of you are doing it carefully okay.
+ So those who are new to this I am I again repeat that please type it I am giving you
+ adequate time to execute it so please type it.
+ So I shall wait for few more seconds and then move to the next step those who are new to
+ it please finish it up I am going back to the original notebook window.
+ So in the next step we shall do the data scaling okay.
+ So I am going to do the data scaling okay.
+ So let us move to the next step.
+ So now what we will do?
+ We will do the data scaling so that means the normalization operation okay.
+ So you may have one data set of size for example 0 to 750 or another one has the for example
+ 250.
+ So how to make them comparable while executing the data analysis operation over there.
+ So the simple step is to put them either minus 1 to 1 range or 0 to 1 range and how to do
+ that the basic operation is the data normalization on data scaling okay.
+ So data minus min divided by standard deviation of the data is your this is how you can do
+ the normalization okay.
+ So this type of the steps has been discussed during your math classes, Maths for the IML
+ Dr. Budhalan Banaji has mentioned that how to do the normalization okay.
+ So data minus min of data divided by standard deviation of data okay.
+ So here how we are doing it through code that we are going to discuss now.
+ So from a scalar and dot prepositing import standard scalar, so standard scalar giving
+ you the accessibility.
+ This particular model is giving you the accessibility to execute the data scaling operation okay.
+ And then scalar equals to standard scalar and then after assigning it, scalar dot fit we
+ are applying over X train.
+ So how does it do?
+ What is scalar dot fit?
+ What is the functionality of the scalar dot fit?
+ Actually calculates the min and standard deviation value of the data okay.
+ And then whenever you are applying it over the X train and X test with the help of the
+ scalar dot transform that means you are doing the data minus min of data divided by standard
+ deviation of the data okay.
+ So for the train X train you can from your commonsense you can understand that train
+ data set minus min of train data set divided by standard deviation of the string data set.
+ Similarly for the scalar dot transfer X test what it will happen?
+ X test data set minus min of X test divided by standard deviation of X train data set.
+ So this is how it happens for data scaling in python or pythonic platforms okay.
+ So let us implement it now.
+ So here you see plus code plus text pattern is there, so click on the plus code and let
+ us put it there and click on the run cell button to execute the entire operation.
+ So you see the green tick has appeared and the execution time is shown as 0 second okay.
+ So it is 9.43, so please finish this step by 9.45, so that we can move to the next step.
+ Couple of minutes will be good enough to explore this one, so please do it.
+ Then we shall start discussing as the prepositioning will be finished.
+ We shall start with the first supervised learning classifier and that would be Nape based classifier
+ okay.
+ So please finish this up.
+ Okay, so I shall wait for another more minute before we can proceed to the next step.
+ So please finish this up.
+ I believe those who are typing they are gradually getting confidence.
+ The more the hands-on session will proceed you will gain the confidence gradually on
+ the subject okay.
+ So in the beginning we have given some theory classes just to build your foundations that
+ is it.
+ So from today's class onwards you will have the hands-on session regularly okay.
+ Already Sumonbeta has set up may give you some idea or the set up the background for
+ using pythons and now for example the other PhD research scholar like me and the other
+ scholars will give you the idea on the journey of the machine learning to how to explore
+ the course in the machine learning domain deep learning as well as NLP.
+ So there are many interesting sessions you will also learn large language model or LLMs
+ okay.
+ So you will see a lot of interesting examples in upcoming sessions.
+ So stay tuned with us okay.
+ So let us start this particular portion.
+ Now here we will use the nav best so in the last session in the last theory class of past
+ March Dr. Obigay and Chakraborty already has given you the idea what is nav best algorithm
+ and this is completely based on the best theorem all of you know okay.
+ So best theorem is also relying on the conditional probability okay there will be certain conditions
+ and accordingly you have to proceed prior probability information will be there and
+ you have to calculate the posterior probability.
+ So anyway so basically here in terms of the coding when we will explore we are going to
+ explore a particular type of the nav best that is the Gaussian nav best which is the
+ simplest and the very effective for the small data set.
+ So as you see the data there are one two rows so it is a small data size okay.
+ So that is why Gaussian nav best is the optimal option to go ahead with it because it will
+ consider it will execute the nav best operation by considering the entire data set as a Gaussian
+ distribution or normal distribution okay.
+ So from a scalar dot nav best we shall import the Gaussian NB and classifier will be assigned
+ as the Gaussian NB and then what we will do we will use the classifier dot fit function
+ over X train and Y train okay and we will see what happens.
+ So let me put it in the demo window as well okay and although I request all of you to
+ complete this step it is now 946 so finish this step by 948 okay 2 more minutes will
+ be good enough to finish this up.
+ So as you can see this green tick has appeared and the execution time is 0 second okay.
+ So how fast it is executing all of you can understand okay.
+ So let me go back to the original notebook and wait for all of you.
+ So before we go to the calculations of the accuracy okay on the training and test data
+ test so first of all let us finish this up okay.
+ So let us go back to the original notebook and see how it is going to be done okay.
+ I will wait for few more seconds before going to the next step so I believe all of you are
+ doing it those who have completed it fine those who are still doing it please finish
+ it. the next step is to complete the test okay.
+ So let us proceed.
+ So now let us first test the accuracy of the next best classifier over the training data
+ set why it is important before exploring the algorithm over the test data set to have the
+ idea how it is performing over the training data set just to avoid the scenarios like overfitting
+ okay.
+ So if your algorithm is working properly there should not be much difference between the
+ whatever that you accuracy you are getting in the training data set and then in the test
+ data set okay either they can be same or they can be nearby okay for example if you are
+ getting accuracy over the training data set 93% in this in the test data set if you are
+ getting 89 or 90% or better than the training data set for example 96 or 97% is absolutely
+ fine there is no cases of the overfitting okay but if it deviates too much like in training
+ data set you are getting 93 for example and the test data set you are getting something
+ like 50 or 60% then you have to think about okay for the effectiveness of the algorithm
+ and you need to do certain changes in the during the execution of the code okay.
+ So that it is the separate scenario but in this case let us see that how it is working
+ over the training data set first and then we shall move towards the test data set okay.
+ So now it is called classifier.predict we shall apply this particular function over
+ x train okay and we will assign it under vibrate and then what we will do we will calculate
+ the accuracy okay by applying accuracy underscore function over y train and vibrate and then
+ we will print it okay accordingly the way we are printing it like for example in print
+ function we are keeping accuracy under code and then we are printing the accuracy value.
+ So accuracy value is already calculated using the accuracy underscore function and then y
+ train vibrate.
+ So if you are getting something like for example here we are getting 95.24% approximately okay
+ as the value is 0.595238 in approximately we are taking if we are taking the 2 digit
+ after the decimal.
+ So approximately it is 95.24% approximately which is the very good accuracy for the training
+ data set okay.
+ So let us execute it in the demo window.
+ So like the way we are printing it will be printed okay.
+ So for example print accuracy colon that is why the accuracy colon has appeared and as
+ the accuracy value is stored under this particular variable named accuracy.
+ So exactly the value has been printed like the way we are printing okay.
+ So this is that is why I am showing this last line is very important.
+ Those who are new to coding for them I am saying the way you want to print it you will
+ type it here and accordingly it will be printed okay.
+ Let me check oh sorry I have missed out this line I have missed out just a second I have
+ missed out this line sorry for the mistake I have to first put it vibrate then we have
+ to go to the next step that is why it is showing that vibrate is not present.
+ So first we have to print the vibrate and then you run it it will run okay.
+ Now you are getting 0.95238 that means 95.24% okay.
+ So whenever you are doing it first execute the vibrate okay in this section there are
+ 2 cells are present okay not the unicell like earlier.
+ So in the first cell you are getting the value of the vibrate and then you are keeping it
+ under the accuracy score function okay in the second argument section and then you run
+ it you will get okay 95.24% approximately okay.
+ So these 2 portion you just implement and then we shall move ahead okay.
+ So it is now 953 so finish this step by 955 okay then we shall move ahead for the next
+ portion of the execution.
+ So remember in this step first we are calculating vibrate and then we are calculating accuracy
+ score and storing it under accuracy and then we are printing the accuracy value okay.
+ So I repeat with the help of the classifier.predict function we are applying it over X train we
+ are storing it under vibrate and then what we are doing we are applying accuracy underscore
+ function over Y train vibrate storing it under accuracy and then we are printing the
+ accuracy value okay.
+ So I believe most of you have been able to complete it those who are doing it please finish
+ it soon.
+ So it is now 954 I shall wait for another more minute before I can proceed to the next
+ step so let me go with to the let me go back to the original notebook.
+ So like I have concluded here as you can see that for the native base classifier we are
+ achieving an accuracy of 95.24% approximately for training data set therefore accuracy is
+ good really good on the training data set.
+ Now we have to make the prediction which can be done in the following way.
+ So each step has been explained there just to guide you okay.
+ So in the next case what we will do we will now it is time to explore on the test data
+ set so we will do that.
+ So what we will do classifier.predict function will apply over X test and we will store it
+ under vibrate okay.
+ So I believe all of you have been able to complete the earlier steps so let us move ahead.
+ So first execute this and then we will print the result okay.
+ So while doing the printing the result in the next step we will see the use of this
+ C bond which I was mentioning through the head map SNS dot head map and you will see
+ this colorful confusion matrix plot okay.
+ So past finish this part and then we shall move ahead.
+ So click on the plus code button keep it there and then you run click on the run cell button
+ to run it okay.
+ So it is a very simple chunk of the code okay.
+ So it is now 9.56 so I believe one minute will be more than good enough to finish this
+ one okay.
+ So finish this up then we shall draw the confusion matrix with the help of the SNS dot head map
+ function.
+ So we have stored see we have loaded C bond as see SNS which is the abbreviated form okay.
+ So we will see the beauty of SNS by adding the extra color pilots to see that particular
+ colorful confusion matrix.
+ It is not only about executing the code properly or drawing the confusion matrix but to understand
+ them is very important.
+ For example if you are writing company white papers or those who are researchers writing
+ research papers or even if you are preparing report for your company.
+ So it is always important to interpret the analysis.
+ You may get some result through executing the code but how to represent the analysis
+ or to interpret it is very important.
+ So that is why I have tried to give you some standard reference write up so that you can
+ follow that write up while preparing your report through the it may be white paper company
+ white papers it may be research paper those who are researchers or it may be in general
+ report while doing analysis.
+ So you can easily interpret them because interpreting them properly in an understandable manner
+ is very much important okay.
+ So that is why I always mention that it is not only about executing the codes or those
+ things but you need to represent them in an understandable format you need to interpret
+ them properly so that everybody can understand it okay.
+ So let us move to the next part.
+ Now in the next step so from escalar.metric we shall import the classification report confusion
+ matrix and accuracy score.
+ We shall apply the confusion matrix over Y test and Y print and store it and result.
+ So sns.hitmap function under that the first argument will be the result second will be
+ anode equals to true.
+ Why it is important because you see the participating test samples will be shown in the confusion
+ matrix like you see 18, 11, 1 okay whether it is a correct prediction or wrong prediction
+ everything will be highlighted here through certain numbers as you can see in each grid
+ of the confusion matrix okay.
+ So that is why anode equals to true and then fmt equals to g is a general format okay.
+ So left hand side of the decimal point will be displaced okay so sorry will be displayed.
+ So as you can see 18, 0, 11 okay so in this way the display is done so fmt equals to
+ g is a general format this is this one.
+ X tick and Y tick level if you see setosa versicolor virginica so as you can see all
+ those tick levels setosa versicolor virginica has present there setosa versicolor virginica
+ is present there.
+ So anything you are mentioning in the code that should follow a certain logic okay.
+ So that is why I am just giving you the idea that whatever is mentioned under the sns.hitmap
+ function it has the meaning and the applications while drawing the figure okay.
+ And then plt.y level it is the prediction and you are keeping font size 13 okay.
+ So it is standard policy keeping font size 12 or 13 so that it can be visible to all
+ of you and while presenting for example you are putting this particular plot in the in
+ certain document it can be doc file or it can be overly poetic file it can be easily
+ visible while generating the pdf okay or other documents so it can be clearly visible to
+ the readers.
+ So that is why we follow certain standard font size policies okay.
+ Then you see for example plt.x level actual font size equals 13 so you see in the x axis
+ they actually is present there okay.
+ And then what you do you put some title so plt.title confusion matrix font size equals
+ to 17 so this is the confusion matrix and through plt.show it will be plot okay.
+ So I hope all of you got the idea and you see this is also explained here.
+ This particular segment if you look you will get all the idea that how the what is sns.hitmap,
+ what is confusion matrix, what is classifier.predict okay.
+ So all those concepts has been highlighted there okay under the parameters data and not
+ okay what I have mentioned it is exactly present there okay fmt what does g actually represents
+ general format which I highlighted x tick level y tick level okay.
+ So all those things is added in this particular reference text format which is basically through
+ which you can access the interpretation of the code okay.
+ So let us now explore it in the demo window okay so as you see the successful execution
+ has been done 0 second is the time and this is the confusion matrix.
+ Now it is time to interpret the confusion matrix so if you see this particular case
+ that already I told you that 30% of 152 will be 45 samples so this 45 samples will participate.
+ So if you see in first row it is 18 okay so as the x axis is denoting you the actual value
+ that means 18 has been correctly classified as satosa 18 out of 18 has been correctly
+ classified as satosa there is no miscalculation in first row.
+ In second row out of 12 versicolors 11 has been correctly classified as versicolor but
+ one wrongly has been classified as virginica from x axis you can check from x tick level
+ you can check one wrong prediction is there but in the third row 15 out of 15 virginica
+ has been correctly classified as virginica okay.
+ So I repeat 18 out of 18 satosa has been correctly classified in first row there is no wrong classification
+ in second row 11 out of 12 versicolor has been correctly classified as versicolor one
+ wrongly has been classified as virginica in third row 15 virginica has been correctly
+ classified as virginica there is no wrong classification okay so in all together it is 45 because
+ in first row 18 samples second row 11 plus 12 samples in third row 15 so it will be 45
+ overall okay so this is how do it so for your understanding purpose I have given I already
+ added the text on the story about it this all things will be accessible to all of you.
+ So you easily can check it out and you can understand the concept easily.
+ So out of 18 satosa 18 has been correctly classified as satosa out of 12 versicolor 11 has been
+ correctly classified as versicolor one wrongly classified as virginica out of 15 virginica
+ as 15 has been classified as virginica as simple as that okay.
+ So nothing to worry about it all those things have been given to you you just executed smoothly
+ okay it is now 10 3 p.m. so sorry 10 3 a.m. so please finish this step by 10 5 I think
+ 2 minutes will be good enough to finish it okay then we shall move to the next step.
+ So I shall wait for another more minute I hope that all of you have been will be able
+ to finish this up.
+ Okay so let us move to the next part so now we will see the classification report okay
+ so in classification report how to generate it so classification underscore report we
+ shall apply it over the y-test y-pad and we will print the classification report okay
+ so followed by printing the result one as we have stored it under result one and then
+ you will get this type of the report this is the classification report part okay so
+ under that you will get precision recall if one score support higher satosa precision
+ means true positive divided by true positive plus false positive recalls means true positive
+ divided by true positive plus false negative you can also calculate if one score the formula
+ is 2 into recall into precision divided by precision plus recall and support means the
+ number of the test samples which are participating here.
+ So for example if you if you see iris satosa we already have seen 18 from the confusion
+ matrix right in the first row it was 18 second row it is 11 plus 12 so that is why the support
+ is 12 or for example if we see in the third row it is 15 participating sample 15 for
+ the Virginia that is why it is 15 here okay and you can see they are corresponding values
+ in terms of the precision recall if one score you can also calculate the accuracy as well
+ okay so also the macro average and micro average so if you sum them up okay 1 plus 1 plus 0.94
+ divided by 3 it will be 0.98 so macro average is nothing but the average column wise average
+ if it is precision at these 3 values divided by 3 simple average calculation similar for
+ the recall F1 score you will get this macro average values which is present here and similarly
+ for the weighted average you can do the same thing weighted average what will happen individual
+ precision into the corresponding support value divided by total support okay.
+ So you will do the sum and then you will basically again in the next case individual precision
+ value into support value plus again individual precision value like Iris Virginia 0.94 into
+ support divided by total yes okay so total weight 45 so it will give you the weighted
+ average okay.
+ So for your assistant purpose I already have mentioned the explanations here okay so if
+ you see precision 2 positive divided by 2 positive plus false positive recall 2 positive divided
+ by 2 positive plus false negative F1 score like I mentioned 2 into precision into recall
+ divided by precision plus recall okay they are the standard mathematical formula 2 positive
+ what is 2 positive from your commonsense you can understand it if model correctly predicts
+ the positive class 2 positive model correctly similarly model correctly predicts the negative
+ class then it will be 2 negative if the model what will be the false positive if the model
+ incorrectly predicts the positive plus it will be false positive if the model incorrectly
+ predicts the negative plus it will be false negative.
+ So in short for the 2 positive it is tp for 2 negative it is tn for the false positive
+ it is fp for the false negative it is fn and like I mentioned that support means the number
+ of the times the test samples which are appearing okay so that is the support okay macro average
+ I already told you simple calculate all the values for the precision and then average
+ then if it is the 3 value then add them and divide by 3 if it is 4 value then you add
+ those 4 values divide by 4 like the way we calculate the average okay and weighted average
+ it will be similarly the individual class precision into the individual class support
+ okay you take the sum of them and divide by total support similarly if it is recall then
+ what will happen individual class recall into individual class support take the sum of them
+ and divide by total support so in this way you will calculate the weighted average okay
+ so all those calculations have been given there and for the accuracy it is 2 positive
+ plus 2 negative divided by 2 positive plus 2 negative plus false positive plus false
+ negative okay so in this way you basically do the entire operations so mathematical formulas
+ I have added there so for example in case you want to test them manually you can do it
+ and try it you will get this type of the results which has been shown in the original notebook
+ okay so please finish this up so result 1 how the classification report has been calculated
+ how the accuracy score calculated and stood under result 2 I have mentioned okay so please
+ finish this up and let me know okay so remember accuracy score here we calculated over y test
+ and y print and we have printed the result and we got it 0.977 something that means approximately
+ 97.78% so remember in test in training data set we got 95. something 95.24 and the test
+ data set we got 97.78% that means even we are getting the better result than the training
+ data set okay so that means that you do not there is no scenarios like overfitting okay
+ so it is absolutely doing well our net base classifier is absolutely performing well okay
+ and the result is trust of the okay so before going to support vector machine please finish
+ this small chunk of the code and let us complete a net base and move towards the support vector
+ machine portion so all of you now know what you have to do you simply click on the plus
+ code button back to put it there and execute this step okay and you see this is the result
+ so I am not re-explaining again I already told you twice or thrice what are the meaning
+ of all those outcomes okay so just finish this up before we can proceed to the next
+ part which is support vector machine so it is 10, 10, 10pm and then we shall move ahead
+ so by 10, 12 we will finish it and then we shall start the support vector machine portion.
+ so I shall wait for few more seconds before we can move to the next step so please
+ finish this up
+ okay so let us move to the next portion that is support vector machine so in support vector
+ machine basically we will see the explorations of the different kernels so already you are
+ aware of the linear polynomial RBF sigmoid type of the kernel so in the linear kernel
+ is very much good for exploring the linearly separable values but for the non-linearly separable
+ cases RBF and the RBF or Gaussian and sigmoid kernel are better okay these kernels are
+ computationally very much smart to separate the non-linearly separable values so all of
+ you know what is kernel already in last class Dr. Vikant Chakraborty has mentioned that
+ how to separate the non-linearly separable values in higher dimension taking them to
+ the higher dimensions and in those cases RBF sigmoid kernel those who played the important
+ role okay so RBF kernel is nothing but the Gaussian kernel which can separate the non-linearly
+ separable values smartly whereas sigmoid kernel is basically act as a like the sigmoid activation
+ function which actually can separate the non-linearly separable values okay okay so these are the
+ few important concept which you already have learned it so here we will just deploy those
+ concepts in exploring in the this type of the python or pythonic platforms okay so basically
+ from sklearn.svm you can import the support vector classifier svc and then you are creating
+ an empty list accuracy underscore list under the square bracket and then for i in we are
+ basically we will explore one by one kernel okay so we are basically putting within the
+ list a linear poly which stands for the polynomial kernel which is also a very effective kernel
+ like the linear RBF and sigmoid kernel okay then RBF and then sigmoid okay and we are keeping
+ them under the each item will be under the single coded okay and then we will basically
+ assign svc classifier and store it under clf so kernel equals to i so it will keep on accessing
+ one by one kernel sequentially and will print the result then y-print equals to wide sorry
+ clf.fit it will be applied over the extrane of y-print and then y-print equals to clf.predict
+ we will apply it over the extrane and then we will calculate the accuracy score like
+ we did earlier okay so first we will do it for the training data set as I told you because
+ knowing the effectiveness of the algorithm over training is very important so that while
+ executing the test data set you can easily learn that how it is performing whether any
+ overfitting is happening or not that you will be able to learn okay then what will happen
+ that you will apply it over the extrane and y-print you will apply accuracy function over
+ them and store it under accuracy and simply then accuracy underscore list dot append accuracy
+ will deploy and then you will print it like the way I told you because the way you want
+ to show the output it will be printed so like for example we are keeping the string under
+ accuracy of then plus i so under i those values are present linear poly RBF sigma so sequentially
+ if you see the output it is showing accuracy of in this case as i is present plus i that
+ means it will be linear here in the second line it will be poly in the third line it
+ will be RBF I am showing you the output how it is coming out and fourth line this sigmoid
+ then again you see we have given the E string okay and then float accuracy so it will the
+ floating point value which is coming up for example in linear 0.96 upper is 0.9619 something
+ or for example here 0.8857 something or for example in this case third row if you check
+ 0.971428 something or in the fourth row 0.8952 something so in this way the accuracy will
+ be printed for all those kernel like it is whether it can be linear polynomial RBF or
+ sigmoid okay so in this way you can do it okay so let us explore this one and then after
+ testing the efficacy of the algorithm over the training dataset we shall move them move
+ ahead for the testing them in test dataset okay so let us first complete the step so
+ all of you know we have to click on the plus code and then we can put it right here and
+ then run okay so it has run smoothly and you can check the corresponding accuracy for the
+ linear polynomial RBF as the sigmoid kernel performance okay so it is now 1016 please finish
+ this step by 1018 you may get different values or you may get the same values for certain
+ kernels but you have to check that which one is giving you the better result and depending
+ on the different datasets and the alignment of the data points certain kernels will give
+ you the better result in certain cases okay
+ so I repeat linear kernel helps you to separate the linearly separable values in an effective
+ way polynomial kernel helps you to do the complex polynomial modeling okay so that
+ you can get the optimum result through the explore through by exploring this polynomial
+ function I told you that RBF kernel or Gaussian kernel is very much effective for computing
+ the non-linearly separable values okay for by classifying this non-linearly separable
+ values sigmoid is another effective function kernel function of classifying non-linearly
+ separable values under support vector machine okay.
+ So please finish this step I shall wait for another more minute and then move to the next
+ part so please finish this up.
+ So let us move to the next part so under accuracy let us put because we want to plot them okay
+ so we want to generate a comparison plot like this so because of that as a initiation of
+ the step we are what we are doing we are assigning the index value under the accuracy list.
+ So accuracy list basically it is a dictionary format okay key value pairs okay this is called
+ the key value pairs I think Suman bear has mentioned during the Python session so accuracy
+ equals to linear accuracy list so this is a zero that means linear activation function
+ value will be stored under it then polynomial accuracy underscore least one so it will be
+ polynomial kernel value will be stored under it then RBF okay so accuracy underscore least
+ two that means RBF kernel will be stored under it then sigmoid as a Python is a zero indexing
+ language so if there are four values so index value will line from 0 1 2 3 so in this way
+ this dictionary format is forming the key value pairs and we are storing it under accuracy
+ list okay so then what you will do you have to generate PLT dot figure okay figure size
+ we are giving for example standard 8 by 6 okay and then we SNS dot bar plot okay X list
+ accuracy keys and Y equals to list accuracy values as we have formed the key value pairs
+ KB pairs okay because of that we had defining them in the SNS dot bar plot then we are keeping
+ X level under the kernel these are the kernel values because linear polynomial RBF sigmoid
+ the way we have defined in this sequence it will be printed and then Y level it will be
+ the accuracy as you can see the accuracy calculations has been given there because all the values
+ is more than basically 80 percent lowest one is 88 percent as we can see as per my original
+ notebook it is 88.57 right so better to keep the values between 0.80 to 100 0.80 to 1
+ that means 80 percent to 100 if it is 80 percent to 100 if you want to keep the Y axis limits
+ then to show the difference better in a better way so we will keep 0.80 to 1 so that is why
+ we have given the Y axis it 0.80 to 1 okay you can clearly see the differences between
+ these bar plots in that case so that is why Y limit has been set up there in this way
+ and PLT dot show you will get the following plots and the title as we need accuracy of
+ different SVM kernels on Irish dataset okay so I believe that all of you got the purpose
+ of assigning the X level Y level title even the limit of the Y limit okay so let us do
+ one by one so first assign the key value pairs under accuracy with this dictionary format
+ of the python or pythonic file and then we shall move ahead for the next step generating
+ the comparative bar plots for the different kernel performances so you see this portion
+ has been executed successfully then now we shall go ahead for executing this one generating
+ the plots comparable plots here so you see this is the comparative plots here for example
+ why it is three values are same because already you got see interestingly linear polynomial
+ RBF kernel is giving you 97.14 percent okay these three values are same but you get sigmoid
+ it is 89.52 percent so that is why the value has dropped here okay so first finish these
+ two steps and then we shall go ahead so these two first execute this particular run cell
+ I mean this particular cell with by clicking on the run cell button and then you execute
+ this particular plots okay so it is now 1022 please finish this step by 1024 couple of
+ minutes more will be good enough to execute this one and then we shall move ahead for
+ the next portion of discussions.
+ So, we shall move ahead for the next section of discussion.
+ So, I shall wait for few more seconds so please finish this up then we shall move ahead.
+ Okay., so we shall move ahead for the next section of discussion.
+ So, we shall move ahead for the next section of discussion.
+ Okay, so let us move to the next portion now so already we have seen and as you can see
+ I have jotted down the explanation of the result so in this way we have achieved the
+ highest accuracy with the RBF kernel in this case for example in this notebook we got the
+ highest accuracy of the RBF kernel as simple as that if you look at the diagram original
+ notebook I am talking about so it is 97.14 percent in the linear kernel we have achieved
+ the second highest accuracy it is 96.19 percent okay third one we have got for the sigmoid
+ kernel that is 89.52 percent and the lowest one is 88.57 percent respectively and which
+ we got for the polynomial card okay so all these accuracies over the training dataset
+ is very good now we have to check it for the test dataset okay so similar way what we will
+ do we will we will create the empty list accuracy list then for I will keep one by one kalenek
+ linear polynomial RBF sigmoid all those kernels we will put up there and then CLF equals to
+ SVC support vector classifier kernel equals to I and then what we will do we will apply
+ the CLF dot feed function over the X train and Y train and then Y pred equals to CLF
+ dot predict we will apply that particular function over X test and then we will calculate the
+ accuracy score we will apply the accuracy score function over Y test and Y pred and
+ then accuracy underscore list dot append over accuracy we will apply it and then we will
+ print the result one by one like the way same which we have done or the similar which we
+ have done earlier so I am not re explaining the steps again so this is you can see this
+ is the analog step only we are doing it over the test dataset earlier what we have done
+ it over the training dataset okay so the steps are same I am not repeating it again here
+ we have got if you see the accuracy values okay over the test dataset during applying
+ them okay the accuracy of the linear kernel 0.9777 polynomial as well as the RBF kernel
+ same value that means 97.78 percent for the sigma we have got 93.33 percent okay so this
+ particular portion you just first finish it up over the test dataset and then we will
+ try to generate the plot here and then they are going to okay so this is the these are
+ the values now one question often comes up in your mind those who are new to it that
+ why the values are varying okay during the time of the execution because you see during
+ the test and training and test split okay the samples are not same which you are taking
+ earlier okay it may vary so for example what may happen that 0 to 104 index value can go
+ for the training and 0105 to 149th for the testing purpose because 70 percent of the
+ samples okay and this is for example 105 70 percent of 150 values means it will be 105
+ simple as that 30 percent of 150 is your equal equals to 45 so during the trend test split
+ this can be the one of the splitting so for this split you will get one result if if you
+ get the for example if you get some some sort of this kind of the combinations like for
+ example 45 to 149 for the training
+ and this combination is for testing because randomly if these things are happening then
+ automatically because of this different participating samples your output will vary right for the
+ different combinations you are getting different type of the result because random selections
+ of during the trend test split is happening differently that is why for the name base
+ or during the SVM or for the KNN you will get the different result trend test split
+ so these two examples of the trend test split I have given to you okay for the different
+ combo okay so I hope the picture is clear to all of you now fine okay so please finish
+ this step this is 1031 so finish this step by 1032 then we shall move to the next step
+ of generating this type of the plots okay.
+ Well I believe all of you have been able to finish this now a similar step I am not re-explaining
+ again for generating this type of the bar diagram okay so as you can see in my result
+ in original notebook as these three values are same linear poly and RBF so with the same
+ logic of generating the plot we got this three values same as per the bar diagram sigma value
+ was the lower one so that is why we got this 93. something percentage okay so let us first
+ explore this one this accuracy portion in the demo window notebook and then generating
+ the bar diagram by differing the fixed size X level Y level and the title of the plot along
+ with the Y limit so here we see this type of the plots we are getting in the demo window
+ because we got the different result okay like for example in linear kernel we got the linear
+ and RBF kernel in demo window we got the highest accuracy 97.78 percent approximately so these
+ two bar diagrams are giving us the highest result for the linear and RBF whether as for
+ the polynomial we got 0.88 something and the sigmoid is the lowest 1.86 something so that
+ is why it is 88.88 percent approximately for polynomial and 86.66 percent for the sigmoid
+ this one the lowest one okay so in your case accordingly the way we will learn you will
+ get the way we are getting the output similarly we will get the bar diagram okay.
+ So it is 1033 so finish this two step by 1035 okay so that we can move ahead after seeing
+ the accuracy of different SVM kernels on iris data set test data set.
+ So whatever the result you have got you actually have seen that result are not much deviating
+ if we see individual kernel wise in comparison to the data result you got in the training
+ data set okay either same or nearby it sometimes better sometime lower okay.
+ So from this we can easily conclude one thing that we are not over fitting or the algorithm
+ is not over fitting okay whatever the result we are getting it is fine it is acceptable
+ as the training data set and test data results are closer to each other okay or the same
+ that means it is acceptable performance okay.
+ So, let us see how we can do this.
+ Okay, so I believe we can move to the next step now all of you have been able to complete
+ it okay.
+ So what we will do we will generate now this type of the conclusion matrix thank you okay.
+ So for this conclusion matrix already we have learned how to do it for example sklearn.metrics
+ import classification report conclusion matrix accuracy score and then we shall apply the
+ conclusion matrix over the Y test and Y freedom we are storing at the result and the basically
+ the result section and then sns.heatmap the first argument will be the result, second
+ argument will be the annotation true.
+ So that is why the participating samples are appearing in each grid of the conclusion
+ matrix and then fmt equals to g which is the general format okay.
+ So basically the left hand side of the decimal value the entire integer value which will
+ appear like 18, 0 or 9 because this is the general format we are using then x t level
+ y t level for the setosa versicolor virginica setosa versicolor virginica will be there
+ x level actual y level prediction font size we are keeping 13, conclusion matrix the title
+ which is the highest font size we are giving 17, we will show you the following result.
+ So as per the result you can see the similar we have defined during nape base that 18 setosa
+ samples has been correctly classified as setosa out of 12, 9 has been correctly classified
+ as versicolor 3 wrongly as virginica, 15 out of 15 correctly classified as virginica okay.
+ So this is how the interpretation has been added for your assistant purpose you see I
+ have added the interpretation here so things are clearly visible to all of you.
+ So please finish this part before we can move to the KNN classifier okay.
+ So generate the conclusion matrix and see the results.
+ So in our case in demo window we are getting this 11 setosa out of 11 correctly classified
+ as setosa out of 12 correctly classified as versicolor 5 wrongly as virginica, out of
+ 17 16 has been correctly classified as virginica and 1 wrongly as versicolor.
+ So in this way you can generate the interpretation okay whatever the results you are getting
+ because I already have shown you why that during the test train test split the participant
+ testing samples are varying between the training and testing cases during the use.
+ So because of that reason okay your overall result is actually varying it is keeping the
+ impact over the results okay.
+ So generate the outcome and let us go to the KNN execution.
+ So it is now 1038 please finish this step by 1040 so that we can move towards the implementation
+ of the KNN classifier which is the last portion of our class okay hands on class actually
+ there will be a theory session after that but for the hands on part we will execute
+.
+, I shall wait for few more seconds before we can move to the next step those who have
+ already read find those who are doing it please finish it.
+ Thank you.
+ Well so let us move to the next part KNN classifier.
+ So in KNN KNRS neighborhood already we have learnt the concept of the KNRS neighborhood.
+ So here what we will do before as a part of the hands on session.
+ So we will take from escalant.neighbors we will import the KN neighbors classifier and
+ KN neighbors classifier will take the 8 neighborhood points to classify the correct sample okay.
+ So now KN neighbors classifier AN_neighbors will keep as 8 and we store it under classifier
+ and then we will execute the classifier.fit over the X train and Y train okay.
+ So this is the very basic steps which we will do before calculating the accuracy over the
+ KNN for the KNN classifier for different KN values.
+ Our objective will be to get the highest accuracy and figure out for which K value we are getting
+ it okay.
+ Or there can be multiple K values which we may get for the highest accuracy that means
+ that will be the lowest error point okay.
+ So that means we should have to first execute the basics setup for let us start with the
+ KN neighbor classifier for KN neighbor values of the 8 okay.
+ First to avoid any kind of the overfitting scenario or the underfitting scenario for
+ example if we take the K equals to 1, K equals to 2 or 3 that can be two simple, simplistic
+ cases and that may create the underfitting cases.
+ So that is why we are avoiding it.
+ We are starting from I advise you to start from the 6, 7 or 8 values like this value to
+ try out figure out for which K value you are getting the highest accuracy.
+ So here we are starting with the neighbor K neighbor values as the N neighbor values
+ as 8 okay and we will see how it performs.
+ So it is now 1042.
+ So please finish this step by 1043 there are basic three lines of the codes okay.
+ So just finish it then we shall move to the next step.
+ So in the next step we will implement the classifier.predict over X train okay and we
+ will calculate it okay.
+ So we will apply accuracy underscore values over Y train and Y parade and then we will
+ calculate the accuracy values.
+ So like I told you thus to compare and avoid the overfitting scenarios and compare the
+ performances of the algorithm over training and test data is very important.
+ So that is why we shall explore this one for the training dataset for N neighbors equals
+ to 8 okay and we will see that in which K value we are getting the optimum result.
+ Let us move to the next step so like I told you now we are going to check for K equals
+ to 8 what we will get the accuracy.
+ So in the demo window we are getting the accuracy it is 95.238 that means 95.24 percent okay
+ and whereas my original window original notebook it is 96.19 percent okay that means 0.9619
+ 96.19 percent okay this we are getting for the 8 neighbor value 8 okay.
+ So it is now 1044 please finish this step to generate the accuracy for the first case
+ by 1045 then we shall check out for the N neighbors value 9 what we are getting.
+ So I repeat this particular value 8 is actually defining the particular class for a new point
+ data point in terms of the majority of the voting for which class it belongs to okay.
+ So for example in first case we got the accuracy as per my demo into it is 95.24 percent approximately
+ and original window it has 96. Something so it is a very good result but we are trying
+ to figure out for which K value or more than one there can be multiple K values actually
+ we are getting the highest result we are trying to tap that particular point okay.
+ So now let us see so it is already 1045 so I believe that you have been able to incorporate
+ this particular portion. So let us move to the next value that is 9 let us try out with
+ 9 okay. So steps will be same only what you will do you will replace the N neighbors value
+ will update the N neighbors value okay. So that is why I am not again re-explaining the
+ steps we will only update the N neighbors value and keep on testing that for which case
+ we are getting the highest result okay.
+ So first execute this one and then go for executing the classification accuracy portion
+ as we are doing it over the training dataset so there will be no change here also okay.
+ So in here for K equals 9 I got the same earlier it is 0.9619 that means 96.19 percent K equals
+ to 8 and K equals 9 you also got the same accuracy okay. So let us see in my demo into
+ what I am achieving in your case also keep on watching that in which K value got the
+ highest accuracy here I can see in my case it is dropping 9.9485 it might happen that
+ at K equals to 8 I got already got the highest accuracy as it is dropping. Let me cross check
+ with one or two values more whether I get the better result or not in your case you
+ see whether the result is same whether you are getting the better result or whether it
+ is dropping okay. Just for the confirmation purpose if it is dropping check out another
+ one or two point okay then you conclude that in which point you got the result highest
+ result okay.
+ So repeat that N neighbors value taking 1, 2, 3 this type of the values will make the
+ model too simple and too biased so that will be under footing scenario it will be a bias
+ model. So because of that it is better to start from 6, 7 or 8 that kind of the values.
+ So with certain efforts you will be able to figure out the highest accuracy maybe at K
+ equals to 11, 12 or 10 or even 8 okay fine.
+ So it is now 1047 so finish this step by 1048 this two step for N neighbors 9 there is no
+ change in the code remember from now onwards what we will do we will only replace the value
+ of the N neighbors that is it okay and make some try to make some conclusion then we will
+ move the same repeat the same steps for the stage dataset and make some conclusions which
+ one is the better okay.
+ So let me go back to the original notebook and try out to the next value that is the
+ N neighbors 10 okay. So those who are doing it I hope all of you got the steps so I do
+ not need to wait for you because already you have understood only you have to change the
+ N neighbor values and with the execution of these subsequent two cells you can easily
+ deal with the calculation of the accuracies.
+ So here we are doing it for the N neighbors 10 okay and similar way only you can see only
+ the N neighbor value has been updated and now we are trying to figure out for the accuracy
+ calculation same code okay. For example in my case in original window I got the same accuracy
+ even at K equals to 10 okay. It may be possible that this is forming a play to where the all
+ highest accuracies are lying with certain K values 8, 9, 10 okay you never know.
+ So that is why you need to keep on testing here let me check this one will be the interesting
+ my demo window result will be the interesting okay. Let me check whether it is dropping
+ or is there any increase no it has dropped 94.9485. So already I got the highest accuracy
+ at K equals to 8 with my first attempt in 19 it is again dropping okay. So here I can
+ conclude that at K equals to 8 neighborhood point is giving us the better result okay
+ best result that is 95.23 okay. So for you you keep on trying to figure out for example
+ those who got the 10 you can again replace the value for 11. If you already got the highest
+ accuracy value and seeing the drop like me which I observe in the demo window you must
+ keep it and those who are seeing the same accuracy like my original window or seeing
+ any improvement they try to figure out the point in which point it is dropping. So if
+ it is dropping at K equals to 13 then you can say that at K equals to 12 or 10 to 12
+ you are getting the highest accuracy.
+ You are getting the highest accuracy like for example at 11 okay if you can check my accuracy
+ is dropping here. That means I got the highest result that is why I have concluded here here
+ we have observed that the KNN algorithm is doing well for the values K equals to 8, 9,
+ 10 and 11 where it has achieved the highest accuracy for 96.19% at K equals to 8, 9, 10
+ on the training dataset. We have tried out for the different values of K, 8, 9, 10 and
+ 11 where it has achieved the highest accuracy of 96.19% at K equals to 8, 9, 10 on the training
+ dataset because at 11 we have seen the drop of the accuracy.
+ So that is why we concluded that our highest accuracy range is 8, 9, 10. Like I told you
+ may get the single point you may get the multiple point while predicting the accuracy for a
+ new data point depending on the other neighborhood points. So how you got the concept. So this
+ is what the training dataset result okay. Now we can do it for the testing data. Let
+ us see training result we got 96.1 and which is a very good result. Now we have to see
+ that for what will happen for the test scenario. So like a form of standard practice we shall
+ apply classifier.predict function over X test and we will store it under Y print okay. Let
+ us go back to the demo window and try it out for the test samples done.
+ And then from a scalar dot metric we shall import the classification report okay. Confusion
+ matrix accuracy score and the result will be stored under by applying the confusion
+ matrix over Y test and Y print and it will be stored under result variable okay. So let
+ us do it. So please complete these two steps it is now 1052 please complete these two steps
+ by 1054 okay. Now we are at the end of our session where we are basically exploring the
+ KNN algorithm over the test samples. Already we have seen during the training sample we
+ got for 8, 9, 10 from as per my demo window original window we got the highest accuracy
+ 96.19 and as per my demo window I got 95. something at k equals to 8 which is the highest okay.
+ In your case I hope you have noted down that in which particular case you got the highest
+ result okay. And similar way I am telling you because of today morning we have started
+ with Naive base we explore SVM for different kernels now you are doing KNN as we are doing
+ it over the same data set okay. Please add also training stage sample training stage
+ sample split also the same 70 percent 30 percent what you have done in terms of the quantity.
+ So make a comparative table for your learning purpose okay. So that you can get some idea
+ that for which algorithm you are getting the better result for your case okay. It will
+ be a good learning because you can compare whenever you are doing some project it will
+ help you to compare the performances of the different algorithms.
+ In the next class for example during this supervised learning 2 hands on session we
+ shall have another more experiences over the d addition exploring trees random forest you
+ can that will be done on the same data set. So you can compare them at the end of the
+ day for supervised learning which one is giving you the best result okay. So it is now 1053
+ I believe all of you have been able to finish this part. So now we will generate the hit
+ map this type of the with sns.itmap we shall generate this type of the confusion matrix
+ okay. So as the all of you already got the idea since morning I am explaining this step
+ so I am not repeating it again. So just check that in your case what type of the confusion
+ matrix you are getting. So as per my original notebook you see 18 setosa has been correctly
+ classified as setosa 12 versicolor has been correctly classified as versicolor and 15
+ virginica has been correctly classified as virginica so you got the 100% accuracy okay.
+ All the case you are getting the correct results like 80 out of 18 has been correctly classified
+ as setosa out of 12 versicolor 12 has been correctly classified as versicolor out of 15
+ virginica has been correctly classified as virginica. So you see the explanation also
+ added there okay and I will also calculate the accuracy here also okay.
+ So if we see the similar type of the results whether we have got the same result or different
+ let us see in the demo notebook. In the demo notebook as we can see 11 has been out of
+ 11 setosa has been correctly classified as setosa out of 17 17 has been correctly classified
+ as versicolor out of 17 15 has been correctly classified as virginica too wrongly as versicolor.
+ This is what we have observed in the demo window there are few wrong classifications okay.
+ So all as this is the same code I am not waiting for you you can do it now because you already
+ have this one is the same thing for generating the confusion matrix now what we will do this
+ portion is also you have with you because this is same code for generating the classification
+ report as well as the accuracy. As per the confusion matrix you do not have to explain
+ that the accuracy will be 100 percent because there is no wrong classification okay.
+ So as you can see this is the highest accuracy which we have achieved for K equals to 9 the
+ case data set K equals to 9 sorry because I am talking about it is 100 percent now we
+ will see that is for the let us we will check out for the K equals to 9 what we will achieve.
+ So this particular portion of the code let me run for the demo window okay for the demo
+ window let me let me put it there and let us check.
+ So in the demo window it is 95.56 percent because in the last row you see there were
+ two wrong classifications right out of 1715 has been kindly classified as virginica and
+ too wrongly as versicolor in your in our case original notebook it is 100 percent now we
+ shall go and test the accuracy for the K equals to 9 okay.
+ So that we will explore here so this particular portion already we have the code with you okay.
+ So we will put just replace in neighbors equals to 9 okay and check it out then we will what
+ we will do we will do the classifier dot predict we shall apply over the X test okay and then
+ we will generate the confusion matrix okay.
+ So these steps let us do it in my demo window you also explore it for you for the test result.
+ So once you do it then you go for the classifier dot predict we apply it over the X test
+ and then what will be the next step next step we will be calculating the confusion matrix
+ okay and you will store it under the result just to check whether you are getting the
+ better result or not and then you generate the confusion matrix in my case it is again
+ same even at K equals to 9 I am getting the accuracy 100 percent okay.
+ So there is no point of checking more because already I am at the highest point so I can
+ conclude that K equals to 9 is my optimum point for the test result okay and it is not
+ debating much because in the as per the original notebook I got the highest accuracy in case
+ of KNN it was something like if I check from my original notebook I got the highest accuracy
+ for K equals to 8, 9, 10 that is basically your 96.19 percent okay and from the test
+ data set I am getting even better result 100 percent okay at K equals to 9.
+ So there is no point of checking because it is already I got the highest point there might
+ be some multiple values or single point value I am getting it okay that for verifying that
+ you can check it out further okay but I think in demo window let me try out because there
+ are some errors okay for the demo window cases it will be interesting scenario to check whether
+ I am getting the better result or not okay so those who have drawn the confusion matrix
+ check it out again by doing it out for classification report and accuracy score whether you are
+ getting the better result or not or for which point you are getting the best result that
+ you may check out.
+ For here I can see again 95.55 for K equals to 9 and the K equals to 8 both the cases
+ I am getting the same result for the test data set 95.56 okay so let me check that whether
+ it is dropping or not for another point like K equals to 10 in that case let me figure
+ out okay.
+ So for example I can try it out for the K equals to 10 and again check okay like in
+ my notebook okay I got I am getting the 100 percent accuracy but in demo notebook I can
+ see some errors.
+ So that is why it will be much more we have to be much more watchful that for which point
+ I am getting the better accuracy so I am trying it for the K equals to 10 okay.
+ So for example only the values will be changed rest of the code will remain same okay just
+ you have to follow the sequence of the execution okay so confusion matrix portion is done.
+ Now let us generate the heat map in the demo window okay so here you can see it will again
+ the same scenario 11 out of 11 has been correctly classified as 17 has been correctly classified
+ as Virginia out of 17 15 has been correctly classified as Virginia and 2 wrongly as versi
+ color okay.
+ So now let me just generate the classification report it will be same I mean 95.56.
+ So what I can do I can skip the value already we have seen that 8 9 10 95.56 percent okay
+ the demo window as per the demo window 8 9 10 all these three values in demo window we
+ got the 95.56 percent okay.
+ So continuously I am getting it so we have to figure out that whether this is the highest
+ accuracy or whether it is dropping okay so for that what we can do we can simply just
+ change the value I am just skipping going to the 13 or 14 for example I am taking n
+ neighbors equals to 13 in my demo window because original notebook I got 100 percent
+ at 8 9 10 so I am not again checking it because that is already we got the highest accuracy
+ okay because over 100 percent nothing is possible it will drop at certain point okay.
+ So no point of checking it so we can conclude that we are getting the highest accuracy at
+ 8 9 10 and there is no over fitting okay 96 point something over the training data set
+ and for the test data set 100 for the demo window I am checking it those who are getting
+ the same result like my demo window okay.
+ So they can figure it out because 8 9 10 we got the same result.
+ So I want to check that in which point it is dropping okay.
+ So like if I keep n neighbors equals to 14 let me check that is there any changes whether
+ we are observing any changes or not.
+ Okay so in conclusion matrix it is changing 11 out of 11 setosa has been correctly classified
+ 17 out of 17 varsity color has been correctly classified out of 17 14 Virginia has been correctly
+ classified 3 Romley has been classified as varsity color okay.
+ Now we can see the changes okay let us generate the classification report here.
+ So here you can see the drop in accuracy.
+ So already we got the peak at K equals to 8 9 10 but here in 13 we can see the drop in
+ accuracy that is 93.33 percent in the demo window okay.
+ So in this way you can check it out okay in which point you are getting the highest accuracy
+ and for example if at K equals to 10 you are getting the highest accuracy at 11 you may
+ check the check out it is dropping okay.
+ So you have to figure out that particular case that whether a single point of the K value
+ or the multiple point of the K value you may get the highest accuracy okay.
+ But after certain point of time you may see the drop okay so you have to figure out that
+ particular point to get the confirmation of your highest accuracy value for a certain
+ K value okay.
+ And like I mentioned that do not make your model too simplistic to avoid any biasness
+ in the result.
+ So that is why K it is always better to avoid the lower values of the K like 2 or 3 better
+ to check it out from 6 7 that type of the things okay.
+ To avoid the biasness or the under floating scenarios in your system okay and also compare
+ your result over the test data set what you are achieving in case of the training data
+ set just to make confirmation that whether any overfitting is happening or not.
+ So today we have completed the demonstrations handguns demonstration on all of you have
+ successfully done it with me for the SVM support vector machine along with different kernel
+ comparisons and we have considered the kernels like linear, polynomial, RBF kernel as well
+ as the sigmoid kernel.
+ We also have explored the handguns session over nape base and finally we have done it
+ for the KNN algorithm.
+ So Dr. Ovegan Chakraborty will start the session on the support vector machine part 2 here
+ you will see the exploration over the decision trees at random forest.
+ So let me ask professor so I am concluding it here so there should be a break of 5 minutes.
+ So if you have any queries I am joining the moderation section so I will reply there okay.
+ So I am not answering it live because already professor has arrived so I am replying them
+ in the offline mode during my moderation duty okay.
+ So thank you very much for joining my session there is a break of 5 minutes I am thankful
+ to all the back end support from the support staff of this smart class room.
+ Subradhoda great job by Devjit and let us start the session of Dr. Ovegan Chakraborty
+ for supervised learning part 2 it will start within 5 minutes so please put the 5 minute
+ break there.
+ Thank you very much for joining my session thank you sir.

@@ -1,0 +1,652 @@
+ Hi guys, very good morning. My name is Athef Hassan and I am a PhD student at the AI department
+ of IIT Kharagpur. So we will be going over the hands-on session now for BERT. So as Sir
+ has already talked about the BERT model, now we will be going over the hands-on session
+ and see how things are actually coded in the real world.
+ So the very first thing that we want to do is, so the very first thing that we want to
+ do is we want to pip install certain libraries. For example, transformers, torch metrics and
+ data sets and we will see why this is really important alright. So the transformers library
+ is from Hugging Face. It provides you all the latest transformer models that are available.
+ In fact a lot of models that have been trained by the community are also available on this
+ library. So you will find a lot of state of the art models available here. So this is
+ provided by Hugging Face. Then we have torch metrics. So this library actually provides
+ us with a lot of classes that allow us to get all the metrics that are required for
+ classification and other tasks, object detection and so on.
+ So we do not really need to write our own accuracy metric or precision or F score or
+ recall metrics. These are already provided in torch metrics and you can just call them
+ and use it. And pip install data sets, so this allows us to download certain data sets
+ that are not available on Python as is. So after we have installed these libraries we
+ will move on. So the first thing that we will do is we will load up the libraries alright.
+ So now that we have installed them we will load up those libraries but we will also load
+ a few other libraries such as pandas, numpy, RE stands for regular expression. Then from
+ the transformers library we want to load the auto tokenizer, birth model, birth for sequence
+ classification, birth config classes alright.
+ What TQDM is something that I use personally. It really provides a nice progress bar, a
+ very nice smooth progress bar which tells you how much time is remaining and what are
+ the, so what is the speed of each iteration. So you get an idea of how much time your model
+ will take or your code will take to run. So it is a nice decorative library, I would
+ recommend people using it and it is very easy to use as well. And we will show it, I will
+ show it during the coding session. Then there are certain other classes and we will go over
+ them as we go through the code.
+ Now the first thing that we want to do is, so before we start off with the code just
+ one important line here. So device equals to torsion device. So what this does is basically
+ it tells PyTorch to use either the GPU or the CPU as per the availability. So this is
+ a very important line of code that I would recommend everyone to have. So you do not
+ just write torsion device CUDA or you do not just write torsion device CPU, rather you
+ tell PyTorch that if CUDA is available then use the GPU otherwise use the CPU. So device
+ automatically takes up whatever device you are going to, whatever device you have on
+ your computer.
+ Next up we will go to the pre-processing part of the notebook. So the very, the most important
+ aspect of any machine learning or any practical machine learning or deep learning situation
+ is data. So how do you process the data, what kind of data do we have, what to do with that
+ data, this is extremely important. Because at the end of the day, if you go into the
+ industry, you will be finding terms like data science. So the word data science itself has
+ the word data in it. So data is extremely important and how well you process the data
+ really will provide you with how good a performance you get from a model. Because at the end of
+ the day, please remember that garbage in is equal to garbage out. This is a very famous
+ quote in the AI community. So you want to make sure that your model, that your data is as
+ processed as possible so that all the relationships between the data, between the input and the
+ target come out so that the model can utilize those relationships and give you the best
+ of results. So most if not all of your time should be spent on how you improve the data.
+ Because models are already available and you can download n number of models and utilize
+ them, but the data part is something that comes from domain knowledge and I recommend
+ spending as much time as possible on pre-processing the data.
+ So here we will go over some pre-processing pipeline. So first before we begin with the
+ pre-processing, what is this notebook about? So in this notebook, we will be going over
+ the BERT model, but more importantly, the task here is to take IMDB reviews. So what
+ is IMDB reviews? You probably have heard about the IMDB website, which actually provides
+ you with ratings and reviews about movies. So what we will do is we will pick up around
+ 25,000 movies and we will try to train and test a model and see what is the sentiment
+ of those reviews. So why is this important? So just to give some context, the IMDB website,
+ it provides you with reviews and ratings about movies. So it tells you the sentiment about
+ a movie, what kind of sentiment people have for a movie and this is really important for
+ actors and movie directors to understand quickly and even the advertisers as well to understand
+ quickly how well the movie is performing so that they can change their course of action
+ based on the sentiment of the movies. Now the problem is that the reviews that are provided,
+ they have to be manually tagged by someone and there are many, many reviews. So based
+ on the reviews, you want to have an aggregated understanding of how well the movie is performing
+ or rather I can say the aggregated sentiment. So how do we do this? Well IMDB has been kind
+ enough to provide a large database, around there are 50,000 reviews but we will be using
+ 25,000 of them. So the 25,000 reviews, they have categorically classified each of those
+ reviews as positive or negative and that is what you are basically concerned with. How
+ much positive, how much negative can be I guess taken from the ratings but more importantly
+ we want to understand how well you are performing through the reviews because ratings can have
+ a different biasness altogether. So a lot of actual information even on Amazon for example
+ how, what are the different aspects that your product is performing well on is actually
+ available in the reviews and not in the ratings themselves. So you want to use the reviews
+ which is the gold mine of information and you want to be able to generate or build a
+ model that can actually predict over time or automatically predict whether particular
+ review is positive or negative and then people can use this model for other tasks.
+ So this is our overall task that you want to perform today. So we will start off with
+ the preprocessing pipeline now. So we have this function preprocess. So what does this
+ do? It takes some input x, what is this x? It is going to be some string. So it is going
+ to take this string and it is going to clean up the string. So how are we cleaning it?
+ Now remember IMDB is an online website and we download the data from there. So obviously
+ it is going to contain a lot of HTML content which is basically how data exists online.
+ So there are going to be HTTP different HTTP s for example here we have added HTTP s as
+ one of the criteria for removing. So if you find something like HTTP s plus which is multiple
+ s's or single s or just HTTP you want to remove that or rather we replace it with just a space.
+ Similarly you want to remove all of these characters. For example in HTML you have these opening
+ brackets and these closing brackets as well to denote HTML content. So we are going to
+ remove all of that by replacing them with just a space. Similarly we will also be removing
+ all of these extra s's that might be there. So there are a lot of times when the website
+ makes errors and these kind of errors are dumped onto the content. So you want to remove all
+ of that as well. And you can obviously go wild and add as many regular expressions as
+ required to remove or clean your data as granularly as possible but we will stick to this for
+ now. So once we have cleaned the data for the HTML tags and content we are going to reduce
+ the size of the data. Sorry we are going to remove the leading and the trailing spaces,
+ white spaces from your string and then return this string. So now your string has been cleaned
+ and stripped of all leading white spaces or any new line characters and so on which are
+ not viewable. So this is a pre-process function.
+ Next up we will go to some of the helper functions. These functions are not really required for
+ this particular session but I will go over them anyway. These are actually important
+ functions if you want to save your model or if you want to load your model. Rather this
+ is an old way so what people usually do is they take an object, whatever object it may
+ be. So Python provides this pickle library. So all this is doing is it is going to take
+ any object that you have and save it as is. So that next time you load the object it is
+ going to load up just the way you were running previously. So you can save anything, you can
+ save lists, you can save arrays, you can save dictionaries. In fact you can save PyTorch
+ models as well but that is not the recommended way but in any case you can do it in this
+ manner.
+ The idea here is you just open the file, you have a file, for example whatever file name
+ you provide. They are going to create a pointer to that file and then you are going to dump
+ that file. So whatever object you have you are going to dump that object into this file.
+ So here bw means write and r means read. So what is this b decided? b means binary. So
+ I like to save my files in binary format because they allow us to actually compress the object
+ that you are saving and it is also secure because no one can actually open and understand
+ what is written there. For example JSON files you can actually save them as text files but
+ then they can be viewed by anyone. So if you want that extra security privilege you can
+ actually convert your file to binary. So first of all what we do is we open up, we add a pointer
+ to whatever file you want, we want and then in that to that pointer whatever the pointer
+ is pointing we will save the object and then close that pointer. So that saves our file
+ and similarly for reading the file we again have to open a pointer to that file and then
+ we have to call pickle.load and this will load the model or object whatever it is in
+ that exact format as was previously saved by you and then you can obviously close the
+ pointer and then use the data or object whatever it is.
+ So next up we actually come to the data cleaning pipeline. So the very first thing that we
+ did was we pre process the data. So as you can see here we are taking the data frame
+ so we are expecting a pandas data frame as input to this particular function. So we take
+ this data frame and we apply the pre process function that we just had that we just talked
+ about. So this pre process function expects strings as you can see we are calling the
+ apply function of pandas and what this apply function does is that it takes this pre whatever
+ function that we pass and it will apply to every single input where each input is a string.
+ So that is what we are going to do. So we are expecting pandas data frame which consists
+ of the text column and we are going to take that text column and apply this pre processing
+ function to clean our text or reviews of all the HTML content. So that is the very first
+ thing that we do here. Next up what you want to do is as sir has already talked about I
+ believe is the CLS and the SEP tokens. So the CLS token is the very first token that
+ we provide to the BERT model. So the BERT model expects a CLS token and a SEP token.
+ So what is this CLS token? I believe Sir has talked about this. So this CLS token is in
+ a way going to the vector representation of this token is going to contain all of the
+ sentence level information. So we can use this CLS token to actually perform classification
+ and ideally the CLS token should capture all the information about the entire sentence.
+ And it also marks the beginning of a sentence because every sentence begins with a CLS token.
+ So what we are going to do first is we are going to add the CLS token. So we add the
+ CLS token, we prepend it and then we take the remaining string whatever string we have
+ and we add to that. So what this means is basically we are concatenating the CLS token.
+ As you can see there is a space here as well. So we take the CLS token and we prepend it
+ to a sentence and where is the sentence coming from? As you can see the sentence is coming
+ from the data frame dot text column. So now all our sentences with the CLS token is contained
+ in the sentences variable.
+ Next we come to the labels. So obviously we need the labels as well which is either positive
+ or negative. So it is a binary, it is going to be a binary classification task. So that
+ is what we have done here. So we are taking all of the labels from the data frame. Now
+ our labels and our sentences are divided into the sentences variable and the labels
+ variable we do not really need the data frame now.
+ So now we move on to the model specific processing of the data. So if you remember when I was
+ talking about different models like BERT, T5, there are the models as well. What these
+ models do is that they expect their input to be tokenized in a certain way. So what
+ is tokenization? It basically means breaking down your words or basically you take a string
+ and you want to tokenize it. It means you want to break it down into tokens or what
+ are tokens? They are the basic unit of a sentence. Now there can be many basic units, many different
+ types of basic units. For example you can take a sentence and you can break it down into
+ words, individual words. How would you do that? You can do it based on space. There
+ are a lot of sophisticated libraries out there that break on a lot of other things. For example
+ you would not always have very clean text. You might have words that are actually joined
+ together. You do not have a space in between or you have a word with a full stop. Then
+ you might have some quotation marks and so on. So there are a lot of sophisticated tokenizers
+ out there that actually break down your sentences into words, quotations, full stops and everything
+ else. But that is the basic, you can always select a single word as a base unit or as
+ a token of your entire sentence. Or you could also break it down into individual characters.
+ So you can always break it down into each alphabet. For example the word fox, you break
+ it down into f, o, x and all of these would become tokens and so on. So as you can imagine,
+ if you break it down into words, you would have fewer tokens. If you break it down into
+ characters, you would have a large number of tokens. And then there is something in between
+ which is called subword. So why did this come into the picture? Well, let us go over the
+ history of it. So if you look at words, words can have a lot of spelling mistakes or there
+ can be a large number of words. Now for example, if you take the English dictionary, there
+ are probably around 900 or 1000 words, probably more. I am not really updated with that fact.
+ But there are a lot of words in the dictionary. So if you break our sentences down into words
+ and remember that later on, when we are working with the model, you probably remember that
+ models do not work with text exactly. They do not work with strings per se. But rather
+ we need to convert these strings into vector representations. Now as you can imagine, I
+ think sir also talked about this. Each vector is probably of size 768 dimensions. I assume
+ a floating representation that comes to 8 bytes, 8 bytes of information per dimension.
+ So that is 768 into 8 and then there are probably like 10,000 words or something. So if you
+ multiply that with that number of words, you can actually imagine how large the vector
+ representation becomes. So we do not want to work with such a large dataset. What you
+ want to do is you want to reduce it further. So now how can we reduce it further? Well,
+ you can always break it down into characters like f, o, x because as you can imagine there
+ are only very limited number of characters. For example, alphabets and then there are some
+ alphanumeric characters as well. But now the problem is taking you would have
+ a large number of tokens. So for example, if you are reading let us say a book, a book
+ might have let us say around somewhere around 20,000 to 30,000 words. But now if you break
+ it down into alphabets, now your tokens become way over a million. And reading all of that,
+ keeping all of that context contained is very difficult for any model. So we want to come
+ up with a middle ground somewhere and that is where the idea of subword comes in. The
+ idea is that if you look at the word going, you might see the word go which is go and
+ ing which is another word. Now the idea is going is composed of the subwords go which
+ is again another word and then ing which is utilized in a lot of other words as well.
+ For example, forgiving, running and so on. So the researchers came up with the idea that
+ you want to break this, if you break the words down into these subwords, a lot of these subwords
+ are unique and you can actually use them to build other words as well. So the idea that
+ was used in BERT and a lot of other models as well is this subword tokenization. So what
+ we will be doing is we will be taking these words and breaking them down into subwords
+ and coincidentally turns out that you do not need that many subwords actually.
+ For example, BERT is trained I think on around 30,000 tokens which is around 30,000 subwords.
+ So there are different models like for example, recent models come have their own tokenization
+ techniques. So what hugging face has done is that it has provided us with the tokenizes
+ for each model. So every model, not every model but quite a few models have their own
+ tokenization system. So what hugging face has done is that along with the model they
+ also provide us with that particular models tokenization system. So this auto tokenizer
+ class, this is a wrapper built on the entire or of the tokenization classes and it actually
+ when you pass the for example here, when you pass the model name what it will do is immediately
+ find the corresponding tokenizer and it will bring and it will give it to you in the tokenizer
+ variable. So the auto tokenizer is a very nice functionality that we have.
+ Next up what we are going to do is once we have the tokenizer for BERT in this case BERT
+ based uncased model, we are going to use that tokenizer to obviously tokenize the sentences
+ which is contained in the sentences variable. So now our words have been broken down, our
+ sentence has been broken down into different words.
+ Now if you remember as we have talked about, so this should actually been opening and closing
+ brackets. So as we have talked about the CLS is the opening for a sentence and the SEP
+ is the separator or the end of a particular sentence, it marks the end of a particular
+ sentence. So why is this important? If you remember when you are training on the GPU,
+ the GPU expects data to be of the exact same size but that is not the case for sentences
+ or for text input. You can have maybe a thousand word sentence or a paragraph, you can also
+ have a hundred word paragraph.
+ But now the thing is our model or PyTorch expects the GPU expects these inputs to be
+ of the same size so that processing can take place accordingly. It can be a fast, we can
+ process quickly. So if you want to do that you need to add padding. So what is padding?
+ So the idea is we, let us say we decide or conquer on a certain number of words which
+ make up a paragraph. For example, you can understand that when writing a review, people
+ usually start by giving some introduction about themselves and most of the information
+ is available either in the middle or the end or maybe you can think of it in a reverse
+ manner as well that most of the information is available at the beginning until the middle
+ portion.
+ So in any case whatever idea you have, whatever domain knowledge you contain you have, you
+ can use that information to limit the paragraph size. So certain paragraphs that are over
+ let us say in this particular case we are utilizing 140 words or sub words. So whatever
+ sentence you have has over 140 words, we will chop them off. So we will be using only up
+ till the first 140 words. This is for processing efficiency but it also is a lot of wasteful
+ information might also be removed or a lot of noise could also be removed in doing so.
+ So now you might have sentences that are longer than 140 but what about sentences that are
+ shorter than 140, what are we going to do about them? Well we will add pads or we will
+ basically add the zero character to it. So we can actually tell the model not to pay attention
+ and we will see about that later on but for now just remember that to make them of equal
+ size either we chop off a long sentence or we add zeros or what we call pads. So padding,
+ we will add that to the end of the sentence. So to make sure that when we have padding
+ to make sure that something else, the sentence actually ended and those zero characters are
+ not part of the sentence, we add the character sep and the sep token is actually used for
+ BERT pre-training as well because they probably sort of talked about this. They use two different
+ sentences and then they say whether this sentence entails the other sentence or follows the
+ other sentence or not. So they are using it for classification purpose as well.
+ So always remember that the sep denotes separation between two sentences or rather in this particular
+ case it denotes the end of a sentence. So that is exactly what we have done here, we
+ are saying that the maximum length of a particular string is going to be 140 words and then
+ what we are doing here is we are taking up till the max length minus 1 because you want
+ to include the sep token as well. So finally what we want to do is we now have tokenized
+ sentences of the same size as all of them of the same size. Now we want to convert these
+ tokens into numbers because these numbers are going to be used in a dictionary.
+ So the idea is that you have your string, you take your string and you map it to a number
+ and then that number will tell you what vector representation to look at. So we are going
+ to have a dictionary that is going to contain your word or tokens to numbers and then we
+ are going to have a dictionary which is also known as the embedding layer. We are going
+ to take that dictionary which is going to hold the id or the number and the corresponding
+ vector representation. So for that purpose what we need to do is we need to convert our
+ tokens to id which is again a very nice function that is provided by PyTorch it will automatically
+ do that for you and then we also add the padding. So we also add the padding which is basically
+ just 0 that is it.
+ Remember that these 0 characters are not really required we want to make sure that the network
+ does not involve this 0 character in performing any computations and what is the main computation
+ in any transformer model it is basically self-attention or the attention cross attention self-attention
+ whatever it may be. So we want to make sure that the model knows that these characters
+ you do not need to pay attention to. So what we do is we create an attention mask which
+ basically tells you it is either 1s or 0s so 1s would denote that you want to pay attention
+ to these particular characters so what we will have is let us say a long sentence of
+ multiple words and we convert those words into numbers so we have let us say 1, 20,
+ 30, 33, 19 and so on and then we have lots of 0s. So what you want to tell the model
+ is for each of the numbers before the first 0 set them as 1 so now you have an attention
+ mask variable that has all 1s for the words that are involved in the computation and the
+ remaining portion that is going to contain all the 0 characters of the pads are going
+ to have 0 which means that you do not want to pay attention to these variables.
+ So this is the attention mask and finally we will be returning so we will be returning
+ the ideas that we just created the labels and the attention masks.
+ So what we will do is we can we will first run let us run each library and I would like
+ to show some what the text looks like. So let us run each of the cells until now that
+ we have talked about so this will take a bit of time to install because there are lot of
+ things to install along with these libraries a lot of dependencies actually.
+ You can also run these cells if you are following this particular session.
+ So in any case as the library gets installed we will go over the remaining portion of the
+ notebook. What I want to do is while we actually run these cells I would like to show what
+ the ideas look like and what the tokenizers look like and there are certain things that
+ I also want to talk about when we actually tokenize the sentence there are certain things
+ that you will find which are quite interesting. So in any case what we will do is we will
+ first load up the data. So we talked about the preprocessing now we come to the part
+ where we are going to load the data and then actually apply all the preprocessing that
+ we just talked about. So I believe the cells are done so we have installed all the libraries.
+ So we will load up whatever library we have. So again this is going to take some time so
+ again it is done actually. So we will move on to the next cell. So if we actually see
+ the device what is the device containing right now because we have a runtime which is T4 which
+ is the T4 I think this is the TPU. So if we run this device you will see that it is actually
+ device type is of CUDA. So we now have the CUDA or the GPU and we can run all our models
+ and all of our processing on the GPU if required.
+ So we will run these cells. Now we are going to load up the IMDB dataset we have the load
+ dataset functionality and what we will do is we will take the train set that we have
+ and we are going to convert it into pandas. So it is going to be converted into data frame
+ and we are going to do the same thing with the test partition of the data set as well.
+ So let us run this. So this green progress bar that you are seeing this actually comes
+ from TQDM. So TQDM again so it provides you with what is the progress of your loop and
+ what are the iterations, how fast they are running and so on.
+ So now we have our data. So what we did was we wrote display dftrain.head. So what this
+ will do is take the training portion of the dataset and it will show few rows from there.
+ So we can see there are a lot of different reviews I rented I am curious yellow. So curious
+ yellow is another probably a movie that was seen by people. I am curious yellow is again
+ someone talking about that and so on. So as you can imagine we have a very bare bones
+ preprocessing pipeline where we are removing where we are only picking the first 140 words.
+ But as you can imagine people are actually they start by talking about how they rented
+ the movie or where they went to watch the movie and so on. So these are not really information
+ that is required to understand the sentiment of the reviews. So maybe what we could have
+ done or you could actually try out later is that instead of taking the first 140 you take
+ somewhere from the middle and then you decide where you want to do, where you want to take
+ from somewhere from the middle so that you get those 140 words are the exact information
+ that is required and not just noise. So now what I would like to see is what is
+ the size of this dataset. So we can see that by running the len command. So as you can
+ see there are 25,000 training files and what are the number of test files? Let us see what
+ are we calling it DF value. So we have 25,000 validation or test files as well.
+ Now you can see in the data itself there are lots of stars here right. So we want to remove
+ all of this and this is where the where our preprocessing pipeline comes into the picture.
+ So we are going to run the cleaning pipeline that we just talked about. We are going to
+ do it once for the training and once for the test datasets. So what are we going to get
+ in return? It will be the IDs, the labels and the masks. So before we run this let us do
+ something. So what we will do is we will take these sentences, let us pick one sentence
+ and we will see what the sentence looks like. So let us say data frame we are going to take
+ the text portion and we will see what the sentence looks like before we call the preprocessing
+ function that we have and after the preprocessing function and let us call it quit for now.
+ So this will basically stop the execution of the code and we can just look at what the
+ lines look like. So we will run this cell again and let us try this out.
+ So you can see we have the very first sentence that we have is the non-pre-processed or raw
+ data. So you can see there are capitalizations and there is a lot of capitalizations and
+ because we did dot lower we call the dot lower function. So now we have the sentences in
+ lower case. So let us see what the sentences look like.
+ So I guess in this particular situation there is not a lot of cleaning that is required
+ here because I do not see any HTML content. So let us just go over and see. So there is
+ not much HTML content.
+ So here we see a little bit of HTML content and you will see what has happened here. So
+ these BRs they basically are your break statements. So just like your backslash in string content
+ similarly on websites you have BR which basically tells you which talks about the break statement.
+ So again we wanted to remove all of this. So as you can see after married men there is
+ a full stop and we directly begin with what we have removed these things because we do
+ not actually require them. So our pre-processing this pre-processed function is successful.
+ So now that we have this we can remove. So we will be pre-pending the CLS not really fun
+ but yeah what we want to do is we want to look at what the tokenized sentences look
+ like. So let us check this out.
+ So let us see what the tokenized sentence looks like. Oh so I guess our session has
+ restarted on collapse so we will have to run this all over again which is unfortunate.
+ This should be a lot faster now. So that cell is done. So we have run these cells let us
+ quickly run them over. Now we will look at what the data looks like. So it is going to
+ download the IMDb data set once again. So now we have the data set. So let us look at
+ what the tokenized sentences look like. So what it is doing right now is actually downloading
+ or rather what this progress bar is doing is actually running through this entire. So
+ this tokenization is happening. So it is running over the entire tokenization. So it is giving
+ us a nice progress bar. So now we can see what the data looks like. What the tokenized sentence
+ looks like. So we have the CLS token pre-pended. Then if you remember the sentence I rented
+ and I am curious yellow from my video store. So you can see that each for example here
+ I is one particular character or one particular word rented becomes another word and so on.
+ So we can ignore the error message right now. It is not really required. So here is something
+ interesting. So what you see is that for example usually under and then there is funded. The
+ word funded has been broken down into these hashtags. Hashtags and then you have the word.
+ So what this tells the model is that with these hashtags it means that these words
+ are sub words. For example under is an entire word in itself. But funded has been broken
+ down into f u and then n d e d alright. So to denote these sub words we have these hashes.
+ So you have double hashes to denote these sub words. This is what I wanted to show you.
+ So you will actually find this a lot in across the entire sentence. So for example den and
+ beri. So you can imagine if there was a word like den beri then it was broken down into
+ the sub word den and the word beri which again in themselves are actually words.
+ And there are a lot of other areas where you can see them as well. So that is something
+ that which I wanted to show you guys. So we can remove this and once we have our so we
+ now have our tokens what we want to now see is what those tokens look like for each sentence
+ in terms of words or IDs. So let us look at them. So we will again tokenize the sentences.
+ So we will look at the first tokenized sentence and then what we will do is we will look at
+ the IDs alright. So let us look at the first ID and we will return here
+ rather if you do not want the error that we got what we can do is we can return an umpire.
+ So let us run this again. So this will tokenize all of the sentences once again and we will
+ do it one more time just to you know make sure that we see all of the things that are required.
+ So this has printed out the tokenized sentence as is. And now you can see what these words
+ have been converted to the specific ID. So CLS ID is 101 the word I has the ID 1045 rented
+ as the ID 12,524 and so on. So now all of these words have been converted into the corresponding
+ numbers and then we will be going to use those numbers to take the corresponding vector representations
+ and then train the model. So the vector representations also get trained. So each word is going to
+ get their own learned vector representation right.
+ So finally we are done with our preprocessing pipeline these are certain things that I wanted
+ to show you if you are if you have the notebook you can actually run each cell and follow
+ along. So we will tokenize again just to make sure that none of those 0s are there that
+ we were just returning. So this can run for now. Now we will move on to the data loader
+ section. So now in the data loader section what we will be doing is we will be taking
+ the preprocessed data that we just have and we will be converting it into data set and
+ then into the data loader. So what is this data set? It is a simple wrapper that basically
+ allows you to fetch it is an iterator that allows you to fetch samples from whatever
+ data that you have. So this is PyTorch's way PyTorch's iterator that it utilizes this
+ underlying functionality we call it the iterator which basically iterates over your data and
+ picks samples as required. And what is the data loader? The data loader takes this iterative
+ data set and then breaks it down into chunks. So the iterator picks one sample at a time
+ when the data loader calls for a particular sample it will pick that sample and it will
+ it will provide it to you and then the data loader will take all of those multiple samples
+ and build a batch for you and then give that batch to you.
+ So that is what the entire idea here is. So the tensor data set it is again a nice class
+ that is provided by PyTorch where you can pass your whatever variables you have and
+ it will convert it into a tensor data set. And then you can use this you can pass this
+ data set to the data loader where you can specify what is a batch size whether you want to shuffle
+ it or not number of workers and so on. So we want to separate data loaders one for one
+ where the shuffle is false and one where the shuffle is true. So that is what we have done
+ here.
+ So now that we have a data set so as you can see we each sentence or each sentence is of
+ 140 words. So we have made sure that all of our sentences are 140 words and how many sentences
+ are there or how many reviews are there is around 25000 reviews. So we have exactly that
+ many IDs, labels sorry A masks and labels. So now we have generated the data loader.
+ Let us run this. So we have generated the data loader successfully. Now one thing to
+ remember is that this tensor data set expects all your variables to be of type tensor and
+ that is the exact reason why we converted our IDs, labels and attention masks to tensor.
+ So once we convert to tensor you can actually pass them directly to the data set and we
+ create a data set for you. Now why does PyTorch require this iterable? Why do we need this
+ extra step before the data loader? It is because the tensor data set or any data set custom
+ data set that you build in PyTorch using the data set class what it does is that it gives
+ you one sample at a time. So now what you can do is instead of sequentially fetching
+ your examples you can actually use the data loader to fetch multiple examples at the same
+ time. So ideally what we do is we run a for loop and then you pick a batch of samples.
+ So you will be going even if you pick a batch of samples you will be going one at a time.
+ But what PyTorch allows you to do is you can actually pick multiple examples at the same
+ time. So how do we do that? So you can call num workers. Sorry, so this will obviously
+ be in the data loader. So we can actually call something called num workers. And you
+ can set it to some values. I believe the default value is 0. As you can see it is being shown
+ here. The default value is 0 which means your text will be taken sequentially. But when
+ you set it to let us say some value let us say 4. So now what is going to happen is that
+ the PyTorch data loader is going to call the tensor dataset or the dataset class of PyTorch
+ at the same time. And there will be 4 such processes. So there will be 4 such calls at
+ the same time. So you are picking samples parallelly. And when you are doing that you
+ can obviously imagine how fast your training is going to be. Because now you are not limited
+ to sequential batching and sequential training. But rather you now have parallel processing
+ and parallel training. Now what we are going to do is we are going
+ to create the model. Now there are many ways of creating this model. I think we had talked
+ about this in the previous in some of the previous lectures that you can do either transfer
+ learning, you can do training from scratch or you can just use a pre-trained model as
+ this. So there are all of these 3 ways can actually be utilized to load your BERT model.
+ And how do we do that? So I have actually taken the time to add these comments so that
+ you know exactly how to load the model in which scenario. So for example if you want
+ to load the BERT model without any pre-trained weights. So in that case and you want to train
+ the BERT just you want to just train the architecture on your very large dataset.
+ Then ideally what you want to do is you want to load it without the pre-trained weights.
+ So how do we do that? Well hugging face provides you with something called the config file.
+ This config file basically contains it is a JSON file I believe it contains all of the
+ information that is required by the BERT model to build the BERT model actually. So you can
+ actually go into the config file and change certain things and your architecture would
+ end up changing. So if you want to load the pre-trained model what we do is we actually
+ load our own config file. So this comes from the BERT config we are loading from the pre-trained
+ model BERT base and case. So what this tells us is that you just directly want to load
+ the BERT architecture. So you want to use all the configurations that are required to
+ define the BERT architecture and all of that goes into the config variable.
+ So we can actually have a look. So let us comment out all of this and let us comment
+ all of the other lines. And let us run this and see what the config file looks like. So
+ you can see the BERT config has architectures BERT for Marceline because this is the model
+ that we have loaded and all of these different hyper parameters are what define the architecture.
+ So we have attention, probability, dropout, probability. So what this means is that when
+ you perform the self-attention if you remember we have the softmax variable at the end. So
+ now you have probabilities. So you can actually what hugging face of the official PyTorch
+ implementation does is that they add extra dropout on top of those probabilities. So certain
+ probabilities can be dropped out by a probability of 0.1 or 10%. Then we have for example, what
+ is the activation function used here? So the activation function is GELU. This is another
+ kind of activation function. Then we have different dropout probabilities. You can see
+ the hidden size is 768. If you wanted you can actually change the size of the, changing
+ this hidden size to actually come up with a different model. So let us try seeing that.
+ So we will run this again and we will print the model. So you can see we printed the configuration
+ file and then we printed the model as well. So you can see the embedding size over here
+ the vocab size is 30,522. This is our vocab size and each as I talked about earlier each
+ word has a corresponding 768 dimension vector representation.
+ So these are the word embeddings. Then we have position embeddings which is again 512
+ cross 768. So 512 here is the number of tokens that the BERT model expects. And then we have
+ the BERT model you can see the in features is 768 and so on. So maybe what we can do
+ is let us check this out. So we can go for config and because this is a dictionary. Let
+ us see if what happens if we change the size of the hidden, hidden dimensions. Let us set
+ it to 700. So I am doing this for the very first time. So I do not know. Let us see if
+ this runs or not. So as you can see this is actually given an error because what PyTorch
+ what hugging face is done is that they have made this BERT config file read only. So you
+ cannot assign any values to it. So this becomes a totally different. So it is read only and
+ it cannot be modified at runtime. So we actually cannot do this. So if you wanted to do this
+ you would have to create your own config file.
+ So in any case the idea behind this method of loading the model is to basically load
+ the model without any pre trained weights. This is how you would probably want to train
+ your model from scratch. But this is something probably we do not require at the moment.
+ Now if you want to load your model for pre training that is you just want to load the
+ model as is with the weights. So if you want to load the model with the weights this is
+ how you go about it. So right now what you want to do is you want to perform classification.
+ So PyTorch or hugging face provides us with this BERT for sequence classification class
+ that you can call and it will actually create the BERT model and then add a classification
+ layer on top. And we will see what that looks like.
+ So we have this. Let us print this out and see what happens. So it is downloading a few
+ things including the model weights. So now the weights have been downloaded. We can actually
+ look at the model and you will see that I think this is what Saraz also talked about.
+ We have the encoders and there are 12 such layers of the encoder and then because BERT
+ is an encoder only model. So once the encoders are done you can see there is something called
+ a BERT pooler. So what this does is it takes a 768 dimension vector which is from the CLS
+ token and then provides a 768 dimension on top. So you can imagine you have the BERT
+ model. You can imagine a black box and then finally from the CLS token you apply another
+ linear layer and then you apply tanh on top of it.
+ So now you have a 768 dimension vector and then you can see that on top of that we have
+ the 768 cross 2. So you have the BERT model we get the 768 dimension from there which is
+ the BERT pooler and then we apply tanh and then again drop out and then finally we have
+ the linear model which is the feed forward or the single layer perceptron and we apply
+ a matrix 768 cross 2 dimension matrix. So what this does is that it takes that 768 dimension
+ and then converts it into 2. So now we have binary classification task. So this is how
+ we are going to go about this particular problem statement.
+ Now for example you might also want to let us say replace the last layer. So maybe you
+ are doing some task and you do not have a binary classification task. You can have a
+ n dimension classification task or n dimensional classification problem. So for that purpose
+ what we will do is we can actually replace the final layer that we had. So the BERT model
+ then we had the BERT pooler and then finally we have the classifier. So we can access the
+ model.classifier in this manner and we can actually change the number of output neurons.
+ So let us check this out. So we need to print this as well. So this is the old model, it
+ has 768 cross 2. Now we have replaced it with the 10 dimensions or with 10 neurons in the
+ output layer. So we can see that it has now become 768 cross 10. So I hope this is clear.
+ But for now we just want 2 neurons in the output because it is a binary classification
+ task. Now you might also want to actually train some of the layers and or rather fine
+ tune some of the layers and keep all the other layers fixed or frozen. So for that purpose
+ what I have done or what you can do rather is you can run a loop through the model to
+ the model layers and then for example here I have said that if I find the classifier
+ layer or the BERT encoder layer number 9 or BERT encoder layer number 10, we are going
+ to set the param that requires grad variable to true. So what this does is that it tells
+ PyTorch that you want to train only these particular layers. So you want to compute the gradients
+ and update the layers or the parameters of these layers with those gradient values and
+ all other layers should have the gradient set to false. So no gradient updates will
+ happen here.
+ And finally we have also calculated the total number of parameters which is basically going
+ through the entire model and then wherever we have required grad set to true we are going
+ to add it. So param dot numal is a nice function that actually adds up all of the which tells
+ you how many number of elements you have in a particular tensor. So we are going to use
+ that to find the total number of parameters. So you can see that the total number of parameters
+ is quite large. I think it is about 14, I believe it is 14 million parameters, 14 million
+ parameters. So that is a pretty large model that you are going to work with.
+ So now that I have converted into back to true, so you can see the number of parameters
+ has slightly reduced. So now our data is done, our model is done, we will now move on to
+ the training portion and see what happens here. So training in Colab with this sized
+ model is a little difficult. So I would recommend it running on your servers if you have one.
+ But anyways if you want to run it on Colab you can actually reduce the batch size and
+ run it. So it would not be an issue.
+ So there are certain things that I would like to talk about. The first thing is that always
+ try to use the Adam W optimizer for your transform model. So it has been empirically shown that
+ the Adam W optimizer works really well for transformers. And what is this Adam W optimizer?
+ Well right at the beginning we had something called gradient descent or we have this stochastic
+ gradient descent optimizer. So what it does is that it randomly picks a batch of samples,
+ a mini batch as you call it. So it picks a batch of samples and randomly and then you
+ train on that. You apply gradient descent on that batch and train your model.
+ Then came Adam which basically has this idea of momentum and second order variable that
+ it uses to optimize your model. Then comes Adam W. So what Adam W does is that certain
+ researchers what they found was that the Adam optimizer had some issue in its formulation
+ for the regularization formulation that it had some issues in it. So what they did was
+ they fixed that problem and then they proposed Adam W which is basically Adam weight regularized
+ version of Adam. So that is what the W stands for.
+ So it turns out this by fixing that formulation they were actually able to train transformers
+ much better. And it works and Adam W works really well for transformers and also for
+ other networks in general. But I would recommend using Adam W because that is the recommendation
+ by state of the art labs out there. They recommend to use Adam W for transformers.
+ And whenever you are using Adam W just a few tips and tricks for training. So whenever
+ you are using Adam W or Adam in fact you want to use small learning rates. And when you
+ have very deep models as well you want to use small learning rates these are certain
+ tricks that you can use to quickly train your model. But if you had let us say an SGD optimizer
+ you would have to set a very large learning rate like maybe 0.1 or 0.01.
+ Then we have the cross entropy we are going to use the cross entropy loss and we have
+ the from torch matrix we are going to call the accuracy class and we are going to say
+ that is going to be a binary classification problem. So now what we will do is we will
+ train the model. So we are going to go over certain number of epochs that we have specified.
+ These two variables are basically going to save all the losses. And you can actually
+ maybe you know print them out and check them out on the mat plot labor C bond library or
+ favorite plotting libraries and see how the loss evolves over time.
+ Now the very first thing that we are going to do is we are going to set the model to
+ training. So model what model.train does is that it will make sure that your model is
+ in training mode that is all the updates happen because in model.eval drop out batch normalization
+ all of this is stopped. No updates happen there. So you want to make sure that the model is
+ in training phase and all the updates happen. So what is something that you require here?
+ So for each in each epoch you will be iterating over your entire data batch by batch and training
+ your model. So in each patch what do we have? We have the IDs, we have the labels and we
+ have the attention masks. And we are going to pass all of this information to the but
+ for sequence classification model. So the first thing that we do is we remove all of
+ the gradients that might be on the computation graph then we move on to the we actually take
+ up all of the IDs, the masks and the labels and we are going to convert them into onto
+ the GPU. So all the data always is initialized and exists on the CPU. So we need to transfer
+ them to the GPU and then all the training happens and is transferred back to the CPU.
+ So that is why we need to make sure that all our inputs are actually moved over to the
+ GPU. If you see we have actually done that for the model as well. So we have done model.to
+ device. So we are going to do that here as well. Then we will perform, we will pass the
+ data to the model. So we are passing the X IDs and the attention masks and then we are
+ going to update our predictions with the predictions and the labels that we have.
+ We calculate the loss which is based on whatever output our model produces. So birth or sequence
+ classification that this particular model the way you access the output of the model
+ is by taking the preds. So the output will be in softmax, the softmax version we do not
+ actually need the softmax because cross entropy loss already handles this first. So the cross
+ entropy loss expects the raw values and not the softmax or the probabilities. So the raw
+ values are called logits and you can access them by typing preds.logits because the preds
+ is where all the predictions of the model exist. So we pass the loss, in the loss function
+ we pass the raw predictions by model and the labels.
+ And then we obviously save the loss and we calculate the, we compute the gradients and
+ then we update the gradients. We do the exact same thing for the test data set as well or
+ the validation data set. We first set a model to eval mode. So by setting a model to eval
+ mode will allow us, will make sure that batch normalization and dropout such layers are
+ not updated. And then we are going to run through all of this but obviously we do not
+ need to update the loss and so that is exactly what we are doing here. We are not updating
+ the loss values by running loss.backwardoroptimizer.step. So this is the overall picture. So you
+ can actually run this and this is training relatively faster because we have a T4 GPU.
+ I think this is the TPU or yeah, it is the GPU. The GPU is there. So it is going to train
+ pretty fast. So it is going to take some time to train but yeah, this was basically the
+ overall notebook and you can actually modify this and you can do a lot of things for example
+ as I talked about changing where you want to take the reviews from say you get better
+ classification accuracy, you can do a lot of things, better preprocessing, maybe changing
+ the dimensionality of the BERT model by loading your own configuration and seeing how that
+ performs and so on. So there are lot of directions that you can go with. Yeah, so I hope this
+ works out. Thank you.
+ We can move on to the questions that if anybody has. So the question is pre-training decoder.
+ Will it have sequential steps as it has a feedback kind of approach between layers. Yes, so it
+ has a sequential step. So when you are training, if you look at all of that logic, how the
+ data is passed through the model exists in the forward pass. So if you open up the source
+ code of the decoder, you will find that if you want to understand that logic, you can
+ actually go and look at the forward pass of the model and you will find that it goes through
+ the model sequentially. So yeah, the decoder part is the data is forward pass in a sequential
+ manner. Next question. Right, so the question is could you please explain how we are reaching
+ a binary classification task after using TANH in BERT puller. So let's go back to the model.
+ So as you can see, the BERT, what the BERT model does is after the final layer, right.
+ So after this, so there are around 12 BERT layers, right, which is the BERT encoder layers.
+ So after the final layer, each token has its corresponding vector representation as output
+ and I think Sir had talked about this. So each after the final layer, each word or each
+ token has its own vector representation. So if there are 512 tokens, then you would have
+ a 512 cross 768 dimension matrix, right. So now what you want to do is you want to take
+ only the CLS token because as I talked about previously, all of the sentence information
+ is said to be contained in the CLS token. So what BERT puller does is that it takes
+ from out of all of these vector representations at 512 cross 768 vector representation, it
+ takes the CLS token vector representation and passes it through a linear layer which
+ is just 768 cross 768. So out of that entire 512 cross 768, we take the first one, so
+ that is just a 768 dimension vector and we run it through a single, we multiply it through
+ a matrix which is of 768 cross 768. So you get a vector of dimension 768, right.
+ Now you apply tanh on top of that. So applying tanh just means that you are normalizing your
+ values between -1 to 1, okay. So if you look at the logit output that you get, it is supposed
+ to be between -1 to 1.
+ So now you have the 768 dimension vector which is basically a non-linear transform version
+ of whatever CLS vector representation that we had and then again on top of this, we are
+ going to apply another linear layer which is of dimension 768 cross 2. So again we are
+ going to multiply this 768 dimension vector with a matrix of dimension 768 cross 2 to
+ give us the two neurons or two outputs, right.
+ So now we have a two dimension output which is basically a binary classification problem.
+ So now either, so if let us say it is class 1 or output would be 0, 1 and if it is class
+ 0 or output would be 1, 0. So whatever index is the highest value will be considered as
+ that particular class. So if the index 0 has the highest value, it is a 0.9 and the other
+ has 0.1 then index 0 is going to be considered as class 0.
+ Similarly, if index 1 has the highest value, let us say 0.7 then in class 1 will be considered
+ as the output of the model. So that is how we are converting the BERT model output to
+ from BERT pooler right up to the classifier layer. Next question. So that is all the questions
+ there were. So thank you so much and I hope you have, thank you for participating in the
+ session. I hope you have a nice weekend. Thank you.

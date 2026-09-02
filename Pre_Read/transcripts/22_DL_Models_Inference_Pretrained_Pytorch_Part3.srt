@@ -1,0 +1,388 @@
+1
+00:00:00,000 --> 00:00:05,960
+ So, the question is, can you please explain what happens in transforms.to tensor step?
+
+2
+00:00:05,960 --> 00:00:12,640
+ So, the idea is that in the PyTorch library, we work only with tensors, while in normal
+
+3
+00:00:12,640 --> 00:00:17,440
+ Python, when you load an image, it loads as a PIL image, and you print it out, you'll
+
+4
+00:00:17,440 --> 00:00:20,880
+ see that it's a NumPy matrix, right?
+
+5
+00:00:20,880 --> 00:00:27,840
+ So, what we want to do is, we want to convert that NumPy matrix or NumPy array to a tensor
+
+6
+00:00:27,840 --> 00:00:32,640
+ before we can actually allow PyTorch or the PyTorch model to work with it.
+
+7
+00:00:32,640 --> 00:00:39,240
+ So transforms of two tensor converts whatever input you have provided to a tensor, right?
+
+8
+00:00:39,240 --> 00:00:48,160
+ So, we do not apply horizontal flip in the validation set because that is an extra augmentation,
+
+9
+00:00:48,160 --> 00:00:49,160
+ right?
+
+10
+00:00:49,160 --> 00:00:53,840
+ So, in the validation set, you just want to test how your model is performing on the
+
+11
+00:00:53,840 --> 00:00:56,360
+ images that you have provided, right?
+
+12
+00:00:56,360 --> 00:01:02,380
+ You do not want to change that image and then ask to test the model, rather you want to
+
+13
+00:01:02,380 --> 00:01:04,160
+ test the image as is.
+
+14
+00:01:04,160 --> 00:01:09,080
+ So, that is why we are not applying horizontal flip because if you apply horizontal flip,
+
+15
+00:01:09,080 --> 00:01:15,840
+ you might actually disrupt the model and you might actually get artificial gains in performance.
+
+16
+00:01:15,840 --> 00:01:22,240
+ So, rather you want to look at how the model is performing on the image that you have provided.
+
+17
+00:01:22,240 --> 00:01:28,680
+ That is why we do not apply any further augmentation apart from converting to tensors, normalizing
+
+18
+00:01:28,680 --> 00:01:31,360
+ and resizing.
+
+19
+00:01:31,360 --> 00:01:43,920
+ The question is, how will we know how many units in the penultimate layer of a model?
+
+20
+00:01:43,920 --> 00:01:51,680
+ If we want to fine tune smoother model also with PyTorch, can we only pretend models built
+
+21
+00:01:51,680 --> 00:01:59,000
+ using PyTorch or models created using other library like Keras can also be trained.
+
+22
+00:01:59,000 --> 00:02:03,360
+ So, let me get to the first part of the question.
+
+23
+00:02:03,360 --> 00:02:11,920
+ So, basically it is subject to experimentation and that is really kind of hyper parameter,
+
+24
+00:02:11,920 --> 00:02:18,680
+ the number of units that you want to unfreeze or layers that you want to unfreeze.
+
+25
+00:02:18,680 --> 00:02:27,160
+ So, again as I told you, so it is a kind of hyper parameter that you need to tune with
+
+26
+00:02:27,160 --> 00:02:29,240
+ your validation data.
+
+27
+00:02:29,240 --> 00:02:37,240
+ And also it depends on, so if you think about, if you have many layers to be unfrozen, so
+
+28
+00:02:37,240 --> 00:02:47,440
+ that will require bit more compute power than if you freeze or unfreeze very small number
+
+29
+00:02:47,440 --> 00:02:49,240
+ of units, right.
+
+30
+00:02:49,240 --> 00:02:53,680
+ So, I think that depends on your compute budget as well.
+
+31
+00:02:53,680 --> 00:03:05,560
+ So, if you want to fine tune smoother model, some other model.
+
+32
+00:03:05,560 --> 00:03:25,960
+ Okay, so if you are talking about the number of units in the penultimate layer, so that
+
+33
+00:03:25,960 --> 00:03:31,800
+ is there in your pre-tent model, so you know the backboard network, so for example, if
+
+34
+00:03:31,800 --> 00:03:39,400
+ you have this resonant in your, to be your pre-tent network, so that is quite fixed that
+
+35
+00:03:39,400 --> 00:03:45,920
+ how many units that you have in the penultimate layer, I think that answers your question.
+
+36
+00:03:45,920 --> 00:03:53,040
+ Yeah, so again you can print the architecture size and in every layer you get to know the
+
+37
+00:03:53,040 --> 00:03:55,080
+ size of the layer.
+
+38
+00:03:55,080 --> 00:04:02,400
+ So, finally, as we, as also with PyTorch, can we only pre-tent models built with PyTorch
+
+39
+00:04:02,400 --> 00:04:07,840
+ or models created using other library like Keras can also be trained.
+
+40
+00:04:07,840 --> 00:04:18,200
+ So, actually whenever we pre-tent a model and we are basically interested in the parameters
+
+41
+00:04:18,200 --> 00:04:24,360
+ and their values after pre-tenting and that is what is important for us, so as long as
+
+42
+00:04:24,360 --> 00:04:29,240
+ that is available to us, it really does not matter whether that has been trained using
+
+43
+00:04:29,240 --> 00:04:33,440
+ one library or the other library.
+
+44
+00:04:33,440 --> 00:04:36,440
+ Want to add anything?
+
+45
+00:04:36,440 --> 00:04:43,160
+ So just one other point is that, so in PyTorch and Keras, these have certain, when you save
+
+46
+00:04:43,160 --> 00:04:50,040
+ the models, so as I said, if you are saving only the, if you are saving only the parameter
+
+47
+00:04:50,040 --> 00:04:54,440
+ values, then it's fine, but if you are saving the entire model including the architecture
+
+48
+00:04:54,440 --> 00:05:00,400
+ and just want to load it up, then that becomes PyTorch or Keras or whatever library dependent
+
+49
+00:05:00,400 --> 00:05:05,440
+ and then there is, there are some other plug and play libraries that allow you to actually
+
+50
+00:05:05,440 --> 00:05:11,440
+ take a PyTorch model, convert it into an intermediate representation and then take that representation,
+
+51
+00:05:11,440 --> 00:05:13,880
+ convert to any other library, for example Keras.
+
+52
+00:05:13,880 --> 00:05:24,200
+ So I believe one of them is ONX, ONX, so you can check that out as well.
+
+53
+00:05:24,200 --> 00:05:31,880
+ Can we extract scientific property values using NLP from research articles, if yes, how?
+
+54
+00:05:31,880 --> 00:05:38,920
+ So there are many answers to these questions and it depends on what kind of pre-tent model
+
+55
+00:05:38,920 --> 00:05:43,580
+ that you are going to use to solve this problem, right?
+
+56
+00:05:43,580 --> 00:05:50,240
+ So let's say you want to use a very baseline architectures like B or T, so there you can
+
+57
+00:05:50,240 --> 00:05:58,160
+ create a data set where you have the scientific property, scientific articles, research articles
+
+58
+00:05:58,160 --> 00:06:01,760
+ and from that you know what are the scientific properties, right?
+
+59
+00:06:01,760 --> 00:06:07,280
+ Basically if you think about what kind of information that you want to extract, for example
+
+60
+00:06:07,280 --> 00:06:13,440
+ you want to extract the names of the molecules and their property, something like that.
+
+61
+00:06:13,440 --> 00:06:20,040
+ So then you have to create a kind of small training data set and find in the BERT model
+
+62
+00:06:20,040 --> 00:06:22,720
+ using that data set, right?
+
+63
+00:06:22,720 --> 00:06:24,760
+ So this is one way of doing that.
+
+64
+00:06:24,760 --> 00:06:31,040
+ But nowadays as you know there are large language models, so there you can solve this problem
+
+65
+00:06:31,040 --> 00:06:37,220
+ using prompt engineering technique, where you can write a prompt explaining how given
+
+66
+00:06:37,220 --> 00:06:44,060
+ a research article you can extract scientific properties, then with say one shot or zero
+
+67
+00:06:44,060 --> 00:06:49,880
+ shot learning you can come up with a system which can tell you given a research articles,
+
+68
+00:06:49,880 --> 00:06:56,040
+ what are the properties and their values.
+
+69
+00:06:56,040 --> 00:07:00,240
+ When training this model, so the next question is when training these models are there any
+
+70
+00:07:00,240 --> 00:07:08,140
+ rules as to how many images or examples of each class do we need to provide to get an
+
+71
+00:07:08,140 --> 00:07:13,440
+ accurate model, right?
+
+72
+00:07:13,440 --> 00:07:16,480
+ So there are no rules as such.
+
+73
+00:07:16,480 --> 00:07:21,680
+ The idea is that the more data you have the better it is, but the thing is that if you
+
+74
+00:07:21,680 --> 00:07:28,340
+ have very small amount of images by very small, it can have many different meanings depending
+
+75
+00:07:28,340 --> 00:07:30,380
+ on the data set or the domain.
+
+76
+00:07:30,380 --> 00:07:35,720
+ Now for example in image data sets you would ideally want as many images as possible.
+
+77
+00:07:35,720 --> 00:07:43,080
+ So for example in your case if you have limited amount of data, let's say maybe 10 or 20 images
+
+78
+00:07:43,080 --> 00:07:48,300
+ per class, then what you want to do is you want to use these pre-trained models for your
+
+79
+00:07:48,300 --> 00:07:49,300
+ particular benefit.
+
+80
+00:07:49,300 --> 00:07:54,580
+ But for example if you have large number of images, like let's say 10,000, 20,000 images
+
+81
+00:07:54,580 --> 00:07:59,800
+ per class, then that's a good starting point and you can actually maybe use a pre-trained
+
+82
+00:07:59,800 --> 00:08:04,920
+ model or you can actually train a model from scratch.
+
+83
+00:08:04,920 --> 00:08:07,020
+ But again there is a kind of another view.
+
+84
+00:08:07,020 --> 00:08:15,400
+ So in many cases you know some of the classes, the examples of that class may be very abundant,
+
+85
+00:08:15,400 --> 00:08:18,920
+ but for some other classes the examples are very rare.
+
+86
+00:08:18,920 --> 00:08:23,560
+ So in that case you have a kind of skew in the distribution of the examples across the
+
+87
+00:08:23,560 --> 00:08:24,960
+ classes.
+
+88
+00:08:24,960 --> 00:08:31,060
+ So there as this is happening naturally you have to take care of that by introducing some
+
+89
+00:08:31,060 --> 00:08:34,400
+ other techniques to deal with this.
+
+90
+00:08:34,400 --> 00:08:42,240
+ So imbalance distribution of the examples in the classes is also a kind of scenario and
+
+91
+00:08:42,240 --> 00:08:46,520
+ there are several techniques to deal with that.
+
+92
+00:08:46,520 --> 00:08:56,980
+ Next question please, are the special token name standard is CLS 1, will the token name
+
+93
+00:08:56,980 --> 00:09:05,560
+ be same even we are training different pre-trained language model or are they model specific?
+
+94
+00:09:05,560 --> 00:09:14,400
+ So I think this is a kind of standard token name that is being used and more or less all
+
+95
+00:09:14,400 --> 00:09:19,720
+ the pre-trained language models they make use of these kind of special token, but again
+
+96
+00:09:19,720 --> 00:09:25,280
+ there are variations.
+
+97
+00:09:25,280 --> 00:09:25,760
+ Thank you.
+

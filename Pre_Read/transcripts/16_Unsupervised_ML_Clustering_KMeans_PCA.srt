@@ -1,0 +1,4312 @@
+1
+00:00:00,000 --> 00:00:09,600
+ So, this is one of the two lectures that I am going to take so today we will see unsupervised
+
+2
+00:00:09,600 --> 00:00:20,800
+ learning in particular clustering of various kinds, flat clustering, hierarchical clustering
+
+3
+00:00:20,800 --> 00:00:22,320
+ and so on and so forth.
+
+4
+00:00:22,320 --> 00:00:27,160
+ And then we will also see the principal component analysis one of the most popular approach
+
+5
+00:00:27,160 --> 00:00:33,280
+ for doing dimensionary reduction when you would like to reduce the number of dimensions
+
+6
+00:00:33,280 --> 00:00:35,560
+ from a very high dimensional data.
+
+7
+00:00:35,560 --> 00:00:40,600
+ So, broadly this is the plan for my lecture today.
+
+8
+00:00:40,600 --> 00:00:48,320
+ So, I start with the clustering problem and clustering is generally known as unsupervised
+
+9
+00:00:48,320 --> 00:00:58,120
+ learning and in the sense that we do not use any super supervised data or label data.
+
+10
+00:00:58,120 --> 00:01:04,260
+ We have unlabeled data and more or less the broad objective of clustering is to figure
+
+11
+00:01:04,260 --> 00:01:10,640
+ out the groups of objects which are similar to each other.
+
+12
+00:01:10,640 --> 00:01:19,600
+ So, while we do so we try to fulfill two objectives, one the objects and the items within a cluster
+
+13
+00:01:19,600 --> 00:01:25,720
+ should be similar that is one thing and then the objects and items from different clusters
+
+14
+00:01:25,720 --> 00:01:27,240
+ should be dissimilar.
+
+15
+00:01:27,240 --> 00:01:34,400
+ So, standing on these two objectives we will see several algorithms for clustering data
+
+16
+00:01:34,400 --> 00:01:36,840
+ points.
+
+17
+00:01:36,840 --> 00:01:43,180
+ Now, there are many examples of clustering or application of clustering which you can
+
+18
+00:01:43,180 --> 00:01:44,180
+ think of.
+
+19
+00:01:44,180 --> 00:01:50,280
+ So, I have taken this particular example just to illustrate the utility of clustering algorithms.
+
+20
+00:01:50,280 --> 00:01:56,480
+ For example, in shard result ranking, shard result clustering for instance when we see
+
+21
+00:01:56,480 --> 00:02:04,000
+ some results in response to your query to a particular shard engine when we see a set
+
+22
+00:02:04,000 --> 00:02:09,840
+ of for example, set of documents, so inside the shard engine there are lot of things actually
+
+23
+00:02:09,840 --> 00:02:10,840
+ going on.
+
+24
+00:02:10,840 --> 00:02:19,960
+ For example, if your question is apples and we do not know whether this is the fruit apple
+
+25
+00:02:19,960 --> 00:02:24,520
+ or this is the for example, the company apple and something like that we are never sure
+
+26
+00:02:24,520 --> 00:02:25,520
+ about it.
+
+27
+00:02:25,520 --> 00:02:33,600
+ So, in a situation like that the best thing that a good shard engines can do is to group
+
+28
+00:02:33,600 --> 00:02:40,480
+ the web pages talking about the similar kind of content and then populate top few pages
+
+29
+00:02:40,480 --> 00:02:45,520
+ with various kinds of content covering wide range of things that possibly can cover all
+
+30
+00:02:45,520 --> 00:02:48,320
+ of the aspects that the query is trying to reflect.
+
+31
+00:02:48,320 --> 00:02:54,440
+ So, for example, few documents could be the apple company, it is talking about apple company,
+
+32
+00:02:54,440 --> 00:02:58,920
+ few documents could be from for instance the apple fruit or something like that.
+
+33
+00:02:58,920 --> 00:03:04,200
+ There are many such applications that one can think of where the clustering is really
+
+34
+00:03:04,200 --> 00:03:05,200
+ used.
+
+35
+00:03:05,200 --> 00:03:13,480
+ In fact, in many popular classification algorithms clustering is typically used as an intermediate
+
+36
+00:03:13,480 --> 00:03:19,560
+ step to reduce some of the data annotation budget often.
+
+37
+00:03:19,560 --> 00:03:29,360
+ So, let us take this particular example for instance, so in this case, for example, we
+
+38
+00:03:29,360 --> 00:03:35,080
+ have this particular data, so for simplicity I have used two dimensional data, it has only
+
+39
+00:03:35,080 --> 00:03:38,280
+ two features and so on so forth.
+
+40
+00:03:38,280 --> 00:03:46,160
+ And so we have a data like this, so what we like to do in this case is to uncover the
+
+41
+00:03:46,160 --> 00:03:50,200
+ underlying structure or rather the clusters of this data.
+
+42
+00:03:50,200 --> 00:03:56,760
+ So, apparently from this particular figure, what we can see is that that this particular
+
+43
+00:03:56,760 --> 00:04:04,760
+ data is showing three clear clusters and so our objective would be to try to figure out
+
+44
+00:04:04,760 --> 00:04:07,560
+ those clusters in an automatic way.
+
+45
+00:04:07,560 --> 00:04:13,320
+ Now, note that we do not have any levels, that means we do not have any ground truth
+
+46
+00:04:13,320 --> 00:04:19,320
+ for this one, we only have the feature vectors or some raw data or something like that and
+
+47
+00:04:19,320 --> 00:04:25,400
+ we have to basically find out the groups automatically using some clustering technique.
+
+48
+00:04:25,400 --> 00:04:33,920
+ So, what are the major issues in clustering and these are very important issues when you
+
+49
+00:04:33,920 --> 00:04:37,800
+ are trying to perform any kind of clustering on any kind of data.
+
+50
+00:04:37,800 --> 00:04:47,280
+ So, the first issue is the representation for clustering, so you can have data with
+
+51
+00:04:47,280 --> 00:04:52,600
+ explicit features, for example, in a tabular form data where the features are already known
+
+52
+00:04:52,600 --> 00:05:00,720
+ to you, you can have a set of images, you can have a set of textual contents or documents,
+
+53
+00:05:00,720 --> 00:05:04,640
+ you can have videos and audios and so on so forth.
+
+54
+00:05:04,640 --> 00:05:11,720
+ So data might come in various forms and therefore, before one is trying to apply any clustering
+
+55
+00:05:11,720 --> 00:05:17,840
+ technique or algorithm, we need to understand how we can represent data, for example, converting
+
+56
+00:05:17,840 --> 00:05:24,960
+ the raw data into a form that a particular clustering algorithm can understand, so which
+
+57
+00:05:24,960 --> 00:05:28,240
+ is called feature engineering.
+
+58
+00:05:28,240 --> 00:05:33,240
+ The second most important issue is basically the similarity or the distance between example.
+
+59
+00:05:33,240 --> 00:05:42,960
+ So, all clustering algorithms will stand on similarity or dissimilarity measure and therefore,
+
+60
+00:05:42,960 --> 00:05:47,720
+ one has to define what kind of similarity or dissimilarity measure we are going to use
+
+61
+00:05:47,720 --> 00:05:54,360
+ to group the objects because they are the backbone of any kind of clustering algorithm.
+
+62
+00:05:54,360 --> 00:06:00,560
+ The second issue that we often encounter is that whether you should do flat clustering
+
+63
+00:06:00,560 --> 00:06:07,200
+ or hierarchical clustering and we will spend some time on this particular aspect later
+
+64
+00:06:07,200 --> 00:06:15,120
+ in this particular lecture, so we will see how these things actually going to happen.
+
+65
+00:06:15,120 --> 00:06:20,360
+ And the final thing is basically that how many clusters we would like to create.
+
+66
+00:06:20,360 --> 00:06:25,240
+ Now whether we fix beforehand that we would like to create certain or 15 clusters from
+
+67
+00:06:25,240 --> 00:06:31,560
+ the data or whether we can figure out from the data itself what would be the appropriate
+
+68
+00:06:31,560 --> 00:06:35,600
+ number of clusters given the raw data.
+
+69
+00:06:35,600 --> 00:06:40,360
+ So these are the three broad things, so the major things that one has to tackle when we
+
+70
+00:06:40,360 --> 00:06:47,280
+ are trying to cluster the data points.
+
+71
+00:06:47,280 --> 00:06:54,960
+ So there are broadly two types of clustering algorithms, one is flat algorithms.
+
+72
+00:06:54,960 --> 00:07:01,160
+ So in this case we usually start with random partitions of the data and then what we do
+
+73
+00:07:01,160 --> 00:07:06,520
+ we refine it iteratively for example, K-means algorithm which are going to see in little
+
+74
+00:07:06,520 --> 00:07:10,280
+ more detail later on is one such example.
+
+75
+00:07:10,280 --> 00:07:17,480
+ So in this case what we finally get is basically a disjoint set of groups.
+
+76
+00:07:17,480 --> 00:07:24,840
+ That means each element or object will belong to exactly one group not more than one and
+
+77
+00:07:24,840 --> 00:07:30,280
+ that is why you are calling flat clustering or partitional clustering often we call it.
+
+78
+00:07:30,280 --> 00:07:36,280
+ Now the second category of algorithms which we call hierarchical algorithms we have brought
+
+79
+00:07:36,280 --> 00:07:42,320
+ the two approaches in there bottom up or agglomerative or top down and divisive.
+
+80
+00:07:42,320 --> 00:07:49,240
+ So in this case unlike the previous case in flat algorithms one particular element might
+
+81
+00:07:49,240 --> 00:07:56,560
+ not belong to multiple clusters and in this case the clusters are typically organized hierarchically
+
+82
+00:07:56,560 --> 00:08:00,520
+ sharing some sort of common relationship.
+
+83
+00:08:00,520 --> 00:08:07,680
+ For example, hockey and cricket could be two different kinds of groups and again we can
+
+84
+00:08:07,680 --> 00:08:12,280
+ group them together in a category called sports.
+
+85
+00:08:12,280 --> 00:08:16,600
+ So hockey and cricket will be belonging to a lower level of category and then when you
+
+86
+00:08:16,600 --> 00:08:21,760
+ mark them together to a bigger group we call sports that is basically you know one level
+
+87
+00:08:21,760 --> 00:08:23,760
+ up in the hierarchy.
+
+88
+00:08:23,760 --> 00:08:28,400
+ So also these are the kinds of things that we do often.
+
+89
+00:08:28,400 --> 00:08:34,800
+ Now another categorization is basically the hard clustering and the soft clustering.
+
+90
+00:08:34,800 --> 00:08:42,760
+ So in hard clustering each example or point belongs to exactly one cluster and in soft
+
+91
+00:08:42,760 --> 00:08:49,240
+ clustering an example can belong to more than one cluster with a membership value.
+
+92
+00:08:49,240 --> 00:08:55,640
+ In the sense that that it will tell whether a particular object or element is in a particular
+
+93
+00:08:55,640 --> 00:08:57,920
+ cluster and to what extent.
+
+94
+00:08:57,920 --> 00:09:02,880
+ So it is like a probabilistic membership for all of these points and it will tell you to
+
+95
+00:09:02,880 --> 00:09:10,040
+ what extent a particular example is part of a particular cluster in your data something
+
+96
+00:09:10,040 --> 00:09:11,040
+ like that we will do.
+
+97
+00:09:11,040 --> 00:09:17,140
+ There are good reasons why we do that sometimes it is actually not possible in reality or
+
+98
+00:09:17,140 --> 00:09:22,240
+ not very practical to assign a particular object to a single cluster we also would like to
+
+99
+00:09:22,240 --> 00:09:27,920
+ know that what this possibility that this particular example is also a member of another
+
+100
+00:09:27,920 --> 00:09:28,920
+ cluster.
+
+101
+00:09:28,920 --> 00:09:35,280
+ So in a situation like that we basically try to apply soft clustering approaches.
+
+102
+00:09:35,280 --> 00:09:43,000
+ Now we study our first flat clustering algorithm called K-means algorithm this is one of the
+
+103
+00:09:43,000 --> 00:09:50,280
+ oldest technique in machine learning and still very widely used for a simplicity, conceptual
+
+104
+00:09:50,280 --> 00:09:56,480
+ simplicity, computational simplicity and also effectiveness.
+
+105
+00:09:56,480 --> 00:10:05,200
+ So as I mentioned it is very efficient, simple and widely used because of a simplicity and
+
+106
+00:10:05,200 --> 00:10:09,520
+ so the main steps of K-means are basically this.
+
+107
+00:10:09,520 --> 00:10:13,960
+ First we start with some initial cluster centers.
+
+108
+00:10:13,960 --> 00:10:20,240
+ So if we for example would like to create 10 cluster from data we start with say K-value
+
+109
+00:10:20,240 --> 00:10:21,240
+ 10.
+
+110
+00:10:21,240 --> 00:10:30,200
+ So initially find out using some method that what would be the 10 initial cluster centers.
+
+111
+00:10:30,200 --> 00:10:37,020
+ Then what we do we assign cluster for each member to the closest center which we call
+
+112
+00:10:37,020 --> 00:10:39,020
+ assignment step.
+
+113
+00:10:39,020 --> 00:10:45,560
+ So once we have the centers then for each element we take we figure out which center
+
+114
+00:10:45,560 --> 00:10:50,640
+ is going to the closest to that particular cluster, particular point and then we assign
+
+115
+00:10:50,640 --> 00:10:53,880
+ the point to that particular cluster.
+
+116
+00:10:53,880 --> 00:11:00,580
+ And finally what we do we recalculate the centers as the mean of the points in the cluster
+
+117
+00:11:00,580 --> 00:11:02,080
+ has changed.
+
+118
+00:11:02,080 --> 00:11:08,160
+ So we start with a very weak guess which is often randomly done.
+
+119
+00:11:08,160 --> 00:11:14,840
+ Then we do assignment step and then because we have done assignment steps the initial cluster
+
+120
+00:11:14,840 --> 00:11:16,960
+ centers are not that valid.
+
+121
+00:11:16,960 --> 00:11:22,840
+ So what we do is change it, refine it to find out better cluster centers and so on and so
+
+122
+00:11:22,840 --> 00:11:24,160
+ on.
+
+123
+00:11:24,160 --> 00:11:28,920
+ And we iterate step 2 and step 3.
+
+124
+00:11:28,920 --> 00:11:32,000
+ We do not touch step 1, this is one time job.
+
+125
+00:11:32,000 --> 00:11:37,040
+ So we simply iterate step 2 and step 3 many many times to improve the quality of centers
+
+126
+00:11:37,040 --> 00:11:43,240
+ and correspondingly quality of clusters of the data.
+
+127
+00:11:43,240 --> 00:11:45,760
+ So we need to stop.
+
+128
+00:11:45,760 --> 00:11:49,800
+ So typically we stop using one of these two possibilities.
+
+129
+00:11:49,800 --> 00:11:56,880
+ One we stop after number fixed iteration that is pretty common often we do or we see that
+
+130
+00:11:56,880 --> 00:12:03,760
+ in two successive iterations if the centers or the memberships are not changing then we
+
+131
+00:12:03,760 --> 00:12:07,520
+ can also stop.
+
+132
+00:12:07,520 --> 00:12:14,120
+ So we will see how K-Means actually works with this small example.
+
+133
+00:12:14,120 --> 00:12:21,400
+ We assume that we have these data points which we would like to cluster.
+
+134
+00:12:21,400 --> 00:12:25,840
+ So we say we would like to create three clusters from this data.
+
+135
+00:12:25,840 --> 00:12:30,840
+ So in K-Means you have to specify the number of clusters that you want to create the value
+
+136
+00:12:30,840 --> 00:12:37,280
+ of K because that is a precondition that you have to follow.
+
+137
+00:12:37,280 --> 00:12:42,000
+ So therefore we are going to create three clusters from this data.
+
+138
+00:12:42,000 --> 00:12:52,240
+ So our first step will require that we initialize three centroids and typically we do it randomly
+
+139
+00:12:52,240 --> 00:12:53,880
+ from the original data.
+
+140
+00:12:53,880 --> 00:12:58,400
+ So now say that we have chosen three random points with three different colored boxes
+
+141
+00:12:58,400 --> 00:13:03,200
+ you can say blue, red and pink and so on so forth.
+
+142
+00:13:03,200 --> 00:13:10,640
+ So these are three initial centers that we have chosen randomly from the original data.
+
+143
+00:13:10,640 --> 00:13:18,440
+ Now once we have done that then in step two our objective would be to assign cluster memberships
+
+144
+00:13:18,440 --> 00:13:21,800
+ for each of these data points in my data.
+
+145
+00:13:21,800 --> 00:13:27,120
+ So who will be the blue one, who will be the red one and who will be the pink one.
+
+146
+00:13:27,120 --> 00:13:31,320
+ So that is what we have to basically decide in this case.
+
+147
+00:13:31,320 --> 00:13:39,180
+ So we do that by computing the closest cluster center that we have right now.
+
+148
+00:13:39,180 --> 00:13:46,560
+ So if we go by that rule, what happens is something like this that we have at this assignment.
+
+149
+00:13:46,560 --> 00:13:53,800
+ So the color codes basically tell us that which element is going to be in which cluster.
+
+150
+00:13:53,800 --> 00:13:59,400
+ So the blue ones are closest to the blue square initial centers, the red ones are the red
+
+151
+00:13:59,400 --> 00:14:05,120
+ one and the pinks basically for the pink square initial centers.
+
+152
+00:14:05,120 --> 00:14:13,120
+ Now once we have done this step, the earlier cluster centers that we have done randomly
+
+153
+00:14:13,120 --> 00:14:19,560
+ is no longer valid because you have assigned the cluster memberships and basically we need
+
+154
+00:14:19,560 --> 00:14:26,200
+ to update the cluster centers from what we had in the previous step.
+
+155
+00:14:26,200 --> 00:14:31,840
+ So what we do basically we take some kind of mean of all these elements somewhere in
+
+156
+00:14:31,840 --> 00:14:36,000
+ the middle, the new centers will be lying.
+
+157
+00:14:36,000 --> 00:14:41,520
+ So if we do that which is basically step 3, then we are going to get something like this.
+
+158
+00:14:41,520 --> 00:14:47,680
+ Now we can see the squares are basically the centroids for each of these clusters in this
+
+159
+00:14:47,680 --> 00:14:50,880
+ case.
+
+160
+00:14:50,880 --> 00:14:56,280
+ So that is the first completion of the first iteration of our algorithm.
+
+161
+00:14:56,280 --> 00:15:02,160
+ So now that we have slightly better centroids compared to the random one that we had.
+
+162
+00:15:02,160 --> 00:15:09,600
+ Now we have to iterate step 2 and step 3 repeatedly in order to improve our quality of centroids
+
+163
+00:15:09,600 --> 00:15:13,400
+ and consequently the quality of clusters.
+
+164
+00:15:13,400 --> 00:15:19,840
+ So again in step 2 what we do, we basically again now that we have new centroids that
+
+165
+00:15:19,840 --> 00:15:26,960
+ we again try to compute the cluster memberships for each of these data points, so if we do
+
+166
+00:15:26,960 --> 00:15:31,040
+ that we are going to get something like this.
+
+167
+00:15:31,040 --> 00:15:37,320
+ Some members will change their cluster memberships for sure because you now have different sets
+
+168
+00:15:37,320 --> 00:15:41,680
+ of centroids after updating the original one.
+
+169
+00:15:41,680 --> 00:15:46,120
+ So that is the basically the step 2 in the next iteration.
+
+170
+00:15:46,120 --> 00:15:50,480
+ So now again since because we have new memberships and so on so forth, so what we do again we
+
+171
+00:15:50,480 --> 00:15:57,200
+ have to apply step 3 which is basically readjusting or recomputing the centroids is the mean thing.
+
+172
+00:15:57,200 --> 00:16:01,600
+ So which we do and we are going to get something like this again.
+
+173
+00:16:01,600 --> 00:16:06,400
+ So this is the completion of iteration 2, sorry there is a slight typographical mistake
+
+174
+00:16:06,400 --> 00:16:10,960
+ it should be iteration 2 completion not iteration 1.
+
+175
+00:16:10,960 --> 00:16:16,440
+ So therefore essentially what we have to do we have to basically iterate step 1, step 3
+
+176
+00:16:16,440 --> 00:16:21,840
+ multiple times to improve our cluster quality.
+
+177
+00:16:21,840 --> 00:16:26,560
+ So again we do the same thing we simply find out the cluster memberships for each of the
+
+178
+00:16:26,560 --> 00:16:32,560
+ data points which is step 2 then again readjust the cluster centroids and so on and so forth.
+
+179
+00:16:32,560 --> 00:16:37,200
+ So this is the completion of iteration 3.
+
+180
+00:16:37,200 --> 00:16:43,560
+ So in this way we simply move on until and unless either we basically have reached the
+
+181
+00:16:43,560 --> 00:16:51,400
+ required number of iterations that we set or we see that the centroids are not changing.
+
+182
+00:16:51,400 --> 00:16:57,040
+ So when the centroids are not changing nothing you can gain by doing lot of iterations.
+
+183
+00:16:57,040 --> 00:17:03,880
+ So we know that we are more or less rich to stable solution and so we will stop.
+
+184
+00:17:03,880 --> 00:17:08,920
+ So there is no change so basically we will stop in this case.
+
+185
+00:17:08,920 --> 00:17:16,420
+ So now the question is there are two important questions that we have to address one that
+
+186
+00:17:16,420 --> 00:17:21,600
+ how to assign the cluster in each example to the cluster center and then how to recalculate
+
+187
+00:17:21,600 --> 00:17:23,600
+ the centers.
+
+188
+00:17:23,600 --> 00:17:27,400
+ So you know we have to figure out which one is going to be the closest to which particular
+
+189
+00:17:27,400 --> 00:17:31,280
+ cluster centroid and so on and so forth.
+
+190
+00:17:31,280 --> 00:17:36,940
+ So we do this by using a distance or similarity measure.
+
+191
+00:17:36,940 --> 00:17:41,440
+ So typically we use distance measure one can also use similarity measure no problem.
+
+192
+00:17:41,440 --> 00:17:49,720
+ So what we do basically for each data point we find out the distance between all the centroids
+
+193
+00:17:49,720 --> 00:17:56,480
+ in my data in this case we can see using three different colors because we had three centroids
+
+194
+00:17:56,480 --> 00:18:03,560
+ and the blue one basically the circle blue circle is basically the one which we are considering
+
+195
+00:18:03,560 --> 00:18:07,080
+ okay to try to assign the membership of.
+
+196
+00:18:07,080 --> 00:18:11,720
+ So we figured out the distance between this particular point and three cluster centroids
+
+197
+00:18:11,720 --> 00:18:18,320
+ okay and then like assign this to a centroid which like where you have the minimum distance
+
+198
+00:18:18,320 --> 00:18:21,680
+ okay.
+
+199
+00:18:21,680 --> 00:18:26,880
+ So there are a lot of distance measure that people who can choose or similarity measures
+
+200
+00:18:26,880 --> 00:18:28,720
+ people can choose.
+
+201
+00:18:28,720 --> 00:18:33,440
+ So one of the very common distance measure that we use is called Euclidean distance.
+
+202
+00:18:33,440 --> 00:18:40,680
+ So of course objective given two vectors say n dimensional vectors okay of two points we
+
+203
+00:18:40,680 --> 00:18:44,600
+ simply want to compute the distance between these two points which is like nothing but
+
+204
+00:18:44,600 --> 00:18:49,400
+ a numerical value a number okay telling one number telling how far these two points are
+
+205
+00:18:49,400 --> 00:18:50,400
+ okay.
+
+206
+00:18:50,400 --> 00:18:55,520
+ So you can use because centroid is a vector and a point is also a vector on the same dimension
+
+207
+00:18:55,520 --> 00:18:59,040
+ so you can easily compute this number and so on so forth.
+
+208
+00:18:59,040 --> 00:19:03,040
+ Now I am just taking one example of distance measure there are other distance measures
+
+209
+00:19:03,040 --> 00:19:08,360
+ like Minkowski's distance then you have Manhattan distance then you have Molonov's distance
+
+210
+00:19:08,360 --> 00:19:09,360
+ and so on so forth.
+
+211
+00:19:09,360 --> 00:19:13,600
+ There are a lot of distance measures so depending upon the particular application of the nature
+
+212
+00:19:13,600 --> 00:19:16,880
+ of the data one can use any of this distance measure.
+
+213
+00:19:16,880 --> 00:19:23,800
+ So K means is a general purpose algorithm and it is not the case that Euclidean has
+
+214
+00:19:23,800 --> 00:19:27,560
+ to be used one can use any other things.
+
+215
+00:19:27,560 --> 00:19:32,600
+ So next is basically the recalculating the centers.
+
+216
+00:19:32,600 --> 00:19:37,200
+ Now once you change the cluster membership and so on so forth we have to recalculate
+
+217
+00:19:37,200 --> 00:19:40,760
+ the centers using a certain set of points.
+
+218
+00:19:40,760 --> 00:19:47,920
+ So for example in this case we would like to figure out what would be the central point
+
+219
+00:19:47,920 --> 00:19:54,960
+ for the blue cluster, central point for the red cluster and central point from the purple
+
+220
+00:19:54,960 --> 00:19:55,960
+ the pink cluster.
+
+221
+00:19:55,960 --> 00:19:59,600
+ So these are the three things basically have to figure out because centroid is something
+
+222
+00:19:59,600 --> 00:20:06,520
+ that we will be using to figure out the cluster membership in every iteration.
+
+223
+00:20:06,520 --> 00:20:15,120
+ So essentially we have to figure out these square boxes out of this like this blue, red
+
+224
+00:20:15,120 --> 00:20:16,640
+ and pink data.
+
+225
+00:20:16,640 --> 00:20:20,200
+ So how do we compute that number?
+
+226
+00:20:20,200 --> 00:20:25,760
+ So here is a simple thing essentially you take a set of vectors from a particular cluster
+
+227
+00:20:25,760 --> 00:20:30,680
+ so we are interested in figuring out the centroid for the blue one.
+
+228
+00:20:30,680 --> 00:20:36,560
+ So what we do basically we simply take all the blue points and take the min vector of
+
+229
+00:20:36,560 --> 00:20:37,840
+ that one.
+
+230
+00:20:37,840 --> 00:20:43,600
+ So min vector is nothing but simply we add all these vectors and simply divide by the
+
+231
+00:20:43,600 --> 00:20:46,320
+ number of data points that you have in a particular cluster.
+
+232
+00:20:46,320 --> 00:20:53,280
+ It is a simple addition thing that you can do.
+
+233
+00:20:53,280 --> 00:20:59,960
+ Now these are so far it is a mechanism for doing K-means clustering.
+
+234
+00:20:59,960 --> 00:21:05,440
+ Now actually what are you trying to achieve in this case?
+
+235
+00:21:05,440 --> 00:21:11,080
+ Now because you already have seen quite a bit of machine learning models in this particular
+
+236
+00:21:11,080 --> 00:21:13,520
+ series of lectures.
+
+237
+00:21:13,520 --> 00:21:19,600
+ So one of the key things in any machine learning model is an objective function or loss function
+
+238
+00:21:19,600 --> 00:21:23,520
+ or profit function or whatever you can call it.
+
+239
+00:21:23,520 --> 00:21:27,480
+ We often call it objective function.
+
+240
+00:21:27,480 --> 00:21:31,280
+ So either you maximize it or minimize it something like we have to do.
+
+241
+00:21:31,280 --> 00:21:38,000
+ So in this case also K-means is not like just a plain simple algorithm it is also trying
+
+242
+00:21:38,000 --> 00:21:42,840
+ to minimize a thing called K-means loss.
+
+243
+00:21:42,840 --> 00:21:51,020
+ So K-means loss is nothing but so value which will indicate the quality of clusters that
+
+244
+00:21:51,020 --> 00:21:53,200
+ you have generated.
+
+245
+00:21:53,200 --> 00:22:01,880
+ So the expression in this case what you can see is something like this that we take every
+
+246
+00:22:01,880 --> 00:22:06,680
+ data point in this case this is Xi.
+
+247
+00:22:06,680 --> 00:22:15,440
+ We take the cluster center closest to the data point Xi which is like basically the
+
+248
+00:22:15,440 --> 00:22:20,800
+ mu K in this case and we find out the distance between the data point and the closest cluster
+
+249
+00:22:20,800 --> 00:22:25,900
+ center and simply add them up for all the data points.
+
+250
+00:22:25,900 --> 00:22:33,520
+ So essentially what this is telling you is basically that to what extent the data points
+
+251
+00:22:33,520 --> 00:22:42,160
+ are to what extent the data points are dissimilar to or similar to the cluster centers in which
+
+252
+00:22:42,160 --> 00:22:43,160
+ it belongs.
+
+253
+00:22:43,160 --> 00:22:49,440
+ So if the loss value is very high then naturally you know the data points which are belonging
+
+254
+00:22:49,440 --> 00:22:54,360
+ to a particular cluster are far apart from the centroids in this case you can expect
+
+255
+00:22:54,360 --> 00:22:56,960
+ that the clusters are basically dispersed.
+
+256
+00:22:56,960 --> 00:23:02,240
+ If it is small then you know the clusters are actually very compact so that is the physical
+
+257
+00:23:02,240 --> 00:23:06,960
+ intuition or the explanation behind this particular loss function.
+
+258
+00:23:06,960 --> 00:23:14,280
+ So K-means function the K-means algorithm that we have seen so far it attempts to minimize
+
+259
+00:23:14,280 --> 00:23:21,320
+ this loss value as much as possible but of course like all difficult problems, clustering
+
+260
+00:23:21,320 --> 00:23:25,840
+ problems is also controversial very challenging so there is no guarantee that you are going
+
+261
+00:23:25,840 --> 00:23:32,360
+ to get the optimal loss value in this case but you can get somewhat good value depending
+
+262
+00:23:32,360 --> 00:23:39,680
+ upon how you are starting up with and so on and so forth.
+
+263
+00:23:39,680 --> 00:23:47,360
+ Now I started up with by saying that K-means is a very fast algorithm very efficient algorithm
+
+264
+00:23:47,360 --> 00:23:52,600
+ and so we like to see little bit of mathematical analysis of the computational budget for the
+
+265
+00:23:52,600 --> 00:23:55,760
+ K-means algorithm.
+
+266
+00:23:55,760 --> 00:24:00,320
+ So in order to understand that we try to understand the computational overhead in every step of
+
+267
+00:24:00,320 --> 00:24:02,760
+ this iteration.
+
+268
+00:24:02,760 --> 00:24:09,640
+ So one step is basically the assignment step where we are trying to figure out the closest
+
+269
+00:24:09,640 --> 00:24:13,600
+ cluster center for a particular point.
+
+270
+00:24:13,600 --> 00:24:22,000
+ So if you have K centers and N data points then a single pass for every data point we
+
+271
+00:24:22,000 --> 00:24:26,920
+ have to compute the distance between all the K centers so in that case the complexity is
+
+272
+00:24:26,920 --> 00:24:35,520
+ going to be order of KN and then in the next step we will have to compute, recalculate the
+
+273
+00:24:35,520 --> 00:24:39,280
+ cluster center which is nothing but a linear term algorithm.
+
+274
+00:24:39,280 --> 00:24:43,440
+ So this is a computational budget for one particular iteration.
+
+275
+00:24:43,440 --> 00:24:49,760
+ Now if you repeat these steps many many times we often do for example say P times or so
+
+276
+00:24:49,760 --> 00:24:55,200
+ on and so forth then you simply multiply P into with this particular numbers.
+
+277
+00:24:55,200 --> 00:24:59,920
+ So that is basically the complexity of this K-means algorithm.
+
+278
+00:24:59,920 --> 00:25:04,280
+ But to give you sort of the final verdict on this one K-means is generally a linear time
+
+279
+00:25:04,280 --> 00:25:12,200
+ algorithm assuming that the dimension of this data is basically not so high so under the
+
+280
+00:25:12,200 --> 00:25:21,200
+ assumption it is typically a linear time algorithm and therefore it is extremely fast.
+
+281
+00:25:21,200 --> 00:25:30,720
+ Now there are few important issues, practical issues rather which we have to deal with.
+
+282
+00:25:30,720 --> 00:25:35,640
+ So fast issue is basically the number of clusters that we would like to create.
+
+283
+00:25:35,640 --> 00:25:40,000
+ So you have to tell K-means algorithm that this many clusters I would like to create.
+
+284
+00:25:40,000 --> 00:25:43,040
+ So how to do that?
+
+285
+00:25:43,040 --> 00:25:51,800
+ Second issue the convergence issue that means when we are going to stop this algorithm and
+
+286
+00:25:51,800 --> 00:25:57,600
+ the third issue perhaps one of the most important issue is basically the initial cluster center
+
+287
+00:25:57,600 --> 00:26:06,560
+ selection, how we are going to select the initial cluster centers so that we do not
+
+288
+00:26:06,560 --> 00:26:10,480
+ create bad quality clusters.
+
+289
+00:26:10,480 --> 00:26:15,280
+ So these three things we need to now address and we will see one by one how we can address
+
+290
+00:26:15,280 --> 00:26:19,960
+ these three important things.
+
+291
+00:26:19,960 --> 00:26:25,160
+ So first let us look at how we choose the value of K or at least an attempt to choose
+
+292
+00:26:25,160 --> 00:26:29,400
+ value of K in a systematic way because we never know from our original data that how
+
+293
+00:26:29,400 --> 00:26:33,880
+ many clusters are there and if the data is high dimensional this is even more difficult
+
+294
+00:26:33,880 --> 00:26:37,400
+ to figure out visually that this many clusters are there.
+
+295
+00:26:37,400 --> 00:26:44,280
+ So therefore we need to have some systematic way of figuring out the value of K.
+
+296
+00:26:44,280 --> 00:26:50,520
+ So one popular approach that people follow is called elbow method.
+
+297
+00:26:50,520 --> 00:26:56,800
+ So in this particular method what we do is something like this.
+
+298
+00:26:56,800 --> 00:27:03,880
+ So we have a data then we run K-means with different K-values starting from 2 for example
+
+299
+00:27:03,880 --> 00:27:08,240
+ to a very high value say 100.
+
+300
+00:27:08,240 --> 00:27:15,840
+ So for every K-value you run the K-means algorithm and it will produce the corresponding K-means
+
+301
+00:27:15,840 --> 00:27:18,520
+ loss which we discussed earlier.
+
+302
+00:27:18,520 --> 00:27:26,760
+ So loss is going to tell you to some extent the quality of clusters that you have generated.
+
+303
+00:27:26,760 --> 00:27:32,320
+ So you simply plot a graph like this the x axis is the K in the number of clusters that
+
+304
+00:27:32,320 --> 00:27:37,600
+ you produced and y axis is the loss value that you also produced from this particular
+
+305
+00:27:37,600 --> 00:27:39,800
+ clustering.
+
+306
+00:27:39,800 --> 00:27:48,480
+ So now what we do we basically plot this graph and we try to look at if there is any clear
+
+307
+00:27:48,480 --> 00:27:52,040
+ pattern in this particular graph.
+
+308
+00:27:52,040 --> 00:28:00,560
+ So if you see that the graph is showing a elbow like structure a bending at elbow that
+
+309
+00:28:00,560 --> 00:28:07,080
+ means it is basically you know dropping at a very high rate and then suddenly it gets
+
+310
+00:28:07,080 --> 00:28:11,200
+ flattened okay it becomes very flat.
+
+311
+00:28:11,200 --> 00:28:19,600
+ So if you have observed such a pattern like this then possibly the point where you see
+
+312
+00:28:19,600 --> 00:28:28,840
+ that the value dropped very abruptly and then flattened so this is the point to be chosen
+
+313
+00:28:28,840 --> 00:28:29,840
+ as a number of clusters.
+
+314
+00:28:29,840 --> 00:28:35,080
+ So in this case for example the good value could be 3 in this case.
+
+315
+00:28:35,080 --> 00:28:44,760
+ Now while I am saying this this is a very well known technique and therefore I must
+
+316
+00:28:44,760 --> 00:28:51,840
+ give you a small warning is that that this is sort of a guideline not necessarily a full
+
+317
+00:28:51,840 --> 00:28:56,960
+ group method okay it does not guarantee that if you apply this technique you are going
+
+318
+00:28:56,960 --> 00:29:02,520
+ to find out the right number of clusters okay so this is not the case always.
+
+319
+00:29:02,520 --> 00:29:07,820
+ It can give you some kind of guideline but it does not guarantee that this particular
+
+320
+00:29:07,820 --> 00:29:10,560
+ key value is going to be the optimal one okay.
+
+321
+00:29:10,560 --> 00:29:16,560
+ So therefore this has to be used very very carefully.
+
+322
+00:29:16,560 --> 00:29:23,960
+ The second approach that we use is called shield weight measure.
+
+323
+00:29:23,960 --> 00:29:28,320
+ So the key idea for good clustering which I mentioned at the very beginning is this
+
+324
+00:29:28,320 --> 00:29:37,360
+ that the value has to be small within cluster variance has to be small okay that means the
+
+325
+00:29:37,360 --> 00:29:44,400
+ points which are belonging to a particular cluster it is going to be very small and then
+
+326
+00:29:44,400 --> 00:29:51,080
+ the between cluster variance has to be very large because that is basically a two broad
+
+327
+00:29:51,080 --> 00:29:57,920
+ criteria that we try to fulfill in any clustering algorithm.
+
+328
+00:29:57,920 --> 00:30:04,600
+ So we will be standing on these two criteria to use another measure to try to figure out
+
+329
+00:30:04,600 --> 00:30:09,160
+ a reasonably good value of k.
+
+330
+00:30:09,160 --> 00:30:17,360
+ So in this particular case we use within cluster measure which is nothing but a measure which
+
+331
+00:30:17,360 --> 00:30:22,160
+ tells you to what extent the clusters are compact.
+
+332
+00:30:22,160 --> 00:30:29,400
+ So if you can look at this particular expression the C i is the cluster for data point i, D
+
+333
+00:30:29,400 --> 00:30:31,800
+ ij is nothing but the distance between i and j.
+
+334
+00:30:31,800 --> 00:30:36,600
+ So you take all pairs of data points in a particular cluster okay and then compute their
+
+335
+00:30:36,600 --> 00:30:40,720
+ distances you take some sort of average distance between them and so on so forth okay.
+
+336
+00:30:40,720 --> 00:30:46,720
+ So essentially this is telling intuitively that what is the average pair wise distance
+
+337
+00:30:46,720 --> 00:30:51,160
+ of points those who are belonging to a particular cluster okay.
+
+338
+00:30:51,160 --> 00:30:57,900
+ So this will to some extent reflect the compactness or closeness of a particular cluster.
+
+339
+00:30:57,900 --> 00:31:02,000
+ Now the next important criterion is basically between cluster variance.
+
+340
+00:31:02,000 --> 00:31:07,920
+ So in this case we take data points from different clusters from the same cluster.
+
+341
+00:31:07,920 --> 00:31:12,600
+ So if you look at this in this case is basically we take data points from different clusters
+
+342
+00:31:12,600 --> 00:31:17,720
+ and compute the distance between the different points and so on so forth.
+
+343
+00:31:17,720 --> 00:31:23,420
+ And then we use this to quantities to compute the silhouettes measure which is nothing but
+
+344
+00:31:23,420 --> 00:31:30,600
+ a measure telling to what extent the cluster quality is good or bad.
+
+345
+00:31:30,600 --> 00:31:39,640
+ Now so this measure again once again will be used to kind of plot a graph and then try
+
+346
+00:31:39,640 --> 00:31:44,480
+ to figure out what would be the good reasonably good value of K okay.
+
+347
+00:31:44,480 --> 00:31:49,440
+ So in this case unlike the K means loss value higher score is actually better.
+
+348
+00:31:49,440 --> 00:31:54,120
+ So if you get higher score for a particular K value for silhouettes measure that means
+
+349
+00:31:54,120 --> 00:31:56,440
+ the cluster quality is good.
+
+350
+00:31:56,440 --> 00:32:04,360
+ So once again similar to the previous approach what we do we run this algorithm K means algorithm
+
+351
+00:32:04,360 --> 00:32:09,200
+ for different K many many times started from 2 to say for example 100 or 200 depending
+
+352
+00:32:09,200 --> 00:32:18,720
+ upon your data and then again we plot the K versus the silver score x axis is K y axis
+
+353
+00:32:18,720 --> 00:32:25,520
+ is the silver score and we look at the graph and we see a pattern something like this.
+
+354
+00:32:25,520 --> 00:32:33,240
+ So what you can see in this case is that the value initially was very small slowly increasing
+
+355
+00:32:33,240 --> 00:32:40,600
+ then it started decreasing suddenly okay so you can think about something like this basically
+
+356
+00:32:40,600 --> 00:32:46,560
+ the angle that you can see okay smaller the angle sharper the changes and so on so forth.
+
+357
+00:32:46,560 --> 00:32:50,760
+ So the moment you see something like that increasing and then suddenly started decreasing
+
+358
+00:32:50,760 --> 00:32:56,400
+ then this is the point which can reflect that the number of clusters is good one.
+
+359
+00:32:56,400 --> 00:33:01,640
+ So in this case also the value could be 3 is a good number of clusters once again just
+
+360
+00:33:01,640 --> 00:33:08,340
+ like the previous case this is not a guarantee that this value will actually reflect what
+
+361
+00:33:08,340 --> 00:33:13,720
+ is the optimal number of clusters that is often a tricky thing we never know optimal
+
+362
+00:33:13,720 --> 00:33:18,000
+ number of clusters before and because this is an unsupervised learning things become
+
+363
+00:33:18,000 --> 00:33:22,200
+ even more difficult because we are dealing with high dimensional data so you can never
+
+364
+00:33:22,200 --> 00:33:27,560
+ plot this one on a real like a figure which a human can understand.
+
+365
+00:33:27,560 --> 00:33:33,080
+ So while you can use these things as a guideline to figure out what would be the possible good
+
+366
+00:33:33,080 --> 00:33:39,800
+ values of K it has to be used also the other factors like the quality of results that you
+
+367
+00:33:39,800 --> 00:33:47,720
+ are finally getting by using this clustering techniques and so on so forth.
+
+368
+00:33:47,720 --> 00:33:54,160
+ Now the another important issue is basically the initial cluster center or we often call
+
+369
+00:33:54,160 --> 00:34:01,520
+ it seed selection so remember that the first step of K-minus clustering algorithm is basically
+
+370
+00:34:01,520 --> 00:34:10,400
+ the seed selection approach so in seed selection what we try to do we try to figure out what
+
+371
+00:34:10,400 --> 00:34:18,400
+ would be the good number of centers sorry good centers that we will use to start with.
+
+372
+00:34:18,400 --> 00:34:25,320
+ So if the centers are bad then you know we are going to get very bad quality clusters
+
+373
+00:34:25,320 --> 00:34:34,920
+ so we will see strategies of figuring out the goods androids in this particular case.
+
+374
+00:34:34,920 --> 00:34:44,880
+ So we see in this case that we initially like chose the centers randomly okay so now let
+
+375
+00:34:44,880 --> 00:34:52,600
+ us see what happens the consequences of random center selection okay now say my original
+
+376
+00:34:52,600 --> 00:34:59,960
+ data from my original data I selected the centers randomly so if I do that what will
+
+377
+00:34:59,960 --> 00:35:09,280
+ happen so this is going to get something like this once you find out the cluster memberships
+
+378
+00:35:09,280 --> 00:35:17,080
+ for all the data points okay now certainly if you look at this figure carefully this
+
+379
+00:35:17,080 --> 00:35:24,160
+ is not the desired clusters that the data is reflecting okay the clusters are actually
+
+380
+00:35:24,160 --> 00:35:31,240
+ elsewhere okay but the data is actually reflecting something for example possibly the good clusters
+
+381
+00:35:31,240 --> 00:35:43,960
+ should be something like this so this one and this one and this one okay so this is
+
+382
+00:35:43,960 --> 00:35:50,320
+ the possible like the desirable clusters that one can expect from this particular data but
+
+383
+00:35:50,320 --> 00:35:56,280
+ because of the poor choice of the centroids selection of the centroids randomly we ended
+
+384
+00:35:56,280 --> 00:35:59,480
+ up getting a cluster which are of very bad quality.
+
+385
+00:35:59,480 --> 00:36:05,040
+ So this particular cluster that I have got actually from the pink initial centers is
+
+386
+00:36:05,040 --> 00:36:12,580
+ very dispersed elongated cluster certainly we are not saying that this is a good cluster
+
+387
+00:36:12,580 --> 00:36:18,040
+ and this is one of the most critical issues in Kevin's clustering how to choose the centers
+
+388
+00:36:18,040 --> 00:36:22,360
+ initially and you know good centers initially.
+
+389
+00:36:22,360 --> 00:36:27,680
+ So we will be spending some time on this particular aspect and see what we can do to tackle this
+
+390
+00:36:27,680 --> 00:36:31,960
+ particular problem.
+
+391
+00:36:31,960 --> 00:36:38,800
+ So some of the consequences of this initial center something like that you can have slow
+
+392
+00:36:38,800 --> 00:36:44,840
+ convergence that means it can take a lot of time to reach to a point where you can see
+
+393
+00:36:44,840 --> 00:36:50,520
+ that you know my clusters are good or you converge to a suboptimal clustering that means
+
+394
+00:36:50,520 --> 00:36:56,880
+ the quality of cluster is actually very bad that means the clusters are dispersed okay.
+
+395
+00:36:56,880 --> 00:37:05,960
+ So to tackle this problem in literature you have a load of common heuristics that people
+
+396
+00:37:05,960 --> 00:37:08,480
+ generally adopt okay.
+
+397
+00:37:08,480 --> 00:37:17,680
+ So we do random centers in the space, we randomly pick from the future vectors, we choose points
+
+398
+00:37:17,680 --> 00:37:24,320
+ least similar to existing centers and so on and so forth or we try to find out multiple
+
+399
+00:37:24,320 --> 00:37:27,640
+ starting points something like that.
+
+400
+00:37:27,640 --> 00:37:35,800
+ So these are some common heuristics that people often use.
+
+401
+00:37:35,800 --> 00:37:46,080
+ So one of the very popular heuristics that people use is the furthest centers heuristics.
+
+402
+00:37:46,080 --> 00:37:56,120
+ So in this case intuitively we attempt to make sure that the centers that we are choosing
+
+403
+00:37:56,120 --> 00:38:01,440
+ initially are far apart.
+
+404
+00:38:01,440 --> 00:38:06,160
+ So they are like very dispersed from one another that is the basic intuition behind this particular
+
+405
+00:38:06,160 --> 00:38:08,160
+ approach.
+
+406
+00:38:08,160 --> 00:38:10,160
+ So how it works?
+
+407
+00:38:10,160 --> 00:38:13,880
+ So first point you choose randomly because there is no other option that you can make
+
+408
+00:38:13,880 --> 00:38:22,680
+ use of which we call first center then for the remaining points we find out that which
+
+409
+00:38:22,680 --> 00:38:27,840
+ point is furthest from the existing point that we have already chosen okay.
+
+410
+00:38:27,840 --> 00:38:32,560
+ The one which has the highest distance from the existing points will choose that as a
+
+411
+00:38:32,560 --> 00:38:36,560
+ potential centroid and you simply move on like that one.
+
+412
+00:38:36,560 --> 00:38:42,040
+ So objective is to make sure that the points which are far apart in the original data will
+
+413
+00:38:42,040 --> 00:38:51,320
+ be chosen as possible possibly good initial centroids but it has its own problem.
+
+414
+00:38:51,320 --> 00:38:56,600
+ So for example in this case say k is equals to 3 so what we do in this case?
+
+415
+00:38:56,600 --> 00:39:02,440
+ So pick a random point from the first center something like that then we basically choose
+
+416
+00:39:02,440 --> 00:39:06,800
+ the next point something like that okay because this is furthest from this particular point
+
+417
+00:39:06,800 --> 00:39:08,240
+ and so on so forth.
+
+418
+00:39:08,240 --> 00:39:12,800
+ So in this way simply you proceed okay something like that we will do.
+
+419
+00:39:12,800 --> 00:39:19,680
+ So if your data is showing good structure then possibly this approach is a reasonably
+
+420
+00:39:19,680 --> 00:39:26,800
+ good solution to tackle the initial cluster centroid selection problem but you know in
+
+421
+00:39:26,800 --> 00:39:34,120
+ a real life data you do not expect the data to be good and therefore it has its own problems
+
+422
+00:39:34,120 --> 00:39:39,360
+ which you will see in the next slide.
+
+423
+00:39:39,360 --> 00:39:47,840
+ So let us look at this particular data okay so clearly from this particular data what we
+
+424
+00:39:47,840 --> 00:39:57,840
+ see is that the data has at least 3 outliers in the sense that somehow it is noisy data
+
+425
+00:39:57,840 --> 00:40:03,280
+ they are very far apart from the other data points and so on so forth.
+
+426
+00:40:03,280 --> 00:40:11,480
+ So now say we have decided to apply the furthest center heuristic to figure out say 4 cluster
+
+427
+00:40:11,480 --> 00:40:16,840
+ centroids from this data what will happen?
+
+428
+00:40:16,840 --> 00:40:23,800
+ Now as I mentioned that the first center has to be chosen randomly so for example you chose
+
+429
+00:40:23,800 --> 00:40:28,240
+ the spring point.
+
+430
+00:40:28,240 --> 00:40:36,720
+ Now next point we will choose which is very very far apart from this particular point.
+
+431
+00:40:36,720 --> 00:40:41,520
+ So it could be something like this one so this point because this particular point is
+
+432
+00:40:41,520 --> 00:40:46,840
+ like furthest apart from the point that we have already chosen something like this.
+
+433
+00:40:46,840 --> 00:40:51,680
+ Now once we have that these two points the third point that we will choose is basically
+
+434
+00:40:51,680 --> 00:40:56,920
+ very far apart from both these two points because we have already chosen these two points.
+
+435
+00:40:56,920 --> 00:41:03,320
+ So this is going to be something like this then the next point is basically far apart
+
+436
+00:41:03,320 --> 00:41:10,120
+ from all the three points that we have already chosen so it could be something like this.
+
+437
+00:41:10,120 --> 00:41:17,000
+ Now the obvious problem that we can see in this case is that it will end up choosing
+
+438
+00:41:17,000 --> 00:41:21,520
+ often the outliers in the data because it does not have any idea whether this particular
+
+439
+00:41:21,520 --> 00:41:26,200
+ point is outlier or not and as a result we end up choosing this point.
+
+440
+00:41:26,200 --> 00:41:29,360
+ Similarly this is not going to give good clusters.
+
+441
+00:41:29,360 --> 00:41:35,320
+ So now based on this initial centroids if you cluster the whole thing four clusters
+
+442
+00:41:35,320 --> 00:41:40,760
+ you are going to create then what you get is something like this the entire thing is
+
+443
+00:41:40,760 --> 00:41:47,960
+ going to be in one cluster this one is going to be in another cluster singleton point singleton
+
+444
+00:41:47,960 --> 00:41:55,840
+ cluster this is in one cluster and this is in one cluster.
+
+445
+00:41:55,840 --> 00:42:02,280
+ So this is most likely situation the end result of k-means in this particular case.
+
+446
+00:42:02,280 --> 00:42:08,720
+ Now certainly this is not a good clustering in this particular data.
+
+447
+00:42:08,720 --> 00:42:15,960
+ So we will see how we can address these issues with another approach.
+
+448
+00:42:15,960 --> 00:42:22,800
+ So a better approach of doing these things is called k-means plus plus once again this
+
+449
+00:42:22,800 --> 00:42:29,360
+ is a simple approach simple modification to the standard k-means and it tries to address
+
+450
+00:42:29,360 --> 00:42:32,280
+ this problem that we mentioned little while ago.
+
+451
+00:42:32,280 --> 00:42:40,960
+ So I would like to emphasize before I start this one is that this approach only deals
+
+452
+00:42:40,960 --> 00:42:47,600
+ with the initial centroid selection it does not change anything in the clustering.
+
+453
+00:42:47,600 --> 00:42:54,760
+ So it will simply see that how the initial centroids are going to be good and then we
+
+454
+00:42:54,760 --> 00:42:59,840
+ will simply select that.
+
+455
+00:42:59,840 --> 00:43:05,280
+ So this is a probabilistic approach in this case unlike the previous case and we will
+
+456
+00:43:05,280 --> 00:43:11,320
+ use a probabilistic approach to select the centroids in this case and as I mentioned
+
+457
+00:43:11,320 --> 00:43:16,840
+ the other steps are exactly same with the k-means algorithm there is no change only the step
+
+458
+00:43:16,840 --> 00:43:22,640
+ one will be changed in this case.
+
+459
+00:43:22,640 --> 00:43:26,080
+ So let us look at this approach carefully.
+
+460
+00:43:26,080 --> 00:43:32,720
+ So what we do that the first center say we are interested in choosing the k-centers we
+
+461
+00:43:32,720 --> 00:43:48,200
+ just would like to compute the k-centers ok that is the objective.
+
+462
+00:43:48,200 --> 00:43:54,080
+ So the first center that we choose we choose randomly from this data because we have no
+
+463
+00:43:54,080 --> 00:43:59,520
+ other option we simply choose randomly from the data say we call it C1 the first center
+
+464
+00:43:59,520 --> 00:44:03,680
+ that we choose.
+
+465
+00:44:03,680 --> 00:44:08,520
+ Now from the next center onwards we will apply the probabilistic approach to figure out the
+
+466
+00:44:08,520 --> 00:44:12,360
+ other k-1 centroids.
+
+467
+00:44:12,360 --> 00:44:21,440
+ So what we do basically now for each data point in my data set ok my data set is basically
+
+468
+00:44:21,440 --> 00:44:28,280
+ x capital X all the data points I will compute a distance called dx you can use Euclidean
+
+469
+00:44:28,280 --> 00:44:30,560
+ distance ok.
+
+470
+00:44:30,560 --> 00:44:38,160
+ So the value called dx and dx is the distance of x from the closest center we already have
+
+471
+00:44:38,160 --> 00:44:48,160
+ chosen ok and once you have that then what we will do we will select the data point x
+
+472
+00:44:48,160 --> 00:45:00,800
+ from x as a new center with a probability value this one.
+
+473
+00:45:00,800 --> 00:45:07,720
+ Because we already have dx for this particular point we already have all these values here
+
+474
+00:45:07,720 --> 00:45:08,720
+ and so on so forth.
+
+475
+00:45:08,720 --> 00:45:14,640
+ So you can simply compute this probability value and we are going to choose this probabilistically
+
+476
+00:45:14,640 --> 00:45:21,440
+ ok that is how basically we are going to select this particular data a particular data point
+
+477
+00:45:21,440 --> 00:45:27,560
+ and then you repeat step 2 and step 3 until you get the k centers ok.
+
+478
+00:45:27,560 --> 00:45:32,640
+ So the first center is chosen randomly we only randomly then the remaining centers are
+
+479
+00:45:32,640 --> 00:45:37,920
+ chosen probabilistically using the distance measure.
+
+480
+00:45:37,920 --> 00:45:44,960
+ Now you might be wondering how this particular expression is going to tackle the problem
+
+481
+00:45:44,960 --> 00:45:47,600
+ that we mentioned.
+
+482
+00:45:47,600 --> 00:45:56,240
+ Now to some extent this approach encodes or implements the farthest center heuristics.
+
+483
+00:45:56,240 --> 00:46:03,560
+ Now the probability value of this one that x will be chosen as a centroid for example
+
+484
+00:46:03,560 --> 00:46:15,640
+ a centroid is actually higher more or less proportional to the dx value ok it means that
+
+485
+00:46:15,640 --> 00:46:21,800
+ if the dx value is very high then the probability also is going to be very high.
+
+486
+00:46:21,800 --> 00:46:22,800
+ And what does dx denote?
+
+487
+00:46:22,800 --> 00:46:31,080
+ It denotes the distance from the closest centroid that we already have if the distance
+
+488
+00:46:31,080 --> 00:46:36,720
+ is high then you expect that the point is very far apart from the existing centroids.
+
+489
+00:46:36,720 --> 00:46:42,920
+ There is more or less the farthest center heuristics but with a probabilistic twist
+
+490
+00:46:42,920 --> 00:46:48,120
+ it is not deterministic it is a probabilistic approach.
+
+491
+00:46:48,120 --> 00:46:54,400
+ So you see now with a little small little illustration of this one.
+
+492
+00:46:54,400 --> 00:47:00,720
+ So we would like to create three clusters from this data that means we have to choose
+
+493
+00:47:00,720 --> 00:47:04,000
+ three initial centroids.
+
+494
+00:47:04,000 --> 00:47:10,000
+ So say the first centroid is something like this one because this will be chosen randomly
+
+495
+00:47:10,000 --> 00:47:19,200
+ we have no other information so this is our first centroid ok this particular point.
+
+496
+00:47:19,200 --> 00:47:26,840
+ Now we are going to choose the next point for this particular clustering.
+
+497
+00:47:26,840 --> 00:47:35,040
+ So the most likely second center could be this one I am not saying the second centers
+
+498
+00:47:35,040 --> 00:47:40,080
+ I am saying most likely second center there is a distinction between second center and
+
+499
+00:47:40,080 --> 00:47:47,040
+ the most likely center because this is a probabilistic approach and the distance between the center
+
+500
+00:47:47,040 --> 00:47:54,140
+ which already have chosen and the other points all other points if you take all other points.
+
+501
+00:47:54,140 --> 00:47:59,400
+ So this point has the highest distance among all other points ok there you do not find
+
+502
+00:47:59,400 --> 00:48:05,440
+ any other point in this particular data which has higher distance than this particular point.
+
+503
+00:48:05,440 --> 00:48:12,760
+ So this will have the most likely chance of getting selected as a second centroid.
+
+504
+00:48:12,760 --> 00:48:16,960
+ So because of distance so on so forth now that we have chosen these two centroids for example
+
+505
+00:48:16,960 --> 00:48:22,600
+ assuming that the first centroid is this one this is the first one this is the second one
+
+506
+00:48:22,600 --> 00:48:25,520
+ and so on.
+
+507
+00:48:25,520 --> 00:48:33,640
+ Now while we are going to choose the third point we will see that for every point which
+
+508
+00:48:33,640 --> 00:48:41,560
+ one is the closest centroid because you have to figure out the dx value ok.
+
+509
+00:48:41,560 --> 00:48:48,840
+ If you for example considering the point x we have to figure out the dx value.
+
+510
+00:48:48,840 --> 00:48:56,480
+ So how do we compute the dx value for in this case the dx value in this case is basically
+
+511
+00:48:56,480 --> 00:49:05,040
+ this one ok because we have to make sure that the point that we are choosing is not very
+
+512
+00:49:05,040 --> 00:49:11,320
+ close to any existing centroids that we have already chosen and therefore we have to we
+
+513
+00:49:11,320 --> 00:49:15,520
+ have to basically use the center which is closest to the point that we are considering
+
+514
+00:49:15,520 --> 00:49:16,520
+ ok.
+
+515
+00:49:16,520 --> 00:49:22,360
+ So that basically the dx value is nothing but the minimum distance among all the centroids
+
+516
+00:49:22,360 --> 00:49:24,960
+ that we already have.
+
+517
+00:49:24,960 --> 00:49:30,120
+ Now if you simply apply this one then the most likely centroid's third centroid in
+
+518
+00:49:30,120 --> 00:49:36,240
+ this case is going to be something like this one ok.
+
+519
+00:49:36,240 --> 00:49:42,280
+ So this way we can tackle the problem of selecting centroids which are very close to each other
+
+520
+00:49:42,280 --> 00:49:48,480
+ using this probabilistic approach and we call this K-means++ approach which only focuses
+
+521
+00:49:48,480 --> 00:49:56,800
+ on the selection of the initial centroids from the data.
+
+522
+00:49:56,800 --> 00:50:02,880
+ So this more or less concludes the flat clustering or K-means clustering and we will move on
+
+523
+00:50:02,880 --> 00:50:16,040
+ to the next part of by lecture.
+
+524
+00:50:16,040 --> 00:50:22,600
+ So in my next part I will focus on the clustering graph or native operator.
+
+525
+00:50:22,600 --> 00:50:27,360
+ Now let me set the background first.
+
+526
+00:50:27,360 --> 00:50:33,240
+ Now in K-means it is a flat clustering so it is nothing but basically in a one particular
+
+527
+00:50:33,240 --> 00:50:40,080
+ point we will belong to exactly one cluster and also the data that we are dealing with
+
+528
+00:50:40,080 --> 00:50:46,280
+ is basically a fixed dimensional data you have say n number of features and so on and
+
+529
+00:50:46,280 --> 00:50:47,400
+ so forth.
+
+530
+00:50:47,400 --> 00:50:51,320
+ In this case we will deal with slightly different kind of clustering technique.
+
+531
+00:50:51,320 --> 00:51:00,920
+ I have two major purposes one is to introduce technique on graph data and also to tell you
+
+532
+00:51:00,920 --> 00:51:05,880
+ hierarchical clustering as well.
+
+533
+00:51:05,880 --> 00:51:15,520
+ So we talked about the n dimensional point clustering things in K-means.
+
+534
+00:51:15,520 --> 00:51:21,560
+ So what about the following things for example you would like to cluster the Facebook friendship
+
+535
+00:51:21,560 --> 00:51:22,560
+ network.
+
+536
+00:51:22,560 --> 00:51:29,440
+ We have individuals in the group and there are friends and not friends and we would like
+
+537
+00:51:29,440 --> 00:51:34,560
+ to find out the communities or groups which are like friends among themselves very close
+
+538
+00:51:34,560 --> 00:51:41,840
+ connections between them and so on so forth or for example we like to find out the communities
+
+539
+00:51:41,840 --> 00:51:46,400
+ in question answering website like Cora so that we know which community is on machine
+
+540
+00:51:46,400 --> 00:51:51,640
+ learning which community is on NLP and something like that.
+
+541
+00:51:51,640 --> 00:51:55,880
+ In protein interaction network for instance we have lot of proteins that we know and they
+
+542
+00:51:55,880 --> 00:52:00,480
+ are responsible for many kinds of things for disease and so on so forth.
+
+543
+00:52:00,480 --> 00:52:06,320
+ So how they interact with each other how you can group the proteins so that we know that
+
+544
+00:52:06,320 --> 00:52:11,840
+ these groups of proteins are responsible for a particular disease so that we can treat
+
+545
+00:52:11,840 --> 00:52:16,140
+ it or we can design a new drug or medicine or something like that.
+
+546
+00:52:16,140 --> 00:52:21,080
+ So these are like wide variety of applications where we have to deal with a different sorts
+
+547
+00:52:21,080 --> 00:52:25,400
+ of data called network data.
+
+548
+00:52:25,400 --> 00:52:33,120
+ So take this example for instance we have these little like black dots and their connections
+
+549
+00:52:33,120 --> 00:52:37,240
+ you know the dots are individuals and the connections the lines are telling the connection
+
+550
+00:52:37,240 --> 00:52:40,400
+ between them and so on so forth okay.
+
+551
+00:52:40,400 --> 00:52:44,120
+ So if you look at this data very carefully it is actually reflecting several clusters
+
+552
+00:52:44,120 --> 00:52:46,840
+ of groups you know visually.
+
+553
+00:52:46,840 --> 00:52:51,080
+ So our objective would be given a data like this you like to figure out the possible groups
+
+554
+00:52:51,080 --> 00:52:53,660
+ in this particular data okay.
+
+555
+00:52:53,660 --> 00:53:01,320
+ So once again this is a clustering problem but on a different kind of data.
+
+556
+00:53:01,320 --> 00:53:06,680
+ So I quickly introduce most of you have possibly the background knowledge of the graph and
+
+557
+00:53:06,680 --> 00:53:07,680
+ so on so forth.
+
+558
+00:53:07,680 --> 00:53:10,920
+ So I quickly introduce a graph and then I will move on to the particular clustering
+
+559
+00:53:10,920 --> 00:53:11,920
+ algorithm.
+
+560
+00:53:11,920 --> 00:53:17,420
+ So as you know the graph is composed of two things a set of objects which are often called
+
+561
+00:53:17,420 --> 00:53:24,600
+ nodes and a set of connections are called edges and so if you take for example this
+
+562
+00:53:24,600 --> 00:53:31,520
+ one we have four nodes A, B, C and D and then we have four connections connecting A,
+
+563
+00:53:31,520 --> 00:53:34,760
+ B, C, C, D and B, D.
+
+564
+00:53:34,760 --> 00:53:38,400
+ So the nodes are individuals and the connections are telling some sort of you know similarity
+
+565
+00:53:38,400 --> 00:53:44,360
+ for example if you consider Facebook friendship network then the nodes are individuals and
+
+566
+00:53:44,360 --> 00:53:51,240
+ the connection is telling that whether A is friend of B or something like that.
+
+567
+00:53:51,240 --> 00:53:57,120
+ So there are possible various kinds of graphs you have unweighted graph where the connections
+
+568
+00:53:57,120 --> 00:54:02,440
+ do not have any weight and the weighted graphs where the connections are weights for example
+
+569
+00:54:02,440 --> 00:54:11,920
+ the road network you know how far one city is from the other one something like that okay.
+
+570
+00:54:11,920 --> 00:54:18,680
+ So graph data shows relationship between object pairs so that is the kind of setup that we
+
+571
+00:54:18,680 --> 00:54:26,080
+ will be standing on okay and therefore centroid is often not valid in a graph.
+
+572
+00:54:26,080 --> 00:54:31,760
+ So what does centroid mean in your Facebook friendship network okay so it is difficult
+
+573
+00:54:31,760 --> 00:54:38,040
+ to come up with a centroid because there is no central thing in this case okay.
+
+574
+00:54:38,040 --> 00:54:42,240
+ So therefore in order to tackle this one we will see several algorithms for clustering
+
+575
+00:54:42,240 --> 00:54:44,240
+ graph data.
+
+576
+00:54:44,240 --> 00:54:51,040
+ First such algorithm that we will see is clustering unweighted graph okay and then we move on
+
+577
+00:54:51,040 --> 00:54:53,200
+ to the weighted graph.
+
+578
+00:54:53,200 --> 00:54:58,200
+ So there are many algorithms that we know I am going to talk about one very efficient
+
+579
+00:54:58,200 --> 00:55:02,240
+ and simple algorithm on graph.
+
+580
+00:55:02,240 --> 00:55:08,680
+ So this is based on minimum cut or we often call it mean cut okay.
+
+581
+00:55:08,680 --> 00:55:15,900
+ So it works like this for example you have this particular graph involving there are
+
+582
+00:55:15,900 --> 00:55:19,520
+ 8 nodes and several edges.
+
+583
+00:55:19,520 --> 00:55:31,080
+ So mean cut of a graph is nothing but a partition of this graph into 2 groups so that the number
+
+584
+00:55:31,080 --> 00:55:39,240
+ of connection and edges crossing between 2 groups that you get are actually minimized.
+
+585
+00:55:39,240 --> 00:55:45,480
+ What essentially like to minimize once you split the group into 2 then you like to see
+
+586
+00:55:45,480 --> 00:55:52,840
+ that the groups have minimum number of connections or edges between them okay so that is how
+
+587
+00:55:52,840 --> 00:55:55,680
+ basically we are going to do that.
+
+588
+00:55:55,680 --> 00:56:01,760
+ Now take for example in this case so this is one possible mean cut partition of this
+
+589
+00:56:01,760 --> 00:56:02,760
+ particular graph.
+
+590
+00:56:02,760 --> 00:56:08,640
+ If you split this graph into 2 parts then you see that there are only 2 connections between
+
+591
+00:56:08,640 --> 00:56:14,400
+ these 2 groups A, B, E, F, 1 group, C, D, G, H another group and there are only 2 connections
+
+592
+00:56:14,400 --> 00:56:18,080
+ between these 2 groups from the original data.
+
+593
+00:56:18,080 --> 00:56:25,600
+ So therefore our objective is to try to figure out such a cut which will minimize this connection
+
+594
+00:56:25,600 --> 00:56:32,520
+ between these 2 groups so in this case a mean cut value is 2.
+
+595
+00:56:32,520 --> 00:56:40,160
+ So the typical approach that people follow for graph clustering using minimum cut is
+
+596
+00:56:40,160 --> 00:56:44,480
+ this that you use a minimum cut algorithm to break graphs into 2 sets because that is
+
+597
+00:56:44,480 --> 00:56:46,840
+ how it is done.
+
+598
+00:56:46,840 --> 00:56:52,920
+ If you like to find out more groups then you take the smaller groups then apply the mean
+
+599
+00:56:52,920 --> 00:56:58,320
+ cut again on the smaller groups break this entire thing into 2 and it simply continue
+
+600
+00:56:58,320 --> 00:57:00,940
+ until the stopping condition is satisfied.
+
+601
+00:57:00,940 --> 00:57:07,080
+ So that is the general principle of mean cut algorithm when we apply on graph data to find
+
+602
+00:57:07,080 --> 00:57:16,600
+ out the graph clusters.
+
+603
+00:57:16,600 --> 00:57:24,860
+ Now this particular technique that I am going to talk about is a simple technique you know
+
+604
+00:57:24,860 --> 00:57:29,480
+ it stands on this following principle.
+
+605
+00:57:29,480 --> 00:57:35,760
+ So what we do we simply repeat until we have 2 nodes because we like to split a particular
+
+606
+00:57:35,760 --> 00:57:40,800
+ graph into 2 parts so that is why basically we will be considering 2 nodes.
+
+607
+00:57:40,800 --> 00:57:48,720
+ So in the very first step we will choose an age at random a particular connection you
+
+608
+00:57:48,720 --> 00:57:55,520
+ choose at random and then it collapse these 2 end points into single nodes put them together
+
+609
+00:57:55,520 --> 00:58:01,000
+ that means choose an age so we know that the 2 end points or the nodes are connected with
+
+610
+00:58:01,000 --> 00:58:07,160
+ each other so therefore we are going to collapse them together put them together.
+
+611
+00:58:07,160 --> 00:58:12,880
+ So for example in this case now look at this particular example carefully and they understand
+
+612
+00:58:12,880 --> 00:58:15,060
+ how it basically happens.
+
+613
+00:58:15,060 --> 00:58:20,320
+ So text for example in this case this is the original graph.
+
+614
+00:58:20,320 --> 00:58:24,520
+ So there are 14 ages in this particular graph.
+
+615
+00:58:24,520 --> 00:58:30,280
+ So the probability that we are going to choose a particular age for example BF in this case
+
+616
+00:58:30,280 --> 00:58:38,600
+ so this particular age is going to be 1 by 14 okay because there are 14 age and there
+
+617
+00:58:38,600 --> 00:58:43,240
+ are basically you can choose one of them so all the ages we will have the same probability
+
+618
+00:58:43,240 --> 00:58:46,080
+ of choosing these things.
+
+619
+00:58:46,080 --> 00:58:49,720
+ Now because this is a probabilistic algorithm you will have to use some random number generator
+
+620
+00:58:49,720 --> 00:58:56,000
+ from your standard library CC plus plus Java or Python you use that and say we choose this
+
+621
+00:58:56,000 --> 00:59:01,480
+ particular age called BF you can choose any other age depending upon the probability value
+
+622
+00:59:01,480 --> 00:59:09,440
+ given by your model or given by your implementation but for this particular demo we assume that
+
+623
+00:59:09,440 --> 00:59:13,800
+ the age that we have chosen is basically BF.
+
+624
+00:59:13,800 --> 00:59:20,920
+ Now once you have chosen that then what we do contraction so by contraction what we mean
+
+625
+00:59:20,920 --> 00:59:28,320
+ is that that we have to put these two end points of this age together in a single group.
+
+626
+00:59:28,320 --> 00:59:37,040
+ Now because the B and F were the two end points of this particular age that we had chosen
+
+627
+00:59:37,040 --> 00:59:44,240
+ so we will put them together in a new group called BF but that is not the end of the story
+
+628
+00:59:44,240 --> 00:59:47,680
+ we have to adjust the connections as well.
+
+629
+00:59:47,680 --> 00:59:52,160
+ Now you look at this thing these two things carefully we now have the parallel ages that
+
+630
+00:59:52,160 --> 00:59:58,160
+ means there are multiple ages between two nodes why this is happening in the original
+
+631
+00:59:58,160 --> 01:00:06,880
+ graph there was an age between A and B so that is why there is one more age okay and
+
+632
+01:00:06,880 --> 01:00:15,240
+ A and F also so I have to maintain the relationship in the new graph that is why you can see there
+
+633
+01:00:15,240 --> 01:00:22,100
+ are two ages between A and BF similarly you see there are two connections between E and
+
+634
+01:00:22,100 --> 01:00:29,360
+ BF but the same logic we have the connection from E to B and E to F and that is the reason
+
+635
+01:00:29,360 --> 01:00:32,760
+ we simply put them together.
+
+636
+01:00:32,760 --> 01:00:39,680
+ So therefore after fast contraction we get something like this one now we again have
+
+637
+01:00:39,680 --> 01:00:48,160
+ to apply the age selection followed by the contraction again so now say for example that
+
+638
+01:00:48,160 --> 01:00:57,800
+ we chose a particular age say gh with probability 1 by 13 okay something like this we have.
+
+639
+01:00:57,800 --> 01:01:03,240
+ Now again we contract readjust this ages and so on so forth so we simply do something like
+
+640
+01:01:03,240 --> 01:01:11,120
+ this one so we put them together g and h we adjusted the number of connections accordingly
+
+641
+01:01:11,120 --> 01:01:14,960
+ and so on so forth okay.
+
+642
+01:01:14,960 --> 01:01:22,160
+ Now again we choose a particular age randomly for example in this case we have chosen dg
+
+643
+01:01:22,160 --> 01:01:29,400
+ and h for instance now the probability of choosing this particular age dg and h is nothing
+
+644
+01:01:29,400 --> 01:01:35,800
+ but 2 by 12 simply because there are two parallel ages in this and there are total number of
+
+645
+01:01:35,800 --> 01:01:40,120
+ ages is actually 12 so that is the probability value.
+
+646
+01:01:40,120 --> 01:01:46,040
+ Now if you chose that then we contract these two together and we are going to get something
+
+647
+01:01:46,040 --> 01:01:53,560
+ like this one because now that we have dg and h together in a single group okay and we
+
+648
+01:01:53,560 --> 01:01:59,720
+ now have parallel edges accordingly because initially we had two edges between gh and
+
+649
+01:01:59,720 --> 01:02:08,760
+ d okay and also one two edges between gh and c so we simply put them together okay.
+
+650
+01:02:08,760 --> 01:02:16,200
+ Now we repeat the same process we select for example the age ae with probability 1 by 10
+
+651
+01:02:16,200 --> 01:02:23,240
+ and then we contract once again to get something like this one ae and bf.
+
+652
+01:02:23,240 --> 01:02:30,360
+ In the next step what we do we choose say for example an age ae and bf with probability
+
+653
+01:02:30,360 --> 01:02:35,280
+ 4 by 9 because there are four connections between ae and bf and there are nine edges
+
+654
+01:02:35,280 --> 01:02:41,320
+ in this current graph so the probability will be 4 by 9 so we do that and then we put them
+
+655
+01:02:41,320 --> 01:02:47,720
+ together ae and bf so we are going to get something like this one okay.
+
+656
+01:02:47,720 --> 01:02:53,520
+ Now we have three nodes still we have to do something because we will stop when we have
+
+657
+01:02:53,520 --> 01:02:59,160
+ two nodes so we continue say we choose now say cdg and h is already 3 by 5 because there
+
+658
+01:02:59,160 --> 01:03:05,160
+ are three edges between c and dgh so we will do that and then we contract these things
+
+659
+01:03:05,160 --> 01:03:07,480
+ together and so on and so forth.
+
+660
+01:03:07,480 --> 01:03:16,360
+ Now at this point we have two nodes a, b, e, f and cdgh and it is time to stop because
+
+661
+01:03:16,360 --> 01:03:21,880
+ this is stopping criterion for this particular algorithm.
+
+662
+01:03:21,880 --> 01:03:29,680
+ So now we basically will stop in this case so here the mean cut value okay is basically
+
+663
+01:03:29,680 --> 01:03:36,720
+ 2 okay because the number of edges that we have right now between these two groups is
+
+664
+01:03:36,720 --> 01:03:44,200
+ basically 2 okay so mean cut value is 2 sorry the cut value is to not really mean cut it
+
+665
+01:03:44,200 --> 01:03:49,040
+ could be mean cut or it may not be mean cut but the cut value is actually 2 in this case
+
+666
+01:03:49,040 --> 01:03:55,080
+ but fortunately in this particular case we found out the mean cut value for this particular
+
+667
+01:03:55,080 --> 01:03:57,480
+ graph.
+
+668
+01:03:57,480 --> 01:04:04,000
+ So after doing this one so what now we basically have done is basically we find out one group
+
+669
+01:04:04,000 --> 01:04:11,720
+ called a, b, e, f and then we find out another group called cdgh so therefore it partitions
+
+670
+01:04:11,720 --> 01:04:18,360
+ this graph into two groups with a, b, e, f in one group and cdgh in another group.
+
+671
+01:04:18,360 --> 01:04:23,600
+ So that is how basically it works now if you would like to partition this graph even more
+
+672
+01:04:23,600 --> 01:04:29,680
+ then you take a, b, e, f stuff and then basically apply the same thing again and again okay
+
+673
+01:04:29,680 --> 01:04:34,280
+ and split it off into two groups and simply proceed.
+
+674
+01:04:34,280 --> 01:04:41,680
+ So this is a randomized algorithm and therefore you have to consider this important thing.
+
+675
+01:04:41,680 --> 01:04:49,840
+ Okay, so for good result this is always recommended.
+
+676
+01:04:49,840 --> 01:04:54,960
+ So you run this algorithm multiple times this called Carger's algorithm and therefore
+
+677
+01:04:54,960 --> 01:05:00,160
+ you will going to get multiple cuts for this situation and you take the cut with a minimum
+
+678
+01:05:00,160 --> 01:05:05,160
+ value okay that will tell you the minimum value for this particular cut.
+
+679
+01:05:05,160 --> 01:05:15,840
+ Okay the next topic that we will discuss is clustering weighted graph.
+
+680
+01:05:15,840 --> 01:05:21,440
+ So in this case broadly we have two possible approaches one is called agglomerative approach
+
+681
+01:05:21,440 --> 01:05:25,920
+ or the bottom-up approach another is called divisive approach top-down approach okay.
+
+682
+01:05:25,920 --> 01:05:31,960
+ So in bottom-up we do start with that each object is going to be in single cluster and
+
+683
+01:05:31,960 --> 01:05:37,520
+ then you gradually merge them together and simply form bigger clusters.
+
+684
+01:05:37,520 --> 01:05:43,000
+ In divisive approach we take exactly opposite route we start with all objects in the same
+
+685
+01:05:43,000 --> 01:05:48,800
+ cluster and then we simply split into smaller one something like that we have seen in the
+
+686
+01:05:48,800 --> 01:05:51,000
+ previous case.
+
+687
+01:05:51,000 --> 01:05:54,080
+ But for this particular lecture I am not going to talk about divisive approach I am going
+
+688
+01:05:54,080 --> 01:05:58,400
+ to talk about agglomerative approach and we will see how you can do clustering using
+
+689
+01:05:58,400 --> 01:06:02,960
+ this one.
+
+690
+01:06:02,960 --> 01:06:10,800
+ So in this case we do not require the number of clusters to be fixed a priori in advance
+
+691
+01:06:10,800 --> 01:06:17,440
+ because this is hierarchical clustering in order to terminate you can actually set some
+
+692
+01:06:17,440 --> 01:06:26,240
+ threshold when to stop that is one possible approach that you can use to stop the algorithm.
+
+693
+01:06:26,240 --> 01:06:30,840
+ So I am going to skip this slide also okay.
+
+694
+01:06:30,840 --> 01:06:33,200
+ So in this case what happens is basically something like this.
+
+695
+01:06:33,200 --> 01:06:38,800
+ So we have to define a similarity function that is the foundation for any clustering algorithm
+
+696
+01:06:38,800 --> 01:06:44,360
+ which will tell the similarity between two instances or two clusters and so on so forth.
+
+697
+01:06:44,360 --> 01:06:50,080
+ So first we will start with all instances in the separate cluster say each example will
+
+698
+01:06:50,080 --> 01:06:56,320
+ be in a separate cluster and then we repeatedly join them and so on so forth and how we are
+
+699
+01:06:56,320 --> 01:07:05,160
+ going to join them okay the history of joining okay is basically nothing but recall is dendogram.
+
+700
+01:07:05,160 --> 01:07:11,200
+ So in this case for instance so the initial level of points is something like that.
+
+701
+01:07:11,200 --> 01:07:16,440
+ So first we basically join these two points together and this picture will tell that these
+
+702
+01:07:16,440 --> 01:07:19,040
+ two points are joined together okay.
+
+703
+01:07:19,040 --> 01:07:25,800
+ So first level these, these and these okay something like that and so on okay so all
+
+704
+01:07:25,800 --> 01:07:29,120
+ these dendogram all these figures basically telling that they are the first level joining
+
+705
+01:07:29,120 --> 01:07:30,120
+ merging.
+
+706
+01:07:30,120 --> 01:07:37,520
+ Then when I am basically merging these three things together entire three things then if
+
+707
+01:07:37,520 --> 01:07:42,060
+ you look at this particular dendogram it is telling actually how these two things are
+
+708
+01:07:42,060 --> 01:07:43,060
+ merged.
+
+709
+01:07:43,060 --> 01:07:48,720
+ So dendogram basically dendograms are telling you that how you have merged all the data points
+
+710
+01:07:48,720 --> 01:07:55,120
+ to create bigger and bigger clusters starting from the single points okay.
+
+711
+01:07:55,120 --> 01:08:00,960
+ So the important question is how do you determine the nearness of clusters?
+
+712
+01:08:00,960 --> 01:08:06,520
+ That is a key question that we have to address in hierarchical clustering okay and we will
+
+713
+01:08:06,520 --> 01:08:11,440
+ see with several examples in this case.
+
+714
+01:08:11,440 --> 01:08:17,800
+ So the first one so there are three different things one is basically called the single
+
+715
+01:08:17,800 --> 01:08:24,200
+ link approach where the distance of between, distance between the clusters or points we
+
+716
+01:08:24,200 --> 01:08:28,700
+ choose basically the closest point based on the closest points.
+
+717
+01:08:28,700 --> 01:08:34,000
+ Then we have another approach called complete link where the farthest points are used to
+
+718
+01:08:34,000 --> 01:08:39,000
+ compute the distance and then we have the average link when you take the average distance
+
+719
+01:08:39,000 --> 01:08:44,680
+ between pairs of elements of two clusters and so on so forth okay.
+
+720
+01:08:44,680 --> 01:08:52,600
+ So we will see these things actually with small examples in the next few slides okay.
+
+721
+01:08:52,600 --> 01:08:58,000
+ Now this is the formal definition of the single link agglomerative clustering algorithm or
+
+722
+01:08:58,000 --> 01:09:01,560
+ the approach in which you can basically form the clusters.
+
+723
+01:09:01,560 --> 01:09:11,480
+ So say we have two clusters cluster one and cluster two with several points in each clusters
+
+724
+01:09:11,480 --> 01:09:13,760
+ and we like to find out the similarity between two clusters.
+
+725
+01:09:13,760 --> 01:09:20,640
+ So that is the key point in hierarchical clustering given two clusters how do we compute the similarity
+
+726
+01:09:20,640 --> 01:09:25,080
+ of two clusters okay that is what we do.
+
+727
+01:09:25,080 --> 01:09:32,720
+ Now if you look at the definition carefully this is basically telling the maximum similarity
+
+728
+01:09:32,720 --> 01:09:35,600
+ between two points among all pairs of points.
+
+729
+01:09:35,600 --> 01:09:43,920
+ You take all pairs of points between two groups okay and then simply see what is the maximum
+
+730
+01:09:43,920 --> 01:09:52,240
+ similarity between all pairs of points among all pairs in a particular two groups okay.
+
+731
+01:09:52,240 --> 01:09:57,760
+ So in this case if you look at this example carefully so this number is actually telling
+
+732
+01:09:57,760 --> 01:10:01,040
+ the similarity between different pairs of objects among two groups.
+
+733
+01:10:01,040 --> 01:10:04,920
+ I am not going to compute the similarity within group because we are interested in between
+
+734
+01:10:04,920 --> 01:10:06,760
+ group thing.
+
+735
+01:10:06,760 --> 01:10:11,040
+ So this numbers are telling basically for example 10 is telling the similarity between
+
+736
+01:10:11,040 --> 01:10:21,040
+ two elements this and this something like that okay so now if you apply this thing here
+
+737
+01:10:21,040 --> 01:10:26,480
+ so distance between cluster one cluster two actually three in this case right.
+
+738
+01:10:26,480 --> 01:10:30,760
+ So if you go by for example the similarity you have to take the maximum value if you
+
+739
+01:10:30,760 --> 01:10:35,440
+ go by the distance you have to take the minimum value okay that is basically the definition
+
+740
+01:10:35,440 --> 01:10:36,440
+ of this one.
+
+741
+01:10:36,440 --> 01:10:43,480
+ So in this case if so this number for example if sorry I made a little mistake topographical
+
+742
+01:10:43,480 --> 01:10:47,960
+ mistake here in this case so these values for example the distance is not the similarity
+
+743
+01:10:47,960 --> 01:10:48,960
+ okay.
+
+744
+01:10:48,960 --> 01:10:53,840
+ So if you take that for instance the distance between cluster one and two is basically three
+
+745
+01:10:53,840 --> 01:10:57,920
+ and in this case because that is the smallest distance that we have in this case so the
+
+746
+01:10:57,920 --> 01:11:01,600
+ maximum similarity that we can think about it okay.
+
+747
+01:11:01,600 --> 01:11:06,720
+ So when you compute this similarity or distance between these two groups or these two clusters
+
+748
+01:11:06,720 --> 01:11:12,600
+ we will have to choose the points which have like the smallest distance or highest similarity
+
+749
+01:11:12,600 --> 01:11:16,960
+ they are interchangeable so we will do that.
+
+750
+01:11:16,960 --> 01:11:23,480
+ Now in a similar fashion but with slightly different modification so in this case for
+
+751
+01:11:23,480 --> 01:11:28,480
+ instance when we run this entire thing in single linkage clustering algorithm so say
+
+752
+01:11:28,480 --> 01:11:30,480
+ these are the points.
+
+753
+01:11:30,480 --> 01:11:36,760
+ So initially we start with all points in separate clusters and then we gradually merge.
+
+754
+01:11:36,760 --> 01:11:38,880
+ So how do we merge in this case?
+
+755
+01:11:38,880 --> 01:11:43,440
+ So first merging will be done based on these two points first these two points will be
+
+756
+01:11:43,440 --> 01:11:47,240
+ merged because they are closest to one another.
+
+757
+01:11:47,240 --> 01:11:53,000
+ Next we will basically merge these two points okay.
+
+758
+01:11:53,000 --> 01:11:57,880
+ Next we will merge these two points.
+
+759
+01:11:57,880 --> 01:12:01,940
+ Next we will merge these two points okay.
+
+760
+01:12:01,940 --> 01:12:05,680
+ Now we have slightly bigger clusters and so on so forth.
+
+761
+01:12:05,680 --> 01:12:10,840
+ Now question is next which two clusters will be merged in this case?
+
+762
+01:12:10,840 --> 01:12:17,040
+ Now if you choose this particular cluster and this particular cluster the similarity
+
+763
+01:12:17,040 --> 01:12:24,360
+ between them will be defined by in this case or distance is based on these two points okay
+
+764
+01:12:24,360 --> 01:12:26,880
+ something like that will be done.
+
+765
+01:12:26,880 --> 01:12:32,280
+ Now if you choose this particular cluster or this particular cluster the similarity between
+
+766
+01:12:32,280 --> 01:12:39,760
+ them will be defined by these two points or distance something like that.
+
+767
+01:12:39,760 --> 01:12:44,400
+ So now we have to use this information to compute the distances between the pairs of
+
+768
+01:12:44,400 --> 01:12:52,160
+ clusters in this case and then merge the two clusters having smallest distance or largest
+
+769
+01:12:52,160 --> 01:12:54,680
+ similarity something like that we have to do.
+
+770
+01:12:54,680 --> 01:12:57,960
+ So if you go by this apparently for example if you look at this figures carefully for
+
+771
+01:12:57,960 --> 01:13:04,360
+ instance okay then what you can figure out is that the possibly that these two clusters
+
+772
+01:13:04,360 --> 01:13:09,000
+ need to be merged in the next step okay.
+
+773
+01:13:09,000 --> 01:13:13,880
+ So in this way we simply proceed we merge the clusters one after another and simply proceed
+
+774
+01:13:13,880 --> 01:13:19,360
+ hierarchically and as you know the history of merging the way that basically we are building
+
+775
+01:13:19,360 --> 01:13:25,880
+ the circles will tell you that how they have merged from smaller to bigger which is equivalent
+
+776
+01:13:25,880 --> 01:13:29,840
+ to the dendrogram that we have seen.
+
+777
+01:13:29,840 --> 01:13:36,920
+ Now the problem the biggest problem with the single linkage algorithm is this that you end
+
+778
+01:13:36,920 --> 01:13:44,360
+ up getting the chain or elongated clusters okay why this is the case you take this example
+
+779
+01:13:44,360 --> 01:13:46,480
+ okay.
+
+780
+01:13:46,480 --> 01:13:50,880
+ So if you apply this single linkage algorithm then first you are going to merge these two
+
+781
+01:13:50,880 --> 01:14:01,320
+ points together then you do this merging okay then what you do you do this merging okay.
+
+782
+01:14:01,320 --> 01:14:05,320
+ So essentially you are going to merge all the points together.
+
+783
+01:14:05,320 --> 01:14:10,960
+ So the reason is that that the similarity is defined by the most similar points it does
+
+784
+01:14:10,960 --> 01:14:15,880
+ not really consider the similarity between other points in my group okay if two points
+
+785
+01:14:15,880 --> 01:14:21,960
+ are accidentally very similar to each other okay in two groups then they will dictate
+
+786
+01:14:21,960 --> 01:14:27,360
+ the cluster formation strategy which is pretty bad and you are going to get elongated clusters
+
+787
+01:14:27,360 --> 01:14:31,720
+ often on a real data okay.
+
+788
+01:14:31,720 --> 01:14:38,320
+ Now the difficulty in this case is that that you put them together all four put them together
+
+789
+01:14:38,320 --> 01:14:45,240
+ but a quick inspection will tell you that certainly these two points are very very far
+
+790
+01:14:45,240 --> 01:14:51,520
+ apart they are very dissimilar and yet you put them together because this point and this
+
+791
+01:14:51,520 --> 01:14:56,040
+ point actually these two points are very close to each other okay.
+
+792
+01:14:56,040 --> 01:15:02,320
+ So this is a problem with this particular approach.
+
+793
+01:15:02,320 --> 01:15:08,440
+ Now a possible solution to this one which is once again very widely used is called complete
+
+794
+01:15:08,440 --> 01:15:15,880
+ linkage clustering okay so in this case what we do we just modify how we compute the similarity
+
+795
+01:15:15,880 --> 01:15:19,720
+ between two clusters in this case.
+
+796
+01:15:19,720 --> 01:15:27,040
+ Now you look at carefully the modification to this one in the earlier case we had the
+
+797
+01:15:27,040 --> 01:15:35,160
+ max of similarity okay so we used to take the similarity between two groups based on
+
+798
+01:15:35,160 --> 01:15:40,920
+ the maximum similarity of elements pairs elements in this case we take the minimum similarity
+
+799
+01:15:40,920 --> 01:15:46,920
+ okay when you compute the similarity value between two clusters we will look at who are
+
+800
+01:15:46,920 --> 01:15:52,860
+ the most dissimilar points in my two groups and I use that value as a measure of similarity
+
+801
+01:15:52,860 --> 01:15:53,860
+ okay.
+
+802
+01:15:53,860 --> 01:16:00,120
+ So in this case for example we go by the distance value in this case I am basically using the
+
+803
+01:16:00,120 --> 01:16:04,480
+ distance value not similarity value in this case the similarity between these two clusters
+
+804
+01:16:04,480 --> 01:16:12,640
+ basically 10 as opposed to 3 in my previous case because in this case these two points
+
+805
+01:16:12,640 --> 01:16:17,640
+ this particular point and this particular point they have similarity the distance value
+
+806
+01:16:17,640 --> 01:16:21,240
+ is actually 10 okay.
+
+807
+01:16:21,240 --> 01:16:27,880
+ So because they are farthest like apart among all possible pairs in this case this number
+
+808
+01:16:27,880 --> 01:16:35,680
+ will tell you that how compact the points are into these two particular clusters.
+
+809
+01:16:35,680 --> 01:16:41,780
+ So we will use these values to form the clusters gradually one after another.
+
+810
+01:16:41,780 --> 01:16:48,840
+ So now the question is why we are doing that there is a good reason why we are doing that
+
+811
+01:16:48,840 --> 01:16:58,680
+ for example I have a data point somewhere here in this particular case okay.
+
+812
+01:16:58,680 --> 01:17:08,100
+ Now if you look at this figure carefully then what will happen is that this particular cluster
+
+813
+01:17:08,100 --> 01:17:12,120
+ is basically dispersed not very compact.
+
+814
+01:17:12,120 --> 01:17:20,580
+ Now under the reception the distance between these two clusters is going to be this basically
+
+815
+01:17:20,580 --> 01:17:28,000
+ this one okay which is basically high value.
+
+816
+01:17:28,000 --> 01:17:34,160
+ So automatically this measure will reflect that these two clusters actually far apart
+
+817
+01:17:34,160 --> 01:17:38,580
+ because there is a point belonging to a particular cluster which is actually very far apart from
+
+818
+01:17:38,580 --> 01:17:42,960
+ the other points in the cluster not very compact okay.
+
+819
+01:17:42,960 --> 01:17:47,680
+ So as a result it will tell that okay possibly the clusters are of not good quality and the
+
+820
+01:17:47,680 --> 01:17:52,640
+ numbers will reflect that okay but there is a problem upwards with this approach if there
+
+821
+01:17:52,640 --> 01:17:57,440
+ is one point which is basically very far apart from all others it can also dismantle the
+
+822
+01:17:57,440 --> 01:18:02,760
+ score okay but again these are pros and cons of each and every approach that we deal with
+
+823
+01:18:02,760 --> 01:18:06,720
+ so nothing we can do.
+
+824
+01:18:06,720 --> 01:18:15,200
+ So therefore it makes very tight spherical clusters now in a situation like this one.
+
+825
+01:18:15,200 --> 01:18:23,680
+ So this is an illustration of this algorithm very similar to this one.
+
+826
+01:18:23,680 --> 01:18:29,960
+ So for example initially what we do once again we form the clusters no problem with this approach
+
+827
+01:18:29,960 --> 01:18:38,960
+ again we will do this so on so forth so on so forth okay no change in this case.
+
+828
+01:18:38,960 --> 01:18:45,200
+ Now next time when we form clusters like you know merging by merging and so on so forth
+
+829
+01:18:45,200 --> 01:18:52,340
+ when I compute similarity between this cluster and this cluster these two clusters it will
+
+830
+01:18:52,340 --> 01:19:04,180
+ be determined by these two points okay unlike the single leakage clustering algorithm okay.
+
+831
+01:19:04,180 --> 01:19:13,560
+ For this cluster and this cluster it will be determined by these two points okay something
+
+832
+01:19:13,560 --> 01:19:23,220
+ like that so on so forth and of course for these two clusters this one and this one okay
+
+833
+01:19:23,220 --> 01:19:27,540
+ it will possibly be determined by these two points and so on so forth.
+
+834
+01:19:27,540 --> 01:19:33,420
+ So we will compute all pairs of such similarities and then we will merge the clusters so in
+
+835
+01:19:33,420 --> 01:19:37,460
+ this case possibly if you consider this among all the possible cases in this case also possibly
+
+836
+01:19:37,460 --> 01:19:39,740
+ something like this one.
+
+837
+01:19:39,740 --> 01:19:45,460
+ So we will see so this particular line is the minimum among all okay so we will now
+
+838
+01:19:45,460 --> 01:19:52,380
+ merge these two clusters together to form a bigger cluster okay so in this way you simply
+
+839
+01:19:52,380 --> 01:20:01,580
+ move on to compute the bigger clusters from the smaller ones and so on so forth.
+
+840
+01:20:01,580 --> 01:20:07,940
+ I take one very concrete example to illustrate this point now actually when you write program
+
+841
+01:20:07,940 --> 01:20:14,220
+ or implement the entire thing you have to deal with a graph like structure and a graph
+
+842
+01:20:14,220 --> 01:20:19,780
+ structure is actually represented a computer using a matrix okay so typically you have
+
+843
+01:20:19,780 --> 01:20:26,940
+ a symmetric matrix symmetric like this matrix that basically you take.
+
+844
+01:20:26,940 --> 01:20:33,300
+ So if you take this example carefully for instance that say I have a matrix where I
+
+845
+01:20:33,300 --> 01:20:38,260
+ have 5 objects initially okay I have the 5 objects that I have and I have the similarity
+
+846
+01:20:38,260 --> 01:20:41,820
+ values between distance values between them and so on so forth.
+
+847
+01:20:41,820 --> 01:20:52,820
+ So this value will tell the distance between 2 and 1 okay object 2 and 1 okay or for example
+
+848
+01:20:52,820 --> 01:21:01,380
+ this value will tell the distance between object 5 and 4 okay so for all pairs of objects
+
+849
+01:21:01,380 --> 01:21:07,940
+ you have the distance values which we can represent or we can basically put in a matrix
+
+850
+01:21:07,940 --> 01:21:12,660
+ and then we will basically see how you can apply single liquid algorithm to create the
+
+851
+01:21:12,660 --> 01:21:15,540
+ clusters gradually.
+
+852
+01:21:15,540 --> 01:21:22,140
+ Now in this case what you see is basically the first we will merge so we will choose
+
+853
+01:21:22,140 --> 01:21:26,780
+ the pair among all pairs which are having the minimum distance in this case and then
+
+854
+01:21:26,780 --> 01:21:28,420
+ we simply merge.
+
+855
+01:21:28,420 --> 01:21:32,980
+ So if you look at this very very carefully the minimum distance among all pairs is basically
+
+856
+01:21:32,980 --> 01:21:39,500
+ 2 so we basically merge 1 and 2 together in this figure you can see.
+
+857
+01:21:39,500 --> 01:21:43,460
+ Next if we do that then we are going to get something like this we have readjust this
+
+858
+01:21:43,460 --> 01:21:48,260
+ entire thing so we will have to basically recompute the cluster similarity values because
+
+859
+01:21:48,260 --> 01:21:53,540
+ now we put together 1 and 2 together so we readjust these values now we have a matrix
+
+860
+01:21:53,540 --> 01:21:58,700
+ something like this based on the single linkage similarity measure so we will compute these
+
+861
+01:21:58,700 --> 01:22:03,660
+ values and I have shown here the actual values.
+
+862
+01:22:03,660 --> 01:22:07,060
+ So now if you look at these then you have to choose again the minimum distance among
+
+863
+01:22:07,060 --> 01:22:12,020
+ all possible pairs of clusters and we simply put them together so we will do something
+
+864
+01:22:12,020 --> 01:22:18,420
+ like this one okay then once again we readjust this entire thing compute similarity based
+
+865
+01:22:18,420 --> 01:22:23,400
+ on single linkage measure again choose the minimum one we are going to get something
+
+866
+01:22:23,400 --> 01:22:29,900
+ like this one so this is the way we are going to merge the cluster gradually starting from
+
+867
+01:22:29,900 --> 01:22:33,580
+ the single linkage clusters that we had.
+
+868
+01:22:33,580 --> 01:22:42,140
+ Now we look at the complete linkage clusters okay for the same data that we have here okay
+
+869
+01:22:42,140 --> 01:22:47,540
+ and we see what happens the same distance matrix that I have in this case and I will
+
+870
+01:22:47,540 --> 01:22:58,300
+ see what happens in this case so oh sorry so in this case what we can do basically so
+
+871
+01:22:58,300 --> 01:23:12,460
+ right now I have say 1, 2, 3, 4 and 5 okay I have this one now of course the distances
+
+872
+01:23:12,460 --> 01:23:18,020
+ initial distances are given here okay so no problem with this one in the very first step
+
+873
+01:23:18,020 --> 01:23:22,260
+ so we will choose two clusters having minimum distance and simply merge them together so
+
+874
+01:23:22,260 --> 01:23:28,820
+ as you know the minimum value in this case is actually 2 okay so we will merge one and
+
+875
+01:23:28,820 --> 01:23:36,300
+ two together okay so this basically we will merge now because now we have put one and
+
+876
+01:23:36,300 --> 01:23:44,900
+ two together so this is one cluster say this is say cluster 1 this is cluster 2 this is
+
+877
+01:23:44,900 --> 01:23:52,060
+ cluster 3 and this is cluster 4 so now I have to compute the similarity between cluster
+
+878
+01:23:52,060 --> 01:23:57,500
+ 1 and cluster 2 for example in this case okay so how do I compute the similarity between
+
+879
+01:23:57,500 --> 01:24:05,700
+ cluster C1 and C2 in this case C1 has two points and C2 has three points now for the
+
+880
+01:24:05,700 --> 01:24:10,420
+ distance rather you can think about it so now the similarity between or the distance
+
+881
+01:24:10,420 --> 01:24:33,180
+ between now the distance between so distance between this for example this two group in
+
+882
+01:24:33,180 --> 01:24:46,460
+ this case now say because this is matrix so in this case the distance between C1, C2
+
+883
+01:24:46,460 --> 01:24:51,460
+ is going to be something like this look at the distance between 1 and 3 because we are
+
+884
+01:24:51,460 --> 01:25:02,920
+ going to compute the distance between C1 and C2 so distance between 1 and 3 is 6 so I am
+
+885
+01:25:02,920 --> 01:25:13,860
+ putting star just to discriminate and then distance between 2 and 3 is 3 in this case
+
+886
+01:25:13,860 --> 01:25:24,700
+ okay so because this is the two distance value that I can make use of and so on so forth.
+
+887
+01:25:24,700 --> 01:25:31,260
+ Now by definition in complicated clustering algorithm I have to choose the farthest points
+
+888
+01:25:31,260 --> 01:25:37,020
+ from between two groups so in this case the higher value is basically 6 so the distance
+
+889
+01:25:37,020 --> 01:25:43,300
+ is going to be 6 in this case okay it will tell you the compactness so in this way simply
+
+890
+01:25:43,300 --> 01:25:49,500
+ we compute this value and so on so forth now the distance between C1 and C2 is 6 between
+
+891
+01:25:49,500 --> 01:26:00,060
+ C2 and C3 between 3 and 4 is basically 4 and 3 is 7 okay and between 4 and 5 the other
+
+892
+01:26:00,060 --> 01:26:03,900
+ values and so on so forth so I have to basically choose the minimum one and simply merge them
+
+893
+01:26:03,900 --> 01:26:04,900
+ together.
+
+894
+01:26:04,900 --> 01:26:09,700
+ So the key thing in this case is basically choosing or the computing the distance values
+
+895
+01:26:09,700 --> 01:26:16,460
+ once we merge two clusters together using the complicated clustering algorithm.
+
+896
+01:26:16,460 --> 01:26:25,740
+ Now the last part of my talk is called principal comfort analysis or PCA in short often we
+
+897
+01:26:25,740 --> 01:26:32,980
+ call it PCA and this is slightly different from what we have talked so far.
+
+898
+01:26:32,980 --> 01:26:40,040
+ So objective here is not to do any clustering but rather reduction of the dimension of this
+
+899
+01:26:40,040 --> 01:26:47,080
+ data that we are dealing with okay and it basically deals with high dimensional data
+
+900
+01:26:47,080 --> 01:26:51,820
+ and we use these linear algebra stuff like eigenvalues and eigenvectors to figure out
+
+901
+01:26:51,820 --> 01:26:57,140
+ what would be the good like sort of reduced features that we can get out of the original
+
+902
+01:26:57,140 --> 01:27:01,100
+ data.
+
+903
+01:27:01,100 --> 01:27:08,660
+ So simply to put it like simply the data reduction objective is basically something like this
+
+904
+01:27:08,660 --> 01:27:15,940
+ that we have a data matrix like this we have say n objects and we have say p variables
+
+905
+01:27:15,940 --> 01:27:19,100
+ or rather p features that we have in my data.
+
+906
+01:27:19,100 --> 01:27:25,780
+ So this is the original matrix that I have and then I will convert this data or rather
+
+907
+01:27:25,780 --> 01:27:33,100
+ transform this data to a reduced form where I have the same number of objects but the
+
+908
+01:27:33,100 --> 01:27:38,420
+ number of variables that I have is basically much smaller compared to p.
+
+909
+01:27:38,420 --> 01:27:45,100
+ So k is generally smaller to p that is kind of the assumption that we will be dealing
+
+910
+01:27:45,100 --> 01:27:46,100
+ with.
+
+911
+01:27:46,100 --> 01:27:54,220
+ So essentially for example if I had original data where I had 1000 features for every object
+
+912
+01:27:54,220 --> 01:28:01,180
+ I will convert every object to say for example 10 features only and these are the wide applications
+
+913
+01:28:01,180 --> 01:28:09,580
+ because it reduces like noise, this reduces unnecessary redundancy in the data, this reduces
+
+914
+01:28:09,580 --> 01:28:17,060
+ the computational complexity because we have to compute similarity between objects and
+
+915
+01:28:17,060 --> 01:28:18,060
+ so on so forth.
+
+916
+01:28:18,060 --> 01:28:23,220
+ So the key questions that we address basically this first question that we asked ourselves
+
+917
+01:28:23,220 --> 01:28:29,140
+ that do we need all vectors like all data for example all n dimensional space to view
+
+918
+01:28:29,140 --> 01:28:32,420
+ the data that is the first question.
+
+919
+01:28:32,420 --> 01:28:38,420
+ Sometimes there are correlated data which we do not need.
+
+920
+01:28:38,420 --> 01:28:43,340
+ So then we have to basically find out the better axis than the original axis.
+
+921
+01:28:43,340 --> 01:28:46,540
+ If I original axis I have something we have something then can we find out better axis
+
+922
+01:28:46,540 --> 01:28:50,100
+ to represent this data.
+
+923
+01:28:50,100 --> 01:28:55,820
+ Then how do I find out the best low dimensional space that conveys the maximum useful information
+
+924
+01:28:55,820 --> 01:29:00,060
+ that I had in the original data?
+
+925
+01:29:00,060 --> 01:29:05,900
+ So to answer all these questions we generally use a thing called principal components.
+
+926
+01:29:05,900 --> 01:29:12,900
+ Now I must say that this is not always applicable for certain kind of data this is not applicable
+
+927
+01:29:12,900 --> 01:29:18,980
+ but for many data the principal components do very good work and we will see when they
+
+928
+01:29:18,980 --> 01:29:25,020
+ can do good work, when they do not do good work.
+
+929
+01:29:25,020 --> 01:29:28,460
+ So let us look at this particular figure carefully ok.
+
+930
+01:29:28,460 --> 01:29:31,660
+ So let us we have this kind of data for example.
+
+931
+01:29:31,660 --> 01:29:36,820
+ If we have this data so this is we are calling the principal component 1.
+
+932
+01:29:36,820 --> 01:29:43,820
+ So principal component is nothing but a line along which the data has maximum variability
+
+933
+01:29:43,820 --> 01:29:44,820
+ ok.
+
+934
+01:29:44,820 --> 01:29:48,900
+ So if you look at this data very carefully this is the line along which the data has
+
+935
+01:29:48,900 --> 01:29:49,900
+ maximum variability.
+
+936
+01:29:49,900 --> 01:29:55,380
+ You do not find any other line along which the data has maximum variability.
+
+937
+01:29:55,380 --> 01:30:00,580
+ The second principal component once we have the principal component 1 the second principal
+
+938
+01:30:00,580 --> 01:30:08,020
+ component that we have is basically this one the red one which will always be perpendicular
+
+939
+01:30:08,020 --> 01:30:11,300
+ to the first principal component ok.
+
+940
+01:30:11,300 --> 01:30:15,860
+ And it will basically give you the residual variance so maximum variance to the second
+
+941
+01:30:15,860 --> 01:30:21,180
+ variance and so on so forth and this is the way simply we will proceed.
+
+942
+01:30:21,180 --> 01:30:25,460
+ The question is how do we figure this out all these lines the good lines from the data
+
+943
+01:30:25,460 --> 01:30:30,660
+ that will tell us the amount of variance and all sorts of stuff.
+
+944
+01:30:30,660 --> 01:30:39,300
+ So the goal in this case is this that I have the original data I will compute the variance
+
+945
+01:30:39,300 --> 01:30:47,540
+ covariance of this data ok and then I will use a few linear combination of these variables
+
+946
+01:30:47,540 --> 01:30:50,180
+ we will try to figure out that ok.
+
+947
+01:30:50,180 --> 01:30:57,940
+ So the essential component or the sort of this you know the thing that we will be using
+
+948
+01:30:57,940 --> 01:31:02,580
+ is basically variance covariance data from the original data ok.
+
+949
+01:31:02,580 --> 01:31:08,380
+ So we look at the variance along which line variance is maximum and so on so forth and
+
+950
+01:31:08,380 --> 01:31:09,380
+ we simply do that.
+
+951
+01:31:09,380 --> 01:31:14,780
+ Now one of the objectives of this approach is kind of you know reduce the correlated
+
+952
+01:31:14,780 --> 01:31:23,900
+ features if I have three features and they are correlated then if one tells something
+
+953
+01:31:23,900 --> 01:31:27,580
+ the other also is going to tell the similar thing third one is also going to tell the
+
+954
+01:31:27,580 --> 01:31:31,740
+ similar thing then I do not need all three when one will do.
+
+955
+01:31:31,740 --> 01:31:36,740
+ So the objective in this case is basically figure out which features are correlated and
+
+956
+01:31:36,740 --> 01:31:41,020
+ I simply remove those correlated features keep only the one which will be enough for
+
+957
+01:31:41,020 --> 01:31:43,460
+ me to decide my case.
+
+958
+01:31:43,460 --> 01:31:48,840
+ So that is more or less the broad objective of this particular approach.
+
+959
+01:31:48,840 --> 01:31:51,700
+ So the trick in this case is basically this.
+
+960
+01:31:51,700 --> 01:31:58,020
+ Say we had this data for example you know do not look at this red lines but rather look
+
+961
+01:31:58,020 --> 01:32:00,500
+ at this black lines for instance.
+
+962
+01:32:00,500 --> 01:32:04,900
+ So X and on X was two dimensional data that I had and so on so forth.
+
+963
+01:32:04,900 --> 01:32:12,060
+ Now clearly along the original axis X on and X to the data does not have the original the
+
+964
+01:32:12,060 --> 01:32:14,920
+ maximum variability.
+
+965
+01:32:14,920 --> 01:32:19,860
+ Now if you can rotate this axis little bit along the red lines then we see that along
+
+966
+01:32:19,860 --> 01:32:22,460
+ the red lines we have the maximum variability.
+
+967
+01:32:22,460 --> 01:32:27,620
+ So for example this red line have the PC1 along this line we have the maximum variability
+
+968
+01:32:27,620 --> 01:32:35,140
+ in the data maximum variance you can see and then this red line is basically PC2 I calling
+
+969
+01:32:35,140 --> 01:32:40,820
+ principal component to along which you have the next maximum amount of variance.
+
+970
+01:32:40,820 --> 01:32:46,880
+ Now by nature PC1 and PC2 are perpendicular to each other that is the definition of this
+
+971
+01:32:46,880 --> 01:32:47,880
+ one.
+
+972
+01:32:47,880 --> 01:32:54,020
+ So therefore we have to figure out this red lines few red lines along which the variance
+
+973
+01:32:54,020 --> 01:32:58,900
+ will be very high and then we will basically try to rotate the original axis along these
+
+974
+01:32:58,900 --> 01:33:06,060
+ lines to figure out the new data transform data.
+
+975
+01:33:06,060 --> 01:33:14,060
+ So what it does it takes a data matrix of n objects and p columns the n rows and p columns
+
+976
+01:33:14,060 --> 01:33:18,860
+ p columns the p features we often call p variables.
+
+977
+01:33:18,860 --> 01:33:22,340
+ And then the variables may be correlated often because that is basically one of the things
+
+978
+01:33:22,340 --> 01:33:25,000
+ that we will try to do.
+
+979
+01:33:25,000 --> 01:33:29,700
+ We summarize this entire thing by uncorrelated axis from correlated things to uncorrelated
+
+980
+01:33:29,700 --> 01:33:36,780
+ axis we will try to do. And so the linear combination of this original p variables we try to figure
+
+981
+01:33:36,780 --> 01:33:44,060
+ out using all this analysis that we are going to perform.
+
+982
+01:33:44,060 --> 01:33:51,060
+ So the known fact in this case is that the fast k components of these new things that
+
+983
+01:33:51,060 --> 01:33:56,900
+ we are going to discover will display as much as possible of the variation among the objects.
+
+984
+01:33:56,900 --> 01:34:06,180
+ Our objective would be those fast k components or those fast k axis from the original data.
+
+985
+01:34:06,180 --> 01:34:15,060
+ So what is the geometric rational or geometric intuition behind this PCA. So say the centroid
+
+986
+01:34:15,060 --> 01:34:20,140
+ like the centroid of a point is defined by the mean of each variable that is like very
+
+987
+01:34:20,140 --> 01:34:28,740
+ standard definition of this one. Now the variance of each variable is basically the average
+
+988
+01:34:28,740 --> 01:34:33,740
+ squared with a variation of n values among the mean of these variables how far it is
+
+989
+01:34:33,740 --> 01:34:39,060
+ from the centroid. That is basically the thing that we do.
+
+990
+01:34:39,060 --> 01:34:43,700
+ So this is how basically we define the variance. We have the original data points which is
+
+991
+01:34:43,700 --> 01:34:56,460
+ xim then we have the centroid and then simply compute the mean of that and so on so forth.
+
+992
+01:34:56,460 --> 01:35:00,300
+ So then another important concept that we will use the covariance degree to which the
+
+993
+01:35:00,300 --> 01:35:09,580
+ variables are linearly correlated to each other. So we define in this way. So this covariance
+
+994
+01:35:09,580 --> 01:35:16,100
+ is basically computes to what extent two variables are related with each other.
+
+995
+01:35:16,100 --> 01:35:23,420
+ So we simply do that xim and xjm. We basically simply compute the deviation from their mean
+
+996
+01:35:23,420 --> 01:35:29,420
+ values and simply take the product and simply do that average. So these are two standard
+
+997
+01:35:29,420 --> 01:35:33,980
+ definitions that we know variance and covariance and we will use this thing to figure out all
+
+998
+01:35:33,980 --> 01:35:43,220
+ these axis and so on so forth. So the algebra of finding principle axis is basically we
+
+999
+01:35:43,220 --> 01:35:48,300
+ can generalize this to p variables. So PC 1 principle component 1 is the direction
+
+1000
+01:35:48,300 --> 01:35:57,380
+ of the maximum variance, PC 2 is the next maximum variance, so on so forth, PC 3 is the next
+
+1001
+01:35:57,380 --> 01:36:02,180
+ maximum and so on so forth. So it is simply gradually increase. So if you can project
+
+1002
+01:36:02,180 --> 01:36:06,180
+ this data along PC 1, we will have the maximum variance then PC 2, next maximum variance
+
+1003
+01:36:06,180 --> 01:36:10,100
+ and so on so forth.
+
+1004
+01:36:10,100 --> 01:36:14,700
+ So we simply you know covariance, one thing that you have to do covariance is typically
+
+1005
+01:36:14,700 --> 01:36:19,900
+ covariance is basically you know unbounded in the sense that the values kind of like
+
+1006
+01:36:19,900 --> 01:36:28,020
+ very high value. So we simply normalize this entire thing by using normalization factors.
+
+1007
+01:36:28,020 --> 01:36:32,460
+ So what we do basically we divide this entire thing by standard deviation to make sure that
+
+1008
+01:36:32,460 --> 01:36:39,380
+ it lies between plus 1 and minus 1 so on so forth and which equal basically correlation.
+
+1009
+01:36:39,380 --> 01:36:42,740
+ So from covariance to correlation if you would like to go we simply divide this by variance
+
+1010
+01:36:42,740 --> 01:36:52,020
+ and so on so forth. So what is this algebra we do? So what do we do? We simply compute
+
+1011
+01:36:52,020 --> 01:37:00,500
+ the variance-covariance matrix which is nothing but square symmetric matrix. So diagonals
+
+1012
+01:37:00,500 --> 01:37:07,020
+ are the variances, off diagonals are the covariances something like that. So this is an example
+
+1013
+01:37:07,020 --> 01:37:12,580
+ of variance-covariance matrix that we have for two variables.
+
+1014
+01:37:12,580 --> 01:37:16,580
+ Then what we do? So in matrix notation if you deal with is nothing but X transpose X where
+
+1015
+01:37:16,580 --> 01:37:22,540
+ X is this matrix, you know 0 mean matrix and so on so forth. So we simply compute this
+
+1016
+01:37:22,540 --> 01:37:27,780
+ one. And then what it tells is basically some of the diagonals of the variance-covariance
+
+1017
+01:37:27,780 --> 01:37:33,740
+ matrix is called the trace. So it also tells you the total variance in the data. So in
+
+1018
+01:37:33,740 --> 01:37:41,940
+ this case the total variance is 12.909 or something like that. So then principal axis
+
+1019
+01:37:41,940 --> 01:37:45,820
+ involves the eigenvalues of the covariance matrix. So what we do? We figure out all the
+
+1020
+01:37:45,820 --> 01:37:51,020
+ eigenvalues for this particular covariance matrix, eigenvalue 1, eigenvalue 2, eigenvalue
+
+1021
+01:37:51,020 --> 01:37:57,020
+ and so on so forth. So we solve this equation to find out the eigenvalues lambda 1, lambda
+
+1022
+01:37:57,020 --> 01:38:02,940
+ 2, lambda 3, so on. So in this case we get something like that, lambda 1 equals to 9.8,
+
+1023
+01:38:02,940 --> 01:38:08,340
+ lambda 2 equals to 3.03 and so on so forth. So lambda 3 is the highest eigenvalue, lambda
+
+1024
+01:38:08,340 --> 01:38:12,580
+ 2 is the next highest eigenvalue and so on so forth.
+
+1025
+01:38:12,580 --> 01:38:21,100
+ So this will reflect the variance for a particular thing. Now we compute the eigenvectors for
+
+1026
+01:38:21,100 --> 01:38:25,860
+ each of these eigenvalues. Once you have the eigenvalues you can compute the eigenvectors.
+
+1027
+01:38:25,860 --> 01:38:31,140
+ Simply we can compute that. So the eigenvectors corresponding to the highest eigenvalue is
+
+1028
+01:38:31,140 --> 01:38:36,580
+ called the principal component. Next highest eigenvalue is the second principal component
+
+1029
+01:38:36,580 --> 01:38:42,820
+ and something like that. So it is simply, this way you simply proceed. So once we have
+
+1030
+01:38:42,820 --> 01:38:49,940
+ that the eigenvectors are basically the new axis that we have. First principal component
+
+1031
+01:38:49,940 --> 01:38:53,660
+ corresponding to the highest eigenvalue, second principal component corresponding to the second
+
+1032
+01:38:53,660 --> 01:38:55,340
+ highest eigenvalue and so on so forth.
+
+1033
+01:38:55,340 --> 01:39:02,620
+ So if you look at this figure carefully for example, this is my original data. Now I have
+
+1034
+01:39:02,620 --> 01:39:07,740
+ this first principal component that means the eigenvector corresponding to the highest
+
+1035
+01:39:07,740 --> 01:39:14,700
+ eigenvalue. I have the second principal component that means eigenvector corresponding to the
+
+1036
+01:39:14,700 --> 01:39:20,060
+ second highest eigenvalue and so on so forth. Now I have to shift, I have to transform my
+
+1037
+01:39:20,060 --> 01:39:28,740
+ original data along this axis. So how do I do that? For example, take a particular point.
+
+1038
+01:39:28,740 --> 01:39:36,020
+ So what do you do? This was my original value based on the original axis and so on so forth.
+
+1039
+01:39:36,020 --> 01:39:42,220
+ Now I have this new axis, I have this new axis and so on so forth. So now I have to project
+
+1040
+01:39:42,220 --> 01:39:47,460
+ this blue dot that did all the data points with respect to the new axis. So what do we
+
+1041
+01:39:47,460 --> 01:39:51,580
+ do? We do simply transformation something like this one. We compute this value and this
+
+1042
+01:39:51,580 --> 01:39:58,060
+ value. So therefore, the blue dot which was originally with respect to x1 and x2 now it
+
+1043
+01:39:58,060 --> 01:40:05,420
+ will be yi1 and yi2. So each data point therefore you can transform using these principal components
+
+1044
+01:40:05,420 --> 01:40:09,020
+ and simply use that for your purpose.
+
+1045
+01:40:09,020 --> 01:40:16,260
+ Now if you have say for example, 100 variables you would like to reduce to 10. So simply take
+
+1046
+01:40:16,260 --> 01:40:24,100
+ top 10 eigenvalues and the corresponding eigenvectors and simply project your data only with respect
+
+1047
+01:40:24,100 --> 01:40:30,860
+ to those eigenvectors. So that is the way you simply can actually project the high dimensional
+
+1048
+01:40:30,860 --> 01:40:41,580
+ data into low dimension. So that more or less gives the introduction to this unsupervised
+
+1049
+01:40:41,580 --> 01:40:47,860
+ learning. This is by no way complete. So clustering followed by principal component analysis.
+
+1050
+01:40:47,860 --> 01:40:56,060
+ So I will end with one small note. In today's world PCA is basically very principal approach.
+
+1051
+01:40:56,060 --> 01:41:03,220
+ It heavily relies on the linear relationship between objects. It uses the eigenvalues and
+
+1052
+01:41:03,220 --> 01:41:09,700
+ eigenvectors. But when you do not know the relationship between different things and so
+
+1053
+01:41:09,700 --> 01:41:16,340
+ on so forth different data points then the right thing to do is basically use something
+
+1054
+01:41:16,340 --> 01:41:21,780
+ which does not assume the linear relationship. So for example, autoencoder is a good approach
+
+1055
+01:41:21,780 --> 01:41:26,660
+ based on deep learning technologies which you possibly learn in one of the deep learning
+
+1056
+01:41:26,660 --> 01:41:30,860
+ lectures that people can make use of.
+
+1057
+01:41:30,860 --> 01:41:41,100
+ So with this I will end the session. So we have two questions and I will try to answer
+
+1058
+01:41:41,100 --> 01:42:09,900
+ these two questions. The first question is how K means plus plus is handling the outlays.
+
+1059
+01:42:09,900 --> 01:42:16,700
+ The example should have taken the earlier example with outlays. The reason that I basically
+
+1060
+01:42:16,700 --> 01:42:20,860
+ did not take the earlier example because in the earlier example I did not have any outlayer.
+
+1061
+01:42:20,860 --> 01:42:26,780
+ It had more or less the clean data. So that was the reason that I did not take it. But
+
+1062
+01:42:26,780 --> 01:42:32,780
+ to answer your main question how K means plus is handling the outlayer is something like
+
+1063
+01:42:32,780 --> 01:42:40,540
+ this. I must tell you that it is there is no guarantee that it will handle the outlayers.
+
+1064
+01:42:40,540 --> 01:42:46,660
+ K means plus plus is a probabilistic approach and the likelihood that it will handle outlayers
+
+1065
+01:42:46,660 --> 01:42:54,580
+ is basically high because this is selecting the points based on probability distribution
+
+1066
+01:42:54,580 --> 01:42:58,460
+ of the distances from the existing points ok.
+
+1067
+01:42:58,460 --> 01:43:03,980
+ So although mathematically it tells the points which are far apart from the existing points
+
+1068
+01:43:03,980 --> 01:43:09,180
+ will have higher chance, but there are other lot of points which will have slightly lesser
+
+1069
+01:43:09,180 --> 01:43:15,980
+ probabilities at this one ok. So as a result the those although these points will have higher
+
+1070
+01:43:15,980 --> 01:43:20,060
+ probability other points will also have slightly lower probability and there are many such
+
+1071
+01:43:20,060 --> 01:43:26,780
+ points. So as a result they can also select the points which are actually not outliers.
+
+1072
+01:43:26,780 --> 01:43:38,860
+ So I will I am not sure which probabilistic approach you are talking about whether this
+
+1073
+01:43:38,860 --> 01:43:47,860
+ is K means plus plus or this is the graph partitioning algorithm that you talked about.
+
+1074
+01:43:47,860 --> 01:43:55,660
+ So I am not very sure which probabilistic approach the student is asking for ok. So
+
+1075
+01:43:55,660 --> 01:44:01,660
+ maybe what I can do you please specify that one and I will maybe I will send a response
+
+1076
+01:44:01,660 --> 01:44:11,420
+ written response through the team on this particular thing ok.
+
+1077
+01:44:11,420 --> 01:44:19,820
+ So thank you very much and I will have another session on 5th of this next month 5th of April
+
+1078
+01:44:19,820 --> 01:44:27,860
+ and I will talk about transfer learning. So I will see you then ok. Thank you so much.
+

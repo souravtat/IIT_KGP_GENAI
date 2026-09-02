@@ -1,0 +1,2208 @@
+1
+00:00:00,000 --> 00:00:29,000
+ very good morning everyone I welcome you all on behalf of TC Sajjan for the fourth session
+
+2
+00:00:29,000 --> 00:00:37,500
+ of IIT Karaktu AI4I CPS Certificate Program. Today we have two sessions, first one is
+
+3
+00:00:37,500 --> 00:00:43,800
+ "Ladier Model for Regression and Classification" which will be given by Sudejna Sarka Mam IIT KGB
+
+4
+00:00:43,800 --> 00:00:48,980
+ and the second one is "Supervised for Mission Learning Part 1" which will be given by Abhijan
+
+5
+00:00:48,980 --> 00:00:57,460
+ Chakraborty Sir IIT KGB. Participants before going to the session we have
+
+6
+00:00:57,460 --> 00:01:03,580
+ other instructions for you all to set up the Webex layout please click on the stack mode
+
+7
+00:01:03,580 --> 00:01:08,380
+ and enable full screen mode which will be in the top right corner of the screen. Webex
+
+8
+00:01:08,380 --> 00:01:13,480
+ session will be unique and shared every week over email community and via course batch.
+
+9
+00:01:13,480 --> 00:01:19,200
+ A raw recording of the today's session will be available by end of the day and edited
+
+10
+00:01:19,200 --> 00:01:26,760
+ recording will be available on Monday. Week 4 assignment will be enabled at 2pm today
+
+11
+00:01:26,760 --> 00:01:32,140
+ and the submission for week 3 assignment deadline is on 2nd of March which is on tomorrow
+
+12
+00:01:32,140 --> 00:01:37,760
+ Sunday till 11pm and the solution for the assignment will be available on 3rd of March
+
+13
+00:01:37,760 --> 00:01:47,760
+ Monday at 11am. Assignments are being evaluated by IIT KGB team and you will be notified shortly.
+
+14
+00:01:47,760 --> 00:01:54,880
+ And today we have a quiz for week 3 and the timings will be 5pm to 7pm so please ensure
+
+15
+00:01:54,880 --> 00:02:00,800
+ you are available to attend the quiz during the quiz window and the results for the assignment
+
+16
+00:02:00,800 --> 00:02:07,840
+ will be available at 9pm today. To view your marks obtained you can click on the attempts
+
+17
+00:02:07,840 --> 00:02:14,200
+ taken column in the quiz note. So WhatsApp notification address will be sent only for
+
+18
+00:02:14,200 --> 00:02:20,160
+ those who have given consent in the platform. Participants if you have any issues, concerns
+
+19
+00:02:20,160 --> 00:02:28,320
+ you can reach out to us at the disk email id info.tssion@tsis.com. Thank you everyone
+
+20
+00:02:28,320 --> 00:02:33,480
+ for joining in today's session. Thank you ma'am over to you.
+
+21
+00:02:33,480 --> 00:02:40,760
+ Very good morning to everybody. So today we will be talking about some very basic machine
+
+22
+00:02:40,760 --> 00:02:47,080
+ learning methods, basic introduction to machine learning and linear models for classification
+
+23
+00:02:47,080 --> 00:02:54,880
+ and regression. If you have any questions please send those questions. Okay so before
+
+24
+00:02:54,880 --> 00:03:03,360
+ I start with linear models I will give you a brief overview of what is machine learning.
+
+25
+00:03:03,360 --> 00:03:11,960
+ So if you look at you know the total spectrum of AI, the main three pillars of AI is modeling
+
+26
+00:03:11,960 --> 00:03:23,440
+ or representation, learning and inferencing. So we from through learning we get models
+
+27
+00:03:23,440 --> 00:03:32,280
+ and these models are used to make inferences. So these three are well connected. So today
+
+28
+00:03:32,280 --> 00:03:39,520
+ we hear about learning a lot and machine learning has embedded every sphere and have you know
+
+29
+00:03:39,520 --> 00:03:47,960
+ impacted all our lives and put many more tunes at our fingertips. So let us get to the basics
+
+30
+00:03:47,960 --> 00:03:57,500
+ of what learning is all about. Learning in general is the ability to learn from data,
+
+31
+00:03:57,500 --> 00:04:06,280
+ to evolve behaviors, to behave in a more optimum way based on data or experience. So given
+
+32
+00:04:06,280 --> 00:04:14,460
+ past data or past experiences we build a model and this model can be used for inferencing
+
+33
+00:04:14,460 --> 00:04:21,400
+ tasks such as prediction, decision making or solving problems. So in this context there
+
+34
+00:04:21,400 --> 00:04:26,880
+ are certain terminology, task is what you want to solve is the problem that you have
+
+35
+00:04:26,880 --> 00:04:34,280
+ in hand, data is the experience that you have on the basis of which you are trying to learn
+
+36
+00:04:34,280 --> 00:04:42,320
+ a model to solve the task better. And when you develop a model you want to also be able
+
+37
+00:04:42,320 --> 00:04:51,200
+ to evaluate and learn and know how the model is performing so we have measures of improvement.
+
+38
+00:04:51,200 --> 00:04:58,040
+ So if we think of you know developing a learner, simple learners which we will talk about in
+
+39
+00:04:58,040 --> 00:05:06,120
+ this particular class. So we will have a problem a task and instance of the task we will have
+
+40
+00:05:06,120 --> 00:05:13,720
+ some input. Let us say x is the input and machine learn through machine learning we
+
+41
+00:05:13,720 --> 00:05:19,840
+ will learn a model let us say f is the model. So that for the input x we want to predict
+
+42
+00:05:19,840 --> 00:05:25,520
+ y. Now some of you have written computer programs, in computer programs you write functions which
+
+43
+00:05:25,520 --> 00:05:32,040
+ take some input, give some output. So you take an array of numbers and you have an algorithm
+
+44
+00:05:32,040 --> 00:05:39,120
+ which produce the sorted numbers or you take an array and you tell whether the array is
+
+45
+00:05:39,120 --> 00:05:46,520
+ sorted or not. So the input is x, the output is y. Now f is the function which will get
+
+46
+00:05:46,520 --> 00:05:53,040
+ you from the input to the output and this f is what we want to learn, f is the model
+
+47
+00:05:53,040 --> 00:05:58,520
+ which we want to learn. Now there are three aspects to the machine learning model. The
+
+48
+00:05:58,520 --> 00:06:05,560
+ first aspect is representation. So for a particular task, how should x be represented? What is
+
+49
+00:06:05,560 --> 00:06:10,560
+ the input that the machine learning model should take? That is the issue of representation
+
+50
+00:06:10,560 --> 00:06:16,040
+ and today we have made great strides in being able to represent different types of tasks
+
+51
+00:06:16,040 --> 00:06:21,320
+ but that you will learn later. Today we will talk only about simple representations.
+
+52
+00:06:21,320 --> 00:06:29,120
+ The second aspect is once we have the representation, we have x and we have data and the data that
+
+53
+00:06:29,120 --> 00:06:37,360
+ we will consider today is of the form of x y pairs. So now we want to come up with f,
+
+54
+00:06:37,360 --> 00:06:45,120
+ the best f which for x will try to mostly give the correct y and in order to find this
+
+55
+00:06:45,120 --> 00:06:52,240
+ f, we run an optimization algorithm to find a good f and once we have found the f, we
+
+56
+00:06:52,240 --> 00:06:56,920
+ have some evaluation metrics to test how f is true.
+
+57
+00:06:56,920 --> 00:07:01,640
+ Now what do we say about representation? Representation is how we are representing
+
+58
+00:07:01,640 --> 00:07:08,160
+ the model. So we have some data, we take some features of the data and the model is in terms
+
+59
+00:07:08,160 --> 00:07:15,160
+ of the features of the data. For example, suppose you want to predict the price of a
+
+60
+00:07:15,160 --> 00:07:21,960
+ house, ok. Now so for a house if you want to predict the price, we might want to abstract
+
+61
+00:07:21,960 --> 00:07:26,960
+ the features of the house. For example, how big is the house? What is the square foot
+
+62
+00:07:26,960 --> 00:07:33,160
+ area? How many rooms are there? What is the construction material? So we want to identify
+
+63
+00:07:33,160 --> 00:07:40,880
+ features so that in terms of the features we can design our function f. So for this particular
+
+64
+00:07:40,880 --> 00:07:49,440
+ class, we will look at a representation which is a vector. So it can be a single feature
+
+65
+00:07:49,440 --> 00:07:58,000
+ or multiple features that is a vector of features. So our x in general is a vector of n features
+
+66
+00:07:58,000 --> 00:08:05,560
+ x 1, x 2, x n. We will call them x 1, x 2, x n, ok. Now today we will talk about structured
+
+67
+00:08:05,560 --> 00:08:12,200
+ features only, but nowadays in machine learning we work with all types of data. For example,
+
+68
+00:08:12,200 --> 00:08:19,320
+ text data, image data, video data, these are called unstructured data and for unstructured
+
+69
+00:08:19,320 --> 00:08:25,280
+ data we can take the text, video, etcetera as input and then you know most of the machine
+
+70
+00:08:25,280 --> 00:08:30,600
+ learning neural network models that we use, they will learn a representation to convert
+
+71
+00:08:30,600 --> 00:08:36,240
+ this into a vector of features, may be one dimensional 2D, 3D, etcetera depending on
+
+72
+00:08:36,240 --> 00:08:43,840
+ how your representation is. Now once we have the features, we learn a model. So model is
+
+73
+00:08:43,840 --> 00:08:50,320
+ a function of the features. Now what type of function? So you can have simple functions
+
+74
+00:08:50,320 --> 00:08:57,520
+ like linear functions, you can other functions like let us say quadratic function or a cascade
+
+75
+00:08:57,520 --> 00:09:02,960
+ of different functions or a decision tree. So there are various models possible. Today
+
+76
+00:09:02,960 --> 00:09:08,680
+ we will talk about the simplest of the models. These are some models for example a linear
+
+77
+00:09:08,680 --> 00:09:18,880
+ function, the function is a linear function of x 1, x 2, x n. So y is x 1 is a function
+
+78
+00:09:18,880 --> 00:09:26,240
+ of w 1, x 1, w 2 plus w 2, x 2 plus w 3, w n, x n plus w 0. So this is a linear function.
+
+79
+00:09:26,240 --> 00:09:30,800
+ Today we will talk only about linear functions. Later you will see that there are other possible
+
+80
+00:09:30,800 --> 00:09:36,120
+ functions like decision tree, like different graphical models like neural networks which
+
+81
+00:09:36,120 --> 00:09:44,100
+ you must have heard a lot about. Now the richard the model, you know the linear
+
+82
+00:09:44,100 --> 00:09:50,520
+ function is the simplest model. If you have little data and your task is simple then you
+
+83
+00:09:50,520 --> 00:09:57,800
+ can use linear functions and you can learn it quickly. But if you have more complex you
+
+84
+00:09:57,800 --> 00:10:04,480
+ know underlying behavior, then you will not be able to do with work with linear functions.
+
+85
+00:10:04,480 --> 00:10:10,600
+ Then you will go for more complex functions which have higher representational power.
+
+86
+00:10:10,600 --> 00:10:16,520
+ Now in order to learn this function we take some data and for this particular tasks which
+
+87
+00:10:16,520 --> 00:10:24,360
+ we will talk about today regression and classification tasks, the data is of this form. It is different
+
+88
+00:10:24,360 --> 00:10:31,720
+ x y tuples. So we look at past data. So house 1 and its price, we want to find the price
+
+89
+00:10:31,720 --> 00:10:40,240
+ of a house. House 1, so the x 1 is the features of house 1 and y 1 is the price of house 1.
+
+90
+00:10:40,240 --> 00:10:47,200
+ House 2 is the features of house 2 and y 2 is the price of house 2. So we can have let
+
+91
+00:10:47,200 --> 00:10:55,400
+ us say data about 200 houses. So we have x 1, y 1, x 2, y 2, x m, y m let us say m equal
+
+92
+00:10:55,400 --> 00:11:01,480
+ to 200. This is the data that we have and from this data we are going to learn a model.
+
+93
+00:11:01,480 --> 00:11:13,200
+ So that this model for you know the houses that we have will predict the price accurately.
+
+94
+00:11:13,200 --> 00:11:19,000
+ So the training, so in machine learning we have the training to learn the model. During
+
+95
+00:11:19,000 --> 00:11:26,560
+ training we take the training data and learn a model from the training data. So that given
+
+96
+00:11:26,560 --> 00:11:33,200
+ a new house which we have not come across before we can accurately predict the price
+
+97
+00:11:33,200 --> 00:11:47,360
+ of the house. So our model, so the model that we have y is the function of x and we have
+
+98
+00:11:47,360 --> 00:11:55,720
+ to learn f and the function f we parameterize in terms of theta ok.
+
+99
+00:11:55,720 --> 00:12:02,880
+ So we talked about w 1 x 1 plus w 2 x 2 we can also say w 1 w 2 these are the model parameters
+
+100
+00:12:02,880 --> 00:12:16,080
+ theta ok. So what is theta theta are the parameters. So if we assume that the form of f is let us
+
+101
+00:12:16,080 --> 00:12:26,800
+ say w 0 or let me just write theta 0 plus theta 1 x 1 plus theta n x n.
+
+102
+00:12:26,800 --> 00:12:40,160
+ So what is theta? Theta is the collection of the parameters, so these are the parameters.
+
+103
+00:12:40,160 --> 00:12:47,160
+ So f is a function of theta ok. So what is our objective in machine learning? The optimization
+
+104
+00:12:47,160 --> 00:12:55,880
+ objective is that given a particular form of this model suppose you decide that you
+
+105
+00:12:55,880 --> 00:13:01,560
+ are going to use a linear model which has this particular form you want to find the
+
+106
+00:13:01,560 --> 00:13:10,720
+ best values of theta. So that for those values of theta the prediction y equal to f theta
+
+107
+00:13:10,720 --> 00:13:16,840
+ x is most accurate. What do you mean by most accurate? We have to come up with a performance
+
+108
+00:13:16,840 --> 00:13:25,960
+ measure and in terms of that performance measure we have to find the best theta ok.
+
+109
+00:13:25,960 --> 00:13:39,280
+ So training involves learning the model from the training data, erase this part. And so
+
+110
+00:13:39,280 --> 00:13:46,240
+ that given a new instance x prime you can accurately predict the corresponding y prime.
+
+111
+00:13:46,240 --> 00:13:54,800
+ So in machine learning the training phase what we are showing here is where you have
+
+112
+00:13:54,800 --> 00:14:01,440
+ a training data, training set which is your input and from this so training set may be
+
+113
+00:14:01,440 --> 00:14:07,200
+ in a 200 houses. And then you decide what are the features that you are going to consider
+
+114
+00:14:07,200 --> 00:14:13,320
+ about the house. Let us say area of the house, number of bedrooms, the edge of the house.
+
+115
+00:14:13,320 --> 00:14:19,320
+ Let us say you decide these 3 features. So your feature extractor will take the house
+
+116
+00:14:19,320 --> 00:14:26,160
+ and for each house it will find these 3 features. It will find x in a for house 1 it will find
+
+117
+00:14:26,160 --> 00:14:33,680
+ x 1 1, x 1 2, x 1 3. For house 2 x 2 1, x 2 2, x 2 3. So these are the input features
+
+118
+00:14:33,680 --> 00:14:40,840
+ of every house and then you know what is the target price. Now you want to your machine
+
+119
+00:14:40,840 --> 00:14:50,360
+ learning algorithm will come up with a model F theta which given a particular house comes
+
+120
+00:14:50,360 --> 00:14:55,780
+ price to predict its price. So this is the training phase at the end of the training
+
+121
+00:14:55,780 --> 00:15:04,880
+ phase you will have a model and this model is F theta. Now when we want to use the model
+
+122
+00:15:04,880 --> 00:15:11,960
+ then that is the testing phase or the phase where you use it. So in the testing phase
+
+123
+00:15:11,960 --> 00:15:17,880
+ you will use this model which was learnt in the training phase and given a new house new
+
+124
+00:15:17,880 --> 00:15:22,720
+ input it you will extract the features of that input or the features of the house in
+
+125
+00:15:22,720 --> 00:15:30,120
+ this case use F theta and predict the price of the house ok.
+
+126
+00:15:30,120 --> 00:15:37,600
+ So if you have any questions please let us know. Now we will look at 2 types of learning
+
+127
+00:15:37,600 --> 00:15:44,200
+ problems. The first one type of learning problem the first one that we will look at is called
+
+128
+00:15:44,200 --> 00:15:51,520
+ regression where y is a numerical value such as the price of the house. Given a house we
+
+129
+00:15:51,520 --> 00:15:58,440
+ want to predict its price and the price is a numerical value. The second type of learning
+
+130
+00:15:58,440 --> 00:16:05,240
+ problem that we will look at is the classification problem where the output is a class. For example
+
+131
+00:16:05,240 --> 00:16:13,320
+ given a picture you want to find out is it a picture of a cat or not or is it a picture
+
+132
+00:16:13,320 --> 00:16:21,800
+ of a cat dog horse or none of these. So the output is a classification ok. So that is
+
+133
+00:16:21,800 --> 00:16:28,460
+ a or you can say given you know the features of a house you want to classify it as high
+
+134
+00:16:28,460 --> 00:16:36,320
+ end or mid end right that is a classification problem the output is a class ok.
+
+135
+00:16:36,320 --> 00:16:41,800
+ So we will look at regression problems first followed by classification problems and in
+
+136
+00:16:41,800 --> 00:16:47,280
+ this particular class we will talk about linear models for the regression problem given the
+
+137
+00:16:47,280 --> 00:16:56,440
+ features suppose we have 2 features X 1 and X 2 ok. So we will learn a linear function
+
+138
+00:16:56,440 --> 00:17:03,080
+ in terms of X 1 and X 2 where you know given for a particular house the value of X 1 and
+
+139
+00:17:03,080 --> 00:17:11,120
+ X 2 we can find what is the value price of the house. The other task that we will look
+
+140
+00:17:11,120 --> 00:17:23,380
+ at as classification problem where given the input X 1 and X 2 we will learn a linear function.
+
+141
+00:17:23,380 --> 00:17:29,920
+ So that on one side of the linear function we have high end house and the other side
+
+142
+00:17:29,920 --> 00:17:37,320
+ of the linear function we have low end house. So in classification we will use the linear
+
+143
+00:17:37,320 --> 00:17:44,920
+ function as a decision boundary. So that at one side is class 1 the other side is class
+
+144
+00:17:44,920 --> 00:17:55,440
+ 2 for regression we will use a linear function which will directly give me the value of Y.
+
+145
+00:17:55,440 --> 00:18:02,480
+ Now let us look at some example tasks of regression and classification. So one example that we
+
+146
+00:18:02,480 --> 00:18:08,520
+ have been talking about is predicting the price of a house. Another example is given
+
+147
+00:18:08,520 --> 00:18:15,320
+ a machinery in a plant we want to estimate the remaining useful life of the machine.
+
+148
+00:18:15,320 --> 00:18:21,720
+ So that we know that when the machine should be replaced or maintained. A third example
+
+149
+00:18:21,720 --> 00:18:28,560
+ of our regression problem is for a particular component in a plant we want to find what
+
+150
+00:18:28,560 --> 00:18:34,800
+ is the probability that it will develop a crack. Given the features of that object we
+
+151
+00:18:34,800 --> 00:18:41,440
+ want to say find out estimate whether it is likely to develop a crack or not and output
+
+152
+00:18:41,440 --> 00:18:44,920
+ what is the probability that it will develop cracks.
+
+153
+00:18:44,920 --> 00:18:53,840
+ Fourth example is forecasting demand of a you know some items in some say. Some examples
+
+154
+00:18:53,840 --> 00:19:01,320
+ of classification task object identification of images like cat or dog you know you have
+
+155
+00:19:01,320 --> 00:19:07,720
+ images of digits you want to say with 0 or 1 or 2 or 9. Defect classification defective
+
+156
+00:19:07,720 --> 00:19:15,480
+ object or non-defective object identify whether a credit card transaction is a fraud or not
+
+157
+00:19:15,480 --> 00:19:21,880
+ these are examples of classification tasks. Now let us come back to our favorite problem
+
+158
+00:19:21,880 --> 00:19:28,280
+ of house price prediction. Let us say that we come up with these features the area of
+
+159
+00:19:28,280 --> 00:19:35,200
+ the house, the material quality, the number of bedrooms, the area of the garage. So these
+
+160
+00:19:35,200 --> 00:19:44,360
+ are some features that we have come up with. Now we want to we are assuming that there is
+
+161
+00:19:44,360 --> 00:19:51,480
+ a linear function in terms of these features which is a good fit to give us an estimate
+
+162
+00:19:51,480 --> 00:19:57,240
+ of the house price and we have to come up with the model and today now we will talk
+
+163
+00:19:57,240 --> 00:20:02,520
+ about linear models but you can use any other model.
+
+164
+00:20:02,520 --> 00:20:09,480
+ So as we said we have the training set. So if we have examples data about 200 houses then
+
+165
+00:20:09,480 --> 00:20:14,200
+ we use our learning algorithm and we are going to talk about the learning algorithm for linear
+
+166
+00:20:14,200 --> 00:20:20,840
+ models today in this class and then we come up with f theta the model this is our model.
+
+167
+00:20:20,840 --> 00:20:28,600
+ So that given a new house its value of x we can predict its y. Now this f that we have
+
+168
+00:20:28,600 --> 00:20:38,800
+ been talking about we sometimes call it h or you know just h and whatever terminology
+
+169
+00:20:38,800 --> 00:20:53,960
+ we use this is our hypothesis function. This is our hypothesis function and if this function
+
+170
+00:20:53,960 --> 00:21:00,080
+ for example the linear function in terms of some parameters theta 0 plus theta 1 x 1 plus
+
+171
+00:21:00,080 --> 00:21:05,920
+ theta 2 x 2. So these are called the model parameters. So theta are called the model
+
+172
+00:21:05,920 --> 00:21:12,720
+ parameters. So we can write h or we can write h theta where we explicitly say theta are
+
+173
+00:21:12,720 --> 00:21:19,520
+ the parameters of the model. Now if you look at a classification task this
+
+174
+00:21:19,520 --> 00:21:25,720
+ is an example of a classification task. There are three species of the iris flower right
+
+175
+00:21:25,720 --> 00:21:34,000
+ and if you take a number of iris flowers and you identify that the features are length
+
+176
+00:21:34,000 --> 00:21:41,160
+ of the sepul, width of the sepul, length of the petal, width of the petal and it is found
+
+177
+00:21:41,160 --> 00:21:48,720
+ that by using these four features you can have a fairly accurate in a model which classifies
+
+178
+00:21:48,720 --> 00:21:55,200
+ the given flower in one of these three classes quite accurately. So here we are just showing
+
+179
+00:21:55,200 --> 00:22:02,480
+ two features sepul length and sepul width and there are three types of iris setosa,
+
+180
+00:22:02,480 --> 00:22:09,500
+ versicolor and virginica and they are shown in colors red, green and blue. We see that
+
+181
+00:22:09,500 --> 00:22:16,640
+ in terms of sepul width and sepul length we cannot completely classify these three classes
+
+182
+00:22:16,640 --> 00:22:24,400
+ using linear models but we can classify setosa versus the other species using a linear model
+
+183
+00:22:24,400 --> 00:22:31,120
+ fairly accurately. So suppose you use this linear separator this decision surface you
+
+184
+00:22:31,120 --> 00:22:37,680
+ know you can find the equations of this line so that the setosa mostly lie on one side
+
+185
+00:22:37,680 --> 00:22:46,040
+ of this line and the other iris species lie on the other side of the line.
+
+186
+00:22:46,040 --> 00:22:52,120
+ So for supervised learning the training data we will have you know these are our features
+
+187
+00:22:52,120 --> 00:22:59,200
+ we have four features as we said x 1, x 2, x 3, x 4 and this is the value of y and we
+
+188
+00:22:59,200 --> 00:23:08,120
+ have three classes we denote them by s vs and vg. So in the y column the value will be
+
+189
+00:23:08,120 --> 00:23:16,800
+ one of these classes. So this is my training set during testing we will test the model
+
+190
+00:23:16,800 --> 00:23:24,720
+ with some new flowers and for those flowers we give the value of the features and your
+
+191
+00:23:24,720 --> 00:23:30,760
+ machine learning the model that you learn your algorithm will be applied on the training
+
+192
+00:23:30,760 --> 00:23:38,760
+ data and the algorithm will give a model f theta. Now you apply f theta on the test set
+
+193
+00:23:38,760 --> 00:23:49,960
+ and you will predict these values. Now there are two ways in which you can apply classification
+
+194
+00:23:49,960 --> 00:23:57,240
+ problem one is you predict the actual class. The other way of looking at the classification
+
+195
+00:23:57,240 --> 00:24:03,400
+ problem is the first way is there are three types of iris flower you predict whether it
+
+196
+00:24:03,400 --> 00:24:09,920
+ is type 1, type 2 or type 3. The other way of doing classification is you have let us
+
+197
+00:24:09,920 --> 00:24:17,120
+ say three classes for every object you predict what is the probability it belongs to type
+
+198
+00:24:17,120 --> 00:24:21,920
+ 1, the probability that it belongs to type 2 and the probability of belonging to type
+
+199
+00:24:21,920 --> 00:24:30,800
+ 3. So instead of telling that this object is this class you can output the probabilities
+
+200
+00:24:30,800 --> 00:24:37,440
+ of each class. So this is a another way of looking at the classification problem and
+
+201
+00:24:37,440 --> 00:24:42,880
+ you can easily move from this to this. For example, if you have to give the class you
+
+202
+00:24:42,880 --> 00:24:50,320
+ can give the max of this probabilities to find out what is the more likely category.
+
+203
+00:24:50,320 --> 00:24:57,280
+ But these probabilistic values give you more flexibility. For example, suppose you know
+
+204
+00:24:57,280 --> 00:25:04,520
+ that this is either virginica or what is the other name I forgot it is either virginica
+
+205
+00:25:04,520 --> 00:25:12,840
+ or versicolor. So maybe you say type 1 is setosa is 0.1 this is 0.4 this is 0.5 you
+
+206
+00:25:12,840 --> 00:25:20,320
+ know so this can quantify your confidence in the class.
+
+207
+00:25:20,320 --> 00:25:26,800
+ Now with this background let us come to linear models. So as I said in linear model we assume
+
+208
+00:25:26,800 --> 00:25:33,760
+ that our model is in terms of a linear function. First let us take a very simple example where
+
+209
+00:25:33,760 --> 00:25:40,360
+ we have a single feature right. So our linear model is y equal to theta 0 plus theta 1 x
+
+210
+00:25:40,360 --> 00:25:49,200
+ x is the only feature. So there are two parameters theta 0 and theta 1 ok and they are referred
+
+211
+00:25:49,200 --> 00:25:57,800
+ to as theta. So theta is the vector of parameters theta 0 theta 1. So we are assuming that y
+
+212
+00:25:57,800 --> 00:26:07,560
+ is a linear function of x and what is what does our algorithm A do? A learns the best
+
+213
+00:26:07,560 --> 00:26:13,000
+ values of theta 0 theta 1 and what do you mean by best values of theta 0 theta 1? Based
+
+214
+00:26:13,000 --> 00:26:19,200
+ on the training set you arrive at this best value so that with those values the model
+
+215
+00:26:19,200 --> 00:26:28,240
+ is able to you know correctly identify the target in the training set. Now this is if
+
+216
+00:26:28,240 --> 00:26:33,560
+ you have a single feature but what if you have multiple features? Suppose you have these
+
+217
+00:26:33,560 --> 00:26:40,640
+ two features living area and bedroom then your function will be y equal to theta 0 plus
+
+218
+00:26:40,640 --> 00:26:50,080
+ theta 1 x 1 plus theta 2 x 2 ok. So it in terms of this linear function in terms of these
+
+219
+00:26:50,080 --> 00:26:57,400
+ two features ok. So this picture this is a surface which is a linear surface in terms
+
+220
+00:26:57,400 --> 00:27:06,460
+ of two features. Now so this is my model this is my linear
+
+221
+00:27:06,460 --> 00:27:13,040
+ model that we have talked about when there are n features in general and sometimes we
+
+222
+00:27:13,040 --> 00:27:23,160
+ canwrite it in a compact notation theta vector dot x vector. What is the theta vector? Theta
+
+223
+00:27:23,160 --> 00:27:40,760
+ vector is theta 0 theta 1 theta n and what is x vector? x vector is x 1 x 2 x n ok. So
+
+224
+00:27:40,760 --> 00:27:48,560
+ we have the theta 0 which is the bias in the linear function and sometimes we will incorporate
+
+225
+00:27:48,560 --> 00:27:58,660
+ x 0 and set it to 1 ok and then we can write this as a dot product of the theta vector
+
+226
+00:27:58,660 --> 00:28:06,840
+ and the x vector. This is a compact notation of this linear function and in vector notation
+
+227
+00:28:06,840 --> 00:28:14,400
+ you can also write that theta transpose x ok these are just notations for this linear
+
+228
+00:28:14,400 --> 00:28:19,760
+ function vector. So in this picture we have you know different
+
+229
+00:28:19,760 --> 00:28:26,440
+ you know single x and the corresponding y ok. In the upper picture we have a single
+
+230
+00:28:26,440 --> 00:28:33,640
+ feature x and the corresponding y and this blue dots represent the different items in
+
+231
+00:28:33,640 --> 00:28:40,320
+ the training set. For example, if you look at this item its x value is 28 and y value
+
+232
+00:28:40,320 --> 00:28:48,460
+ is 6. For this item let us say x value is 44 and the y is 12 ok. Now like this we have
+
+233
+00:28:48,460 --> 00:28:57,480
+ numerous you know let us say 100 different objects. Now we want to fit a straight line
+
+234
+00:28:57,480 --> 00:29:06,040
+ so that for every x we can get the correct y. Now if you look at this picture you see
+
+235
+00:29:06,040 --> 00:29:13,940
+ that there is no line for so that there is no linear function so that for every x you
+
+236
+00:29:13,940 --> 00:29:19,720
+ can give the exact value of y. But you can find a good line this red line that we have
+
+237
+00:29:19,720 --> 00:29:29,200
+ drawn is a line so that you know the error of for a particular x when you predict the
+
+238
+00:29:29,200 --> 00:29:37,200
+ value of y, the error with respect to the actual is very small ok. Similarly, if you
+
+239
+00:29:37,200 --> 00:29:45,000
+ look at the bottom picture we have two features x 1 and x 2 and we are predicting the value
+
+240
+00:29:45,000 --> 00:29:56,200
+ of y and suppose this grey you know plane that is our you know our linear hypothesis.
+
+241
+00:29:56,200 --> 00:30:02,440
+ This is our linear hypothesis in two dimensions. Now the actual points are given by these black
+
+242
+00:30:02,440 --> 00:30:10,200
+ dots and we can find out how much there is an error of this given decision surface with
+
+243
+00:30:10,200 --> 00:30:16,120
+ respect to the actual points. So, that is the error. So, the error in the top case you
+
+244
+00:30:16,120 --> 00:30:22,440
+ know for every point we can find out how far it is from the red line that is the error
+
+245
+00:30:22,440 --> 00:30:28,960
+ of this model. Now there can be multiple lines possible multiple red lines possible. So,
+
+246
+00:30:28,960 --> 00:30:35,940
+ for each red line you have some error. Now you want to find out that line for which that
+
+247
+00:30:35,940 --> 00:30:45,960
+ error is smallest that is your learning problem. If there any major questions let me know let
+
+248
+00:30:45,960 --> 00:30:53,320
+ me know the major questions. So, that I can handle the questions now ok.
+
+249
+00:30:53,320 --> 00:31:01,760
+ So, when talking about linear functions we want to find this values of theta 0, theta
+
+250
+00:31:01,760 --> 00:31:10,040
+ 1, theta n and so which basically says what is the best line given the training set which
+
+251
+00:31:10,040 --> 00:31:33,960
+ means learn the values of theta i. Multi-variate regression means regression when there is
+
+252
+00:31:33,960 --> 00:31:40,960
+ more than one variable. Now what you call is up to you, but it mainly means that you
+
+253
+00:31:40,960 --> 00:31:48,560
+ have multiple variables. Anything else? Why use theta transpose here? Because theta is
+
+254
+00:31:48,560 --> 00:31:55,560
+ a row vector x is a row vector if we transpose theta we get a column vector and column vector
+
+255
+00:31:55,560 --> 00:32:01,920
+ and x vector that is the multiplication which is defined theta dot x is basically theta
+
+256
+00:32:01,920 --> 00:32:11,480
+ transpose x ok. Classification can be binary if it is a two classes, but if there are three
+
+257
+00:32:11,480 --> 00:32:17,280
+ classes like the iris case there will be three classes. There can be any number of classes
+
+258
+00:32:17,280 --> 00:32:25,880
+ 10 classes 20 classes. How do we decide the parameter set that is what we are going to
+
+259
+00:32:25,880 --> 00:32:35,920
+ talk about now ok. Now, so they did ask the questions come you can just write and come
+
+260
+00:32:35,920 --> 00:32:48,160
+ here interact me ok. So, now as I said that you know this is the suppose this red line
+
+261
+00:32:48,160 --> 00:32:58,560
+ is my model suppose this is my model F1 ok. Now for the model F1 if these dots these blue
+
+262
+00:32:58,560 --> 00:33:06,880
+ dots are our actual training data and this red line is a model F1 then what is the error
+
+263
+00:33:06,880 --> 00:33:12,240
+ of this model? So, if you look at this for this value of x it is predicting this value
+
+264
+00:33:12,240 --> 00:33:17,000
+ of y and the red line is saying the value of y should be this for this particular value
+
+265
+00:33:17,000 --> 00:33:28,400
+ of x. So, the error is this much for this blue point the error is very small for this
+
+266
+00:33:28,400 --> 00:33:34,840
+ blue point for given x the y being predicted is this the actual value is this. So, this
+
+267
+00:33:34,840 --> 00:33:41,960
+ is the error. So, for every point we can find the error ok distance from the line you know
+
+268
+00:33:41,960 --> 00:33:48,160
+ some quantification we will do. So, these are the errors for the points it is these lines
+
+269
+00:33:48,160 --> 00:33:55,040
+ the each line is a error of an individual point if you sum them up we get the total error
+
+270
+00:33:55,040 --> 00:33:58,720
+ or we can average them to get the average error.
+
+271
+00:33:58,720 --> 00:34:13,080
+ Now suppose we have another line ok we have another line and for that line you know the
+
+272
+00:34:13,080 --> 00:34:20,760
+ error will be different this is the error for this point this is the error for this point
+
+273
+00:34:20,760 --> 00:34:31,400
+ this is the error ok. So, we can have errors for this line. So, this line is my F2. So,
+
+274
+00:34:31,400 --> 00:34:39,320
+ we will have error for F1 error for F2. Now out of these two models possible models F1
+
+275
+00:34:39,320 --> 00:34:47,760
+ and F2 which one should I prefer? I can add up the errors for F1 I can find what is the
+
+276
+00:34:47,760 --> 00:34:58,040
+ error of F1 I can find the error of F2 and of course which one should I choose? I will
+
+277
+00:34:58,040 --> 00:35:06,240
+ choose out of F1 and F2 that model for which the F1 is smaller, but there are so many possible
+
+278
+00:35:06,240 --> 00:35:16,680
+ models there are so many possible lines how many lines are possible? An infinite number
+
+279
+00:35:16,680 --> 00:35:21,720
+ of lines are possible right. So, we cannot enumerate all possible lines and find the
+
+280
+00:35:21,720 --> 00:35:26,120
+ error of all the lines and then choose the best line.
+
+281
+00:35:26,120 --> 00:35:32,640
+ So, we are going to use a clever optimization method one clever optimization method. So,
+
+282
+00:35:32,640 --> 00:35:44,280
+ that given these training points we can find that F we want to find that F let me call
+
+283
+00:35:44,280 --> 00:36:02,040
+ this F star. So, that error of F star is less than equal to error of any F which is a linear
+
+284
+00:36:02,040 --> 00:36:14,240
+ function. So, once we decide we want to consider only the class of linear functions I want
+
+285
+00:36:14,240 --> 00:36:21,720
+ to find that linear function whose error is the minimum among all possible linear functions
+
+286
+00:36:21,720 --> 00:36:29,360
+ you know the all possible linear functions I want to find that for which that linear function
+
+287
+00:36:29,360 --> 00:36:35,400
+ for which the error is smallest and of course we want to do it without enumerating all the
+
+288
+00:36:35,400 --> 00:36:46,560
+ lines. So, this is my learning problem. So, coming back here. So, we have you know this
+
+289
+00:36:46,560 --> 00:36:57,760
+ is my potential F and then the error is the we can take as the sum of the individual losses.
+
+290
+00:36:57,760 --> 00:37:07,920
+ So, we can say error equal to sum of y hat i minus y i what is y i. So, x i is my ith
+
+291
+00:37:07,920 --> 00:37:20,680
+ training example and y i is the actual output of x i actual you know for suppose x i is
+
+292
+00:37:20,680 --> 00:37:30,680
+ the area of the ith house y i is the actual price of the house. And what is y i hat it
+
+293
+00:37:30,680 --> 00:37:37,960
+ is the predicted y i hat is if you are considering a particular F with a particular parameter
+
+294
+00:37:37,960 --> 00:37:48,240
+ theta. So, y i is F theta of x i. So, ideally you want y i to be close to y i hat ideally
+
+295
+00:37:48,240 --> 00:37:53,200
+ you want y i hat should be equal to y i, but that is not always possible you know given
+
+296
+00:37:53,200 --> 00:37:59,120
+ these points it is not possible to get a line which will fit the price perfectly and you
+
+297
+00:37:59,120 --> 00:38:04,320
+ know that houses with the same area do not all have the same price. So, this model will
+
+298
+00:38:04,320 --> 00:38:11,680
+ not capture exactly the price of each house, but we can find the error y i hat minus y
+
+299
+00:38:11,680 --> 00:38:26,120
+ i. And what is y i hat y i hat is just F theta x i or h theta x i. So, error of the ith training
+
+300
+00:38:26,120 --> 00:38:35,000
+ instance is y i hat minus y i or F theta x i minus y i this is the prediction error for
+
+301
+00:38:35,000 --> 00:38:45,720
+ the ith instance. If we consider m instances the total training set we can sum them up.
+
+302
+00:38:45,720 --> 00:38:54,400
+ Now in order to find this error we can take the Euclidean distance between this instance.
+
+303
+00:38:54,400 --> 00:39:02,320
+ So, or we can take rather in not Euclidean we can take the squared error because the
+
+304
+00:39:02,320 --> 00:39:11,960
+ actual error here the error is negative for this error is positive. So, if you have some
+
+305
+00:39:11,960 --> 00:39:16,160
+ places where the error is positive and some cases where the error is negative if you add
+
+306
+00:39:16,160 --> 00:39:23,520
+ them up you may get a small value right. So, if you want to add them up we can add up the
+
+307
+00:39:23,520 --> 00:39:30,480
+ absolute values of the error or what is usually done is that we add up the squared error.
+
+308
+00:39:30,480 --> 00:39:42,440
+ So, this is the sum square error and then we take an average because there
+
+309
+00:39:42,440 --> 00:39:54,080
+ are m points we divide by m to get the mean square error. And we want to minimize the
+
+310
+00:39:54,080 --> 00:40:01,320
+ mean square error. We want to learn theta because every theta for one particular value
+
+311
+00:40:01,320 --> 00:40:05,400
+ of theta you have this line another value of theta you have this line for another value
+
+312
+00:40:05,400 --> 00:40:11,400
+ of theta you have this line. So, you want to find that line for which the mean square
+
+313
+00:40:11,400 --> 00:40:17,800
+ error is smallest that is you want to find the values of theta for which the mean square
+
+314
+00:40:17,800 --> 00:40:25,040
+ error is smallest. So, that is why we define the lost function as the average of the squared
+
+315
+00:40:25,040 --> 00:40:30,800
+ error. And you may be wondering what this 2 is doing it does not matter if you want
+
+316
+00:40:30,800 --> 00:40:36,960
+ to minimize the mean square error you can also minimize half of the mean square error
+
+317
+00:40:36,960 --> 00:40:43,840
+ we are just keeping the half as a factor for convenience is this clear any question so
+
+318
+00:40:43,840 --> 00:41:05,880
+ far. So, what would be the impact in slide 17 if the order of the you know feature changes
+
+319
+00:41:05,880 --> 00:41:14,040
+ of you tell me what will be the impact you have theta 0 plus theta 1 x 1 plus theta 2
+
+320
+00:41:14,040 --> 00:41:23,180
+ x 2 right. Now, instead of x 1 suppose x 1 becomes z 2 x 2 becomes z 1. So, you will
+
+321
+00:41:23,180 --> 00:41:35,840
+ have theta 0 plus theta 1 theta 2 z 2 plus theta 1 z 1 you see if the order of the feature
+
+322
+00:41:35,840 --> 00:41:43,440
+ changes or the in there is no impact when you learn theta, thetas will be different
+
+323
+00:41:43,440 --> 00:41:48,040
+ the best values of theta will be different because you are adding you know you are when
+
+324
+00:41:48,040 --> 00:41:53,800
+ you are adding something the order you know where it occurs in the addition expression
+
+325
+00:41:53,800 --> 00:42:02,160
+ does not make it matter any other question. In a changing data set where the parameter
+
+326
+00:42:02,160 --> 00:42:07,560
+ value changes you know for it firstly when you change a data set parameter values are
+
+327
+00:42:07,560 --> 00:42:14,040
+ what you are learning when new data come in now the optimum values of the parameters will
+
+328
+00:42:14,040 --> 00:42:22,200
+ change right. If you have some data you learn the parameters so that with respect to that
+
+329
+00:42:22,200 --> 00:42:28,960
+ data you have the optimum values of the parameters, but if the data set changes the optimum values
+
+330
+00:42:28,960 --> 00:42:35,320
+ of the parameter will change, one of the solutions is to redo the model or incrementally modify
+
+331
+00:42:35,320 --> 00:42:44,320
+ the model ok. So, there are two options one is if you have time you can run the model
+
+332
+00:42:44,320 --> 00:42:51,360
+ again with the new data set or you can you know try to incorporate the effects of the
+
+333
+00:42:51,360 --> 00:43:00,720
+ new data ok. So, both are possible anything else? Does feature in extraction involve
+
+334
+00:43:00,720 --> 00:43:05,760
+ input data transformation it may it may involve transformation yes it is a separate step.
+
+335
+00:43:05,760 --> 00:43:10,640
+ Today we are talking about once we have got the feature set in terms of that what is the
+
+336
+00:43:10,640 --> 00:43:15,680
+ linear function how you get the feature set we are not talking about explicitly today
+
+337
+00:43:15,680 --> 00:43:20,880
+ right. You know for example for the house price you talk about the domain expert to
+
+338
+00:43:20,880 --> 00:43:27,480
+ identify the features and then you know suppose you are taking an image or a video we have
+
+339
+00:43:27,480 --> 00:43:34,280
+ today machine learning model which automatically come up with features right using neural network
+
+340
+00:43:34,280 --> 00:43:41,040
+ you know there are transformations to get the features that we will learn later yeah.
+
+341
+00:43:41,040 --> 00:43:47,440
+ Cost function loss function they are used synonymously mean the same thing yeah anything
+
+342
+00:43:47,440 --> 00:43:56,400
+ ok. Thank you let us proceed now that we have defined the cost function ok. So, this is
+
+343
+00:43:56,400 --> 00:44:05,060
+ my loss function and let us try to visualize it. So, my loss function if you look at is
+
+344
+00:44:05,060 --> 00:44:14,360
+ a quadratic function and if you plot a quadratic function now what is it a function of suppose
+
+345
+00:44:14,360 --> 00:44:24,120
+ there is only one feature and the there will be two parameters theta 0 and theta 1. So,
+
+346
+00:44:24,120 --> 00:44:29,580
+ if you visualize a quadratic function in terms of theta 0 and theta 1 it will be a convex
+
+347
+00:44:29,580 --> 00:44:37,560
+ function ok. An example of a convex function is given here. So, any quadratic function
+
+348
+00:44:37,560 --> 00:44:44,760
+ is a convex function and if you just look at this you know what is it that you are trying
+
+349
+00:44:44,760 --> 00:44:52,760
+ to do for you know some value of theta 0 theta 1. So, this is a plot of this loss function.
+
+350
+00:44:52,760 --> 00:44:59,320
+ So, for different values of theta 0 and theta 1 you get different values of loss what is
+
+351
+00:44:59,320 --> 00:45:07,800
+ your objective? Your objective is to get that value of theta 0 theta 1 for which the loss
+
+352
+00:45:07,800 --> 00:45:14,840
+ is smallest because we have this square function the loss is always positive right and in this
+
+353
+00:45:14,840 --> 00:45:22,160
+ convex surface we want to find that point in this loss surface where the loss is smallest.
+
+354
+00:45:22,160 --> 00:45:28,200
+ Now, since this quadratic function is a convex function there is a unique value of theta
+
+355
+00:45:28,200 --> 00:45:34,000
+ 0 theta 1 which has the smallest loss and the objective of our learning algorithm is
+
+356
+00:45:34,000 --> 00:45:40,960
+ to find that value of theta 0 and theta 1 where loss is minimized. So, our learning
+
+357
+00:45:40,960 --> 00:45:50,840
+ algorithm means find the value of the parameter. So, as to minimize loss now for linear models
+
+358
+00:45:50,840 --> 00:45:58,200
+ where the loss surface is convex there is a unique value of theta 0 theta 1 for which
+
+359
+00:45:58,200 --> 00:46:05,720
+ loss is smallest and there are good algorithms which will help us find the exact value of
+
+360
+00:46:05,720 --> 00:46:09,840
+ theta 0 theta 1 and we will talk about these algorithms now.
+
+361
+00:46:09,840 --> 00:46:15,800
+ So, now we talk about minimizing the cost function or minimizing the loss function they
+
+362
+00:46:15,800 --> 00:46:29,800
+ mean the same thing. Now, so this is my loss function ok this is my loss function. Now,
+
+363
+00:46:29,800 --> 00:46:41,240
+ I want to find theta 0 and theta 1 so that the loss is smallest. Now, there are two ways
+
+364
+00:46:41,240 --> 00:46:46,840
+ of doing it which I will talk about today. The first way is by using basic calculus.
+
+365
+00:46:46,840 --> 00:46:52,640
+ So, some of you must be familiar with calculus I hope most of you are familiar with calculus.
+
+366
+00:46:52,640 --> 00:47:01,720
+ In calculus we know that when you have a maxima or minima the derivative at the minima is
+
+367
+00:47:01,720 --> 00:47:10,880
+ 0. If you have a function right when the function which is with minima the derivative or the
+
+368
+00:47:10,880 --> 00:47:18,760
+ tangent to this curve is 0 at other places the tangent is non 0. So, the tangent at the
+
+369
+00:47:18,760 --> 00:47:26,080
+ minima is 0 similarly the tangent at the maxima is also 0. Now, for this particular quadratic
+
+370
+00:47:26,080 --> 00:47:34,880
+ function we saw that there is a unique minima and at that minima there is no maxima minima
+
+371
+00:47:34,880 --> 00:47:43,000
+ at the minima the derivative is 0. So, what we will do is that we will find out where
+
+372
+00:47:43,000 --> 00:47:51,020
+ in this equation the derivative is 0. Now, the derivative will be 0 with respect to both
+
+373
+00:47:51,020 --> 00:47:59,400
+ the parameters theta 0 and theta 1. So, we can set d L d theta 0 equal to 0 and d L d
+
+374
+00:47:59,400 --> 00:48:08,400
+ theta 1 equal to 0. And if we set this for example by setting d L d theta 1 equal to
+
+375
+00:48:08,400 --> 00:48:17,160
+ 0. Now, L is given by this equation we can differentiate this and we will get this expression.
+
+376
+00:48:17,160 --> 00:48:22,600
+ You can go through this in detail I will just cover it at a high level. So, you see this
+
+377
+00:48:22,600 --> 00:48:30,280
+ is a you know in order to do this derivative there are tricks that we have learnt in high
+
+378
+00:48:30,280 --> 00:48:41,480
+ school suppose you can set z equal to theta 0 plus theta 1 x i minus y i whole square.
+
+379
+00:48:41,480 --> 00:48:57,880
+ So, you set this equal to z you know basically this equal to z let me clean this up. So,
+
+380
+00:48:57,880 --> 00:49:08,000
+ this is my z now and the z is this. So, I can say d L d theta 1 equal to d L d z times
+
+381
+00:49:08,000 --> 00:49:16,400
+ d z d theta 1. So, what is d L d z L equal to summation of z square. So, you know again
+
+382
+00:49:16,400 --> 00:49:25,120
+ so we can using that we can write. So, if you have z square the derivative is 2 z and
+
+383
+00:49:25,120 --> 00:49:39,840
+ if you take d L d z d L d z it is 2 z and then d z d x 0 right with sorry d z d theta
+
+384
+00:49:39,840 --> 00:49:47,960
+ 0 then it will be equal to 1. So, in terms of this if you simplify this is what you get
+
+385
+00:49:47,960 --> 00:49:55,600
+ and then if you set it to 0 you get this formula. Similarly, from d L d theta 1 equal to 0
+
+386
+00:49:55,600 --> 00:50:01,560
+ you will get another formula and if you solve these two equations we get the close form
+
+387
+00:50:01,560 --> 00:50:07,760
+ values of theta 0 and theta 1. I am not going it to detail it is not typical, but you please
+
+388
+00:50:07,760 --> 00:50:15,240
+ work it out and we get theta 0 is equal to 1 by m summation i equal to 1 to m by i minus
+
+389
+00:50:15,240 --> 00:50:21,520
+ theta 1 summation i equal to 1 to m x i ok and similarly we get some value of theta 1.
+
+390
+00:50:21,520 --> 00:50:29,960
+ So, this is the closed form solution to linear regression ok. So, this is a closed form solution
+
+391
+00:50:29,960 --> 00:50:38,560
+ to linear regression and any questions ok. Now, this is for a single variable if you
+
+392
+00:50:38,560 --> 00:50:43,320
+ have multiple variables also you can derive a closed form solution I will not go into
+
+393
+00:50:43,320 --> 00:50:48,040
+ the details of the derivation because that will require working with matrix algebra and
+
+394
+00:50:48,040 --> 00:50:54,480
+ some of you may not be familiar with matrix algebra, but there exists a closed form solution
+
+395
+00:50:54,480 --> 00:51:06,800
+ and this is the solution. You can find the theta vector in terms of x is the matrix of
+
+396
+00:51:06,800 --> 00:51:15,000
+ you know there are m rows corresponding to the m instances and there are n columns plus
+
+397
+00:51:15,000 --> 00:51:21,080
+ 1 column for the bias for the n features. So, that is the matrix x. So, it turns out
+
+398
+00:51:21,080 --> 00:51:27,360
+ that theta can be obtained by x transpose x then whole thing inverse x transpose multiplied
+
+399
+00:51:27,360 --> 00:51:33,320
+ by the y vector. So, there exists a closed form solution we are not going into the derivation
+
+400
+00:51:33,320 --> 00:51:40,280
+ of this solution, but this solution exists. So, using this equation if you are given a
+
+401
+00:51:40,280 --> 00:51:49,280
+ training set you know m instances each having a x vector and the corresponding y you can
+
+402
+00:51:49,280 --> 00:51:56,680
+ use this matrix transformation transpose product inverse to get a closed form solution which
+
+403
+00:51:56,680 --> 00:52:03,760
+ gives you the optimum values of theta 0 theta 1 theta m. So, you get the best linear model,
+
+404
+00:52:03,760 --> 00:52:11,920
+ so that with respect to the training data it gives you the minimum loss.
+
+405
+00:52:11,920 --> 00:52:23,000
+ Now, so why for this particular task a closed form solution exists I am going to talk about
+
+406
+00:52:23,000 --> 00:52:29,440
+ another method which is an iterative solution and the reason I am going to talk about this
+
+407
+00:52:29,440 --> 00:52:35,960
+ iterative solution is that it is more general and it can be used in many other types of
+
+408
+00:52:35,960 --> 00:52:42,640
+ functions right. For simple linear regression you do have an analytic solution, but there
+
+409
+00:52:42,640 --> 00:52:48,800
+ are other forms of models for which you do not have analytical solution and for many
+
+410
+00:52:48,800 --> 00:52:57,880
+ of these models you can use this wonderful optimization method called gradient descent.
+
+411
+00:52:57,880 --> 00:53:03,840
+ So, in machine learning gradient descent is going to be your friend because you are going
+
+412
+00:53:03,840 --> 00:53:11,480
+ to use it you can use it in many cases. So, let me explain the gradient descent solution
+
+413
+00:53:11,480 --> 00:53:23,440
+ to linear regression. Now, so what we told is that if you have a linear function your
+
+414
+00:53:23,440 --> 00:53:30,120
+ error loss function is quadratic which is convex which has a single minima and if you
+
+415
+00:53:30,120 --> 00:53:38,800
+ have a function which is a single minima then you know that you know at the minima the gradient
+
+416
+00:53:38,800 --> 00:53:51,360
+ is 0, but if you start at any other point suppose you start at this point at this point this
+
+417
+00:53:51,360 --> 00:53:57,720
+ is not an optimum point. So, its gradient will be non-zero. So, this gradient is positive.
+
+418
+00:53:57,720 --> 00:54:06,440
+ So, if the gradient is positive what does it mean? It means that you have to reduce
+
+419
+00:54:06,440 --> 00:54:13,560
+ the values of the parameter why? Because you know the gradient is in the upward slope if
+
+420
+00:54:13,560 --> 00:54:21,160
+ you go in the reverse direction of the gradient the parameter will give you those parameters
+
+421
+00:54:21,160 --> 00:54:27,040
+ will give you a smaller value of loss. So, if you start at a particular place if you
+
+422
+00:54:27,040 --> 00:54:33,560
+ move in the negative direction of the gradient with small steps it will get closer to the
+
+423
+00:54:33,560 --> 00:54:42,640
+ minima it will get closer to the minima. Similarly if you start at this point your gradient
+
+424
+00:54:42,640 --> 00:54:50,240
+ is negative. So, if you increase the value of the parameters then your error is going
+
+425
+00:54:50,240 --> 00:54:56,460
+ to reduce if you increase it by a little bit you know. So, you have to move in the negative
+
+426
+00:54:56,460 --> 00:55:03,840
+ direction of the gradient. So, if you have multiple parameters theta 0 theta 1 theta
+
+427
+00:55:03,840 --> 00:55:12,520
+ n. So, at the minima the gradient with respect to each of theta 0 theta 1 theta n is 0. So,
+
+428
+00:55:12,520 --> 00:55:21,320
+ you can have these gradients partial gradients with respect to the loss for the loss function
+
+429
+00:55:21,320 --> 00:55:26,960
+ with respect to each of these parameters theta 0 theta 1 theta n. For each of the parameters
+
+430
+00:55:26,960 --> 00:55:32,320
+ you find the gradient at the current. So, initially you start with some value of theta
+
+431
+00:55:32,320 --> 00:55:39,760
+ you can randomly choose you start with the initial randomly chosen value of theta and
+
+432
+00:55:39,760 --> 00:55:54,760
+ then you know suppose let me draw the curve again. So, this is my curve loss curve for
+
+433
+00:55:54,760 --> 00:56:04,760
+ a particular value let us say theta 0. So, we have started with let us say this is my
+
+434
+00:56:04,760 --> 00:56:15,400
+ guess for theta I have started with some arbitrary values of theta 0. Now, I find the gradient
+
+435
+00:56:15,400 --> 00:56:21,560
+ I find that gradient is non 0. So, I modify theta 0 by reducing it because the gradient
+
+436
+00:56:21,560 --> 00:56:29,000
+ is positive. So, I get a new value of theta let us call it theta 1 again I find that slope
+
+437
+00:56:29,000 --> 00:56:35,560
+ is positive again I reduce it to get theta 2 I reduce it I reduce it until I come to
+
+438
+00:56:35,560 --> 00:56:46,500
+ a point where my theta k is close to 0. And then I reduce this values of theta I reduce
+
+439
+00:56:46,500 --> 00:56:51,880
+ it by small amounts why because if I reduce theta by a large amount I will overshoot and
+
+440
+00:56:51,880 --> 00:56:58,680
+ come to this side, but if I go slowly I will reach a point where theta is close to 0. So,
+
+441
+00:56:58,680 --> 00:57:08,880
+ this gives us the intuition about how we can use this understanding to have a nice simple
+
+442
+00:57:08,880 --> 00:57:15,000
+ iterative algorithm. So, that we can start with some guess of the linear function and
+
+443
+00:57:15,000 --> 00:57:21,720
+ try to modify the value of theta. So, we suppose we have two parameters theta 0 theta 1 we
+
+444
+00:57:21,720 --> 00:57:28,800
+ will start with some initial values of theta 0 theta 1. Now, we will keep changing theta
+
+445
+00:57:28,800 --> 00:57:33,120
+ 0 theta 1 to reduce the loss function again you know these are two different notations
+
+446
+00:57:33,120 --> 00:57:39,120
+ people very often use loss theta 0 theta 1 j theta 0 theta 1 error theta 0 theta 1 all
+
+447
+00:57:39,120 --> 00:57:45,720
+ mean the same thing and we want to keep changing it. So, that we end up at the minimum.
+
+448
+00:57:45,720 --> 00:57:54,880
+ Now this works well if the loss surface is convex, but if the loss surface is like the
+
+449
+00:57:54,880 --> 00:58:00,360
+ picture that we have shown there are multiple minima where the loss is there. So, if you
+
+450
+00:58:00,360 --> 00:58:05,760
+ start at a particular point if you use this particular formulation you will reach one
+
+451
+00:58:05,760 --> 00:58:09,800
+ of the local minima we will talk about that later. But now when we are talking about linear
+
+452
+00:58:09,800 --> 00:58:16,520
+ regression there is a single minima and what we have shown talked about is given in this
+
+453
+00:58:16,520 --> 00:58:23,000
+ picture. So, if I start at the yellow point I find the derivative and I have to move in
+
+454
+00:58:23,000 --> 00:58:28,600
+ the negative direction of the derivative which is reducing the value of theta. If I start
+
+455
+00:58:28,600 --> 00:58:34,480
+ at the green point the derivative is negative. So, we have to increase the value of the theta
+
+456
+00:58:34,480 --> 00:58:45,740
+ to reduce the error. And how we will change theta 0 theta 1 we will change it so that
+
+457
+00:58:45,740 --> 00:58:52,480
+ we take a step in the negative direction of the gradient for each of theta 0 theta 1 here
+
+458
+00:58:52,480 --> 00:58:56,840
+ I am showing the equation of theta 1, but for theta 0 also you have the same equation.
+
+459
+00:58:56,840 --> 00:59:07,760
+ So, the new theta 1 is the old theta 1 minus alpha times this is the partial derivative
+
+460
+00:59:07,760 --> 00:59:15,200
+ del del theta 1 of loss of theta 1 and what is alpha it is the step size. So, when I say
+
+461
+00:59:15,200 --> 00:59:22,640
+ that if you start with the yellow point you take a step right alpha determines whether
+
+462
+00:59:22,640 --> 00:59:28,600
+ the step size is big or small. If alpha is big the step size will be big if alpha is
+
+463
+00:59:28,600 --> 00:59:36,520
+ small the step size will be small. So, this is how I start with any value of the parameters
+
+464
+00:59:36,520 --> 00:59:42,680
+ and that every iterative step we modify the value of the parameters using the partial
+
+465
+00:59:42,680 --> 00:59:50,520
+ derivative. This is a very important algorithm simple algorithm, but extremely influential
+
+466
+00:59:50,520 --> 00:59:54,680
+ algorithm in machine learning. So, understand it properly ok.
+
+467
+00:59:54,680 --> 01:00:03,480
+ So, if you have any questions please let me know during calculation why is there a 2 in
+
+468
+01:00:03,480 --> 01:00:11,000
+ the denominator you know we just kept 2 because it does not matter firstly the solution will
+
+469
+01:00:11,000 --> 01:00:16,760
+ be the same whether you keep the 2 or you do not keep 2 if we keep 2 the analytical solution
+
+470
+01:00:16,760 --> 01:00:21,600
+ is nice. If you do not keep 2 the analytical solution will have a 2 in the numerator, there
+
+471
+01:00:21,600 --> 01:00:28,000
+ is no other yeah it does not really matter it is just so that the analytical solution
+
+472
+01:00:28,000 --> 01:00:37,440
+ has a good form ok. Any other question? If you assume that the loss topography is not
+
+473
+01:00:37,440 --> 01:00:45,980
+ complex with many local minima's, but just one global minima. So, you know the gradient
+
+474
+01:00:45,980 --> 01:00:52,120
+ descent algorithm will guarantee that you only go to a local minima it does not guarantee
+
+475
+01:00:52,120 --> 01:00:59,000
+ a global minima, but when we have this complex surfaces for example, in neural networks you
+
+476
+01:00:59,000 --> 01:01:03,500
+ know there are different other tricks etcetera. So, that you still get a good solution do
+
+477
+01:01:03,500 --> 01:01:08,320
+ not get stuck with a bad local minima. There is no guarantee that when you use a neural
+
+478
+01:01:08,320 --> 01:01:13,320
+ network you will get your global optimum a neural network is one where you have multiple
+
+479
+01:01:13,320 --> 01:01:18,680
+ local minima. So, there is no guarantee, but there are tips and tricks so that you get
+
+480
+01:01:18,680 --> 01:01:27,880
+ to a good minima ok. Any other question? Are MLE and EM we learnt in last session considered
+
+481
+01:01:27,880 --> 01:01:34,360
+ specific type of loss functions EM is an algorithm optimization algorithm expectation
+
+482
+01:01:34,360 --> 01:01:44,720
+ maximization. MLE is again an optimization algorithm right. So, MLE is you know you want
+
+483
+01:01:44,720 --> 01:01:51,640
+ to get the average of a particular value and what is the best way to estimate it. EM is
+
+484
+01:01:51,640 --> 01:01:56,120
+ an algorithm expectation maximization and we will come across the M algorithm when we
+
+485
+01:01:56,120 --> 01:02:02,240
+ look at clustering and other things ok. So, M algorithm will may use some loss function
+
+486
+01:02:02,240 --> 01:02:11,640
+ like squared error etcetera, but EM is a type of optimization framework ok and MLE is also
+
+487
+01:02:11,640 --> 01:02:17,840
+ an optimization framework. Can we create custom loss functions? Yes, based on your requirement
+
+488
+01:02:17,840 --> 01:02:23,160
+ you can create a loss function, but whatever the loss function you create this gradient
+
+489
+01:02:23,160 --> 01:02:31,960
+ descent can be used with any loss function. If you can find the derivative, if the loss
+
+490
+01:02:31,960 --> 01:02:41,480
+ function is differentiable then and or continuous if the loss function is continuous and piece
+
+491
+01:02:41,480 --> 01:02:49,320
+ wise differentiable then you can use the gradient descent algorithm. Any other question? Thank
+
+492
+01:02:49,320 --> 01:02:50,320
+ you.
+
+493
+01:02:50,320 --> 01:02:55,320
+ So, I hope this gradient descent the basic idea is clear to everyone as I said this is
+
+494
+01:02:55,320 --> 01:03:02,920
+ the very important algorithm in machine life ok. And yes for complex you know functions
+
+495
+01:03:02,920 --> 01:03:07,720
+ that there are multiple global minima, there is no guarantee that you get to the minima,
+
+496
+01:03:07,720 --> 01:03:13,000
+ but then you have to try to handle instead of making the optimization algorithm you know
+
+497
+01:03:13,000 --> 01:03:17,880
+ complex. We use a simple optimization algorithm like gradient descent and use different tricks
+
+498
+01:03:17,880 --> 01:03:31,360
+ ok. Now back to the slides, so the step size you keep small, but if you keep it too small
+
+499
+01:03:31,360 --> 01:03:35,600
+ your number of iterations will become very large. If the step size is too small you take
+
+500
+01:03:35,600 --> 01:03:41,360
+ a lot of time to converge, if the step size is large you will not converge, you may not
+
+501
+01:03:41,360 --> 01:03:48,720
+ converge, you may overshoot at such a. So, the step size should be judiciously chosen.
+
+502
+01:03:48,720 --> 01:03:52,840
+ Sometimes what people do is that initially they choose large step sizes, so that you
+
+503
+01:03:52,840 --> 01:03:58,080
+ quickly move towards the minimum and as your derivative becomes you know in a quadratic
+
+504
+01:03:58,080 --> 01:04:04,960
+ function the derivative will value of the derivative will reduce as you go towards the minima.
+
+505
+01:04:04,960 --> 01:04:18,560
+ So, you know later you can make the derivative smaller ok, let me finish this now. Now how
+
+506
+01:04:18,560 --> 01:04:23,160
+ to compute the partial derivative? So, we have already seen, but let us do it again.
+
+507
+01:04:23,160 --> 01:04:31,600
+ So, this is my j theta again you know 1 by 2 m. So, 1 by m this is the sum of the squared
+
+508
+01:04:31,600 --> 01:04:38,880
+ loss, 1 by m of this is the mean square loss. We have put 1 by 2, there is no reason to
+
+509
+01:04:38,880 --> 01:04:45,920
+ put 1 by 2 because whatever the value of theta minimizes this equation also minimizes this
+
+510
+01:04:45,920 --> 01:04:52,240
+ equation without the texture. You have just kept to so that when after we take the derivative
+
+511
+01:04:52,240 --> 01:05:01,400
+ the function is smaller, no other. So, this is the general equation, theta j for each
+
+512
+01:05:01,400 --> 01:05:06,980
+ parameter, if you have theta 0, theta 1, theta 2, theta n there will be n plus 1 parameter.
+
+513
+01:05:06,980 --> 01:05:13,600
+ For each parameter theta j, the new theta j is all theta j minus alpha times del del
+
+514
+01:05:13,600 --> 01:05:22,840
+ theta j of the loss function ok. And if this is my loss function, now we can compute. So,
+
+515
+01:05:22,840 --> 01:05:29,560
+ so why we have taken this half? So, remember we can say that this is z, so z square when
+
+516
+01:05:29,560 --> 01:05:34,880
+ you take derivative of z square you get 2 z, that 2 in the numerator cancels out this
+
+517
+01:05:34,880 --> 01:05:41,760
+ 2 in the denominator. So, if you do del del theta j theta bar you get 1 by m of this which
+
+518
+01:05:41,760 --> 01:05:50,600
+ is which gives us this nice form ok. So, del del theta j of j theta bar is 1 by m summation
+
+519
+01:05:50,600 --> 01:06:00,440
+ i equal to 1 to m yi hat minus yi times xji ok. So, this has a nice form. And therefore,
+
+520
+01:06:00,440 --> 01:06:07,180
+ if this is my loss function here, then for this loss function we take the derivative,
+
+521
+01:06:07,180 --> 01:06:13,640
+ the derivative is this. So, we can you know this is the actual equation that we use, very
+
+522
+01:06:13,640 --> 01:06:18,480
+ simple equation. And as one of you ask if you change the loss function this derivative
+
+523
+01:06:18,480 --> 01:06:23,120
+ will be different, but this is a very commonly used loss function.
+
+524
+01:06:23,120 --> 01:06:29,000
+ You can use other loss functions definitely, but if the loss function is differentiable
+
+525
+01:06:29,000 --> 01:06:35,200
+ then only you can use this approach ok. You can choose any other differentiable loss function.
+
+526
+01:06:35,200 --> 01:06:40,480
+ This is the most popular loss function that we use. And for this finally, we come up with
+
+527
+01:06:40,480 --> 01:06:48,400
+ this nice article. We say repeat until convergence and in parallel if there are n different parameters
+
+528
+01:06:48,400 --> 01:06:53,240
+ there will be sorry n different features there will be n plus 1 parameters for each parameter
+
+529
+01:06:53,240 --> 01:06:58,880
+ in parallel you can do this. This is a single iteration you update this n plus 1 parameters
+
+530
+01:06:58,880 --> 01:07:04,400
+ next iteration, next iteration until you converge. And if you look at the picture you will get
+
+531
+01:07:04,400 --> 01:07:10,080
+ the idea or this picture you will get the idea if step size is small if you start here
+
+532
+01:07:10,080 --> 01:07:14,880
+ after you know it will always go towards convergence and until you overshoot.
+
+533
+01:07:14,880 --> 01:07:21,560
+ So, after some number of iteration we will converge and what is convergence? At convergence
+
+534
+01:07:21,560 --> 01:07:28,520
+ you will have the derivative to be 0 or close to 0. You can put a small value and when the
+
+535
+01:07:28,520 --> 01:07:33,400
+ derivative reaches that value you can stop, but if the derivative is again going higher
+
+536
+01:07:33,400 --> 01:07:40,000
+ that means you have missed the convergence point ok. So, the cost function is always
+
+537
+01:07:40,000 --> 01:07:45,480
+ a convex function it has a single global minimum. So, gradient descent will always converge
+
+538
+01:07:45,480 --> 01:07:52,400
+ if the step size is small enough. Now, before we take a break just one more thing.
+
+539
+01:07:52,400 --> 01:08:00,080
+ So, in the previous algorithm when we found when we to consider the loss function it is
+
+540
+01:08:00,080 --> 01:08:07,120
+ in terms of all m training data. Now, if you have a lot of training data. So, if you take
+
+541
+01:08:07,120 --> 01:08:14,200
+ the average over all the training data that gives you a good estimate of the actual derivative,
+
+542
+01:08:14,200 --> 01:08:20,120
+ but if you have a lot of training data then you know this becomes too slow right. So,
+
+543
+01:08:20,120 --> 01:08:26,120
+ what you can do is that instead of taking all the training data you can take a small
+
+544
+01:08:26,120 --> 01:08:33,040
+ amount of training data, m is large you can take a smaller number of training data as
+
+545
+01:08:33,040 --> 01:08:40,040
+ the basis of the loss function right. And suppose you have 200 data first you take
+
+546
+01:08:40,040 --> 01:08:45,120
+ 10 data with respect to you find the loss then the next 10 then the next 10. So, if
+
+547
+01:08:45,120 --> 01:08:50,400
+ you take a small batch of training data as the basis of finding the gradient of course,
+
+548
+01:08:50,400 --> 01:08:56,720
+ the estimate at each step may not be as accurate, but then the algorithm becomes faster this
+
+549
+01:08:56,720 --> 01:09:03,680
+ is called batch gradient descent. And even if you use batch gradient descent it can be
+
+550
+01:09:03,680 --> 01:09:10,560
+ shown that your algorithm will still converge it may take more steps, but each step is much
+
+551
+01:09:10,560 --> 01:09:15,760
+ faster ok. So, with this we will take a 5 minute break
+
+552
+01:09:15,760 --> 01:09:28,720
+ before we begin. Good morning.
+

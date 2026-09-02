@@ -1,0 +1,1078 @@
+ So, this is one of the two lectures that I am going to take so today we will see unsupervised
+ learning in particular clustering of various kinds, flat clustering, hierarchical clustering
+ and so on and so forth.
+ And then we will also see the principal component analysis one of the most popular approach
+ for doing dimensionary reduction when you would like to reduce the number of dimensions
+ from a very high dimensional data.
+ So, broadly this is the plan for my lecture today.
+ So, I start with the clustering problem and clustering is generally known as unsupervised
+ learning and in the sense that we do not use any super supervised data or label data.
+ We have unlabeled data and more or less the broad objective of clustering is to figure
+ out the groups of objects which are similar to each other.
+ So, while we do so we try to fulfill two objectives, one the objects and the items within a cluster
+ should be similar that is one thing and then the objects and items from different clusters
+ should be dissimilar.
+ So, standing on these two objectives we will see several algorithms for clustering data
+ points.
+ Now, there are many examples of clustering or application of clustering which you can
+ think of.
+ So, I have taken this particular example just to illustrate the utility of clustering algorithms.
+ For example, in shard result ranking, shard result clustering for instance when we see
+ some results in response to your query to a particular shard engine when we see a set
+ of for example, set of documents, so inside the shard engine there are lot of things actually
+ going on.
+ For example, if your question is apples and we do not know whether this is the fruit apple
+ or this is the for example, the company apple and something like that we are never sure
+ about it.
+ So, in a situation like that the best thing that a good shard engines can do is to group
+ the web pages talking about the similar kind of content and then populate top few pages
+ with various kinds of content covering wide range of things that possibly can cover all
+ of the aspects that the query is trying to reflect.
+ So, for example, few documents could be the apple company, it is talking about apple company,
+ few documents could be from for instance the apple fruit or something like that.
+ There are many such applications that one can think of where the clustering is really
+ used.
+ In fact, in many popular classification algorithms clustering is typically used as an intermediate
+ step to reduce some of the data annotation budget often.
+ So, let us take this particular example for instance, so in this case, for example, we
+ have this particular data, so for simplicity I have used two dimensional data, it has only
+ two features and so on so forth.
+ And so we have a data like this, so what we like to do in this case is to uncover the
+ underlying structure or rather the clusters of this data.
+ So, apparently from this particular figure, what we can see is that that this particular
+ data is showing three clear clusters and so our objective would be to try to figure out
+ those clusters in an automatic way.
+ Now, note that we do not have any levels, that means we do not have any ground truth
+ for this one, we only have the feature vectors or some raw data or something like that and
+ we have to basically find out the groups automatically using some clustering technique.
+ So, what are the major issues in clustering and these are very important issues when you
+ are trying to perform any kind of clustering on any kind of data.
+ So, the first issue is the representation for clustering, so you can have data with
+ explicit features, for example, in a tabular form data where the features are already known
+ to you, you can have a set of images, you can have a set of textual contents or documents,
+ you can have videos and audios and so on so forth.
+ So data might come in various forms and therefore, before one is trying to apply any clustering
+ technique or algorithm, we need to understand how we can represent data, for example, converting
+ the raw data into a form that a particular clustering algorithm can understand, so which
+ is called feature engineering.
+ The second most important issue is basically the similarity or the distance between example.
+ So, all clustering algorithms will stand on similarity or dissimilarity measure and therefore,
+ one has to define what kind of similarity or dissimilarity measure we are going to use
+ to group the objects because they are the backbone of any kind of clustering algorithm.
+ The second issue that we often encounter is that whether you should do flat clustering
+ or hierarchical clustering and we will spend some time on this particular aspect later
+ in this particular lecture, so we will see how these things actually going to happen.
+ And the final thing is basically that how many clusters we would like to create.
+ Now whether we fix beforehand that we would like to create certain or 15 clusters from
+ the data or whether we can figure out from the data itself what would be the appropriate
+ number of clusters given the raw data.
+ So these are the three broad things, so the major things that one has to tackle when we
+ are trying to cluster the data points.
+ So there are broadly two types of clustering algorithms, one is flat algorithms.
+ So in this case we usually start with random partitions of the data and then what we do
+ we refine it iteratively for example, K-means algorithm which are going to see in little
+ more detail later on is one such example.
+ So in this case what we finally get is basically a disjoint set of groups.
+ That means each element or object will belong to exactly one group not more than one and
+ that is why you are calling flat clustering or partitional clustering often we call it.
+ Now the second category of algorithms which we call hierarchical algorithms we have brought
+ the two approaches in there bottom up or agglomerative or top down and divisive.
+ So in this case unlike the previous case in flat algorithms one particular element might
+ not belong to multiple clusters and in this case the clusters are typically organized hierarchically
+ sharing some sort of common relationship.
+ For example, hockey and cricket could be two different kinds of groups and again we can
+ group them together in a category called sports.
+ So hockey and cricket will be belonging to a lower level of category and then when you
+ mark them together to a bigger group we call sports that is basically you know one level
+ up in the hierarchy.
+ So also these are the kinds of things that we do often.
+ Now another categorization is basically the hard clustering and the soft clustering.
+ So in hard clustering each example or point belongs to exactly one cluster and in soft
+ clustering an example can belong to more than one cluster with a membership value.
+ In the sense that that it will tell whether a particular object or element is in a particular
+ cluster and to what extent.
+ So it is like a probabilistic membership for all of these points and it will tell you to
+ what extent a particular example is part of a particular cluster in your data something
+ like that we will do.
+ There are good reasons why we do that sometimes it is actually not possible in reality or
+ not very practical to assign a particular object to a single cluster we also would like to
+ know that what this possibility that this particular example is also a member of another
+ cluster.
+ So in a situation like that we basically try to apply soft clustering approaches.
+ Now we study our first flat clustering algorithm called K-means algorithm this is one of the
+ oldest technique in machine learning and still very widely used for a simplicity, conceptual
+ simplicity, computational simplicity and also effectiveness.
+ So as I mentioned it is very efficient, simple and widely used because of a simplicity and
+ so the main steps of K-means are basically this.
+ First we start with some initial cluster centers.
+ So if we for example would like to create 10 cluster from data we start with say K-value
+ 10.
+ So initially find out using some method that what would be the 10 initial cluster centers.
+ Then what we do we assign cluster for each member to the closest center which we call
+ assignment step.
+ So once we have the centers then for each element we take we figure out which center
+ is going to the closest to that particular cluster, particular point and then we assign
+ the point to that particular cluster.
+ And finally what we do we recalculate the centers as the mean of the points in the cluster
+ has changed.
+ So we start with a very weak guess which is often randomly done.
+ Then we do assignment step and then because we have done assignment steps the initial cluster
+ centers are not that valid.
+ So what we do is change it, refine it to find out better cluster centers and so on and so
+ on.
+ And we iterate step 2 and step 3.
+ We do not touch step 1, this is one time job.
+ So we simply iterate step 2 and step 3 many many times to improve the quality of centers
+ and correspondingly quality of clusters of the data.
+ So we need to stop.
+ So typically we stop using one of these two possibilities.
+ One we stop after number fixed iteration that is pretty common often we do or we see that
+ in two successive iterations if the centers or the memberships are not changing then we
+ can also stop.
+ So we will see how K-Means actually works with this small example.
+ We assume that we have these data points which we would like to cluster.
+ So we say we would like to create three clusters from this data.
+ So in K-Means you have to specify the number of clusters that you want to create the value
+ of K because that is a precondition that you have to follow.
+ So therefore we are going to create three clusters from this data.
+ So our first step will require that we initialize three centroids and typically we do it randomly
+ from the original data.
+ So now say that we have chosen three random points with three different colored boxes
+ you can say blue, red and pink and so on so forth.
+ So these are three initial centers that we have chosen randomly from the original data.
+ Now once we have done that then in step two our objective would be to assign cluster memberships
+ for each of these data points in my data.
+ So who will be the blue one, who will be the red one and who will be the pink one.
+ So that is what we have to basically decide in this case.
+ So we do that by computing the closest cluster center that we have right now.
+ So if we go by that rule, what happens is something like this that we have at this assignment.
+ So the color codes basically tell us that which element is going to be in which cluster.
+ So the blue ones are closest to the blue square initial centers, the red ones are the red
+ one and the pinks basically for the pink square initial centers.
+ Now once we have done this step, the earlier cluster centers that we have done randomly
+ is no longer valid because you have assigned the cluster memberships and basically we need
+ to update the cluster centers from what we had in the previous step.
+ So what we do basically we take some kind of mean of all these elements somewhere in
+ the middle, the new centers will be lying.
+ So if we do that which is basically step 3, then we are going to get something like this.
+ Now we can see the squares are basically the centroids for each of these clusters in this
+ case.
+ So that is the first completion of the first iteration of our algorithm.
+ So now that we have slightly better centroids compared to the random one that we had.
+ Now we have to iterate step 2 and step 3 repeatedly in order to improve our quality of centroids
+ and consequently the quality of clusters.
+ So again in step 2 what we do, we basically again now that we have new centroids that
+ we again try to compute the cluster memberships for each of these data points, so if we do
+ that we are going to get something like this.
+ Some members will change their cluster memberships for sure because you now have different sets
+ of centroids after updating the original one.
+ So that is the basically the step 2 in the next iteration.
+ So now again since because we have new memberships and so on so forth, so what we do again we
+ have to apply step 3 which is basically readjusting or recomputing the centroids is the mean thing.
+ So which we do and we are going to get something like this again.
+ So this is the completion of iteration 2, sorry there is a slight typographical mistake
+ it should be iteration 2 completion not iteration 1.
+ So therefore essentially what we have to do we have to basically iterate step 1, step 3
+ multiple times to improve our cluster quality.
+ So again we do the same thing we simply find out the cluster memberships for each of the
+ data points which is step 2 then again readjust the cluster centroids and so on and so forth.
+ So this is the completion of iteration 3.
+ So in this way we simply move on until and unless either we basically have reached the
+ required number of iterations that we set or we see that the centroids are not changing.
+ So when the centroids are not changing nothing you can gain by doing lot of iterations.
+ So we know that we are more or less rich to stable solution and so we will stop.
+ So there is no change so basically we will stop in this case.
+ So now the question is there are two important questions that we have to address one that
+ how to assign the cluster in each example to the cluster center and then how to recalculate
+ the centers.
+ So you know we have to figure out which one is going to be the closest to which particular
+ cluster centroid and so on and so forth.
+ So we do this by using a distance or similarity measure.
+ So typically we use distance measure one can also use similarity measure no problem.
+ So what we do basically for each data point we find out the distance between all the centroids
+ in my data in this case we can see using three different colors because we had three centroids
+ and the blue one basically the circle blue circle is basically the one which we are considering
+ okay to try to assign the membership of.
+ So we figured out the distance between this particular point and three cluster centroids
+ okay and then like assign this to a centroid which like where you have the minimum distance
+ okay.
+ So there are a lot of distance measure that people who can choose or similarity measures
+ people can choose.
+ So one of the very common distance measure that we use is called Euclidean distance.
+ So of course objective given two vectors say n dimensional vectors okay of two points we
+ simply want to compute the distance between these two points which is like nothing but
+ a numerical value a number okay telling one number telling how far these two points are
+ okay.
+ So you can use because centroid is a vector and a point is also a vector on the same dimension
+ so you can easily compute this number and so on so forth.
+ Now I am just taking one example of distance measure there are other distance measures
+ like Minkowski's distance then you have Manhattan distance then you have Molonov's distance
+ and so on so forth.
+ There are a lot of distance measures so depending upon the particular application of the nature
+ of the data one can use any of this distance measure.
+ So K means is a general purpose algorithm and it is not the case that Euclidean has
+ to be used one can use any other things.
+ So next is basically the recalculating the centers.
+ Now once you change the cluster membership and so on so forth we have to recalculate
+ the centers using a certain set of points.
+ So for example in this case we would like to figure out what would be the central point
+ for the blue cluster, central point for the red cluster and central point from the purple
+ the pink cluster.
+ So these are the three things basically have to figure out because centroid is something
+ that we will be using to figure out the cluster membership in every iteration.
+ So essentially we have to figure out these square boxes out of this like this blue, red
+ and pink data.
+ So how do we compute that number?
+ So here is a simple thing essentially you take a set of vectors from a particular cluster
+ so we are interested in figuring out the centroid for the blue one.
+ So what we do basically we simply take all the blue points and take the min vector of
+ that one.
+ So min vector is nothing but simply we add all these vectors and simply divide by the
+ number of data points that you have in a particular cluster.
+ It is a simple addition thing that you can do.
+ Now these are so far it is a mechanism for doing K-means clustering.
+ Now actually what are you trying to achieve in this case?
+ Now because you already have seen quite a bit of machine learning models in this particular
+ series of lectures.
+ So one of the key things in any machine learning model is an objective function or loss function
+ or profit function or whatever you can call it.
+ We often call it objective function.
+ So either you maximize it or minimize it something like we have to do.
+ So in this case also K-means is not like just a plain simple algorithm it is also trying
+ to minimize a thing called K-means loss.
+ So K-means loss is nothing but so value which will indicate the quality of clusters that
+ you have generated.
+ So the expression in this case what you can see is something like this that we take every
+ data point in this case this is Xi.
+ We take the cluster center closest to the data point Xi which is like basically the
+ mu K in this case and we find out the distance between the data point and the closest cluster
+ center and simply add them up for all the data points.
+ So essentially what this is telling you is basically that to what extent the data points
+ are to what extent the data points are dissimilar to or similar to the cluster centers in which
+ it belongs.
+ So if the loss value is very high then naturally you know the data points which are belonging
+ to a particular cluster are far apart from the centroids in this case you can expect
+ that the clusters are basically dispersed.
+ If it is small then you know the clusters are actually very compact so that is the physical
+ intuition or the explanation behind this particular loss function.
+ So K-means function the K-means algorithm that we have seen so far it attempts to minimize
+ this loss value as much as possible but of course like all difficult problems, clustering
+ problems is also controversial very challenging so there is no guarantee that you are going
+ to get the optimal loss value in this case but you can get somewhat good value depending
+ upon how you are starting up with and so on and so forth.
+ Now I started up with by saying that K-means is a very fast algorithm very efficient algorithm
+ and so we like to see little bit of mathematical analysis of the computational budget for the
+ K-means algorithm.
+ So in order to understand that we try to understand the computational overhead in every step of
+ this iteration.
+ So one step is basically the assignment step where we are trying to figure out the closest
+ cluster center for a particular point.
+ So if you have K centers and N data points then a single pass for every data point we
+ have to compute the distance between all the K centers so in that case the complexity is
+ going to be order of KN and then in the next step we will have to compute, recalculate the
+ cluster center which is nothing but a linear term algorithm.
+ So this is a computational budget for one particular iteration.
+ Now if you repeat these steps many many times we often do for example say P times or so
+ on and so forth then you simply multiply P into with this particular numbers.
+ So that is basically the complexity of this K-means algorithm.
+ But to give you sort of the final verdict on this one K-means is generally a linear time
+ algorithm assuming that the dimension of this data is basically not so high so under the
+ assumption it is typically a linear time algorithm and therefore it is extremely fast.
+ Now there are few important issues, practical issues rather which we have to deal with.
+ So fast issue is basically the number of clusters that we would like to create.
+ So you have to tell K-means algorithm that this many clusters I would like to create.
+ So how to do that?
+ Second issue the convergence issue that means when we are going to stop this algorithm and
+ the third issue perhaps one of the most important issue is basically the initial cluster center
+ selection, how we are going to select the initial cluster centers so that we do not
+ create bad quality clusters.
+ So these three things we need to now address and we will see one by one how we can address
+ these three important things.
+ So first let us look at how we choose the value of K or at least an attempt to choose
+ value of K in a systematic way because we never know from our original data that how
+ many clusters are there and if the data is high dimensional this is even more difficult
+ to figure out visually that this many clusters are there.
+ So therefore we need to have some systematic way of figuring out the value of K.
+ So one popular approach that people follow is called elbow method.
+ So in this particular method what we do is something like this.
+ So we have a data then we run K-means with different K-values starting from 2 for example
+ to a very high value say 100.
+ So for every K-value you run the K-means algorithm and it will produce the corresponding K-means
+ loss which we discussed earlier.
+ So loss is going to tell you to some extent the quality of clusters that you have generated.
+ So you simply plot a graph like this the x axis is the K in the number of clusters that
+ you produced and y axis is the loss value that you also produced from this particular
+ clustering.
+ So now what we do we basically plot this graph and we try to look at if there is any clear
+ pattern in this particular graph.
+ So if you see that the graph is showing a elbow like structure a bending at elbow that
+ means it is basically you know dropping at a very high rate and then suddenly it gets
+ flattened okay it becomes very flat.
+ So if you have observed such a pattern like this then possibly the point where you see
+ that the value dropped very abruptly and then flattened so this is the point to be chosen
+ as a number of clusters.
+ So in this case for example the good value could be 3 in this case.
+ Now while I am saying this this is a very well known technique and therefore I must
+ give you a small warning is that that this is sort of a guideline not necessarily a full
+ group method okay it does not guarantee that if you apply this technique you are going
+ to find out the right number of clusters okay so this is not the case always.
+ It can give you some kind of guideline but it does not guarantee that this particular
+ key value is going to be the optimal one okay.
+ So therefore this has to be used very very carefully.
+ The second approach that we use is called shield weight measure.
+ So the key idea for good clustering which I mentioned at the very beginning is this
+ that the value has to be small within cluster variance has to be small okay that means the
+ points which are belonging to a particular cluster it is going to be very small and then
+ the between cluster variance has to be very large because that is basically a two broad
+ criteria that we try to fulfill in any clustering algorithm.
+ So we will be standing on these two criteria to use another measure to try to figure out
+ a reasonably good value of k.
+ So in this particular case we use within cluster measure which is nothing but a measure which
+ tells you to what extent the clusters are compact.
+ So if you can look at this particular expression the C i is the cluster for data point i, D
+ ij is nothing but the distance between i and j.
+ So you take all pairs of data points in a particular cluster okay and then compute their
+ distances you take some sort of average distance between them and so on so forth okay.
+ So essentially this is telling intuitively that what is the average pair wise distance
+ of points those who are belonging to a particular cluster okay.
+ So this will to some extent reflect the compactness or closeness of a particular cluster.
+ Now the next important criterion is basically between cluster variance.
+ So in this case we take data points from different clusters from the same cluster.
+ So if you look at this in this case is basically we take data points from different clusters
+ and compute the distance between the different points and so on so forth.
+ And then we use this to quantities to compute the silhouettes measure which is nothing but
+ a measure telling to what extent the cluster quality is good or bad.
+ Now so this measure again once again will be used to kind of plot a graph and then try
+ to figure out what would be the good reasonably good value of K okay.
+ So in this case unlike the K means loss value higher score is actually better.
+ So if you get higher score for a particular K value for silhouettes measure that means
+ the cluster quality is good.
+ So once again similar to the previous approach what we do we run this algorithm K means algorithm
+ for different K many many times started from 2 to say for example 100 or 200 depending
+ upon your data and then again we plot the K versus the silver score x axis is K y axis
+ is the silver score and we look at the graph and we see a pattern something like this.
+ So what you can see in this case is that the value initially was very small slowly increasing
+ then it started decreasing suddenly okay so you can think about something like this basically
+ the angle that you can see okay smaller the angle sharper the changes and so on so forth.
+ So the moment you see something like that increasing and then suddenly started decreasing
+ then this is the point which can reflect that the number of clusters is good one.
+ So in this case also the value could be 3 is a good number of clusters once again just
+ like the previous case this is not a guarantee that this value will actually reflect what
+ is the optimal number of clusters that is often a tricky thing we never know optimal
+ number of clusters before and because this is an unsupervised learning things become
+ even more difficult because we are dealing with high dimensional data so you can never
+ plot this one on a real like a figure which a human can understand.
+ So while you can use these things as a guideline to figure out what would be the possible good
+ values of K it has to be used also the other factors like the quality of results that you
+ are finally getting by using this clustering techniques and so on so forth.
+ Now the another important issue is basically the initial cluster center or we often call
+ it seed selection so remember that the first step of K-minus clustering algorithm is basically
+ the seed selection approach so in seed selection what we try to do we try to figure out what
+ would be the good number of centers sorry good centers that we will use to start with.
+ So if the centers are bad then you know we are going to get very bad quality clusters
+ so we will see strategies of figuring out the goods androids in this particular case.
+ So we see in this case that we initially like chose the centers randomly okay so now let
+ us see what happens the consequences of random center selection okay now say my original
+ data from my original data I selected the centers randomly so if I do that what will
+ happen so this is going to get something like this once you find out the cluster memberships
+ for all the data points okay now certainly if you look at this figure carefully this
+ is not the desired clusters that the data is reflecting okay the clusters are actually
+ elsewhere okay but the data is actually reflecting something for example possibly the good clusters
+ should be something like this so this one and this one and this one okay so this is
+ the possible like the desirable clusters that one can expect from this particular data but
+ because of the poor choice of the centroids selection of the centroids randomly we ended
+ up getting a cluster which are of very bad quality.
+ So this particular cluster that I have got actually from the pink initial centers is
+ very dispersed elongated cluster certainly we are not saying that this is a good cluster
+ and this is one of the most critical issues in Kevin's clustering how to choose the centers
+ initially and you know good centers initially.
+ So we will be spending some time on this particular aspect and see what we can do to tackle this
+ particular problem.
+ So some of the consequences of this initial center something like that you can have slow
+ convergence that means it can take a lot of time to reach to a point where you can see
+ that you know my clusters are good or you converge to a suboptimal clustering that means
+ the quality of cluster is actually very bad that means the clusters are dispersed okay.
+ So to tackle this problem in literature you have a load of common heuristics that people
+ generally adopt okay.
+ So we do random centers in the space, we randomly pick from the future vectors, we choose points
+ least similar to existing centers and so on and so forth or we try to find out multiple
+ starting points something like that.
+ So these are some common heuristics that people often use.
+ So one of the very popular heuristics that people use is the furthest centers heuristics.
+ So in this case intuitively we attempt to make sure that the centers that we are choosing
+ initially are far apart.
+ So they are like very dispersed from one another that is the basic intuition behind this particular
+ approach.
+ So how it works?
+ So first point you choose randomly because there is no other option that you can make
+ use of which we call first center then for the remaining points we find out that which
+ point is furthest from the existing point that we have already chosen okay.
+ The one which has the highest distance from the existing points will choose that as a
+ potential centroid and you simply move on like that one.
+ So objective is to make sure that the points which are far apart in the original data will
+ be chosen as possible possibly good initial centroids but it has its own problem.
+ So for example in this case say k is equals to 3 so what we do in this case?
+ So pick a random point from the first center something like that then we basically choose
+ the next point something like that okay because this is furthest from this particular point
+ and so on so forth.
+ So in this way simply you proceed okay something like that we will do.
+ So if your data is showing good structure then possibly this approach is a reasonably
+ good solution to tackle the initial cluster centroid selection problem but you know in
+ a real life data you do not expect the data to be good and therefore it has its own problems
+ which you will see in the next slide.
+ So let us look at this particular data okay so clearly from this particular data what we
+ see is that the data has at least 3 outliers in the sense that somehow it is noisy data
+ they are very far apart from the other data points and so on so forth.
+ So now say we have decided to apply the furthest center heuristic to figure out say 4 cluster
+ centroids from this data what will happen?
+ Now as I mentioned that the first center has to be chosen randomly so for example you chose
+ the spring point.
+ Now next point we will choose which is very very far apart from this particular point.
+ So it could be something like this one so this point because this particular point is
+ like furthest apart from the point that we have already chosen something like this.
+ Now once we have that these two points the third point that we will choose is basically
+ very far apart from both these two points because we have already chosen these two points.
+ So this is going to be something like this then the next point is basically far apart
+ from all the three points that we have already chosen so it could be something like this.
+ Now the obvious problem that we can see in this case is that it will end up choosing
+ often the outliers in the data because it does not have any idea whether this particular
+ point is outlier or not and as a result we end up choosing this point.
+ Similarly this is not going to give good clusters.
+ So now based on this initial centroids if you cluster the whole thing four clusters
+ you are going to create then what you get is something like this the entire thing is
+ going to be in one cluster this one is going to be in another cluster singleton point singleton
+ cluster this is in one cluster and this is in one cluster.
+ So this is most likely situation the end result of k-means in this particular case.
+ Now certainly this is not a good clustering in this particular data.
+ So we will see how we can address these issues with another approach.
+ So a better approach of doing these things is called k-means plus plus once again this
+ is a simple approach simple modification to the standard k-means and it tries to address
+ this problem that we mentioned little while ago.
+ So I would like to emphasize before I start this one is that this approach only deals
+ with the initial centroid selection it does not change anything in the clustering.
+ So it will simply see that how the initial centroids are going to be good and then we
+ will simply select that.
+ So this is a probabilistic approach in this case unlike the previous case and we will
+ use a probabilistic approach to select the centroids in this case and as I mentioned
+ the other steps are exactly same with the k-means algorithm there is no change only the step
+ one will be changed in this case.
+ So let us look at this approach carefully.
+ So what we do that the first center say we are interested in choosing the k-centers we
+ just would like to compute the k-centers ok that is the objective.
+ So the first center that we choose we choose randomly from this data because we have no
+ other option we simply choose randomly from the data say we call it C1 the first center
+ that we choose.
+ Now from the next center onwards we will apply the probabilistic approach to figure out the
+ other k-1 centroids.
+ So what we do basically now for each data point in my data set ok my data set is basically
+ x capital X all the data points I will compute a distance called dx you can use Euclidean
+ distance ok.
+ So the value called dx and dx is the distance of x from the closest center we already have
+ chosen ok and once you have that then what we will do we will select the data point x
+ from x as a new center with a probability value this one.
+ Because we already have dx for this particular point we already have all these values here
+ and so on so forth.
+ So you can simply compute this probability value and we are going to choose this probabilistically
+ ok that is how basically we are going to select this particular data a particular data point
+ and then you repeat step 2 and step 3 until you get the k centers ok.
+ So the first center is chosen randomly we only randomly then the remaining centers are
+ chosen probabilistically using the distance measure.
+ Now you might be wondering how this particular expression is going to tackle the problem
+ that we mentioned.
+ Now to some extent this approach encodes or implements the farthest center heuristics.
+ Now the probability value of this one that x will be chosen as a centroid for example
+ a centroid is actually higher more or less proportional to the dx value ok it means that
+ if the dx value is very high then the probability also is going to be very high.
+ And what does dx denote?
+ It denotes the distance from the closest centroid that we already have if the distance
+ is high then you expect that the point is very far apart from the existing centroids.
+ There is more or less the farthest center heuristics but with a probabilistic twist
+ it is not deterministic it is a probabilistic approach.
+ So you see now with a little small little illustration of this one.
+ So we would like to create three clusters from this data that means we have to choose
+ three initial centroids.
+ So say the first centroid is something like this one because this will be chosen randomly
+ we have no other information so this is our first centroid ok this particular point.
+ Now we are going to choose the next point for this particular clustering.
+ So the most likely second center could be this one I am not saying the second centers
+ I am saying most likely second center there is a distinction between second center and
+ the most likely center because this is a probabilistic approach and the distance between the center
+ which already have chosen and the other points all other points if you take all other points.
+ So this point has the highest distance among all other points ok there you do not find
+ any other point in this particular data which has higher distance than this particular point.
+ So this will have the most likely chance of getting selected as a second centroid.
+ So because of distance so on so forth now that we have chosen these two centroids for example
+ assuming that the first centroid is this one this is the first one this is the second one
+ and so on.
+ Now while we are going to choose the third point we will see that for every point which
+ one is the closest centroid because you have to figure out the dx value ok.
+ If you for example considering the point x we have to figure out the dx value.
+ So how do we compute the dx value for in this case the dx value in this case is basically
+ this one ok because we have to make sure that the point that we are choosing is not very
+ close to any existing centroids that we have already chosen and therefore we have to we
+ have to basically use the center which is closest to the point that we are considering
+ ok.
+ So that basically the dx value is nothing but the minimum distance among all the centroids
+ that we already have.
+ Now if you simply apply this one then the most likely centroid's third centroid in
+ this case is going to be something like this one ok.
+ So this way we can tackle the problem of selecting centroids which are very close to each other
+ using this probabilistic approach and we call this K-means++ approach which only focuses
+ on the selection of the initial centroids from the data.
+ So this more or less concludes the flat clustering or K-means clustering and we will move on
+ to the next part of by lecture.
+ So in my next part I will focus on the clustering graph or native operator.
+ Now let me set the background first.
+ Now in K-means it is a flat clustering so it is nothing but basically in a one particular
+ point we will belong to exactly one cluster and also the data that we are dealing with
+ is basically a fixed dimensional data you have say n number of features and so on and
+ so forth.
+ In this case we will deal with slightly different kind of clustering technique.
+ I have two major purposes one is to introduce technique on graph data and also to tell you
+ hierarchical clustering as well.
+ So we talked about the n dimensional point clustering things in K-means.
+ So what about the following things for example you would like to cluster the Facebook friendship
+ network.
+ We have individuals in the group and there are friends and not friends and we would like
+ to find out the communities or groups which are like friends among themselves very close
+ connections between them and so on so forth or for example we like to find out the communities
+ in question answering website like Cora so that we know which community is on machine
+ learning which community is on NLP and something like that.
+ In protein interaction network for instance we have lot of proteins that we know and they
+ are responsible for many kinds of things for disease and so on so forth.
+ So how they interact with each other how you can group the proteins so that we know that
+ these groups of proteins are responsible for a particular disease so that we can treat
+ it or we can design a new drug or medicine or something like that.
+ So these are like wide variety of applications where we have to deal with a different sorts
+ of data called network data.
+ So take this example for instance we have these little like black dots and their connections
+ you know the dots are individuals and the connections the lines are telling the connection
+ between them and so on so forth okay.
+ So if you look at this data very carefully it is actually reflecting several clusters
+ of groups you know visually.
+ So our objective would be given a data like this you like to figure out the possible groups
+ in this particular data okay.
+ So once again this is a clustering problem but on a different kind of data.
+ So I quickly introduce most of you have possibly the background knowledge of the graph and
+ so on so forth.
+ So I quickly introduce a graph and then I will move on to the particular clustering
+ algorithm.
+ So as you know the graph is composed of two things a set of objects which are often called
+ nodes and a set of connections are called edges and so if you take for example this
+ one we have four nodes A, B, C and D and then we have four connections connecting A,
+ B, C, C, D and B, D.
+ So the nodes are individuals and the connections are telling some sort of you know similarity
+ for example if you consider Facebook friendship network then the nodes are individuals and
+ the connection is telling that whether A is friend of B or something like that.
+ So there are possible various kinds of graphs you have unweighted graph where the connections
+ do not have any weight and the weighted graphs where the connections are weights for example
+ the road network you know how far one city is from the other one something like that okay.
+ So graph data shows relationship between object pairs so that is the kind of setup that we
+ will be standing on okay and therefore centroid is often not valid in a graph.
+ So what does centroid mean in your Facebook friendship network okay so it is difficult
+ to come up with a centroid because there is no central thing in this case okay.
+ So therefore in order to tackle this one we will see several algorithms for clustering
+ graph data.
+ First such algorithm that we will see is clustering unweighted graph okay and then we move on
+ to the weighted graph.
+ So there are many algorithms that we know I am going to talk about one very efficient
+ and simple algorithm on graph.
+ So this is based on minimum cut or we often call it mean cut okay.
+ So it works like this for example you have this particular graph involving there are
+ 8 nodes and several edges.
+ So mean cut of a graph is nothing but a partition of this graph into 2 groups so that the number
+ of connection and edges crossing between 2 groups that you get are actually minimized.
+ What essentially like to minimize once you split the group into 2 then you like to see
+ that the groups have minimum number of connections or edges between them okay so that is how
+ basically we are going to do that.
+ Now take for example in this case so this is one possible mean cut partition of this
+ particular graph.
+ If you split this graph into 2 parts then you see that there are only 2 connections between
+ these 2 groups A, B, E, F, 1 group, C, D, G, H another group and there are only 2 connections
+ between these 2 groups from the original data.
+ So therefore our objective is to try to figure out such a cut which will minimize this connection
+ between these 2 groups so in this case a mean cut value is 2.
+ So the typical approach that people follow for graph clustering using minimum cut is
+ this that you use a minimum cut algorithm to break graphs into 2 sets because that is
+ how it is done.
+ If you like to find out more groups then you take the smaller groups then apply the mean
+ cut again on the smaller groups break this entire thing into 2 and it simply continue
+ until the stopping condition is satisfied.
+ So that is the general principle of mean cut algorithm when we apply on graph data to find
+ out the graph clusters.
+ Now this particular technique that I am going to talk about is a simple technique you know
+ it stands on this following principle.
+ So what we do we simply repeat until we have 2 nodes because we like to split a particular
+ graph into 2 parts so that is why basically we will be considering 2 nodes.
+ So in the very first step we will choose an age at random a particular connection you
+ choose at random and then it collapse these 2 end points into single nodes put them together
+ that means choose an age so we know that the 2 end points or the nodes are connected with
+ each other so therefore we are going to collapse them together put them together.
+ So for example in this case now look at this particular example carefully and they understand
+ how it basically happens.
+ So text for example in this case this is the original graph.
+ So there are 14 ages in this particular graph.
+ So the probability that we are going to choose a particular age for example BF in this case
+ so this particular age is going to be 1 by 14 okay because there are 14 age and there
+ are basically you can choose one of them so all the ages we will have the same probability
+ of choosing these things.
+ Now because this is a probabilistic algorithm you will have to use some random number generator
+ from your standard library CC plus plus Java or Python you use that and say we choose this
+ particular age called BF you can choose any other age depending upon the probability value
+ given by your model or given by your implementation but for this particular demo we assume that
+ the age that we have chosen is basically BF.
+ Now once you have chosen that then what we do contraction so by contraction what we mean
+ is that that we have to put these two end points of this age together in a single group.
+ Now because the B and F were the two end points of this particular age that we had chosen
+ so we will put them together in a new group called BF but that is not the end of the story
+ we have to adjust the connections as well.
+ Now you look at this thing these two things carefully we now have the parallel ages that
+ means there are multiple ages between two nodes why this is happening in the original
+ graph there was an age between A and B so that is why there is one more age okay and
+ A and F also so I have to maintain the relationship in the new graph that is why you can see there
+ are two ages between A and BF similarly you see there are two connections between E and
+ BF but the same logic we have the connection from E to B and E to F and that is the reason
+ we simply put them together.
+ So therefore after fast contraction we get something like this one now we again have
+ to apply the age selection followed by the contraction again so now say for example that
+ we chose a particular age say gh with probability 1 by 13 okay something like this we have.
+ Now again we contract readjust this ages and so on so forth so we simply do something like
+ this one so we put them together g and h we adjusted the number of connections accordingly
+ and so on so forth okay.
+ Now again we choose a particular age randomly for example in this case we have chosen dg
+ and h for instance now the probability of choosing this particular age dg and h is nothing
+ but 2 by 12 simply because there are two parallel ages in this and there are total number of
+ ages is actually 12 so that is the probability value.
+ Now if you chose that then we contract these two together and we are going to get something
+ like this one because now that we have dg and h together in a single group okay and we
+ now have parallel edges accordingly because initially we had two edges between gh and
+ d okay and also one two edges between gh and c so we simply put them together okay.
+ Now we repeat the same process we select for example the age ae with probability 1 by 10
+ and then we contract once again to get something like this one ae and bf.
+ In the next step what we do we choose say for example an age ae and bf with probability
+ 4 by 9 because there are four connections between ae and bf and there are nine edges
+ in this current graph so the probability will be 4 by 9 so we do that and then we put them
+ together ae and bf so we are going to get something like this one okay.
+ Now we have three nodes still we have to do something because we will stop when we have
+ two nodes so we continue say we choose now say cdg and h is already 3 by 5 because there
+ are three edges between c and dgh so we will do that and then we contract these things
+ together and so on and so forth.
+ Now at this point we have two nodes a, b, e, f and cdgh and it is time to stop because
+ this is stopping criterion for this particular algorithm.
+ So now we basically will stop in this case so here the mean cut value okay is basically
+ 2 okay because the number of edges that we have right now between these two groups is
+ basically 2 okay so mean cut value is 2 sorry the cut value is to not really mean cut it
+ could be mean cut or it may not be mean cut but the cut value is actually 2 in this case
+ but fortunately in this particular case we found out the mean cut value for this particular
+ graph.
+ So after doing this one so what now we basically have done is basically we find out one group
+ called a, b, e, f and then we find out another group called cdgh so therefore it partitions
+ this graph into two groups with a, b, e, f in one group and cdgh in another group.
+ So that is how basically it works now if you would like to partition this graph even more
+ then you take a, b, e, f stuff and then basically apply the same thing again and again okay
+ and split it off into two groups and simply proceed.
+ So this is a randomized algorithm and therefore you have to consider this important thing.
+ Okay, so for good result this is always recommended.
+ So you run this algorithm multiple times this called Carger's algorithm and therefore
+ you will going to get multiple cuts for this situation and you take the cut with a minimum
+ value okay that will tell you the minimum value for this particular cut.
+ Okay the next topic that we will discuss is clustering weighted graph.
+ So in this case broadly we have two possible approaches one is called agglomerative approach
+ or the bottom-up approach another is called divisive approach top-down approach okay.
+ So in bottom-up we do start with that each object is going to be in single cluster and
+ then you gradually merge them together and simply form bigger clusters.
+ In divisive approach we take exactly opposite route we start with all objects in the same
+ cluster and then we simply split into smaller one something like that we have seen in the
+ previous case.
+ But for this particular lecture I am not going to talk about divisive approach I am going
+ to talk about agglomerative approach and we will see how you can do clustering using
+ this one.
+ So in this case we do not require the number of clusters to be fixed a priori in advance
+ because this is hierarchical clustering in order to terminate you can actually set some
+ threshold when to stop that is one possible approach that you can use to stop the algorithm.
+ So I am going to skip this slide also okay.
+ So in this case what happens is basically something like this.
+ So we have to define a similarity function that is the foundation for any clustering algorithm
+ which will tell the similarity between two instances or two clusters and so on so forth.
+ So first we will start with all instances in the separate cluster say each example will
+ be in a separate cluster and then we repeatedly join them and so on so forth and how we are
+ going to join them okay the history of joining okay is basically nothing but recall is dendogram.
+ So in this case for instance so the initial level of points is something like that.
+ So first we basically join these two points together and this picture will tell that these
+ two points are joined together okay.
+ So first level these, these and these okay something like that and so on okay so all
+ these dendogram all these figures basically telling that they are the first level joining
+ merging.
+ Then when I am basically merging these three things together entire three things then if
+ you look at this particular dendogram it is telling actually how these two things are
+ merged.
+ So dendogram basically dendograms are telling you that how you have merged all the data points
+ to create bigger and bigger clusters starting from the single points okay.
+ So the important question is how do you determine the nearness of clusters?
+ That is a key question that we have to address in hierarchical clustering okay and we will
+ see with several examples in this case.
+ So the first one so there are three different things one is basically called the single
+ link approach where the distance of between, distance between the clusters or points we
+ choose basically the closest point based on the closest points.
+ Then we have another approach called complete link where the farthest points are used to
+ compute the distance and then we have the average link when you take the average distance
+ between pairs of elements of two clusters and so on so forth okay.
+ So we will see these things actually with small examples in the next few slides okay.
+ Now this is the formal definition of the single link agglomerative clustering algorithm or
+ the approach in which you can basically form the clusters.
+ So say we have two clusters cluster one and cluster two with several points in each clusters
+ and we like to find out the similarity between two clusters.
+ So that is the key point in hierarchical clustering given two clusters how do we compute the similarity
+ of two clusters okay that is what we do.
+ Now if you look at the definition carefully this is basically telling the maximum similarity
+ between two points among all pairs of points.
+ You take all pairs of points between two groups okay and then simply see what is the maximum
+ similarity between all pairs of points among all pairs in a particular two groups okay.
+ So in this case if you look at this example carefully so this number is actually telling
+ the similarity between different pairs of objects among two groups.
+ I am not going to compute the similarity within group because we are interested in between
+ group thing.
+ So this numbers are telling basically for example 10 is telling the similarity between
+ two elements this and this something like that okay so now if you apply this thing here
+ so distance between cluster one cluster two actually three in this case right.
+ So if you go by for example the similarity you have to take the maximum value if you
+ go by the distance you have to take the minimum value okay that is basically the definition
+ of this one.
+ So in this case if so this number for example if sorry I made a little mistake topographical
+ mistake here in this case so these values for example the distance is not the similarity
+ okay.
+ So if you take that for instance the distance between cluster one and two is basically three
+ and in this case because that is the smallest distance that we have in this case so the
+ maximum similarity that we can think about it okay.
+ So when you compute this similarity or distance between these two groups or these two clusters
+ we will have to choose the points which have like the smallest distance or highest similarity
+ they are interchangeable so we will do that.
+ Now in a similar fashion but with slightly different modification so in this case for
+ instance when we run this entire thing in single linkage clustering algorithm so say
+ these are the points.
+ So initially we start with all points in separate clusters and then we gradually merge.
+ So how do we merge in this case?
+ So first merging will be done based on these two points first these two points will be
+ merged because they are closest to one another.
+ Next we will basically merge these two points okay.
+ Next we will merge these two points.
+ Next we will merge these two points okay.
+ Now we have slightly bigger clusters and so on so forth.
+ Now question is next which two clusters will be merged in this case?
+ Now if you choose this particular cluster and this particular cluster the similarity
+ between them will be defined by in this case or distance is based on these two points okay
+ something like that will be done.
+ Now if you choose this particular cluster or this particular cluster the similarity between
+ them will be defined by these two points or distance something like that.
+ So now we have to use this information to compute the distances between the pairs of
+ clusters in this case and then merge the two clusters having smallest distance or largest
+ similarity something like that we have to do.
+ So if you go by this apparently for example if you look at this figures carefully for
+ instance okay then what you can figure out is that the possibly that these two clusters
+ need to be merged in the next step okay.
+ So in this way we simply proceed we merge the clusters one after another and simply proceed
+ hierarchically and as you know the history of merging the way that basically we are building
+ the circles will tell you that how they have merged from smaller to bigger which is equivalent
+ to the dendrogram that we have seen.
+ Now the problem the biggest problem with the single linkage algorithm is this that you end
+ up getting the chain or elongated clusters okay why this is the case you take this example
+ okay.
+ So if you apply this single linkage algorithm then first you are going to merge these two
+ points together then you do this merging okay then what you do you do this merging okay.
+ So essentially you are going to merge all the points together.
+ So the reason is that that the similarity is defined by the most similar points it does
+ not really consider the similarity between other points in my group okay if two points
+ are accidentally very similar to each other okay in two groups then they will dictate
+ the cluster formation strategy which is pretty bad and you are going to get elongated clusters
+ often on a real data okay.
+ Now the difficulty in this case is that that you put them together all four put them together
+ but a quick inspection will tell you that certainly these two points are very very far
+ apart they are very dissimilar and yet you put them together because this point and this
+ point actually these two points are very close to each other okay.
+ So this is a problem with this particular approach.
+ Now a possible solution to this one which is once again very widely used is called complete
+ linkage clustering okay so in this case what we do we just modify how we compute the similarity
+ between two clusters in this case.
+ Now you look at carefully the modification to this one in the earlier case we had the
+ max of similarity okay so we used to take the similarity between two groups based on
+ the maximum similarity of elements pairs elements in this case we take the minimum similarity
+ okay when you compute the similarity value between two clusters we will look at who are
+ the most dissimilar points in my two groups and I use that value as a measure of similarity
+ okay.
+ So in this case for example we go by the distance value in this case I am basically using the
+ distance value not similarity value in this case the similarity between these two clusters
+ basically 10 as opposed to 3 in my previous case because in this case these two points
+ this particular point and this particular point they have similarity the distance value
+ is actually 10 okay.
+ So because they are farthest like apart among all possible pairs in this case this number
+ will tell you that how compact the points are into these two particular clusters.
+ So we will use these values to form the clusters gradually one after another.
+ So now the question is why we are doing that there is a good reason why we are doing that
+ for example I have a data point somewhere here in this particular case okay.
+ Now if you look at this figure carefully then what will happen is that this particular cluster
+ is basically dispersed not very compact.
+ Now under the reception the distance between these two clusters is going to be this basically
+ this one okay which is basically high value.
+ So automatically this measure will reflect that these two clusters actually far apart
+ because there is a point belonging to a particular cluster which is actually very far apart from
+ the other points in the cluster not very compact okay.
+ So as a result it will tell that okay possibly the clusters are of not good quality and the
+ numbers will reflect that okay but there is a problem upwards with this approach if there
+ is one point which is basically very far apart from all others it can also dismantle the
+ score okay but again these are pros and cons of each and every approach that we deal with
+ so nothing we can do.
+ So therefore it makes very tight spherical clusters now in a situation like this one.
+ So this is an illustration of this algorithm very similar to this one.
+ So for example initially what we do once again we form the clusters no problem with this approach
+ again we will do this so on so forth so on so forth okay no change in this case.
+ Now next time when we form clusters like you know merging by merging and so on so forth
+ when I compute similarity between this cluster and this cluster these two clusters it will
+ be determined by these two points okay unlike the single leakage clustering algorithm okay.
+ For this cluster and this cluster it will be determined by these two points okay something
+ like that so on so forth and of course for these two clusters this one and this one okay
+ it will possibly be determined by these two points and so on so forth.
+ So we will compute all pairs of such similarities and then we will merge the clusters so in
+ this case possibly if you consider this among all the possible cases in this case also possibly
+ something like this one.
+ So we will see so this particular line is the minimum among all okay so we will now
+ merge these two clusters together to form a bigger cluster okay so in this way you simply
+ move on to compute the bigger clusters from the smaller ones and so on so forth.
+ I take one very concrete example to illustrate this point now actually when you write program
+ or implement the entire thing you have to deal with a graph like structure and a graph
+ structure is actually represented a computer using a matrix okay so typically you have
+ a symmetric matrix symmetric like this matrix that basically you take.
+ So if you take this example carefully for instance that say I have a matrix where I
+ have 5 objects initially okay I have the 5 objects that I have and I have the similarity
+ values between distance values between them and so on so forth.
+ So this value will tell the distance between 2 and 1 okay object 2 and 1 okay or for example
+ this value will tell the distance between object 5 and 4 okay so for all pairs of objects
+ you have the distance values which we can represent or we can basically put in a matrix
+ and then we will basically see how you can apply single liquid algorithm to create the
+ clusters gradually.
+ Now in this case what you see is basically the first we will merge so we will choose
+ the pair among all pairs which are having the minimum distance in this case and then
+ we simply merge.
+ So if you look at this very very carefully the minimum distance among all pairs is basically
+ 2 so we basically merge 1 and 2 together in this figure you can see.
+ Next if we do that then we are going to get something like this we have readjust this
+ entire thing so we will have to basically recompute the cluster similarity values because
+ now we put together 1 and 2 together so we readjust these values now we have a matrix
+ something like this based on the single linkage similarity measure so we will compute these
+ values and I have shown here the actual values.
+ So now if you look at these then you have to choose again the minimum distance among
+ all possible pairs of clusters and we simply put them together so we will do something
+ like this one okay then once again we readjust this entire thing compute similarity based
+ on single linkage measure again choose the minimum one we are going to get something
+ like this one so this is the way we are going to merge the cluster gradually starting from
+ the single linkage clusters that we had.
+ Now we look at the complete linkage clusters okay for the same data that we have here okay
+ and we see what happens the same distance matrix that I have in this case and I will
+ see what happens in this case so oh sorry so in this case what we can do basically so
+ right now I have say 1, 2, 3, 4 and 5 okay I have this one now of course the distances
+ initial distances are given here okay so no problem with this one in the very first step
+ so we will choose two clusters having minimum distance and simply merge them together so
+ as you know the minimum value in this case is actually 2 okay so we will merge one and
+ two together okay so this basically we will merge now because now we have put one and
+ two together so this is one cluster say this is say cluster 1 this is cluster 2 this is
+ cluster 3 and this is cluster 4 so now I have to compute the similarity between cluster
+ 1 and cluster 2 for example in this case okay so how do I compute the similarity between
+ cluster C1 and C2 in this case C1 has two points and C2 has three points now for the
+ distance rather you can think about it so now the similarity between or the distance
+ between now the distance between so distance between this for example this two group in
+ this case now say because this is matrix so in this case the distance between C1, C2
+ is going to be something like this look at the distance between 1 and 3 because we are
+ going to compute the distance between C1 and C2 so distance between 1 and 3 is 6 so I am
+ putting star just to discriminate and then distance between 2 and 3 is 3 in this case
+ okay so because this is the two distance value that I can make use of and so on so forth.
+ Now by definition in complicated clustering algorithm I have to choose the farthest points
+ from between two groups so in this case the higher value is basically 6 so the distance
+ is going to be 6 in this case okay it will tell you the compactness so in this way simply
+ we compute this value and so on so forth now the distance between C1 and C2 is 6 between
+ C2 and C3 between 3 and 4 is basically 4 and 3 is 7 okay and between 4 and 5 the other
+ values and so on so forth so I have to basically choose the minimum one and simply merge them
+ together.
+ So the key thing in this case is basically choosing or the computing the distance values
+ once we merge two clusters together using the complicated clustering algorithm.
+ Now the last part of my talk is called principal comfort analysis or PCA in short often we
+ call it PCA and this is slightly different from what we have talked so far.
+ So objective here is not to do any clustering but rather reduction of the dimension of this
+ data that we are dealing with okay and it basically deals with high dimensional data
+ and we use these linear algebra stuff like eigenvalues and eigenvectors to figure out
+ what would be the good like sort of reduced features that we can get out of the original
+ data.
+ So simply to put it like simply the data reduction objective is basically something like this
+ that we have a data matrix like this we have say n objects and we have say p variables
+ or rather p features that we have in my data.
+ So this is the original matrix that I have and then I will convert this data or rather
+ transform this data to a reduced form where I have the same number of objects but the
+ number of variables that I have is basically much smaller compared to p.
+ So k is generally smaller to p that is kind of the assumption that we will be dealing
+ with.
+ So essentially for example if I had original data where I had 1000 features for every object
+ I will convert every object to say for example 10 features only and these are the wide applications
+ because it reduces like noise, this reduces unnecessary redundancy in the data, this reduces
+ the computational complexity because we have to compute similarity between objects and
+ so on so forth.
+ So the key questions that we address basically this first question that we asked ourselves
+ that do we need all vectors like all data for example all n dimensional space to view
+ the data that is the first question.
+ Sometimes there are correlated data which we do not need.
+ So then we have to basically find out the better axis than the original axis.
+ If I original axis I have something we have something then can we find out better axis
+ to represent this data.
+ Then how do I find out the best low dimensional space that conveys the maximum useful information
+ that I had in the original data?
+ So to answer all these questions we generally use a thing called principal components.
+ Now I must say that this is not always applicable for certain kind of data this is not applicable
+ but for many data the principal components do very good work and we will see when they
+ can do good work, when they do not do good work.
+ So let us look at this particular figure carefully ok.
+ So let us we have this kind of data for example.
+ If we have this data so this is we are calling the principal component 1.
+ So principal component is nothing but a line along which the data has maximum variability
+ ok.
+ So if you look at this data very carefully this is the line along which the data has
+ maximum variability.
+ You do not find any other line along which the data has maximum variability.
+ The second principal component once we have the principal component 1 the second principal
+ component that we have is basically this one the red one which will always be perpendicular
+ to the first principal component ok.
+ And it will basically give you the residual variance so maximum variance to the second
+ variance and so on so forth and this is the way simply we will proceed.
+ The question is how do we figure this out all these lines the good lines from the data
+ that will tell us the amount of variance and all sorts of stuff.
+ So the goal in this case is this that I have the original data I will compute the variance
+ covariance of this data ok and then I will use a few linear combination of these variables
+ we will try to figure out that ok.
+ So the essential component or the sort of this you know the thing that we will be using
+ is basically variance covariance data from the original data ok.
+ So we look at the variance along which line variance is maximum and so on so forth and
+ we simply do that.
+ Now one of the objectives of this approach is kind of you know reduce the correlated
+ features if I have three features and they are correlated then if one tells something
+ the other also is going to tell the similar thing third one is also going to tell the
+ similar thing then I do not need all three when one will do.
+ So the objective in this case is basically figure out which features are correlated and
+ I simply remove those correlated features keep only the one which will be enough for
+ me to decide my case.
+ So that is more or less the broad objective of this particular approach.
+ So the trick in this case is basically this.
+ Say we had this data for example you know do not look at this red lines but rather look
+ at this black lines for instance.
+ So X and on X was two dimensional data that I had and so on so forth.
+ Now clearly along the original axis X on and X to the data does not have the original the
+ maximum variability.
+ Now if you can rotate this axis little bit along the red lines then we see that along
+ the red lines we have the maximum variability.
+ So for example this red line have the PC1 along this line we have the maximum variability
+ in the data maximum variance you can see and then this red line is basically PC2 I calling
+ principal component to along which you have the next maximum amount of variance.
+ Now by nature PC1 and PC2 are perpendicular to each other that is the definition of this
+ one.
+ So therefore we have to figure out this red lines few red lines along which the variance
+ will be very high and then we will basically try to rotate the original axis along these
+ lines to figure out the new data transform data.
+ So what it does it takes a data matrix of n objects and p columns the n rows and p columns
+ p columns the p features we often call p variables.
+ And then the variables may be correlated often because that is basically one of the things
+ that we will try to do.
+ We summarize this entire thing by uncorrelated axis from correlated things to uncorrelated
+ axis we will try to do. And so the linear combination of this original p variables we try to figure
+ out using all this analysis that we are going to perform.
+ So the known fact in this case is that the fast k components of these new things that
+ we are going to discover will display as much as possible of the variation among the objects.
+ Our objective would be those fast k components or those fast k axis from the original data.
+ So what is the geometric rational or geometric intuition behind this PCA. So say the centroid
+ like the centroid of a point is defined by the mean of each variable that is like very
+ standard definition of this one. Now the variance of each variable is basically the average
+ squared with a variation of n values among the mean of these variables how far it is
+ from the centroid. That is basically the thing that we do.
+ So this is how basically we define the variance. We have the original data points which is
+ xim then we have the centroid and then simply compute the mean of that and so on so forth.
+ So then another important concept that we will use the covariance degree to which the
+ variables are linearly correlated to each other. So we define in this way. So this covariance
+ is basically computes to what extent two variables are related with each other.
+ So we simply do that xim and xjm. We basically simply compute the deviation from their mean
+ values and simply take the product and simply do that average. So these are two standard
+ definitions that we know variance and covariance and we will use this thing to figure out all
+ these axis and so on so forth. So the algebra of finding principle axis is basically we
+ can generalize this to p variables. So PC 1 principle component 1 is the direction
+ of the maximum variance, PC 2 is the next maximum variance, so on so forth, PC 3 is the next
+ maximum and so on so forth. So it is simply gradually increase. So if you can project
+ this data along PC 1, we will have the maximum variance then PC 2, next maximum variance
+ and so on so forth.
+ So we simply you know covariance, one thing that you have to do covariance is typically
+ covariance is basically you know unbounded in the sense that the values kind of like
+ very high value. So we simply normalize this entire thing by using normalization factors.
+ So what we do basically we divide this entire thing by standard deviation to make sure that
+ it lies between plus 1 and minus 1 so on so forth and which equal basically correlation.
+ So from covariance to correlation if you would like to go we simply divide this by variance
+ and so on so forth. So what is this algebra we do? So what do we do? We simply compute
+ the variance-covariance matrix which is nothing but square symmetric matrix. So diagonals
+ are the variances, off diagonals are the covariances something like that. So this is an example
+ of variance-covariance matrix that we have for two variables.
+ Then what we do? So in matrix notation if you deal with is nothing but X transpose X where
+ X is this matrix, you know 0 mean matrix and so on so forth. So we simply compute this
+ one. And then what it tells is basically some of the diagonals of the variance-covariance
+ matrix is called the trace. So it also tells you the total variance in the data. So in
+ this case the total variance is 12.909 or something like that. So then principal axis
+ involves the eigenvalues of the covariance matrix. So what we do? We figure out all the
+ eigenvalues for this particular covariance matrix, eigenvalue 1, eigenvalue 2, eigenvalue
+ and so on so forth. So we solve this equation to find out the eigenvalues lambda 1, lambda
+ 2, lambda 3, so on. So in this case we get something like that, lambda 1 equals to 9.8,
+ lambda 2 equals to 3.03 and so on so forth. So lambda 3 is the highest eigenvalue, lambda
+ 2 is the next highest eigenvalue and so on so forth.
+ So this will reflect the variance for a particular thing. Now we compute the eigenvectors for
+ each of these eigenvalues. Once you have the eigenvalues you can compute the eigenvectors.
+ Simply we can compute that. So the eigenvectors corresponding to the highest eigenvalue is
+ called the principal component. Next highest eigenvalue is the second principal component
+ and something like that. So it is simply, this way you simply proceed. So once we have
+ that the eigenvectors are basically the new axis that we have. First principal component
+ corresponding to the highest eigenvalue, second principal component corresponding to the second
+ highest eigenvalue and so on so forth.
+ So if you look at this figure carefully for example, this is my original data. Now I have
+ this first principal component that means the eigenvector corresponding to the highest
+ eigenvalue. I have the second principal component that means eigenvector corresponding to the
+ second highest eigenvalue and so on so forth. Now I have to shift, I have to transform my
+ original data along this axis. So how do I do that? For example, take a particular point.
+ So what do you do? This was my original value based on the original axis and so on so forth.
+ Now I have this new axis, I have this new axis and so on so forth. So now I have to project
+ this blue dot that did all the data points with respect to the new axis. So what do we
+ do? We do simply transformation something like this one. We compute this value and this
+ value. So therefore, the blue dot which was originally with respect to x1 and x2 now it
+ will be yi1 and yi2. So each data point therefore you can transform using these principal components
+ and simply use that for your purpose.
+ Now if you have say for example, 100 variables you would like to reduce to 10. So simply take
+ top 10 eigenvalues and the corresponding eigenvectors and simply project your data only with respect
+ to those eigenvectors. So that is the way you simply can actually project the high dimensional
+ data into low dimension. So that more or less gives the introduction to this unsupervised
+ learning. This is by no way complete. So clustering followed by principal component analysis.
+ So I will end with one small note. In today's world PCA is basically very principal approach.
+ It heavily relies on the linear relationship between objects. It uses the eigenvalues and
+ eigenvectors. But when you do not know the relationship between different things and so
+ on so forth different data points then the right thing to do is basically use something
+ which does not assume the linear relationship. So for example, autoencoder is a good approach
+ based on deep learning technologies which you possibly learn in one of the deep learning
+ lectures that people can make use of.
+ So with this I will end the session. So we have two questions and I will try to answer
+ these two questions. The first question is how K means plus plus is handling the outlays.
+ The example should have taken the earlier example with outlays. The reason that I basically
+ did not take the earlier example because in the earlier example I did not have any outlayer.
+ It had more or less the clean data. So that was the reason that I did not take it. But
+ to answer your main question how K means plus is handling the outlayer is something like
+ this. I must tell you that it is there is no guarantee that it will handle the outlayers.
+ K means plus plus is a probabilistic approach and the likelihood that it will handle outlayers
+ is basically high because this is selecting the points based on probability distribution
+ of the distances from the existing points ok.
+ So although mathematically it tells the points which are far apart from the existing points
+ will have higher chance, but there are other lot of points which will have slightly lesser
+ probabilities at this one ok. So as a result the those although these points will have higher
+ probability other points will also have slightly lower probability and there are many such
+ points. So as a result they can also select the points which are actually not outliers.
+ So I will I am not sure which probabilistic approach you are talking about whether this
+ is K means plus plus or this is the graph partitioning algorithm that you talked about.
+ So I am not very sure which probabilistic approach the student is asking for ok. So
+ maybe what I can do you please specify that one and I will maybe I will send a response
+ written response through the team on this particular thing ok.
+ So thank you very much and I will have another session on 5th of this next month 5th of April
+ and I will talk about transfer learning. So I will see you then ok. Thank you so much.

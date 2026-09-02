@@ -1,0 +1,536 @@
+ So, sorry for the delay we will go to the today's topic straight away which is Declining
+ applications in computer vision. So, as many of you might be knowing that one of the most
+ important architecture that is used for the computer vision task are the convolutional
+ neural network architecture. So, I believe up till now you have seen
+ feed forward neural network architecture as which I have discussed in the last class and
+ possibly you have also done some programming with the feed forward neural network architecture.
+ So, today we are going to first discuss the convolutional neural network architecture
+ and then we are going to discuss how to solve a different computer vision problem using
+ this convolutional neural network architecture. So, in order to motivate the convolutional
+ neural network architecture let us first discuss a few properties of the image data ok. So,
+ the first property that I want to discuss. So, I just want to mention that these properties
+ of the image data are important for understanding the image and these are also specific to image.
+ So, other kind of data. So, for example, if you take some sort of a demographic data or
+ if you take time series data or those kind of things all these properties may not be
+ present ok. So, what are these properties? So, the first property is the topology property
+ ok. So, what is the topology property? So, what is the topology property? So, the topology
+ property says that so, suppose so, you can so, here you can see in the left this image
+ right. So, this image you can think of it as a grid like this ok, a grid like this ok,
+ where each of this pixels has a value let us say for simplicity we can say that this
+ is between 0 to 255 ok that is how. So, it can be slightly more complicated, but that
+ is how it is stored ok. So, now, the first thing is that the pixels
+ in an image are like aligned in this way in a grid or they are placed in a grid. So,
+ what does the grid have? It has a size ok. So, for example, it may be let us say 1024
+ into 768 let us say this is the image size I am just saying I am saying some number.
+ So, basically the column indices are varying from 1 to 1024 and the row indices here are
+ varying from 1 to 768 in this particular image ok. So, every pixel so, the image data size
+ is going to be 1024 into 768 ok. Now, whatever this particular size is that many 18 bit values
+ or 1 byte values are going to be there in this image ok and now for these that many
+ values they are not arranged in one row ok. So, they are not arranged like this that you
+ start with 1 here and then you go to 1024 into 768 it is not like that it is arranged
+ in a grid in this manner and which pixel is close to which other pixel that information
+ is important ok and that information is called the topology of the pixels.
+ So, a particular pixel will have some neighboring pixel. So, for example, this pixel will have
+ a neighboring pixel. So, let me just take another color here maybe yeah. So, this pixel will
+ have this pixel as a neighbor the blue pixel this pixel as a neighbor this pixel as a neighbor
+ and this pixel as a neighbor. So, these are called 4 neighbors ok. So, up down left right
+ ok. So, 4 neighbors ok there are going to be also 8 neighbors sometimes. So, this this
+ this and this. So, up down left right and also the 4 corners ok. So, they will include the
+ 8 neighbors of a particular pixel. What is the pixel? The pixel is the center pixel ok.
+ So, this particular formation where each pixel has some neighborhood this is called the topology
+ of the pixels. So, this is the first important property of images which is not there in other
+ types of data ok. Now, the second class of important properties
+ are what are called translation invariance or scale invariance ok. So, what is the translation
+ invariance? You see this particular. So, you see the top row of images here ok. So, the
+ top row of images here they have or or even even more let us say let us take these images
+ ok. They are describing as a human being we know that they are describing the same thing
+ which is there is a can of some cold drinks some some sort of a drinks which is lying
+ in a grass right, but if you see from the image point of view in this image it is somewhat
+ towards the top side in this image may be somewhere else it has come ok.
+ So, what is happening is the image is translating ok. So, the position of the object is moving.
+ So, the the image is translating, but the topology of many of the pixel most of the
+ pixels the important pixels or the pixels around this particular object let us say they
+ may be same they may be remaining same. Another thing is if you look at let us say let us
+ say let me erase the things. So, let us say if you look at this this image may be this
+ image and then this image right. So, again maybe there is also a little bit of translation,
+ but more importantly you see there is a zooming in ok. So, the camera is zooming in to the
+ object ok. So, the object itself has become bigger progressively from here to here then
+ here to here and so on and so forth ok. So, this is called the scale invariant ok.
+ So, so both of these are invariance properties ok, then there may be other invariances for
+ example, lightning or contrast. So, here you can see it is the same thing, but the lighting
+ is a bit different. So, the glass is looking slightly more yellow in this whereas, in this
+ one the glass is looking slightly more green and so on and so forth ok ok.
+ So, these are some of the properties of the image data and why are we discussing this
+ properties? We are discussing this properties because whatever neural network we design
+ ok, we have to design by keeping these properties in mind. So, that is the important thing that
+ we have to design the neural network by keeping these properties in mind ok.
+ So, how can we do that? So, just a brief description. So, computer vision is the field of artificial
+ intelligence that focuses on enabling machines to interpret and understand visual information
+ which is that if I give you a image you should be your program. So, artificial intelligence
+ program that you design which is the field of computer vision it should be able to interpret
+ and understand the information that is there in that image.
+ So, put in layman's terms if I give this particular image let us say it should be able to say
+ that this image is something like a coke can or a cold drink can which is there on a grass
+ or this image if I give it should be able to say that it is a football on a grass ok.
+ So, that is the job of computer vision. So, that is what you are going to do ok.
+ Now, in order to achieve that what do you have to do? You have to do two broad categories
+ of task what is that? The first one is that you have to develop neural network models
+ for different application ok and second is you have to also develop data sets and algorithms
+ for the application ok. Now, in this particular lecture we will mostly focus on the first
+ one because the second one is already given in all probability you will not be developing
+ when you are applying a new thing. There is a high chance that you will not be developing
+ new data sets or you will not be developing new application, but you will be developing
+ new model for the application as the case ok.
+ Now, so as I mentioned this particular model will be called convolutional neural network
+ model as opposed to feed forward neural network model. Now, in feed forward neural network
+ what happens? So, any neural network you know every neural network is organized as layer.
+ So, this is one layer. So, let us say layer 1 ok and every layer has some activation right.
+ Now, this will be layer 2. So, this is I am talking about feed forward neural network
+ ok. Now, in in feed forward neural network every like every pixel is connected to every
+ other pixel ok and this connections carry weightage as you know and then there is a summation
+ etcetera ok. In convolutional neural network the layer is there ok. So, if I were to try
+ and erase these things ok. So, the layers are there. So, this is layer 1, this is layer
+ 2 ok, but two things are happening. First is that these layers are arranged in the topographic
+ format ok. So, now, if I if I were to try and let me erase this and if I were to try
+ and say. So, this is let us say layer 1 ok. So, this is layer 1, this is going to be layer
+ 2 ok. So, this is how it is going to be of course, there will be activation ok, but there
+ is another thing that the connections are now not fully connected ok and we will come
+ to why the connections are not fully connected, but they are actually in the form of a convolution
+ operation ok. So, what is the convolution operation ok?
+ Convolution operation involves a kernel ok. Now what happens? So, kernel is basically instead
+ of earlier there was one weight per connection. Now, the kernel there will be just one kernel
+ between each layer. So, there will be one kernel here ok. Using this kernel we will
+ do the convolution operation from this layer and calculate the layer 2 from layer 1 using
+ the convolution operation ok. Now, this kernel is something like this ok. So, this is the
+ kernel ok, this is the kernel ok. What is it? It is a grid of weight. So, so this is
+ the input input means input image. So, just like your input image is there in a grid.
+ So, this is a 3 by 3 grid your kernel or the weights are also arranged in a grid ok. So,
+ in the convolution layer the input, the output and the learnable weights which are defined
+ using this kernel ok, all of them are arranged in a grid ok. So, this is the first thing
+ ok. So, this kernels are also sometimes called filters ok.
+ Now, what this kernel does is this kernel gets overlaid on a grid. So, let me see here
+ ok. So, let me first show you what overlaying mean in this thing. So, you can see that this
+ blue thing is a kernel ok. So, the blue thing is a kernel. Now, the pink thing is a kernel
+ ok and it is getting overlaid on top of the pixel ok. So, the kernel is getting overlaid
+ on top of the pixel. So, this is what is meant by overlaying ok.
+ Let us come back to our slides ok. So, now suppose you are overlaying this particular
+ kernel ok let me erase this. So, suppose you are overlaying this particular kernel on this
+ input, then what will the convolution operation do? Convolution operation will multiply the
+ corresponding numbers with each other ok. So, let me see how that goes. So, this is
+ the calculation ok. So, this kernel is getting overlaid on top of this input. So, 3 is getting
+ multiplied by minus 1. So, this is 3 and this is minus 1, they are getting multiplied ok.
+ 2 is getting multiplied by 0 and so on and so forth ok. So, all these multiplications
+ are happening ok. Now, after this all these are added together
+ ok, all these numbers are added together and then you come up with a particular number
+ ok. What is the position where this number will be put? The position where this will
+ be put in the output is in the center of this whole overlay process ok. So, this overlay
+ process will happen many many times because in a practical case your input will be very
+ big, your kernel will be very small as I was describing earlier. So, this is one particular
+ overlay of the kernel ok. There can be another overlay of the kernel which is something like
+ this ok. There can be another overlay of the kernel which is something like this ok. So,
+ the kernel is the same ok, but 3 different overlays on the image. So, this is the image
+ ok. So, let me go back to blue ok. This is the image and these are all kernels ok, this
+ is one kernel, this is another kernel. So, these are not different kernels, but the overlay
+ of the same kernel in different position ok. I hope. So, this is the crucial thing to be
+ clear ok. So, that is what we have written here that output over the centered pixel is
+ going to be summation over all the pixels in the kernel ok W p times pixel p ok. Now,
+ the area on which this overlay happens, this particular area of the image where the overlay
+ is happening, this area will be called the receptive field sorry the this area will be
+ called the receptive field ok. So, this area will be called the receptive field ok. So,
+ this is the idea. Now, these kernels and convolutions have traditionally been used in image processing
+ many many times ok. So, let me show. So, these are some of the operations ok. So, let me
+ show some tradition and kernel ok. So, this is a very traditionally used Gaussian blur
+ kernel ok. So, so this performs the blurring operation blurring operation means what? Suppose
+ you can see on the left this is your input image, on the right this is a blurred image.
+ So, blurred image what happens? Basically if you see very carefully some of the boundaries
+ the object boundaries they have become a little bit fuzzy ok. So, the object boundaries have
+ become a little bit fuzzy ok. Now, this particular kernel does the blurring
+ operation. Why does this problem kernel does the blurring operation? Because if you see
+ what this kernel does is it has a weightage of 1 in the neighboring pixels and the weightage
+ of 4 in the center pixel ok. So, it is giving equal weightage to the value of the center
+ pixel ok. So, let us say center pixel is red ok. Maybe top pixel is also red, this side
+ pixel left side pixel is also red, but let us say right and down pixels are blue. So,
+ what will happen? This will have 6 parts red and 2 parts blue ok. So, the value the value
+ of this pixel has now changed a bit and hence you see the edges have become a little bit
+ blurred ok. So, this is one thing. Opposite thing is this particular kernel you see it
+ is a sharpening kernel. So, what is happening? It is giving a high importance to the center
+ pixel and also deducting whatever is there in the pixel surrounding it. So, for example,
+ if I just erase this. So, suppose center pixel is a little bit combination of red and blue
+ ok. What will happen is and let us say all the pixels in the side are blue, then what
+ it will do is it will reduce the blue intensity of this pixel. So, it will very very sharply
+ define the edges. So, here is an example. So, the left image is the normal image and
+ the right image is the sharpened version of the image ok. And this is a much more intensified
+ version of the sharpening kernel. So, I am just giving you. So, these numbers inside
+ the kernel right now are manually chosen, but when you design your neural network you
+ do not have to manually choose these numbers. These numbers will automatically be lured
+ ok. I am just telling these particular kernels to give you an intuition as to how the kernel
+ operates on the entire image ok ok. So, now, here are some more. So, this is a vertical
+ line detector. So, if your image has a vertical line this can be detected, this is a horizontal
+ line detector, this is a corner detector and so on and so forth. And you can work it out
+ and you can see why these are all these kinds of detectors ok ok.
+ Now, what do convolutional neural networks do? So, first of all we have to understand
+ that each layer of a convolutional neural network performs a some type of a convolution
+ ok. Now, what does this convolution do? The convolution create some visual features out
+ of the image ok. So, maybe it is detecting edges ok. So, edges are some visual features.
+ So, from this particular cat it may be detecting some some edges let us say here, here, here,
+ maybe it will detect some edges for the stripes of the cat and so on and so forth ok. So,
+ these are some of the edges ok. Now, what you will get at the end of this edge detection
+ is another image which will only have the edges ok. So, I will show you a example in
+ a minute ok. Now, if you give that particular image to another convolutional layer, maybe
+ it will be able to detect shapes ok. What are shapes? Shapes are basically you know these
+ are formed by combination of different edges. So, maybe it will detect a circular shape here,
+ maybe it will detect the eye shape here ok, maybe it will detect the nose shape here and
+ so on and so forth ok. So, this is a thought experiment that cat has let us say. So, you
+ have to understand that this particular image is that for a cat ok that is the task. So,
+ how will you understand this? You will understand that there are two eyes which are in certain
+ positions in relation to one another ok plus maybe there is a cat fur texture ok. Now,
+ eyes are maybe a dark circle inside another circle ok and circle may be a particular combination
+ of edge detectors, maybe this is a very some sort of a approximation of a circle. So, so
+ this kind of 8 edge detectors may be used to get a approximation of a circle ok. Similarly,
+ fur may be a certain kind of pattern ok that may be detected by certain kind of kernel
+ ok. So, what convolutional neural networks do is they build up these features ok. So,
+ that is the key idea ok. So, primary ideas let the neural network learn
+ which kernels are the most useful. So, as you learn a kernel it will detect some kind
+ of a features you do not know what features. So, it could be edges it could be something
+ else ok, but whatever it is the training process will ensure that these features are useful
+ in detecting the cat ok or doing the ultimate task which is which it is given ok.
+ Now, we use the same set of kernels across the entire image ok. So, this makes use of
+ the property of translation invariance which I was telling that the kernel may be a small
+ size kernel like 3 cross 3 or 5 cross 5 ok. The entire image may be thousands of pixels,
+ but the translation invariance property will ensure that the same kernel gets used in the
+ entire image ok. Now, why do we do this ok. So, another very important practical consideration
+ here is that as you can understand. So, let us say suppose you have a 200 cross 200 image
+ ok this is a very small size image this is probably the smallest size image you can get.
+ How many pixels are there? There is 40000 pixels ok, output layer also let us say there
+ is 40000 pixels. So, if you try to use a feed forward layer how many how many weights do
+ you have to use? You have to use 40000 cross 40000 weights this is a humongous number of
+ weights you can understand right. So, it is 160 million weights sorry 1600 million weights.
+ So, 1.6 billion weights 1.6 billion weights each weight is the number a floating point
+ number. So, this is a huge number ok. This many weights you cannot learn ok it is impossible
+ to learn this many weights and also the computation is going to be very very expensive ok. So,
+ instead what you do you use this convolutional kernels and the translation invariance property
+ of the image to maybe use maybe you have to use just 7 cross 7 which is 49 weight ok.
+ Maybe there is 1 for every channel. So, there may be many channels also. So, let us say
+ there are input 3 channels or maybe output 10 channels still it is 49 into 30. So, this
+ is a much smaller number of weights that you have to learn and store compared to this 1.6
+ billion weights for the same computation ok. And how is this possible? This is possible
+ because you are using the translation invariant property to use same weight across the entire
+ image by overlaying the kernel on different positions of the weight ok.
+ So, this is the idea this idea is illustrated here this I have already shown ok. So, in
+ real images you will typically have 3 channels of data ok. So, the left hand side here shows
+ the 3 channels of data RGB. So, red green and blue ok red green and blue channel ok and
+ output also will be in different channels ok. Now, here the output is being shown in
+ different channels ok. Maybe here this one is blue cyan yellow and black or maybe yeah
+ maybe this is cyan magenta yellow and black ok. So, output is in 4 channels ok. In practice
+ the output different output channels will capture the different first level features.
+ So, maybe this one is a horizontal edge detector this one may be a vertical edge detector this
+ one may be a fur texture detector or something like that ok. So, this is the whole idea ok.
+ Now what do you specify when you specify this convolutional layer when you are you know writing
+ the code right. So, you basically specify first the height and the width ok. So, height
+ and the width. So, this is 3 cross 3 this is 1 cross 3 and this is 3 cross 1 kernel
+ ok. So, this is the first thing ok. Now second thing you will specify is what is called the
+ padding ok. Now let me go into why you need padding. So, first you take a look at this
+ particular image. So, on the left hand side this is the input ok. In the middle is the
+ kernel and what we are doing is we are doing the simple basic convolution without any padding
+ without any stride to fill up the output ok. So, what happens first thing that you will
+ fill up is this left most position in the grid and that will give this output and so on and
+ so forth it will go. If you do that what you will see is that the first image that becomes
+ the center pixel is this particular image. So, the first center pixel is this image.
+ So, what happens this whole circle around it does not get to become a center pixel ok.
+ If you use the normal convolution ok. So, all the outer rim of the image does not get
+ to become the center pixel. As a result your output your input size was 5 cross 5 now it
+ has reduced to 3 cross 3 ok. So, in order to solve this problem what we do we introduce
+ a padding 0 padding ok. So, what is this 0 padding this. So, suppose your kernel size
+ is let us say 3 cross 3. So, very often you will see that in image processing people will
+ use odd size kernels ok that is for this particular reason that if you have a 3 cross 3 kernel
+ then you know that you are missing one full circle outside ok.
+ If you have a 5 cross 5 kernel as input you will be missing a 2 pixel wide circle outside
+ ok because your center pixel if you take if you come here let me erase this. If you have
+ a 5 cross 5 kernel basically this will be your first center pixel. So, all these guys
+ you will miss ok. So, you will miss 2 rows of this thing ok.
+ So, how do you do how do you solve this problem whatever you just pad you just assume that.
+ So, this is your actual input sorry this is your actual input image ok this portion is
+ your actual input image, but you assume that there are these 0 pixels all around it. How
+ many if your kernel size is 3 normally you would say 1 if your kernel size is 5 you will
+ assume 2 and so on and so forth ok. Now, if this is the case then you see your input original
+ input was also 5 cross 5 your output is also 5 cross 5. So, this kind of edge effect does
+ not matter ok. So, essentially if your kernel size is let us say k. So, here k is 3 you
+ do a padding of k minus 1 by 2 and you pad it generally with the 0 pixel ok. So, this
+ is padding. So, this is another thing that you specify when you define a convolutional
+ layer. What is the third thing that you specify when you define a convolutional layer that
+ is the stride ok. So, what is the stride? So, let me go here.
+ Now, you see earlier my first position was this from this the second position I moved
+ the receptive field by 1 pixel right I moved the receptive field by 1 pixel. Now, what
+ if you do not want to move the receptive field by 1 pixel you want to maybe take a larger
+ movement you may be want to move it by 2 pixels ok. What will happen every time you will move
+ it by 2 pixels ok. So, that is called the strided convolution ok. If you do that what
+ will happen is that you can let me just erase this you can see that ok. What will happen
+ is all your all your images or your output image even though you are using a padding
+ your output will be reduced by a particular size. So, in this particular case your input
+ was 5 cross 5, but now because you are using a stride of 2 your output has reduced by reduced
+ to 3 ok. So, the question is how do you do this calculation ok. The way to do this calculation
+ is suppose for the time being assume that you are not using any padding ok. If you are
+ not using any padding then what do you do basically if n is your image size and if f
+ is your kernel size f is for filter. So, kernel and filter are the same. So, if kernel slash
+ filter size is f ok. Then what will happen is the final output size will be n minus f
+ by stride ok. So, you can see if stride is 1 and suppose
+ your filter size is let us say 3 and let us say n is 7 ok. What will happen your output
+ size will be 5 ok. You can see this you can draw 7 cross 7 grid and see that this is indeed
+ the k ok. Now, if you use a stride of 2 what will happen is n minus f by 2 is basically
+ your 4 by 2 which is basically 2 plus 1. So, this becomes 3 ok. So, this was 4 plus 1 5
+ this is 2 plus 1 3 ok. So, you see the image size has now reduced a lot the output image
+ size ok. This is very very useful there are other ways to reduce the image size also I
+ will come to it in a minute, but this is very very useful if you think your input image
+ is of a very high very high resolution ok, but it does not have so much information ok.
+ So, you can skip some pixels basically. So, you do not need to process each and every
+ pixel as the center pixel ok. Now, with stride another thing comes which is that suppose
+ you try to take a stride of 3 what happens you see 7 minus 3 by 3 is a fractional number
+ it is 1.33 ok. So, this particular stride is not allowed.
+ So, if you do this particular stride your output will be something which is not understandable
+ because your output number of pixels is a fraction that does not make them ok. So, when
+ putting stride you have to be very careful as to put the stride such that using this
+ formula you are able to get a you know a whole sized output rather than just the this thing.
+ Now another thing is that suppose with this you are using a padding of 2 right. So, suppose
+ you are using a padding of 2 ok. What will happen if you use or let us say padding of
+ not 2 let us say in general padding of p ok. Then what will this formula become? This formula
+ see you are using padding means on both sides of the image you are adding this padding.
+ So, then your n becomes n plus 2 p ok. So, your formula will become you have we will
+ have to use this modified formula n plus 2 p minus f by stride plus 1 ok. So, you have
+ to specify the padding and the stride value such that this number is a whole number ok.
+ So, as I mentioned this is an example of a convolutional layer. So, what is there in
+ a convolutional layer? So, first of all the layer itself will have a image as input and
+ output will also be a image ok. It may not be an image that we understand many a time,
+ but it will be a in the form of a image ok. Now, the layer will have this filter. So,
+ let us say there is the 5 cross 5 cross 3 filter ok which means. So, remember if now
+ this part is called the depth ok. So, depth means the number of channels ok. So, the number
+ of input channels should match with the number of channels of the filter otherwise it is
+ an error ok. So, this is the first one ok. So, with this you will get a 28 cross 28 cross
+ 1 output activation map ok. So, if you have a 32 cross 32 cross 3 image with a 5 cross
+ 5 cross 3 filter you can do the calculation and you will get a 28 cross 28 cross 1 ok.
+ Now, this is one particular filter ok. Now, let us say you have another filter this is
+ blue colored filter this is green colored filter. So, this is showing the filter ok.
+ You can have another filter again you will get another activation map like this. So,
+ in general the number of filters number of output filters that you use that will create
+ the depth of the output channel ok. So, the number of output filters. So, in this case
+ if you use let us say so, if I use this 5 cross 5 cross 3 this filter with let us say
+ here there are 6 output channels ok. So, I am using 5 cross 5 cross 3 cross 3 3 cross
+ 6 convolutional layer. Then your if your input is 32 cross 32 cross 3 your output will become
+ 28 cross 28 cross 6 ok. Now, here we are not using any padding if we had used a proper
+ padding of 2 then the output will be 32 cross 32 ok. So, this we discussed.
+ Another important thing is what is called a pooling layer. So, suppose you want to reduce
+ the size of the image, but you do not want any learnable parameter because you see in
+ convolution there are learnable parameter, but instead you do not want any learnable
+ parameter ok. So, what you can do is you can use a max pooling or an average pooling layer.
+ So, usually people use max pooling layer. So, what happens? This is the 2 cross 2 max
+ pooling layer with stride 2. So, the pooling works just like convolution. So, here this
+ is the 2 cross 2 pooling. So, the kernel size is 2 cross 2, but instead of doing convolution
+ it will calculate the max from this and put it here and then it will stride by 2. So,
+ it will come here calculate the max here and put 5 here and so on and so forth ok. So,
+ that is what the pooling layer pooling layer is used mainly to shrink the size of the image
+ nothing more ok. So, what is now a convolutional network ok. So, it is basically a sequence
+ of convolution layers like this as I mentioned. This is the first input layer, then there
+ are some first input image, then there are some convolutional layers here, then the second
+ layer the first layer output and then here the second layer, second layer output here
+ and so on and so forth ok. So, this is a convolutional neural network this is how a convolutional
+ neural network works ok. It builds up the different feature representation one after
+ the other ok. So, this is an example of a convolutional neural network you see this is a car and now
+ I am only showing the outputs of the convolutional layers. So, this is an actual convolutional
+ neural network which has been used to classify this particular image and I am showing the
+ output of different convolutional layer at each stage. So, you can see maybe this particular
+ convolutional filter. So, here the input is of course, whatever the size of this image
+ is. So, maybe let us say 250 cross 250 cross 3. Here how many output channels are there
+ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10 output channels are there ok. So, the so this is a convolutional
+ layer with 3 input channels and 10 output channels and whatever is the size of the convolutional
+ kernel that will come here ok. So, size of the convolutional kernel ok.
+ And these are showing some of the feature maps you can understand how the feature map
+ is basically getting created ok. You can see that different types of features are being
+ understood and then finally, when you have this feature map this. So, you typically use
+ a lot of pooling layer ok. Now, this has become a relatively low dimensional. So, this may
+ have 10 channels ok this may have 10 channels, but let us say input was 255 cross 255 and
+ you have used pooling 3 times ok. Every time let us say you have made it half the size let
+ us say or may be one third the size then this will become this divided by 3 to the power
+ the number of pooling layer that you have used which is a much lower number right.
+ So, if you have used 3 pooling layer it is basically 3 into 3 into 3 which is basically
+ I think 27 right. So, it will roughly be 10 numbers ok. So, output will be of size 10
+ into 10. Now, this 10 into 10 will be fed as an input for to a fully connected layer
+ or feed forward layer ok. Fully connected layer we have already discussed.
+ So, now you can see that your output is let us say size 5 and this 10 into 10 is basically
+ 100. So, it in the end you are using a 100 cross 5 fully connected layer which requires
+ only 500 weights ok. So, this is the purpose of the pooling layer to reduce the size of
+ the image ok. So, this is the PyTorch implementation of maybe not the same, but a similar kind
+ of neural network. So, what you can see is this is you define a class just like earlier
+ you have seen and this 2D is the 2D convolution that I was just describing there is also 3D
+ convolution we will not get into that ok. So, and then there is Rayleigh. So, typically
+ after a convolution layer you apply a Rayleigh activation function to actually make it you
+ know do the thresholding. So, here you can see that after the thresholding.
+ So, this is before the thresholding and this layer is after the thresholding. So, after
+ the thresholding only the important things survive and the not so important things they
+ go away ok only the important feature survive ok. So, this is the first convolutional layer,
+ second convolutional layer and then pooling layer ok. Now of course, you have to define
+ the forward function you already know. So, the forward function is this. So, every time
+ you take the input x it is passed by the convolutional layer and then passed by the Rayleigh layer
+ to produce the output x. Then again that x is put into the convolutional
+ layer and the Rayleigh layer to get the output y and then you simply do a apply the pooling.
+ Now, the pooling generally does not have a learnable parameter ok, but this is the pooling
+ layer that you have ok. Now, this was so we are trying to implement this particular convolutional
+ neural network ok. Now, what we just showed is this convolution
+ convolution pooling block ok. So, this is one CCP block. So, that is what is implemented
+ in this class. Now, in this class we have 3 CCP blocks followed by a fully connected
+ block ok. So, this is basically describing this particular layer where there is a CCP
+ block. So, this is the first CCP block, this is the second CCP block, this is the third
+ CCP block and then there is a fully connected layer ok. And this is the design of a convolutional
+ neural network and this can this this can this is fairly good like this is this can
+ do a classification ok. So, this is the this is how the convolutional
+ neural network works or this is how you can design it ok. Now, let us go back. So, so
+ you can design many many different convolutional neural network architecture, but in the history
+ there have been some very important convolutional neural networks which people have designed
+ ok. And this revolution you can stay this is the. So, this is the deep learning revolution
+ you know deep learning. So, so this change the field of computer vision drastically drastically
+ influence the field of computer vision and it started around 2013 I would say ok. And
+ by 2017 we had some of the best models. I would say maybe instead of 2013 I would say
+ maybe 2012 it started and by 2017. So, in these 5 years some very good models were developed
+ and those are the models for many tasks they are very very useful ok. So, let us let us
+ see some of these models ok. So, before we go into the model I just want
+ to mention another thing which is this imaginate large scale visual recognition challenge. So,
+ this was a competition. So, it is called a challenge ok. So, this competition was held
+ yearly I do not know if it is still held, but at that time it was very very good competition
+ in the computer vision community ok. And you can see around 2011, 2011 the best accuracy.
+ So, so what is the challenge? The challenge is that you have images like the image that
+ I showed of a cat ok. And this image belongs to a particular class may be a cat chair,
+ airplane, fridge any of these ok. It could be a natural object it could be a artificial
+ man made object. So, there were about 1000 different classes ok. So, 1000 different objects
+ you have to classify ok. And now what you did is so, what the best approach
+ non deep learning approach at that time its accuracy was 25 percent ok. So, that was the
+ accuracy. So, like roughly you can sorry the error rate was 25 percent; that means, roughly
+ 3 out of 4 images those methods were able to classify correctly yeah others it were
+ getting wrong ok. Now the first architecture that came in 2012 was called the Alex net
+ architecture. So, this was the deep learning architecture and will show the architecture
+ in a minute ok. This reduced the error from 25 to 16 percent ok. So, huge improvement ok.
+ The next very important improvement came which was this VGG net and Google net and it reduced
+ from error from 16 percent to 7 percent or 6 percent 6 to 7 percent ok. So, again nearly
+ made it half ok and 6 to 7 percent error is you can see it very less error ok. And then
+ finally, came the ResNet model which reduced the error from 6 to 7 percent let us say 7
+ percent to about 3 and a half percent ok again made it half ok.
+ So, these are the three steps from shallow to Alex net Alex net to VGG or Google net
+ and VGG or Google net to ResNet ok. In these years basically we could. So, this 3 percent
+ is better than human ok. So, if you give these images to humans they will make more than
+ 3 percent error roughly 5 percent errors on this images in categorizing ok. So, the computer
+ was doing better than the human this is a very low error rate for this kind of a challenging
+ task ok. So, let us see what the first architecture was.
+ So, first architecture was this ok. So, you had the Alex net architecture you had the
+ convolutional layer then a max pool layer then a normalization layer. So, this normalization
+ layer is used to make the optimization faster ok. So, this is one block then the same block
+ repeated convolution max pool normalization. Then now there is no pooling required it is
+ already somewhat low. So, you have this three convolutional layer. So, you get more and
+ more features out of this ok and then finally, you have a max pool layer and then there were
+ three fully connected layer ok ok. So, this was basically the architecture and yeah. So,
+ you can see that yeah. So, the first layer was like this it had 96 11 cross 11 filters
+ applied at stride 4 ok. So, that was the this thing ok and this reduced to 16 percent as
+ I told ok ok. So, how many parameters for this layer around 35 k parameters ok 11 cross
+ 11 cross 3 cross 96 ok ok. Now, so one thing which I did not mention. So, this 35 k and
+ if you see this whole architecture the total number of parameter was in million. So, I
+ think it was about 100 million 100 to 120 million something like that parameter ok and
+ the reason it was so high is because of these three fully connected layer ok. So, it was
+ all good, but still there were three fully connected layer ok and most of the parameters
+ were because of this fully connected layer. So, it was not a highly optimized architecture
+ ok ok. So, now, so these were some of the innovations
+ that they did. So, first is they used relu they use norm layer they use dropout ok they
+ use data augmentation etcetera ok ok. Now, so two problems was there with them first
+ is it was deep neural network, but it was relatively shallow only about 8 layer ok.
+ What VGG and Google net did is increase the depth to 19 and 22 layers respectively ok.
+ So, these are much more deeper network. Now, what does that mean? That means each layer
+ adds parameters. So, if you have a high number of parameters then the model size increases
+ the number of parameters increases and so your training complexity will also increase
+ because as you know if you have more have to learn more parameters then you have to
+ use more data to learn those more parameters ok. So, both problems go hand in hand ok.
+ So, this increase the size by. So, so almost you can say more than doubled actually the
+ size ok. So, how did they achieve this? So, the first thing they did is what is called
+ this small convolution and then composition of this. So, this is the main innovation of
+ this VGG filter which is that you use only 3 cross 3 filter ok stride 1 padding 1 ok
+ and you use 2 cross 2 max pool with stride 2 of course ok, but you see the architecture
+ many of the convolutional layers are one after the other ok.
+ What does this do? So, let us see ok. So, what this does is this increases what is called
+ the receptive field size of the convolution. So, so if you have 11 cross 11 convolution
+ filter ok or let us take this example that we have here. So, suppose you have 2 options
+ ok one is 7 cross 7 convolutional filter, other is 3 cross 3 convolutional filter. What
+ is the receptive field size of this? The receptive field size is 7 receptive field means at a
+ time how much of the image are you looking at ok that is the receptive field size ok.
+ And here you are having a receptive field size of 3 cross 3. So, at a time you are looking
+ at a 3 by 3 portion of the image. Now higher receptive fields are better because you have
+ more context whenever you are doing the convolution operation you are predicting for the center
+ pixel ok, but if you are looking at the neighboring only 3 pixels ok then you are looking at far
+ less information than if you can look at neighboring 7 cross 7 grid right. So, the receptive field
+ size higher is better, but as you increase the receptive field size what happens is your
+ number of weights increases ok. So, if the number of weights increases. So, here for
+ example, 7 cross 7 cross like so, so, so, before this I just want to mention that if
+ you use 3 3 cross 3 layer then you actually get a receptive field size of 7 cross 7 now
+ why is that ok. So, first let us see. So, this is let us say 1, 2, 3, 4, 5, 6, 7, 8,
+ 9 let us say ok. Now let us say this is a center pixel ok. If you use a 3 cross 3 filter.
+ So, I am just showing a one dimensional representation here you can interpolate it is extrapolated
+ to 2 dimension. Your receptive field size is this much ok and now this is one output
+ of this filter ok 1, 2, 3, 4, 5, 6, 7. Now let us say this is the center pixel that
+ it is outputting ok. Now you are again using another 3 cross 3 filter here. What is it
+ looking at? It is looking at this output pixel, this output pixel and this output pixel these
+ are linear transformations remember ok. Now how was this output pixel calculated? This
+ output pixel was calculated because you use this particular convolution overlay right.
+ So, for the first layer it was only looking at this ok, but now it is also looking at
+ this and this because here it is looking at this ok ok. So, what is this by using? So,
+ this is convolutional layer 1, this is convolutional layer 2 by using 2 convolutional layer you
+ have used increased. So, convolutional layer size is 3 this is 3 this is also 3 both convolutional
+ layer sizes are 3, but you have increased the effective receptive field to 5 you can
+ see this right. So, you have increased the effective receptive field to size 5 if you
+ use 3 layers of it you increase the effective receptive field to size 7 ok.
+ Now you see how many filter weights do you need? Here you need 7 square times c square.
+ So, this is 49 c square ok. Here how many do you need? Each layer each of the 3 layers
+ need 3 square many filter weights. So, 9 9 into 3 9 into 3 is how much 27. So, here you
+ need 49 c square parameters, here you need only 27 c square parameter. You are having
+ the same receptive field, but your number of parameters has decreased by about half
+ ok. So, this is the main innovation of this VGG net use smaller filters, but many filters
+ one after the other ok. So, here 2 at a time here 3 at a time ok. So, 2 at a time means
+ effectively you are using a 5 cross 5 filter, here effectively you are using a 7 cross 7
+ filter ok. So, this is the first thing that happened ok.
+ I am not going into the architecture of Google net too much, but what it did is it further
+ optimized it said that you do not have to use the same size filter. So, what VGG net
+ did this? It used the same size filter in each layer which is 3 cross 3. This guy says
+ for some of the channels you can use lower size filter, some of the channels you can
+ use higher size filter ok. And they came up with this inception module and this was even
+ more optimized than compared to the VGG module ok ok.
+ Now, this was the second leap. So, now, we are at 7 percent error rate right, 7 percent
+ error rate at what depth at depth of about 20 layers ok. Now, why were we not going
+ above 20 layers? Because of what is called a vanishing gradient problem. What does vanishing
+ gradient problem do? What it does is that if you have a extremely deep neural network
+ and then you have a loss at the end of it, what will happen is the initial layers of
+ the neural networks will have very small values of gradients and as you know these gradients
+ are what is used to train the neural network. So, it will become extremely difficult or
+ extremely slow to train the initial layers of a very deep neural network ok.
+ So, this problem was solved by what is called this residual network ok. So, how did they
+ solve this problem? They solve this problem. So, this is what happens ok. So, if you use
+ so what happens is then due to the vanishing gradient problem, what happens is that you
+ will see that the training error will reduce very very slowly. So, this is the 56 layer
+ neural network, this is the 20 layer neural network ok and x axis is the number of training
+ iterations. So, what will happen is you will see that the smaller number of layers is actually
+ doing better because it is learning faster. Ultimately this may go down more ok, but the
+ amount of time required for this 56 layer neural network to go down is so large that
+ for all practical purposes it was actually doing worse than the 20 layer neural network
+ ok. So, that is the key idea ok. So, what did
+ ResNet do? So, ResNet simply said each layer will not learn the feature representation.
+ It will learn what is called the residuals of feature representation ok, residuals of
+ feature representation. What does this mean? This means that suppose your for any given
+ layer suppose your input is x and your output feature is h of x. So, what people wanted?
+ They wanted that I will learn h of x. ResNet says no I do not want to learn h of x, I want
+ to learn this f of x which is h of x minus x and then how will I do computation? I will
+ simply says my output is f of x plus x ok. So, this is what the computation is. So,
+ instead of normal this neural network what the residual block does is it does what is
+ called this short circuit connection or residual connection ok. So, it connects the input to
+ the output and then predicts f x. So, if your neural network here is predicting the function
+ f x ok, this is actually outputting f x plus x ok and this is all it took and they could
+ using this ok, they could scale it to 152 layers and this is the architecture, the actual
+ architecture is not important. The idea is this that you can actually use these different
+ convolutional blocks. So, this is a one convolutional block followed by a skip connection, then
+ again another convolution block followed by a skip connection and so on and so forth till
+ you reach the output layer. So, what happens is your effective depth decreases a lot and
+ you are able to train this neural network very very fast ok.
+ So, you can you train till 152 layers and you got very high accuracy which is the close
+ to 97 98 percent right ok. So, ok. So, we will take a short maybe it 5 minute break here
+ and we will come back and I will describe some applications of these neural networks,
+ real world application ok.

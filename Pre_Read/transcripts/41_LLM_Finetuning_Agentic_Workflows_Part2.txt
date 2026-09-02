@@ -1,0 +1,199 @@
+ So, I hope that we were able to understand that how this chatting works and you probably
+ executed it and you can just type exit to exit from this loop and you can utilize this
+ in any of the aspect of your work. So, let us now move on to this part of the course
+ where we will discuss about this fine tuning process and we for that we will need to install
+ these few things. One is evaluate herring phase, I do not remember if we will need to
+ install this herring phase library or not, but yeah. So, this is data sets also we are
+ going to use. So, what is data sets? So, let us go on to this data sets thing. So, data
+ sets you will see that in herring phase it is another library that gives you direct access
+ to data sets. Also if you have some local data sets with you, you can load those data
+ set using this data sets library. So, that does it can be streamlined basically the part
+ where we are just going to give to the model. So, we are going to train a model we are going
+ to test some model. So, for that you will see that using this data sets will be handy
+ because it will convert it to the perfect like pipeline that will be required by the
+ model. So, you do not have to do any kind of preprocessing and all from your end or
+ rather you can just give this that this is the location of my data set and you can load
+ it and of course, the data set library already provides you with some data sets that are
+ available in their sections. You can directly give the name of the data set and load that
+ data set directly without you having any data set installed in your system.
+ So, I am briefing you once more. So, this data set you can use to have your local data
+ sets load into this models and all for training the model. Again you can use this data sets
+ and they have their versions where these versions are already provided by Hugging Face maybe
+ some of the data sets are there maybe not all the data sets, but some famous data sets
+ are already present here you can directly load this using this data set subject and
+ use that into your model. So, the data set that we are using here the data set that we
+ are using in our case is already present in this data set library is already present in
+ this data set library and we are going to use that to train and test a small model that
+ is GPT2. So, this GPT2 is free available you do not need a get a repository for that. So,
+ that is a good thing and we can have a test of idea like how that can be done.
+ So, in general what we are going to do I am just giving you a good idea about it. So,
+ this will be tweets and there will be the sentiments. So, these are the tweets and these
+ are the sentiments and we want to train that model using the data that we have. So, we
+ will get this training data and we pass this to the LLM essentially we just pass this tweet
+ to the LLM asking what will be the sentiment of this. So, we pass that and the LLM generate
+ a sentiment and the actual sentiment related to that particular tweet is used to calculate
+ the loss. So, this is the loss function that we use and then again you can back propagate
+ this loss through the model to actually train it. So, this is the general procedure that
+ we will follow. So, we install this require libraries using this function I can just see.
+ These are the various libraries again we are going to use. So, from transformers it directly
+ gives you again access to GPT2 tokenizer we have already seen tokenizer for T5 model here
+ we are seeing the tokenizer for GPT2 model. Then again this transformers for GPT2 for
+ sequence classification. So, this is the model actual model from transformers we are taking
+ two different classes one is the trainer class we already talked about it and the initial
+ section and this training arguments. Training arguments actually gives you the flexibility
+ of providing the arguments for training that how much you want to train for what will be
+ the different parameters for training and all. And this trainer class is responsible
+ for training the model basically the learning this gradients through this models. And the
+ other things we have already seen from datasets we are importing this loaded dataset function
+ it actually gives us access to that dataset that is present either in our local system
+ or in our hugging page library right. So, this load dataset is there and once we have
+ this present we will see that we will provide this as an input to the model. So, this is
+ one important steps at least for this particular task where we are setting the OS environment
+ when DB underscore disabled and we are making it true because what happens is that it might
+ require access to when DB some of the time to log the different things that the model
+ is performing. So, we do not want that we do not want any kind of like warning messages
+ here also. So, that is why we are just disabling this particular facility we do not want log,
+ but once we are doing some research work or something like that you probably want this
+ log to be true. So, this load dataset is very easy function
+ which is give the name of the dataset. So, the name of the dataset is MTEB slash twit
+ sentiment extraction. So, this dataset is already provided by hugging face you can directly
+ load this into this using this load dataset function. And let us see that what is the
+ dataset that we have. So, in this DF we are actually storing this train part of this dataset.
+ So, this dataset has this train function this test function. So, there are different sections
+ of this dataset already provided to you. So, that in the DF we are just storing this train
+ dataset. So, it will download this dataset and all once we have that we can just see
+ what is the data that we have. So, I have responded it if I were going. So, these are
+ the different text in the training set and this is the level level is nothing but the
+ sentiment of course. And you can get the idea about this dataset
+ what is this dataset about and all in that particular section in the dataset library.
+ If you just search with this name of twit sentiment analysis you will see that what dataset we
+ are using. So, you search the internet and you will see that there are different information
+ about this dataset. So, here you will see that what is the dataset that we are working
+ with. And you can go through this research papers also which actually talks about this
+ dataset and works with this dataset. So, this is the training data that we have. So, now
+ we want to load the model tokenizer. So, why this is important in the very first stage
+ here is because we are going to train a model and the tokenizer will be used to tokenize
+ this input text. We have already discussed this why that is important. So, now this tokenizer
+ will have this GPT2 tokenizer object that we have used from pretend and we are giving
+ the name of the model as GPT2. It can access to some other models this is a very small
+ model. And this tokenizer will just put this pad token as the end of sentence token. So,
+ in the previous like thing we were seeing that they were warning that pad token is replaced
+ using end of sentence token. So, to do that we are just replacing it by ourselves manually
+ and as simple as that we are just replacing this tokenizer values. So, function to tokenize
+ each example. So, what happens we are going to loop through each of this text one by one
+ and we are to tokenize this text in the examples. For that we are creating a spatial function
+ of tokenizer and it takes the examples and it returns each of the tokenized examples.
+ So, examples text it passes it through this tokenizer object and returns the tokenized
+ text. So, now the tokenized dataset how we can just confirm we can just use this dataset
+ dot map function and we can give this tokenized function it actually tokenizes using the tokenizer
+ and batch equal to true actually ensures that you are using batch execution and this batching
+ is actually done the batch size and all the other parameters are actually selected automatically
+ you do not have to do anything. So, if you run that you will see that the tokenizer is
+ being loaded downloaded. So, it will take some time and once that is done it will just tokenize
+ your particular dataset.
+ Now, you see that we have this tokenized dataset and now we are going to test and train split
+ this dataset. Now, you might be confused because we have already taken the train part of the
+ data actually we are not going to use a big amount of dataset, but instead we are just
+ taking the strain section we are splitting this strain sectioning into two parts again
+ which is the train part and this test part. So, the train part in the second phase is
+ going to be used for training the model and the test part is used to test the model.
+ So, it is downloaded and it is executed properly right. So, now what we want is we want to
+ get from this tokenized datasets a train part and a test part and we want to suffer this
+ and keep the seed to be 42 and the like requirement of this seeding is of course, because we want
+ same result during the development time or testing time right we do not want it to be
+ fluctuating because if you train with different set of training data the result output will
+ be different. So, we want to keep this fixed, but in a real environment probably you are
+ not going to use this kind of criteria and we are selecting only 1000 data points for
+ this training set and 1000 data points from this testing set and we are storing those
+ into this small train set and small test set we are probably going to use much smaller
+ set than this also for training the model. So, we have to select a small fragment of
+ the data. So, again we are like we are just changing this. So, we are just taking let
+ us say 100 data points for training and 100 data points for testing this will also work,
+ but not that great.
+ So, model equals to GPT 2 for sequence classification actually gives you this model that you have
+ already loaded which is the GPT 2 models and we have provided this number of levels that
+ the model is going to output because it is kind of classification task you are going
+ to classify the sentiments. So, as the source tells that if you give this model if you just
+ create this model I think the model will be downloaded it will take some time. So, let
+ us move on to this different part ok. So, it is a smaller model it downloaded ok.
+ So, now we will define the matrix that will be used to evaluate this particular model.
+ So, for evaluation we are going to load this accuracy matrix and the matrix will be calculated
+ based on this particular function. So, I am not going into the details of the function
+ it actually takes the predicted scores and the actual scores and create a function that
+ actually measures this accuracy right. So, this metric is actually this evaluate that
+ load function that actually provides you with this accuracy function.
+ Let us move on to this training parameters. This training parameters are a bit of important
+ criteria because you are going to use this parameters based on your own system and based
+ on your own data most of the time. So, this output directory will create this
+ trained trainer directory that will store this output directory. If you are using a
+ local system probably you will be having that and you can use that later also. So, part
+ device train batch size. So, this is the batch size that that we are going to give here we
+ are giving the device eval batch size. So, for training the batch size can be fixed for
+ evaluation the different batch size can be fixed. Gradient accumulation steps is given
+ as four. So, basically after four steps the gradient will be calculated and report to
+ none is this is used because we are already we have already told that we are omitting
+ this Vandy belonging which we do not require. So, we are just keeping it as none.
+ Now, the trainer function as it is provided by this trainer class you will see that it
+ takes this model which is this GPT 2 model that we have already loaded this arguments
+ which provides you the training argument that we have created here. The train dataset which
+ we are providing this small train data sets the 100 data only. So, we are just going through
+ this 100 data and we are having this small eval data sets also for the evaluation and
+ the matrix is calculated using this compute matrix function that that is present here.
+ So, now if we just run this. So, the matrix is calculated let us first evaluate using
+ this trainer dot evaluate function I have to load this trainer class first. So, we will
+ just evaluate the trainer class. So, while we are doing it we are just seeing that by
+ default what is the performance of the model without any training on the data. So, we get
+ an eval accuracy of 0.34 not very good. So, let us run the trainer. So, it is a very
+ small dataset. So, you do not expect much of an improvement, but once the training is
+ done we will see that what is the different kind of output we get right.
+ So, after this probably what is the expectation here is that once we train this model even
+ with very small data we will get a small improvement in our training output after the training
+ is performed. So, this is the expected thing. So, we try to use our own datasets for our
+ own tasks. So, for example, if we have a translation task for our own purpose or maybe we are having
+ a particular task where we are going to give customers feedback or something like that
+ and if we have a specialized data of our own and we can use that to train our model and
+ we will see that this model without in the training version of this model will perform
+ better than the zero short version of this base model right.
+ So, this is the expectation and the expectation in this particular case is that after training
+ even with this small data we should have a better score in the evaluation. Let us see
+ eval accuracy is 0.37. So, it is from 3437 of course like it would not improve much,
+ but if you increase this number to let us say 1000 data it will take some more time
+ for training the T4 GPS is not that great, but yeah. So, that is the expectation.
+ So, I think like in today's section you will have understood about how we can prompt the
+ large language models, how this chat function works, how the prompt can be handled in a
+ manner where you can just use a particular loop to like provide information as an user
+ to the model and get the output from the generated output from the model and once you have all
+ those things done how you can use this training data set that you already have using this
+ transformers data set library if it is present in the transformers library of or an offline
+ library you can load that and how you can train a model for your specific task.
+ So, I think this is done and we can have some questions if you are having.
+ Does quantization compromise with model functional capability and performance of course yes.
+ So, once you quantize a model it will have some effect on the quality of the output it
+ generally reduces to a point that is usable most of the time, but as I told you the 8
+ bit quantized models or the 4 bits one are basically the 4 bits are unusable in most
+ of the cases, but for 8 bits you can go like get away with some of the task.
+ We generally use 16 bit or in a very special case where we have a very less amount of VRAM
+ available we use this 8 bit quantization that actually works, but 4 bit we try to avoid
+ that.
+ Once I request for access for a model how long would it take for MetaLama3 requested
+ for access and so spending status I see for this yeah.
+ So, you will see this error because you still do not have access.
+ So, it depends on the model some of the models you may get in some hours to like for Lama
+ models it might take a week also it depends on the model for Lama3 I think week you can
+ expect that max.
+ To fine tune the model how many such prompts are needed do we need to anticipate all possible
+ scenarios and use all for all of them how many such prompts are needed.
+ I think like you are talking about the data that we are using so it is of course depending
+ on the data you are having right.
+ So, if you have enough resources if you have enough data probably you will use end up using
+ all the data that you have.
+ So, there is no limitation that you will be using only a small amount of the data or small
+ fragment of the data.
+ So, it already depends on the like model that you are going to train the data that you are
+ already having and the resources that you are having basically the GPUs in our case because
+ the GPUs are very very important for large language model training and all.
+ Since it will take time for Lama model to get access any other model with quick access
+ token you can use Mistrol they have like only a single day and there are other models that
+ you can use like Zephyr that you would not even require this access token.
+ So, you can directly access those models they have this pipeline available ok.
+ Thank you I think we can end this session.

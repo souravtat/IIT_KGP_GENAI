@@ -1,0 +1,1824 @@
+1
+00:00:00,000 --> 00:00:12,920
+ just let me know when to start. Yes, we can start.
+
+2
+00:00:12,920 --> 00:00:24,640
+ Hello everyone, welcome to the second session of today's lectures. I am, my name is Avigyan.
+
+3
+00:00:24,640 --> 00:00:29,080
+ I am a faculty member in the department of computer science and engineering at IIT Kharagpur
+
+4
+00:00:29,080 --> 00:00:35,040
+ and today I am going to talk about supervised machine learning. You have already heard from
+
+5
+00:00:35,040 --> 00:00:41,120
+ professor Shudhishthir Sarkar about logistic and linear regressions. I will continue talking
+
+6
+00:00:41,120 --> 00:00:47,520
+ about other supervised machine learning models, for example, base classifier, KNN and support
+
+7
+00:00:47,520 --> 00:01:02,800
+ vector machine or SVM. So, just a quick recap, classification is a problem which is defined
+
+8
+00:01:02,800 --> 00:01:12,120
+ with respect to a tuple x and y, where x is a set of attributes or feature or it are also
+
+9
+00:01:12,120 --> 00:01:19,480
+ called like independent variables associated with some input and y are the class or labels
+
+10
+00:01:19,480 --> 00:01:27,400
+ or the dependent variable associated with the output. Once we have a record of a lot
+
+11
+00:01:27,400 --> 00:01:35,280
+ of such x and y's, the task is to learn a model that can map each attribute set x into
+
+12
+00:01:35,280 --> 00:01:42,440
+ one of the predefined classables y, so that when a new test data point comes, the model
+
+13
+00:01:42,440 --> 00:01:53,880
+ can look at the x for the test set and can predict the y for the same test set.
+
+14
+00:01:53,880 --> 00:02:05,000
+ So, for example, one example classification task is categorizing email messages as spam
+
+15
+00:02:05,000 --> 00:02:10,560
+ or non-spam. So, in this case the attribute set or x will be the features which are extracted
+
+16
+00:02:10,560 --> 00:02:17,240
+ from the email message either the header or the body of the email and the class label
+
+17
+00:02:17,240 --> 00:02:22,880
+ will be spam or non-spam. And in this case, since we are talking about only two classes
+
+18
+00:02:22,880 --> 00:02:29,680
+ in the prediction or in the class label, so this is called a binary classification task.
+
+19
+00:02:29,680 --> 00:02:36,320
+ On the other hand, let us take another example like identifying tumor cells to be malignant
+
+20
+00:02:36,320 --> 00:02:43,360
+ or benign, in this case the features can be the x-ray image or MRI scan and it can contain
+
+21
+00:02:43,360 --> 00:02:47,880
+ a lot of features like that or you can even take the pixel values which are there in the
+
+22
+00:02:47,880 --> 00:02:56,840
+ image they all form the attribute set x. This is the general approach of building any classifier,
+
+23
+00:02:56,840 --> 00:03:05,400
+ so you have a training set. The training set is used to learn a model using some learning
+
+24
+00:03:05,400 --> 00:03:13,160
+ algorithm and this step is called an induction step. Once the model is learned, then for
+
+25
+00:03:13,160 --> 00:03:22,040
+ a given test input in the real application scenario, you apply the model and try to predict
+
+26
+00:03:22,040 --> 00:03:29,200
+ what is going to be the label of that particular particular input which has come and this step
+
+27
+00:03:29,200 --> 00:03:35,240
+ is called deduction. So, in case of induction, we use the training data set to learn a model
+
+28
+00:03:35,240 --> 00:03:45,620
+ and in case of deduction, we use the same model to predict output for a test input.
+
+29
+00:03:45,620 --> 00:03:53,720
+ So in this lecture, we are going to talk about several classification techniques, notably
+
+30
+00:03:53,720 --> 00:04:00,640
+ we will talk about knife base nearest neighbor and support vector machines. You have already
+
+31
+00:04:00,640 --> 00:04:06,680
+ heard about logistic and linear regression. So, I have removed them from this list. Logistic
+
+32
+00:04:06,680 --> 00:04:11,680
+ regression is a classification model which I am not going to cover, but in the next
+
+33
+00:04:11,680 --> 00:04:17,960
+ lecture next week, I am also going to cover decision tree and the boosting, bagging and
+
+34
+00:04:17,960 --> 00:04:22,320
+ random forest methods. The only thing which we will not cover which will be covered in
+
+35
+00:04:22,320 --> 00:04:30,760
+ some little lectures is on neural networks. So, let us just start our discussion on knife
+
+36
+00:04:30,760 --> 00:04:40,000
+ base. Before that, let us take an example application. Let us just assume that we have
+
+37
+00:04:40,000 --> 00:04:48,600
+ been asked to recognize digits from a lot of handwritten digits. So, now in like where
+
+38
+00:04:48,600 --> 00:04:55,600
+ this kind of problem can occur, let us say a particular bank is trying to automate the
+
+39
+00:04:55,600 --> 00:05:00,920
+ check processing service. So, if you want to automate that, then the
+
+40
+00:05:00,920 --> 00:05:07,440
+ check is placed on a particular machine, it is scanned and from that scanned check leaf,
+
+41
+00:05:07,440 --> 00:05:13,440
+ you will have to deduct the amount which has been asked to be deducted from the account
+
+42
+00:05:13,440 --> 00:05:20,000
+ of the payee. Now in this case, the numbers that means the amount which needs to be deducted
+
+43
+00:05:20,000 --> 00:05:25,840
+ from the payee's account, that will be written like an handwritten digit. Let us say someone
+
+44
+00:05:25,840 --> 00:05:33,600
+ wants to give a 50,000 rupees check, the amount part will have something like this.
+
+45
+00:05:33,600 --> 00:05:41,440
+ Now the job of the algorithm to figure out what exactly the person has written. Is this
+
+46
+00:05:41,440 --> 00:05:50,320
+ a 5 or a 6? Is this a 0 or 1? Is this again like another 0 or 1 or maybe 6 or something
+
+47
+00:05:50,320 --> 00:05:57,520
+ like that? So, this is called a handwritten digit recognition problem. So, we are looking
+
+48
+00:05:57,520 --> 00:06:03,120
+ at the handwritten digits, we want to actually map them to a particular number. In this example,
+
+49
+00:06:03,120 --> 00:06:11,840
+ let us say that we are looking at an scanned image of handwritten digit, here we can clearly
+
+50
+00:06:11,840 --> 00:06:17,120
+ understand this is a 5, but for a computer to understand this, basically the input is
+
+51
+00:06:17,120 --> 00:06:28,440
+ a set of pixel values. So, essentially here it is a 30 cross 30 box. So, there are 900
+
+52
+00:06:28,440 --> 00:06:35,040
+ pixel values there, essentially every pixel value you can take as a feature. So, there
+
+53
+00:06:35,040 --> 00:06:41,660
+ are like 900 features, each feature is just either 0 or 1. So, here let us say I present
+
+54
+00:06:41,660 --> 00:06:50,440
+ all the pixel values as x 1 to x n and every x 1 to x n is either 0 or 1, in this picture
+
+55
+00:06:50,440 --> 00:06:55,960
+ it is either a blue pixel or a red pixel and then we want to predict a level y.
+
+56
+00:06:55,960 --> 00:07:01,720
+ Now, in this case just for simplicity, we are thinking of the prediction to be only
+
+57
+00:07:01,720 --> 00:07:07,080
+ either 5 or 6, just to think of this as a binary classification problem, but in reality
+
+58
+00:07:07,080 --> 00:07:12,680
+ you would like to have a 9 class or 10 class classification starting from 0 all the way
+
+59
+00:07:12,680 --> 00:07:19,400
+ to 9. So, given a particular input image, you will have to recognize whether the digit
+
+60
+00:07:19,400 --> 00:07:27,740
+ inside that image is whether 0, 1, 2, 3 all the way up to 9, one of them. Now, for this
+
+61
+00:07:27,740 --> 00:07:35,360
+ example let us just focus or restrict ourselves to only a binary prediction 5 or 6.
+
+62
+00:07:35,360 --> 00:07:45,560
+ Now, so once we understand this, so if you look at this, so every pixel value is essentially
+
+63
+00:07:45,560 --> 00:07:53,320
+ this x 1, x 2 all the way up to x n. So, what we are interested in is knowing the probability
+
+64
+00:07:53,320 --> 00:08:00,880
+ of a given level, probability of a level given all the pixel values. So, if we think of them
+
+65
+00:08:00,880 --> 00:08:07,000
+ as the pixel values in the image, this is either 5 or 6. So, we are going to determine
+
+66
+00:08:07,000 --> 00:08:13,360
+ the probability of 5 given all the pixel value, probability of 6 given all the pixel value
+
+67
+00:08:13,360 --> 00:08:19,360
+ and take the one which leads to the highest probability. So, that is why this arg max
+
+68
+00:08:19,360 --> 00:08:26,000
+ is applied and that y is going to be our prediction. So, if the probability of 5 given all the
+
+69
+00:08:26,000 --> 00:08:32,920
+ pixel value is more than the probability of 6 given the pixel value, then the prediction
+
+70
+00:08:32,920 --> 00:08:39,560
+ will be 5. Now, the question is how do we compute this
+
+71
+00:08:39,560 --> 00:08:49,280
+ probability? Now, in general if you think of this, given all the pixel values whether
+
+72
+00:08:49,280 --> 00:08:56,520
+ it is a 5 or 6 that is our fundamental question. So, we cannot directly compute this. So, we
+
+73
+00:08:56,520 --> 00:09:02,440
+ will have to compute this through some other mechanism and this is where Bayes rule or
+
+74
+00:09:02,440 --> 00:09:10,720
+ Bayes theorem comes into picture. So, Bayes rule says that probability of y given x 1
+
+75
+00:09:10,720 --> 00:09:18,960
+ all the way up to x n is equal to probability of x 1 all the way up to x n given y into
+
+76
+00:09:18,960 --> 00:09:24,920
+ probability of y divided by probability of x 1 all the way up to x n. Now, this particular
+
+77
+00:09:24,920 --> 00:09:29,160
+ term is called likelihood, this particular term is called prior.
+
+78
+00:09:29,160 --> 00:09:36,080
+ Now, what is this? So, if you think about it essentially what this probability is saying
+
+79
+00:09:36,080 --> 00:09:44,520
+ probability of x 1 all the way up to x n given y that when you are writing let us say 5 and
+
+80
+00:09:44,520 --> 00:09:54,480
+ this let us say my box. So, which of the pixel values are getting turned on? So, essentially
+
+81
+00:09:54,480 --> 00:10:00,000
+ if you think about this if this is my 5. So, all the pixel values where I am just writing
+
+82
+00:10:00,000 --> 00:10:06,640
+ over. So, they will become red if you think like red to be 1 and white to be 0. So, then
+
+83
+00:10:06,640 --> 00:10:12,880
+ only this pixel values will have 1 and all others will have 0.
+
+84
+00:10:12,880 --> 00:10:19,760
+ Now, computing this is much easier because you are already knowing that y value is 5
+
+85
+00:10:19,760 --> 00:10:28,600
+ like there is no kind of there is no suspense regarding y we are knowingly writing 5. So,
+
+86
+00:10:28,600 --> 00:10:33,720
+ so that way if you collect a lot of 5 written by like different people. So, some people
+
+87
+00:10:33,720 --> 00:10:41,160
+ may write 5 like this some people may write 5 like this some people may write 5 like this.
+
+88
+00:10:41,160 --> 00:10:47,200
+ So, there are a lot of variations of 5 which people can write if you can collect a lot
+
+89
+00:10:47,200 --> 00:10:52,660
+ of data like that you will know which of the pixel values are typically turned on when
+
+90
+00:10:52,660 --> 00:11:02,160
+ someone writes 5 in any of the styles. So, this is why we say that this likelihood function
+
+91
+00:11:02,160 --> 00:11:08,320
+ actually captures how features are generated by the class level. So, here the class level
+
+92
+00:11:08,320 --> 00:11:15,200
+ is 5 or 6. So, the likelihood function is going to capture which of the input features
+
+93
+00:11:15,200 --> 00:11:23,280
+ or the input pixel values are 1 which of them are 0 as if being generated by the class level
+
+94
+00:11:23,280 --> 00:11:29,440
+ 5 or 6 and the prior at the same time is also simple.
+
+95
+00:11:29,440 --> 00:11:35,760
+ So, probability of y. So, if you have a lot of checks like going back to our this check
+
+96
+00:11:35,760 --> 00:11:41,200
+ example if you have a lot of check books or check leaves you know how many times people
+
+97
+00:11:41,200 --> 00:11:48,120
+ write like 50000 how many times people write 60000. So, essentially how many times the letter
+
+98
+00:11:48,120 --> 00:11:55,040
+ or the digit 5 is written how many times the letter the digit 6 is written this we can
+
+99
+00:11:55,040 --> 00:11:59,920
+ capture if we have sufficient number of check leaves. So, that gives us the probability
+
+100
+00:11:59,920 --> 00:12:06,280
+ of y. So, essentially by looking at a lot of examples we can we can identify probability
+
+101
+00:12:06,280 --> 00:12:13,080
+ of x 1 all the way up to x n given y some at the same time the probability of y can
+
+102
+00:12:13,080 --> 00:12:18,920
+ also be figured out if we have enough training data. So, that way we can compute this I will
+
+103
+00:12:18,920 --> 00:12:26,520
+ talk for now we can treat the denominator to be a normalization constant we will see
+
+104
+00:12:26,520 --> 00:12:32,760
+ that this constant actually do not matter when we are trying to compute the level the
+
+105
+00:12:32,760 --> 00:12:40,840
+ out the final outcome. So, see that when we are in our digit recognition
+
+106
+00:12:40,840 --> 00:12:46,160
+ task that we are trying to capture probability of y is equal to 5 given all the pixel values
+
+107
+00:12:46,160 --> 00:12:52,480
+ probability of y is equal to 6 given all the 6 pixel values this is what we are getting
+
+108
+00:12:52,480 --> 00:12:59,320
+ probability of x 1 till x n given y is equal to 5 probability of x 1 till x n given y is
+
+109
+00:12:59,320 --> 00:13:06,840
+ equal to 6 and if you look at carefully the denominator in both cases are the same constant.
+
+110
+00:13:06,840 --> 00:13:12,680
+ So, when you are comparing between probability of y is equal to 5 and probability of y is
+
+111
+00:13:12,680 --> 00:13:18,120
+ equal to 6 and trying to determine which one is larger than the other you can simply discard
+
+112
+00:13:18,120 --> 00:13:23,120
+ the denominator because they are the same. So, that does not impact your calculation.
+
+113
+00:13:23,120 --> 00:13:29,840
+ So, to classify we are just going to compute these two probabilities the likelihood and
+
+114
+00:13:29,840 --> 00:13:40,520
+ the prior and based on which one is greater we are going to predict the class length.
+
+115
+00:13:40,520 --> 00:13:49,840
+ Now, so we understand that for the base classifier we just need to learn two functions the likelihood
+
+116
+00:13:49,840 --> 00:13:56,360
+ function and the prior function. Now, the problem with explicitly modeling this is that
+
+117
+00:13:56,360 --> 00:14:03,040
+ so, we are basically looking at all the pixel values together and then determining what
+
+118
+00:14:03,040 --> 00:14:11,080
+ are going to be the values like whether 1 or 0 given a particular value of y.
+
+119
+00:14:11,080 --> 00:14:20,040
+ Now, typically so, this kind of tells us that we have to keep track of a whole lot combination
+
+120
+00:14:20,040 --> 00:14:26,280
+ of values like 0, 1, 1, 0, 1 and every value is dependent on each other. Now, that will
+
+121
+00:14:26,280 --> 00:14:31,800
+ lead to very high space and time complexity and typically to learn this we will need a
+
+122
+00:14:31,800 --> 00:14:38,800
+ lot of training data which we ideally do not have. Now, to simplify this in the knife based
+
+123
+00:14:38,800 --> 00:14:44,880
+ classification model there is a knife based assumption and this assumption is that given
+
+124
+00:14:44,880 --> 00:14:54,160
+ a particular class level the features or in this case let us say the pixel values they
+
+125
+00:14:54,160 --> 00:15:01,060
+ are independent of each other. So, for example, again going back to our example of digit and
+
+126
+00:15:01,060 --> 00:15:08,000
+ the corresponding pixel. So, let us say when I write 6 the what the knife based assumption
+
+127
+00:15:08,000 --> 00:15:15,240
+ says is that if you take a particular pixel value here whether it is turned on and or
+
+128
+00:15:15,240 --> 00:15:20,400
+ off does not depend on the adjacent pixel value. So, it does not depend on any other
+
+129
+00:15:20,400 --> 00:15:27,200
+ pixel value in the image. So, whether it is turned on and on or off that solely depends
+
+130
+00:15:27,200 --> 00:15:34,160
+ on only the digit what is being written here alright understood.
+
+131
+00:15:34,160 --> 00:15:42,820
+ So, if I am writing 6 like this all this pixels are getting turned on, but they are independent
+
+132
+00:15:42,820 --> 00:15:49,120
+ of pixels other pixels in the image. So, they are only dependent on the digit which is being
+
+133
+00:15:49,120 --> 00:15:58,920
+ written here. So, that is the knife based assumption. So, if you if we write it in mathematical
+
+134
+00:15:58,920 --> 00:16:07,400
+ expression essentially the probability of x 1 to x n given y is just a product of probability
+
+135
+00:16:07,400 --> 00:16:14,680
+ individual probabilities of x i given y. So, if there are let us say 10 pixels here it
+
+136
+00:16:14,680 --> 00:16:20,320
+ is just going to be a multiplication of 10 different probabilities that means the values
+
+137
+00:16:20,320 --> 00:16:29,940
+ of 10 different pixels in that image. Now, why is this useful as I mentioned that
+
+138
+00:16:29,940 --> 00:16:34,600
+ in in case we wanted to get all the pixel combinations. So, this actually leads to a
+
+139
+00:16:34,600 --> 00:16:40,320
+ lot of combinatorial explosion and the number of parameters we will have to learn for that
+
+140
+00:16:40,320 --> 00:16:46,120
+ model is 2 times 2 to the power n minus 1 which is a huge number. On the other hand
+
+141
+00:16:46,120 --> 00:16:52,160
+ if we have the independence assumption in that case the number of parameters which are
+
+142
+00:16:52,160 --> 00:16:58,680
+ there for modeling the individual probabilities is way lesser and in fact it boils down to
+
+143
+00:16:58,680 --> 00:17:09,200
+ 2 times n where n is the number of pixels. Now, as I was mentioning earlier that when
+
+144
+00:17:09,200 --> 00:17:16,040
+ we have decided to use a knife based classifier we need to train it with some data. Now, in
+
+145
+00:17:16,040 --> 00:17:23,640
+ this case now you can take a lot of check lips for example and see how different customers
+
+146
+00:17:23,640 --> 00:17:29,800
+ in a bank have written 5 or 6. So, if you know that this was indeed 50000 rupees you
+
+147
+00:17:29,800 --> 00:17:34,640
+ can figure out like these are different ways people have written 5 or 0.
+
+148
+00:17:34,640 --> 00:17:41,520
+ Similarly, if you know that the actual money which was transacted was like 60000 or 660000
+
+149
+00:17:41,520 --> 00:17:47,640
+ you can look at that check lip and then look at like how people have written 6 and and
+
+150
+00:17:47,640 --> 00:17:52,240
+ see more data you collect you actually get to know more variations. So, this is a let
+
+151
+00:17:52,240 --> 00:17:57,560
+ us say standard 6, but if you look at this this is really something which otherwise it
+
+152
+00:17:57,560 --> 00:18:04,360
+ will not appear to be a 6 these are this. So, the only way to know this different variations
+
+153
+00:18:04,360 --> 00:18:11,520
+ is to gather as much data as possible. So, that you do not miss any like new customer
+
+154
+00:18:11,520 --> 00:18:18,680
+ who may have a different writing style than all other people.
+
+155
+00:18:18,680 --> 00:18:26,960
+ So, again this is something as I was mentioning earlier that once you have a collection of
+
+156
+00:18:26,960 --> 00:18:35,080
+ records the training data it is in general training is very easy. So, you kind of estimate
+
+157
+00:18:35,080 --> 00:18:41,640
+ the fraction of records with y the value of y to be v and the probability of y is equal
+
+158
+00:18:41,640 --> 00:18:46,800
+ to v is essentially just the count of records. So, you know how many records are there you
+
+159
+00:18:46,800 --> 00:18:52,480
+ know out of them how many records have y of a particular value v. Now, in this case let
+
+160
+00:18:52,480 --> 00:18:58,640
+ us say you have 100 check leaves and out of all the 100 check leaves in 50 check leaves
+
+161
+00:18:58,640 --> 00:19:04,720
+ you have the digit 5 and in 50 check leaves you have the digit 6 in that case the probability
+
+162
+00:19:04,720 --> 00:19:10,960
+ of y is equal to 5 or probability of y is equal to 6 will be 50 percent or 0.5.
+
+163
+00:19:10,960 --> 00:19:20,760
+ Similarly, to note the probability of a particular pixel value to be let us say u in this case
+
+164
+00:19:20,760 --> 00:19:32,120
+ like just 0 or 1 given a probability given a particular y value is again you can just
+
+165
+00:19:32,120 --> 00:19:39,980
+ simply count. So, you can count in how many of your examples when I have written 5 like
+
+166
+00:19:39,980 --> 00:19:44,760
+ I means like some customer has written 5 in how many cases this particular pixel value
+
+167
+00:19:44,760 --> 00:19:50,080
+ was 1 and in how many cases let us say this particular pixel value was 0. So, you can
+
+168
+00:19:50,080 --> 00:19:56,440
+ simply compute that that will give you this a probability of x i is equal to u now in
+
+169
+00:19:56,440 --> 00:20:04,360
+ this case u is just 0 or 1 and v in this case is 5 or 6 in our example.
+
+170
+00:20:04,360 --> 00:20:16,920
+ So, this is how we compute this and in general knife base training is quite easy. The only
+
+171
+00:20:16,920 --> 00:20:23,880
+ issue is that in many cases some of this counts may be 0. So, for example, here you are looking
+
+172
+00:20:23,880 --> 00:20:30,160
+ at the count of records count is equal to count y is equal to v it may so happen that
+
+173
+00:20:30,160 --> 00:20:35,360
+ let us say you are trying to have a class level which is not present in the dataset which
+
+174
+00:20:35,360 --> 00:20:44,520
+ you have given. For example, if you have collected a dataset full of like 50000 rupees check leaves
+
+175
+00:20:44,520 --> 00:20:49,960
+ in that case like there is no mention of digit 6 in that case the count will simply be 0.
+
+176
+00:20:49,960 --> 00:20:55,040
+ Now, the problem is just not about count being 0 because then your probability is just 0,
+
+177
+00:20:55,040 --> 00:21:02,480
+ but the problem is that to compute the individual conditional probabilities the count comes
+
+178
+00:21:02,480 --> 00:21:09,080
+ in the denominator. So, if this is 0 then you will get an error because you are trying
+
+179
+00:21:09,080 --> 00:21:17,840
+ to divide by 0. Now, to overcome this instead of just having
+
+180
+00:21:17,840 --> 00:21:24,840
+ the probability to just be a fraction of counts we tend to add some extra values like in this
+
+181
+00:21:24,840 --> 00:21:33,280
+ case we add plus 1 in the numerator and we add 2 in the denominator. So, this particular
+
+182
+00:21:33,280 --> 00:21:39,100
+ technique is called smoothing technique so that the values does not become 0 and does
+
+183
+00:21:39,100 --> 00:21:49,000
+ not cause any problem in the calculation. So, typically like we collect so many different
+
+184
+00:21:49,000 --> 00:21:58,600
+ pixels sorry we collect so many different examples as training data and then we actually
+
+185
+00:21:58,600 --> 00:22:04,840
+ average all the trainings of one digit versus another digit and then in the test time you
+
+186
+00:22:04,840 --> 00:22:11,200
+ try to figure out a given a particular pixel value like whether this is going to be 6 or
+
+187
+00:22:11,200 --> 00:22:20,120
+ this is going to be 5. Now, one example is let us say when you provide
+
+188
+00:22:20,120 --> 00:22:25,920
+ this particular image to the naive based model it predicts 5 with a very high probability
+
+189
+00:22:25,920 --> 00:22:33,640
+ of 1. So, the probability of 6 in this case is just like 0. When given this image you
+
+190
+00:22:33,640 --> 00:22:42,240
+ get a probability of 6 sorry we you get a prediction of 6 again with a very high probability,
+
+191
+00:22:42,240 --> 00:22:49,040
+ but one problem with this kind of classification model is that since it has been trained on
+
+192
+00:22:49,040 --> 00:22:58,280
+ just like 5 or 6. So, given a new data point even if that data point does not belong to
+
+193
+00:22:58,280 --> 00:23:04,240
+ any of these classes it will kind of force it to take except one class. So, in this case
+
+194
+00:23:04,240 --> 00:23:09,440
+ it has predicted it to be 5 although clearly this is not a 5.
+
+195
+00:23:09,440 --> 00:23:19,280
+ Now, how can we mitigate this problem? The problem can be easily mitigated if instead
+
+196
+00:23:19,280 --> 00:23:24,680
+ of learning a binary classifier like where we are just trying to differentiate between
+
+197
+00:23:24,680 --> 00:23:33,360
+ digit 5 and digit 6. If we learnt a multiclass 10 class classifier between 0 to 9 then in
+
+198
+00:23:33,360 --> 00:23:39,040
+ that case we would have seen enough example of 2 and in that case we could have predicted
+
+199
+00:23:39,040 --> 00:23:46,800
+ this properly because we are anyway training for that. So, so often time the binary classification
+
+200
+00:23:46,800 --> 00:23:52,080
+ is just not sufficient and depending on the problem you will have to pick multiclass classification
+
+201
+00:23:52,080 --> 00:23:56,640
+ and not restrict with binary classification, but the same knife based classification technique
+
+202
+00:23:56,640 --> 00:24:01,480
+ can work because it is again talking about just the probability it does not matter whether
+
+203
+00:24:01,480 --> 00:24:06,800
+ you are having just like 2 classes, 2 output classes or 10 output class. You are going
+
+204
+00:24:06,800 --> 00:24:12,580
+ to check which probability is higher and then only going to assign that particular output
+
+205
+00:24:12,580 --> 00:24:17,800
+ to that particular input data for whom you got the maximum probability.
+
+206
+00:24:17,800 --> 00:24:28,500
+ Let us look at another example. So, this is an example about given a weather condition
+
+207
+00:24:28,500 --> 00:24:33,400
+ whether a match is going to be played or not. You can imagine this to be let us say a cricket
+
+208
+00:24:33,400 --> 00:24:43,600
+ match. So, you know so essentially let us say you know when the outlook was sunny based
+
+209
+00:24:43,600 --> 00:25:02,280
+ on your training data, 2 times match was played and 3 times match was not played. Similarly,
+
+210
+00:25:02,280 --> 00:25:13,400
+ when there is the outlook is overcast, 4 times the match was played and none of the times
+
+211
+00:25:13,400 --> 00:25:20,320
+ the match was not played and you get all this data point based on the observations.
+
+212
+00:25:20,320 --> 00:25:29,160
+ Now, a new day comes and the new day has certain values like the outlook is sunny, the temperature
+
+213
+00:25:29,160 --> 00:25:35,960
+ is cold, humidity is high, there is wind in the ground and you will have to determine
+
+214
+00:25:35,960 --> 00:25:42,800
+ whether there any match will get played or not. So, to do that what we will have to do
+
+215
+00:25:42,800 --> 00:25:49,280
+ sorry there was a little mistake here. So, essentially here outlook is sunny and we are
+
+216
+00:25:49,280 --> 00:25:55,480
+ looking at whether the on a particular I mean how many days the outlook was sunny and how
+
+217
+00:25:55,480 --> 00:26:00,400
+ many days the outlook was not sunny. Similarly, how many days the outlook was overcast, how
+
+218
+00:26:00,400 --> 00:26:06,440
+ many days the outlook was not overcast, how many days the outlook was rainy, how many
+
+219
+00:26:06,440 --> 00:26:13,920
+ days the outlook was not rainy and correspondingly we know how many days there was a match played
+
+220
+00:26:13,920 --> 00:26:19,120
+ and how many days the match was not played. Now, based on this we can compute the probability
+
+221
+00:26:19,120 --> 00:26:29,320
+ that if it is sunny then in that case the probability of match getting played is 2 by 9, while when
+
+222
+00:26:29,320 --> 00:26:35,600
+ the outlook is not sunny in that case there is 3 by 5 probability of there being no match.
+
+223
+00:26:35,600 --> 00:26:42,640
+ So, you compute all this information and then you apply it in the actual test example. Now,
+
+224
+00:26:42,640 --> 00:26:50,800
+ in this case this was the test example. The likelihood of a match being played is so when
+
+225
+00:26:50,800 --> 00:26:58,640
+ outlook is sunny you look at 2 by 9. So, this 2 by 9 corresponds to that when the outlook
+
+226
+00:26:58,640 --> 00:27:05,120
+ when the temperature is cool. So, temperature cool is this. So, this is 3 by 9. So, you
+
+227
+00:27:05,120 --> 00:27:13,800
+ get 3 by 9. Similarly, humidity is high humidity high you get 3 by 9 again. So, you get 3 by
+
+228
+00:27:13,800 --> 00:27:23,200
+ 9 and you can do all the way up to this you get a value of 0.0053. Similarly, the likelihood
+
+229
+00:27:23,200 --> 00:27:30,800
+ of there being no match is just 3 by 5. Here if you look at this was 3 by 5 because outlook
+
+230
+00:27:30,800 --> 00:27:42,560
+ is sunny 1 by 5 temperature cool you look at cool 1 by 5 4 by 5 4 by 5 comes from here
+
+231
+00:27:42,560 --> 00:27:54,560
+ the humidity was high and so on and the value is 0.206. Now, since 0.0053 is lower than 0.0206
+
+232
+00:27:54,560 --> 00:28:01,400
+ our prediction is that given the current weather condition there is going to be no match.
+
+233
+00:28:01,400 --> 00:28:10,360
+ Now, in knife base we actually made this knife base assumption where we said that all features
+
+234
+00:28:10,360 --> 00:28:16,880
+ are independent given the class level Y. Now, the question is that does it hold for the digit
+
+235
+00:28:16,880 --> 00:28:26,040
+ recognition problem. So, in digit recognition you see that when I am writing this 5 it is
+
+236
+00:28:26,040 --> 00:28:43,760
+ often there is a correlation that if a particular. So, if a particular digit is actually turned
+
+237
+00:28:43,760 --> 00:28:49,600
+ on there is a very high probability that the digits adjacent to that will also be turned
+
+238
+00:28:49,600 --> 00:28:55,600
+ on. Now, you cannot write 5 for example, like this right like let us say one thing is turned
+
+239
+00:28:55,600 --> 00:29:03,440
+ on one thing is not turned on this will not become like a 5, but when you actually connect
+
+240
+00:29:03,440 --> 00:29:12,480
+ all these dots and then only it becomes a 5 right. So, there is a very high correlation
+
+241
+00:29:12,480 --> 00:29:18,840
+ between what a particular pixel value a particular pixel will take and the correlation is with
+
+242
+00:29:18,840 --> 00:29:27,160
+ its neighbors like it depends on the neighbors around it. If a particular value is 1 a pixel
+
+243
+00:29:27,160 --> 00:29:32,240
+ value there is a very high likelihood that the neighbor will also have a pixel value
+
+244
+00:29:32,240 --> 00:29:38,000
+ 1. Similarly, if the pixel value is 0 then there will be a very high probability that
+
+245
+00:29:38,000 --> 00:29:43,400
+ the neighboring pixel value will also be 0. So, the bottom line is that this independence
+
+246
+00:29:43,400 --> 00:29:49,620
+ assumption does not actually hold for a digit recognition problem and not only in this case
+
+247
+00:29:49,620 --> 00:29:57,120
+ in many other scenario for example, if our the class level let us say it follows a ZOR
+
+248
+00:29:57,120 --> 00:30:05,560
+ function. In this case you see that the output depends on both x 1 and x 2 you cannot you
+
+249
+00:30:05,560 --> 00:30:11,080
+ cannot just separate them out just you cannot treat them independently because otherwise
+
+250
+00:30:11,080 --> 00:30:16,080
+ like that is the property of this ZOR function right like when both are 0 the value becomes
+
+251
+00:30:16,080 --> 00:30:22,960
+ 1 when both are 1 the value becomes 1 and all of the scenario the value is not going
+
+252
+00:30:22,960 --> 00:30:31,680
+ to be 1 right. So, sorry when both are 0 the value is going to be 0. So, probability of
+
+253
+00:30:31,680 --> 00:30:39,400
+ y 0 this becomes 1. Similarly, when both are 0 the value is 1. So, the value is 0. So,
+
+254
+00:30:39,400 --> 00:30:45,640
+ probability of y is equal to 1 given x 1 x 2 will be 0. Now, this clearly is dependent
+
+255
+00:30:45,640 --> 00:30:50,640
+ on both x 1 and x 2 value and you cannot determine this independent of each other.
+
+256
+00:30:50,640 --> 00:30:56,720
+ So, the bottom line is that the knife base assumption is almost never true, but still
+
+257
+00:30:56,720 --> 00:31:02,560
+ we use them because knife base often perform significantly well even when its assumption
+
+258
+00:31:02,560 --> 00:31:08,380
+ do not hold. And as you see in machine learning a lot of things although like there are theories
+
+259
+00:31:08,380 --> 00:31:13,480
+ behind all the models how the models have been developed there is a mathematical foundation,
+
+260
+00:31:13,480 --> 00:31:17,520
+ but the end of the day it is also very application driven field.
+
+261
+00:31:17,520 --> 00:31:24,360
+ So, if in reality you see that some particular model or some approach is working very well
+
+262
+00:31:24,360 --> 00:31:29,920
+ even if like there is no solid theoretical backing of why it is working so well we still
+
+263
+00:31:29,920 --> 00:31:35,760
+ tend to take that because it is working very well. So, we do not care often about like
+
+264
+00:31:35,760 --> 00:31:40,880
+ whether there it is theoretical sound or not. So, the same thing holds for knife base knife
+
+265
+00:31:40,880 --> 00:31:47,760
+ base often works very well in practice and this is why it is often classification algorithm
+
+266
+00:31:47,760 --> 00:32:01,520
+ of choice for a lot of application. Now, one thing in case of knife base is that
+
+267
+00:32:01,520 --> 00:32:08,680
+ often time we may have to deal with multiplying a lot of small probabilities because you see
+
+268
+00:32:08,680 --> 00:32:16,040
+ that here after the independence assumption what we did was so essentially probability
+
+269
+00:32:16,040 --> 00:32:25,000
+ of x 1 all the way up to x n given y this was a multiplication of individual probability
+
+270
+00:32:25,000 --> 00:32:30,720
+ values individual conditional probability value. Now, what happens that often time these probabilities
+
+271
+00:32:30,720 --> 00:32:36,160
+ are very small and if you are multiplying over a lot of pixels. So, let us say your
+
+272
+00:32:36,160 --> 00:32:44,360
+ image has 2000 pixels. So, in that case if you just input it in any software it will
+
+273
+00:32:44,360 --> 00:32:51,640
+ be very close to 0. So, in this case like even if you think of a value to be like 0.5
+
+274
+00:32:51,640 --> 00:32:57,480
+ a particular probability value if you multiply it by 2000 times; that means, like 0.5 to
+
+275
+00:32:57,480 --> 00:33:05,960
+ 2 to the power 2000 it will be like 0 because this will be very small number which I mean
+
+276
+00:33:05,960 --> 00:33:14,440
+ in general the computational software will just treat to be 0. So, this actually this
+
+277
+00:33:14,440 --> 00:33:19,440
+ is also known as a floating point under flow that when you are multiplying lots of probabilities
+
+278
+00:33:19,440 --> 00:33:26,480
+ then it can lead to a floating point under flow and to counter that often time we use
+
+279
+00:33:26,480 --> 00:33:31,880
+ logarithm. So, instead of multiplying two values let
+
+280
+00:33:31,880 --> 00:33:39,600
+ us say x and y if we take a log of that and then it becomes log of x plus log of y. So,
+
+281
+00:33:39,600 --> 00:33:44,440
+ it is better to sum logs of probabilities than multiplying the individual probabilities
+
+282
+00:33:44,440 --> 00:33:49,280
+ because then just sum does not lead to floating point under flow.
+
+283
+00:33:49,280 --> 00:33:55,840
+ So, essentially the night base it becomes like this that instead of earlier we were looking
+
+284
+00:33:55,840 --> 00:34:02,140
+ at the multiplication of the likelihood and the prior function. In this case we are just
+
+285
+00:34:02,140 --> 00:34:09,180
+ taking the logarithm of the prior and then summing it up with the logarithm of the likelihood
+
+286
+00:34:09,180 --> 00:34:15,040
+ and then whichever is giving us the highest value we are just going to take that. So,
+
+287
+00:34:15,040 --> 00:34:22,160
+ that arg max stays, but internally the multiplication of probabilities actually gets replaced by
+
+288
+00:34:22,160 --> 00:34:31,600
+ a sum of logarithm. So, instead of just comparing directly the probabilities we compare the
+
+289
+00:34:31,600 --> 00:34:41,040
+ logarithm of the probabilities. So, to summarize we defined the base classifier, but saw that
+
+290
+00:34:41,040 --> 00:34:49,760
+ it is kind of intractable to compute a probability of x 1 till x n given y. So, we actually use
+
+291
+00:34:49,760 --> 00:34:56,440
+ the night base assumption that everything is independent given the class level y and
+
+292
+00:34:56,440 --> 00:35:03,480
+ to counter or avoid the floating point under flow we used logarithms.
+
+293
+00:35:03,480 --> 00:35:10,560
+ Now, in general night base is very easy to implement and often it works very well and
+
+294
+00:35:10,560 --> 00:35:16,760
+ it is often a very good first attempt or first classification attempt to try and then depending
+
+295
+00:35:16,760 --> 00:35:24,440
+ on the result either you take it if the performance is above a certain threshold if not then you
+
+296
+00:35:24,440 --> 00:35:30,080
+ tend to look for some other algorithms. Now, let us also look at some other algorithm
+
+297
+00:35:30,080 --> 00:35:37,400
+ beyond night base and this algorithm is called nearest neighbor classifier or often time you
+
+298
+00:35:37,400 --> 00:35:42,440
+ may have heard this abbreviation called KNN. K stands for the number of neighbors you are
+
+299
+00:35:42,440 --> 00:35:48,480
+ considering. So, KNN is called KN nearest neighbor algorithm.
+
+300
+00:35:48,480 --> 00:35:56,680
+ So, this is an example of something called an instance base classifier. So, what is an
+
+301
+00:35:56,680 --> 00:36:02,280
+ instance base classifier? So, essentially in your training data if you go back to our
+
+302
+00:36:02,280 --> 00:36:06,760
+ example of this check leaves. So, let us say a bank is collecting all the check leaves
+
+303
+00:36:06,760 --> 00:36:13,240
+ which are deposited in its system and then depending on the bank clerk or by the bank
+
+304
+00:36:13,240 --> 00:36:18,200
+ officer whoever has released the amount it can know that this check leaf this particular
+
+305
+00:36:18,200 --> 00:36:23,360
+ digits which were written there it correspond to this actual number.
+
+306
+00:36:23,360 --> 00:36:32,200
+ Now this you can think of this like the set of all stored data. In this case let us say
+
+307
+00:36:32,200 --> 00:36:38,720
+ the attributes you can think of the pixel values and the class is like 5, 6, 7, 8 like
+
+308
+00:36:38,720 --> 00:36:48,720
+ the way we have written. Now some new check leaf comes, some new customer has written
+
+309
+00:36:48,720 --> 00:36:55,160
+ an amount and we will have to determine what is this amount. So, one option is that you
+
+310
+00:36:55,160 --> 00:37:01,000
+ actually look at the training record and training record is going to tell you what is the level
+
+311
+00:37:01,000 --> 00:37:08,800
+ of the unseen the new test example. So, one very crude or naive algorithm would
+
+312
+00:37:08,800 --> 00:37:16,800
+ be a Rotlerner which memorizes the entire training data and if a particular handwritten
+
+313
+00:37:16,800 --> 00:37:23,320
+ like a particular check leaf for example is very similar to one other check leaf which
+
+314
+00:37:23,320 --> 00:37:28,840
+ is there in the system or it may so happen that the same customer has come again who
+
+315
+00:37:28,840 --> 00:37:35,360
+ has deposited another check leaf let us say one month prior. So, you can just match this
+
+316
+00:37:35,360 --> 00:37:40,560
+ and can figure out that the person is again trying to withdraw let us say 5000 rupees.
+
+317
+00:37:40,560 --> 00:37:45,680
+ So that will be a learner which is called a Rotlerner because it memorizes the entire
+
+318
+00:37:45,680 --> 00:37:51,160
+ training data and performs classification only if the attributes of the record in this
+
+319
+00:37:51,160 --> 00:37:58,040
+ case the pixel values of the record match one of the training data points completely.
+
+320
+00:37:58,040 --> 00:38:04,080
+ Now nearest neighbor approach actually takes one step beyond this. So, it says that it
+
+321
+00:38:04,080 --> 00:38:11,160
+ is impractical to assume that whenever I am looking at a check leaf though exactly same
+
+322
+00:38:11,160 --> 00:38:17,440
+ check leaf is present in the system may be from a different record earlier. Now it can
+
+323
+00:38:17,440 --> 00:38:22,840
+ happen but there is no guarantee that it will happen. So, instead of relying on that let
+
+324
+00:38:22,840 --> 00:38:29,280
+ us actually look at the k closest points. So, given a new check leaf rather than finding
+
+325
+00:38:29,280 --> 00:38:36,920
+ the exact match for this check leaf in our system let us try to take 5 closest check
+
+326
+00:38:36,920 --> 00:38:41,560
+ leaves which were deposited in the system earlier and based on that we are going to
+
+327
+00:38:41,560 --> 00:38:45,960
+ predict what is going to be the value of the new check leaf or what is the amount which
+
+328
+00:38:45,960 --> 00:38:54,080
+ is written on the new check leaf. So, like in a funny way the basic idea of
+
+329
+00:38:54,080 --> 00:39:01,880
+ nearest neighbor classifier is that if a particular text example works like a duck looks like
+
+330
+00:39:01,880 --> 00:39:07,520
+ a duck coax like a duck then it is probably a duck. Now in reality it may not be a duck
+
+331
+00:39:07,520 --> 00:39:14,960
+ for example here like you see this can simply be a toy mimicking a duck, but these are the
+
+332
+00:39:14,960 --> 00:39:22,560
+ examples where they are like actual ducks. But anyway I mean since it looks like a duck
+
+333
+00:39:22,560 --> 00:39:29,760
+ we will call it a duck. So, this is the whole idea of k nearest neighbor that we try to look
+
+334
+00:39:29,760 --> 00:39:36,800
+ at the k nearest records and then depending on the k nearest records we are going to predict
+
+335
+00:39:36,800 --> 00:39:45,760
+ the level of the test example. Here is one other example that let us say
+
+336
+00:39:45,760 --> 00:39:51,400
+ these are all the stored records and these are the labels which are there in the stored
+
+337
+00:39:51,400 --> 00:39:58,760
+ record. Now a new example comes I look at which other examples are similar to this example
+
+338
+00:39:58,760 --> 00:40:03,640
+ now in this case let us say I am looking at a neighborhood of this and in this neighborhood
+
+339
+00:40:03,640 --> 00:40:10,400
+ all other examples are plus. So, in that case we simply assign the class level plus to this
+
+340
+00:40:10,400 --> 00:40:16,440
+ unknown record. Now for this two work you require three things first we need the set
+
+341
+00:40:16,440 --> 00:40:23,720
+ of stored records then we talked about this nearest examples. So, to compute which point
+
+342
+00:40:23,720 --> 00:40:30,080
+ is nearest to which other point we will have to have a distance metric and based on the
+
+343
+00:40:30,080 --> 00:40:34,520
+ distance metric we are going to compute the neighbors.
+
+344
+00:40:34,520 --> 00:40:39,480
+ And then we also need the value of k that is the number of nearest neighbors we need
+
+345
+00:40:39,480 --> 00:40:50,840
+ to retrieve the value of a particular test example. Now when an unknown record comes
+
+346
+00:40:50,840 --> 00:40:56,840
+ as soon as we compute as soon as an unknown record comes we compute the distance to other
+
+347
+00:40:56,840 --> 00:41:06,600
+ training records we identify which are the k nearest neighbors and then we use the class
+
+348
+00:41:06,600 --> 00:41:16,080
+ levels of the nearest neighbors to determine the class level of the unknown record. So,
+
+349
+00:41:16,080 --> 00:41:24,480
+ depending on the value of k the neighborhood size kind of changes. So, for example in the
+
+350
+00:41:24,480 --> 00:41:30,400
+ leftmost picture you see this is called the one nearest neighbor because here we are just
+
+351
+00:41:30,400 --> 00:41:38,560
+ determining or trying to identify the closest data point to the unseen record.
+
+352
+00:41:38,560 --> 00:41:44,520
+ And essentially here we are just going to look at one neighbor and look at the predicted
+
+353
+00:41:44,520 --> 00:41:52,680
+ or look at the output of that one neighbor and then I predict the output of the new record
+
+354
+00:41:52,680 --> 00:41:59,240
+ to be the same as the nearest neighbor which I have identified. Similarly, when we look
+
+355
+00:41:59,240 --> 00:42:03,560
+ at the two nearest neighbor there are two values and we will have to pick one of the
+
+356
+00:42:03,560 --> 00:42:08,280
+ values. Similarly, for three nearest neighbor, four nearest neighbor, five nearest neighbor
+
+357
+00:42:08,280 --> 00:42:16,000
+ with increasing k two things are happening our neighborhood size is increasing and at
+
+358
+00:42:16,000 --> 00:42:21,480
+ the same time we also need to deal with scenarios where all the neighbors may not have the same
+
+359
+00:42:21,480 --> 00:42:30,360
+ level. So, often time we pick one the value of k such that it is an odd value. So, that
+
+360
+00:42:30,360 --> 00:42:39,200
+ if you take a vote let us say you look at all the levels of its neighbors you pick the
+
+361
+00:42:39,200 --> 00:42:44,560
+ one which has got the maximum level. So, since the number of neighbors you are considering
+
+362
+00:42:44,560 --> 00:42:53,180
+ odd is odd. So, essentially we will have one winner. Now, here are several examples of
+
+363
+00:42:53,180 --> 00:43:01,920
+ neighbor classification algorithm like the distance which are used to compute the neighbors.
+
+364
+00:43:01,920 --> 00:43:08,920
+ One is Euclidean distance another is Manhattan distance and there is a generalized form
+
+365
+00:43:08,920 --> 00:43:16,120
+ called q non distance and they all follow the same approach. So, let us say this is
+
+366
+00:43:16,120 --> 00:43:24,240
+ a two dimensional space and what does two dimensional space means that you are essentially
+
+367
+00:43:24,240 --> 00:43:30,160
+ dealing with two features like your data point actually has two features. So, let us say
+
+368
+00:43:30,160 --> 00:43:38,720
+ features x 1 feature x 2 and this data point let us say you call as p and this data point
+
+369
+00:43:38,720 --> 00:43:44,360
+ you call as q. So, essentially if you have just like two features your i is equal to
+
+370
+00:43:44,360 --> 00:43:52,200
+ 1 to 2 in this case is x 1 and x 2. So, you look at the value of p for axis x 2 the value
+
+371
+00:43:52,200 --> 00:44:00,400
+ of q over the axis x 2 take the difference make a square of it and then sum it with the
+
+372
+00:44:00,400 --> 00:44:08,440
+ difference between the value of p on x 2 x 1 the value of q on x 1 take the difference
+
+373
+00:44:08,440 --> 00:44:16,640
+ and then you square it and just add it up. In case of Manhattan distance instead of taking
+
+374
+00:44:16,640 --> 00:44:20,960
+ the square and adding it up you just add up the absolute difference.
+
+375
+00:44:20,960 --> 00:44:29,520
+ Again in case of q non you go beyond 2 and you can even take let us say a cubic distance
+
+376
+00:44:29,520 --> 00:44:37,160
+ and then equivalently you will have to take 1 by q th root of or q th root of that particular
+
+377
+00:44:37,160 --> 00:44:52,000
+ sum. And as I mentioned the determining the class level from the nearest neighbor list
+
+378
+00:44:52,000 --> 00:44:58,920
+ is often very easy that if you select k a to be an odd number that essentially you can
+
+379
+00:44:58,920 --> 00:45:04,480
+ take the majority vote and pick the class level which is present in the majority of
+
+380
+00:45:04,480 --> 00:45:11,160
+ instances. Now you can have a little bit more complicated voting method where you can think
+
+381
+00:45:11,160 --> 00:45:16,160
+ of this as an weighted voting that instead of so let us say if my test data point is
+
+382
+00:45:16,160 --> 00:45:23,800
+ this and my neighborhood consist of let us say crosses and ticks.
+
+383
+00:45:23,800 --> 00:45:31,480
+ So, in a in case of majority voting in this case you simply see that my neighborhood let
+
+384
+00:45:31,480 --> 00:45:47,960
+ us just take k is equal to 5 let us say here there is another sorry so this is a cross.
+
+385
+00:45:47,960 --> 00:46:00,040
+ So, let us say there is another cross here, but if you are looking at a simple majority
+
+386
+00:46:00,040 --> 00:46:06,000
+ vote then you have 3 ticks and 2 crosses. So, in that case you will predict the output
+
+387
+00:46:06,000 --> 00:46:15,040
+ to be output will be a tick right for this new data point. However, if you actually look
+
+388
+00:46:15,040 --> 00:46:23,120
+ at the distance maybe this crosses are closer to it than the ticks. So, in case of weighted
+
+389
+00:46:23,120 --> 00:46:28,600
+ voting you actually weigh the vote according to the distance. So, essentially your weighing
+
+390
+00:46:28,600 --> 00:46:40,520
+ factor is 1 by distance square. So, if a particular point is much it is further away from the
+
+391
+00:46:40,520 --> 00:46:46,640
+ test data then the corresponding class level has a lower impact compared to another data
+
+392
+00:46:46,640 --> 00:46:59,080
+ point where it is much closer to the test data point. So, this is essentially the KNN
+
+393
+00:46:59,080 --> 00:47:04,040
+ classification algorithm. If you know the K that is the number of nearest neighbors we
+
+394
+00:47:04,040 --> 00:47:11,240
+ are considering and let us take D to be the set of training example for every test example
+
+395
+00:47:11,240 --> 00:47:20,560
+ Z. We are going to compute the distance between the feature set X prime for the test example,
+
+396
+00:47:20,560 --> 00:47:29,920
+ the feature set X for the training example and likewise you compute this for every pair
+
+397
+00:47:29,920 --> 00:47:36,960
+ of point. So, essentially for every new test data point you compute the distance with all
+
+398
+00:47:36,960 --> 00:47:45,240
+ the existing training data point and then you select the K closest neighbor once you
+
+399
+00:47:45,240 --> 00:47:50,720
+ select that if your selection is based on a majority voting you just look at like which
+
+400
+00:47:50,720 --> 00:47:57,520
+ particular output level is more prominent or more frequent in the neighborhood set and
+
+401
+00:47:57,520 --> 00:48:06,000
+ you just simply assign that output to the to the I mean you just simply take that level
+
+402
+00:48:06,000 --> 00:48:13,240
+ to be your output level. Again, here there is a real world example this
+
+403
+00:48:13,240 --> 00:48:20,280
+ is for like loan. So, see that there are multiple data points let us say and here we are plotting
+
+404
+00:48:20,280 --> 00:48:28,880
+ age as the X axis and the loan amount as the Y axis and as you see that with increasing
+
+405
+00:48:28,880 --> 00:48:38,000
+ age and increasing loan amount there are a lot of default. So, and there are non-default
+
+406
+00:48:38,000 --> 00:48:45,360
+ when the age is lower or the loan amount is lower. Now, a new data point comes so we actually
+
+407
+00:48:45,360 --> 00:48:52,800
+ look at the neighbors the nearest neighbors and see what kind of labels they have. Now,
+
+408
+00:48:52,800 --> 00:48:58,840
+ in this case if your algorithm is just majority voting it will lead to a deadlock because here
+
+409
+00:48:58,840 --> 00:49:06,280
+ there is no solution, but if your result is based on weighted voting then you look at
+
+410
+00:49:06,280 --> 00:49:14,440
+ whether this particular person has age or loan amount which is closer to the default
+
+411
+00:49:14,440 --> 00:49:21,720
+ ones or the non-default ones. And depending on that the classifier will predict whether
+
+412
+00:49:21,720 --> 00:49:31,640
+ this person is going to default or not. Now, again like as we said that if K is too small
+
+413
+00:49:31,640 --> 00:49:38,560
+ then it will be like very noisy and it will be prone to a sensitive to noise points.
+
+414
+00:49:38,560 --> 00:49:44,640
+ On the other hand if K is very large then you the neighborhood may actually cover almost
+
+415
+00:49:44,640 --> 00:49:51,560
+ all the data points. So, in that case it will not be like very useful. So, how to choose
+
+416
+00:49:51,560 --> 00:49:58,960
+ the value of K? Now, not only this particular scenario in a lot of other scenarios, often
+
+417
+00:49:58,960 --> 00:50:06,520
+ time we have to pick some value of some parameters which we also call as hyper parameters. For
+
+418
+00:50:06,520 --> 00:50:12,720
+ example, K is an hyper parameter in case of K nearest neighbor or for example, the kind
+
+419
+00:50:12,720 --> 00:50:18,480
+ of distance function we are using the choice of the distance to use this is also another
+
+420
+00:50:18,480 --> 00:50:24,680
+ choice which we will have to make. Now, in general whenever we have to choose hyper parameter
+
+421
+00:50:24,680 --> 00:50:31,760
+ values, we choose the one which likely to give the best performance on the test data.
+
+422
+00:50:31,760 --> 00:50:39,320
+ Now, in reality you do not know the test data, you are just given the training data. So,
+
+423
+00:50:39,320 --> 00:50:43,800
+ you are just using the training data to train your model and test data will come only in
+
+424
+00:50:43,800 --> 00:50:49,760
+ the real world like when you are having to deploy your model to work in the real world.
+
+425
+00:50:49,760 --> 00:50:57,740
+ So, there is no way while you are developing the model you know the test. So, there is
+
+426
+00:50:57,740 --> 00:51:04,320
+ a process by which we do this and this is called cross validation. So, let us just assume
+
+427
+00:51:04,320 --> 00:51:08,560
+ that we are talking about binary classification just between like class 1 and class 2. In
+
+428
+00:51:08,560 --> 00:51:15,400
+ this case let us say it is green or red. So, your test data is something like this like
+
+429
+00:51:15,400 --> 00:51:20,880
+ where you have both values of class 1, both values of class 2. So, this is your training
+
+430
+00:51:20,880 --> 00:51:27,020
+ data. Now, in test data these labels are something which you do not know like whether
+
+431
+00:51:27,020 --> 00:51:33,280
+ a test data is actually green or actually red and there is no picking. So, that means
+
+432
+00:51:33,280 --> 00:51:38,640
+ that you when you are building the model you cannot really look at the test data and then
+
+433
+00:51:38,640 --> 00:51:43,280
+ decide oh this is working fine for the test data and we should try that.
+
+434
+00:51:43,280 --> 00:51:50,120
+ So, to avoid that we actually do one thing, we take the training data, we divide the training
+
+435
+00:51:50,120 --> 00:51:57,360
+ data into two parts. In one we actually take that as an actual training set, the other
+
+436
+00:51:57,360 --> 00:52:03,320
+ data part we keep it separate we call them as validation set. So, this validation set
+
+437
+00:52:03,320 --> 00:52:11,440
+ is very important because this actually helps us, this helps us determine what is the ideal
+
+438
+00:52:11,440 --> 00:52:20,440
+ parameter value for a particular hyper parameter. So, what we do is we randomly split the original
+
+439
+00:52:20,440 --> 00:52:26,680
+ data into actual training data set and validation set. We by using the actual training set we
+
+440
+00:52:26,680 --> 00:52:31,760
+ train several times each time with a different value of the hyper parameter and then we pick
+
+441
+00:52:31,760 --> 00:52:36,040
+ the hyper parameter value that gives the best accuracy on the validation set.
+
+442
+00:52:36,040 --> 00:52:43,120
+ So, validation set in some sense kind of acts as a proxy of the test set where we do not
+
+443
+00:52:43,120 --> 00:52:48,880
+ look at the final test set, but we look at the validation set to validate our choice
+
+444
+00:52:48,880 --> 00:53:02,120
+ of hyper parameter. So, just to summarize, so to summarize essentially KNN classifiers
+
+445
+00:53:02,120 --> 00:53:08,080
+ are also called lazy learners because they do not build a model upfront, but rather on
+
+446
+00:53:08,080 --> 00:53:15,400
+ the test time they try to pick up or try to look at which are the data points which are
+
+447
+00:53:15,400 --> 00:53:21,000
+ closer to the current test data point and based on that closer neighborhood selection
+
+448
+00:53:21,000 --> 00:53:28,760
+ we tend to apply a particular level which is majority over the neighborhood set.
+
+449
+00:53:28,760 --> 00:53:35,220
+ Now this is different from learners which we call as eager learners such as decision
+
+450
+00:53:35,220 --> 00:53:44,240
+ tree or rule based system where the rules are built explicitly. So, in if you compare
+
+451
+00:53:44,240 --> 00:53:49,240
+ a model which has already been trained and then based on that you are making a decision
+
+452
+00:53:49,240 --> 00:53:56,440
+ versus a system like KN nearest neighbor where a test time a lot of compute needs to happen.
+
+453
+00:53:56,440 --> 00:54:06,580
+ Oftentimes KNN is much more expensive to classify unknown records. So, with this let us take
+
+454
+00:54:06,580 --> 00:54:15,840
+ a small break and then let us come back here with let us continue our discussion on supervised
+
+455
+00:54:15,840 --> 00:54:20,760
+ learning, but we will take up a new classifier model which is called support vector machine
+
+456
+00:54:20,760 --> 00:54:35,340
+ or SVM. So, see you soon.
+

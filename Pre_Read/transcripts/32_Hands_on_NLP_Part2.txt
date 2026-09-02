@@ -1,0 +1,465 @@
+ So, let us start the next portion, so please get ready, now in this segment we shall discuss
+ about the Topic Modeling Document Clustering, which is a very good example for using the
+ Jensen Library and the Latin Dirichlet Allocation.
+ So, what does it mean by Topic Modeling, so it is all about identifying the underlying
+ themes or topics within a collection of documents and whereas the document clustering is nothing
+ but the grouping of the documents, which is sharing the similar type of the themes of
+ the concepts as simple as that, so I repeat Topic Modeling is all about identifying the
+ underlying thing or the topic within a collection of documents, whereas the document clustering
+ is basically focusing on the grouping of the documents that share a similar context or
+ the themes.
+ Then what does it imply by the Latin Dirichlet Allocation or LDA, so it is basically a generative
+ statistical model, which we use for discovering the topics, which is a collection of the documents
+ and it assumes the documents are mixture of the topics, which is distributed over the
+ words.
+ Now, if we see the steps, which we are following here, first of all the pre-processing step
+ all of you know, under the pre-processing, what does we do, lower casing, tokenization,
+ removal of the stop parts, all those things will be performed and then dictionary and
+ the document term matrix, so it is created using the Gensim for covering the text data
+ into its numerical form and then LDA model, so a Latin Dirichlet Allocation, which is
+ trained with two topics and then finally the document clustering, so document clustering
+ with document similarity, is demonstrated using the cosine similarity between two documents,
+ so it will measure the cosine similarity.
+ So, let us start of the implementation one by one part, so all of you have this demo
+ NLP window, so let me just explain the part one by one and then all of you will execute
+ that answer and then we will at the end we will discuss about the outputs, which you
+ will see, topic discovered by LDA as well as the document similarity, how the document
+ similarity we are measuring or what are the concepts underlying it, that we will cover
+ up, so let us, before going the coding part, just a few concepts, which I want to discuss,
+ so already I have mentioned about the topic modeling, that we have discussed here at the
+ beginning LDA, fine, we have discussed of the Latin Dirichlet Allocation, we have discussed
+ of we have spoken about the document clustering and here in the notebook I am just showing
+ you the locations where you can go back and check the concepts while executing the code.
+ Here we will talk about the cosine similarity, now cosine similarity is a measure of how
+ similar to documents are based on the angle between their vector representation in a multi
+ dimensional space, which ranges between minus 1 to 1, so where plus 1 indicates the documents
+ that are identical in terms of their direction completely similar, 0 means the documents
+ are completely different, there is no similarity and the minus 1 that is suggesting the documents
+ are opposite meaning, so in cosine similarity there will be two document vectors and we
+ are trying to measure the angle representations in multi dimensional space, so their value
+ will range from minus 1 to plus 1, 0 from our commonsense you can understand they are
+ completely different, there is no similarity at all, minus 1 will suggest the documents
+ are completely opposite in terms of the meaning, plus 1 means they are identical, completely
+ similar, so as you can understand plus 1, if the plus 1 is completely similar, the more
+ we will go towards 1, the higher will be the document similarity, the more we will go towards
+ the 0, there will be very lesser similarity and at the 0 there will be no similarity, similarly
+ the more we will go closer to minus 1, the meanings will be opposite to each other and
+ at minus 1 exactly opposite meaning, so these are the part which we are going to cover up.
+ So, we have seen what is LDA, Latin Dirichlet allocation, we have seen document similarity,
+ we have spoken about the topic modeling and we also have seen the concept of the cosine
+ similarity, so these are the concepts now quite clear to you.
+ Now let us execute the coding part one by one, so first of all remember this is a very
+ important step, all of you those who are doing it, listen very carefully, go to run time,
+ click on the restart session, this click on the restart session, I will wait for a minute,
+ so those who are, I hope all of you are now ready, those who have come back from the break
+ now ready, those who are starting the session before implementing pip install Gensim, please
+ click on the restart session, either through control plus m or go to run time and then
+ click on the restart session, once you are done then you start executing one by one,
+ so pip install Gensim and then import the Gensim library which is a very much popular python
+ library is very much important for operations like topic modeling, cosine similarity calculations,
+ then from Gensim module, from Gensim import the corpora module for the smoother implementation
+ purpose, where you will get the lot of corpus informations and then from Gensim.models you
+ shall import the LDA model, so it will import the LDA class which will be very much used
+ for the calculations of the LDA related stuff, then we will take from nltk.corpus, we shall
+ import the stopwatch, so you will get all the stopwatch corpus which is present under the
+ nltk libraries or the tool, then what you will do, from nltk.tokenize, you will import
+ the word underscore tokenize, so you will get all the word underscore tokenize function
+ and from the nltk.
+ And then finally import nltk, so it will import the nltk library to access the other utilities
+ including the stopwatch, tokenization, lemmatization, all operations which you actually we do under
+ this and then from nltk.download, we shall download the punk tab, it will give the additional
+ support for the smoother execution of all those libraries.
+ And then download nltk.stopwatch, nltk.download we shall download all the punk tokenizer model
+ which are necessary for the tokenization operations and other relevant stuffs, then nltk.download
+ we shall download the stopwatch list which are very common words in English dictionary,
+ so that will be downloaded.
+ Then we shall take this sample, sample documents, so in the sample documents there are few words
+ sorry few sentences which we will take, so first sentence like for example artificial
+ intelligence is transforming the technology industry.
+ Second sentence what we are taking, machine learning and AI are shaping the future of
+ automation.
+ Third sentence, deep learning algorithms are a subset of machine learning.
+ Then fourth sentence, one term computing will revolutionize industries like AI and the fifth
+ one is healthcare is benefiting from AI and machine learning advances.
+ So these sentences we are keeping as the sample documents.
+ And then what we will do, we will pre-process the documents, so depth pre-process function
+ we are applying over doc and then stopwatch.words we shall apply over English and we will store
+ it under stopwatch and then what underscore tokenize doc.lower, so each of the document
+ basically we will convert them as already we have convert them in the lower case and
+ then we will basically tokenize them and we shall run basically word for word in tokens
+ if word.isalpha and not in stopwatch, that means those one are not in stopwatch that
+ will be return back as per our standard practice which we have just implemented during the
+ first chunk of the code which we implemented in the cell.
+ Then what we will do, we will apply the pre-process function over doc for doc in documents and
+ we will store under the pre-process docs and then what we will do, we will create a dictionary
+ and the document term matrix.
+ So what will happen in that case, so corpora.dictionary pre-process docs, we will apply the corpora.dictionary
+ function over pre-process docs and we will store it under the dictionary and dictionary
+ doc to doc to doc for doc in pre-process docs, we will store it under the doc term matrix.
+ So once this is done, then what we will do, we will train the LDA model.
+ So here during training the LDA model, we have to specify two topics.
+ So that is why LDA model function here doc term matrix will be the first function, number
+ of topics we shall keep as 2, id2 word will be dictionary and passes will be 15, that
+ means 15 iterations, the more we will give the iterations, it will give you the better
+ results.
+ Then print the topics with the associate words, print topics discovered by LDA, topics LDA
+ underscore model dot print topics, number of the words which are basically 5 top words
+ for each discover topic which we are going to print.
+ So for topic in topics, print topic, so it will iterate over the topics and print them
+ out one by one.
+ Then document similarity, so under the document similarity what we will do, dictionary doc
+ to doc we shall pre-process.
+ So two sentences here we will basically document take because already I have mentioned that
+ for the LDA cases we are taking two.
+ So for the quotient similarity, we will basically measure the similarity between two documents.
+ So that is why we are taking two.
+ So two documents, so one will be the basically whenever you will see the id as 0 for example,
+ like here if you see, one will be the topic id 0 and another will be the topic id 1.
+ Python is a zero indexing language.
+ So we will for these two documents which we will measure the quotient similarity, one
+ will be assigned as topic id 0, other will be assigned as topic id 1.
+ So now under this dictionary doc to doc pre-process, AI and machine learning are advancing rapidly,
+ doc to doc, dictionary doc to doc pre-process healthcare is benefiting from AI advances.
+ Then what we will do we will calculate the similarity with the help of the GenSIM, matutilis.cosim
+ where doc 1 bow and doc 2 bow will be taken and then this particular result has been stored
+ under similarity.
+ So we will finally print the result, document similarity, cosine similarity.
+ So in this way you will see these two outputs you will get, topic discovered by LDA and
+ then document similarity that means the cosine similarity with certain value.
+ We will interpret basically we will have to understand the interpretation of those results
+ that we will do, but first we implement this coding part, it is now 12.36, please complete
+ this step by 12.39 and while doing it remember this run, run time, go to run time, click
+ on the restart session first and then start it.
+ So by 12.39 please finish it up, 3 minutes will be grown up for implementing this part.
+ Thank you.
+ So hope all of you are doing it, I repeat for this particular segment before implementing
+ keep install GenSIM, click on restart session and then execute the entire part.
+ So just for the sake of understanding I am just telling you, these are the example cases
+ very important, they take similarity measurement, there are a lot of practical implementation.
+ Let me tell you for example I am not taking any name of the university, there are different
+ universities.
+ Nowadays for example those who have lot of affiliating colleges and it is a very much
+ time consuming task for the faculties to check the answer script.
+ So what they are doing, they are gradually implementing this type of the software and
+ few of them are quite active.
+ So what is happening for each of the questions, question paper faculties are setting up.
+ So there will be a sample text answer, so they are giving the sample text answer and
+ on the basis of the sample text answer what students are writing based on the text similarity
+ they are giving the software is giving them the mark.
+ So it is called the automatic evaluation of the answer script.
+ So that is what is happening in that case, it is actually removing the human errors during
+ the copy checking and most importantly timely delivery of the results which are very much
+ important that is also being implemented smoothly.
+ So faculties are setting up the question papers, they are giving a sample answer to each of
+ the questions and based on those sample answers the entire answer script is being evaluated
+ with the help of the software.
+ So these are the standard practice, it has a lot of practical implementations as well.
+ So there are many practical implementation of the NLP which we are to the topics which
+ are covering today.
+ Although I have explained in the entire thing, I tried to explain with the entire thing with
+ a lucid coding examples and simple examples but it has a lot of applications.
+ So today's topic is very much vital topic, those who are especially those who are implemented
+ in NLP and I have given you one interesting example related to the automatic evaluation
+ of the answers scripts and same thing similar type of the implementation also being made
+ during the checking of the plagiarisms.
+ For example if a certain research paper is present in online and some student or some
+ other researchers, if they dishonestly try to copy those concepts in their manuscript
+ that would be detected with the help of the certain plagiarism detector software.
+ So this is also being implemented here as well.
+ So remember that that is why I am telling these are the very important important part
+ of the execution of the NLP.
+ Even for example, people like me those who work in the AI application areas, for example
+ I apply in healthcare, just for example I am saying that I am applying in healthcare.
+ So you also use a lot of applications of NLP like for example the explanation generation.
+ So here they are also used in different line chain models that we learn gradually during
+ the upcoming sessions.
+ So for example if certain disease symptom is detected, for example we are doing certain
+ image analysis computer efficient related planning staff applications.
+ So we are doing image analysis and we have predicted one category of diseases and with
+ the help of the line chain model we are generating the corresponding explanation related to that
+ particular disease symptom.
+ If this is the particular grade of this disease then this precautions can be taken.
+ So this is as a holistically way it makes a very much lucid representation for the patients
+ with the help of the AI assistant that for this category of the diseases we have to take
+ this type of the precautions.
+ So these are the interesting implementations where AI can become the intelligent personal
+ assistant in the healthcare scenario as well.
+ So there are a lot of interesting applications in upcoming days.
+ The more you will go to the advanced level the more you will learn.
+ So anyway I believe it is now 1241 all of you have been able to implement this particular
+ part successfully.
+ So I am going back to the interpretation discussion.
+ So here basically here we will see some of the interesting cases topic ID 0 and topic
+ ID 1 because we have compared between two topic IDs.
+ So here as you can see in the output for example topic ID 0 left hand 0 implements the topic
+ ID 0.
+ So 0.112 into AI this is the weight associated with AI 0.065, 0.065, 0.065 and 0.065 which
+ is the weight associated with the topics like industries, quantum computing revolutionized.
+ So industries, quantum computing revolutionized they all these four cases it has received
+ the equal weights but highest weight which is associated with AI that is 0.112.
+ So in topic ID 0 we have seen that the highest weight the particular word AI has got the
+ highest weight, it has got the highest weight whereas 0.065, 0.065, 0.065 other topics for
+ industry, quantum computing revolutionized they have got the equal weight.
+ These are the words which has got the equal weight whereas AI the word got the highest
+ weight in a similar way if we see the topic ID 1 learning has the highest weight 0.129
+ whereas the other words like machine it has the associated with 0.092 but a subset 0.053
+ and also for the deep end algorithm they have the equal weights 0.053, 0.053 in this way.
+ So, the learning has got the highest weight, so in the topic ID 1 learning is the most
+ important word whereas in topic ID 0 AI is the most important word are you getting my
+ point so here the words associated with the highest word is the most important word in
+ the topic ID 0 where it is AI and in the second one it is learning.
+ In the second word you may say machine is the second most important topic as the associated
+ weight is the 0.092 whereas the subset deep end algorithm they have received the equal
+ weight 0.053, 0.053 and 0.053 in this way anyway so this is the part which we have discussed
+ now and the next part will be the document similarity so 0.288 if I say approximation
+ 0.289 very much lesser similarity as we have learnt from the definitions of the cosine
+ similarity before execution of the code.
+ So cosine similarity if we see the score of the 0.289 approximately indicating the moderate
+ to low level of the similarity between these two documents.
+ This means the documents share some overlap in terms of the words or contents although
+ there are some overlap but they are actually completely different better to say technically
+ they are more different than similar.
+ So 0.289 implies the two topic ID which we have taken topic ID 0 and 1 they are more
+ different than the similar.
+ So this is what we are interpreting from the code this is what computer will interpret
+ from the code ok and from our basic sense from the visual understanding if we go back
+ and check can we can you check can you see AI and machine learning are advancing rapidly
+ healthcare is benefiting from AI advances from our view now we are interpreting from
+ our visual sense apart from the AI topic there is no similarity in the sentence.
+ So that is why there is a very lesser amount of the similarity that is 0.289 that is why
+ I mentioned that although a small portion are overlapping but they are mostly different
+ than the similar and that is why we got the result of the cosine similarity 0.289.
+ So as you can see it is clearly matching what we have given as the input your interpretation
+ output is beautifully matching with it ok fine.
+ I hope now it is quite understandable to all of you and you can see how AI is behaving
+ in a trust of the manner and giving away trust of the result.
+ So that is why this topic especially which we have covered so far all those topics are
+ very important and implementation angle this document clustering is very very important
+ topic modeling is very very important ok. So if I go back at the beginning where I have
+ mentioned that these 4 libraries which are very very important for NLP and gel we have
+ covered all those things we had covered NLTK at the beginning then we have spoken about
+ this Passy we have spoken about the text block and now we have spoken about NLC ok.
+ I think now it is clear to all of you ok. Now we shall implement we shall go for the
+ applications of the NLP we will see how NLP can be applied in the leadership angle.
+ So I am requesting our moderator to reshare this notebook link to all of you. This also
+ can be accessible from the demo 3 of the snippet.io but as I am not sharing it publicly because
+ it might happen that during the copy pasting you might change the course so that is why
+ it is not being shared rather you directly access it from the AI in leadership for the
+ research and making NLP applications ok.
+ And from my notebook also it is available but let me check actually in morning I found
+ that somehow it is not opening up. It is not opening up from my give somehow some problem
+ has happened I will check ok. So that is why those who are in my Github do not open the
+ AI leadership notebook ok because it is somehow not opening today. Some problem has happened
+ I will check ok. I will check and work upon it ok. So it was working yesterday night also
+ but today it is not working I will check it ok.
+ So that is why I have shared the notebook link with my moderator. This particular notebook
+ link you just implement one by one. So here we will see one of the very beautiful applications
+ ok of the AI in leadership decision making applications with the help of the NLP. Remember
+ I repeat and I request all of you that follow this one from the notebook do not go into
+ the repository of the AI in leadership ok. In Github it is not working I will check what
+ has happened and I have resolved it but the same code which is present in the Github I
+ have shared through this notebook ok. So just execute one by one just follow my instruction
+ and execute one by one ok.
+ So in this examples we will see that how we can use the python and hugging face transformers
+ ok for analyzing the sentiment of certain feedback comments and which can help the leadership
+ boards to make the decisions ok. So now step one first install the required libraries. So
+ here we shall pip install transformers. So transform module developed by hugging face
+ is a very much powerful library then what you do pip install torch ok. It is a core model
+ of the component of the python library which is widely used and then also the pip install
+ pandas. Pandas are very much powerful and versatile library for the data analysis and manipulation
+ purpose ok. So I repeat pip install transformer which is the transform module developed by
+ hugging face a powerful library then pip install torch ok which is torch module a very core
+ component of the python library and then pip install pandas which is a very much powerful
+ model and versatile library for the data analysis and data manipulation ok. So execute this
+ particular step of installing the required libraries then we shall move to the next step.
+ So it is now 1251 please finish this step by 1252 then we shall move ahead for the next
+ part portion of the discussion.
+ Thank you.
+. I shall not repeat this. I shall not repeat this. I shall not repeat this. I shall
+ not for few more seconds and then move to the next step make sure that all of you are finishing
+ up. Well, so let us move to the next step. The next step what we shall do? We shall load
+ the pretend model now. So this pre loading of the pretend model sentiment analysis basically
+ which will do from the hugging face. So this pretend model will be loaded from the hugging
+ face. So from transformer import pipeline. So a pipeline is nothing but a hugging from
+ hugging face transformer ok. Then we shall load the pretend sentiment analysis pipeline.
+ So what we will do? Under the pipeline function we will take the sentiment analysis and we
+ will assign it as the sentiment analysis ok. So please complete this step of the second
+ part loading of the pretend model in the step 2. So it is now 1254 please finish this step
+ by 1255. So this is the second part loading of the pretend model. So this is the second,
+ this is the second part loading of the pretend model ok. So this is the second part loading
+ of the pretend model ok. So this is the second part loading of the pretend model ok. So
+ for few more seconds and then move to the next part please complete the loading of the
+ the p-tent models.
+ Now let us move to the next part, that is preparing the feedback data. So create a sample
+ data set of feedback comments. Now what we shall do here, we shall import the Pandas
+ SPD. Now you may remember during your Python classes, Mr. Behrer might have discussed with
+ you that to format dictionary value. So in Python dictionary value means key value pair.
+ So here you can see we have exactly from make a dictionary format. Data equals to you see
+ opening curly brace, then closing curly brace. Under that we have given some key value pairs.
+ Like employee is the key and their corresponding value. There are four values which we have
+ given, Amurto, Sangita, Faiz and Khudiram. These four names have been given there. Again
+ feedback and their corresponding value. So key value pair, we are forming in a dictionary
+ format in Python programming execution purpose. So here you see feedback colon under that
+ as per the standard provision of the dictionary format we are following. We are giving a third
+ bracket or the square bracket and under that four sentences. These four sentences are
+ associated with these four employee values. So here is the sentence, I love the new project
+ management tools, Sangita, the recent changes in the workflow are confusing. Faiz, great
+ team collaboration on the last project. Then Khudiram, I am not happy with the current
+ work environment. So these are the four input values which we are giving here. Then create
+ a data frame. We are forming a data frame. So pd.dataframe we shall apply over the data
+ as an input and storing it under the DF. So data frame has been formed. So first preparing
+ the feedback data is done. So just implement this part and let me know. So it is now 12.58.
+ Please complete this step by 1pm. In next two minutes kindly complete this step. Then we
+ shall move ahead for the next portion. So remember this dictionary data is containing
+ two keys, employee and feedback.
+ So this is the first part. So this is the first part. So this is the first part. So we will,
+ okay. So this is the first part. So this is the first part. So this is the first part.
+ I shall wait for few more seconds and then move to the next part. Please finish this
+ Now let us move to the next portion and that is basically the analyze the said statement.
+ So analyze the sentiment of each feedback. What we will do? We will basically make a
+ function to analyze the sentiment. So that is why the function name is analyze underscore
+ sentiment and feedback as an input we are taking. Then sentiment underscore analysis
+ function is applied over feedback and 0 where the most significant feedback has consisted.
+ We have taken care of and we are storing it under the result. So this 0th index has the
+ most significant information related to the sentiment and then return result level and
+ their result score level and their corresponding score is reprinted. So apply sentiment analysis
+ to this particular feedback column. So what we are taking the basically the DF feedback
+ and the DF confidence and we are storing it. Basically we are accessing the results from
+ the we are applying the zip function over a string DF feedback and apply the sentiment
+ analysis. So it will give you the output in a tabular format display the result. So here
+ it will give you will get the output of the tabular format where you can see the employee
+ name feedback and their corresponding sentiment will be printed and along with their confidence
+ value.
+ So as you can see employee I love new project management tool. This is the feedback. So
+ it is a sentiment is associated with it is a positive sentiment and the confidence score
+ is very high that is 0.949843. Then for example, so amorto has a zero index value and then
+ the first index is a so the recent changes in the workflow are confusing. It is a negative
+ comment, negative sentiment and it is to giving us the value of the 0.999406. Again you see
+ the feedback the great team collaboration on the last project sentiment is positive index
+ value 2 and there you can see the confidence value which we are getting that is 0.398871
+ Kodiram index value 3 because there are four names Python is a zero indexing language so
+ 0123 this is how the labeling happened. Employee Kodiram I am not happy with the current work
+ environment, it is negative sentiment and you are getting the value 0.39772.
+ So as you can see I mean whether it is a positive or the negative sentiment the confidence
+ value score is very high. The more you will get nearby one that means the more confidence
+ level is more whether it is a positive sentiment or for the negative sentiment. So that is
+ why you can see I have added a note that a confidence score is a numerical value which
+ indicates how a certain machine learning model is about while making the prediction whether
+ it is a positive sentiment or negative sentiment this type of stuff. So if it is zero that
+ means there is no confidence if it is one that means it has a complete confidence.
+ So if its values very much closer to 0.95 that means the model is very much confident
+ about prediction but if it is 0.2 it is indicating a very low confidence about the prediction.
+ So here you can see all the values are like 0.39 something so whether it is a positive
+ sentiment or whether it is a negative sentiment the prediction has been made with the highest
+ nearby highest level of the confidence. 0.39 means almost nearby one that means with the
+ highest level of the confidence is there behind the prediction whether it is a positive sentiment
+ or whether it is a negative sentiment.
+ So please implement this particular cell and let me know regarding the analyzed sentiment
+ so it is 1.4 so please finish this step by 1.6 pm.
+ Thank you.
+ So not only it is about executing the code please check the output how the employee name
+ has appeared index wise the exactly the way we have defined here. So index value 0.123
+ in this way it has appeared their corresponding feedbacks are given there along with the sentence
+ sentiments has also appeared and with the highest level of the confidence prediction.
+ So as per our visual understanding also you can see it is exactly matching with the positive
+ sentiment or whether it is a negative sentiment as per the sentence from a visual understanding
+ and from our own cognizance we can understand it is matching and so we can see that how
+ the NLP algorithms are working very beautifully to give you the proper predictions proper
+ sentiment predictions as well as the proper confidence scores.
+ So this is how it is helping the leadership company leaderships leadership team to make
+ the decisions as per the feedback. So that is why this section with some demo value I
+ have given the name as the leadership that so all of you can get some idea that we have
+ learnt NLP and how to apply it. So apart from the topic modeling or document similarity
+ you can see how the sentiment analysis can help our leadership team to make a decision.
+ So I shall wait for few more seconds and then move to the next portion. So in the next portion
+ what we will do we will just make a group of the positive sentiment altogether and the
+ negative sentiment altogether. Here you can see all those things are appearing in under
+ a certain column but we can make the positive sentiment in one cluster and negative sentiment
+ in one cluster. So there will be a very simple line of course, couple of lines simple line
+ of course so where you can implement this particular steps.
+ So all of you have learnt about what is confidence score and how it plays a key role behind certain
+ predictions. Now here what we will do? We will make the example interpretation. So what
+ are we doing? We are basically creating a new data frame, one is for the positive feedback
+ and another one is for the negative feedback. So here you can see this for example this
+ particular segment cases. So it will contain a single row as you can see it will be a single
+ row and where you can see there will be the sentiment column. Single row with this particular
+ data frame is for the positive feedback and the next data frame is what we have done negative
+ feedback. So it will also have a single row of the sentiment with the negative feedback.
+ First one will have the single row with the sentiment value with the positive feedback
+ and the second one will have all the rows under the negative feedback column. So sorry
+ just a second let me zoom a bit otherwise you will not be able to see it.
+ So these two data frames are formed one for the positive feedback and another one for
+ the negative feedback. So in the first one we will have all the rows with under the column
+ of the positive feedback as you can see the sentiment value with the positive feedback
+ and the second one which we will form for the data frame for the negative feedback.
+ So there will be all rows which will come under the sentiment with the negative feedback.
+ So in both the cases all rows will come under the sentiment column one having with the positive
+ feedback value, another one will have with the negative feedback value. So please implement
+ this part.
+ So if you print the positive feedback and the negative feedback part, so as you can see
+ positive feedback value employ for example Amorto and Fyre with their index value 0 and
+ 2. I love new project management tool and the great team collaboration on the last project.
+ These two are the feedbacks and their corresponding sentiments are positive and positive. So like
+ I mentioned that all row will come under a single column and where the sentiment value
+ are the positive and their confidence level 0.39483 and 0.871. So earlier case what happened
+ that we are getting them all together we have just separate them out by forming two data
+ frames with the positive feedback and negative feedback and they all the rows will come under
+ a single column of the sentiment, first one having the positive value and the second one
+ having the negative value.
+ And then also you can see the negative feedback employ Sangita and Khudiram with their corresponding
+ index value 1 and 3 and for example this same feedback negative and with their corresponding
+ confidence value is 0.39406 and 0.39772. So I believe that now all of you got some idea
+ that how AI can assist the leaders to make quick decisions in terms of the team gauging
+ of gauging the team sentiment analysis and through this analysis of the team sentiment
+ judgment purpose.
+ So accordingly they can make the necessary decisions in terms of the development. So
+ here we have seen the implementation right from the beginning installing of the required
+ libraries, here we have used transformer torch and pandas, then what we have done we have
+ implement the next particular portion, where we have done the loading of the pretend models
+ and then what we have done we have implemented the preparing the feedback data, where we
+ have for make the team take that have taken the key value pairs under the dictionary format.
+ We have stored under the data and we have created the data frame accordingly, then we
+ have analyzed the sentiments.
+ So basically we got the corresponding employees and they are sorry we got the employee names
+ and they are corresponding sentiment values and confidence scores, we have seen that confidence
+ scores are very high whether it is predicting the positive or the negative sentiments. Then
+ what we have done we have formed two different data frames, one for the positive feedback
+ another one for the negative feedback, where the all rows comes under the either the positive
+ sentiment value column or the negative sentiment value column.
+ So as you can see we have separated them out with according to different feedback cases,
+ one for the positive feedback cases, so this was for the output for the positive feedback
+ cases and the another one is for the negative feedback cases. So anyway, so just implement
+ this last portion of the code and then we shall conclude that concluded session. So
+ I have explained the entire part to all of you with my best efforts. So just implement
+ this part it is now 111 12 p.m. So complete this by 114 p.m. and I tried to give you enough
+ time to implement this course in your own space. I know that everybody will not have
+ the different typing speed or those who are copy pasting they please I also give them time
+ enough time to understand the each line of the code because as you can see the hash sign
+ each line interpretation is given there. So you can easily understand those things and
+ then also along with that all of you can check the output and try to interpret that whatever
+ the input is given accordingly whether you are getting the proper output or not.
+ So make sure that all of you are understanding the concepts which is very much important
+ and the reputation has another benefit that by mistakenly if I say something wrong during
+ the sleep of tongue or something like that I can rectify myself also. So that is another
+ benefit of repeating those things. If the instructor may have spoken something wrong
+ by sleep of tongue he or she can also rectify himself or herself. Anyway so please implement
+ this step and let me know that whether you are done or not. So I shall wait for few more
+ seconds and then we shall go to the question answering session. So moderators all good
+ participants are doing fine.
+ So these notebooks I have shared with TCSIM so please you can access the notebook from
+ your all of you know where to access the notebooks in your TCSIM portal. So I hope already they
+ whether either they have already loaded there or they will share their shown. So please go
+ there and access them and already you might have download we basically you download it
+ from my GitHub also but today one particular notebook like this one we are unable to access
+ it from GitHub from my GitHub so I will check the issue.
+ But earlier one the first one in LP it is already there and notebook links are also shared with
+ you so you can directly access those things I hope all of you are accessing. So apart
+ from going to the TCSIM portal you can do it by yourself as well because already both
+ of the notebooks are shared with you and also remember I have shared one important information
+ related to the sleeper.io. Although I have not shared the links as I told you that once
+ you it is a very good platform for sharing the course with the learners but if you make
+ mistake if any single candidate make mistake by copy pasting it or make certain changes
+ in the code unintentionally it will affect others. So that is why I have not shared it
+ but I just mentioned that sleeper.io is a very good tool for sharing the course.
+ Anyway so I think let us take a couple of minutes break and then we shall go come back
+ to the question answering session. So there is a break of 2 minutes.

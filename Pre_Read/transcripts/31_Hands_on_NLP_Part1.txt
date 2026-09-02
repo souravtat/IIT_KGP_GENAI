@@ -1,0 +1,515 @@
+ I hope I am audible clearly so ladies and gentlemen so this today's session will be
+ basically related to the hands-on applications in NLP so already you have seen the theoretical
+ part executed by Dr. Plavon Bhoomi beautifully and where you have learned about the theoretical
+ aspects of NLP. Now in this particular session we are going to have some hands-on demonstrations
+ on NLP so those who have attended my sessions earlier they know me quite well and in a few
+ email communication you might have seen me actually I am Shobosachi Mukhopadhyay who
+ is a research scholar from Center for Computational Data Sciences at IIT Kharagpur and also I
+ am taking care of this particular high cohort 3. So let us start today's session so already
+ all of you are quite aware as per our standard practice that we implement this type of the
+ hands-on sessions in Google Colab. So I request all of you to open a Google Colab so as you
+ can see on screen all of you are quite aware with these practices as you have gone through
+ a multiple hands-on sessions including my two earlier sessions on supervised machine learning.
+ So you know how to open Google Colab go to click on the welcome to Colab and then open
+ a new notebook make sure that you are logged in from your Gmail account. So click on plus
+ notebook and it will open up and you like as per the standard practice which I have
+ mentioned that you can give some name like demo or something like this. So it will help
+ you to execute this particular portion. So you may give some name like demo here and
+ then you can click on keep on executing one by one part. So there are code section where
+ you can write some code you can click on this run cell button it will execute properly and
+ then you can see plus code plus text these two options are available in plus text you
+ can add up some text. So all of you quite aware of this but I am just telling you as a part
+ of the revision you can consider. Now this particular notebook link I will request moderator
+ to share with all of you. Remember that apart from the GitHub link notebook link will be
+ shared to all of you. So you can also have the access on the notebook part as well.
+ So this particular GitHub section if you go to my Google apart from the link those who
+ want to directly access my GitHub they can search in Google. So it will appear you can
+ directly go to my GitHub account apart from the link I am just showing how to access it.
+ So here you can go there and you can click on the second top repository one is in leadership
+ second one is the natural language processing as you can see in the screen you can click
+ on it and then you open the second one NLP hands on a beginner's guide you just open
+ it up and you can use it. So this is another option you can directly open it up from the
+ link given in comment box section or you can use the Google search. So this is another
+ option. So let us start the session. So as a just as a beginner's approach. So what
+ I have done I have given a few basic overview during our discussions for the sake of our
+ discussions. So now the natural language processing what does it imply. So from first up you have
+ learned that NLP is an interdisciplinary field which is merging with the machine learning
+ concepts computer science as well as the linguistic. So it will give you the idea to how to comprehend
+ and handle the human languages quite effectively. So in basically here you can see two types
+ of the categories key categories if I mentioned. So one is for the natural language understanding
+ in short we call them as the NLU and which basically focus on the interpreting and understanding
+ of the human languages including for example there are stocks like sentiment analysis extracting
+ information from the text or speech recognition text classification etc. And the other part
+ that is called the natural language generation energy. So what does it imply. It actually
+ focuses on producing human readable text from the structure data and it involves stocks
+ like language translation or the summarization or dialogue generation etc. So these are the
+ tasks we basically implement and it is being applied in many more fields. For example we
+ can talk about the customer support through virtual assistants or the chatbots content
+ analysis topic modeling which we will see in today's session also topic modeling or
+ the sentiment analysis or for example in the information retrieval through question and
+ answer system systems or the search engines etc. Now first of all we will see some of
+ the important NLP libraries in Python. So there are four libraries which we will discuss
+ and each of those libraries we will hit upon with the examples so that the concepts remain
+ clear to all of you. So natural language toolkits first of all we shall talk about. So it is
+ a very high versatile and widely used Python library for NLP task and it offers a comprehensive
+ set of tools and resources for text processing which includes the functionalities like stemming,
+ tokenization, lemmatization or for example part of speech tagging in short we call them
+ as the POS tagging. So these are the possible implementation which we can do in terms of
+ the natural language toolkit or NLTK. And besides we can talk about the spatial library.
+ Now there is one interesting thing that spatial library here you see C is capital can you
+ observe it. So Python is a case sensitive language right from my first session I am
+ mentioning and also Mr. Baira during his Python session also highlighted that there should
+ not be any kind of the error related to the upper case and lower case implementation.
+ It will land up with error and you will not be able to execute the course section properly.
+ So because of that upper case and lower case combination you have to be very careful enough.
+ So this in spassie the C will be capital. So it is a high performance library for the
+ advanced NLP task which is being used for the task like POS tagging, name, entity recognition
+ or in short we call them as the NIR or for example tokenization etc. And another one
+ will be the text block. So you all have the hands on demonstration all those tools. So
+ nothing to worry about it. So another interesting library that is the text block. So text block
+ is nothing but a user friendly library which is built on the top of the NLTK and pattern.
+ So it basically implement the task like noun phrase extraction or the sentiment analysis
+ even for the POS tagging we also use it. So it basically helps to implement a much more
+ sophisticated way in terms of the NLP project implementation.
+ And then definitely we can also spoke about the Jensen library. So it is the powerful library
+ for the topic modeling. It offers optimized algorithms like latent Dirichlet allocation
+ LDA or the doc2vec, what2vec. So it helps to implement like the generating word embedding
+ for beta text representation, text similarity analysis and topic discovery. Now I believe
+ all of you have got the idea that right from the beginning which you have discussed that
+ NLP is two parts of the implementation angle natural language understanding and natural
+ language generation.
+ We have spoken about the examples, few of the few important examples which we have seen
+ in our daily life and then four important libraries which we are going to implement
+ through the hands-on part. So I repeat NLTK, SPACI, text block and Jensen. Now first part
+ that is the data preprocessing as well as text cleaning.
+ So during machine learning session you may remember I mentioned that data preprocessing
+ is very very important. Whatever the optimized algorithm you may use if your preprocessing
+ steps are not correct you are not going to land up with the proper result. So because
+ of that reason in NLP also your data preprocessing is very much important.
+ So here we are going to use the two important things that will be the natural language toolkit
+ NLTK and another one will be the regular expression RE. So steps in the code so what
+ are the steps we are going to implement these are the very basic beginning remember the
+ steps what we are going to follow. So first step will be lower casing, converts the text
+ to lower case. First step second one will be removing the punctuation not only punctuation
+ including the special character as well. So punctuation and special character you have
+ to remove it and third one will be the tokenization. So in tokenization what you will do you will
+ split the text into individual words. For instance the sentence I love programming
+ you can tokenize it like I love programming you are splitting the sentence into three
+ individual words. So this is called tokenization then the removal of the stop words.
+ So it filter out the very common words like for example the is which are present in the
+ sentence which are not the essential part of the NLP. So that you can do and the lemmatization.
+ In the lemmatization what we are doing reducing the word to its base from running to run.
+ So I repeat the steps which we are going to follow first of all we will do the lower casing.
+ This is the lower casing part converting the text to lower case first of all. Second one
+ is the removing the punctuation it will strip out all the punctuation or the special character
+ which are present here. Third one is the tokenization splitting the sentence into individual words
+ and then removing stop words is and we are going to remove it removing stop words because
+ these are not the essential part of the NLP task. So we are removing it and then finally
+ the lemmatization. The lemmatization what we are doing we are reducing the words to
+ their base from running to run keeping to keep in this way.
+ Now let us start our hands on part. So I request all of you to open your Python I mean open
+ the Google Colab already you have opened it up and you have given some name like demo
+ if you have followed my earlier instruction and those who have not directed please do this
+ part. So I am going back to my original demo window. So here what we will do? So first
+ of all it will be import RE. It will import the regular expression which is very much
+ important for the text pre-processing purpose. Then from NLTK import NLTK we will import
+ the NLTK part. It is very much important for the tokenization and other NLP related task
+ implementation NLTK stands for the natural language toolkit and then from NLTK dot corpus
+ import stop words. So we will import all the stop word corpus from NLTK. So you will see
+ lot of common stop words which are present which will load and then from NLTK dot tokenize
+ we shall import the word underscore tokenize. So it will make the word tokenization implementation
+ from NLTK. So it will all the necessary tasks related to the NLP you can do it easily like
+ for example here I have mentioned like it can help to split a text into individual words.
+ So it will basically implement a tokenization operation which I mentioned earlier. So just
+ a second you can remember that which I have mentioned earlier that each of the cases with
+ the codes I have also added some explanation for you with the has sign. So you can easily
+ follow and you can easily implement it for your execution purpose. Then from NLTK dot
+ stem we shall import the ordinate lemmatizer operation. So it will do the all the lemmatization
+ operation. So you already have seen that we will go back to our source word the base form
+ of the word keeping to keep or for example running to run in this way. So I am just clicking
+ on the run cell button and meanwhile it is executing. So I shall go back and I am just
+ showing you another interesting code sharing tool that is snippet.io. So just for your knowledge
+ purpose I am sharing it. This particular link will not be required for all of you as I have
+ already shared my Github link as well as the notebook link. This is just for your knowledge
+ purpose I am just mentioning that snippet.io is a very good code sharing platform. Like
+ for example as you can see I have written all those codes but I can give this particular
+ link to all of you. But the problem is that if you make any changes in the code during
+ copy pasting or during reproducing the result, I do not have the control on this. So that
+ is the reason I am not sharing here because there are 1190 amount of the participants.
+ So it will be very difficult to control through a snippet.io. So that is why I have not shared
+ this particular link. It is good for the small crowd for example in classroom based small
+ crowd. It is very much easy for controlling purpose but here it will not be easier to
+ control that is why I have not shared it rather I have given my notebook link and Github link.
+ So that all of you can easily implement. But for your knowledge purpose I have just mentioned
+ that snippet.io is also a very good platform where you can also execute, you can share
+ the codes mutually and it is a very good effective code sharing platform during the hands-on
+ practices. Anyway so let me go back to my original notebook. So as you can see it has
+ implemented the green tick has appeared and the running execution time is 7 seconds.
+ So it is now 11.28. So I think 11.30 would be good enough to implement this particular
+ portion. All of you please implement it. Then we shall go ahead for downloading the NLTK
+ resources. So remember we first imported RE that is for the importing of the regular expression
+ module. Second one we have imported the NLTK or the natural language toolkit. Third one
+ we have imported the stop words from NLTK.corpus. Then in the next step what we have done we
+ have word_tokenize which we have imported for implementing the tokenize operation and
+ then we also have imported the wordnet lemmatizer to implement the lemmatization operation.
+ So these are the basic parts which we have implemented. Then once you complete the step
+ by 11.30 we shall move to the next step of downloading the NLTK resources. So what we
+ will do here? So we will basically download punk. So it is one of the tokenizer model
+ which are necessary for the tokenization all type of the supports you will get from here.
+ Then the next part will be for the stop words. So you will get and download all the necessary
+ stop words from the which are required for the English languages. So you can do it from
+ here. Then NLTK.download wordnet. So it will download the wordnet lexicon for a large lexicon
+ database of English. So then we can also give the additional support of the NLTK.download
+ with the help of the punk tab. So these are the resources which we will download. So already
+ I have explained to all of you. So once you finish it then you implement this next portion
+ in your Google collapse cell. So it is now 11.30 so I believe all of you have been able
+ to finish it up. So just do it. Also I am doing it for you. So done. As we can say the
+ green tick has appeared with the execution time 0 seconds. So please complete this step.
+ So it is 11.30 please complete this step by 11.31. So once you finish it up we will go
+ to a example text and step by step we shall implement all those necessary operations.
+ Because we can see similar type of the implementation everything I have given in my snippet.io.
+ So those who are attending the session just make a note of it snippet.io is a good platform
+ for code sharing purpose. You yourself can explore it out. But remember that once you
+ share with the participants for example if you can use it for your own teaching purpose
+ learning purpose but you will not have the control. If he or she makes any changes then
+ it will be difficult for time bounded sessions. So that is why the safer side is to share
+ the course with the help of the GitHub links or even Collab links. These are much safer
+ for core sharing purpose.
+ So let us start discussing the next part. It is already 11.32 so I believe that all of
+ you have completed the earlier step that is downloading the NLTK resources. And the next
+ step what we are going to do here we shall basically discuss about the let me just tell
+ it from here also here every portion is written. So basically this is the example text. So
+ as you can see this is an example sentence to the state text preprocessing we shall clean
+ it and tokenize. So as you can see under double code we have written a sentence and we have
+ assigned it as text.
+ And now as you can see deliberately whatever the to implement all the basic operations
+ related to NLP what we have added that in the text which is containing capital letters
+ top words which we want to remove actually or for example in case of capital letter we
+ will convert into the lower case. So all those operations we shall perform. So to execute
+ those things first of all those attributes should be in the original sentence otherwise
+ you will not be able to do that operation and then also it can contain the punctuation.
+ If the punctuation will be there then only you can remove it. So keeping those factor
+ in the mind we have given a one sentence. So if you are for example if you are reproducing
+ these results and then you want to find out one particular similar type of the sessions
+ for yourself or to you want to teach somebody else. So make sure the reference sentence
+ you want to gives everybody is different from this particular sentence that should contribute
+ this type of the attributes then only we shall be able to implement all those things because
+ at the first step you have to convert it into the lower case letter.
+ So first of all what we are doing we are defining a function that is preprocessed text. So
+ def preprocess underscore text the first the argument which will pass that is the text
+ which we have stored a given sentence and then what we are doing we are lower casing
+ the text. So text equals to text dot lower. So it will convert all the upper case material
+ to lower case and then what we will do in the next step as per our standard practice
+ which we have learned from this notebook section you can go to the original notebook
+ and you can cross check remove the removal of the punctuation and special characters.
+ So in this way we have step by step we have implemented here. So here also in the next
+ part what we shall do we shall remove the punctuation and the special character.
+ So text equals to dot read or sub. So what we will do we will remove all the punctuation
+ and the special characters and that is why the text which function we are taking that
+ should be given there under the read or sub function. And then what we will do we will
+ tokenize the text. So this particular case what will happen it will split the text into
+ the individual words. So basically like for example I am running I am running. So three
+ parts it will split and then remove stop words. So here set stop words dot English. So it
+ will load a set of the stop words from the NLTK library and it will store it under the
+ stop words. And then tokens word for word in tokens if word are not in stop words.
+ So under tokens it will only preserve those materials which are not the stop words. The
+ part of the sentence which will be preserved there those are not the stop words. Stop words
+ will be chopped out. And then the lemmatizer, lemmatizer word, word net lemmatizer operation
+ we shall implement under the lemmatization. So word not word net in lemmatizer we will
+ create an instance. Name to word net lemmatizer we will store it under lemmatizer and lemmatizer
+ dot lemmatize word for word in tokens. So lemmatization part operation will be applied
+ over all the tokens which we have extracted out from a sentence. Like for example running
+ to run, keeping to keep in this way the lemmatization operation will happen. And then finally we
+ shall return the tokens which are cleaned basically which will be cleaned from all those
+ the stop words part and entire part will be tokenized and the lemmatized.
+ So let us execute this particular portion. So you can see it has run the cell successfully.
+ So implement this particular segment of the cell. Start from the example text and then
+ complete up to this return tokens. So it is now 1037. So this is little bit of larger chunk
+ of the code. So what you do you implement it by 1141 and while implementation go through
+ the instructions carefully each line although I have explained but it will be better for
+ you that if you yourself can read it. So you can you can scroll it a bit. If you want to
+ read the comments present in the code you can you can move it like this. So the left
+ hand side will go you can see the code the right hand side you will move you can see
+ all those important implementation steps are highlighted which I have mentioned during
+ the execution part.
+ So make sure that you are doing it properly. So I repeat the steps we have taken my meanwhile
+ you are implementing I am just repeating the steps just for your so that all of you can
+ follow it and for your assistant purpose all the instructions are written with the hash
+ sign. All of you know that right from the beginning I am mentioning during the supervised
+ learning sessions I also highlighted that I have added some some comments so that all
+ of you can easily understand. So example text we have considered one text which comprises
+ of the capital letter stop words punctuation etc. Then we have from the pre process text
+ function under that we first have implemented the lower casing operation. Then with the
+ reserve function where we have taken the text as an input and we have removed all the punctuation
+ of the special characters. So here w stands for the word characters and s for the space
+ characters.
+ So now we have tokenized the text so we have implemented the tokenized operation then we
+ have removed the stop words and finally the lemmatization operation and then we have returned
+ the tokens which are basically cleaned tokenized stop word free and lemmatized. So this is
+ what we have implemented as per our standard discussion which we have made during the original
+ load book.
+ I repeat I am repeating it again because there are lot of people who are new to NLP and as
+ well as the new to Python programming. So if I re-explain twice or thrice it will be
+ easier for them to follow it up a bit. So that is why I am re-explaining it and those
+ who are already expert kindly cooperate because or you can also consider it as a good revision.
+ So anyway so let us implement this portion and then we shall move by it. So complete
+ up to return tokens complete up to this. This is the last line of this will be the last
+ line of execution. So I shall wait for another more minute and then we shall process the
+ example text as a part of the next implementation and we will be able to see the clean tokens
+ as an output. So this part we will implement very soon. So complete up to return tokens
+ and then we shall move on to the next part. So complete up to return tokens. So complete.
+ I shall wait for few more seconds. So I believe all of you are doing it and while implementing
+ it is not only running the course understanding the each line of the code and when you are
+ getting output interpretation of the output are also very important. So that is why I
+ am telling just call a bit and read the comments given there. Although I have basically explained
+ what are happening in each case but it is always better that if you go to the right side and
+ also you are reading them. Now in the next part it is already 1141. So I believe that
+ all of you are quite okay if I move to the next part.
+ So process the example text. So pre process under course text you are applying this function
+ over text and you are storing it under the clean text and then we are printing the clean
+ token. So in the clean tokens you can see the output after once we implement this particular
+ portion we will be able to see all those clean tokens. So in the clean tokens you can see
+ example sentence demonstrate text pre processing well clean tokenize. So these are the clean
+ tokens as simple as that because this was the original sentence and after the pre processing
+ steps implementing pre processing step successfully we are getting this particular segment as
+ an output. So I believe now it is quite clear to all of you.
+ So please implement this step. So it is now 1142 please implement this one within a minute
+ by 1143 please complete this particular step. Then we shall go ahead for implementing the
+ specific from the original notebook this is the part.
+ So I hope all of you are finishing this I shall wait for 20 minutes.
+ And then move to the next portion of discussion. So in those who are following my Github you
+ will get this output and those who are following it from directly from the notebook they will
+ get this output. I mean same output but I am just showing so that all of you can remain
+ in the same page. So from Github this is the output which are highlighted in the screen
+ and same output you will get those who are directly implementing from the notebook.
+ Anyway so let us move to the next part. Now before going to the next part as a summary
+ which we can say that this particular chunk of code which we have implemented. So here
+ we have demonstrated the cleaning and pre processing text using the NLTK where we have
+ covered different steps. At the beginning we have done the lower casing then we have
+ removed the punctuations as the vessel character and then followed by the tokenization removal
+ of the stop wars and lemmatization. So these were the steps which we have implemented.
+ And this pre processing pipeline is very much important for preparing the raw text data
+ which you can implement for several tasks led to the sentiment analysis or for the text
+ classification and other relevant natural language processing or the NLP task.
+ So like we have discussed in the notebook first portion is done. Implementation of the
+ NLTK toolkits we have done. Now as I have mentioned that in each case each necessary
+ or important NLP libraries in Python we shall discuss one by one. So first portion is done
+ now we shall move to the SPACI. Now it is done for SPACI. So before implementing SPACI
+ let us discuss a few important part. Part of speech tagging and named entity recognition.
+ So in part of speech tagging we call them in short as POS and named entity recognition
+ we call them in short as NER. So background concept and the steps in the code which we
+ will implement we shall load this SPACI model. So here we will be able to see an encode which
+ is a lightweight model that includes the NER stands for the named entity recognition or
+ POS which is the abbreviated format of the part of speech tagging as well as tokenization.
+ So in the part of speech tagging each word in the text is stuck to the grammatical role
+ it can be pronoun, verb, adjective or adverb. So let us one of the simple example which
+ you can consider a particular sentence that is that the quick brown fox jumps over the
+ lazy dog. This is the sentence for example if you are considering. The quick brown fox
+ jumps over the lazy dog if this is the sentence. So here how we are going to discuss about
+ the POS tags. So from your basic knowledge of the school level English whatever the whether
+ you have English as a first language or second language does not matter. These are the very
+ basic steps you all have learned during our school level. So in POS tags like for example
+ the, there is a determiner in NLP we deal with the abbreviated form as DT. Just you just
+ made learning thing will be the abbreviated form otherwise you will not be able to understand
+ what is the POS tagging coming up. So that is why this we are discussing this particular
+ part. Then for example the quick, quick is adjective in abbreviated form in NLP which
+ we follow it is JJ. Then brown is also adjective definitely it will be JJ as an abbreviated
+ annotation. Fox now so we shall follow it as NN. Then jumps VBZ in is the abbreviated
+ form over preposition. So here we follow it as IN then the determiner as DT then lazy
+ adjective as JJ dog as NN. Now so there we can talk about a few more examples. This has
+ been extracted from this given sentence. You can cross check the given sentence and you
+ can check their corresponding POS tags. We will be able to understand it. Now we shall
+ still have a look on the few of the overviews of the other POS tags and their categories.
+ So here you can see personal pronouns which we call it as PRP like I, you, he, she, it,
+ we, they, these are the personal pronouns or for example positive pronouns. In the next
+ part which we can say positive pronouns. So how it is being differentiated with the personal
+ pronoun we add up a dollar sign with it. So like my, your, his, her or we can talk about
+ it is our their number. So these are the basically the positive pronouns which you can execute.
+ So also remember that there will be common question which often comes in our mind. Then
+ what will be in case of the number? So in number we do not have any specific tag but
+ in general we call it as the cardinal number. So the abbreviated form is CD. So it can be
+ 1, 2, 3, some other numbers 100, 142, 42. So we tag it as CD. So we have spoken about
+ the pronoun, we have spoken about the cardinal numbers. Now we will see some of the interesting
+ tags that are the adverbs. So the more you will practice it you can remember nothing
+ to worry about it, nothing to worry about it. But I am just discussing because it will
+ help you to see that how NLP deals with it that is it.
+ So like for example adverb. So in adverb like for example quickly very well we call them
+ we basically annotate them as the RB. Or for example if you are comparing adverbs there
+ are also the adverbs which we compare like faster, better, smarter in this way. So there
+ are comparative angles. So in the abbreviated form we write them as the RBR. Then another
+ one is the superlative. Now superlative all of you know fastest, best, smartest, tallest,
+ shortest. So these are the superlative game. So here you can see we can abbreviate it from
+ we can keep it as the RPS. And then some of the angles that are the punctuation which comes
+ up. So like for example full stop. So you can keep them as a period or for example punk
+ these are the general punctuation.
+ So basically full stop we write it as the annotation for this dot this is basically stands for
+ the period. Then for example comma question mark exclamation mark in this way you can
+ see there are other punctuation part. And also there are symbols which comes under the
+ sign categories like exclamatory or the percentage or the or the ampersand at the rate or this
+ dollar sign. In this way these are the few of the symbols which you can consider which
+ comes under this. So these all are the part of the POS tag which we have discussed here.
+ Now here we shall move for the name entity recognition. The name entity recognition some
+ of the very interesting case. Like for example the sentence which is given the Barakovama
+ visited the Eiffel Tower. Here we are also taking one particular sentence. Barakovama
+ visited the Eiffel Tower in Paris last summer. For example this is the sentence. Now what
+ are the NER tags or the name entity recognition? Barakovama person name here or the Eiffel
+ Tower location in short we are giving them as the lock or for example Paris it is also
+ a location in short we are writing as the lock.
+ So in this example as you can see NER or the name entity recognition helps to identify
+ and categorize the specific names and location in the text. So this is how the interpretation
+ is done. Now let us start the implementation in our original Python notebook section.
+ Now let us start with the importing SPACI. So in what we will do? It is a very much advanced
+ NLP library SPACI. So we are loading it up. Then what we will see? We shall load the SPACI's
+ English model. So as we have seen we have we are loading the this small or lightweight
+ English language model NSM score offset with the help of this SPACI load and we are storing
+ it under the NLP. And then what we are doing? We are putting a sample text there. So like
+ here the sample text is Apple is looking at buying UK startup for 1 billion USD. Steve
+ Jobs founded Apple in 1976 and we are storing it under text. So here we have seen the basically
+ presence of the named entities and some of the financial information etc. Now we can
+ process the text using SPACI. So we are applying the NLP function over text and we are storing
+ it under doc. Now our target will be to extract two part. One is the POS tagging and then
+ will be the named entity recognition. So POS tagging what we will do? We will print POS
+ tagging. So part of speech tagging will be implemented one by one. POS tag will be printed
+ one by one. So for token that is why this particular for loop is implemented for token
+ in doc. Print token dot text, token dot position and token dot tag. So token present in the
+ text they are part of speech tagging token dot POS that means that part of speech tagging
+ and their original tag token dot tag which is present in the NLP that would be printed
+ one by one. So like for example just one example case I am mentioning like is auxiliary verb
+ then VBG is the corresponding tag. Looking again verb their corresponding tag is VBG.
+ So in this way you can see noun verb different symbols numbers which are present in the text
+ you can cross check by yourself or punctuation marks or some cardinal number like 1976 is
+ the cardinal number. So their corresponding tag is CD. So in this way so the tokens they
+ are their corresponding POS and the tag. These three things are being printed like the way
+ it has been printed here. So you can yourself just check the output and try to understand
+ it with the concept which is been shared in the notebook and as well as in the GitHub
+ link.
+ Same thing is will be printed for the named entity recognition. So print named entities
+ so for ENT in doc ENT print ENT dot text their ENT dot level add spastic explanation. So
+ as you see in the output named entity the way we are printing it. So first portion if we
+ see in the code that is ENT dot text. So here what is this first portion is the apple then
+ what we are printing ENT dot level. So what is the level here if this is the apple that
+ means it is an organization and then what we are printing the spastic explanation of
+ that ENT level.
+ So this organization can be what are those organizations it can be companies it can be
+ agencies it can be institution etc. Similar way or for example 1 billion USD. That is what
+ type of that that is money. Now this money can be a monetary values or it can be a including
+ it a possible unit may be there. So in this way you can check out Steve Jobs, Apple or
+ their dates like for a Steve Jobs is a person. This person can be a pupil including fictional
+ characters may be or for example Apple which is an organization. This organization can
+ be like which we have discussed here companies or agencies institution because here Apple
+ has appeared twice. That is why it is appearing twice. At the beginning Apple is looking at
+ buying UK startup for 1 billion USD Steve Jobs founded Apple in 1976. So that is why it has
+ appeared twice in named entity recognition part.
+ In 1976 it is a date. Now it can be absolute or relative dates or certain periods. So explanation
+ possible what is that thing that explanation is coming under this parenthesis. So just
+ implement this chunk of the code and just see the interpretation like I told you that
+ running code successfully is one thing and understanding each steps and their output
+ is also very important. So I have just two or three out of these output I have mentioned
+ two or three examples what they are actually implying yourself try to understand it. Just
+ cross check with the output. So it is now 1157 and by 12 you just finish this part. So
+ I think 3 minutes will be good enough to finish this part. Then we shall summarize it and
+ move to the sentiment analysis part.
+ Thank you.
+. So those who are getting the output just have a look at the output.
+ Name the entities and POS tagging so you yourself will be able to understand it. The English
+ angle it is a very basic level of English which you have learned in our school days.
+ Nothing to worry about. Just corresponding their tags how they are being interpreted
+ in NLP that is very much important just to know. The concepts are very simple. So I shall
+ wait for another more minute and then move to the next part.
+ So those who are now new to the coding but gradually getting familiar with the coding
+ for them I am just saying like I mentioned in each session that the way you will print
+ in this order you will see the output. Like in the first case of the POS tagging token
+ text token POS or part of switch tagging and then their corresponding tag. Token dot part
+ of switch and their corresponding tag will be printed in this order. So like for example
+ buying it is the token present in the text. I am repeating it again. I already have explained
+ I am just repeating for example those who are new they can easily see it. Then bar this is
+ for the token part of switch. Then their corresponding tag POS tag in NLP we use it as VBG as simple
+ as that. Similarly ENT dot text ENT dot label and SPACI dot explain for the ENT that can
+ be also doable in any year or the entity recognition.
+ So like the example which I have taken for example this particular case 1976 which is
+ a date and explanation as a part of that it can be absolute or relative date or certain
+ period can be considered which is the explanation. So I believe all of you are now able to understand
+ it please finish it up. I shall wait for few more seconds and then we shall move towards
+ the next part that would be the sentiment analysis part.
+ So as a summary we can mention that this particular examples in this particular examples which
+ we have seen that how to use SPACI for this two key NLP task one is the any a name entity
+ recognition the other one is the previous tag or the part of switch tag. These are very
+ much essential for understanding and the meaning of the text and their structure.
+ So I believe that all of you are now getting some confidence especially those who are new
+ in NLP those who know I already mentioned finally considered as a good revision but at
+ least those who are new I hope that all of you are getting some confidence. So that after
+ reproducing this result you yourself can play around with your own examples and understand
+ that how it is happening. So it will give you a lot of confidence regarding the text
+ processing and the text analysis part under NLP as well as machine learning.
+ Now the sentiment analysis portion so here we will see sentiment analysis in Python using
+ the text block library. So as you can see in the original discussion this is the third
+ important NLP library which I mentioned at the beginning. You see when we discussed about
+ the important NLP libraries in Python first part we have spoken about the NLTK natural
+ language toolkit then we have spoken about the SPACI and the third one is the text block.
+ Now let us discuss this part. Now from text block import text block then the next sample
+ text will come up. So under the text we are writing I absolute love this product it is
+ fantastic and works like a charm and then we shall create a text block object.
+ So here what we will do we will apply text block function over text and we shall store
+ it under block like what we have done here and then block dot sentiment we will store
+ it under sentiment that is performing of the sentiment analysis and then output sentiment
+ polarity and the subjectivity. So from print polarity sentiment polarity you will see the
+ polarity so minus 1 is the negative to plus 1 positive and then we will also see the subjectivity
+ by printing subjectivity sentiment or subjectivity 0 is the objective 1 is the subject. Now before
+ implementing coding part I am explaining the concept related to the polarity and subjectivity
+ then we will implement it we will get the score we will try to understand the interpretation
+ that is a separate thing we will go that but before going printing this portion I am just
+ explaining this part what is polarity as you can see in the screen it measures the sentiments
+ positivity or negativity. So if it is minus 1 then it is negative if it is 0 then it will
+ be neutral if it is 1 then it will be positive as simple as that.
+ Similarly for the subjectivity subjectivity it will range from 0 to 1 as we can see highlighted
+ portion in the screen it will range from 0 to 1. So 0 means objective and 1 means subject.
+ It will indicate whether the text is based on the fact or personal opinion that means
+ if you are quoting getting score 0 that is fact sun rises in the east it is a fact. So
+ it is objective but subjective means personal opinion personal bias will be there. So that
+ means if you are going getting score 0 or near by 0 it is more objective cases if you
+ are getting score 1 or near by 1 it will be subjective case personal bias personal opinion
+ like if I say for example that Sachin Tendulkar is my favorite cricketer if I say just for
+ an example. So it is sharing my personal opinion it is a subjective case you may have some
+ different opinion right. So it is a subjective case.
+ So in this way we define the polarity and subjectivity. So let us implement this particular
+ portion now 1 by 1 and let us calculate the polarity and the subjectivity case. As you
+ can see polarity here you have got the value 0.5125 and the subjectivity 0.75. We shall
+ go for this interpretation of the output first you implement this chunk of the code and then
+ we shall go for the interpretation purpose see the output. So as you can see the grinting
+ has appeared with the 0 second and we got the polarity and the subjectivity score.
+ So before going to the for the interpretation you just implement this is 12.6 please finish
+ this step by 12.8 and then we shall move towards the interpretation purpose.
+ So let us go for the interpretation purpose. So first we shall go for the interpretation.
+ So first I shall go for the interpretation purpose. So first I shall go for the interpretation
+ purpose. So first I shall go for the interpretation purpose.
+ So those who have implemented fine those who are still doing it please complete it make
+ sure that you are not making any mistake if you are typing make sure that you are typing
+ correctly those who are copying the cells make sure that you are copying properly and
+ understanding these steps because each explanation is given with the hash sign and also check
+ the outputs which you are getting I shall explain them very soon.
+ So I shall wait for another more minute and then move to the next step. So please make
+ sure that all of you are implementing it smoothly. Understanding is very much important for each
+ of the operations. So remember that we are implementing the sentiment analysis part.
+ So I hope now it is quite clear to all of you that how the text block performs like we have
+ planned for the NLTK library of this passive. Now you are quite aware of the text block
+. Now you see that we have got the polarity value 0.5125 and the subjectivity value
+ is 0.75. Now what does the imply? So as you can see polarity value we have learned that
+ if it is minus 1 it will be negative it is 0 it is neutral and if it is 1 then it is positive.
+ Now 5125 is at some type of the moderately positive but not so overwhelming. So this
+ particular language conveys that it has a general favorable tone but not very much optimistic
+ or enthusiastic. So it is moderately positive around 0.5125 it is moderately positive. Similarly
+ for the subjectivity score it is 0.75. Now as we have learned that it is 0 then it is
+ a fact or nearby 0 it is nearby facts. So around objectivity will be there something
+ related to the objectivity will be there but the more it will go towards 1 especially over
+ 0.5 that has a stronger subjectivity. That means the personal opinion or the personal
+ bias will be strong there. So if I say with a subjectivity score of 0.75 the text contains
+ a strong personal bias subjective expression or opinion rather than it is a purely based
+ on facts or the objective analysis. Hope now it is quite clear to all of you.
+ So this portion of the code what we have learned it has shown us sample text which is moderately
+ positive with a significant degree of subjectivity and text blob is simply effective for the
+ sentiment analysis task. So in this segment we have learnt about text blob their functionalities,
+ polarity and subjectivity and how to implement text blob for sentiment analysis. In the next
+ part we shall go and implement for the topic modeling and document clustering. So there
+ will be a break of 5 minutes and then we shall start our discussions on the topic modeling
+ and document clustering. Stay tuned.
+ [BLANK_AUDIO]

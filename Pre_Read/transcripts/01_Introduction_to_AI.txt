@@ -1,0 +1,769 @@
+ Yeah, good morning and welcome to this program on Hands-on Approach to Artificial Intelligence
+ for Real World Applications.
+ So, in today's one hour lecture, I am going to introduce what is artificial intelligence.
+ The details of this techniques will be covered in subsequent lectures by other teachers.
+ So, just to introduce what is artificial intelligence before that let us see how our natural intelligence
+ actually works.
+ So, I start with these two pictures.
+ The question is do you recognize these pictures?
+ Now, whether you recognize or not that is not that important, what is important is how
+ do you recognize?
+ Obviously, I believe that you know the picture on the left is cave painting from Ajanta
+ caves and picture on the right is our parliament building, old parliament building I will say
+ in New Delhi.
+ Now, how do you recognize?
+ Naturally, you must have seen these pictures in your history book during your school days
+ or maybe somebody has shown you these pictures a number of times, possibly some of you have
+ visited these places, gone to the Ajanta caves and seen these paintings yourselves.
+ So, when you look or when you see such pictures, what you do is you create a description of
+ these pictures some form of description.
+ Why I am saying some form of description is that even if the same objects or same pictures
+ are shown to you in a distorted fashion, in the sense right now the pictures which are
+ shown are in color, so if instead of color just black and white version of the same pictures
+ are shown to you or the pictures are slightly distorted, it is scaled up, scaled down, rotated
+ even then you will be able to understand.
+ So, that clearly says that what you have understood is not the picture itself or point by point
+ content of the picture, but some description you have made of this picture and these picture
+ these descriptions are stored in your brain in some form of a model.
+ So, next time when similar such pictures are shown to you, you try to extract similar such
+ descriptions and then try to associate those new pictures to one of the pictures which
+ are stored in your brain based on some sort of similarity or dissimilarity.
+ So, that is how our natural intelligence works and naturally when you understand something
+ or when you form a model this model does not is not formed in a single instance.
+ Say for example, in your school days when you have started learning the alphabets A,
+ B, C, D and all, so your parents or your school teachers must have told you A for apple, B
+ for ball and that has been told a number of times, it is not only once and after hearing
+ that after looking at those characters a number of times you have been able to remember it
+ or you have been able to create a model of that which has been stored in the brain.
+ So, when you talk about machine learning or artificial intelligence, you find that at
+ the input we have the signal which are the raw signal, this signal can be an image, this
+ signal can be some time domain signal something like a speech and all that.
+ So, when I talk about image, it is the visual recognition that comes into picture and when
+ it is a time domain signal like some music or speech, it is our auditory system that
+ comes into picture.
+ So, we should be able to recognize whether you are watching a dog, whether you are watching
+ a bird, what type of bird it is.
+ Similarly, when it comes to your auditory signal or speech, you should be able to recognize
+ whether you are listening to say Hemant Kumar or you are listening to Latha Mangaskar and
+ you can easily identify that.
+ So, how does it actually work?
+ So, given an input signal, the first thing as I said that we create a description, some
+ sort of description.
+ Similarly, come to coming to machine learning for given signals, we try to find out some
+ sort of features, not a single one, multiple number of features from those signals and those
+ features are put in the form of a feature vector.
+ So, every feature vector represents a particular signal.
+ Now, how this feature vectors are important?
+ The moment you convert or you translate a signal from the raw domain say for example,
+ from image to a vector, the moment I put it in the form of a vector, my recognition task
+ becomes very easy.
+ Let us say for example, we have a vector of say three-dimensional, you just extract three
+ different properties or three different features from the given signal and you have a three-dimensional
+ feature vector.
+ Now, once I have this three-dimensional feature vector, then this feature vector represents
+ a point in our three-dimensional space.
+ So, if I have two different signals or if I have two instances of the same signal, it
+ is quite likely that the feature vectors corresponding to those two different signals will be very
+ similar or they will be very close in the three-dimensional feature space whereas, if
+ I take two signals which are very wide say for example, I have a picture of a bird and
+ I have another picture which is the picture of a car.
+ So, again those two three-dimensional feature vectors that you create one out of bird and
+ one out of car, these two feature vectors will be very different and in my three-dimensional
+ feature space, the distance between these two points will be very large.
+ So, I can just find out whether two signals are similar or they are dissimilar depending
+ upon what is the distance between the corresponding feature vectors.
+ So, once I have this feature vectors, then I can put, I can fit those feature vectors
+ into a classifier or the classifier will classify other or recognize the signal to be whether
+ it is a bird, whether it is a car, whether it is a dog and all that.
+ So, I can have different types of classifiers, some are Bayesian classifiers, SVM, neural
+ network and all that.
+ Out of that I will put more emphasis on neural network because all your subsequent lectures
+ are mostly going to be based on neural network approach.
+ So, let us see when I say descriptors, what are different types of descriptors we have.
+ So, here I have shown few images, you find that on the top I have the silhouette or just
+ the boundary of two different animals and you can easily recognize that the left one
+ is the boundary of a horse and the right one is the boundary of a zebra.
+ However, given only this boundary information, if I want to compute what is the difference
+ between these two boundaries, the difference is very very small or they are very very similar.
+ So, maybe based on just this, I will come to a bit later that how from these boundaries
+ we can extract different information which can be useful for differentiating between
+ these two animals or different types of animals.
+ But as I said, as I was saying that based on just this boundary information, it is very
+ difficult to differentiate between a horse and a zebra.
+ So, in addition to boundary information, so with this boundary information it is quite
+ possible that I will be able to differentiate between a horse or a zebra that is a class
+ of horse and zebra and class of birds, but differentiation between a horse and zebra
+ becomes very very difficult.
+ So, in addition to this boundary information, we need some more information and you remember
+ that in case of a zebra, if you look at the body of a zebra, mostly you have black and
+ white stripes whereas in case of horse, you do not have black and white stripes.
+ So, along with the boundary information you use some more information which is the region
+ information and these two informations put together gives you a feature vector which
+ can be used for differentiation between a horse and a zebra.
+ Now, when you come to the region property or the region descriptors, we can have intensity
+ profile as has been shown on the image on the right hand side, you can have color as shown
+ on the left bottom image or you can also have texture as shown in the right bottom image.
+ So, these are different types of informations that can be extracted from the same image and
+ when you talk about this informations, obviously as we are talking about feature vector, so
+ these informations are to be quantified or I should able to compute some new numerical
+ values representing these region properties.
+ So, I will come to that a bit later, let us see what how this boundary descriptor can
+ be generated.
+ So, you find that I have given a closed curved boundary and what I can do is, I can find
+ out or I can represent this boundary by a polygon.
+ There are different algorithms, how you can get a polygonal approximation of a curved
+ boundary I am not going into that, but for the time being let us take it for granted
+ that given a curved boundary I can have a polygon.
+ So, what I have is a polygon something like this.
+ Once I have such a polygon for every such polygon, obviously I have a number of internal
+ angles, so let us put this internal angles as alpha 1, alpha 2, alpha 3, alpha 4 and
+ so on.
+ Now, these angles can be scanned either in the clockwise direction or in anticlockwise
+ direction I can use any of them, but I have to keep in mind that if I use clockwise convention
+ I always have to use clockwise rotation.
+ If I use anticlockwise I always have to use anticlockwise, so if you scan these images
+ either in clockwise or in anticlockwise fashion, then you have you find that I have a sequence
+ of internal angles say alpha 1, alpha 2, alpha 3 and for 4 and so on.
+ These internal angles of the sequence now I can take this as a time series, so there
+ is no time involved in it, but it is a sequence of some angle values.
+ In this sequence I can have an autoregressive model over this sequence.
+ So, in this autoregressive model what I do is I give an any angle alpha i, ith angle
+ I can represent this as a linear combination of p number of previous angles, so the expression
+ comes something like this.
+ So, alpha i is equal to beta k alpha i minus k where k varies from 1 to p, so this is a
+ pth order autoregression model.
+ So, you find that there are p number of coefficients beta k which are autoregression coefficients
+ and I will get if there are say n number of internal angles or if the number of vertices
+ of the polygon are n, I will have n number of such equations.
+ And you solve all these equations simultaneously and you get the values of your coefficients
+ beta 1 to beta p and these coefficients this set of coefficients will be different for
+ different types of polygons.
+ So, I can represent or I can use these coefficients as some sort of description or approximate
+ description of the given boundary shape, this is one set of features that I can have.
+ Another set of features that I can have is you see that when I represented this as a
+ polygon I have missed a number of detailed information, so if I want to include some
+ such detailed information in the description I generate, then I can follow it something
+ like this say given another boundary close boundary suppose I have a polygonal description
+ like this.
+ Out of this if I take just this particular segment on the left side, so segment is over
+ here, now the kind of processing that I can do over this segment is I represented this
+ you just rotate this by an angle, so that the linear segments becomes horizontal and
+ the curved boundary that particular segment now is a function of the distance on the linear
+ segment which was the linear approximation of this curve boundary.
+ And if I normalize this particular segment in the sense the area between the curved segment
+ and the horizontal axis I make it equal to 1, so that is the kind of normalization that
+ I perform.
+ So if the area between the curved segment and the horizontal axis becomes 1 then I can
+ consider this to be a probability density function.
+ So what I get is PR versus R that is the probability of occurrence of R, once I represent this
+ as a probability distribution function then I can compute different statistical moments.
+ So you find that the statistical moment of order 2 this is very very familiar it is nothing
+ but what is called variance.
+ I can have other form of statistical variance statistical moment also, so statistical moment
+ of order 3 which is called skewness, statistical moment of order 4 which is called kurtosis
+ and all that, out of this the third order statistical moment which is skewness it is
+ very easy to understand what it gives it gives whether your distribution is skewed towards
+ left or skewed towards right, similarly each of these statistical moments give you some
+ information of shape of the boundary.
+ So what I can do is earlier we have got the auto regression coefficients and I can concatenate
+ with the set of auto regression coefficients all these statistical moment values.
+ So I get a larger feature vector.
+ So this is the set of feature vector that you can get simply from the boundary information.
+ Now what are the different types of region descriptors I can have?
+ You find again on the left I have shown the black and white image for that I can have intensity
+ histogram I believe all of you know what is the intensity histogram and this intensity
+ histogram if I normalize that is sum of contents of all the histogram means is equal to 1 then
+ this normalized intensity histogram can be considered as a frequency of occurrence of
+ different intensity values that means what is the probability of occurrence of different
+ intensity value within this image.
+ So again it becomes a probability density function.
+ So once it is a probability density function again I can compute a different types of statistical
+ moments which gives you information of what is the shape of the histogram of that black
+ and white image.
+ Similarly if I want to find out the color distribution or color properties you know
+ color image consists of three different planes the red, green and blue plane.
+ For each of the planes I can compute similar such histograms for each of the histograms
+ you can compute the statistical moments all these things taken together gives you some
+ information of how the intensity profile of the images, how the color profile of the images.
+ The same thing comes when it comes to this texture again from the texture I can compute
+ a different types of properties one of them is what is called a co-occurrence matrix.
+ The co-occurrence matrix is given two intensity values i and j and some positional constant
+ say distance in this particular case I have shown a 45 degree ij that means if I take
+ two pixels two points p and q which are at a distance of one and oriented in the direction
+ of 45 degree then if the intensity of pixel p is i let us let us say 10 and intensity
+ at pixel say 15 then I want to find out that how many times these two intensity values
+ 10 and 15 following this positional constant 145 degree occurs within that particular texture
+ and that I do for every pair of intensity values.
+ So you find that for a particular positional constant say 145 degree I get one matrix which
+ is called a co-occurrence matrix that how many times 10 and 15 these two intensities
+ following this particular constant occurred within this given image.
+ So this is for one constant positional constant I can compute this for multiple positional
+ constant.
+ So this co-occurrence matrix in that case will be different for different types of textures
+ and once I have this co-occurrence matrix if I normalize this co-occurrence matrix that
+ is some of all the elements of in the matrix I want to make it equal to one then it becomes
+ a joint probability distribution function and the moment it becomes a joint probability
+ distribution function again I compute all these I can compute all these different values
+ which gives you some information of what is the texture that I have and these values will
+ be texture dependent.
+ So you find that we have computed descriptors based on the boundary and we have computed
+ descriptors based on the intensity profile we have computed descriptors based on the
+ color profile we have computed descriptors based on the texture.
+ All these different quantities that we have computed if we concatenate them one after
+ another then what we get is a feature vector and these feature vectors are likely to be
+ different for different objects because different objects will have different shapes they will
+ have different colors they will have different intensity profile they will have different
+ color profile.
+ So once I have these vectors as I said that in my feature space if I have this hundreds
+ such vectors hundreds such components feature components then I define a feature space of
+ dimension 100 and each of these vectors becomes a single point in that hundred dimensional
+ feature space.
+ So given two such vectors if the distance between these two vectors these two points
+ is small I can put them in the same category if it is high then they will be in different
+ categories that is basically how your machine learning works.
+ These are other types of regional descriptors that we can compute one is based on weblet
+ transformation I can compute the descriptor based on another very very popular filter
+ which is called Gabor filter now I spent some time over here because you find that these
+ are two templates which are shown over here as two small images just below the bigger
+ image that we have right.
+ If I convolve this given image with the template on the left then an output image that I get
+ which is on the bottom left similarly if I convolve the same given image with the template
+ on the right that is the smaller image your output will be what you get on the bottom
+ right.
+ So you find that information content of the output image on the left and the information
+ content on the output image on the right they are different and they will also be different
+ if your input images are different I can compute some property from these output images may
+ be simply the energy content of these images the energy content is nothing but sum of squares
+ of all the pixels within these images.
+ So given different images the energy contents of the outputs will be different not only
+ that if the templates that I use the templates are different then the energy content of the
+ corresponding output even if my input image is same that will also be different.
+ So if I have large number of such templates convolve your input signal or input image
+ with all those different templates and the output image that you get from different templates
+ you compute the energy content of the output images put all those energies in a particular
+ order that also becomes a feature vector right and why I said that I am going to spend more
+ time on this is I am talking about convolution.
+ So this convolution operation helps you to find out the feature vectors which are descriptors
+ of your input signal most of the part of this particular program will be on deep learning
+ and deep neural network and the basis of the deep neural network is the convolution operation
+ the basic neural network which is used is the convolution neural network.
+ So this is the convolution operation and in those cases the convolution kernel which in
+ this particular case I am saying these are Gabor kernels and for Gabor kernels like the
+ mathematical expression is also given G is equal to exponential of minus half x prime
+ square by sigma x square plus y prime square by sigma y square cosine omega x prime this
+ is a fixed form of a Gabor filter.
+ Now for different signals I may need different types of such kernels which will give you
+ the appropriate type of information.
+ So in case of convolutional neural network which is the basis of deep learning these
+ convolution kernels are actually learnt they are not fixed.
+ So the parameters of the convolution kernel will be learnt using the learning mechanism
+ which is the back propagation learning or gradient descent procedure I will touch upon
+ that briefly.
+ So this is what I said that given any input signal I represent those signals by feature
+ vectors and the feature vectors are nothing but different points in the feature space.
+ Let me assume that I am finding out say two dimensional feature vectors that means I just
+ compute two different features whatever it is I mean just for the ease of putting them
+ in a two dimensional plane.
+ So if I have a bird for the bird maybe I will get a 2D feature vector the features are x
+ 1 and x 2 that will be placed somewhere over here.
+ You take another bird because the two birds are not identical so it is quite natural that
+ the feature vectors will not be identical but they will be very similar.
+ So the feature vector of the second bird will be somewhere near the previous feature vector
+ that we had.
+ The third bird will also be somewhere over here but if I have a car the same 2D feature
+ vector for the car is likely to be very different from the feature vectors of birds.
+ So they will be put a bit away from the previous set of feature vectors.
+ Similarly another car which will be near to car if I have a dog the feature vector will
+ be placed somewhere over here.
+ So if I continue you find that feature vectors for different classes of objects they form
+ clusters for the same class.
+ So here I have feature vectors corresponding to the birds here I have feature vectors corresponding
+ to cars that is again a cluster here they are feature vectors corresponding to dogs
+ it also again forms a cluster.
+ So effectively what I have is a distribution of the feature vectors and this distribution
+ is object dependent or category dependent.
+ So in terms of artificial intelligence we call them class conditional probability density.
+ Now once I have these different clusters my recognition task becomes very simple what
+ I can find out is what are the boundaries among these clusters.
+ So given these 3 different clusters I can have 2 boundaries as shown over here hopefully
+ I mean if you are fortunate enough these boundaries will be linear but the boundaries are not
+ linear always that depends upon I mean whether it will be a linear boundary or non-linear
+ boundary that depends upon the nature of the probability distribution function that you
+ have.
+ So once I have these 2 boundaries you find that these 2 boundaries divide the feature
+ space into 3 different sub regions.
+ One of the sub region is A, one of the sub region is B another sub region is C. So this
+ is what is learning what you have learned is based on the feature vectors which are known
+ and their class I can find out class conditional probability density function this is for the
+ known classes for the known samples.
+ Once I have this class conditional probability density function then I find out the boundaries
+ between pairs of classes.
+ Once I have these boundaries basically using these boundaries you are dividing the feature
+ space into a number of sub regions.
+ Now if an unknown feature vector is given to you I just find out whether that unknown
+ feature vector belongs to class A region A or unknown feature vector falls in region
+ B or it falls in region C. So if the unknown feature vector falls in region B my immediate
+ interpretation will be that particular object or that particular signal or image is the
+ image of a car.
+ If the unknown feature vector falls in region A my immediate interpretation is that particular
+ image is the image of a bird.
+ So this is how your classification works.
+ So firstly we have to get the feature vectors get large number of feature vectors of known
+ classes using those large number of feature vectors we are training the classifiers and
+ when we train the classifiers basically we find out the different sub regions within
+ the feature space.
+ So this is what I mean graphically if I want to put those class conditional feature vectors
+ class conditional probability density functions this is how it will look like we call it p
+ of x given omega i where x is the feature vector and omega i is the ith class this may
+ be class of birds it may be class of cars and so on.
+ But the simple base classification rule is so there what I had is p of x given omega i
+ along with that we have another probability which is p of omega i that is what is the
+ probability that given in a particular environment or in a particular problem domain what is
+ the likelihood of the occurrence of a particular class that is what is p omega i.
+ What I am saying this is suppose your environment is a forest in the forest it is quite likely
+ that you will have wild animals and it is unlikely that you will have a car but even
+ having a car is not impossible because we have enthusiastic tourists who may enter the
+ jungle with a car right but the probability of finding a car is much less than probability
+ of finding a wild animal.
+ So if my classes are say omega 1 which is class of wild animal and omega 2 which is the class
+ of car then p of omega 1 that is apriori probability of a wild animal will be much more than the
+ apriori probability of a car so that is what this p of omega i means what is the apriori
+ probability.
+ X is the unknown feature vector so I want to find out given an unknown feature vector
+ to which classes belong so I have to compute what is p of omega i given x and the base
+ dual this is basic probability theory that gives this.
+ So if I have now c number of classes for every such class I find out what is the p of omega
+ i given x for i varying from 1 to c and for whichever class for whichever value of i this
+ p of omega i j given x is maximum I classify my input vector x to that corresponding class.
+ So classification rule is very simple this if p of omega i given x is greater than p
+ of omega j given x for all j not equal to i then our decision is in favor of class omega
+ i that is what our base classification rule is further adjust mathematical details and
+ skipping it for the time being for the sake of time.
+ So as I said that we have different types of classifiers just now what I said is a base
+ classifier we can also have support vector machine so what this support vector machine
+ does in our earlier diagram over here when we have shown this class boundaries.
+ So I have a boundary between every pair of classes what should be the position of this
+ boundary the support vector machine because depending upon the position of the boundary
+ the error in your classification will depend if the position of the boundary is not at
+ appropriate place then error in classification will be more.
+ So support vector machine is a tool which tries to find out the best possible position
+ of these interclass boundaries so that the error in your classification is minimized.
+ Similarly we can also have a type of classifier which is called linear machine we have neural
+ network we have deep neural network.
+ So as I said that most of your subsequent lectures will be on neural network and deep
+ neural network so you will have details of this neural network and deep neural network
+ lectures.
+ I will just brief give a brief on what is neural network and what is deep neural network.
+ The neural network is actually motivated by our concept of our brain works though now
+ people have started realizing that what we believed when this neural network was introduced
+ our belief on how our human brain works it is not may not be similar.
+ But anyway so a neural network consists of a number of basic elements which are neurons.
+ To the neurons the neuron gets input as the feature vector a feature vector as the input
+ makes linear combinations of different components of the feature vector.
+ So for that I have an white vector.
+ So it computes the dot product between your feature vector and the weight vector that
+ is W transpose X and then performs a non-linear function F over this W transpose X to give
+ you the output of a neuron.
+ These neurons can be used to compute various types of functions and combinations of neurons
+ or a network of neurons can be used as classifiers.
+ So the non-linear function one of the non-linear function that is that can be used is a threshold
+ function which is given over here that F of X if X is greater than or equal to 0 the output
+ will be 1 if X is less than 0 the output will be 0.
+ This is one type of non-linear that can non-linearity that can be used as an activation function
+ of a neuron.
+ Similarly the other kind of non-linearity is a sigmoidal function which is given by this.
+ So you find that the difference between the threshold function and that the logistic regression
+ of sigmoidal function is that the threshold function change was abrupt.
+ But in case of the sigmoidal function the change from 0 to 1 that is continuous it is
+ not abrupt.
+ So as a result the threshold function is not differentiable whereas the sigmoidal function
+ is differentiable and you will do it later in subsequent lectures when details of neural
+ network will be told that this continuous function output function non-linear function
+ is very very important because the way the neural networks are trained that uses the concept
+ of differential calculus.
+ So differentiability of these non-linear functions are very very important.
+ So for neural network the non-linearity which is used is one of the non-linearity is this
+ sigmoidal function there are other kind of non-linearity also that will be told in your
+ subsequent lectures.
+ So for example this Rayleigh or rectified linear unit is one of the non-linear functions
+ which is used widely used in deep neural network there are reasons for it instead of using
+ sigmoidal function they use Rayleigh non-linear.
+ So a neural network is basically an combination or an interconnect of different neurons.
+ So given this interconnect of different neurons these neurons are arranged in a number of
+ layers and every layer we have a number of neurons.
+ So effectively you have a typical neural network will appear something like this where you
+ have different layers of neurons and in every layer you have different numbers of neurons.
+ So let us see that just to give an introduction that how these what these neurons can do.
+ So first of all I will take a single neuron and if I take a logical function say and function
+ and all of you know that and function works like this that ending of two input components
+ binary components if both the inputs are X 1 and X 2 and my output is Y then if both
+ the inputs are 0 output is 0 if any of the input is 0 output is also 0 if both the inputs
+ are 1 output is 1.
+ So I can consider this function as a classification function as a classification job and function
+ as a classification job that if both the input components of the feature vector 1 I will
+ put that input into one class correspondingly the output will be 1 if any of the inputs
+ or both of the inputs are 0s then output is 0 and I put it in another class.
+ So you find that for 0 0 or 0 1 or 1 0 these are the outputs and for 1 1 the output is
+ this ok.
+ So these are two different classes one is represented by 0 the other one is represented
+ by 1.
+ Now my boundary can be a straight line whose equation is X 1 plus X 2 minus 1.5 is equal
+ to 0 there can be a large number of boundary equations which will satisfy which will work
+ for this classification problem.
+ But I just take one of them that is X 1 plus X 2 minus 1.5 equal to 0.
+ So here if I put any of X 1 or X 2 or both of them to be 0 you find that your output
+ will be negative put the threshold function output will be 0 only when both are 1s then
+ output is 0.5 which is greater than 0 so put the threshold output will be 1.
+ So your classification task is satisfied.
+ How can I use a neural network for doing this task?
+ My neuron is this this one is bias I have 2 inputs X 1 X 2 and I have a bias term 1.
+ So my input vector becomes 1 X 1 X 2 weights I put as minus 1.5 1 1 so your linear combination
+ of the inputs is obviously becomes X 1 plus X 2 minus 1.5.
+ Now we put the threshold so if this linear combination is greater than 0 it will be 0.5
+ if both X 1 and X 2 are 1 then output will be 1 if any of the inputs is 0 or both of
+ them is 0 then output will be 0 so my classification is satisfied.
+ Similarly you can also verify I am just keeping some slides for the sake of time if the feature
+ vectors again I use 1 X 1 X 2 as my input vector now I change the weight vector like
+ earlier it was minus 1.5 now I make it minus 0.5 the other 2 are 1 1 remains as it is so
+ here you find that only when both X 1 X 2 are 0 output will be 0 if any of X 1 X 2 or
+ both of them are 1s output will be 1 after the nonlinear function.
+ So simply this implements an OR function.
+ So a neural network can implement an OR function single neuron can implement an OR function
+ and AND function.
+ Let us come to another function which is XOR function in case of XOR function you find
+ that I cannot classify or generate design a classifier using a single neuron because
+ there is not a single boundary there are 2 boundaries.
+ So I can break this XOR function in this manner you all know this I am not going to into detail
+ so you find that I have hierarchy of functions OR function, NAND function and AND function.
+ So this first 2 can be implemented using 2 neurons and in the second level in neuron
+ I will have final AND function.
+ So my neural network now consists of 3 neurons which are interconnected like this the first
+ one computes X 1 plus X 2 X 1 or X 2 the second one is X 1 NANDed with X 2 which is X 1 complement
+ or X 2 complement and the third one is the ending of these 2 that will be my final XOR
+ output.
+ So that is if I have a nonlinear boundary between classes then I cannot use a single neuron
+ to have the classification but I have to have multiple layers of neurons to represent that
+ boundary.
+ So a neural network typically or multi-layer neural network will be typically something
+ like this each of these are different layers of neurons.
+ So from every layer you feed the data to the next layer and so on.
+ So a function that you are computing is embedded function where F k is the function of F k
+ minus 1 something which is again function of F k minus 2 something and at the first level
+ or the bottom most level I have F 1 X.
+ So I have F 2 of F 1 X, F 3 of F 2 of F 1 X and so on.
+ So these are basically embedding of different functions finally, combinedly that gives you
+ a nonlinear function and nonlinear function which is very very powerful for performing
+ the classification tasks.
+ So this is what I said this is a typically multi-layer neural network and the way you
+ train this network what I said is back propagation learning how do you train?
+ As I said that initially for training you give a number of samples for which the classes
+ are known.
+ So I know the target output for those samples but given a new sample my actual output I
+ get is O it is not target output.
+ So I have an error which is O minus OT.
+ So back propagation learning the way it tends the network is so you find that I put theta
+ as the set of parameters where parameters are the interconnection weights.
+ So your output is a function of interconnection weights depending given your input X.
+ So the way you try to minimize this error is you try to tune this interconnection weights
+ W ij in such a manner that your error that is O minus OT is minimized and for doing that
+ what you do is a gradient descent approach the mathematical expression for that is given
+ at the bottom.
+ So if you take the derivative I said that differential calculus is very very important
+ for training of the neural network and this is where you use the differentiation.
+ So you take the derivative of error with respect to the set of parameters and based on the
+ gradient of this based on this derivative you try to update the parameters theta until
+ the error is minimized that is how a neural network is trained.
+ Now all this that I said are handcrafted features right we said that we will have intensity profile
+ we will have this color profile and all that we will have boundary descriptors these are
+ called handcrafted features because we the users tell that what kind of features that
+ we are looking for.
+ Now let us take an example that how do you recognize the Taj Mahal.
+ So all of you know that it is a Taj Mahal.
+ But if I say that you are wrong will you agree I show you the next slide this is the one
+ that I have shown you before and this is the one which is actually Taj Mahal.
+ So you find that these two monuments are very very similar.
+ So based on the handcrafted features that we have talked about earlier using those possibly
+ we cannot differentiate between these two monuments.
+ So that is where the handcrafted features fell.
+ So here what we need is the machine crafted features.
+ So instead of telling what kind of feature we want you leave this job to the machine
+ to decide that what kind of features the machine wants or machine will use or extract to differentiate
+ between these two kind of the different types of objects.
+ So for that you can have another kind of neural network which is called this is a network
+ which is a three layer network where the number of input nodes and the number of output nodes
+ they are same and in between what I have is a bottle neck layer.
+ This is a kind of network which is called an autoencoder.
+ What I want is whatever signal you give to the input I want the same signal to be reconstructed
+ at the output.
+ So I compute what is the error between the given signal X and the reconstructed signal
+ X hat.
+ While the information flows from the input to output it passes through this bottle neck
+ layer where the number of neurons is much less than the number of neurons in the signal
+ and your output side which is the decoder side is able to reconstruct the signal using
+ whatever is available whatever is fed from the middle layer.
+ That means in the middle layer you are capturing some description of the input signal but at
+ a much lower dimension which is sufficient for the decoder or the output layer to reconstruct
+ the same signal.
+ So after this network is properly trained what I get at the middle layer is a descriptor
+ a low dimensional descriptor or feature vector of the input signal.
+ So once this network is properly trained this autoencoder is properly trained I can remove
+ the output layer because I do not want reconstruction I want the descriptor of the feature vector
+ which is available from the middle layer and these descriptors can now be given for used
+ for the classification purpose.
+ So this is my autoencoder model if you analyze these are the different types of features
+ which this autoencoder actually encodes I am not going to that details and as I said
+ that after training you remove this decoder layer or the output layer that is what is
+ that is not required I need output from the bottle neck layer as the feature vectors and
+ use these feature vectors for training the classifier and for subsequently classifying
+ the different objects.
+ So the traditional machine learning where we had handcrafted features that can be avoided
+ and use this machine crafted features that the machine itself uses.
+ Now I will come to this convolution neural network as I said that convolution is a very
+ very important step in modern machine learning or deep learning techniques.
+ So here I give just two different templates I am not going into what these templates are
+ that will be clear.
+ So if you convolve say on the left I have an input image convolve these images with
+ just these first kernel you will get image on the middle convolve the same image with
+ the right kernel you will get image on the right.
+ So if you just analyze these two images what is there on the middle and what is there on
+ the right you find that the in the middle image you have extracted horizontal edges on
+ the right image you have extracted vertical edges.
+ If I superimpose these two I will get all the edges of the given image and these edges
+ will definitely be different for different types of images two different images will
+ not have same set of images.
+ So this convolution helps you to find out the descriptors or features of a given image
+ and that is the basis of your convolution neural network.
+ So here when I said that these are my kernels I have two 3 by 3 kernels.
+ So instead of specifying this kernels as minus 1, minus 2, minus 1, 0, 0, 0, 1, 2, 1 and
+ all that I put this kernels as variables this kernel elements are variables say A, B, C,
+ D, E, F, G, H and all that.
+ And while training the neural network or deep neural network I want to tune the values of
+ these kernel coefficients.
+ So my entire training will be something like this I will again I mean short is of time
+ so this is how the convolution actually works yeah I will come to this.
+ So you have input image I have the final classifier output the rightmost block.
+ These are the convolution layers in the convolution layers you have a number of kernels it need
+ not be one kernel only I can have a multiple number of kernels and depending upon the number
+ of kernels that you have you have the dimensions in the future vectors.
+ If the number of kernels is 5 you compute 5 dimensional feature vector if the number
+ of kernels is say 100 you compute 100 dimensional feature vector every convolution kernel gives
+ you one feature.
+ Initially these kernels are not fixed the kernels have different kernel coefficients
+ which are variables and by back propagation learning you set what the proper kernel coefficients
+ will be.
+ So in a typical CNN architecture or a deep neural network architecture this is the architecture
+ we have you have a convolution layer then there is nonlinearity as we said then we have
+ a pooling layer pooling layer reduces the dimensionality of the feature maps that you
+ have.
+ So this is a stack of computation units or one unit within a CNN architecture or deep
+ neural network architecture.
+ You have repetitions or stacks of these units and depending upon what is the size of the
+ stack whether I will have 5 such units, 10 such units, 100 such units that is what defines
+ tells you what is the depth of the network and when you say deep neural network the term
+ deep actually means depth that is how many layers of these units convolution layer nonlinearity
+ layer and pooling layer we have.
+ And you find that before classifier before this class I have a fully connected layer
+ this fully connected layer is nothing but the multi layer neural network that we talked
+ earlier.
+ So before this fully connected layer the purpose of using convolution nonlinearity and pooling
+ is that you extract the feature vectors or features from the given image and once this
+ features are extracted these features are given to the fully connected layer for classification
+ purpose.
+ Taining in this case earlier we said that you give the feature vectors and you compute what
+ is the output find out what is the error between the output and the target output and you minimize
+ your parameters theta using the back propagation algorithm or gradient descent algorithm such
+ that you can minimize the error.
+ Here again say if I give an input image which is the image of a bird at the classifier output
+ I have a number of nodes one node for every class.
+ So if I give an input the image of a bird I want that my target output will be that
+ the output node corresponding to bird will be 1 all other output nodes will be 0 that
+ is what is my target if I get anything else that is my error.
+ So I compute what is the error between the target and actual output that you get and
+ then through back propagation through gradient descent you modify the weight vectors as well
+ as modify the coefficients within the kernel in such a way that your error at the output
+ will be minimized and that you do for all the classes.
+ So finally at the end when your network is trained now you give an input image the network
+ is likely to give you the corresponding output image.
+ So this is how your CNN architecture or deep neural network architecture works.
+ I will just skip all these I will come to one particular topic that is the neural network
+ of the model that we have told so far we have talked only about understanding what a given
+ object is or given images whether an input image is a bird or the input image is a dog
+ it is a car and all that that means we are discriminating among different objects or
+ different classes.
+ So this is the model which is called the discriminative model Richard Feynman I hope all of you have
+ heard his name the great physicist he once said that what I cannot create I do not understand.
+ So till now what we have said that is that we have understood what the input object is
+ but that was superficial because until and unless I am able to create the same object
+ based on what I have understood I did not really understand it.
+ So that means we have to have another kind of model which is called a generative model.
+ So for a generative model again you train the model with a large number of the input
+ data and once the model is trained properly I want that given some brief description of
+ the object I should be able to generate that object.
+ So this brief description is nothing but the future vector.
+ So what I mean by that is suppose I give a description suppose these are the features
+ how big is the animal how many legs it has so these are different features.
+ So if I simply say that I have a big animal which has 4 legs it has big ears long trunk
+ a pair of tasks and all that with the help of this my generative model should be able
+ to generate what this object is.
+ I believe you have been able to guess which animal I am talking about it is nothing but
+ an elephant right.
+ So we are actually generative models because given this short of description crisp description
+ I have been able to say that it is nothing but an animal a generative model is expected
+ to work in similar manner.
+ Give the feature vector the generative model should be able to give you the image or give
+ the feature vectors the generative model should be able to generate speech.
+ Of course there is risk involved in generative models it can lead to many of the problems.
+ So this is what the feature vectors or the latent vectors that we have because of lack
+ of time I cannot go further.
+ So all these that we have talked about today they will be discussed in details in subsequent
+ lectures.
+ I believe there are lectures on generative models as well yeah okay thank you.
+ What is the bias in neuron see bias term is given an input vector say if I talk about
+ two dimensional vectors okay x1 and x2.
+ But even in two dimension you find that if I have boundary which is a linear boundary
+ the equation of the linear boundary will be of the form ax1 plus bx2 plus c equal to 0.
+ So if I say that a, b and c they are the parameters which define the linear boundary and x1 and
+ x2 are the features.
+ I have three parameters and two features I said that I want to have a linear combination
+ of the input vector with those parameters.
+ So that I can generate the output right mathematically instead of saying that I have two features
+ in my two dimensional feature vector if I introduce just one more term that is 1.
+ So I make my feature vector as 1 I think I can use this.
+ So I had two features x1, x2 and I had a boundary of this form.
+ The boundary had a equation ax1 plus bx2 plus c is equal to 0 right.
+ Here my weight vector w is equal to cab this is my weight vector and my feature vector
+ is x1, x2.
+ So instead of x1, x2 if I write it as 1, x1, x2 then you find that I can put this expression
+ as w transpose x is equal to 0.
+ So just by appending a third element in my feature vector 1 my mathematical expression
+ becomes very simple right and I can treat this w as a vector or as a parameter which
+ can be tuned by back propagation.
+ So that is how we are introducing a term which is bias term.
+ So if the same is coming as a neuron in the neuron I will have c, a and b at the output
+ I will have af of w transpose x.
+ This is what the bias term does ok.
+ You can act a white board here also white key curve or here white again.
+ Where are these Bayes' rules required and applicable?
+ When I talked about Bayes' rules I said let me write it P of omega i given x is equal
+ to P of x given omega i into P of omega i upon P of x ok.
+ Let me just forget about P of x because P of x will come in every such term.
+ So that can be ignored.
+ So effectively P of omega i given x becomes P of x given omega i into P of omega i.
+ As I said P of omega i is the a priori probability of a particular class occurrence of a particular
+ class how frequently you are going to encounter that particular class.
+ This is the feature vector for every feature vector and where this is required while training
+ your classifier.
+ You take a large number of samples say for example class barred.
+ I take a large number of images of barred.
+ I take a large number of images of dog.
+ Because these are the two classes that I have.
+ From the samples of barred you compute feature vectors x let me call it x barred.
+ From the samples of dog you compute the feature vectors let me call it x dog ok.
+ But from the feature vectors until and unless it is stored from which class the feature
+ vector has been computed you do not know right given only the feature vectors I do not know
+ from which class whether the feature vector is from a barred or a dog.
+ So for training the way the feature vectors are given is it are given as pair x barred.
+ That is I know that these feature vectors are computed from the samples of barred.
+ This is used for training similarly for all the feature vectors which are taken from the
+ class dog these are given in the form x given dog right.
+ So given this large number of feature vectors x now you compute what is the distribution
+ of the switcher vectors.
+ So if I assume that this distribution in most double cases we assume that given large number
+ of feature vectors usually it follows the Gaussian distribution of the normal distribution.
+ So for the normal distribution I will have a vector mu and a covariance matrix sigma.
+ So for all the samples which are taken from class dog I will have a mean mu which is mu
+ of dog and the covariance matrix sigma which is also computed from the same samples which
+ are taken from dog.
+ So this are the parameters of my distribution.
+ Similarly coming to the barreds I will have mu for barreds I will have the covariance
+ matrix sigma for barreds.
+ So when I say this P of x given omega i this P of x given omega i is computed from this
+ known feature vectors.
+ So here for barred I will have P of x given omega b which is the class barred and this
+ will have a distribution say normal distribution having mean mu barred and the covariance matrix
+ sigma barred.
+ That is the distribution of the feature vectors corresponding to this.
+ Similarly for the distribution corresponding to dogs instead of mu b and sigma b it will
+ be mu d sigma d.
+ So that is the normal distribution of having parameters mu d and sigma d.
+ So first when I compute this a posteriori probability I compute P of barred given x
+ which is equal to P of x given barred into a posteriori probability P of barred.
+ And this P of x given barred has to be computed from this distribution for this feature vector
+ x.
+ Similarly I will compute P of d given x that is dog given x.
+ So out of these two whichever is more if P of b given x is more than P of d given x then
+ this unknown feature vector x will be classified to barred or it will be classified to dog
+ if it is otherwise.
+ So this a priori probabilities or the class conditional probability density function is
+ to be computed beforehand using the known samples and this distribution that you compute
+ using that distribution you have to compute P of x given omega i for unknown x.
+ Now how to clear this let me write how this probability distribution will look like just
+ a mathematical expression P of x given let me write say barred it will be 1 upon 2 pi
+ to the power d by 2 we are talking about barred right.
+ So my sigma will be sigma barred to the power half and then I will have an exponential term
+ exponential minus half into x minus mu b transpose sigma b inverse x minus mu b that is the expression
+ for class conditional probability density.
+ So this is the class conditional probability density for class barred.
+ So you find that in the expression I have the covariance matrix corresponding to the
+ feature vectors of barred and also the mean of the vectors of the class barred.
+ So this covariance matrix sigma b and mu b these are the two parameters which has to
+ be computed using the known vectors and after these known vectors from these known vectors
+ you get these two parameters.
+ Now I have the analytical expression of the conditional probability density function.
+ So now for any unknown feature vector x I want to compute P of x given omega i where
+ now the omega i is barred that unknown x has to be fed here these two are the unknown feature
+ vectors.
+ So using those unknown feature vector values here I have to compute what is P of x given
+ b for the corresponding x ok.
+ So that is where your class conditional probability density comes into picture this helps in taking
+ the decision or computation of a posteriori probability value.
+ And for whichever class the posteriori probability value is maximum we classify that unknown
+ feature vector x to that corresponding class ok.
+ What are the different types of learning tasks a i can perform ok.
+ Given today's chat GPT or even this deep seek I do not think there is any domain where
+ a i cannot perform the task a i can perform or learn almost everything right.
+ So when we talk about what a i can learn mostly the kind of thing that I have discussed is
+ based on images that is the visual signal a i can learn the audio signals ok.
+ Say for example I can use artificial intelligence I mean something which is easily conceivable
+ I can use the same a i model for monitoring a power plant how.
+ Say in case of a power plant there are different machines every machine is a dynamic machine
+ it is creating vibration ok and that vibration is nothing but a time domain signal.
+ When you drive a car you find that when you are driving you get some noise that noise
+ is because of the vibration which is created by engine it is also the acoustic vibration
+ which is created because of friction between the car wheel and the road.
+ Just yesterday I was coming back from Calcutta the driver stopped in between and said sir
+ I get some peculiar sound from the wheel possibly there is some problem.
+ So you find that he had recognized that there might be some problem based on some abnormality
+ that he observed from the sound.
+ So we can train an a i model to find out or to detect any sort of abnormality in any kind
+ of environment and the moment you get such a kind of abnormality you get an warning you
+ get an alarm and you can take the particular action.
+ I was taking example of a power plant there also the vibration sound the sound of vibration
+ that has a particular pattern.
+ If anything goes wrong anywhere the vibration pattern will be different.
+ Now it is not possible for a human being always to manually here physically here the vibration
+ pattern and detect if there is an abnormality or not.
+ So that is a typical case where such a kind of a i model can be used which will keep on
+ considering the vibration pattern and the moments of abnormality is detected it will
+ raise an alarm.
+ So this is another example a i is extensively being used in healthcare in medical sciences.
+ a i being used in language translation think of our Indian scenario we have so many states
+ in every state we have a different language.
+ When I go to north I am comfortable I mean a bit comfortable with Hindi so I can communicate.
+ When I go to south I do not know anything of Tamil.
+ So I cannot communicate with those people.
+ So my medium of communication becomes English but if you go to remote villages in Tamil
+ narrow you do not you cannot expect them to know English so how do I communicate.
+ So there if I have a language translator which can language which can translate from English
+ to Tamil or say from Bengali to Tamil or Tamil to English Tamil to Bengali then our
+ life will be very easy.
+ So this is another domain where artificial intelligence or a i models can take a big role.
+ So the examples are many whatever you think of whatever you can do today's a i can do
+ the same thing.
+ So the domain where a i can perform is almost unlimited maybe sky is the limit.
+ What are other types of objects a i can discriminate other than images anything that you can measure
+ and quantify a i can work on that every a i model needs an input signal.
+ So anything that can be measured that gives a signal images I talked about that is just
+ a visual signal similarly there are audio signals which are acoustic signals so anything
+ that can be measured can be fed into a i model because a i model needs a signal.
+ Any other question? No. Thank you. Thank you very much.

@@ -1,0 +1,1046 @@
+ Yeah, good morning everyone, I am Nilanjan, a PhD research scholar from CCD's department
+ IIT Kharagpur.
+ And today I am going to explain you about LLM fine tuning and how genetic workflows is
+ performed in our computer science department and all.
+ And we will understand that how these large language models can be prompted properly so
+ that you can utilize them for your different purposes, maybe in an industry environment
+ or in a research environment.
+ So there are different aspects the LLMs are used today as you all know of.
+ So before starting I am just going to give you some general idea about the different
+ things that we will require today.
+ So the first thing that we will require is the Google collab link or a GitHub link that
+ I have provided to you, I think you will get it in the chat and also you can go ahead and
+ get to my GitHub account, which is github.com/nilanjanesb and here you will get the LLM prompting
+ underscore fine tuning this particular page where you will have these two files available
+ to you.
+ So my recommendation will be you can try to use this and do it alongside with me whenever
+ I am running and you will have some issue you can just let me know.
+ The second thing that will require is a hugging face library.
+ So you go to huggingface.com basically it is huggingface.co and once you go there you
+ will have to create your own account and using that account you can log in and you can create
+ different tokens that will discuss that how we are going to use these tokens in our program
+ and all.
+ So what is hugging face is basically it provides you lots of different infrastructures and
+ libraries for this different DL tasks which are basically related to large language models.
+ So if you are working with large language models probably we will end up with hugging
+ face any of the time so it is a very important library in that sense.
+ So it also provides you with datasets, it provides you with different kinds of data structures,
+ it also provides you with some models like transformers which you can use to load different
+ large language models or upload different large language models.
+ Here you will also get different places where you can just test a large language model so
+ they have implemented the language model you can just prompt the model and apart from that
+ they also provide with some tokens.
+ So for example there are some language models that you cannot directly access because it
+ is restricted to let us say for research purpose or something like that for that you can request
+ access for those libraries from this hugging face account and you can create separate tokens
+ for it and you can use that in your code that way you will be able to access those repositories.
+ Another advantage of hugging face is that you can directly train a model here we are
+ not going to discuss that but these are some of the benefits of using hugging face.
+ There are some other also but we try to use hugging face in our work.
+ So I hope that you have got this GitHub account and link so here you will see that the first
+ is basically LLM zero shot prompting and the second one is LLM fine tuning.
+ So you can just open the first one so that we can get started.
+ So just before starting I am just going to give you a general idea of what is a large
+ language model because some of you might not be familiar with it.
+ So the first thing is for a large language model which is very important is that we require
+ huge amount of resources because training a large language model will require you big
+ amount of text information, text data and you have to have your high performance computation.
+ We will also discuss about this high performance computation because you are having some doubts
+ from the previous classes that we have seen so I will just clear that section also.
+ So once you have this big amount of training data you have high performance computation
+ you then have after training a foundation model.
+ So what is a foundation model?
+ A foundation model we also call it a vanilla model which is basically a very new model
+ architecture which is the very first architecture of a particular model and we try to train
+ that model.
+ So for example, but we can use huge amount of text data and train the model and we can
+ call it as a vanilla but right so there are different models for that.
+ So once you have this foundation model what does this foundation model does is basically
+ trains on huge amount of training data that contains different tasks, different kind of
+ domains and all right.
+ So it is a multi-domain foundational model we can say then there is a part which is called
+ fine tuning and that is one of the aspect of our today's lecture is that we are going
+ to fine tune a model.
+ So you have already a foundation model once you train it with a big amount of training
+ data and then you have this foundation model which is a very generalized model it does
+ not have much information on a particular domain but it has a generalized domain across
+ multiple domains.
+ Now we have this fine tune model, so fine tune models are basically used for adapting
+ to different tasks.
+ So for example, I am just going to make a large language model for chat purposes.
+ So you are in an industry and you want to create a chat bot for your customers.
+ For that you will need a foundation model probably the foundation model you will get
+ it from hugging face because many people have already trained big models and they have uploaded
+ it there.
+ So you can directly pick those models from hugging face and then you can use your training
+ data that you have in your hands to actually fine tune a large language model for adapting
+ to a different task.
+ So here in the diagram you can see that after this foundation model there is tuning which
+ is basically gives you the fine tune model.
+ This fine tune model you can adapt to different tasks.
+ So the first task is for example this chat the second one is for example the sentiment
+ analysis identification of documents, image captioning, direction, image identification.
+ So there are lots lots of different aspects that you can go ahead and use this fine tune
+ models for.
+ So as you can understand if I am in a position where I need to build a chat bot for my clients
+ or my customers for that I will get a foundation model from an already built model by anyone.
+ Then I will take that and I will have my data that I want and using that data and this foundation
+ model I will retrain it.
+ So retraining it you are going to actually change the model parameters.
+ So you are going to train that model for that particular task and once you do that you will
+ see that the model will perform much better on that particular task and that is how you
+ can build a chat bot for your own environment and own business.
+ So as you can see this is limitless you can actually use any kind of adaptation.
+ People are always trying out different things and fine tuning the model using different
+ ways.
+ One of the more important thing is that the fine tuning again requires you a good amount
+ of computation because you are again retraining a model.
+ It is not like that you will need the training resources like the foundation model because
+ it is a very, very huge model but for fine tuning you will require again a good amount
+ of training resources may not be that much big but yeah that is required.
+ Now the resource thing we will discuss because it is a very, very important thing while we
+ come across this large language models because we are not able to run all the models whatever
+ we want.
+ We are limited by our resources.
+ So today we are going to use this Google collab.
+ I will also expect that you will be using Google collab for this thing and if you have
+ a system that has a good dedicated GPU probably an NVIDIA GPU some of the AMD GPUs are also
+ working these days but if you have a good dedicated GPUs you can directly use notebooks
+ in your own local system and run the exact same code.
+ For our thing we are very, very limited with this Google collab whatever the free version
+ provides because we have not used this paid version here because we know that many people
+ that you are working with you do not have this pro version or dedicated GPU.
+ So this is a free version and probably all of you will get this free version and here
+ they give you a T4 GPU access for these models and the T4 GPU is not very powerful but it
+ is much better than using a central processing unit or CPU for any kind of LLM task.
+ So I think this image is clear.
+ So let us move on to the very first thing that is known as zero shot prompting.
+ Now before moving to zero shot prompting I am just going to tell you what is prompting.
+ So what is the term prompt?
+ The term prompt actually represents the input that you are giving to a model.
+ So it represents the user input.
+ So whatever input you give to the model you ask the model that becomes your prompt and
+ we will see that how the prompt can be structured and how there are different ways of using
+ this prompt for our own benefits.
+ So very easily we can actually implement these models.
+ So let us just first start using the transformers library.
+ Now this transformers library I am just going to show you if you just go.
+ So you will see that this transformers library is again provided by Hugging Face.
+ So this is a library that probably you will use most of the time for loading a large language
+ model and its organizers.
+ So you can see that if you go into this page you will see that there are different ways
+ that how you can use this like transformers it can be used for pipelining basically you
+ can use an existing model that you have you load that model and you can just prompt it
+ directly.
+ You can train the model using this pipeline so fine tuning or training a model is possible
+ using this and you can generate basically you want to get some output from a prompt
+ and you can do that using this generate function.
+ So you see that how that can be installed using different systems and how you can do
+ that is probably given here in this installation and you can just go here and see that which
+ environment you are using and how you can actually install this.
+ So I will recommend that you if you are using a local system you will use pip and for Google
+ collab I believe that it already has this transformers library if it is not we can install
+ it anyways.
+ So let us just start it and before starting just let us see what are the different classes
+ that we are using for that.
+ So the very first model that we are going to use is known as Flan T5 Excel.
+ So I have selected this model because it is a fairly small model it is a very very small
+ model and how so if you just go to search Google using this Flan T5 Excel model you
+ will see that this is a sequence to sequence model and you can just open this page in the
+ hugging face library and you will see that this particular model details are given here.
+ So there is a dedicated research paper on that also you can just grab that and study
+ that how these models are fine tuned and perform.
+ So most of the things that you require are provided here only so you do not need to bother
+ with them most of the time.
+ So this is the language model that we are going to use.
+ This model provides you with three different variants as I can remember.
+ So it has this smaller model this they can again a larger model basically we call it
+ as Flan T5 large then we have this Flan T5 extra large and there is another big model
+ which is a 12 billion parameter model and this the version that we are using is a 3
+ billion parameter model.
+ So it is not very small model it is not the biggest model in the open source community.
+ So generally you will see that the models are around 7 billion and 8 billion parameters.
+ Now what is this parameters right?
+ So this is the term that I have used many times in this 10, 15 minutes.
+ So the parameters actually define how big your model is and these are very important.
+ So these parameters are basically neurons that the model is trained on.
+ So once you have these neurons being trained by the model these neurons actually create
+ the capability of this model.
+ So generally you will see that if you have a higher billion parameter model higher dimensional
+ model then you will get a good outcome from that model.
+ So for example the GPT models generally the GPT 4, GPT 3 they have not disclosed the parameters
+ but it is probably extending 1 trillion parameters so it is expected.
+ So you can see that if we increase the number of parameters the models performance gets
+ increased.
+ So the data that is dependent on the model the training resources is dependent on a model
+ alongside that the model that we are using the parameters of the models are also dependent
+ alongside the architecture of the model.
+ So this is Flan T5 Excel and just to give you a general idea this Flan T5 Excel model
+ you can see here that it is fine tuned already using different tasks.
+ So generally when you are downloading a model you are not downloading the base model.
+ You are already downloading an instruction tuned model.
+ So what is instruction tuned model is basically a model that has been already fine tuned for
+ different tasks.
+ So this model this Flan T5 Excel that you are going to get from Hugging Face is already
+ instruction fine tuned.
+ So if you give it some instruction it will be able to follow those instructions.
+ It is having a chain of thought fine tuning so we will discuss what is chain of thought
+ in a little bit but not in much detail.
+ So chain of thought basically means you just ask the model to explain a particular thing
+ that way the model will break down its output and this actually helps the model not only
+ you as a reader but it helps the model to break down a big problem into smaller chunks
+ so that it can answer it more properly.
+ Again this are the two different tasks again I think there is some QA task that is also
+ being provided.
+ You can see that the different fine tunings that has been gone through this model.
+ So we are using this model and how we are going to use this model we can see that.
+ So here from transformers import T5 tokenizer.
+ So this is a tokenizer that is provided for this T5 models.
+ So if you are using T5 models you will probably end up using this T5 tokenizer and T5 for
+ conditional generation.
+ So this is the model or class that loads the model.
+ So how this is linked if I am just going to tell you.
+ So if you see that there is a model in hugging phase so let us call it HF model M. So this
+ is the hugging phase model so you can directly access this hugging phase model using this
+ transformers library that we have used.
+ So this transformers library or API it gives you access to this models directly.
+ So let us say we have plan model which we can directly access from this hugging phase
+ model using this transformers library.
+ So this is the way we are actually getting this transformer model.
+ But we have for example a different model LAMMA.
+ So we can directly access that LAMMA model also.
+ But this transformer models actually have different types of model interfaces.
+ Let us call it model interfaces INT for different models.
+ So for model interface for plan may be different than that of LAMMA.
+ So that is the only change you need to make when you are coding a particular model when
+ you are just building a model from this hugging phase transformers library.
+ So we will see that how it is done.
+ So here you see that we have used T5 tokenizer and T5 for conditional generation.
+ So this kind of libraries or this kind of classes actually help us to directly get access
+ to the model.
+ Now how will we know that which model we want.
+ It is as simple as you just give this classes or initialize these classes with the model
+ name.
+ Let us start with the tokenizer first.
+ So you see that we have created a tokenizer interface tokenizer.
+ And we have used this T5 tokenizer class and we have given that form pretend.
+ So this is the function which takes the name of the model.
+ So you will see that for T5 conditional generation also form pretend.
+ So this is a particular class that actually takes the form pretend libraries.
+ So these are pretend models.
+ And once you have that you just pass the Google slash plan dash T5 dash Excel.
+ This is the name of the model.
+ So you will go to this hugging phase library and you will see that if you go here you will
+ get the same code that we are using.
+ So you see that you will get the name of the model here.
+ So for example Google plan T5 Excel.
+ So this is the name of the model.
+ So you give the name of the model as simple as that.
+ For the model we are going to use this T5 for conditional generation.
+ This is for the model and we again use the form pretend.
+ And here you will see that we have added another section which is called device map.
+ This is an important thing.
+ This is very, very important thing if you are working with LLMs and we will discuss that.
+ And this is the name of the model again and this is another function.
+ And what we will have is that we will have the tokenizer loaded in this tokenizer and
+ model will be loaded here.
+ So what is tokenizer and what is model?
+ We will discuss this also.
+ So let us run it and see that wherever this transformers library is already present in
+ this Google collab or not.
+ If it is not we just need to install it.
+ So let us run it and till then we just observe what is tokenizer.
+ So you give an input to the model using natural language text.
+ So a natural language text, in natural language text we are using high level languages.
+ So we are just for example writing hey, how are you, right, so for example we are giving
+ this as an input to the model.
+ So this is a natural language text.
+ So for this, for example the training output, so let us say this is a training data.
+ So this is a trained data when we are training a model.
+ So how are you?
+ The model should output like I am fine or something like that.
+ So it will give you this kind of output.
+ Now how are we going to train a model?
+ So we are going to give the model this as a training data.
+ So the input will be this to the model.
+ So let us say we are using the plan model only for now, this to the model and it will
+ generate some output.
+ What is the output?
+ We do not know.
+ But we have this expected output and we will calculate a loss out of it.
+ So the loss will be calculated based on this, right and we are going to back propagate this
+ loss.
+ So this kind of things probably you already know because we have already gone through
+ this large language model training and basically the training of different machine learning
+ and deep learning models.
+ So it is exactly the same thing, so there is nothing different.
+ So here the one thing that comes into play is the tokenizer library or tokenizer.
+ What is the tokenizer?
+ It actually converts this hey how are you to a different embedding form.
+ So embedding you have already learned in this BERT class and all in the deep learning classes.
+ So what you essentially do is you convert these two numbers and we call these numbers
+ as vectors, we call these numbers as different collection of vectors and these vectors can
+ be used as an input to the model.
+ Similarly, the model will output the vectors also.
+ So you do not get a natural language text directly.
+ So you get this tokenized input which is basically hey how are you, you are tokenizing it and
+ this tokenizes vectors are passed to this plan model.
+ The model output will again be a tokenized version of this output and you have that tokenizer
+ and you have to reconverted to the natural language text.
+ So essentially you end up with having multiple steps here.
+ So just let us just give you this step, so the first is this input text.
+ So once you have this input text, you will see that we will use this tokenizer let us
+ call it T to tokenize this input text and we will have a vector of this text.
+ This we pass to the LLM, once you pass this to the LLM, the LLM generates a tokenized
+ version of its output again.
+ Then we use the same tokenizer that we have used earlier and we pass this vectors through
+ this tokenizer and we get this output text.
+ So this is always the case for any language model, large language model that we will be
+ working on.
+ So the input that will be passed to a tokenizer, the tokenizer with converted to a vectorized
+ form, that vectorized form will be input to the language model, the language model will
+ output this vectorized form again, you will use this tokenizer and get the tokenized
+ natural language output.
+ So you see that it ran executed properly because this transformers library is already installed
+ in colab, so you do not have to specifically install it.
+ But if you need to install it anyhow, you can just go there in that hugging face transformers
+ library in the installation section, you will see that how it can be installed in your own
+ system and all.
+ So now we have this tokenizer, so you see that it is loading, downloading the model.
+ So it has downloaded this model.
+ So if you are using this Google colab, it will download the model every time because it is
+ not storing the model, it is just storing it in a directory which actually does remove
+ when you just cancel this particular notebook.
+ So you have to redownload it every time or you can keep it in Google Drive if you have
+ space and you can just link your Google Drive to this particular model locations.
+ So you see that the model is loaded right now.
+ So we have this tokenizer and we have this model that is loaded here.
+ So let us start with our first input prompt.
+ As we told or discussed what is prompt, prompt is basically just a conversion of like input
+ that we are going to give to the language model.
+ So it is the representation of what we want from the model.
+ So here this you will see in most of the examples, I have taken the exact same example in fancy
+ of it.
+ So just translate English to German.
+ So since this is an instruction tuned model, this has been instruction tuned to do any kind
+ of task that we want, even if it has not learned it.
+ So since it is like trained on a huge amount of data probably it will end up giving you
+ a good kind of result.
+ Now plan T5XL is a 3 billion parameter model, do not expect a very good output from it.
+ But it is quite good for understanding how the language model works.
+ So input text, you will see that we have given this in a string format, just a natural language
+ text.
+ So translate English to German.
+ And there is no restriction on how you are going to write that.
+ It can be written in any ways.
+ So translate English to German, how old are you?
+ Now you might ask like why it is English to German?
+ Because both uses the same Roman alphabets.
+ So we cannot write that converted to Bengali or something because our tokenizer is not
+ having that information.
+ So if you have a tokenizer that is trained on Hindi language or any other language, then
+ you can translate it using that also.
+ So here we are just converting it from English to German.
+ So the model is already seen some German text, seen some English text and how they are translated.
+ And the text that we are providing, we are providing it here.
+ And as I told you this prompt currently at this stage does not have any kind of fixed
+ type.
+ So you can write in any way.
+ So how old are you?
+ Then you can write convert the following to the English or convert it to German.
+ You even don't have to specify the source language also in most of the cases.
+ So you will see that this kind of models are very, very flexible.
+ Now this is the second thing.
+ So once we are ready with the prompt once we have this prompt, now we are going to tokenize
+ it.
+ So as I give you the pipeline that we are working on, the pipeline already had this input text
+ as we discussed.
+ Now it has this tokenized text.
+ Now for the tokenized text we are going to obviously use this tokenizer that we have
+ already initialized.
+ So you will see that this tokenizer object, it takes the input text, basically the prompt
+ that we are giving.
+ And there is another parameter which is the return tensor is equal to pt.
+ And we are getting this input.id.
+ So what it generally creates, it creates a set of different things from this input text.
+ What are the different things we are not much concerned about because we don't use those
+ kind of things apart from in research.
+ So if you are using a tokenizer, in general you are just going to get this tokenized vectors
+ that we were discussing.
+ To get the vectors you have to pass this dot input id.
+ So input id will give you this tokenized vectors only and nothing else.
+ So once we run this input text, so let's do it in a step by step way.
+ So this is the input prompt.
+ So let's run this and then tokenize it separately.
+ I think you can just go ahead and do it yourself using this provided links and you can just
+ open colab and since these models are already loading directly, you don't have to take
+ any care.
+ So one thing that you need to note is that in this part, you can see that there is something
+ known as t4 given here.
+ So this t4 means you are using this t4 gpu that is freely available to most of you.
+ And this t4 gpu you can use it for running these codes.
+ So let's just run this tokenizer part and let's see what we get.
+ So let's print this input id separately, see what we have.
+ So previously we had this input text and now we have this input id.
+ So this is very simple, you can see.
+ So this is a plain vector, this is a plain simple vector that represents the text that
+ we have inputted.
+ So the prompt is converted to its numbers and this tokenizer is trained alongside this
+ model.
+ So you have to use the tokenizer that came with your model that that's what I can say.
+ So once you have this tokenized input, now you will be able to generate the output from
+ the model.
+ So let's just run this again here in a separate cell, let's run it here.
+ So here you see that model gives you a function generate and it takes this input id.
+ So it is in its simplest form, you will see that generate actually takes many, many parameters
+ and that are that are really, really required for if you are working with large language
+ models.
+ We will go ahead and see one by one, but for now we can just see that if you just use this
+ generate function, it takes this input id which is enough to get you an output.
+ So this way you can create your own large language model.
+ So previously probably you have used a chat GPT model from their APIs and all, but right
+ now you can create your own model, your own large language model using this easy step
+ like four lines of codes.
+ So that's very, very easy.
+ So you see that we have this output which stores this generate functions tokens.
+ So let's just get the output and see what we get in the output.
+ But found at least two devices okay fine.
+ So yeah, so what is the problem with this, you will see that the problem with this is
+ that it is so once I run this thing, this model or generate yeah, where is the error?
+ Yeah.
+ So this is the error that we are getting right.
+ So this error you may find many of the time.
+ So let's see expected all tensors to be on the same device, but at least two devices,
+ this could have zero and CPU when checking argument for index in method.
+ So what does this tell?
+ So what does this mean?
+ This means that there are two devices that are capable of running this and we cannot
+ offload, we cannot offload some of the part to CPU and some of the part to GPU, right?
+ So this is an important observation.
+ So here you see that where we have given this, let's see.
+ So here we have given this device map equals to auto.
+ So it actually, so I told you that we'll discuss this parameter because it's an important parameter.
+ So this device map, it actually maps your device.
+ So whatever device is available, whatever good device is available, it will load the
+ model there, right?
+ So the main problem is that, that this device, this T5 for conditional generation, this model
+ LLM model is loaded into the GPU, that's fine, that's what we wanted.
+ But once we are using this tokenizers, this tokenizer might not load in the GPU, it might
+ load in the CPU and that can create a problem.
+ So let's see how we can solve that.
+ So just converting this to CPU, let's see what we get, right?
+ So we have already downloaded the model.
+ So the model will be not downloaded, re-downloaded because in this session, it is already there.
+ So you see that once we just ran this code, it just loaded this two checkpoints are this,
+ not taking much of a time, right?
+ So now again, we do the same thing.
+ We run this model.
+ So let's discuss one thing before we run.
+ Yeah, so this is very, very interesting and very, very important.
+ So you have to understand when you are using large language models that probably you are
+ having a GPU, probably you are having a graphical processing unit and also you have a CPU, central
+ processing unit, right?
+ And you have a memory of GPU which we call at VRAM, right?
+ And we have a memory of CPU which we call at primary memory.
+ So this is the RAM of the system, right?
+ So once we load a model, let's consider our LLM, any model it could be.
+ It can either be loaded entirely, what does it mean by entirely?
+ The tokenizer and the model both.
+ So that can be loaded into the CPU directly.
+ So the model tokenizers and model both are loaded into the primary memory or CPU we call
+ it.
+ So essentially it is loading in the primary memory.
+ We calling it CPU because the processing is done by CPU and the memory that it is utilizing
+ is the primary memory.
+ Or it can load it to this VRAM which is the memory from the graphics processing unit GPU.
+ And you can load this P and M which is essentially the model tokenizer and model directly to
+ the VRAM provided your VRAM is sufficient to load the model.
+ And the following the processing will be performed by GPU.
+ Now you see here in the GPU I have drawn a very big diagram.
+ What does this mean?
+ This means that the GPU has many more number of cores as compared to a central processing
+ unit.
+ So it can perform this task, this LLM based task faster than a CPU.
+ So we always try to load these models to a GPU and not into the CPU, right?
+ So what will be the problem if the model is loaded into the VRAM and the tokenizer is
+ loaded into this like CPU or primary memory or vice versa.
+ It won't work because it doesn't have that direct access from this VRAM to this primary
+ memory.
+ So they don't have this direct access.
+ So the GPU will use its own memory and CPU will use its own memory.
+ CPU cannot access this VRAM, the GPU cannot access this primary memory directly, right?
+ To load a model.
+ So this is the output that we get from a model.
+ So essentially we avoided one issue that we might face so we have this kind of thing.
+ So this is the translation because we asked the model to translate from English to German
+ and all.
+ So this is the translation that we get.
+ Now if I just tell you that, so if I just tell you that give me a sum of 19 and 5, so
+ are these language models good or not for that?
+ So you can understand this large language models are trained on text data.
+ They are not trained to identify what is plus, what is minus and all, right?
+ So they don't know the initial significance or the mathematical significance of this 19
+ plus 5.
+ I don't know if you agree or not.
+ So let's just see if this kind of things are working.
+ So now essentially I am giving the model in the same way.
+ I am just not changing anything here.
+ So the input text is what is the sum of 19 plus 5?
+ That is the sum of 19 plus 5.
+ And tokenize the prompt using the tokenizer again we are doing the exact same steps and
+ we are getting the output.
+ Let's see what is the output that we get.
+ So probably you are also running and if you are executing the code alongside me, if you
+ face some issue please note that so that we can discuss at the end.
+ So, we are running it in CPU mode right now because it's a small thing, we will just revert
+ back to GPU once we need a better thing.
+ So this is giving me output 14.
+ That's great because the output I required is 19 plus 5 and the model gave me the output
+ to be 14.
+ So you see that these models are very, very bad at mathematical reasonings and mathematical
+ operations.
+ It doesn't understand what 19 plus 5 should be.
+ Of course, you can change the prompt in some way maybe or maybe you can give some different
+ numbers and it might work but for most of the cases it won't work.
+ So this is the thing that we must know.
+ So we can change this behavior of the model somehow maybe.
+ As you can see so we are just writing this simple prompt where we are saying what is
+ the sum of 19 plus 5 exact same thing that we have written earlier and we are giving
+ it another statement provide a step by step explanation.
+ Now this is very, very, very important, this is very important as I told you why it is
+ important because you see that the model that we are using this Flantify model is actually
+ fine tuned for this chain of thought reasoning.
+ It is not a reasoning model.
+ We right now have different reasoning models.
+ I will just show you the examples of what the reasoning models are.
+ But in general this chain of thought fine tuning is actually part of this reasoning kind of
+ thing and what does it mean, it means that it will break down a bigger problem into smaller
+ problems that can be solved easier right or you can say that the model outputs something
+ and before giving it to the user it rejects it or validates it whether it is correct or
+ not before giving the output to the user.
+ So this is one of the aspect.
+ Let us see if using that we can resolve anything or not.
+ So if you see the execution criteria, so the tokenizing is very fast.
+ The model output generate function is the actual function that generates the output.
+ So this green arrow you can see here, so it takes most of the time because you are running
+ this input through the entire model and generating the output right and the output is again needs
+ to be decoded.
+ I forgot to like mention this part where this tokenizer dot decode function actually takes
+ this vectors tokenized vectors and you get the converted output basically it decodes
+ the output.
+ It is as same as this encode function.
+ So encode function you will encode the text from the text to this number and you can take
+ this number from basically the vectors and convert it to this actual values.
+ So yeah this is the output that we get 19 plus 5 equals to 24 that is great because just
+ by changing a single line I was able to actually correct this part.
+ And I am not sure if it will work for all the numbers and all that is not guaranteed.
+ But you can check that if you give different numbers using the first version whether it
+ works or not it might work in the first version also for some of the numbers right.
+ But this explanation what does it mean?
+ It means that it will try to check something right what it has checked you do not have much
+ idea.
+ So now let us see what it has written the sum of 19 plus 5 is 24 plus 5 equals to 27.
+ So it has given some generate random values but whatever may be the same we were able
+ to get the exact output that we wanted.
+ So 19 plus 5 becomes 24.
+ Now you see initially it just gave the output a particular number.
+ Now it write some reasoning it write some reasoning at least.
+ Now let us understand this reasoning part.
+ So this reasoning part what does this mean?
+ So let us consider this to be the LLM so this is the LLM right.
+ So the LLM takes this tokenized vectors this is the input this is the tokenizer and this
+ is the natural language text it could be anything hello right.
+ So this input is tokenized and we get this tokenized input and we passed it to the LLM.
+ This tokenized input what it does is it will be passed through this model and we will get
+ the output from the model in the same tokenized form as simple as that.
+ But if you are using this phase where you are saying the model to explain the thing
+ you are essentially the model is straight in such a way because it is a chain of thought
+ reason model it will not give you the output directly it will not give you the output directly.
+ Instead it will generate the output here in an intermediate state it will generate the
+ output in the intermediate state it will recheck it why this is the output.
+ So why this is the output and it will give both of this as the output both of this will
+ be there.
+ Some of the models will again go a step further ahead where this Y the output from this Y
+ will be again used to actually match the output.
+ This output matching will be performed and once this matching is performed you will see
+ that you might find some discrepancy.
+ So why this is the output or why this should be the output if you ask a question to yourself
+ you can get that this should not be the output maybe and the output is not matching with
+ the Y statement.
+ If it does not match you can see that this process can be repeated multiple times until
+ you are satisfied basically the model is satisfied to give you an output.
+ So there is a loop that is forming here.
+ So that is why this two models are there.
+ The first one is we are calling it as chain of thoughts model COT model which is basically
+ this model and it does not have this match part.
+ It only gives you this output and this Y part it does not match it in that sense.
+ But even if you are generating this Y part many times due to this Y part you are actually
+ able to get a better output.
+ So that we have already seen in our test.
+ So this is known as chain of thought and there are other models which we specifically call
+ it as the reasoning model.
+ Which we specifically call as reasoning model because this model has a special function which
+ actually matches the input and output and then finally gives you an output.
+ So one of the example is that GPT reasoning model.
+ There is the Proplexity already has this DeepSick model which is again a reasoning model.
+ So these models will take your input, generate output, ask itself why that output is correct
+ or why it is incorrect and so on.
+ And then it will re-verify that output and then finally once all these steps are over
+ it will give you an output.
+ So this reasoning model you will see since this is a loop kind of thing it will take
+ more time because it will generate multiple times, it will match it multiple times.
+ So a chain of thought model is a faster model but is not that reliable in good working environments
+ where importance is given to the output of the model.
+ And reasoning models while it will take more time is preferred many because it will give
+ you a better output.
+ And if you get a direct output from the model you will see that where this kind of loops
+ or even why is also not there you will get a random output.
+ And for at least tasks that are not fine tuned to the model are not understood like the mathematical
+ operations that we have discussed.
+ Now we are going to make a chat model, why this chat model is important let us see we
+ are using this.
+ So we are using a different model here.
+ So I am restarting this session because I am going to load a different model.
+ So if you are doing the same you can do that also.
+ Before moving on to this section I will just give you a general idea of this Hugging Face
+ library.
+ This is what we are going to need now.
+ So this Hugging Face library as I told you gives you access to different models that
+ you have those are pre-trained models, base models, instruction tuned models to get a
+ many type of models.
+ But not all the models are directly accessible to you.
+ If you are going to access a model you need to have an gated repository for that.
+ So what does this mean?
+ This means that I am if I am building a model and I do not want everyone to get access to
+ that model.
+ I want only specific people to get access to the model.
+ So for example this Lama model it has some gated repositories.
+ So how we can access this Lama model because we are going to use Lama models in this next
+ section.
+ So this is how you are going to do that.
+ You go to your Hugging Face account.
+ So you have to create an account here.
+ I think I am not going to discuss about how to create an account here.
+ So you can go ahead and just create your Hugging Face account.
+ Once you have this you can just go there so in your profile.
+ So here you will see that there is this user profile setting so let us make it a bigger.
+ So here you will see that there is a section called setting right we will go to this settings.
+ In the settings you will see that there is gated repositories.
+ So in the left hand side in the settings of Hugging Face library you will have this gated
+ repositories.
+ So here you will see that these are some of the models that I am using and that required
+ this gated status.
+ So what does this mean?
+ This means that I need to request access from my end that I want to use it for research
+ purpose or some other purpose or business purpose whatever it is.
+ I need to get access from that model and they can verify it manually and they can give you
+ an access.
+ So how you can do that?
+ Let us take an example.
+ So let us take an example of Lama3.
+ So Lama4 is the very latest model.
+ I am just showing you this Lama3 model.
+ So Meta Lama3 you can see that once you search this Lama3 you will get this Meta Lama model
+ here and the model name is given as Meta Lama.
+ So the model name then the version of the model 3 and then the parameters of the model
+ which is 8 billion parameters.
+ So previously we were using a 3 billion parameter model and this Lama is a 8 billion parameter
+ model.
+ So possibly this is a much better model than the previous one.
+ But in some of the task that model might outperform this also.
+ So let us open this.
+ So once we open this model you will see that you will get, so it is something written here
+ as gated model.
+ Let me zoom in.
+ So gated model and you have been granted access to this model.
+ So it is written here.
+ If you do not have access to this model so there will be a section here.
+ So let us let us just open it in a different window.
+ You see that here I do not have access because I have just not opened it.
+ So you need to agree to share your contact information to access this model.
+ So you have to log into this model and you have to just get access so you have to request
+ access giving typing some information about why you require that model to be.
+ This is fine.
+ So you get an access to gated model.
+ So once you get the access where you can get the information from if you are having this
+ access or not from here.
+ So here in the settings going to this gated repository section you will see the list of
+ the models that you have requested and the list of the models you can see that the request
+ status is given here.
+ So some of the models are accepted some are pending right.
+ So the models that are accepted you can use those models similar to what we have done
+ for the Flan T5 Excel.
+ For Flan T5 Excel it is not a gated model so you can use it any time.
+ But for Lama you need to get an access.
+ I think we are going to use Lama 2 or Lama 3 whatever we are using.
+ So for using this gated models through that hugging face library there is another additional
+ step that we need to perform.
+ So the step is to create an access token.
+ To create an access token you can just visit this access token section here in the settings
+ only and you can create a new token here.
+ You can see that create new token.
+ So you click on this create new token and you can just give a class name of the token.
+ So let us call the name as HAI because it is temporary token that will be removed once
+ this class is over.
+ And this is this token and I want to access this gated repository and nothing else right.
+ So I will just click here so read access to contents of all pipe public gated repos that
+ I can access.
+ So this gives me an access to basically a token to access those gated repositories through
+ my account.
+ So let us create this create token.
+ So you see that I am being given a token here.
+ So this is the token.
+ So let us copy this token and click on done.
+ And once you copy that token you must remember that you will not be allowed to view that
+ token anymore.
+ So I have copied it but I cannot access it anymore.
+ So I cannot see the token if I am not copied it properly.
+ So if you are missed that you can just remove that and you can create a new token for that.
+ So I will just place my access token here.
+ I will just place my access token here and these are the same libraries that we are using
+ but another library that we are using is pipeline and another is this bits and byte config.
+ We do not need this.
+ So transformers provides us with this pipeline and bits and byte config and I am just loading
+ this access token.
+ Let us run this.
+ So this access token is actually now having my access token to that gated repositories.
+ So we have loaded that.
+ Now you will see that understanding the template prompt.
+ So we will understand this but before that I think okay.
+ So this is one model but I will just show you another model.
+ So let me load a different model.
+ Let me load this model pipeline equals to this and let me explain the part.
+ So I am running this.
+ So you see that it requires you to install this bits and bytes.
+ So it asks me to install this.
+ So what I can do is I can just select it and run it using this percentage.
+ This is a special function probably you know of.
+ So if you use this you can actually directly pip install from this notebook.
+ So let it download first because this downloads take time.
+ Once it is done I will just try to load this model and I will then explain the thing.
+ So let us just see this part first.
+ What does this thing mean?
+ So instead of using this model and tokenizer separately we can use this pipeline.
+ So pipeline is nothing but a particular class provided by Huggingface the tokenizer's library
+ which actually combines this tokenizer and model together.
+ So this pipeline already has a tokenizer and a model itself.
+ So you do not have to load the model separately and the tokenizer separately.
+ In many cases in our research we find that we need to use the tokenizer separately and
+ model separately but in many cases we might not require it and there this pipeline can
+ be used directly without writing that part of the code that we have already seen.
+ So we do not write the model tokenizer, we do not write the model loading and all.
+ We just write this pipeline and we call this pipeline object using this different parameters.
+ So what are the parameters?
+ The first parameter is the task, this is the text generation task.
+ So this is installed, so once it is installed you will see that requirement already satisfied
+ and all.
+ So let me just try to run this part again.
+ So I am just importing this torch and transformers and then I will run this.
+ I will go through this step by step, I am just running it because it will take some time.
+ So here you will see that this task is basically text generation task.
+ So what is text generation task?
+ It is the task of generating new text as simple as that as we can understand here.
+ So this is the thing that you need to pass as a parameter.
+ Second is the model.
+ So previously we used to give this model name to the tokenizer to this model separately
+ and here we directly give the model name here and the model that we are using is MetaLama38b
+ instruct.
+ So this is the model that we are using.
+ If I search this model, if I search this model here, you can just see in the Google search
+ we can go to the service library, this is the model page.
+ If you need any information about the model you can see here it is present here.
+ So there are many codes also you can directly access this pipeline and all, there are so
+ many parameters to work with.
+ So let us see that this is a model which contains two different sub-models.
+ One is this 8 billion parameter model which we are using and another is a 70 billion parameter
+ model.
+ And I hope that you will not be able to run that because it is a very, very big model.
+ It will require at least like 120 GB of graphics card RAM.
+ So basically VRAM to load it to the memory.
+ And if you are using CPU probably you will not get the output because it will just take
+ large amount of time to give you a simple output also.
+ So we will use this 8 billion parameter model here.
+ So it is a model which is trained with data that cuts off at 2023 March.
+ So these are the different things you might understand.
+ This is the context length which is 8K.
+ That is basically the number of input tokens that you can give to the model.
+ So 8000 tokens you can give to the model.
+ So let us just get to this code part.
+ So you see that the model is loading it.
+ So it will take some time here.
+ So let us go here again.
+ Now we have this torch underscore D type.
+ So what is this torch D type?
+ So this is important to understand that if you are using this models you are training
+ this models through these parameters.
+ Each of these parameters are nothing but floating point numbers.
+ And the dimension of this floating point numbers actually if it is more then it is a better
+ model because you have more precision over the output over your model.
+ So this precision means how much, how many number of digits you are having in a general
+ sense.
+ So for example, in a model, in a model, so let us say this is a trained parameter.
+ So this is a trained model.
+ I am just considering a single trained neuron.
+ So a single trained neuron, let us say we consider neuron in this circle.
+ So we are just using this to represent let us say a 32 bit value.
+ You are using this represent.
+ So this is a single neuron or single parameter of the 7 billion parameters or 8 billion parameters,
+ right?
+ You can understand that.
+ So this is only one neuron.
+ So it is having a 32 bit size.
+ As I told you previously that we need to load the model to the memory or we need to load
+ the model to this virtual graphics memory.
+ So if you need to load the model, so there are 7 billion parameters.
+ We need to load the entire model to this VRAM.
+ We need to load this entire 7 billion parameter to VRAM.
+ We cannot chunk it.
+ We cannot cut it here, put it half here and half there.
+ So it is not possible.
+ We have already seen that we cannot put even some of the parts, maybe the tokenizer to
+ the CPU and other to the GPU.
+ It is not possible.
+ We have to have a continuous memory where we need to put this 7 billion parameter model,
+ right?
+ And the precision here is, as I told you, generally it is in 32 bits.
+ Once we train a model, the main model that we are using, the foundation model, it is
+ having a 32 bit precision.
+ And if you load this 7 billion parameter model, let us say it will take around 28 GBs or even
+ more, right?
+ It is generally 4 into 7, but let us consider it is having 24 GBs.
+ Now why this 24 GBs, because each of these neurons takes up 32 bits of data.
+ So it takes 32 bit of space.
+ Here we will see that we have written in this code that data type is B float 16.
+ So what does this mean?
+ This means that it will reduce this precision from 32 bit to 16 bit.
+ And this is only for this Torch data types, not for the entire model, that is also one
+ of the thing that we will need to see.
+ So you see that already you have halved the size of the entire model.
+ So you have halved the size of the entire model.
+ So you had previously 32 bit it now becomes 16 bit per neuron or per parameter.
+ If this is the case, then you will see that instead of 28 GBs, now I will require only
+ 14 GBs of data of memory.
+ So if you had a memory of 16 GB, if your computer had a memory of 16 GB, previously with this
+ 32 bit you will not able to load the model, but with this 16 bit parameters you will be
+ able to load it in a 16 GB model, in the 16 GB VRAM.
+ I think this makes it clear to you.
+ So we are reducing the precision.
+ Now what is the significance of reducing the precision?
+ Of course, the first thing is that we are able to load a mass like smaller model compared
+ to the original larger model of 32 bits.
+ Then if you see that we are using this model, which is a 16 bit model, it has reduced precision.
+ So the effect of this in the output will be that you will get a bit bad result.
+ So the generation will be not that great because you are reducing the precision to half.
+ So even if we are reducing the precision to half like 16 bit, we have seen that the models
+ have performed quite well, we are already using all the models in 16 bit precision and
+ you will see that they work quite fine.
+ So most of the time we do not require to load the model in 32 bit, 16 bit precision is fine.
+ But let us say you only have a 12 GB of GPU, then what is the thing?
+ If you only have a 12 GB of GPU memory or VRAM, then even by using the 16 bit we cannot load
+ it.
+ For that we need to use quantization.
+ These are very important terms because when working with large language models, this will
+ be the actual thing that we will be working on.
+ So loading the model is pretty easy, you can just get the grab the model from here and there.
+ But running the model in the way that you want is very very difficult and as the model
+ grows it becomes bigger, you will see that this becomes a much more challenging.
+ So quantization is again another aspect where we reduce the entire model parameters from
+ 32 bit to whatever precision we want.
+ That we generally use this 8 bit precision and rarely we use a 4 bit precision and this
+ 4 bit precision is not available to all the models that needs to be separately trained.
+ But for 8 bit you will find many models that are already present in 8 bit.
+ Now, if the model we are just 1 to 8 bit, then again you will see that you are reducing
+ this parameter.
+ So now instead of 28 GB, now 14 GB, now you are end up with only let us say 7 to 8 GB of
+ memory requirement.
+ So it can now easily fit to this 12 GB.
+ So if you are having this issue, you can just use quantization.
+ And quantization models are smaller models, so smaller models will be faster.
+ Since you have reduced precision, the calculations will be faster.
+ So the model is run faster.
+ But the issue here is that if you are using an 8 bit model, there is significant decline
+ in the output quality.
+ So for 32 bit to 16 bit, we do not observe very bad kind of quality in the results.
+ But from 16 bit to 8 bit, we see a huge dip in the like quality of outcomes.
+ From 8 bit to 4 bit again, as you can understand is a very very bad model.
+ So in rarely we use a 4 bit quantized model.
+ So this is the general architecture idea if you are using a large language model, if you
+ are going to use it in any environment.
+ Device map we have again kept it at auto.
+ Now here in this pipeline, if we are keeping this to auto, it will automatically load both
+ the tokenizer and this model, not separately, but together into either a CPU or a GPU, whichever
+ is available.
+ Now we have a T4 GPU, so it will in this auto mode will directly just move it to this GPU.
+ Or you can directly specify here CUDA 0 or GPU 1, whatever is the name of the device
+ that you are having.
+ Now you see that there is another parameter, this is this token which takes this access
+ token that we have created in the hugging test library.
+ Then there is a response, let us just break it down into this multiple section.
+ So I think the model is downloaded, so the model is downloaded.
+ Now device is set to use CUDA 0.
+ So once I loaded the model, you see that I have loaded the model here.
+ I have loaded this quantized model.
+ Now let us not run this part because we have already loaded the model.
+ So here we have discussed this quantization already.
+ So for quantization, we will need this bits and bytes, that is why I have installed this
+ bits and bytes.
+ So these bits and bytes give you the flexibility of using different quantized models.
+ So once you install it using this, you can directly use that quantization configuration.
+ So this is a variable that actually takes this value and we are using this bits and
+ bytes config class which we have loaded here, you see this bits and bytes.
+ Load in 8 bit equals to 2.
+ Now I have already told you that 8 bit models are not good but for our testing and I am
+ just going to show you here because we are already in a very small resource environment
+ in a T4 GPU.
+ So we are loading the model in 8 bit.
+ So load in 8 bit equals to 2 does give you that exact same thing that we need.
+ So in this pipeline, you will see that the task is again takes another, it is exactly
+ the same as the previous one.
+ But the previous one, you will see that there were no like quantization except for this
+ Torch data type which we have used B Float 16 which is the half precision mode.
+ But here you will see that we are loading the model, the same model, mapping it into
+ the GPU because it is in auto, access token is given and the model KWRGs actually takes
+ the parameter of this quantization config.
+ You need to run this model if you are using this collab library, collab thing here.
+ You just use this part of the code and not the previous one.
+ It will take more time to load and all.
+ So once we have this model ready, we can just take response from the model.
+ So the response, you just give the same command, the pipeline, it handles everything.
+ You give the input prompt which is we are calling as chat and max new token.
+ So this actually specify that how, what is the limit of the output tokens that you want.
+ I do not want for example, more than 512 tokens.
+ The tokens are not related to number of words, but it is a similar kind of idea.
+ So a word might have multiple tokens associated, right?
+ But I want like for example, 512 tokens and the output however I will get, I will take
+ this response, I will take the first dimension, generated text and we will get the content.
+ So we will see that why this long kind of statement, we will see that.
+ So let us do it in a step by step way.
+ So now it is going to run on the GPU because it is loaded in the GPU environment.
+ This pipeline, the model and the tokenizer.
+ So let us see what is this chat, right?
+ This chat is right now adjacent kind of format or a dictionary format in terms of Python
+ which looks something like this.
+ And this is very important if you are going to work with this large language models.
+ This chat has this role where we have given a system, this role then we have user.
+ So let me just go through this part.
+ So you see that the prompt has three different sections.
+ The first section is the system prompt.
+ The first system, the thing is the system prompt, then there is this user prompt and
+ then there is this assistant.
+ So these are the three different sections of the prompt.
+ So these three combines together to build the entire prompt set, right?
+ To give you an example of system prompt, let us see you can just tell that you are a translator
+ or you can say you are a travel guide, something like that.
+ So what does this mean, this mean that the model will direct itself or treat itself as
+ a translator or a travel guide.
+ Then user prompt, this is the prompt that you are giving.
+ So this is the prompt, actual prompt input from user, right?
+ So this is the prompt input from the user.
+ So this user prompt will generally be the prompt that the user gives and assistant is
+ nothing but the output from the model, the output from the model.
+ This is the structure of the prompt and how this is performed in our examples is that
+ you give role, the role will be the system and in that will give the content, the content
+ have the content.
+ So you are a friendly tour, travel guide whatever we call it.
+ Again the role is user, content is hey, can you tell me any fun things to do in New York?
+ So let us consider this and save it, so this is the structure of the prompt that we are
+ using.
+ The model will directly translate it and see that this is the system prompt, this is the
+ user prompt and it will generate the assistant prompt because it is generated by the model.
+ So let us use this response equals to pipeline chat MaxNewToken we have discussed and we
+ are just going to print that.
+ So let us just run this response.
+ So this is a pad token ID to end of sequence token ID.
+ So this is a padding kind of like thing that you might get in warning form, does not matter
+ it will automatically set it, that is why it is showing it here.
+ So let us just print the response whatever response we get.
+ Now you see it is running using the GPU then also it is taking time because the T4 GPU is
+ not that great, it should not have taken much time with a better GPU but for T4 it will take
+ some time.
+ So let us run this response.
+ So this output from this response is this.
+ You can see that generated text and inside this generated text we have a role system
+ and all.
+ So this is an entire list and we want what we want from this the dictionary.
+ So you just give response 0, this gives you this entire list.
+ From this entire list I need this generated text key, the value that represent.
+ So it is having this kind of role, content, role, content and all.
+ So till here.
+ So I take this generated text.
+ Then I take this minus 1 which is the last one.
+ So the last one is nothing but this content and the role is from this assistant.
+ As I told you this assistant is nothing but the output from the model.
+ So the output from the model comes to the role of assistant and the content is the actual
+ output from the model.
+ And from there we want this content which is the exact output.
+ Let us print this.
+ So this is basically we are doing a basic pre-processing of this thing.
+ You run it and you will see that we have this exact output.
+ Oh boy, do I have a ton of fun things to share with you.
+ So whatever the thing is about in here.
+ So you will see that this is a very general idea of how you can prompt a large language
+ model.
+ Now the fun things come here that if we want to add something to this prompt, how we can
+ do that.
+ So here let us say this is the chat, in this variable chat I am just responding my output.
+ So responses 0, generated text.
+ So in this responses 0.generate text you will see we have this entire set of values where
+ we have this role of system.
+ So this is the inter prompt, the role of the user and the role of the content.
+ So basically the last output from the model.
+ So here we have this system user assistant, this pattern.
+ So now as an user I want to reply something because in chat you get the output from the
+ model and you give the input to the model.
+ So for that I am just storing it in the chat and appending this an extra role which is
+ the user role and I am just saying wait, Statue of Liberty.
+ So it has given this output in here what is Statue of Liberty and all.
+ So I have just asked the model, Statue of Liberty.
+ So this is a general response that I have given and I am running the exact same pipeline.
+ So it will run.
+ So what happened now is that we already had this.
+ So we already had this prompt where we had the system prompt.
+ Then we had this user prompt, then we had this assistant prompt which makes up our one iteration.
+ So system prompt, user prompt, assistant prompt.
+ Now using this I will just add another user prompt.
+ So now it has this user prompt, assistant prompt and user prompt all together.
+ It has all together.
+ It will generate the next assistant prompt based on this entire sequence, based on this
+ entire output.
+ That is why we call it as a chat assistant.
+ As you can see the previous output from this assistant is again used by the model because
+ we are using it as a chat.
+ So here you see that the Statue of Liberty is a must see attraction in New York.
+ It is one of these.
+ So it is telling something about this Statue of Liberty where it matches the context using
+ this previous output generated by itself.
+ So here this is how we are doing.
+ So this is essentially what you are doing is a for loop, not for loop, it is basically
+ a loop.
+ So where you have this assistant and this user and you give this user input to this assistant.
+ Then you give this assistant output and you as a user give another input and this becomes
+ a loop and we can create a chatbot out of it, very simply.
+ Let us consider what is this chatbot.
+ So I am not going to like give a very big time to this.
+ So let us consider this while true.
+ So we are running this for loop true until an exit is given as an input to the from the
+ user's end and if exit is not given, anything else is given, it becomes a part of this model
+ output.
+ So let us just make my chat model, let us see what is the previous prompt.
+ So this is the previous prompt.
+ So system you are friendly to, can you tell me fun things to do in India.
+ So now this is, this is the prompt that I have created for now.
+ So enter your response.
+ So this is the exact same code that we have used.
+ What we are doing we are taking the output from the model, appending it to the interprompt
+ and then again running the model and all.
+ So let us run this, if you run this you will see that interview response.
+ So my response is tell me about India.
+ So if this is the input to the model, you will see it is going to the model prompt, it
+ will have the access and it will generate the output and give me the output here and
+ I can again like chat it.
+ So I think this part is over, now we will move on to this fine tuning part.
+ I think we can take a break of 5 minutes, then we can rejoin and you can run this particular
+ part of the code and see how it works.
+ You can use the Flan T5 model also, but for that you would not get this pipeline.
+ You can build it using the model and the tokenizer for yourself.
+ So we are going to have a break of 5 minutes.

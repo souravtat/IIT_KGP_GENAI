@@ -1,0 +1,450 @@
+ Okay, good morning everyone welcome to this session. I think it is the second part of
+ today's lecture and today we are going to discuss about data and mathematical structure.
+ I am Udhananda Banerjee from Mathematics Department IIT Kharagpur and by training and profession
+ I am a statistician. So my job here is to connect the data structure
+ to connect the data structure and the mathematical structure and the computer based data structure
+ that will be done in a subsequent way by other professors. So today we are going to address
+ or introduce some mathematical formulation and as well as statistical formulation of
+ the data which is the core of our analysis. So we are going to discuss about some data
+ driven problem I think I need to increase the font little bit.
+ So here are the examples of data driven problem that often we address it is and in a realm
+ of AI and ML it is automated data entry detecting spam product recommendation medical diagnosis
+ correcting and preventive measures in maintenance or manufacturing process speech detection image
+ or video recognition as a part of computer vision natural language processing you can
+ see the new application in chat GPT or deep seek whatever you say then video and online
+ games so and many more definitely. So these are the typical problem that we address nowadays
+ and these problems are become much more prominent because of the advancement of computer technology
+ in last few years. So storing and retrieving data has become much more easier compared
+ to the days maybe around 30 to 40 years ago. So the problem and the solution that we usually
+ get in our textbooks so called textbooks which are taught in after 10 plus 2 levels they may
+ not always have incorporated this type of problem. So these type of problems are new
+ because of the advancement of the technology the problems and the associated solutions
+ and the machinery for addressing those problems that you see in the textbook that are little
+ bit older compared to this new type of problems but the idea that we develop from those textbook
+ knowledges are always implementable to this new realm of problems.
+ So here are the connections schematic diagram that I have I can share with you that it all
+ this problem that we have just seen here that can be categorized into 3 or 4 roughly like
+ it is a clustering problem classification problem and regression or prediction or forecasting
+ type of problem. As a consequence we can divide the work in 3 large chunk of groups.
+ So how will the machine decide that is the first problem and that is solved by statistical
+ analysis of statistical inference or in which space the analysis has to be done for a correct
+ method that is solved by mathematics that is the mathematical structure and how will
+ the machine function between these two statistical and mathematical problem where physically
+ the data are stored in hard drive or some cloud or somewhere else it is flowing.
+ So that part is definitely taken care by the computer science. So in statistical aspect
+ of this data analysis we have few broader aspect one is estimation which eventually
+ known as learning how the machine learns we machine does not learn we have to tell the
+ machine how to learn and that part is nothing but estimation problem.
+ The testing of hypothesis problem which is eventually a decision making problem whether
+ you will go by one rule or by the other so that is a testing of hypothesis problem.
+ Interval estimation problem is broadly associated for the prediction problem or at the same
+ time point estimation problem where instead of one particular value we are looking for
+ a band or an interval which will be considerably good for application and then comes the model
+ selection which is the most challenging part. We need to remember that model selection is
+ done based on a suitably chosen set of assumptions the no model is the correct model but some
+ model works for a given data set and we prefer to use that one the challenge is to identify
+ that one. And now all these problems can be dealt in different setup either parametric
+ setup where the distributional assumptions are there, parameter space is defined and
+ then we have to search in that space. On the other hand there are non parametric setup
+ where the assumptions are less but at the same flexibility is more at the same time
+ accuracy often sometime less if the assumption is wrong.
+ Another paradigm is the Bayesian paradigm where we have little bit more assumption over the
+ parameters again it increases the flexibility as the assumptions are more the flexibility
+ becomes more because we have distributional pattern associated to the parameters.
+ Now notice that we can do all the statistical analysis on a structured space and that structured
+ space is provided by mathematical theories. For that there are many subjects in mathematics
+ the most applicable subject in this context is linear algebra which deals with high dimensional
+ data, how to move from one high dimensional space to another high dimensional space and
+ how to retrieve back information from there, how to summarize the data all these stories
+ are covered in linear algebra. Little bit more sophisticated and abstract space beyond
+ linear algebra is the functional analysis and even more structured and different geometric
+ space is differential geometry which is a more generalized version that you remember
+ is from the coordinate geometry its generalized version is differential geometry and topology.
+ So this differential geometry and topology these type of structures usually used for
+ shape analysis image analysis. Nowadays topological data analysis is very much popular for statistical
+ analysis also then graph theory which is a core of network analysis and finally at the
+ top of everything is the optimization problem because whenever we are trying to solve any
+ problem we are trying to optimize a cost function which may be in terms of minimization or maximization
+ over a restricted space. So all this structured space make possible to do statistics on it
+ and now you can see that whatever I have told in between these two columns they are pen
+ and paper job. So how to implement these two things together for the data that makes the
+ connection with the computer science. So it requires data storage, data retrieval, memory
+ estimation, signal transmission, data visualization, automated service and automated learning.
+ So whatever we are saying in these two columns that think if I have to do via a computer
+ I need to feed all the necessary structure in computer such that at the right point of
+ time computer can take the correct decision and that is what is eventually the machine
+ learning problem and the search we do in a mathematical space is not same as the search
+ we do in a computer space. So the knowledge of computer science is equally important and
+ useful for implementing this statistical idea and the mathematical idea.
+ So we are here whatever the part I will cover here is mostly this linear algebra and some
+ aspect of this statistics part as mostly we will deal with parametric inference. So this
+ is the topic I will cover in today to next week and the next to next week. I hope this
+ is the right time to move on to understand all this structure. So whatever thing we will
+ discuss here in terms of mathematics or statistics you might have learned earlier or you might
+ not have learned earlier. If it appears to you little bit hazy don't worry too much.
+ In subsequent application when it will be implemented through this computer science
+ aspect of it it will be much more clear because I am not using the coding part in my lecture
+ so I will not go through coding but visualization aspect and example of all those topics I will
+ try to cover. So now we are going to ask few questions which is very common to all of us.
+ So here you see that we have these questions very often in our mind but we do not discuss
+ too much about all this stuff. We take it for granted that when do we consider the rating
+ of a product in Amazon may be valid or useful. So any website you consider either Blinkit
+ or Amazon or Flipkart or Mointra or whatever. So there are product, there are rating of
+ the product and what do you think that the rating is correct or it is useful for you.
+ People always have a hunch that the rating that is provided there it might have a certain
+ amount of bias because some got up rating might be there or in other words also I will say
+ being a statistician that it has an underreporting problem because whoever is purchasing a product
+ that person whether the product is good or bad that person may not give the rating. Some
+ of the people may give the rating and same thing happens also when we study in biopharmaceutical
+ statistics which is a big industry I mean one of the top largest industry the pharmaceutical
+ industry where in phase 4 after launching the product in market when people take medicine
+ they have more than one medicine most of the cases they take more than one medicine together
+ and because of that the person might suffer from some adversary drug reaction which is
+ often usually we call the side effect of the drug or the medicine.
+ So we do not know which medicine directly causing that side effect or which combination
+ of the medicine is causing that side effect but it is also true that everybody who are
+ getting the side effect are not reporting the side effect. So whether the person is
+ getting a good feedback out of the treatment or getting the ADR they all are not reporting
+ the ADR or the good outcome of it. So these type of problem is suffering huge from underreporting
+ problem which is often ignored in the analysis. Why do we represent cat or net this type of
+ big exam in our country rank of a candidate in percentile? That means often it is given
+ the rank of the person and as well as the percentile of score of that person very easily
+ you can understand that suppose a subject which is appeared by say 500 people and one
+ person is getting rank 50 there how good that person out of 500 but at the same time may
+ be some subject which is not taken by many people 500 candidate is appearing for net
+ in a particular subject or may be some subject like mathematics or statistics.
+ Statistics is taken very less but say for example mathematics the 50 rank out of say 50000 candidate
+ across the country. So the potential of the candidate who is having rank 50 out of 50000
+ student is much more compared to the rank of rank 50 out of 500 student of any other
+ subject although it is the direct comparison is not so easy but apparently you can decide
+ in that way the base of the comparison is how many people. Even that is the thing is
+ always asked in any recommendation when being faculty member when we need to recommend of
+ our students to in the university where they were looking for PhD program or MS program
+ they often asked that based on how many students are you giving this rating.
+ So next question is how the chat form works at your smart phone? So you can see that in
+ your smart phone whenever whatever you type after that a certain prompt is coming and
+ if your phone is old that means you are using that phone for little bit long time almost
+ very often it is giving you the right prompt that you are willing to type but if your phone
+ is new you might not get that prompt or if you are willing to you are typing a text in
+ the phone of your may be say some of your household member you might not get the same
+ prompt or with some of your friend who is speaking in a different language specifically
+ may be your say Hindi speaking person and your friend is Karnar speaking person or Tamil
+ speaking person and often we talk in chat we write in our mother tongue but in English
+ Roman font but so whatever outcome you will get from your phone that might not be same
+ if you write the same word in your friend's phone. So how these type of structure are
+ often built and another big industry is this electronic health record it is now often also
+ known as the omic data. So this tracking of data like smart watch or any other devices
+ which can be attached with the body and many records physical biomarker records can be
+ captured so this development has unfolded many interesting aspect of data analysis where
+ we understand the structure of the data or the associated data associated to a particular
+ disease very well and the decision making scheme where earlier the people were taking
+ decision only based on certain feedback of the patients or by the feedback of by definitely
+ by the understanding of the physician whoever is checking or the doctor whoever is checking.
+ So what it has made it has made the measurement more finer or granular this development and
+ as a consequence we our job is now to understand the subtle changes which can be an indicator
+ of the existence of a certain type of physical illness which might be not so prominent in
+ the usual observation or the measurements.
+ And then why do we often get calls SMS mail from pre-approved loan or credit card which
+ you have not applied at all I think all of us is having this advantage or disadvantage
+ depending on our time and mood so when you do not need anything they will be calling
+ and saying that we have a pre-approved loan for you, pre-approved credit card for you
+ although you have not applied for so definitely whatever data you are willingly or unwillingly
+ generating through your bank that data is no longer in inside in your bank it is going
+ somewhere else and those people are analyzing your data and your transactions and you calling
+ you back for the same thing repeatedly.
+ So these are the topics which sometimes debatable sometimes controversial but these are genuine
+ issues which are practical at the same time deeply involved in our life and all these
+ things are happening only because of the computer enhanced data analysis using certain tools
+ that whether it is accurate or inaccurate that is a separate issue but certain outcome
+ definitely it is going to be producing which is having a great impact in our life.
+ It is our job to make the use of it in a proper stream or streamline way such that we can
+ get the best benefit out of it.
+ So let us move on well when we talk about the data these are few simple questions that
+ we should understand that why do we collect data or sample we collect data or sample to
+ understand the feature of the entire population either the entire population or some feature
+ of our interest from the entire population.
+ So what do we want to know about the variables?
+ So they are inherent structure first notice this thing this is not a situation where we
+ have certain mathematical equations or law or certain law of physics that we have come
+ across in from the very beginning of our study.
+ So here nobody is going to tell us the law only we have data so data is the manifestation
+ of the law and we have to extract out the law from that data and make use of it so that
+ is what we are going to do or we are interested to do.
+ So ultimately how we can represent all the characteristics or the features of the data
+ and the way we can the best way we can do it is by its joint probability distribution.
+ So gradually we will unfold what it exactly means by the joint probability distribution
+ maybe today we will talk about little bit probability distribution and the next lecture
+ we will talk about joint probability distribution but this is the thing which can capture all
+ the features together and that can be captured very smartly such that we can make use of
+ this data in future for most of the related problems.
+ So let us move on in this direction before going to that we have few structure of the
+ data that we often come across first type of data which is known as the categorical
+ data which is either nominal or ordinal.
+ So nominal data has name only without ordering.
+ So say for example in a person of different ethnicity people often do categorization like
+ say Asian, Australian, Indian or India, Pakistan, Bangladesh, Sri Lanka, the subcontinent together
+ then the Middle East, then the East European, West European, then that is other side in
+ the South American people or the Native American people and the other Americans who have or
+ the French people who are staying there in America and Canada like that or maybe depending
+ on the hair color like black, brown, gray, blondes, so on and so forth.
+ So you try to see that all are certain names only and we cannot order them based on any
+ parameter.
+ So this is one structure which is called nominal data.
+ Model data is little bit different, it has the name and the ordering but the magnitude
+ of the ordering is not, sorry I think, is everything okay?
+ So the magnitude of the ordering is not present.
+ So let me make it a little bit clear, suppose I have not reached up to that much.
+ Thank you.
+ So the ordering here say for example a patient comes with a severe arthritis problem or maybe
+ some arthritis problem and the pain level of that person may be mild pain, moderate
+ pain, severe pain and that we get from the patient feedback and the treatment should
+ be started based on the feedback of the patient.
+ We do not have any magnitude associated to it, how much is severe pain, how much is moderate
+ pain, how much is mild pain, only it is the word of the patient.
+ And the same amount of damage on the body of a person who is little bit more aged, the
+ same amount of damage may cause severe pain to an older person but a moderate pain to
+ an younger person.
+ So if you go by the magnitude of the measurement of the damage, that thing might be same but
+ the amount of pain is different for different age group of the people.
+ So here you try to understand, we do not have any number associated to mild pain, moderate
+ pain or severe pain.
+ You may ask that give a score out of it to the person but again that is also a vague
+ number, whatever the person will tell you, you have to go by it.
+ So in that way whatever ordering is done and the data generated that is known as the ordinal
+ data or if you go by say like, dislike, so and so.
+ So like is more superior in some sense compared to ok, then ok is superior in the sense compared
+ to dislike but you do not have any number out of it.
+ You may ask for a number to be given but again that is a vague number which people can assign.
+ But the end of the day the analysis should be free from all these numbers that is what
+ I meant to say.
+ The next type of data that we are going to look as the countable data which is very easy
+ for us to deal with and the values are either the integer or some function of the integers.
+ So it can have positive integer value, negative integer value, zero associated with it.
+ The number of spam mail you are getting each and every day for every hour, how many messages
+ are entering in your phone, if you upload a video in YouTube, how many likes and dislikes
+ you get, how many comments you get.
+ So all these are very nice examples of the countable data.
+ Now uncountable data is often represented over an interval.
+ So interval means suppose you have uploaded a video in your Instagram or YouTube then
+ after how much time the first viewer has appeared or the second viewer has appeared or after
+ how much time the first like you have got or how much time how first dislike has appeared.
+ So this time interval whatever you are seeing this is a number which is taking value between
+ zero to infinity.
+ So all these are these numbers you consider as an uncountable observation.
+ And often all the observations comes most of the cases with certain units.
+ Here are few examples with the diagrams that I have here.
+ For categorical data you have nominal like pen, pencil, eraser.
+ It has also nice market basket analysis people are doing for very long days that if you in
+ a say crossword or any other bookstore if you keep these type of things together people
+ have a tendency to grab one with the other even though they do not need it.
+ There is another categorical example like cow dog cat which have only name but no ordering
+ sense.
+ On the other hand excellent good bad it has name and a sense of ordering fantastic okay
+ do not like that they also have a sense of ordering but no magnitude.
+ Here is a color grid which in the left panel whatever you are observing here it has a continuous
+ grid which is moving gradually and depending on the magnitude the color is changing.
+ So this transition is a smooth transition which is representing a continuous variable.
+ On the other hand here you have only five category of colors and that category of colors
+ is representing five different segments of the data.
+ So this is the discretization of this continuous variable.
+ And let me tell you with discretization we often lose the information some information
+ but sometimes storing the data and analyzing the data might be easier but as an information
+ perspective definitely this continuous curve or continuous data will be much more efficient.
+ And all these data whatever we are observing they are considered to be a an outcome of
+ a mathematical function which is typically known as random variable.
+ So this is typically known as random variable and this random variable is a function which
+ is a function from a particular set of subsets to real number or a collection of real number.
+ So here depending on the intensity you have the color.
+ So the color is the final outcome but the intensity is the value so that thing we can
+ consider as a random variable.
+ And we often denote that random variable with a capital letter it need not be x it could
+ be something else also.
+ So this random variable is a statistical or mathematical object that we will be dealing
+ with.
+ So let me just give you another example of random variable and its representation.
+ So we consider a population say for example the Indian population.
+ So this is Indian population and we choose one individual from the entire population.
+ So this for this individual I can assign many variables associated to it.
+ So let us call x1 omega which is the weight of that person.
+ So definitely x1 omega belongs to say certain number technically it is not 0 so technically
+ may be say 5 to infinity.
+ If it is adult definitely but if it child or maybe I can use little bit less number.
+ So let us for sake of example make it from 0 to infinity.
+ On the other hand x2 omega it is the monthly income so that is x2 omega which is again
+ that can be lying between 0 to infinity everybody might not be earning but it can have positive
+ and negative number.
+ So x3 omega say number of brothers or sisters in short siblings so that is x3 omega.
+ So x3 omega can be either 0, 1, 2, so on and so forth.
+ So in this way you can associate numbers to this individual omega and this numbers are
+ ultimately the outcome of the function x1, x2, x3.
+ Here you can see this is a real number, this is a real number and this is an integer.
+ So all possible outcomes are in general here real number it can be categories also.
+ So x4 omega is here color so x4 omega it can be from the set white, black, brown, grey
+ so on and so forth.
+ So this is the category outcome.
+ So these are nothing but random variables you can discuss about only one random variable
+ or you can discuss about x1 omega, x2 omega, x3 omega, x4 omega all random variables together.
+ So this is often known as a random vector, individually it is random variable together
+ all of them is a random vector often we need to discuss all of them.
+ So another example might be the investment of different amount of money in different
+ stocks.
+ So the amount of return from each of the stock could be different numbers and they can be
+ studied together.
+ So all those examples we will come across I hope this is a as an explanation this is
+ an easy example to understand what is a random variable.
+ So now here are few diagrammatic representation of the motor train card data.
+ This is a very old data and the sample size is also not big intentionally I have not chosen
+ a big sample size because it will be easy to visualize.
+ This dataset is freely available in software R so I have used I hope there is another dataset
+ of similar type with 400 observations now it is available but this is a old data very
+ very old data long back.
+ So here we will just try to understand and visualize all the necessary thing out of the
+ data.
+ So here most important outcome just the most important outcome of this dataset is the my
+ per gallon information that what is the mileage of the different type of car.
+ So here how we can summarize the data that is the first and foremost challenge.
+ So to summarize the data what we do we can take many measurement few measurement are
+ taken to capture the center part of the data few measurements are taken to capture the
+ spread of the data and that is typically when we talk about only one random variable but
+ if we have more than one random variable then definitely the variation of one variable based
+ on the other is also an important aspect.
+ So first of all we consider the mean.
+ So mean is the average value of all the individual elements of the dataset.
+ Now notice the thing that if we go for mean the mathematical formula of mean is say 1
+ upon n sum over xi when i equal to 1 to n so this is the often known as the sample mean
+ and notice that if any of the value of this information is too big or too large say for
+ example all the data are lying between 0 to 1.
+ So 0.17, 0.49 something like that all are lying between 0 to 1 but in some observation
+ the decimal value is not present by mistake or typing error.
+ Then the fluctuation will be happening to this data is too much.
+ So suppose some number is 0.2 or say 32397 and if we remove that decimal value then it
+ becomes 2397 and with that number if a system is computing the mean the mean will have a
+ very high amount of bias.
+ So often that measurement of the center part of the data might not be a good one.
+ So mean typically what is the remark here that mean can be affected by extreme values
+ a lot. So to overcome that problem we introduce another notion which is the median of the
+ data.
+ Median of the data is known as the or conceptually it is the middle most data.
+ So if you have the observation first you sort the observation. So this is the minimum
+ X order 1, X order 2, X order 3. So within parenthesis this number means this is the
+ lowest one then the second lowest and then the third lowest so on and so forth going
+ on and X order n which is the maximum observation.
+ Now if you have these numbers you just try to track back whatever is the middle most
+ 1. So if n equal to 2k plus 1 odd number of observation then there will be X order k plus
+ 1 that is the middle most value. If n is 2k then any value between kth order value and
+ k plus 1th order value anything in between them could be considered as a median their
+ average also can be considered as a median. Now or any proportionate linear combination
+ so say 3.3 into this plus 0.3 into this plus 0.7 into this that will also be a median it
+ did not be the average. Mode is the value that appears most frequently in the dataset.
+ So just going to before going to mode so here you notice the thing that median is not so
+ affected by the extreme value. So even this much can be highly affected median is not
+ going to be changed or this much is going to be highly affected with negative sign or
+ so on and so forth the median is not going to be changed at all.
+ So mode is the middle most value of sorry mode is the mostly viewed data that means the high
+ data with high frequency. Data with maximum frequency that means whenever a dataset is
+ observed we often take the count of the data and we calculate how many observations that
+ data has of each of the individual and that value for which the frequency is maximum this
+ base value is known as the mode. Now you may ask this question if the data is continuous
+ type of variable where each observation is coming only once then what will be the mode
+ then often we will represent the data in the form of histogram in the form of histogram
+ and the pillar for which the maximum frequency we observe the middle most value of that pillar
+ you can consider as the mode from the data and from theoretical distribution what it
+ will be that I will tell you later on after introducing the theoretical distribution.
+ Now we are going to another measurement which is known as the dispersion. So this mean median
+ mode they are the measure of the central tendency and the dispersion measurement is capturing
+ the spread of the data. The first one is very obvious the range that is maximum observation
+ minus the minimum observation. So that is the range of the data often we call it R okay.
+ Then the most interesting part comes which is known as the variance okay. So variance
+ of the data let us try to introduce in the form so let me just check once again. So variance
+ of the data how can we interpret this one. So let me just go in this way. So suppose
+ if I have observation say 1.23.97.8 9.7 something like that and I want to summarize this data
+ by only one number okay and let us call this is x1, this is x2, this is x3, this is x4
+ and so on and so forth you can have n number of observations.
+ You want to summarize all the data with only one value okay. So let us call that value
+ is replace all of them by a particular number which is A okay. So every time I am replacing
+ 1.2 by A I am committing some error, I am replacing 3.9 by A I am committing some error
+ and so on and so forth. So say you can have a very nice example that if you ask a student
+ that how much is your score at 10 plus 2 level, the person will give you a certain number
+ and you ask that why you are giving me this number, you tell it is the mean of all the
+ values in terms of percentage. Now if you ask the question that why are you talking
+ about the mean most of the cases we do not have a proper answer for that. So what we
+ are doing there is eventually we are giving one number instead of all the scores of the
+ individual subjects.
+ Now how much amount of mistake I am committing, if I consider the error in terms of the square
+ error, square error, so let us call s, the square error is xi minus A sum over i running
+ from 1 to say here it is 4 or in general it is n. So every time I am replacing the true
+ value by A I am committing this much of error and this is the total error. So if I want
+ to minimize the total error, minimize the square error with respect to A and the value
+ which will be minimizing the square error, A hat which is nothing but 1 upon 4 sum over
+ xi i running from 1. So this is another interpretation of mean that how much if I minimize the square
+ error loss, the best representative of the data is the sample mean.
+ Now after minimizing the square error, so the minimized average square error is 1 upon
+ n sum over xi minus x bar whole square i equal to n. So minimized average square error is
+ nothing but sample value. Now I am asking you to do this another, so this has another
+ interpretation that it is measuring the distance of individual data from its mean or the scatterness
+ of the data around me. It has another interpretation which is trivial to observe that this quantity
+ xi minus x bar whole square i running from 1 to n is same as 1 upon 2 n square double
+ summation ij xi minus xj whole square. So n in general here n equal to 4 in this case
+ i equal to 1 to n j equal to 1 to n. So these two things are same, the interpretation of
+ the right hand side is it measures the scatterness of the data among each other. So xi and xj
+ they are any pair of data points, pair means if you choose i and j, if i equal to j that
+ is trivial is 0. But if you choose any ij combination this right hand side expression is saying the
+ scatterness among itself and here it is measuring scatterness around the mean. Both of them
+ gives the notion of the variance. Now another connection I can also say that instead of
+ the square error if we use absolute error sum over xi minus, so this is one part xi minus
+ b i running from 1 to n 1 upon n. So let us call a it is a function of b. If I minimize
+ the absolute error, so b is so chosen that it minimizes the absolute error then the choice
+ of b is the median of the data.
+ So square error is minimized with respect to mean, absolute error is minimized with
+ respect to median. So this is a very fundamental aspect and that we can all consider and the
+ square root of variance is known as the standard deviation. So this is often known as SD. Interquartial
+ distance I will show you with the diagram later.
+ So here is the data set with mile per gallon for 32 car observation. Here you can see the
+ minimum first square error will come later on, median, mean, maximum all these things
+ are available. Variance of the data is here, variance of the data is here, rest of the
+ thing we will talk in a while. Range we have considered, mean absolute deviation about median
+ that is here. So now based on this if we want to write all of them summarized mathematically
+ then the expression of mean is given, median given, the mode we know. This portion we can
+ capture through either by the sample variance or through standard deviation. Mean absolute
+ deviation we can capture as 1 upon n sum over x i minus m where m is the median. Range we
+ know, interquartial distance that we will discuss, skewness cartosis we will come later
+ on. But if we have all those information do we know everything about the data? The answer
+ is no. This is a descriptive summary of the data. Still we do not know the entire feature
+ of the data. So here you can see that how the mean, median and mode are playing within
+ the data. If the longer tail is on the larger value of the data then it is known as positively
+ skewed. If the longer tail is on the lower side of the data it is known as the negatively
+ skewed and if both of them have the same weightage tail then it is known as the symmetric distribution.
+ As for positively skewed distribution mean is larger than median, median is larger than
+ mode. On the contrary for negatively skewed distribution mean is lesser than median, median
+ is lesser than the mode. For symmetric distribution mean median mode are same and this is true
+ for typically continuous value distribution. Now cartosis is another measure which is capturing
+ the peakedness of the data which is known as the cartosis. The standard normal distribution
+ so normal distribution which means 0 variance 1 that is considered to be the standard. If
+ the peakedness is more then it is known as the positive cartosis or platycardic. If the
+ peakedness is less then it is known as negative cartosis or sorry this is leftycardic and
+ this is platycardic.
+ Now the peakedness eventually tells about the concentration around the center part of
+ the data. If the peakedness is high around the center of the data dealing with that data
+ is much more easier than the peakedness is lower and the flat is it is much more flatter
+ distribution. Dealing with this type of distribution is much more challenging compared to dealing
+ with this distribution. This distribution will behave more decently and well obedient
+ way but this one will not behave in such a way. And here the quartiles that we define.
+ So here you can see that the distribution of a random variable the first 25% is here.
+ So the Q1 is the value such that the data less than that is 25%. Q2 which is eventually
+ the median 50% data is less than that 50% data is above that. Third quartile is the value
+ for which the 75% data less than that and 25% data above that. Then Q3 minus Q1 that is
+ known as the interquartile distance or interquartile range whatever we call that is also a measure
+ of the dispersion people often take. Median is the second quartile they are synonymous
+ that is the 50% of the data.
+ Now I think I should take a break so with the descriptive statistics we will we are concluding
+ here. And if you want to capture the measurement of skewness and cartosis these two will be
+ the formula for skewness and cartosis with depending on quartile this is the formula
+ for skewness and depending on the mean and other or the moments this is the measurement
+ of the skewness and this is the measurement of the cartosis. So this one numerically positive
+ means positive skew, numerically negative means negatively skewed. This value we compare
+ with 3, 3 is with this formula 3 will be the cartosis of standard normal distribution.
+ So if this is larger than 3 is positively carted if less than 3 for this number is negative
+ equity.
+ So with this note we are concluding this descriptive feature of the data. Now we will tell you
+ that how to overcome the shortage of this descriptive distribution through probabilistic
+ characterization of the data. Thank you.

@@ -1,0 +1,327 @@
+ Welcome back after the break. So, let us continue our discussion over supervised machine learning
+ and as I mentioned just before going to break, we are now going to talk about another classifier
+ it is called support vector machine or SVM. So, today only you learnt about linear classifiers
+ right like where you would like to differentiate between one class versus another class. So,
+ let us just assume that this solid dots here they denote class 1 and the hollow dots here
+ they denote class minus 1. Now, how can you differentiate them? Now, if you look at any
+ linear classifiers like the ones which you have studied today, they would try to draw
+ a decision boundary which separates these two classes. So, something like this. So, all
+ the models will try to come up with this boundary which will the boundary means what? That this
+ kind of distinguishes or this kind of separates the one class with another class. Now, in
+ this case the solid class with a hollow class plus 1 and minus 1 correct and typically it
+ takes some form like this like where w's are the weights you learn x is the x is the
+ feature set and b is often called a bias or this is just an additional thing additional
+ weight similar to w. Now, so when we apply such a model one decision
+ boundary can be like this which I have drawn you may come up with a little better decision
+ boundary like this someone can come up with another decision boundary like this or this.
+ Now, see so whenever you are coming up with this decision boundaries they are all separating
+ the two classes quite well right this is also separating the classes this is also separating
+ the classes this is separating the classes in fact the one which I draw that also separates
+ the classes. The question however is if you have so many different type of linear classifiers
+ which one to choose like which one would be the best classifier? Now, to answer this question
+ actually the whole concept of support vector machine came. So, the idea was that I would
+ like to pick a classifier linear classifier which will have the largest surrounding margin.
+ Now, what is margin? Margin is defined as the width that the boundary could be increased
+ by before hitting a data point. So, if you see here that this particular point is like
+ belonging to this yellow zone. So, the yellow margin is not very good in this case because
+ what we are saying is that the margin should be such that there is no other data point
+ in this margin like this shaded region should not have any other data point. Now, rather
+ than this if you are so in this example the margin is like very small, but if your classifier
+ was like this then you tend to get a much better margin see.
+ So, this is the whole idea of SVM or linear SVM is we would like to get the linear classifier
+ boundary which will provide us the maximum margin as possible. So, maximum margin linear
+ classifier is the linear classifier which has the maximum margin. Now, the data points
+ like this or this or this which actually fall within the margin or which fall at the boundary
+ of the margin are called support vectors because support vectors are those data points that
+ the margin actually pushes up against. So, this support vectors because they are called
+ support vectors from this the name support vector machine actually came from. So, they
+ are essentially talking about these data points these are the support vectors which determine
+ the margin of a particular linear classifier.
+ Now, why we would like to go with maximum margin classifier? So, first of all that if
+ you look at it intuitively this feels the safest option that if you have a maximum
+ margin classifier the chance of error is low. So, why if let us say this is your classification
+ boundary that this is my classification boundary if a new data point is falling here I can
+ immediately classify this data point to be plus 1 because I know that I have enough margin
+ for error. While if you are looking at a classifier which is like this now if a point is lying
+ here I cannot say whether this was really plus 1 or this is actually plus minus 1 because
+ if you see the location of this new point this is much closer to the other data points
+ in plus minus 1 than the data points in plus 1. So, margin if the margin is maximized a
+ maximum margin classifier tends to have a lot of leeway where you can avoid making error
+ in the classification.
+ So, again like on the same topic or on the same point if we have made a small error in
+ the location of the boundary if you are going with a maximum margin classifier this gives
+ us the least chance of causing a misclassification. The model is immune to removal of any non-support
+ vector. So, it does not matter whether you are removing this data points or removing
+ some data points here because they are so further from the classification boundary that
+ they do not impact your eventual performance. And generally empirically it has been observed
+ that SVM works very well.
+ Now, let us try to represent this idea little mathematically although we will not go through
+ the entire proof because we do not have enough time for the full theoretical exploration,
+ but I will just try to still give you a little flavor so that if you want you can also check
+ out the proof through other sources. So, essentially if you when you consider a classifier boundary
+ like this, so we kind of consider a zone where there are a lot of class 1 or 1 particular
+ class data points. Similarly, on the other side there are zones where you have a lot
+ of let us say negative data points. So, just think of this like this that you have crosses
+ here, you have ticks here, you are coming with a decision boundary like this, so this
+ is your decision boundary. So, this is the zone for let us say plus 1 class, this is
+ a zone for minus 1 class. Now, you can actually think that I am going to draw another kind
+ of line or a pen which separates the plus 1 zone from the actual classification boundary.
+ Similarly, if I can draw another negative pen which separates the zone of like negative
+ zone from the decision boundary. So, this is what is called a plus pen, this is what
+ is called a minus pen and this is of course the classification boundary which we are talking
+ about. Now, let us try to kind of derive this a little mathematically, so for that let us
+ have a simple mathematical background. So, the length of a vector, so you know the vector
+ is essentially vector has a direction like vector is a collection of like a collection
+ of numbers, but which also has a direction, because otherwise you will have scalar values
+ which does not have direction which are only numbers.
+ Now, the length of a vector is called a norm, so in this case let us say the vector is something
+ like W1, W2, W3, Wn the norm of W is denoted as this symbol like this is a symbol of norm
+ and if you see you are essentially taking a square root after summing up all the individual
+ data points within it and the norm can also be denoted by if you take the transpose of
+ the vector and multiply that, so you get the norm square of this. So, this is again a property
+ of a norm and in general as I mentioned that it has direction the unit vector on the particular
+ direction of W is given by the vector divided by it is norm.
+ And in general when we multiply two vectors especially when you take the dot product of
+ two vectors it leads to a scalar value. So, essentially when W2 transpose W we are taking
+ this actually leads to square this leads to a scalar value, so in this case the norm is
+ essentially a scalar value and since so this you can think of this as if that you are taking
+ the vector you are dividing it by the norm of the length of the vector and that way you
+ are getting the direction of the vector through I mean essentially as I mentioned that the
+ difference between scalar and vector quantity is that vectors have direction where scalars
+ do not have and this is the way to know the distance of direction of a vector.
+ Now why all this is important, now in our SVM example, so this is our this is one zone
+ let us say this is our negative zone, this is our positive zone, this is our plus plane
+ this is our minus plane. Now and this is our weight vector W, so the direction of this
+ weight vector will be as we saw this. This is the margin of a classifier, so this is
+ the decision boundary and the margin is essentially the distance between the plus plane and the
+ minus plane. Now what is important here is you can actually represent the plus plane
+ as Wt that means like this is my linear classification algorithm which is putting like where you
+ are looking at the x vector which is the vector which is the feature vector of a particular
+ data point you are multiplying that by the weight vector and of course like you have
+ one additional constant but this value is going to be 1 because we are talking about
+ the plus plane here for the minus plane we are taking the same value and taking it to
+ be minus 1 and the decision boundary is essentially Wt transpose x plus p is equal to 0.
+ Now so for y when it is plus 1 we get this that because the plus plane is Wt transpose
+ x plus b is equal to 1 any data point which is beyond the plus plane will have value greater
+ than is equal to 1. For negative class since the minus plane has the equation W transpose
+ x plus b is equal to minus 1, so any value here will have either minus 1 or less. So
+ in this side it will be less in this side it will be greater than 1.
+ So if you combine everything if you just multiply the yi now you may wonder how do I get yi
+ because yi is the outcome this we are talking about only the training data not about the
+ test data okay. So for this we actually know the y values and the x values. So we apply
+ that and we understand that this is going to be greater than is equal to 1 because when
+ yi is minus 1 you are also getting this value to be minus 1. So when you multiply this minus
+ and minus it becomes a plus, this value is plus this value is plus again when you are
+ multiplying two positive quantities this will be plus.
+ So effectively you get you cannot compress this two and you get this one single equation.
+ Now one proof which I am not giving but you can check this online tutorial to understand
+ the proof that the margin of these two classifiers given this is the positive pen and this is
+ the negative pen is given by 2 by the norm of the weight vector w. This is a little complex
+ proof it requires a lot of steps so I am skipping them for now but for now let us just assume
+ that this is true that the margin of the classifier is 2 by the norm of w where w is the weight
+ vector. So in that case essentially the whole finding the large margin classification or
+ classifier boils down to this particular optimization problem.
+ So we want to maximize the boundary m so this is equivalent to minimize the minimize 1 by
+ m which is similar to half of norm square. And we know that the decision boundary needs
+ to satisfy all the data points correctly and the data points will have an equation like
+ this. This is something we saw for a positive so if my positive range is here or sorry let
+ us say this is the negative range this is the positive range. So for the positive range
+ you get y i to be positive and then the entire thing to be positive so it is greater than
+ equal to 1 for the negative 1 y i is negative and the entire thing is negative so you again
+ get the multiplication to be more than 1. Now this becomes a constrained optimization
+ problem where you would like to minimize the value essentially that is same as maximizing
+ the margin and you want to follow the constraint on the value of each individual data point
+ in your training data. Now why you are doing all this because effectively you would like
+ to know the w. So think about it what is the variable here. The variable here is essentially
+ w and b x i is something which you know from the training data y i is something which again
+ you know from the training data. So these are your feature set this is your output level
+ you are trying to get only w and such a w so that like it also maximizes the margin of
+ the classifier. Now it turns out that this constrained optimization problem is also not
+ very easy problem to solve. So in fact to solve this there are a lot of mathematical trick
+ people apply where they convert this this problem like this constrained optimization
+ problem which is also called a primal problem to a dual problem.
+ Now I am just going to show you the dual problem here. So essentially this particular alpha
+ values are called Lagrange multipliers and this dual problem is also called a Lagrangian
+ dual problem where all this alpha values are greater than is equal to 0 such that like
+ the sum of alpha i y i is equal to 0. Then for a training data you know y i you know
+ y j for the same training data i and j you know their feature set. So once you apply
+ all this and you try solving this problem like with respect to like so essentially here
+ what is happening is that you are trying to determine the value of alpha provided to all
+ the different training data which you have. So essentially all the training data here
+ with its own levels will have a specific alpha like alpha i is for the ith training level
+ and then you apply this particular constrained optimization problem you solve this using
+ some quadratic problem solver like Cplex is one tool which is often used after that you
+ actually apply all the alpha value y i and x i values to get back the weight.
+ So note where we started we wanted to compute the decision boundary and the decision boundary
+ would be given by the weight value of W what we ended up getting we ended up getting the
+ value of alpha which is again called a Lagrange multiplier and this multiplier value which
+ we are getting effectively to allow us to get back the W which we are looking for.
+ So essentially our goal was to get the weight vector W through all this process we are trying
+ to get back the weight vector W. Now in SVM there is a very interesting thing which happens.
+ So every alpha is essentially as I mentioned they are connected to each individual data
+ points in the training data. Now many of the alphas will tend to be just 0 and effectively
+ the weight vector W it becomes a linear combination of a very small number of data points and
+ in fact these data points where the alpha was not 0 this small number of data points
+ are called the support vectors. So from this the name support vector machine came the beauty
+ of this is that the decision boundary essentially gets determined only by the support vector.
+ So the W instead of going over the all the values of alpha y i and x i if you just have
+ S support vectors so you can simply take the support vector and their corresponding x and
+ y values and you can get back the weight vector that is it.
+ So if we look at it this pictorially so you see that for almost all the non support vector
+ which does not fall in the decision boundary the alpha values are 0 only the ones which
+ fall on the I mean basically fall on either the positive plane or the negative plane they
+ will have some alpha value which is non zero and you just have to consider them to determine
+ the value of W and that way for any new test data point Z you can compute so now I know
+ W I kind of know for the test data what is going to be the Z be again I know from the
+ earlier equation I just simply apply this and by applying this we can get the value
+ of the current test data point. So just to summarize what we have done so far.
+ So we actually in SVM we get a list of training data alright then we say that we are going
+ to apply a linear classifier classification algorithm on top of this. Now up to this all
+ is fine you can apply any form of like linear classification algorithm to come up with a
+ decision boundary. The problem is that with different values hyper parameter values or
+ the choice of the actual linear classification algorithm you may come up with a lot of decision
+ boundaries. So all the decision boundaries can in fact differentiate between the positive
+ class and the negative class or any such classes very well.
+ Problems are happening when we want to determine which classifier to choose because every classifier
+ is working fine and you cannot just say that I am just going to randomly choose one classifier
+ and just going to go with it. So in SVM the goal is to pick a linear classifier where
+ the classifier boundary has a margin of error and this is the margin so essentially a margin
+ consist of the space around the decision boundary where like you are not hitting another data
+ point either on the positive side or on the negative side.
+ So this whole region is called a margin and our goal in SVM is to maximize the margin alright.
+ Now I understand that some of you may not have got the mathematical details because I went
+ through that very fast and I also did not explain all the steps due to lack of time.
+ But I would encourage you to go and look up the tutorial link which I have shared over
+ on the slide and also you can also search on YouTube or in general like any online tutorial
+ where you will get the understanding of the entire optimization process how that optimization
+ function is created and how exactly it is solved.
+ The bottom line is that even if we skip the theoretical foundation the beauty of SVM is
+ that effectively for the classification boundary or the decision boundary which we were computing
+ where we wanted to keep the margin to be the highest.
+ It just turns out that the weight vector for that particular decision boundary can be determined
+ just by looking at the support vectors for which the alpha like which we computed in
+ that optimization process they are non-zero and in reality in any kind of classification
+ problem you see that only a handful of data points in the training data they will contribute
+ or they will become a support vector.
+ So the whole idea of KNN was that during the test time you would like to compute which
+ are my nearest data points look at the labels and then determine the level of the current
+ test data point by looking at what the closest neighbors are saying and I told you that this
+ is a very expensive process because we are doing almost all the operation during the
+ test time.
+ In case of SVM since we are dealing with only a few support vectors so we can actually look
+ at support vector calculation and support vector base calculations to be a very tiny
+ scaled down version of the time of computation we do we tend to do for KNN alright.
+ So SVM tends to run faster than KNN and often times since there is a very nice theoretical
+ background around it this tends to also provide a very good answer.
+ Now so far we talked about only binary classification.
+ Now in case of SVM unlike naive base here we cannot really compare among multiple classes.
+ So the approach which SVM takes is like one versus all strategy.
+ So if you are trying to make a multi-class classification with n classes you take one
+ class as the one like you want to determine this class one versus all the rest.
+ So you try to determine whether this particular point belongs to class one or any of the other
+ points and if it does not belong to class one then you go to the next round where you
+ try to differentiate between class two and any other data points kind of.
+ So that way eventually one of the iterations you will get the correct class level.
+ So this strategy is called one versus all strategy.
+ We did not look at another aspect so so far we have been talking about only linearly like
+ linear classifiers but support vector machine can also work with non-linear like non-linear
+ classification problems.
+ So I will just give you one example.
+ So a linear classifier problem means that when your classes are like this you can simply
+ come up with a decision boundary which can differentiate these two classes.
+ But when you are you have a class like this right so your decision boundary cannot be
+ a line.
+ So it cannot be linear.
+ So in this case let us say we looked at a circular decision boundary.
+ So these are cases where it is a non-linear boundary which we are dealing with.
+ Now so far the support vector machines we have talked about they are they work only
+ with linear classification boundaries but there is something called a kernel trick like
+ where kernel functions are used which allows the SVM to deal with non like non-linearly
+ separable classes.
+ Compared to some other methods like let us say naive base SVM is still time and space
+ consuming but it is much better compared to let us say KNM.
+ And we have to store all the support vectors so rather than a simple model we have to store
+ all the support vectors and often time that creates or that adds to the space complexity.
+ So with that this actually ends today's discussion on supervised machine learning where we have
+ covered the cover three different classification models, naive base classification, support
+ vector machine and KNM neighbor.
+ So now it is time to take up a few questions.
+ So why different method in neighborhood is being used any practical example.
+ So I guess your question is related to the K nearest neighbor algorithm and you wanted
+ to know why different distance metric is used.
+ So look different distance metric is often used depending on the particular application
+ scenario so and Euclidean distance is something which we often use like which is a very simple
+ measure if you can place a particular if you can so let us say that you are trying to determine
+ the distance between two data points in a in a in a map or let us say this you just
+ want to determine the ideal distance between two places.
+ So you look at a particular place A, you look at a particular place B, you look at the lat
+ long of this place, you look at the lat long of the other place and you try to determine
+ the distance between the two by looking at the Euclidean distance between the lat long.
+ So when we say lat long essentially it is a two dimensional space right like you look
+ at both the longitude and the latitude of both points and then you just compute the
+ distance between that but that only gives you the ideal distance like if you can travel
+ by let us say air this is the amount of travel you will have to do.
+ But in reality you are often constrained by the physical road.
+ So if there is no road which takes you from place A to place B this area distance is meaningless.
+ So the Euclidean distance which we computed it does not actually tell the real situation
+ better.
+ So in such cases let us just assume that you live in a city where the city is like grids
+ okay.
+ So grid means that okay there is a point here then a road just goes from this point to this
+ point then then there is one road like this then another road like this.
+ So where the city is designed in right like a grid where you have parallel roads like
+ this and parallel localization like both horizontally and vertically okay.
+ So if you have a scenario like this and in reality such a kind of a nice grid like road
+ network exist in Manhattan district in New York.
+ So there if you want to compute distance between two different data points you will
+ have to follow the road.
+ So you will have to let us say go up or go down to catch the next intersection and then
+ you will have to take right or left to reach the other place.
+ So this kind of setup where you are just following the road and go to from one point to another
+ point you can capture this in one distance metric called Manhattan distance or 11 distance.
+ As the name suggests but because it can originated from this Manhattan district block or grid
+ like road structure it is called Manhattan distance.
+ So depending on the example, depending on the application scenario like whether you
+ are trying to determine the distance between a driver or a passenger you will have to consider
+ the road network.
+ But at the same time if you are just trying to place let us say some like loud speaker
+ you can actually look at the aerial distance there the road network does not matter.
+ So depending on the application you pick a different distance metric and the similar
+ thing is applied in case of classification like K nearest neighbor classification as well.
+ So how to know which classifier is best suited for our requirements this is a very nice question
+ and this is why the whole idea of cross-validation come into play as I mentioned.
+ So you have a training data point, you do not know which classification algorithm to
+ apply correct.
+ So the best idea is that you apply multiple classification algorithms you look at the training
+ data you I mean again so you split the training data into an actual training data and the
+ validation data you train based on the actual training data you apply them on the validation
+ data.
+ Now the beauty of validation data is that for the validation data you have both the
+ features that means you have the X value and you also know the level Y value because this
+ is a part of the original training data set.
+ So based on this level switch you have you can compute how many of your predictions were
+ correct or wrong.
+ So that way you can compute what is called an accuracy that how many times your prediction
+ was correct and you apply different classifier models using this actual training data, apply
+ them on the validation data compute the accuracy and finally pick the model or pick the classifier
+ which gives you the best accuracy over that validation set.
+ So this is how we can utilize or pick the classifier to work in a real world scenario.
+ Next question, how are the data points falling in the margin in SVM?
+ So the way margin is defined is that we are going to margin is the area around the decision
+ boundary which we can expand until we hit a point.
+ So this is why like always the margin ends with hitting a data point in either side of
+ the decision boundary and these data points which fall along the margin they are called
+ the support vectors.
+ And as I showed that to compute like a level for a test data point essentially this support
+ vectors are used and the data I mean the predicted value is computed.
+ Again like I think this question came up earlier as well so the books I think some suggestion
+ of the books will provide it not during the current session so you can check I think like
+ will provide it offline like some good reference books where you can look at this topics.
+ There are generally good some like good tutorials online tutorials which are also available
+ but often time it is better to follow some book where you can read them in more detail.
+ We will provide some reference book links later offline.
+ Thanks a lot for attending the lecture today.
+ We will meet again next week where we will continue talking about classification algorithms
+ where we will cover decision tree and the ensemble methods like random forest.
+ Thanks, have a very nice weekend.
+ Thank you sir.

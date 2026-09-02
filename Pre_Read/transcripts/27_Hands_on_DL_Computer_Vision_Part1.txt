@@ -1,0 +1,786 @@
+ Hello everyone, I am Nilanjan, a PhD research scholar from CCDS, IIT Kharagpur and today
+ I am going to take your deep learning applications in computer vision hands on.
+ And before starting, I am just going to clarify some of the doubts that you are having that
+ I heard regarding some of the evaluations of the assignments and the quizzes.
+ So considering the quizzes, we have forwarded each of the quizzes, any any questions that
+ you are having forwarded it to a particular professor who is responsible for that particular
+ quiz, right.
+ So it will be based on different professors who have given the quizzes and they will be
+ solving your issue directly.
+ So we have just forwarded it to them, so it will take some time before they can respond
+ and you will get the feedbacks.
+ And there are some issue with the programming assignments also that I came to know and like
+ maybe some of the students got zero and you are having doubts like your code is running
+ but yet you are not getting the same, you are not getting the good score.
+ So the issue here is I am just going to point out is that each of this programming assignment
+ is being calculated automatically.
+ So there are some test cases, probably you have been given some test cases as well in
+ the question paper.
+ But during this testing part where you are given the scores, we are not using that particular
+ evaluation criteria that that you have been given in the question paper.
+ Basically we have different set of test and that particular test, I think it will be forwarded
+ to you once the course is over basically the programming assignment is over, you will get
+ like which particular test cases have been used to evaluate their assignments.
+ Now like there could be like 5 test cases and maybe in some of the programming assignments
+ we have selected all the 5 test cases.
+ So in that case if you are for example program passes let us say 5 out of 5, you get a hundred
+ score and it reduces as you get a lower number of passes.
+ So this is for all the programming assignments.
+ And there are some programming assignments where we pick just one test case and that is
+ due to the limited time that we have to evaluate the programming assignments.
+ Because some of the assignments for example deep learning models or machine learning models
+ that take huge amount of time if you want to like test so many test cases.
+ So in that case we pick a single test case from that and we evaluate.
+ So you can understand if it is a machine learning or deep learning kind of assignment that you
+ are solving.
+ So any of the test cases if it fails that means there is a probability that you might get 0.
+ So that you must know and all of these are very much transparent and we are sharing all
+ the like test cases with you once you are submitting the assignments.
+ And if you are having any doubts with the test cases of course you can reach out and we can
+ have a discussion on that.
+ So let us start our today's session and today we are going to as I told you discuss on the
+ computer vision and you can see that I have given a picture here.
+ So giving you a brief outline on what you will be able to do once this class is over.
+ So we have an MNIST dataset which is a number written in handwritten format and you can
+ see that there are 0 to 9 digits that has been given.
+ And the idea here is if a handwritten digit is given then what will be its class and the
+ class is basically nothing but its actual number.
+ So 0 represents 0, 1 represents 1, 9 represents 9 it is as simple as that.
+ So this is basically classification task and any classification task that you have done
+ till now you know that we always need to have a training and testing set.
+ So we will see that how we can import this MNIST dataset later part and then we will
+ see that how we can devise this training partition and this testing partition separately.
+ So basically this dataset will be partitioned into two sections where we will have this
+ training and testing data and now we will pass it to a convolutional neural network.
+ And this convolutional neural network as you can understand is basically two things combined.
+ So first is the feature extraction part where you extract the features from the image and
+ once this features are extracted we get to a dense classification layer where you just
+ classify to different classes.
+ So you can understand you can give this training data through the model and once you have this
+ training data the model can actually extract the features from this particular this first
+ section which is the feature extraction section and the classification section.
+ And you can see that both of them are together so these are combined shared weights and once
+ you are training the model the inter model is getting trained that means the feature
+ extractor is also getting trained as well as this dense layer which is the fully connected
+ layer which classifies.
+ So the entire thing trains that is why the CNNs are very, very improved over any of the
+ previous methods that we have seen like using the machine learning methods where we have
+ to extract the features separately for each of the task.
+ So we will see that how we can like work with this CNN models and which models are there.
+ But before starting that we want to discuss about basically I want to discuss about this
+ image thing what is an image if you do not know what is an image it is difficult to do
+ some intensive tasks.
+ So most use task you can understand the classification task or any of the regression task that you
+ have done till now is very easy to perform because there are APIs that you can directly
+ call there are libraries that you can directly use and these libraries you can just import
+ them you can pass the training data and the testing data even they have like the training
+ and testing partition functions also.
+ And you can just give that data and it will give you the output as simple as that you have
+ to have a system that you can run a model like this as easy as that.
+ But when you are doing some research or doing some actual work in this field then you must
+ know that how this model works or at least the basics of the model so that you can like
+ go ahead and do some interesting stuff.
+ So let us see what we can do.
+ So initially I will just show you like okay let us just so I am storing all the data in
+ Google Drive at this moment because we are sharing this through Collab.
+ But before getting started I am just going so let the Google Drive load so I am just
+ going to show you that probably you have received a link of my GitHub page where you can just
+ go to this particular section DL applications and computer vision hands on.
+ You can just go there this link here we have provided you this link just take your messages.
+ And once you have this you will have this ipython file this assignment.pdf and this data.zip.
+ So these are a few of the things that is present here and you can see that this data you can
+ directly download or in this python file also if you are just running this it will download
+ it automatically if you do not have that locally.
+ So if you are able to download it you can just download it or you can just directly
+ run it and I will always recommend that you must copy this code and run it in your environment
+ or you can just open it in Collab and start it.
+ So I know that you have already done the machine learning programs and I have also shown you
+ that how Google Drive can be connected.
+ So it is a simple one liner code that we use which is basically Google Collab import drive
+ and we just mount the drive and the location we need to just provide.
+ So this is the very essential thing that we need to do for this particular session.
+ You can have your local system also if you are having running it in your local machine
+ you can just store it any place in your drive and just share the location of the image files
+ and all.
+ So this is one of the image that I have created I will show you the image from here only.
+ So let us just show this image to you okay not now.
+ So this is the image and how we can load this image.
+ So my image is stored in this particular location and I use this SK image library.
+ Let us go to the SK image library you can see here.
+ So it is essentially the same extension of the scikit-learn library which you use for
+ machine learning but this scikit image is specifically designed for all the functions
+ that you can get for image processing.
+ So this is also a very widely used library for image processing.
+ You can go ahead and check all the things that are present here.
+ So we are going to use this library and you can import this library here by this command
+ where you give this from SK image which is that particular library import I/O.
+ So I was basically handles the input output operations from this library.
+ So my image is a variable where I am going to store this image and I will just show you
+ this image after some time.
+ So to read this image I am just giving you that I/O.imread which is a function which takes
+ the location parameter which takes this location parameter and it prints the output.
+ So let us first print this thing which is the data type of this particular image file right.
+ So let us run this.
+ So you see that we are having a data type of unsigned integer 8.
+ So what does it mean that this image is essentially a matrix of integer values.
+ And ok let us see what is the range of the values that this integer value can hold basically
+ it is 2 to the power 8 which is 256 that means each of the pixels can have a value that ranges
+ between 0 and 255 so as simple as that.
+ So why this is important that you will be understanding after some time.
+ So let us print the image dimensions.
+ So you can see that I have loaded this image and this image is an object of this SK image
+ library and you can directly give some functions to it.
+ For example this safe function right or this data type function d type function.
+ So if you give my image dot safe it will give you the output dimensions directly.
+ So let us see what is the output dimension.
+ So the dimension of this image is kind of random because I have made it in a random way.
+ So it is 6 to 2 into 1 0 0 1 into 3.
+ So what does this mean?
+ This means that it is the height of this image which is 6 to 2 1 0 0 1 which is the width
+ of the image and 3 is the channels.
+ What are the channels here?
+ So this is a colored image and the 3 channel represents RGB basically the red, green and
+ blue values associated with each of this images.
+ Now we can just print this image.
+ Let us see what printing this image gives us.
+ So you can understand this printing this image gives us a matrix of like lots of numbers
+ right.
+ So what does this numbers actually mean is that these are the numerical representation
+ of these dimensions right.
+ So for each value we are having this 3 RGB values.
+ So this is 1 pixel.
+ So this selected thing is 1 pixel where 1 is ranging from 0 to 255 for red, another is
+ for green and another is for blue.
+ So these are the representation of the images.
+ Not much interesting as I can understand but you have to know this if you are going to
+ do some kind of analytical task later on.
+ So this is how an image is formatted.
+ So you have this image and now I am just going to display this image.
+ So basically I am just going to show this image.
+ Now it is going to get some more interesting.
+ So matplotlib similarly we have used this library for plotting various graphs.
+ So here we will use that same library for plotting the image or basically displaying
+ the image.
+ So from matplotlib we are going to import this pi plot which we have done earlier and
+ we are naming it as PLT for shorter version and it is quite standard we use it always.
+ So plt.imshow is another function that actually prints the images or show the images right.
+ So we are just going to pass this image object from a scalar library and we can just run
+ it and we can see that the image gets printed.
+ So let us see what is this image.
+ So this is an image that I have created in paint and you can see that the dimensions are given
+ in this width values and the height values are given here and this is an image of different
+ colors and some borders something like that and we are going to use this image for different
+ kind of testing before we move on to this neural network or convolutional neural network
+ stuff.
+ So here I am just going to see what are the minimum values of the pixels that we have
+ here and the maximum values of the pixel.
+ So for that it is very very easy we are just going to take that my image variable and we
+ are going to get the minimum and the maximum functions and let us see.
+ So it is basically ranging from 0 to 255.
+ So as we discussed now there is an interesting part and this is very very important because
+ this is the night now an integer based image.
+ So we have seen that this is an unsigned integer matrix.
+ But with unsigned integer matrix it is very difficult to formulate some mathematical operations
+ on this.
+ It is possible but it will be very difficult.
+ For that we solve it using float images or the values will be represented in float format.
+ So let us see how we can do that.
+ So this SK image library directly provides us with an IMG as float.
+ So basically we want to convert the image to float from any other like type.
+ So here it is we have imported this and it is as simple as just passing this my image
+ object to this function of IMG as float and I am storing it as my float image right.
+ So I am just going to print my float image minimum and maximum values that we did earlier
+ for this one where we have this 0 and 255 value.
+ And we are going to print the data type as well just like the previous time.
+ And let us see what we get here is we get 0.0 and 1.0.
+ So these are very simple steps you can just copy this parts from this link that we have
+ provided and you can run this easily.
+ So I think yeah so one more important thing is that we must connect to a GPU environment
+ as you can see here I have connected to T4 environment.
+ You also must do that because we are going to work with some deep learning models which
+ training will take more time if you are using CPU.
+ So here we are getting 0 and 0 1.0 what does this mean this means that now the pixel values
+ each of the pixel values instead of ranging from 0 to 255 now ranges between 0 and 1.
+ So now it is much easier for you to do mathematical operations on this floating point values.
+ So this plot.image so again shows the image but right now I am just going to show you
+ this my float image and you will see that this is the exact same image that we had earlier.
+ Just the image internal formatting is changed from integer to float but the actual image
+ has no change because it is the same image right.
+ So let us see what are the mathematical operations that I was talking about right.
+ So it is very very simple to do.
+ So let us just keep a copy of our original image I am just zooming a bit for simplicity.
+ So you can see that I am just copying this using this line of code you are probably know
+ that there is a copy function where which you can use to copy various objects in python
+ and if you do not keep a copy of it the original variable might change.
+ So we have just copied this and let us call it my dark image and I am just copying this
+ my float image.
+ So I am taking the float version of the image that we have created and what I am doing now
+ is that my dark image now becomes 0.5 into my dark image.
+ What does this mean?
+ We are multiplying 0.5 to each and every value that is present in the matrix of the image.
+ So essentially previously our image has a range of 0 and 1 for this version where we
+ are having this float version and now you will see that if you multiply it by 0.5 every
+ value will be like half right.
+ So if it is 1 it will become 0.5 if it is let us say 0 it will become 0.
+ So it will just range the values like that and what significant changes we will have
+ will have a darker version of the image the brightness will reduce.
+ Let us see what we get here is that now so I am just printing this minimum and maximum
+ values for your help so it is 0 and 0.5 instead of 0 and 1 right.
+ So let us print this my dark image and see what we get here so you see that previously
+ we had an image which is having a higher brightness but now the image is darker right.
+ So as simple as that so you can understand what kind of mathematical operations I was
+ talking about you can do any kind of mathematical operations on this matrix and you will get
+ a similar kind of output that you want.
+ So you can change this 0.5 to a different degree and you can get different versions of this
+ brightness of the images as simple as that right.
+ So in deep learning models there are some more complex operations that we will see you
+ have already gone through this theory class and you have already seen that there is stride
+ there is filter there are so many things and all of those are mathematical operations and
+ we do it via this techniques only.
+ So once we have this darker image now I am just going to add a filter to it just to show
+ you that how this works.
+ So again I am just making a copy of this image which is this my filter image and I am calling
+ it as my filter image and now I am taking this my filter image and giving it some range
+ let us see what are the range.
+ So this is the range for this height object this is the range for the width of so you
+ have to understand that it is always height then width and then the channels so we try
+ to keep that consistent.
+ So this is the height that we are considering so 200 to 500 right and you will see that
+ the maximum value we have already calculated for the height in the dimensions.
+ So in this dimension you will see that the dimension of this image we have calculated
+ is 622 and the width of the image is 1001 so we are within this range.
+ So we are trying to create some filter in this particular location as you can understand.
+ So let us see how we can do that yeah so here you see we are just giving a range of values.
+ So this is the height that we are considering for this filter right so this is a fixed height
+ and now this is the width again a fixed width.
+ So how we can provide a range so 200 then colon and then we are just giving this 500
+ value.
+ So if you give this value that means it ranges from 200 to 500 this is the height and this
+ is the width and why these are so important that we will discuss in the next coding part
+ right.
+ So and this is what does this mean this mean all the channels are considered here and my
+ filter image again I am considering that particular part.
+ So what I am doing here is essentially I am replacing my filter image and essentially
+ this part of the image which is a subsection of the image by this section we are just replacing
+ this part with this part of the image.
+ And what is the thing that we are replacing with it is the exact same image it is the exact
+ same location but with a lower value of brightness.
+ So all the values are cut off to 0.3 percent of the original image.
+ So if we do that there is an expectation that this particular portion of the image will
+ become darker where the rest of the image will be same.
+ So let us see what we get so we have just plotted the image directly here so you see
+ that we get a black spot in the middle which is a rectangular in size and the dimension
+ is given here which looks something like this right.
+ So this actually helps us to create a simple filter as you can understand this is a very
+ simple filter that we have created and this is a darkening filter.
+ So filters so the definition of filter might not be clear to many of you.
+ So just to give you an idea a filter is nothing but that gives you what you need and does
+ not give you what you do not need it is as simple as that.
+ For example in sunny days we use sunglasses and the sunglasses block the sun rays and
+ the ultraviolet rays right so it darkens it.
+ So it does not allow the sunlight to enter here also filter does mean the exact same
+ thing.
+ So whatever we want we can pass it through and whatever we do not want we do not want
+ to pass it through.
+ So we want to make a filter here for this particular purpose we are making a filter
+ which reduces the brightness that means we do not want much of the light coming through
+ this portion.
+ So this is the idea of this particular filter and convolutional neural networks in the same
+ way uses this filter.
+ So these filters are used by convolutional neural networks to pass some features and
+ to restrict some features that way this kind of feature extraction takes place.
+ Now let us just consider the same code and we are just making minor changes here.
+ So the minor change here is only this channel right.
+ So here we are just having this same exact same code but now I am just changing this
+ channel.
+ So now only one channel will be affected instead of all the channels and which is this channel
+ this is the last channel 2.
+ So there are 3 channels 0, 1 and 2 here right.
+ So let us just see what we are doing we are doing the exact same operation but the input
+ channel is 0.
+ Basically we are changing this image on this filter and the output filter will be affected
+ on the second filter.
+ So this is also a very simple operation.
+ So I am going to show you that how this kind of filters can affect.
+ So you see that this is one filter that we have created right now and it allows or it
+ passes this through an yellow filter.
+ So if you pass an yellow colored light or yellow colored filter these lights will be
+ passed.
+ The white becomes yellow you can see that the white feature was there which now has translated
+ to yellow.
+ So it is our new feature this blue became green.
+ So as you know that if you just combine blue color and yellow color you get a green color
+ and similarly for all of this you can see that you are able to get a filter that gives
+ you if it is an yellow it gives you the features of that yellow filter.
+ So this is very simple example and easy to understand example for image processing tasks.
+ Now let us just create a sliding filter and this is what happens in like the convolutional
+ neural networks right.
+ So just to give you an idea I am just going to show you here that what happens in this
+ convolutional layers.
+ So you have this image you have this image here and this image what we do is we so let
+ us say this is an image of our digit of 0 and we are going to read this image.
+ So we first have to consider a filter size.
+ So there will be a filter size and the filter size represents the size of the filter that
+ we are using.
+ So what this filters essentially do we can use any filter which is the same size as the
+ image also right.
+ So we can use this filter which is exactly the same size of the image then what is the
+ difference.
+ The difference is that if you use a smaller filter size so this for example this one and
+ then you slide it through this image basically you slide it like through some strides again
+ you are sliding it through some strides.
+ What you are essentially getting you are getting some localized features from here.
+ So from each of this filter striding you are getting some localized features whereas if
+ you use this entire filter together you might not get that enough information.
+ So this filters will give you a very detailed feature extraction and this helps the model
+ to learn quite faster also.
+ That is why this filter techniques comes into play in convolutional neural network.
+ As in the theory class it was explaining explained that if you take a filter like this.
+ So if this is a filter the center values are calculated.
+ So what does this mean?
+ This means that you are taking all this row values so there are let us say many values
+ in this matrix and you are essentially trying to smaller it down or basically extract the
+ features from it and you are trying to make it a single feature.
+ So you had let us say a matrix of dimension 3 cross 3 and you will end up having a matrix
+ of just one dimension like 1 cross 1 right.
+ So this is how we are going to do and I am just going to show you that how these kind
+ of filters you can create by your own and why it is required at least.
+ Let us see in this code so it is very very simple to do that.
+ Let us just run this code and this is the exact same kind of code that we were working
+ with till now.
+ So I am just copying this float image now in sliding filter image variable and I am
+ just taking this image dot shape which gives me this three different values which is the
+ height width and depth.
+ Let us see what are the values so these are the exact same values that we got right ok.
+ So now what I want is I want to just create a sliding window kind of thing.
+ We have previously created this window but now I am just going to create a sliding window
+ to show you an example.
+ So this is the sliding window filter.
+ So I am just importing time why this is required I will just tell you in some time.
+ So this is again this map plot pie plot but here what we are going to do is we are going
+ to take two different classes from here which is this I am show and show.
+ So these two classes I am importing separately and this is required because we are just going
+ to iteratively print some of these images.
+ I will maybe not able to print the entire image but probably we will get an idea what
+ is happening.
+ So here we are taking some parameters and you have to understand these parameters very well
+ because you will see that these similar kind of parameters will be using in this convolutional
+ neural network models that we will be working on.
+ So this is this H stride.
+ So H stride means here this horizontal stride.
+ So stride means how much skips you are taking for this particular filters in each step.
+ So this H stride gives you the stride values for horizontal values and V stride gives you
+ the similar kind of thing for this vertical values.
+ So V stride stands for the vertical value and we are taking 50 for this particular image
+ and let us consider this filter size.
+ Now filter size as you are able to see that we already created one filter earlier and that
+ was our rectangular kind of feature but right now we are considering only a square kind
+ of filter.
+ In many models you will see that we are already using this square kind of feature.
+ So we are just giving only one dimension it is nothing but 100 cross 100 right.
+ So this filter size if we take that and this V stride and H stride we consider then we
+ can go ahead and create a very simple pipe or like a flow right and this flow is nothing
+ but we are creating an iteration of this height value.
+ So essentially if I just show you this image so we are passing from so if this is the portion
+ that we are working on so we are passing from here to this part then here to this part and
+ here to this part so there are these three different stages.
+ And what we need is we want to pass this first row we have one to just move through this
+ first row and you have already done this kind of similar python like codes right.
+ So we are just going to move from this and this is nothing but a matrix that that you
+ must follow and these are the values of maybe 1, 2, 3, 4 and so on again 1, 2, 3, 4 so these
+ are the numbers values and we are just going to pass from this side to this side again
+ this side to this side again this side to this side right.
+ And if you are going to do that we are going to take this step first basically we are going
+ to traverse this width right and we are followed by that we are going to traverse this height.
+ So we are just doing that same thing in this code what we are doing is we are just sliding
+ through this width value where we have this width and this h stride.
+ Now you can see that this h stride value is nothing but this horizontal stride we are
+ keeping this value same for this particular section and you can always change this.
+ This particular part is not present in your code in your shared library you will get this
+ later on.
+ But the thing is that you this is just for your visualizations or try to see what I am
+ doing here you do not need to code because you have already coded this part that is essentially
+ enough you do not need to do any coding you just need to see this part and how this is
+ done.
+ So here the j value actually represents the horizontal movement right so the horizontal
+ movement is represented by j and this vertical movement that we are coming from top to bottom
+ of this image matrix it is represented by i.
+ And what does this mean?
+ In this mean that we are starting from a value of 0 so we are starting from the extreme left
+ and we are going so for this one we are starting from this extreme left and we are moving to
+ this maximum width of the image which is basically the width of the image.
+ And we are skipping some of the portions which is the stride, stride means skips some of
+ the values right and this stride value each stride is for the horizontal one and we did
+ the exact same thing for this vertical one right.
+ So for this vertical one what we have done is we have started from 0 basically top and
+ we are going to the bottom basically height of this image.
+ And then we are going to stride it through this v stride variable which is again considered
+ as 50 here so both of them are same.
+ Now let us consider this sliding filter image this was the previous thing that we are doing
+ now we are replacing this part of the image which part of the image this particular part
+ of the image and we are replacing it by the same portion of the image and just multiplying
+ it by 0.5.
+ So we are going to check by a reduced like darkening filter we can say.
+ So what is the dimension here now?
+ You can see we start from i which is the height value that we have taken so this is this part
+ is for height we all know that right.
+ So we are starting from this i and we are taking from i to filter size i plus filter
+ size so it takes the inter size of the filter right so this becomes your vertical dimension.
+ Similarly we can get our horizontal dimension which is represented in j to j plus filter
+ size and the filter size is same which is 100 we have taken and we have just changing
+ the exact same portion of that image and we are multiplying it by 0.5 basically reducing
+ that part of the image.
+ And we are going to show this image by this imshow and then giving this variable name
+ basically sliding filter image and show and as I was telling you that what is the use
+ of this time I am just giving this time.slip function which is basically it waits before
+ executing the next step to one second so that we can see the different steps that it is making.
+ So this is a very interesting code you can just use it in many ways right and this gives
+ you an analytical idea on how this sliding and filtering thing works in convolutional
+ neural network.
+ So let us run this code I am not going to run it for the entire time so you see that
+ we are getting new images every time you see that we are getting new image every time right.
+ And this image you can see that the filter is getting moved from left to right side.
+ And once you get through all this features basically all this entire image you get one
+ feature of that particular image and as many number of filters you are having you will get
+ that many number of features we will see that in some time so I think I can stop this.
+ So you can see what we have done here so if I just go to this very top of this image just
+ to show you you see this is the first image that is created this is the first filter right
+ this is the first filter and we have probably if you are doing some neural network stuff
+ we will just keep this filter value stored in somewhere.
+ And once we have this all this filtered value together we can just combine them to get the
+ particular feature.
+ So here this is one filter and in the next step you see that we have just moved from
+ left to right stride of 50 I think right we have taken the stride 50 and since we have
+ moved to this part this part becomes more darker why this part becomes more darker because
+ it is more attentive.
+ So we have attended this portion more times that is why it is much darker because there
+ is already a filter there right and again we if we move just downwards you will see
+ that the filter again moved to its right side and it is capturing all these features and
+ if you just keep on moving you will see that we are essentially getting this filter moved
+ from left to right side.
+ And once this entire thing is done once we have moved to till the very end of this first
+ row of this image you will see that we will reach to the next line so here.
+ So here what we have done we have just moved through this entire first row of this matrix
+ and then we have come to the second row.
+ And you will see that the stride which is the basically the vertical stride is also we
+ have considered 50 and it has moved from 0 to 50 now.
+ And then again it will just run for this particular filter size and this will continue as we keep
+ on running this loop.
+ So once you have this entire image if you have this entire image then you will see that
+ you can store this filter and you can have this version of this feature that you can
+ use in some of the aspect of this model.
+ So essentially we have gone through this initial portion which was required for understanding
+ how images can be represented in floating format and why it is important, how a basic
+ filter can be used and how the filter can be moved in a manner that a convolution neural
+ network does.
+ And here there are various parameters like the stride parameter, the filter size and
+ how many number of filters.
+ So basically the number of filters you can understand that here there is only one filter
+ that we have used and which is the darkening filter as we have discussed.
+ But in reality you will be using multiple filters and this multiple filters will give
+ you multiple features from your model.
+ So here are the different things.
+ Now let us start with a model of convolutional neural network.
+ It is an AlexNet, you will get this information anywhere.
+ So what is an AlexNet?
+ It is basically a very famous model and it is used by like almost many people if they
+ are starting their research in this image processing field and this AlexNet is essentially
+ a convolutional neural network which has different architecture format that we will discuss.
+ Again it has this two different sections which is the feature extraction section where we
+ have this input, the different convolutional layers, the pooling layers and once we have
+ that we will pass it to a dense classification layer or a fully connected layer and we will
+ finally have a classification output layers.
+ So let us start with this libraries that we are going to import and if you are just new
+ to this, you just go to this Torch library.
+ It is widely used for deep learning models and this model, this particular library you
+ will be using for various natural language processing tasks and all the different tasks
+ that you can think of using deep learning.
+ So this is a very important library that we will be using from now on and it gives you
+ more functions that you need for any task that is involved in this deep learning classes.
+ So we are just going to import all these different classes and I will discuss all these different
+ classes in each of the sections.
+ This is just the import section and you must import this Torch library here and let us start
+ by seeding this.
+ So what is this seed?
+ So torch.manual seed we have given a value of 42.
+ What does this mean?
+ This means that we are going to seed this value basically we are going to freeze the
+ operations that the model is performing.
+ So as you can understand these are mathematical models, there are some random generations taking
+ place in many places and this random generations will give you different output every time.
+ So even if the model is same, even if the data set is same, you might not get the same
+ output every time but for a testing environment we must make sure that the output that we
+ are getting is quite fixed and this gives us that feature basically we can seed this
+ so that any kind of random generations will take place will be exactly same as the previous
+ one.
+ So torch.manual seed and we can give any integer value and it will try to keep that frozen
+ state for any of the random generations.
+ So once we have gone through that we will give this data path.
+ Now what is this data path data path is nothing but where we have stored this data and as
+ I told you that I have shared this data in this collab where data.zip is there you can
+ just copy it and unzip it in your local drive or in your Google drive and it will work and
+ if you are not doing that you can just keep a function download equals to 2 that will
+ be going.
+ So it will download the code for you or the data set for you.
+ So let us first see what the code means here.
+ So this is this data path we have given this location of the data that we are talking about.
+ Now this trans actually stores the transformation of this values.
+ So this transpose is actually a transpose function or transforms function that we have
+ imported here you can see here.
+ So it is from this torch vision particular library and from this transforms class we
+ are just importing this transforms function right.
+ This transforms function what it do is basically normalizes the values that we are providing
+ it to the model.
+ Now normalization why is it important we have already discussed that is why we were talking
+ about some mathematical stuffs previously because those were very very important in real life.
+ So you will see that in a single line code you can do that but the idea here is that
+ you might not get the idea if you are using the code directly.
+ That is why we must know that how the things are working and this transformation function
+ exactly does the same thing that we have done previously.
+ We have converted this values to some normalizations.
+ Now this trans is an object basically it takes care of this transformation and the transformation
+ here is a normalized transformation between 0.5 and 1 right.
+ So we are excluding values which is anything lower than 0.5 and this is the training set.
+ So we are just going to store our training data in this full trained set variable and
+ it is very very simple to get this data sets also.
+ So d set is again another function that is provided by this torch vision data sets class
+ and you can directly give some parameters and get the data set.
+ So d set already gives you this MNIST class which takes the values of root which is the
+ data path we have already discussed and this train value is true why what does this mean
+ it will directly convert it to a training set and this transform function if we want
+ to transform it in some way.
+ So this I have shown you you might not transform it anyways but this is just for showing you
+ like how this thing works directly without writing any special code that we did earlier
+ right.
+ So we had to code everything and that time but here you can just pass this parameters
+ and it will work and then it takes again a parameter of download equals to true which
+ means that it will just start the download for this particular file.
+ So yeah so it will create this training set here and if you just say that train equals
+ to false it will create a testing set as simple as that and nothing else is changed you can
+ see we need to do the same transformation for the training set as well as the testing
+ set.
+ So it should not be like the training set is transformed in some way but the test set
+ is in a different way right.
+ And there is another parameter which is the batch size and this is the very very important
+ parameter in any of the models that we will be working on in deep learning.
+ So you can see that we have considered a batch size of 16 this batch size is very very interesting
+ to like find for each of the systems because this is system dependent.
+ You cannot just give your 200 right so if you give it 200 it will take that many resources.
+ So as you increase this value the batch size it exponentially increases the memory consumption
+ but the thing is that if you increase this batch size you get a positive effect on the
+ model training also because you are taking more data together and you are trying to learn
+ the more data parameters.
+ So what is the difference between this batch size smaller batch size and the larger batch
+ size here is that if you are taking a smaller batch size and if you have a system that is
+ having lower resources of course you can run it in a lower batch size.
+ The difference in the scores or model training will be very very insignificant but of course
+ if you are using a very large data set you are using a large batch size and you are comparing
+ it to a large data set with a small batch size it will take more time and the training will
+ be less effective so this is how it transforms it to.
+ So this batch size you have to fix it as per your system environment.
+ In Google Colab the batch size of 16 per m nest is quite good that we have seen.
+ So let us just see what is in the training data set let us just see what we get ok sorry
+ I have not run this.
+ So here we are going to store we will see that this training data set is nothing but
+ there will be images of different classes as we told in MNIST.
+ So there will be this level for example 0 and there will be different images that represent
+ this 0 so handwritten like images ok.
+ So I have just for an example I have just printed a single value from this full train
+ set.
+ So you will see that we have this tensor value so this represent different images there are
+ different images here and at the end you will see that there is a class value.
+ So there is this class so this image is from this 5 class so all the images present here
+ represents the 5 image handwritten.
+ Now let us see if we want to display this data right.
+ So let us just display 2 images.
+ So this is a very simple function that I have created.
+ So we are again using this matplot library and from this matplot library I am just taking
+ a parameter or we can call it as hyper parameter here which is show equals to 2 that we are
+ going to show only 2 images here.
+ And I am just iterating through this full train set so the training set that we were
+ discussing and the current image can be accessed by this so I00 right.
+ So I am taking 2 different classes here and of each of the class I am just going to show
+ the first image that we are having I think that makes it clear and I am going to print
+ this image value and this represents the class.
+ So I00 represents all the images that we are having and I01 represents the class level
+ of that image.
+ Now plot that figure this actually gives us this image we are just going to print it and
+ you can just copy this code from there and you can run and see what we are getting.
+ So you see that this is class the class name is 5 and the first image that we get is of
+ hand written digit 5 it looks something like S but it is 5 in reality and this is 0 the
+ second one that we are taking you can see that this is hand written 0.
+ So this is how the image data set of MNIST can be accessed if you want separately and
+ this is important because the like program that you will be doing for your assignment
+ you will need this kind of modifications in your code for it to work right.
+ So these are very very essential in for this particular section and you see that this images
+ does look like yellow, green, blue and something like that and why is it?
+ So these are essentially nothing but grayscale images this MNIST data set grayscale means
+ you have a value of 0 and 1 and between that you just give a scaling of this grayscale.
+ So there is only 1 channel here and that represents a value of 0 to 255 for this integer values
+ and 0 represents one of the extremes of black and 1 represents one of the extremes of white
+ and you see that here we have this grayscale image.
+ So how we can just plot this image in grayscale just just for showing you you can just see
+ map to gray which is the actual format of this file and like I am plot library does
+ it for you to maybe look it better.
+ So here you can see that this is the actual image that we were talking about.
+ So everything is black here everything here is black only this section is white and then
+ again this section is black right.
+ So here you will see that if this is the image this is the representation.
+ So image and representation look like this and we have already seen this in our matrix
+ thing.
+ Now we are going to load this data.
+ Now we have this raw data and we have seen how to view this raw data of image from this
+ library and all and now you are going to use a model for training the model right.
+ So for training we always require this data to be in a specific format that the model
+ can handle.
+ So Torch basically gives you this function and this data loader is a particular function
+ that we are talking about is a very very important function which takes any data that you have
+ basically raw data and it tries to transform it into a format that a model can understand
+ directly.
+ So you do not have to go through the hassle of changing it to specifically model it for
+ your own model.
+ So this train loader is nothing but our training data right now.
+ So it is an object of course, but this train loader now contains all the data for our training
+ set and how we are going to do that we are just importing this data loader from Torch
+ Utils library and you will see that we will give this full training set data set will
+ give this batch size and we will keep the shuffle.
+ Now why we have keep the shuffle as false is because we do not need any kind of randomness
+ here right.
+ We have already sitting all the values of Torch also for that reason.
+ Similarly for the test loader we are just using the exact same code and nothing else
+ just changing the location to test set.
+ So this data set is full train set we have just earlier created right this one.
+ So this full test set and full train set and right.
+ So here if we run this code you will see that we have already have this train loader and
+ test loader.
+ So these are the objects and these objects actually makes your life simpler for doing
+ any kind of operations using this models.
+ Now let us see what is this Alexian architecture.
+ So this architecture actually shows you this input dimension.
+ So this so before this convolution layer there is this input dimension we will see that in
+ the level below and this is a convolutional layer.
+ So what is a convolutional layer it essentially have all the filters right.
+ So this filter this tried operation and all these are already performed all performed
+ on this convolutional layer and you will see that there are multiple stages of this convolutional
+ layer in this Alexianist model.
+ Now there is this pooling layer also.
+ So what is this idea of pooling layer is that if you have these values you want to get some
+ of the features and you want to omit some of the features.
+ For example in max pooling you are going to take only the maximum values that the convolutional
+ layer provides and you will just omit the others.
+ So this way you are creating different layers and sections and once you have all this featured
+ extraction part where you have this convolutional pooling layer you can just feed it to this
+ fully connected dense layers and you can finally have an output.
+ So you will see that the dimension of the output here is 1 cross 10 that means we are
+ going to predict this 10 digits that represent in this M-list data set.
+ So this is a representation of for this particular work.
+ Now you may ask like why this is the structure, why some not is something else.
+ So for example there is convolutional layer 1, 2 then why not some other layers in between
+ and why is this.
+ So the idea is that the authors of this Alex-Net paper they have already discussed this thing
+ if you go through the paper you will get it that the specific idea behind this model was
+ if you make the model more deeper you are going to get much more features right.
+ So they proved that if you increase this deeper model so for example this convolutional layer
+ 3, 1, 3, 2, 1, 3, 3 which is basically the depth layers.
+ If you do this kind of layering then the model will perform much better than a general convolutional
+ layer model.
+ So this is the general idea that was proposed in this paper and again this architecture is
+ very very dependent dependent on the work that you are doing depend on the images some
+ architecture may benefit from some of the images and some may not.
+ So these are the different things.
+ So now let us represent this image into an actual format that we can understand much
+ more easy and this is very important if you are going through this image processing class
+ right.
+ We must know that how this filtering and different layers can be achieved.
+ I think that these terms that are present here in the in this naming of the columns probably
+ you are familiar with it by this point.
+ So there is this layer and there is input layer nothing but this image that we are passing
+ it to the model then there is this convolutional model layer which is convolutional 2D layer
+ that we will call convolutional 2D and this is the max pool layer and there is different
+ arrangements of this layer.
+ And this last three layers where we are having this convolutional 2D three times is basically
+ the depth operation of the depth thing that discussed in this Alexinate.
+ So if you are having higher depth you are going to get good features and essentially
+ you are going to have a good classification model.
+ Then we have this filters right I will again explain you what this filters things actually
+ does here.
+ So here you can see this input does not have the filter or any of the other parameters
+ of course, but this convolutional layer it has 96 filters in the first layer.
+ The size of the filter is 11 essentially means it is a square filter 11 cross 11 and this
+ is the stride is the movement that we have already seen that we have manually done and
+ this padding.
+ So padding is essentially what is the values that you are not going to take right you are
+ going to pad some of the values.
+ So I think these are the very common terms and should not be a problem.
+ The feature size is the input size for this input image for this first layer basically
+ if the image size is 1 cross 2 to 7 cross 2 to 7.
+ So you will see that this is a little bit interchanged.
+ So here 2 to 7 2 to 7 is of course, this height and width, but this channel information is
+ on the left side which was previously on the right side.
+ So why this represented here like this because in many models if you run this models they
+ are represented in this way right.
+ So this is the general idea first is this number of features or channels whatever you
+ call it and then this is the resolution of this image or the dimension width and height
+ of this image.
+ And in the second layer you will see that the feature size is, filter size is 96 therefore
+ now instead of one feature you are having 96 different feature of the exact same image.
+ But the feature size will be reduced and why the feature size was reduced as we already
+ discussed there was a matrix and if you apply this convolutional layer you are going to
+ just take the center value right you are going to take the center value and this reduces
+ the resolution of the image and how much the resolution of the image is reduced and what
+ is the formula and all we will discuss that also.
+ So similarly we will discuss this part and you will see that this is how we actually
+ calculate the output size, output size is nothing but this feature size right.
+ So this is a simple formula formulation where you have this output size will be this lower
+ base for W minus F plus 2P by S which is basically this input height and width of the image which
+ we consider square most of the time and this filter size again we are considering it square
+ and this padding added to each other.
+ So for the initial layer we have seen that there is no padding will keep it 0 and give
+ the value of stride and you will get this output size.
+ So this will be the output size of the image that we will get right so we will get something
+ like 55 as an output.
+ So for the max pooling layer so there will be no filters of course, but we will have
+ a filter size so this filter size essentially does the same thing it takes the maximum values
+ from a 3 cross 3 matrix.
+ So if the filter size is 3 and stride is 2 basically it will skip 2 different cells and
+ this there is no padding involved here also.
+ And you will see that the number of filters is same therefore, the number of features
+ will be same here and now instead of having a 55 cross 55 resolution the resolution is
+ further decreased because we are again taking this center values and that is calculated using
+ this formulation which is w minus f by s and this thing means the exact same thing as the
+ previous one.
+ So, w minus f by s plus 1 actually gives you the output feature size or resolution for
+ the max pool layer or the pooling layer.
+ So similarly we have this max pool to the layer again after that we have this convolutional
+ to layer another convolutional layer and now we are seeing that there are 256 features.
+ And then again it has been given some filter size some stride some padding values are given
+ for this one and pad values might be required in some cases where the image size are not
+ perfectly fine with the input layers.
+ Because once the model is created for example, if you have created an Alex model it is not
+ possible for you to change it later on also.
+ So, so this feature size you will see now has become from 96 to 256 because now we are
+ having 256 features and the resolution is now 27 cross 27 because from this max pooling
+ layer we are not getting any kind of reduction in this dimension.
+ Now let us see one thing so all of this layers actually passes through this activation function
+ that you can see in the very right side of this cell columns.
+ And this is basically the really rectified linear unit activation function that we are
+ using for this task.
+ And you will see that each of this convolutional layer passes through this activation layer
+ and then it goes to this max pooling layer.
+ So this is also an important part because these are the model things that you will need
+ to implement in this model also.
+ So you have this part and again we have this classifier part.
+ So this is the feature extracted part which I have kept it separately because since we
+ were discussing that these are separate things if we are doing it separately it makes more
+ sense.
+ And this is the classifier part where we have this different layers like drop out this linear
+ layout and again there will be this activation functions.
+ And this dense layer is the final output is 10 the feature size is 10 essentially because
+ we want to convert it to this 10 different classes.
+ So we want to train this model through this 10 classes.
+ Now these are the overall thing that we are having and this is also one of the important
+ aspect the different parameters.
+ So we will see this parameter thing and all.
+ So okay so before moving on to this model I think we can take a break of 5 minutes and
+ then we can move ahead with this actual coding part of this AlexNet and we will train this
+ AlexNet model.

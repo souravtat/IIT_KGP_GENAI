@@ -1,0 +1,1844 @@
+1
+00:00:00,000 --> 00:00:10,960
+ Hello. Good afternoon everyone. So, I am Dr. Plabun Kumar Bhomik and you will be having
+
+2
+00:00:10,960 --> 00:00:16,820
+ with me Mr. Atil Varshan. So, both of us belong to the department of Artificial Intelligence
+
+3
+00:00:16,820 --> 00:00:23,720
+ at Kharagpur. So, today we are going to talk about inference with pre-trained models. So,
+
+4
+00:00:23,720 --> 00:00:29,740
+ let me talk about a cooking a bit before I proceed on to the topic. So, think about
+
+5
+00:00:29,740 --> 00:00:37,680
+ your cooking say meat. I am really apologetic to the vegan people. But anyway, so let us
+
+6
+00:00:37,680 --> 00:00:43,840
+ say we are cooking meat and when one way to do that is that you do the whole process marinate
+
+7
+00:00:43,840 --> 00:00:51,240
+ etcetera etcetera. The other process you can follow that you boil the meat and steam it
+
+8
+00:00:51,240 --> 00:00:59,680
+ and keep it somewhere and then you use that later to mix spices with that. And if you
+
+9
+00:00:59,680 --> 00:01:05,440
+ go to the next the second process the benefit is that you will be requiring a very less
+
+10
+00:01:05,440 --> 00:01:11,480
+ amount of time to prepare a dish right. So, of course we are not going to talk about cooking
+
+11
+00:01:11,480 --> 00:01:17,760
+ today, but I think I will be talking about a very important recipe in the modern deep
+
+12
+00:01:17,760 --> 00:01:25,880
+ learning or machine learning domain which we call as dealing with pre-trained models.
+
+13
+00:01:25,880 --> 00:01:32,760
+ So, the topic that we are going to discuss is inference with pre-trained models. Now
+
+14
+00:01:32,760 --> 00:01:37,840
+ whenever we talk about pre-trained models. So, that means something has that has already
+
+15
+00:01:37,840 --> 00:01:44,520
+ been trained and if we try to think about how machine learning works. So, we have a
+
+16
+00:01:44,520 --> 00:01:51,840
+ kind of model which we train with some data and we deploy that in the production setting
+
+17
+00:01:51,840 --> 00:02:00,680
+ where we predict something we do some inference, but we are adding a kind of prefix we in terms
+
+18
+00:02:00,680 --> 00:02:05,520
+ of pre. So, that means we do something prior to training and that is what we are going
+
+19
+00:02:05,520 --> 00:02:13,840
+ to discuss right. So, the agenda for this module is. So, first we will be talking about
+
+20
+00:02:13,840 --> 00:02:21,640
+ a very important connection between pre-training and transfer learning I guess the just last
+
+21
+00:02:21,640 --> 00:02:27,600
+ lecture that was delivered today was about transfer learning and we will see that there
+
+22
+00:02:27,600 --> 00:02:32,360
+ is a kind of very close connection between pre-training and transfer learning and we
+
+23
+00:02:32,360 --> 00:02:39,600
+ will be talking about different pre-trained models in at least two domains one is vision
+
+24
+00:02:39,600 --> 00:02:45,960
+ other is the language and finally, we will go into the inference with pre-trained models
+
+25
+00:02:45,960 --> 00:02:51,840
+ what are the kind of inference tasks and what are the kind of recipes there and finally,
+
+26
+00:02:51,840 --> 00:02:56,960
+ at if we will take you through this different kind of implementations and experimentation
+
+27
+00:02:56,960 --> 00:03:00,240
+ with pre-trained models.
+
+28
+00:03:00,240 --> 00:03:08,840
+ So, if we look at a typical machine learning workflow basically we are talking about supervised
+
+29
+00:03:08,840 --> 00:03:16,320
+ machine learning. So, you need to have a set of annotated data set and you pick up a model
+
+30
+00:03:16,320 --> 00:03:22,280
+ and train that data then that model with that annotated data set and finally, if you are
+
+31
+00:03:22,280 --> 00:03:28,560
+ happy with the training accuracy and maybe the validation accuracy you will go to deploy
+
+32
+00:03:28,560 --> 00:03:35,560
+ the model right. Now, if your model is very large that means the model has got large number
+
+33
+00:03:35,560 --> 00:03:42,600
+ of parameters and by all means in the today's machine learning, deep learning or AI domain
+
+34
+00:03:42,600 --> 00:03:50,240
+ most of the models are significantly large having large number of parameters and to avoid
+
+35
+00:03:50,240 --> 00:04:00,440
+ overfitting we need to have large amount of annotated data set to train the model.
+
+36
+00:04:00,440 --> 00:04:07,800
+ Now think about a scenario. Now whenever you are talking about training the model you need
+
+37
+00:04:07,800 --> 00:04:13,160
+ to have this annotated data set that is a kind of prerequisite right. Now you have a kind
+
+38
+00:04:13,160 --> 00:04:20,160
+ of abundance of data set. So, you think about social network every second you have thousands
+
+39
+00:04:20,160 --> 00:04:26,920
+ or tens of thousands of posts in terms of text, video, audio and there are different
+
+40
+00:04:26,920 --> 00:04:33,960
+ surveillance data in terms of video recording and there are online learning platforms where
+
+41
+00:04:33,960 --> 00:04:39,280
+ you can track students behavior and as these online platforms are very popular nowadays
+
+42
+00:04:39,280 --> 00:04:45,200
+ there are if you think about the data data is quite large. So, there is no scarcity of
+
+43
+00:04:45,200 --> 00:04:51,240
+ data and they are available in different modalities. So, text, video, image, audio whatever you
+
+44
+00:04:51,240 --> 00:04:59,560
+ can think about but as it comes in the terms of annotation of the large data set it is
+
+45
+00:04:59,560 --> 00:05:06,760
+ really very challenging. First of all it is very costly you have to employ experts who
+
+46
+00:05:06,760 --> 00:05:15,380
+ are kind of I mean conversant with that application area of the domain and of course it is time
+
+47
+00:05:15,380 --> 00:05:22,000
+ consuming and it is not like that you get your data annotated by a single person and you
+
+48
+00:05:22,000 --> 00:05:26,120
+ have to think about the reliability of the annotation because a single annotator may
+
+49
+00:05:26,120 --> 00:05:33,560
+ be biased towards some annotation or a single annotator may not be error free. So, that
+
+50
+00:05:33,560 --> 00:05:39,720
+ is why you want to get your data set annotated by multiple persons and then get an aggregated
+
+51
+00:05:39,720 --> 00:05:46,720
+ annotation. So, but again you see that that is really costly and time consuming and that
+
+52
+00:05:46,720 --> 00:05:53,640
+ is why perhaps we have less amount of annotation though we have huge amount of data in different
+
+53
+00:05:53,640 --> 00:06:01,800
+ form. Now let us say for the sake of argument we assume that we have huge amount of annotated
+
+54
+00:06:01,800 --> 00:06:09,200
+ data but even with that there are some challenges. Now whenever you have a big data and a large
+
+55
+00:06:09,200 --> 00:06:16,080
+ model to train you need to have a very powerful computing facility and you see that this super
+
+56
+00:06:16,080 --> 00:06:21,200
+ power computing facility is restricted to some big organizations like Google, Meta,
+
+57
+00:06:21,200 --> 00:06:26,200
+ Microsoft and so forth. But majority of the AI community they do not have access to this
+
+58
+00:06:26,200 --> 00:06:33,520
+ high compute facility. So, even though if you have large amount of annotated data you
+
+59
+00:06:33,520 --> 00:06:43,840
+ may not be able to use it because of the lack of computation. Now in some cases how hard
+
+60
+00:06:43,840 --> 00:06:53,200
+ you try you may not get large amount of annotated data and you always want your model to exhibit
+
+61
+00:06:53,200 --> 00:06:58,520
+ out of distribution generalization. So, what do you mean by that? So, let us see your you
+
+62
+00:06:58,520 --> 00:07:09,000
+ have trained your model with some data set and always we think that our test data would
+
+63
+00:07:09,000 --> 00:07:16,120
+ be kind of picked up from the same distribution which has generated the training data. So,
+
+64
+00:07:16,120 --> 00:07:24,480
+ theoretically that is ok but practically the test data may belong to a different distribution.
+
+65
+00:07:24,480 --> 00:07:30,160
+ These two distributions may be overlapping but you may not guarantee you cannot guarantee
+
+66
+00:07:30,160 --> 00:07:36,040
+ that they are coming from the same distribution. But in spite of that you want your model to
+
+67
+00:07:36,040 --> 00:07:46,040
+ work good or better in the test data as well. But in some domains like say medical domain
+
+68
+00:07:46,040 --> 00:07:54,840
+ let us say you want to record or do some task or perform some task taking as input the MRI
+
+69
+00:07:54,840 --> 00:08:00,360
+ images of some cancer patients for example. Now you see there is a kind of it is a kind
+
+70
+00:08:00,360 --> 00:08:06,040
+ of you cannot really get the data in a very large amount you cannot really collect the
+
+71
+00:08:06,040 --> 00:08:13,680
+ data in large amount. So, the question is can we achieve generalization with limited
+
+72
+00:08:13,680 --> 00:08:26,120
+ amount of data? Now whenever we train a model we always have a kind of assumption or goal
+
+73
+00:08:26,120 --> 00:08:34,680
+ to have a model which is more general and pervasive and it will work for every setting
+
+74
+00:08:34,680 --> 00:08:43,400
+ every individual. But you see every individual has got his or her own peculiarities and behavior
+
+75
+00:08:43,400 --> 00:08:52,120
+ and ideally a person would want the model to work as per his or her own behavior. But
+
+76
+00:08:52,120 --> 00:09:00,160
+ as you are training the model to be serving a kind of general purpose application or inference,
+
+77
+00:09:00,160 --> 00:09:07,800
+ so this individual peculiarities may not be kind of tapped or individual behavior cannot
+
+78
+00:09:07,800 --> 00:09:16,880
+ cannot be kind of model using this trained model. So, the question is let us say we have
+
+79
+00:09:16,880 --> 00:09:24,880
+ a general model and can we use that to derive personal the models which can cater to the
+
+80
+00:09:24,880 --> 00:09:36,000
+ personal needs. So, there comes the utility of this particular idea transfer learn.
+
+81
+00:09:36,000 --> 00:09:43,880
+ So, let us say I have some general ideas about a particular domain and while I am training
+
+82
+00:09:43,880 --> 00:09:51,240
+ a model I train the model to capture those general ideas of the concepts and whenever
+
+83
+00:09:51,240 --> 00:09:59,760
+ I am trying to fine tune that to cater to the need of a very specific application then
+
+84
+00:09:59,760 --> 00:10:08,080
+ we can somehow retrain it or fine tune it to solve this application specific or domain
+
+85
+00:10:08,080 --> 00:10:16,600
+ specific trains. So, basically what we want to have we will
+
+86
+00:10:16,600 --> 00:10:24,360
+ pre train a model and then we will use the feature representation of that pretend model
+
+87
+00:10:24,360 --> 00:10:32,320
+ and using the feature representation we will try to derive another model which will solve
+
+88
+00:10:32,320 --> 00:10:38,680
+ domain specific problems or applications. So, this is how the scenario looks like.
+
+89
+00:10:38,680 --> 00:10:46,480
+ So, let us say we have a huge amount of data available to us. So, they may be annotated
+
+90
+00:10:46,480 --> 00:10:53,840
+ or may not be annotated. So, this data set that you are taking looking at. So, let us
+
+91
+00:10:53,840 --> 00:11:00,000
+ say they can be kind of image data sets where you have labels for each image or it can be
+
+92
+00:11:00,000 --> 00:11:09,280
+ a kind of free text data where you do not have any specific label and with that we train
+
+93
+00:11:09,280 --> 00:11:15,760
+ a backbone network. So, for example, I pick up say race net to be our backbone network
+
+94
+00:11:15,760 --> 00:11:22,560
+ and we have a huge amount of image data and again as I told you earlier it may be labeled
+
+95
+00:11:22,560 --> 00:11:27,720
+ or it may not be labeled. So, we just pre train the source model using
+
+96
+00:11:27,720 --> 00:11:34,600
+ some training strategy which we will talk about later to derive a source model. And
+
+97
+00:11:34,600 --> 00:11:41,600
+ of course, as we do not have any specific application in mind this source model basically
+
+98
+00:11:41,600 --> 00:11:49,880
+ captures some general traits about the domain from which data has been picked up or collected.
+
+99
+00:11:49,880 --> 00:11:59,680
+ Now, whatever knowledge that has been captured in this model that can be transferred to basically
+
+100
+00:11:59,680 --> 00:12:08,640
+ if we think about in a very loose or maybe very lucid perspective. So, this we are copying
+
+101
+00:12:08,640 --> 00:12:17,080
+ this model to form this target model. But as we want to capture very domain specific
+
+102
+00:12:17,080 --> 00:12:24,000
+ trait. So, you will need to have some amount of data and again this data may not be very
+
+103
+00:12:24,000 --> 00:12:31,440
+ large as we have done for this pre training part. We can use a very small amount of annotated
+
+104
+00:12:31,440 --> 00:12:38,960
+ data and train this target model. And in that case we want this small amount of data to
+
+105
+00:12:38,960 --> 00:12:45,400
+ be annotated. Now, you see we are kind of addressing the challenges that we have discussed
+
+106
+00:12:45,400 --> 00:12:54,760
+ in the last few slides. So, it is addressing the challenges of like not having access to
+
+107
+00:12:54,760 --> 00:13:01,440
+ large amount of annotated data. We need just need a very small amount of annotated data.
+
+108
+00:13:01,440 --> 00:13:09,800
+ And again as we are training with small data it is not like that I will need a very powerful
+
+109
+00:13:09,800 --> 00:13:19,280
+ computing facility right. And again I can really look at this personalized models if
+
+110
+00:13:19,280 --> 00:13:25,800
+ we think about targeted data to be collected from the personal behavior or something like
+
+111
+00:13:25,800 --> 00:13:32,760
+ that. So, this particular idea as you can see it is able to address the challenges that
+
+112
+00:13:32,760 --> 00:13:40,200
+ we have or practical challenges that we have just mentioned few slides back. So, the left
+
+113
+00:13:40,200 --> 00:13:46,000
+ hand side as we can see this is the part what we call as pre training. Here we do not have
+
+114
+00:13:46,000 --> 00:13:52,200
+ any domain specific objective training objective in mind. But of course, as we are training
+
+115
+00:13:52,200 --> 00:13:58,240
+ it we should have some objective and maybe we will be talking about those kinds of objective
+
+116
+00:13:58,240 --> 00:14:03,040
+ training later. And the right side of it where we are using
+
+117
+00:14:03,040 --> 00:14:09,440
+ a small amount of domain specific data and to derive this target model this is what we
+
+118
+00:14:09,440 --> 00:14:18,560
+ call as adaptation. We are adapting an existing trained or pre trained model to fit to the
+
+119
+00:14:18,560 --> 00:14:27,520
+ niche domain requirement. So, the general recipe for pre training is that first you
+
+120
+00:14:27,520 --> 00:14:35,000
+ need to collect raw data and as we talked about earlier raw data is available in huge
+
+121
+00:14:35,000 --> 00:14:42,280
+ amount in the form of web data, social media data and it will set some pre training objective.
+
+122
+00:14:42,280 --> 00:14:49,240
+ So, this pre training objective can be supervised. So, for example if you are training your model
+
+123
+00:14:49,240 --> 00:14:56,840
+ using image net data which has got huge amount of labeled images. So, there this pre training
+
+124
+00:14:56,840 --> 00:15:02,720
+ objective can be supervised. But sometimes when the labels are not available then we
+
+125
+00:15:02,720 --> 00:15:09,520
+ can use some technique what we call as self supervised training objective.
+
+126
+00:15:09,520 --> 00:15:16,840
+ And the third thing that you need to find out which particular backbone model we will
+
+127
+00:15:16,840 --> 00:15:26,920
+ be using to pre train. And there are plenty of options there as you know there are too
+
+128
+00:15:26,920 --> 00:15:35,320
+ many architect architectures available and depending on the modality of the data you
+
+129
+00:15:35,320 --> 00:15:40,320
+ can pick up image related architecture or vision related architecture or text related
+
+130
+00:15:40,320 --> 00:15:47,320
+ architecture and sometimes some more general architectures like transformer.
+
+131
+00:15:47,320 --> 00:15:59,840
+ So, let me talk about pre trained vision models. So, as I have given a very bird's eye view
+
+132
+00:15:59,840 --> 00:16:05,600
+ of the requirements or the general recipe of pre training I am following that idea in
+
+133
+00:16:05,600 --> 00:16:11,920
+ this slide as well. So, you need to have access to huge amount of data and this data is available
+
+134
+00:16:11,920 --> 00:16:17,640
+ in vision domain in different forms from different organizations. So, image net is I think the
+
+135
+00:16:17,640 --> 00:16:24,680
+ most popular image data set out there. So, there you have around 14 million images with
+
+136
+00:16:24,680 --> 00:16:35,600
+ 21000 object classes, 10 cent machine learning images, JFT 300 million image set, Facebook
+
+137
+00:16:35,600 --> 00:16:43,240
+ Instagram image set. So, the point is there is a kind of huge amount of image data set
+
+138
+00:16:43,240 --> 00:16:51,200
+ which you can make use to pre train some models. Now as the choice of the backbone network
+
+139
+00:16:51,200 --> 00:17:02,320
+ one can make use of race net if someone wants to build a small models. So, it has got parameters
+
+140
+00:17:02,320 --> 00:17:12,160
+ in the range of 25 million to 65 million and if you want to go further you can make use
+
+141
+00:17:12,160 --> 00:17:19,400
+ of vision transformers. So, there are different options to pick up the backbone network which
+
+142
+00:17:19,400 --> 00:17:23,920
+ can be pre trained. Now again as per as the training objectives
+
+143
+00:17:23,920 --> 00:17:30,560
+ are concerned. So, if you are using image net you can make use of something some training
+
+144
+00:17:30,560 --> 00:17:36,720
+ objective like supervised and sometimes if the label is not available you can make use
+
+145
+00:17:36,720 --> 00:17:47,400
+ of self supervised techniques. So, there are other ideas while we are deriving this pre
+
+146
+00:17:47,400 --> 00:17:55,040
+ trained model for vision modality. So, one such idea is mass auto encoder. So, here the
+
+147
+00:17:55,040 --> 00:18:03,000
+ idea is you take an image and mask some of the regions and with the remaining region
+
+148
+00:18:03,000 --> 00:18:09,120
+ you learn a feed that to an encoder, learner representation and the representation will
+
+149
+00:18:09,120 --> 00:18:18,440
+ be fed to a decoder and the decoder will now try to reconstruct the masked region of the
+
+150
+00:18:18,440 --> 00:18:22,840
+ image. Now in that way the network will find out
+
+151
+00:18:22,840 --> 00:18:32,560
+ a very good representation it will be resilient to missing out some of the regions in the image.
+
+152
+00:18:32,560 --> 00:18:37,520
+ And here you can see that we are not really using any label. So, I am not telling that
+
+153
+00:18:37,520 --> 00:18:45,600
+ this image is an image of a parrot or pigeon. I am just giving the images input to the network
+
+154
+00:18:45,600 --> 00:18:55,440
+ and we are just masking some regions. So, as we are not using any labels explicitly
+
+155
+00:18:55,440 --> 00:19:01,480
+ this does not belong to the supervised strategy. Mostly it will belong to this self supervised
+
+156
+00:19:01,480 --> 00:19:11,300
+ strategy where we are not using and you see this is not similar to unsupervised learning.
+
+157
+00:19:11,300 --> 00:19:19,220
+ So, here we are using the supervision signal from the image itself. So, what is the supervision
+
+158
+00:19:19,220 --> 00:19:26,920
+ signal this masked region they are our supervision signal. So, your representation will be good
+
+159
+00:19:26,920 --> 00:19:33,000
+ if you can faithfully reconstruct the masked region. So, that is why we call it as self
+
+160
+00:19:33,000 --> 00:19:40,740
+ supervised training. So, this Dino V2 is another popular architecture
+
+161
+00:19:40,740 --> 00:19:51,120
+ which has made a very good innovation in curating the training data set. So, again you can have
+
+162
+00:19:51,120 --> 00:19:58,880
+ a very less amount of curated data or a moderate amount of curated data, but or annotated data.
+
+163
+00:19:58,880 --> 00:20:05,920
+ But what you have you have a large amount of unannotated data. So, what can be done?
+
+164
+00:20:05,920 --> 00:20:13,000
+ One can learn some representation for all of these curated as well as uncurated images
+
+165
+00:20:13,000 --> 00:20:20,280
+ using some architectures like say vision transformer. And then what we can do we can remove some
+
+166
+00:20:20,280 --> 00:20:27,200
+ duplicates and why that is necessary. If we remove the duplicates then perhaps we can add
+
+167
+00:20:27,200 --> 00:20:33,160
+ diversity to the training examples and that is very important you do not want your model
+
+168
+00:20:33,160 --> 00:20:42,280
+ to be biased towards some segment of data. So, you have to diversify into multiple regions
+
+169
+00:20:42,280 --> 00:20:53,000
+ or regions of different difference right. Now after this duplication, duplicate detection
+
+170
+00:20:53,000 --> 00:21:01,200
+ has been done we can remove this duplicates and then we can take a curated data or image
+
+171
+00:21:01,200 --> 00:21:08,640
+ for which we know the label and we can do a kind of similarity search to find out the
+
+172
+00:21:08,640 --> 00:21:15,760
+ images which are similar to this input image for which the label is available and perhaps
+
+173
+00:21:15,760 --> 00:21:22,480
+ assign this labels the same label to the retrieved images for which we did not have the label
+
+174
+00:21:22,480 --> 00:21:30,280
+ earlier. So, in that way we can increase our data set to a larger volume and again we can
+
+175
+00:21:30,280 --> 00:21:40,520
+ use a kind of any backbone network to retain our vision model.
+
+176
+00:21:40,520 --> 00:21:46,720
+ Now as far as the languages are concerned, so we follow something called distributional
+
+177
+00:21:46,720 --> 00:21:55,360
+ semantics. So, here our basic idea is that we want to somehow represent the basic units
+
+178
+00:21:55,360 --> 00:22:03,600
+ of text and this basic units may be words or they may be some fragments of the words
+
+179
+00:22:03,600 --> 00:22:11,360
+ which we call as sub words. But whatever it is we will understand the meaning of a word
+
+180
+00:22:11,360 --> 00:22:17,600
+ if we know which are the other words this current word is co-occurring with. So, the
+
+181
+00:22:17,600 --> 00:22:24,480
+ basic idea is that the meaning of a word is distributed into multiple words which are
+
+182
+00:22:24,480 --> 00:22:31,600
+ co-occurring with the current word. So, that is what the basic hypothesis of this all these
+
+183
+00:22:31,600 --> 00:22:35,160
+ language models.
+
+184
+00:22:35,160 --> 00:22:43,840
+ So again we use a kind of self supervised technique to pretend this language model. So, what we
+
+185
+00:22:43,840 --> 00:22:49,640
+ have with us we have with us a huge amount of text. So, they may be news articles they
+
+186
+00:22:49,640 --> 00:22:56,840
+ may be Facebook post or whatever it is. Now we will pick up individual words and we will
+
+187
+00:22:56,840 --> 00:23:04,200
+ try to find out what are the other words that are co-occurring with it. So, we will term
+
+188
+00:23:04,200 --> 00:23:10,140
+ or designate a particular word to be the center word and the co-occurring word to be the
+
+189
+00:23:10,140 --> 00:23:16,840
+ context word and we will try to learn a model where we try to maximize the probability of
+
+190
+00:23:16,840 --> 00:23:28,600
+ the context word given the center word or we can look that in a reverse way also. So,
+
+191
+00:23:28,600 --> 00:23:35,600
+ here we are putting the training objective to maximize the probability of seeing a context
+
+192
+00:23:35,600 --> 00:23:44,520
+ word given the center word and this probability should be very high if a pair like a center
+
+193
+00:23:44,520 --> 00:23:50,680
+ word and the context word is a valid pair. Now, we can take a kind of window based approach
+
+194
+00:23:50,680 --> 00:24:00,200
+ where we will fix a window size let us say so, so basically what we are trying to maximize
+
+195
+00:24:00,200 --> 00:24:05,760
+ we are maximizing maximizing the probability of seeing the context word given the center
+
+196
+00:24:05,760 --> 00:24:12,080
+ word. Now, this will help us to learn the representation of the words and we can see
+
+197
+00:24:12,080 --> 00:24:18,920
+ that this representation is reflected in this relationship between the pair of words.
+
+198
+00:24:18,920 --> 00:24:25,960
+ So, for example, you can see that China and Beijing is related the same way the Russia
+
+199
+00:24:25,960 --> 00:24:32,520
+ and Moscow are related. So, we can see that these vectors are really parallel to each
+
+200
+00:24:32,520 --> 00:24:38,120
+ other the relationship they are really parallel to each other. So, not only that we can represent
+
+201
+00:24:38,120 --> 00:24:45,000
+ this relationship we can also represent the grammatical relationship with this pretend
+
+202
+00:24:45,000 --> 00:24:51,680
+ language model. But there are certain difficulties with this kind of learning. So, what are the
+
+203
+00:24:51,680 --> 00:24:59,760
+ difficulties? So, let us say I have a kind of word apple and this word apple is may appear
+
+204
+00:24:59,760 --> 00:25:06,240
+ in different context. So, it may appear in the context of gadgets branding or it may appear
+
+205
+00:25:06,240 --> 00:25:11,520
+ in the context of say fruit or other different kind of context.
+
+206
+00:25:11,520 --> 00:25:18,400
+ Now, while we are collecting the context we are merging different types of context while
+
+207
+00:25:18,400 --> 00:25:23,480
+ we are trying to find out finding out thus the context word given the center word apple.
+
+208
+00:25:23,480 --> 00:25:31,320
+ Now, as this different kind of context words are mixed up then we are having a single representation
+
+209
+00:25:31,320 --> 00:25:38,400
+ of apple and that is not really good because it now we are really confused whenever I am
+
+210
+00:25:38,400 --> 00:25:45,200
+ having a representation whether that representation is valid for the representation that needs
+
+211
+00:25:45,200 --> 00:25:51,640
+ the apple brand to be representation represented or apple fruit to be represented. So, that
+
+212
+00:25:51,640 --> 00:26:00,760
+ is why we talk about the other architecture which is really capturing this context and
+
+213
+00:26:00,760 --> 00:26:11,160
+ this the first step toward this direction was this BRT. So, this is what we call as bi-directional
+
+214
+00:26:11,160 --> 00:26:18,680
+ encoder representation through transformer. So, here we try to segregate the context in
+
+215
+00:26:18,680 --> 00:26:25,960
+ which a particular token appears. Now, here we can have two different representation for
+
+216
+00:26:25,960 --> 00:26:30,880
+ apple depending on the context in which it is appearing. If it is appearing in the context
+
+217
+00:26:30,880 --> 00:26:43,240
+ of say branding or so, it is if it is appearing in the context of the apple company or something
+
+218
+00:26:43,240 --> 00:26:48,680
+ like that. So, then the representation will be different than if it is appearing in the
+
+219
+00:26:48,680 --> 00:26:57,280
+ context of fruit. So, here the idea is that we are looking at the left context and the
+
+220
+00:26:57,280 --> 00:27:05,280
+ as well as the right side context of a token and we get a representation as we pass the
+
+221
+00:27:05,280 --> 00:27:10,160
+ token through the layer and these are the kind of derived representation that we are
+
+222
+00:27:10,160 --> 00:27:13,360
+ getting. Now, in this architecture we have a special
+
+223
+00:27:13,360 --> 00:27:22,680
+ token which is what we call the CLS and that token is used to perform some prediction task
+
+224
+00:27:22,680 --> 00:27:29,040
+ on this pretend model. And I think there are some other modules where this kind of architectures
+
+225
+00:27:29,040 --> 00:27:38,400
+ will be dealt in detail. So, that is why I will not be going in depth with this architecture.
+
+226
+00:27:38,400 --> 00:27:46,600
+ But what I like to talk about how to pretend this kind of language models. So, a very important
+
+227
+00:27:46,600 --> 00:27:51,360
+ pretending objective that we set a strategy that we set what we call as must language
+
+228
+00:27:51,360 --> 00:27:59,960
+ model and there we use something called 80-10-10 corruption. So, what is that? So, for taking
+
+229
+00:27:59,960 --> 00:28:07,160
+ this corpora or text data training data with us, we will be picking up around 15 percent
+
+230
+00:28:07,160 --> 00:28:14,000
+ of the tokens or words and out of this 15 percent we will be replacing 80 percent of
+
+231
+00:28:14,000 --> 00:28:18,280
+ this 15 percent token with the token special token mask.
+
+232
+00:28:18,280 --> 00:28:24,320
+ So, for example, if I have a kind of sentence heavy rain caused the flood, I will mask a
+
+233
+00:28:24,320 --> 00:28:33,120
+ certain word like say rain with this token mask and we will want the model to predict
+
+234
+00:28:33,120 --> 00:28:43,880
+ this mask token to be a correct token to be rain. Or what we can do? 10 percent time
+
+235
+00:28:43,880 --> 00:28:50,640
+ we can replace this particular target word with a kind of random word. So, for example,
+
+236
+00:28:50,640 --> 00:28:59,520
+ we can replace rain with cup or remaining 10 percent we can keep it unchanged. So, sometimes
+
+237
+00:28:59,520 --> 00:29:04,080
+ we may not really want to change this particular token.
+
+238
+00:29:04,080 --> 00:29:10,900
+ So, this is what we call as self-supervised pre-training in while we are training a language
+
+239
+00:29:10,900 --> 00:29:18,280
+ model. So, there is another training objective or self-supervised training objective what
+
+240
+00:29:18,280 --> 00:29:25,040
+ we call as next sentence prediction. So, again if you think about a training data, you can
+
+241
+00:29:25,040 --> 00:29:31,240
+ think this as a sequence of sentences and you really do not have need to have explicit
+
+242
+00:29:31,240 --> 00:29:36,200
+ annotation which sentence appears after which sentence and that comes for free that comes
+
+243
+00:29:36,200 --> 00:29:43,640
+ automatically. So, what we can do? We can set a training objective like whether the model
+
+244
+00:29:43,640 --> 00:29:49,160
+ can predict what would be the whether that for a pair of sentence whether the second
+
+245
+00:29:49,160 --> 00:29:56,040
+ sentence is a is the next sentence for the first sentence.
+
+246
+00:29:56,040 --> 00:30:06,080
+ So, as you can think of here we our input is the man went to the store to and the next
+
+247
+00:30:06,080 --> 00:30:13,240
+ sentence he see bought a gallon of milk. Now, here you can see that we are kind of mixing
+
+248
+00:30:13,240 --> 00:30:19,200
+ up two things one is next sentence prediction as well as a mass language model and what
+
+249
+00:30:19,200 --> 00:30:27,680
+ we want to say that these two sentences they are a correct next sentence candidate. So,
+
+250
+00:30:27,680 --> 00:30:32,760
+ I can say that he bought a gallon of milk is a correct next sentence for the sentence
+
+251
+00:30:32,760 --> 00:30:40,200
+ are the man went to the store right. But the next example which says the man went
+
+252
+00:30:40,200 --> 00:30:46,520
+ to the store and the coming up sentence is penguins are flightless birds and as you can
+
+253
+00:30:46,520 --> 00:30:54,600
+ see the second sentence is not a natural next sentence for the first sentence and you can
+
+254
+00:30:54,600 --> 00:31:01,520
+ see that this can be used as a supervision signal though we do not have explicitly annotated
+
+255
+00:31:01,520 --> 00:31:13,480
+ data. So, if we mix these two training objectives together that means, the make mass language
+
+256
+00:31:13,480 --> 00:31:20,400
+ model as well as next sentence pair prediction. So, the architecture will go like this or
+
+257
+00:31:20,400 --> 00:31:27,200
+ the training process will go like this. So, we have the tokens for a sentence a and the
+
+258
+00:31:27,200 --> 00:31:33,360
+ tokens for the sentence b and as you can see some of the tokens in sentence a can be massed
+
+259
+00:31:33,360 --> 00:31:38,920
+ and some of the tokens in the sentence b can be massed and we pass these two sentences
+
+260
+00:31:38,920 --> 00:31:46,520
+ through this BART architecture and then finally, we have the CLS level the representation for
+
+261
+00:31:46,520 --> 00:31:55,120
+ the CLS level and we use that representation to predict whether this pair is a valid next
+
+262
+00:31:55,120 --> 00:32:01,680
+ sentence pair or not and in some and whenever we have massed a particular token and for
+
+263
+00:32:01,680 --> 00:32:10,640
+ that token we will output what would be the correct token for that right.
+
+264
+00:32:10,640 --> 00:32:19,800
+ Now, it may be possible that you can pre train a model using a mixed modality. So, here we
+
+265
+00:32:19,800 --> 00:32:26,200
+ can mix a vision as well as a language modality to come up with a pre training model which
+
+266
+00:32:26,200 --> 00:32:33,840
+ can model both vision and language. So, here the pre training objective can be many. So,
+
+267
+00:32:33,840 --> 00:32:40,120
+ for example, we have this image and we have some objects detected in the image and we
+
+268
+00:32:40,120 --> 00:32:47,280
+ can design some task around this image. So, for example, I can have a task which is visual
+
+269
+00:32:47,280 --> 00:32:52,900
+ question answering and here the question that we are asking what color is the child's
+
+270
+00:32:52,900 --> 00:33:01,720
+ outfit. So, here the answer is orange. Now, we can feed this together to the model and
+
+271
+00:33:01,720 --> 00:33:08,400
+ try to do a correct prediction that given this image and given the question what color
+
+272
+00:33:08,400 --> 00:33:14,640
+ is the child's outfit and we should have the result to be or answer to be orange.
+
+273
+00:33:14,640 --> 00:33:22,960
+ We can also design a task what we call as predicting the referring expressions or finding
+
+274
+00:33:22,960 --> 00:33:28,240
+ out the referring expressions. So, what do you mean by that? So, again we have got different
+
+275
+00:33:28,240 --> 00:33:35,320
+ objects in this image. So, we have a sheep, we have a child, we have a basket whatever
+
+276
+00:33:35,320 --> 00:33:41,840
+ so and so forth and we have some linguistic expression or language expressions like child,
+
+277
+00:33:41,840 --> 00:33:49,960
+ sheep, basket, people sitting on chair and we will try to align which token or which
+
+278
+00:33:49,960 --> 00:33:56,440
+ phrase aligns to which object in the image. The third task that we can talk about what
+
+279
+00:33:56,440 --> 00:34:03,360
+ we call as multimodal verification. Now, here we will be asking some question true false
+
+280
+00:34:03,360 --> 00:34:09,640
+ question out of this image. So, for example, we are asking the child is petting a dog.
+
+281
+00:34:09,640 --> 00:34:14,960
+ So, we are having a statement and we have to predict the truth value of the sentence.
+
+282
+00:34:14,960 --> 00:34:21,360
+ So, here we are the correct truth value is false. So, you need to train your network
+
+283
+00:34:21,360 --> 00:34:26,840
+ in such a way that it will predict for this given. So, here you see that the input to
+
+284
+00:34:26,840 --> 00:34:33,840
+ this network is the image as well as the sentence or the sequence of tokens like the child is
+
+285
+00:34:33,840 --> 00:34:41,120
+ petting a dog and your answer should be false a prediction should be false or we can think
+
+286
+00:34:41,120 --> 00:34:49,280
+ about caption based image retrieval you can give a as query a string of or a phrase or
+
+287
+00:34:49,280 --> 00:34:55,440
+ a sequence of words and as a result you would be able to retrieve the image which represents
+
+288
+00:34:55,440 --> 00:35:00,600
+ that particular phrase or you can generate the caption of the image.
+
+289
+00:35:00,600 --> 00:35:07,360
+ So, let say you are given with the image and you want to generate the caption in a phrase
+
+290
+00:35:07,360 --> 00:35:17,160
+ or in a sentence manner. So, there have been quite a large amount of work in this vision
+
+291
+00:35:17,160 --> 00:35:25,860
+ language models. So, for example, Facebook, Google, Microsoft, they have come up with
+
+292
+00:35:25,860 --> 00:35:35,800
+ very efficient models in down the I mean starting from say 2019 and still this racing this going
+
+293
+00:35:35,800 --> 00:35:36,800
+ on.
+
+294
+00:35:36,800 --> 00:35:44,520
+ So, nowadays people talk about models like lava deep seek vision language model. So,
+
+295
+00:35:44,520 --> 00:35:56,160
+ this open AI GPT V4. So, they are now having this multimodal capabilities as well. Now,
+
+296
+00:35:56,160 --> 00:36:02,360
+ again for this kind of vision language model what kind of pre training objective we can
+
+297
+00:36:02,360 --> 00:36:10,000
+ set right. So, here we are setting a pre training objective like so, we have this image and
+
+298
+00:36:10,000 --> 00:36:15,100
+ we have this description we need to align these two. So, so, given this image we need
+
+299
+00:36:15,100 --> 00:36:19,300
+ to come up with this description we should be able to generate this description. So,
+
+300
+00:36:19,300 --> 00:36:24,660
+ this is a kind of training example which is put to the model.
+
+301
+00:36:24,660 --> 00:36:34,320
+ Now, there might be different self supervision objective. So, one such self supervision objective
+
+302
+00:36:34,320 --> 00:36:40,240
+ can be simply mass language model as we have seen earlier. So, what we are seeing here?
+
+303
+00:36:40,240 --> 00:36:48,580
+ So, in this kind of model we are feeding the patches of the images and as well as the paired
+
+304
+00:36:48,580 --> 00:36:55,080
+ sentence as we have seen in the training example. So, we have this image and this paired sentence
+
+305
+00:36:55,080 --> 00:37:01,400
+ right. So, we are feeding both, but as you can see that we are masking some tokens in
+
+306
+00:37:01,400 --> 00:37:10,300
+ the sentence and the pre training objective would be to predict this token correctly right.
+
+307
+00:37:10,300 --> 00:37:17,300
+ Or else what we can do? We can mask some region in the image. So, these are the patches of
+
+308
+00:37:17,300 --> 00:37:21,820
+ this image. Now, we are masking certain region of the image we are keeping this sentence
+
+309
+00:37:21,820 --> 00:37:28,780
+ intact and we want to reconstruct the masked region. So, this is what we call as masked
+
+310
+00:37:28,780 --> 00:37:35,220
+ region modeling. So, third thing what we can do? We can do kind
+
+311
+00:37:35,220 --> 00:37:42,740
+ of image text matching. Now, as we are giving this image as well as the text associated
+
+312
+00:37:42,740 --> 00:37:50,380
+ with that. Now, this pair can be a positive pair. So, for example, the pair what we have
+
+313
+00:37:50,380 --> 00:37:56,500
+ seen earlier is a positive pair, but the pair that we are seeing in this example that the
+
+314
+00:37:56,500 --> 00:38:01,740
+ bus is. So, now this text is talking about some bus related thing though we are talking
+
+315
+00:38:01,740 --> 00:38:09,140
+ about a man with his dog on a couch. So, this is not a positive pair and it should be outputting
+
+316
+00:38:09,140 --> 00:38:16,260
+ 0 instead of 1. So, this is what we call as image text matching.
+
+317
+00:38:16,260 --> 00:38:25,740
+ Now, while we are let us say we have done this pre training with all these three elements
+
+318
+00:38:25,740 --> 00:38:34,220
+ in the recipe, accessing the data, finding out or choosing the architecture and fixing
+
+319
+00:38:34,220 --> 00:38:40,020
+ the pre training objective and with that we pre train our model. Now, we will be talking
+
+320
+00:38:40,020 --> 00:38:47,580
+ about how to make use of this pre trained model. Now, there are different ways we can
+
+321
+00:38:47,580 --> 00:38:56,780
+ follow. So, the first strategy is that we have this pre trained model and we will be
+
+322
+00:38:56,780 --> 00:39:03,500
+ freezing all the parameters. So, as we can see in the left hand side the blue region
+
+323
+00:39:03,500 --> 00:39:10,580
+ all the parameters of this model they have been trained earlier with some data set and
+
+324
+00:39:10,580 --> 00:39:18,580
+ training objective. Now, I want to use these to solve some problems related to a different
+
+325
+00:39:18,580 --> 00:39:26,100
+ application domain having annotated data. So, what we can do? We can take out the final
+
+326
+00:39:26,100 --> 00:39:33,140
+ layer representation of this pre trained model and feed that to a prediction head which can
+
+327
+00:39:33,140 --> 00:39:40,820
+ be another architecture. So, let us say we have a kind of multilayer perceptron or kind
+
+328
+00:39:40,820 --> 00:39:48,940
+ n number of layer network and what we do? We will be kind of fine tuning the parameter
+
+329
+00:39:48,940 --> 00:39:53,460
+ of this model. We will be tuning the parameters of this particular part of the architecture
+
+330
+00:39:53,460 --> 00:40:02,740
+ which is in the yellow part. And we will be optimizing the loss based on the limited data
+
+331
+00:40:02,740 --> 00:40:09,140
+ set that is given to us. And we will be fixing the parameter of this part only leaving out
+
+332
+00:40:09,140 --> 00:40:14,300
+ all the parameters that we are having in the blue part right.
+
+333
+00:40:14,300 --> 00:40:24,620
+ So, this is one strategy. Now, the second strategy is we freeze some of the parameters
+
+334
+00:40:24,620 --> 00:40:31,980
+ maybe in the very initial layers, but we leave the other parameters of this pre trained network
+
+335
+00:40:31,980 --> 00:40:41,140
+ to be fine tuned. And along with that we have this prediction head network which will be
+
+336
+00:40:41,140 --> 00:40:50,020
+ again fine tuned as well. So, here we are not really fine tuning the all the parameters
+
+337
+00:40:50,020 --> 00:40:55,660
+ of the base model or the pre trained model. So, what is the kind of benefit of these two
+
+338
+00:40:55,660 --> 00:41:02,260
+ kind of architectures. So, as you can see in the first strategy here. So, the number
+
+339
+00:41:02,260 --> 00:41:08,460
+ of parameters that are needed to be tuned are very less. We are just looking at updating
+
+340
+00:41:08,460 --> 00:41:20,820
+ the parameter of this part right. But in this remaining part this strategy 2 we are updating
+
+341
+00:41:20,820 --> 00:41:26,060
+ a kind of more number of parameters than the strategy 1. So, we are updating the parameters
+
+342
+00:41:26,060 --> 00:41:31,900
+ of this part as well as updating the parameters of this part right.
+
+343
+00:41:31,900 --> 00:41:40,380
+ So, these are these two strategies have kind of advantages and disadvantages right. Now,
+
+344
+00:41:40,380 --> 00:41:46,980
+ in the first strategy in the strategy 1 as we see that we have have less number of parameters
+
+345
+00:41:46,980 --> 00:41:55,780
+ to tune. So, it will be converging faster right and may be it will take less amount
+
+346
+00:41:55,780 --> 00:42:06,060
+ of compute right or the time to update the parameters would be pretty much low. But as
+
+347
+00:42:06,060 --> 00:42:11,340
+ you can see here in the strategy 2 as the number of parameters that are to be tuned
+
+348
+00:42:11,340 --> 00:42:17,820
+ has increased. So, you have to run it for longer epochs or longer time or train it for
+
+349
+00:42:17,820 --> 00:42:24,500
+ longer time to converge that is one thing. The other thing is that as you are updating
+
+350
+00:42:24,500 --> 00:42:30,820
+ many parameters or more parameters than the strategy 1. So, may be it will require more
+
+351
+00:42:30,820 --> 00:42:39,300
+ compute power than the strategy 1 right. Now, why should we use strategy 2 then.
+
+352
+00:42:39,300 --> 00:42:49,060
+ Now, think about a scenario where we are kind of we are not given with this pretend model
+
+353
+00:42:49,060 --> 00:42:55,300
+ we are just given with this level data and someone tells me that well you train this
+
+354
+00:42:55,300 --> 00:42:59,620
+ network from scratch. So, that is also kind of strategy I will just throw all the parameters
+
+355
+00:42:59,620 --> 00:43:05,060
+ of the model I will train from the scratch. And if we train from the scratch perhaps it
+
+356
+00:43:05,060 --> 00:43:14,220
+ will capture better the domain related integracies than freezing the entire model just updating
+
+357
+00:43:14,220 --> 00:43:20,940
+ a few parameters. So, may be as it is capturing the domain related
+
+358
+00:43:20,940 --> 00:43:27,820
+ structure very efficiently the training from the scratch model. So, there we might get
+
+359
+00:43:27,820 --> 00:43:35,500
+ a better accuracy than the model where we are using a pretend model and fine tuning
+
+360
+00:43:35,500 --> 00:43:46,660
+ a part of it or not even fine tuning the entire part right. So, now this strategy 2 is a kind
+
+361
+00:43:46,660 --> 00:43:53,780
+ of middle ground. So, here we are not really throwing away all the parameters of the pretend
+
+362
+00:43:53,780 --> 00:44:02,580
+ model we are leaving some space for the network to learn the domain related integracies.
+
+363
+00:44:02,580 --> 00:44:09,660
+ But what we are making use of we are making use of representation of the initial layers
+
+364
+00:44:09,660 --> 00:44:15,820
+ the question is how does that help. Now, think about an image related prediction
+
+365
+00:44:15,820 --> 00:44:25,820
+ model and let us say we are training your model to classify birds right. Now, your initial
+
+366
+00:44:25,820 --> 00:44:32,620
+ layer will try to learn very basic features like say edges there would be some edges in
+
+367
+00:44:32,620 --> 00:44:39,140
+ the images. Now, if you go forward the then the next layer will be maybe it will be learning
+
+368
+00:44:39,140 --> 00:44:46,060
+ the different shapes like circle or triangles one so forth. But as you are going forward
+
+369
+00:44:46,060 --> 00:44:51,900
+ to the deeper layer they will be learning more abstract features which are very much
+
+370
+00:44:51,900 --> 00:44:57,580
+ aligned to the domain for which you have used the training data.
+
+371
+00:44:57,580 --> 00:45:05,020
+ Now, keeping these initial layers intact that means you are using lower level features and
+
+372
+00:45:05,020 --> 00:45:11,060
+ this lower level features are very common to different applications. So, if you are
+
+373
+00:45:11,060 --> 00:45:17,580
+ classifying birds you will be requiring a kind of edge detector and if you are classifying
+
+374
+00:45:17,580 --> 00:45:23,780
+ the curves there also will be requiring edge level detectors or edge features. So, that
+
+375
+00:45:23,780 --> 00:45:29,940
+ is why you can keep the initial layers intact we will not be updating the parameters. Now,
+
+376
+00:45:29,940 --> 00:45:36,740
+ as this penultimate layers or the layers closer to the penultimate layer they are kind of
+
+377
+00:45:36,740 --> 00:45:42,540
+ capturing the abstract and domain dependent feature. If we update them using domain dependent
+
+378
+00:45:42,540 --> 00:45:48,060
+ data they will be capturing the domain related feature much better.
+
+379
+00:45:48,060 --> 00:45:55,060
+ So, that is why we take a middle ground we do not train from scratch or we really do
+
+380
+00:45:55,060 --> 00:46:01,140
+ not freeze all the parameters of the pretend model. So, we take a middle ground we keep
+
+381
+00:46:01,140 --> 00:46:06,740
+ some parameters frozen for the pretend model and keep the remaining parameters which are
+
+382
+00:46:06,740 --> 00:46:14,060
+ closer to the penultimate layer to be updatable or fine tunable.
+
+383
+00:46:14,060 --> 00:46:25,660
+ Now, again we can take the final layer representation of the pretend model and put that in a prediction
+
+384
+00:46:25,660 --> 00:46:31,740
+ head prediction network and with that we can perform different tasks like image classification,
+
+385
+00:46:31,740 --> 00:46:39,860
+ object detection, semantic segmentations and so forth. So, as far as the pretend language
+
+386
+00:46:39,860 --> 00:46:46,740
+ models are concerned we can make use of them to in different prediction tasks. So, for
+
+387
+00:46:46,740 --> 00:46:55,740
+ example, we can use them to do some classification tasks that involves a sentence space. So,
+
+388
+00:46:55,740 --> 00:47:02,100
+ for example, I want to detect whether two questions are paraphrases with respect to each
+
+389
+00:47:02,100 --> 00:47:09,140
+ other or not or given a pair of sentence one being the premise other being the hypothesis
+
+390
+00:47:09,140 --> 00:47:14,340
+ you want to check whether the premise or a hypothesis can be entailed by the premise
+
+391
+00:47:14,340 --> 00:47:20,700
+ or not. So, these tasks are concerning a pair of
+
+392
+00:47:20,700 --> 00:47:26,820
+ sentences and we want to classify again whether a pair of sentences are paraphrases or not
+
+393
+00:47:26,820 --> 00:47:37,020
+ or in the natural language inference domain for a given pair whether they are a kind of
+
+394
+00:47:37,020 --> 00:47:44,140
+ entailed pair or contradicting pair or they are neutral right or given a pair of sentences
+
+395
+00:47:44,140 --> 00:47:49,140
+ whether they are semantically similar or not. So, the bottom line is that the input to the
+
+396
+00:47:49,140 --> 00:47:57,300
+ network is a pair of sentences again we transform them into the tokens into the embeddings
+
+397
+00:47:57,300 --> 00:48:04,980
+ and we pass this through a set of encoder layers which are kind of implemented via transformer
+
+398
+00:48:04,980 --> 00:48:12,740
+ architecture and we have the final layer representation and we use the CLS token representation
+
+399
+00:48:12,740 --> 00:48:22,220
+ and we feed that to another multi layer or a linear layer to predict the class level.
+
+400
+00:48:22,220 --> 00:48:29,140
+ So, for example, for a paraphrase detection the class level might be yes it is a paraphrase
+
+401
+00:48:29,140 --> 00:48:36,780
+ no it is not a paraphrase. Now there might be classification tasks which involve only
+
+402
+00:48:36,780 --> 00:48:44,300
+ a single sentence as input. So, here we are trying to check whether a given sentence whether
+
+403
+00:48:44,300 --> 00:48:53,100
+ that represents a positive emotion or a negative emotion. So, we can think about a task like
+
+404
+00:48:53,100 --> 00:48:59,060
+ sentiment detection we can think about a task like a grammaticality of a sentence. So, given
+
+405
+00:48:59,060 --> 00:49:04,580
+ a sentence as input we need to predict whether the sentence is grammatically correct or not.
+
+406
+00:49:04,580 --> 00:49:11,220
+ So, this is what we call as the COLA task. So, again as we did earlier we will be passing
+
+407
+00:49:11,220 --> 00:49:18,220
+ this single sentence tokenize it and then we get the embeddings of the individual tokens
+
+408
+00:49:18,220 --> 00:49:24,740
+ and finally, we will be using the representation of the CLS token to predict whether it is
+
+409
+00:49:24,740 --> 00:49:30,020
+ depicting a positive or negative or neutral emotion.
+
+410
+00:49:30,020 --> 00:49:39,540
+ So, this prediction task may involve they may be in the token level. So, for example,
+
+411
+00:49:39,540 --> 00:49:44,860
+ if we think about question answering task. So, here input is a question which is again
+
+412
+00:49:44,860 --> 00:49:52,300
+ a sequence of tokens and a paragraph again a sequence of tokens and we need to predict
+
+413
+00:49:52,300 --> 00:50:01,220
+ for this given question what are the tokens present in the paragraph which are the span
+
+414
+00:50:01,220 --> 00:50:06,500
+ that we are marking is a potential answer to the question. So, here we can see that
+
+415
+00:50:06,500 --> 00:50:12,740
+ our prediction would be in the token level. So, for example, this T 1 prime is the start
+
+416
+00:50:12,740 --> 00:50:18,900
+ of the answer and say T m prime is the end of the answer.
+
+417
+00:50:18,900 --> 00:50:24,180
+ We can think about solving this named entity recognition task where again the input is
+
+418
+00:50:24,180 --> 00:50:31,020
+ a single sentence and we need to mark the token whether it is inside a named entity
+
+419
+00:50:31,020 --> 00:50:40,620
+ or outside a named entity sequence. So, again we can talk about inference using
+
+420
+00:50:40,620 --> 00:50:46,900
+ pretend vision language models. So, here for example, we are talking about visual question
+
+421
+00:50:46,900 --> 00:50:57,980
+ answering we have again as input the image and question and using that we need to find
+
+422
+00:50:57,980 --> 00:51:05,340
+ out the answer. So, for example, we are asking for this given image what color are her eyes
+
+423
+00:51:05,340 --> 00:51:15,020
+ and your model should predict it to be black. So, there are other tasks in vision language
+
+424
+00:51:15,020 --> 00:51:20,700
+ model. So, for example, we can think about a task like entailment. So, for example, given
+
+425
+00:51:20,700 --> 00:51:30,940
+ this image we can state different facts. So, this is our premise in an inference or entailment
+
+426
+00:51:30,940 --> 00:51:38,420
+ problem we have two sentence or two entities one is a premise other is the hypothesis.
+
+427
+00:51:38,420 --> 00:51:43,660
+ And in this case we have the premise to be an image and we have different hypothesis
+
+428
+00:51:43,660 --> 00:51:50,740
+ in the form of sentences. So, for example, we are saying that two women are holding packages.
+
+429
+00:51:50,740 --> 00:51:57,380
+ So, here we need to predict that this is a correct entailment pair. So, that means this
+
+430
+00:51:57,380 --> 00:52:04,940
+ is true given that premise is true or we can say that the sisters are hugging goodbye while
+
+431
+00:52:04,940 --> 00:52:13,420
+ holding to go packages after just eating lunch. So, here we are saying that this is having
+
+432
+00:52:13,420 --> 00:52:21,940
+ no way close relation or very tied or coherent relation with this image. So, we are marking
+
+433
+00:52:21,940 --> 00:52:30,260
+ this as neutral or the third sentence the men are fighting outside a deli. So, this
+
+434
+00:52:30,260 --> 00:52:36,780
+ is really a contradiction. So, given this image which is true we cannot say that this
+
+435
+00:52:36,780 --> 00:52:42,020
+ sentence is true. So, the way to make an inference out of this.
+
+436
+00:52:42,020 --> 00:52:48,220
+ So, what we have again we will be feeding these two as input the image and the sentence
+
+437
+00:52:48,220 --> 00:52:55,700
+ and this should predict for the CLS token whether the CLS token can be classified into
+
+438
+00:52:55,700 --> 00:53:05,580
+ entail neutral or contradict class. We can perform visual reasoning as well. So, for
+
+439
+00:53:05,580 --> 00:53:11,820
+ example, we are given with a pair of images a left side image and the right side image
+
+440
+00:53:11,820 --> 00:53:17,100
+ and the left side image we have got two dogs and the right side image we have got one dog.
+
+441
+00:53:17,100 --> 00:53:23,380
+ Now, we are asking the left image contains twice the number of dogs as the right image
+
+442
+00:53:23,380 --> 00:53:31,620
+ and at least two dogs in total are standing. So, here this result of the prediction would
+
+443
+00:53:31,620 --> 00:53:39,100
+ be true. So, whatever that is there in the image the pair of images this particular sequence
+
+444
+00:53:39,100 --> 00:53:45,260
+ of words are correctly capturing that. So, in that case the output should be true.
+
+445
+00:53:45,260 --> 00:53:54,580
+ Now, here we are feeding one image the left side image along with the entire text in one
+
+446
+00:53:54,580 --> 00:54:01,340
+ unit and the right side image and again the same text in the another unit and we will
+
+447
+00:54:01,340 --> 00:54:09,580
+ pass these pairs at this individual units will be coming out coming up with the representation
+
+448
+00:54:09,580 --> 00:54:16,540
+ of the CLS token and we have a kind of CLS token for the left hand side image and a CLS
+
+449
+00:54:16,540 --> 00:54:24,260
+ token for the right hand side image we concatenate that and we predict either true or false.
+
+450
+00:54:24,260 --> 00:54:36,060
+ So, again I think I have given a very brief overview of what we mean by pre-training and
+
+451
+00:54:36,060 --> 00:54:42,780
+ what are the kind of recipe for pre-training to be done and how these pre-trained models
+
+452
+00:54:42,780 --> 00:54:51,620
+ can be used in different modalities like text, vision and this multimodal setting. So, there
+
+453
+00:54:51,620 --> 00:54:56,820
+ are a kind of huge amount of resources available. So, for example, for pre-trained vision model,
+
+454
+00:54:56,820 --> 00:55:03,860
+ pre-trained language model, pre-trained vision language model now you see nowadays these pre-trained
+
+455
+00:55:03,860 --> 00:55:14,460
+ models are pretty much abundant and I think hugging face is a very good framework or platform
+
+456
+00:55:14,460 --> 00:55:25,340
+ where these pre-trained models are maintained quite elegantly and as you see nowadays we
+
+457
+00:55:25,340 --> 00:55:31,620
+ are talking about small language models and what one can do download these pre-trained
+
+458
+00:55:31,620 --> 00:55:38,940
+ language models and then fine tune this language models using small amount of annotated data.
+
+459
+00:55:38,940 --> 00:55:47,100
+ So, I think I am done with the theory part and I guess we can go forward with the hand
+
+460
+00:55:47,100 --> 00:55:55,860
+ transition and for that I would like to invite Artif. So, I think we will be having a break
+
+461
+00:55:55,860 --> 00:56:01,940
+ for 5 minutes and then we will be going on with this hand transition. Thank you very much.
+

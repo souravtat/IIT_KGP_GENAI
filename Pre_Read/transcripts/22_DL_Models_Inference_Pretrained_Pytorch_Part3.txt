@@ -1,0 +1,97 @@
+ So, the question is, can you please explain what happens in transforms.to tensor step?
+ So, the idea is that in the PyTorch library, we work only with tensors, while in normal
+ Python, when you load an image, it loads as a PIL image, and you print it out, you'll
+ see that it's a NumPy matrix, right?
+ So, what we want to do is, we want to convert that NumPy matrix or NumPy array to a tensor
+ before we can actually allow PyTorch or the PyTorch model to work with it.
+ So transforms of two tensor converts whatever input you have provided to a tensor, right?
+ So, we do not apply horizontal flip in the validation set because that is an extra augmentation,
+ right?
+ So, in the validation set, you just want to test how your model is performing on the
+ images that you have provided, right?
+ You do not want to change that image and then ask to test the model, rather you want to
+ test the image as is.
+ So, that is why we are not applying horizontal flip because if you apply horizontal flip,
+ you might actually disrupt the model and you might actually get artificial gains in performance.
+ So, rather you want to look at how the model is performing on the image that you have provided.
+ That is why we do not apply any further augmentation apart from converting to tensors, normalizing
+ and resizing.
+ The question is, how will we know how many units in the penultimate layer of a model?
+ If we want to fine tune smoother model also with PyTorch, can we only pretend models built
+ using PyTorch or models created using other library like Keras can also be trained.
+ So, let me get to the first part of the question.
+ So, basically it is subject to experimentation and that is really kind of hyper parameter,
+ the number of units that you want to unfreeze or layers that you want to unfreeze.
+ So, again as I told you, so it is a kind of hyper parameter that you need to tune with
+ your validation data.
+ And also it depends on, so if you think about, if you have many layers to be unfrozen, so
+ that will require bit more compute power than if you freeze or unfreeze very small number
+ of units, right.
+ So, I think that depends on your compute budget as well.
+ So, if you want to fine tune smoother model, some other model.
+ Okay, so if you are talking about the number of units in the penultimate layer, so that
+ is there in your pre-tent model, so you know the backboard network, so for example, if
+ you have this resonant in your, to be your pre-tent network, so that is quite fixed that
+ how many units that you have in the penultimate layer, I think that answers your question.
+ Yeah, so again you can print the architecture size and in every layer you get to know the
+ size of the layer.
+ So, finally, as we, as also with PyTorch, can we only pre-tent models built with PyTorch
+ or models created using other library like Keras can also be trained.
+ So, actually whenever we pre-tent a model and we are basically interested in the parameters
+ and their values after pre-tenting and that is what is important for us, so as long as
+ that is available to us, it really does not matter whether that has been trained using
+ one library or the other library.
+ Want to add anything?
+ So just one other point is that, so in PyTorch and Keras, these have certain, when you save
+ the models, so as I said, if you are saving only the, if you are saving only the parameter
+ values, then it's fine, but if you are saving the entire model including the architecture
+ and just want to load it up, then that becomes PyTorch or Keras or whatever library dependent
+ and then there is, there are some other plug and play libraries that allow you to actually
+ take a PyTorch model, convert it into an intermediate representation and then take that representation,
+ convert to any other library, for example Keras.
+ So I believe one of them is ONX, ONX, so you can check that out as well.
+ Can we extract scientific property values using NLP from research articles, if yes, how?
+ So there are many answers to these questions and it depends on what kind of pre-tent model
+ that you are going to use to solve this problem, right?
+ So let's say you want to use a very baseline architectures like B or T, so there you can
+ create a data set where you have the scientific property, scientific articles, research articles
+ and from that you know what are the scientific properties, right?
+ Basically if you think about what kind of information that you want to extract, for example
+ you want to extract the names of the molecules and their property, something like that.
+ So then you have to create a kind of small training data set and find in the BERT model
+ using that data set, right?
+ So this is one way of doing that.
+ But nowadays as you know there are large language models, so there you can solve this problem
+ using prompt engineering technique, where you can write a prompt explaining how given
+ a research article you can extract scientific properties, then with say one shot or zero
+ shot learning you can come up with a system which can tell you given a research articles,
+ what are the properties and their values.
+ When training this model, so the next question is when training these models are there any
+ rules as to how many images or examples of each class do we need to provide to get an
+ accurate model, right?
+ So there are no rules as such.
+ The idea is that the more data you have the better it is, but the thing is that if you
+ have very small amount of images by very small, it can have many different meanings depending
+ on the data set or the domain.
+ Now for example in image data sets you would ideally want as many images as possible.
+ So for example in your case if you have limited amount of data, let's say maybe 10 or 20 images
+ per class, then what you want to do is you want to use these pre-trained models for your
+ particular benefit.
+ But for example if you have large number of images, like let's say 10,000, 20,000 images
+ per class, then that's a good starting point and you can actually maybe use a pre-trained
+ model or you can actually train a model from scratch.
+ But again there is a kind of another view.
+ So in many cases you know some of the classes, the examples of that class may be very abundant,
+ but for some other classes the examples are very rare.
+ So in that case you have a kind of skew in the distribution of the examples across the
+ classes.
+ So there as this is happening naturally you have to take care of that by introducing some
+ other techniques to deal with this.
+ So imbalance distribution of the examples in the classes is also a kind of scenario and
+ there are several techniques to deal with that.
+ Next question please, are the special token name standard is CLS 1, will the token name
+ be same even we are training different pre-trained language model or are they model specific?
+ So I think this is a kind of standard token name that is being used and more or less all
+ the pre-trained language models they make use of these kind of special token, but again
+ there are variations.
+ Thank you.

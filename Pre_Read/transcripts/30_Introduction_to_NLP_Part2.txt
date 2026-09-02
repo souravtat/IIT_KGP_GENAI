@@ -1,0 +1,357 @@
+ Welcome back. So, we will be start to discussing on semantic analysis of the sentences. So,
+ earlier we talked about semantic analysis of the words. Now, we should elevate ourselves
+ to the sentence level. So, here we have the sentence Jyoti Drob Jai from Kharagput to
+ Kolkata in her kia-seldo and we have another sentence the stone clogged the rain pipe right.
+ Now, you see that the different words that have been marked in different colors, they
+ have certain relationship semantic relationships with the main verb of the sentence Drob or
+ drive ok. So, here the main verb of the sentence the second sentence is clogged right. The
+ kind of semantic relationship that you are talking about agent, some entity that performs
+ an action, patient, some entity which is a kind of recipient or affected by some action.
+ Source is a kind of whenever there is a kind of movement activity. So, what is the source
+ of the movement and what is the destination of the movement and finally instrument talks
+ about the kind of instrument by which the action was performed right.
+ Now, as you can easily see for the first sentence Jyoti should be tagged with the agent because
+ she is the one who is performing this action drive and Jai is patient, Jai is getting affected
+ or benefited by this action and source of this action is Kharagpur and the destination
+ of this action is Kolkata and of course, the action was performed through and this kia
+ shelters which is tagged as instrument. Now, look at this the second sentence now one may
+ be inclined to tag the subject of the sentence here in this case Jyoti to be the agent.
+ Now here the subject of the sentence is the stone though it is the subject of the sentence
+ you can see semantically it is not an agent, but it is a kind of instrument which has got
+ which has clogged the rain pipe and rain pipe is the patient right.
+ So, the kind of take away from this exercise is that the grammatical category may not always
+ lead to correct identification of the semantic roles and these relationships as you can see
+ these are called semantic roles. And they called semantic because they assign meaning
+ to the relationship between the main verb and the different constituent phrases in the
+ sentence and they are each of these are playing a particular role to understand the meaning
+ of the sentence. So, that is why these are called semantic roles.
+ And again there are different kind of knowledge basis which have kind of dealt with this issue
+ as you can see that if you think about a particular verb this verb has got different roles and
+ it is not like that every verb will have all the roles to it right. Some roles are relevant
+ for a given verb, some other roles are relevant for another verb. So, for example, if we think
+ about the verb sale it the relevant roles are like seller who is selling the thing.
+ The thing sold the buyer the price paid beneficiary right, but if you think about say cut to be
+ a verb. So, you cannot really have a seller to be a kind of a role which is relevant to
+ cut, you cannot have thing sold to be a kind of a relevant role for this verb. So, that
+ is why what people have done say through projects like prop bank or verb net or frame net they
+ have tried to assign different relevant roles for different verb groups.
+ Now this can be thought of as predicates in the sense that sale is the predicate and you
+ have say seller to be an argument thing sold to be another argument so and so forth. So,
+ we have a kind of predicate argument structure. So, each verb whenever it is connected to
+ its semantic roles the relevant semantic roles we come up with something called predicate
+ argument structure right. Now this is the kind of resource that people
+ have already created. Now what is the task? Task is given a sentence like this Al Brownstein
+ sold it for 60 dollar a bottle. So, this is the sentence. So, what is the task? The task
+ is given this sentence as input and given the predicate argument structure of the verbs
+ as input. First of all you have to find out which predicate would be relevant for this
+ sentence. For example, the sale predicate is relevant for the sentence, but this cut predicate
+ is not relevant for the sentence. Now after we have done that we have to tag the phrases
+ of the sentence with the arguments. For example, Al Brownstein has been tagged as the seller
+ argument 0. It has been tagged as the argument 1 which talks about thing sold and 60 dollar
+ a bottle has been tagged as price paid because that talks about the price of the item that
+ has been sold right. And you can see that given this sentence is not necessary that you have
+ to tag all the relevant argument roles it is not like that you have to only tag the relevant
+ rules right. And you see this rent has got a different structure altogether or different
+ set of arguments altogether. Now what they follow a different scheme, but more or less
+ the idea is same I am not going to the detail of it I will like to invite you to go to the
+ resources and check for yourself. Now the idea of semantic role labeling where
+ given a sentence we are trying to find out first of all which predicate argument structure
+ would be useful to represent the sense in the sentence. So, here we see that issued is
+ the verb which would be a kind of assigned a kind of verb template right. And this will
+ be acting as our predicate. Now the arguments are argument 0 which is San Francisco examiner
+ argument one is a special edition and there is a kind of temporal argument in the form
+ of around noon yesterday right. And this has followed the prop bank idea. So, this kind
+ of structure, but again if you have something called frame net we have a kind of different
+ kind of annotation. So, here what I am trying to project the semantic
+ role labeling of the sentence creeping in the shadow I reached a point when I could
+ look straight to the uncartain window. So, here you can see that there is a kind of action
+ self motion and that is that has been tagged with this verb creeping right. And there is
+ a kind of mover which has been marked to I and there is a kind of a path shape frame
+ attached to this word reached. And this has got a goal and this goal has been attached
+ to this entire phrase point when I could look so and so forth the entire remaining part.
+ Now looking has been tagged with the predicate argument structure or frame whatever you call
+ it. So, which has got one agent and agent is I and direction of the action because it
+ is a kind of perception action the direction is tagged with to this entire remaining part
+ like straight to the uncartain window. So, the basic idea is that again you have a set
+ of predicate argument structures and this predicate argument structures are also called
+ frame and it is easy to see why they are called frames.
+ So, you can see here the cell is a kind of title of the frame and it has got seller to
+ be a slot, you have thing sold to be another slot so and so forth. And given so this is
+ a kind of template or frame. So, given such a template or frame and an input sentence
+ you have to tag or assign values to this empty places in the slot. So, for all these slots
+ you have to assign the value picked up from the sentence. So, here you can see that this
+ argument 0 is a slot and the value that you are assigning is the San Francisco examiner
+ and for arg 1 again this is a kind of slot and for which you are assigning the value
+ as special edition. So, this is what we call as semantic role
+ level. Now, after we have understood the meaning of the sentence, we have to look at the level
+ beyond the sentence level and that brings us to the idea of discourse modeling. So, language
+ is a kind of phenomenon that is not only confined to this word of the sentence, but it is a
+ kind of collated structured and the coherent group of sentences. In a very naive sense
+ a kind of whenever you are talking to someone, whenever you are writing something, it is
+ again a coherent group of sentences. And that is what we call as a discourse which
+ has got a coherence. First of all it is a group of sentences and it is not on a kind
+ of random assortment of the sentences, they are having a structure and of course they
+ are coherent. And this discourse can be of two types, one is a monologic discourse, we
+ have a speaker here a pair and this is of course a one way communication, speaker is
+ speaking and the here it is listening. And of course it can be dialogic and this you
+ see an example of this is a kind of someone has wrote say article and you are someone
+ is reading that. And this dialogic discourse as you know whenever you engage in chat with
+ some human being or one system or assistance like Google assistance Siri or Quotano so
+ on and so forth. So, basically the change of the speaker and
+ the here all changes. Sometimes the user is the speaker, sometimes the system is the
+ speaker, sometimes the user is the hearer or the system is the hearer so and so forth.
+ So, basically it involves asking questions, giving answer, sometimes making corrections
+ or maybe confirming something that someone has said. So, these are the kind of acts
+ that we do in a dialogue. So, whenever we talk about discourse there
+ are two very distinct ideas, one is called text cohesion and coherence. And this distinction
+ is very important to understand. So, whenever we talk about cohesion, cohesion is a kind
+ of grammatical property. So, what do you mean by that? So, let us say you have sentences
+ like as I told earlier I lost my keys perhaps it has been kept in my office. So, this is
+ what we call as a reference and the word it refers to something some another word which
+ is present in another sentence. So, in that way what you are doing you are kind of attaching
+ two sentences together. The first sentence and the second sentence is kind of glued together
+ by using this kind of references, eat, these, those cards, neither something like that.
+ Sometimes to avoid repetition we use tools like ellipses. So, for example, in the sentence
+ 10 students passed and another 10 failed. So, I have not repeated this. So, I could
+ have said 10 students passed and another 10 students failed, but that will not sound that
+ much good. So, what we just did we just omitted a students from here. So, again it is kind
+ of attaching these sentence and these sentence together. You can also use substitution to
+ avoid repetition. So, for example, this bulb is broken and the next sentence is give me
+ a new one. So, you cannot really think that the existence of the sentence give me a new
+ one without the existence of the first sentence this bulb is broken. So, that is how these
+ two sentences are glued together and in contrast coherence is extra grammatical property right.
+ So, it is not a kind of a grammatical property. It is something to do with the understanding
+ of the listener or the hearer about what the speaker or the writer has said. So, it is
+ defined as the extent to which the reader or the listener is able to understand the writer's
+ communicative intentions. So, I will give some examples of course.
+ So, whenever we talk about discourse modeling there are three important tasks one is discourse
+ segmentation. So, given a long text you want to segment the text into a high level structure.
+ So, for example, if you think about a research paper, a research paper can be segmented into
+ abstract introduction related work methodology so on and so forth right.
+ The second task is core reference resolution and that relates to cohesion. So, for example,
+ if we look at the sentence the teen woodman went to the MRL city to see the wizard of
+ woes and ask for a heart after he asked for it the woodman waited for the wizard response.
+ So, as you can see that there are many references that are being made for example, he eat the
+ woodman the wizard and you can see this the wizard refers to the another phrase in the
+ first sentence right. So, that is a task the task is to find out such core references.
+ The third one is judging text coherence. So, here we want to check how much may be a pair
+ of sentences or may be a collection of sentences bind with each other.
+ So, if you look at the first pair of sentences like John Headebill's car keys and the next
+ sentence is he was drunk possibly the second sentence is providing a kind of cause for
+ the first sentence, but if you look at the second pair John Headebill's car keys he
+ likes spinach these two are no way related to each other. So, that is why these first
+ pair is very coherent pair, but the last second pair is not at all coherent even though they
+ are grammatically very correct and meaning they have some meaning. So, if you look at
+ discourse segmentation. So, if you can think of that text is a long sequence of tokens
+ may be the words right and whenever a discourse is being changed from one topic to the other
+ topic. So, there is a shift of shift in the vocabulary usage right.
+ So, can we model that right. So, the question of discourse segmentation or the task of discourse
+ segmentation can be solved by solving this question can topic shift be modeled as change
+ in lexical coherence pattern or vocabulary. So, most likely if the if you think about
+ the introduction of a paper. So, that we will talk about very generic thing, but if you
+ go to methodology section that we will talk about something different than what we discussed
+ in the introduction. So, as the vocabulary usage is getting changed maybe we can model
+ this segmentation as a change in topics. Now, whenever there is a change in topic there
+ will be a kind of deep in the similarity between the representation of this block and the representation
+ of this block. So, you can see that there might be some values like this and the value
+ would represent that there is a possible segmentation case right.
+ Whenever you talk about coreference resolution. So, we will try to find out what are the kind
+ of referring expressions. So, and what are the kind of reference right. So, you can see
+ is the pronoun and if we just look at this individual sentence it will have no meaning
+ unless we have a kind of a referent which can be attached to this referring expression
+ right. So, all these together they are called the
+ anophoric expression because these all four like Victoria chain her the 37 year old she
+ they are pointing out to the same entity Victoria chain. So, this is what we call as reference
+ resolution. So, given a piece of text we want to find out the set of phrases which talks
+ about the same entity. Now, let us look at this piece of text and
+ let me just run through it yesterday the delegates chose their new representatives even though
+ Smith received received only 24 votes he accepted the election with a short speech then the
+ assembly applauded for three minutes due to the upcoming caucus meeting the subsequent
+ discussion was very short and nevertheless nonetheless the most pressing questions could
+ be result the meeting was closed at seven. Now, you can see it has got a very it has
+ got a hierarchical structure for in the first sense for in first of all there is a kind
+ of sequence right. So, if you look at this one a to one d it is the first element in
+ the sequence then we have one e to one g this is the second element in the sequence right.
+ So, first element talks about he accepted the elections with a short speech then the
+ assembly applauded for three minutes. The second one talks about subsequent discussion
+ was very short and finally and the meeting was closed at 7 p.m. So, in the top level
+ we have a sequence of three blocks right. Now, if you narrow down to a single block.
+ So, here these the first sentence talks about yesterday the delegates chose their new representatives
+ now the second two sentences they are elaborating the first sentence a bit right giving more
+ information to the first statement, but the second a part like which comprises these one
+ b and one c it talks about like even though Smith received only 24 votes he accepted the
+ election with a short speech. So, there is a kind of sense of concession.
+ So, he accepted the short election speech which is represented by this I c, but there
+ is a kind of concession relationship between this first sentence and the second sentence
+ bit of kind of even though he has got this 24 votes right. So, the idea is that the discord
+ structure it is not necessary that it will always be flat or sequential there might be
+ hierarchy in the structure and that is what one should capture if someone wants to capture
+ the essence of the discord properly. Now, as I have talked about different technologies
+ in this natural language processing area or basically the tasks and related technologies
+ I will focus in the remaining part on the applications or different tasks.
+ So, of course, machine translation is a very important task for us it is basically automating
+ the process of translating takes from one language to the other language and of course,
+ you know there are different challenges. So, the words or the phrases in the one language
+ they can map to multiple words in the target language. For example, if I have this word
+ like I went to bank this bank may be referring to the meaning in Hindi like Nadi Kakinare
+ river bank or a bank in the sense of financial institution and depending on the exact sense
+ of the bank in which the word is appearing in the given context you need to come up with
+ different translation right. Sometimes the phrasal verbs are very difficult to translate
+ because a same phrasal verb may have may different meaning in different context. So, for example,
+ if I have the sentence they brought up the child in luxury. So, here the translation
+ of phrasal verb brought up should be a pollen portion Karna, but if you have a sentence they
+ brought up the table to the first floor, here we are translating brought up with Uparlana
+ in the third case if we have this they brought up the issue in the house here we will be
+ translating it with Muddha Uthana in Hindi. Sometimes there are structural ambiguities
+ like flying planes can be dangerous. So, it can be translated in different ways like Hawaii
+ Jawaj Urana Khatarnak Hosakta Hai or Urta Hue Hawaii Jawaj Khatarnak Hosakta Hai. So, depending
+ on how you are structurally arranging the sentence the translation would differ.
+ Now, if we talk about rule based machine translation systems. So, it is like translating the structure
+ of one language one representation to the structure of the other language representation.
+ So, for example, if we have the sentence in English there was a lion in the jungle. So,
+ maybe my if we try to get an abstract representation of this I could have write this in a way a
+ lion was in the jungle then I know in Hindi we would have this preposition phase in the
+ beginning part of the sentence we just write some transfer rule which will translate this
+ structure into a structure like this where I will swap different phrases across different
+ parts of the analysis right. So, here I am taking this in the jungle from
+ the last part of the tree to the first child of the tree and then we can translate directly
+ like jungle may a share tha right. This is what we call as transfer rule based approaches
+ in machine translation system. As you know these transfer rules they are pretty much
+ language pair dependent right. So, if you want to translate the same sentence in French
+ maybe you have to have some other set of transfer rules. So, that is why these kind of transfer
+ rule based machine translation systems are not really scalable. That is what brought
+ us to statistical machine translation system where the very famous idea to solve this was
+ to have a parallel corpora. Parallel corpora in the sense that for the same sentence we
+ have say English version of the sentence and let us say we are creating a English to French
+ translation or the French to English translation. So, we will be having the same sentence which
+ have got a French representation and corresponding English representation and we will be having
+ a huge number of such pair of sentences like that and that is what we call as the parallel
+ corpora parallel corpora and use that corpora to train a machine learning system or statistical
+ machine translation system to solve this machine translation task.
+ So, a very famous idea in this respect was what we call as noisy channel metaphor right.
+ So, what does it do? So, let us we are translating a French sentence to its corresponding English
+ sentence. So, the assumption is that that there is a kind of speaker who spoke in English.
+ So, let us say Mary did not slap the grain wedge and that was sent through a communication
+ channel and this communication channel is noisy which parters the tokens or the signal
+ and changes it right and as the result of the change the receiver will receive the French
+ sentence right. Now, this channel has a model in the sense
+ that given an English phrase what is the likelihood that this will be changed into a French phrase
+ right. Now, the thing that is being sent from the communicator and English sentence and
+ this English sentence has a kind of probability of occurrence and that is being perturbed
+ using this channel model and as a result we are getting the French sentence.
+ Now, we have to decode the English sentence from what we have observed in the form of
+ the French sentence. So, that is the kind of challenge right. So, what we will try to
+ do? We will try to maximize these probability quantity like probability E and probability
+ F given E and then to find out the English sentence which maximizes this product right.
+ So, this is one way how the machine learning problem machine translation problem was solved.
+ Now, in the modern time we are using this neural machine translation models. So, again
+ what we have? We have a source sentence here we are translating an English sentence in
+ this corresponding French sentence in the earlier example it was the reverse.
+ So, we are trying to come up with representation of this sentence maybe in the token level
+ or maybe the entire sentence level. So, depending on which kind of architecture you are using
+ the strategy may vary. But the basic essence is that the encoder provides some information
+ from this encoder block and this is going to the decoder block and what the decoder does
+ it starts with the start symbol and produces the corresponding French translation tries
+ to produce the corresponding French translation. And whatever that is has been produced that
+ will be used in the next decoding state right. So, basically what this state will do it will
+ take the encoder state at that point of time or sorry the decoder state at that point of
+ time and the previously output token and it will try to produce the next token right.
+ And again as I said that it is not it the strategy varies across the architecture I
+ hope this kind of architectures will be talked about in detail in the subsequent lecture,
+ but that is why I am not going into detail of this. So, idea is that nowadays this is
+ being solved using this neural machine translation models, neural models.
+ The next task that I will talk about is question answering where you have a precise question
+ like when was the premiere of the magic flute. So, this was the question and there is a set
+ of index documents which potentially may contain the answer for this question. And there will
+ be a retriever will retrieve a set of documents relevant to this question and what there might
+ be different approaches, one approach is to use the large language models directly.
+ What we can do you can put the docs and prompt and the query to the large language model
+ and it will generate the answer or you can feed the questions along with the retrieved
+ documents to a model like BRT and what this BRT will do it will select the document and
+ for the document it will mark the tokens which might be the potential answers.
+ Now, the next comes the transformer moment as I told you earlier it has revolutionized
+ the NLP field as well as the other fields as well. Again I will not going I am not going
+ to the details of the architecture they will be taken care of I think in the subsequent
+ lectures. The basic point is that this architecture this transformer architecture is a kind of
+ baseline of different models like BRT or T5 or decoder only architectures like GPTs and
+ I think all the current large language models or the foundation models they are making use
+ of this kind of transformer based architecture. And these so now as we know that we are living
+ in the age of large language models it has got to us various affordances.
+ We can use a pretend model which are being released by different organizations and we
+ can fine tune them using very small amount of data to solve our specific task. And we
+ know this large language models are few short learners so that means, we can provide a small
+ number of examples that will demonstrate what we actually want the LLMs to do for us and
+ the LLM will try to provide answer even though this LLM is not specifically trained to solve
+ that particular task. And in that respect this in context learning
+ and prompt engineering has become very popular, but being said that these large language models
+ they really suffer from has suffered from bias and toxicity they may not always give
+ you correct information. There might be bit of privacy in some cases and most concerning
+ thing is the environmental concern because this large language models are very huge and
+ to power them you have to supply feed them with huge amount of energy.
+ So that is why in some cases you want to come up with small language small large language
+ models that will try to solve similar tasks with similar performance and accuracy. And
+ to in order to tackle this bias toxicity or hallucinations nowadays people talk about
+ model alignment. So, to align the this large language models to the human behavior where
+ these behaviors will try to get rid of this issue of bias toxicity or hallucination kind
+ of issues. So, the revolution started back in 2017 in
+ the form of transformer and it is rapidly taking space with invention of newer and newer
+ or release of newer and newer architectures and you know nowadays Deepseek has created
+ huge amount of noise in the community. Well, to summarize we started with something
+ called ELISA which was the computer program written by MIT researchers and at that point
+ of time it was kind of acting as a proxy of a psychologist which can understand people's
+ behavior and try to counsel them. People thought that they have got a very nice program which
+ understands the human behavior, but finally it is nothing but a kind of pattern matching
+ machine. And nowadays we are talking about similar kind of effect in the form of these
+ large language models. We are thinking that they are exhibiting human like behavior we
+ are kind of going towards these artificial general intelligence, but again that has to
+ be taken with a pinch of salt. So, we are really far away from that achieving that.
+ So, with that I will just point you out to the resources. The books are like the go-to
+ books are like speech and natural language processing by Zurabski and Martin and natural
+ language processing by Jacob Einstein and there are different tools which you can make
+ use of. I have not kept these resources for large language models. I think I have given
+ those references in my other lecture where I talked about inference with pre-train models
+ and of course there are many other resources to talk about those.
+ So, yeah, I am done. Thank you very much for your kind attention. I think we can go with
+ the question answers. The question is if I want to extract thermoelectric property value
+ of inorganic materials from literature what model will work for it and how to extract
+ it. So, there are various answers to that. So, let us say you can use a BRT kind of model
+ where you can have this BRT model pre-tained with similar kind of data sets. For example,
+ you can think of cyber embeddings which can be a good starting point and using that model
+ perhaps you can create a very small amount of data set where you have different articles
+ and you have say manually tagged some of the properties of this inorganic materials and
+ fine tuned the BRT model using that small amount of data and it is basically similar
+ to what we call as named entity cognition tasks where you can really identify the beginning
+ and end of the property values. And also you can think of solving this using
+ large language models where you can provide the chunk of text and perhaps you can tell
+ the large language model from the large language models how you are really thinking to extract
+ the properties and this large language models can do it for you for the subsequent new articles.
+ Next question please, how the semantic related words are decided? Would it be updated during
+ the run time or is it particular to a particular for the given model and would not change over
+ the time? So, again I have two answers to that. So, we are going for a knowledge based
+ approach. So, there everything has been pre specified. So, for example, the senses the
+ words that are coming to that appearing in that sense or categorized in that sense in
+ the wordnet they are already fixed right and the structure of the wordnet is already fixed.
+ So, in that case you cannot really update them during run time, but if you are following
+ this distributional hypothesis based approach or in the modern time if you are looking at
+ this context representation based approaches where you can feed a sentence to us a BART
+ model which it can come up with context dependent representation of the words.
+ In that case you can see that the meaning meaning in the sense of the vector representation
+ of the word changes run time and it depends on the context. If NLP models do not store
+ generated language then are they going to train on user input later on because I have
+ seen Google assistant asking for samples to improve their models ok.
+ So, in many cases people use generated language to and feed that to train the system more,
+ but I think the point that is relevant for your question is reinforcement learning with
+ human feedback. So, here for a given task let us say the model has generated some text
+ and the system asks for your input on that and based on your input the system will try
+ to align its behavior and that tries to reflect your preferences right and that is how this
+ generated language might be used and they are being used in some way or other.
+ How are punctuation marks like comma semicolon used by NLP models to resolve ambiguities arising
+ at word and sentence level ok. So, punctuations are very important queues to queues or clues
+ that provides information to the NLP systems like the punctuation sometimes they can dictate
+ the end of phrase for example right. So, they have got different kind of usages and if we
+ are going back to the earlier NLP days these punctuations they also have some presence in
+ the grammatical rules and based on the appearance in the rules they can be consumed by the NLP
+ systems, but again nowadays you are with this embedding based approaches where the embedding
+ concerning this common semicolons they are also used to deal with the demarcation of
+ the tokens or end of some token or start of some token so and so forth ok. I think we
+ have no more questions. Thank you all for your patience yeah thanks.

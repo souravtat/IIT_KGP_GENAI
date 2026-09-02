@@ -1,0 +1,3168 @@
+1
+00:00:00,000 --> 00:00:04,420
+ screen, click on stack and again click on stack mode and enable full screen mode in
+
+2
+00:00:04,420 --> 00:00:08,840
+ below options. So, this will show you the full screen mode of the center. Please put
+
+3
+00:00:08,840 --> 00:00:13,040
+ your queries in Q&A. So, please be assured that if professors are unable to attend all
+
+4
+00:00:13,040 --> 00:00:18,320
+ your queries in Q&A session, it will be answered and approved in our discussion room. The raw
+
+5
+00:00:18,320 --> 00:00:21,800
+ recording session will be available at the end of the day and the editor recordings will
+
+6
+00:00:21,800 --> 00:00:26,000
+ be available on Monday that is the day after tomorrow. The assignment availability for the
+
+7
+00:00:26,000 --> 00:00:30,640
+ week 14 assignment will be enabled at 2 p.m. and week 14 assignment submission deadline
+
+8
+00:00:30,640 --> 00:00:36,200
+ on 25th of May 2025 Sunday till 11 p.m. and solution for the assignment will be available
+
+9
+00:00:36,200 --> 00:00:42,820
+ on 26th of May that is on Monday. Today we have a quiz 13. So, we will be quiz 13 will
+
+10
+00:00:42,820 --> 00:00:48,240
+ be available today Saturday 17th of May 2025 between 5 p.m. till 7 p.m. the duration of
+
+11
+00:00:48,240 --> 00:00:55,680
+ the quiz is 30 minutes. Next topic, fronting with open sources LLMS. If you face any issues
+
+12
+00:00:55,680 --> 00:01:02,680
+ during the quiz, attending the quiz, please reach out to us in 4.tcsionhab.tcs.com/service-stats.
+
+13
+00:01:02,680 --> 00:01:08,280
+ So, they will help you out in case of any issues we found. The results for the assessment
+
+14
+00:01:08,280 --> 00:01:12,360
+ that is quiz will be available at 9 p.m. the same day. So, to view the marks obtained click
+
+15
+00:01:12,360 --> 00:01:20,960
+ on mark attempts taken it will show the status of the cells. So, they are trained to update
+
+16
+00:01:20,960 --> 00:01:26,680
+ yourage profile on that already we have given. So, in case of any issues please reach out
+
+17
+00:01:26,680 --> 00:01:32,760
+ to us in 4.tcsionhab.tcs.com. So, thank you. So, over to you.
+
+18
+00:01:32,760 --> 00:01:54,560
+ Thank you so much. Thank you very much. I hope the screen is visible. Yes, it is visible.
+
+19
+00:01:54,560 --> 00:02:01,040
+ So, good morning everyone. My name is Vishal and today I will go over some details on practical
+
+20
+00:02:01,040 --> 00:02:06,000
+ image and language generation models. So, all of you have by now become familiar with
+
+21
+00:02:06,000 --> 00:02:11,040
+ various image generation models and language generation models or even text image models.
+
+22
+00:02:11,040 --> 00:02:18,040
+ But those practical systems are far more different than what you would see in say like the research
+
+23
+00:02:18,040 --> 00:02:23,160
+ literature and it has gone through multiple iterations of improvements after which we
+
+24
+00:02:23,160 --> 00:02:27,280
+ are in this stage where you have such useful applications based on this technology. So,
+
+25
+00:02:27,280 --> 00:02:33,440
+ we will try to understand how the research has moved through different iterations as to
+
+26
+00:02:33,440 --> 00:02:38,880
+ what the original proposal was and how did the researchers modify them to come to this
+
+27
+00:02:38,880 --> 00:02:46,720
+ current stage where like they perform as well as they do now. So, let us first take a talk
+
+28
+00:02:46,720 --> 00:02:53,640
+ of fire we started at. So, this slide shows the progression of how image generation has
+
+29
+00:02:53,640 --> 00:02:58,840
+ improved over the time and the current wave on which we are at, this started around the
+
+30
+00:02:58,840 --> 00:03:04,960
+ 2014 with VA's and GANs and you can see like the first version of this was not even the
+
+31
+00:03:04,960 --> 00:03:09,840
+ first paper but the image qualities that we used to get around that time was something
+
+32
+00:03:09,840 --> 00:03:14,280
+ like on the left. It was very grainy, it was not able to handle the color and also like
+
+33
+00:03:14,280 --> 00:03:18,920
+ it was not complex either. So, it was just like one face image and you could generate
+
+34
+00:03:18,920 --> 00:03:23,760
+ such simplistic images only either digits or faces things like that. But compared to that
+
+35
+00:03:23,760 --> 00:03:29,440
+ you come to 2018 and beyond like this is major news most recent versions and you can see
+
+36
+00:03:29,440 --> 00:03:34,840
+ the amount of detail in these images and this is like extremely different from 2014 and
+
+37
+00:03:34,840 --> 00:03:43,420
+ now it is almost indistinguishable from real like photo taken by camera. So, how like what
+
+38
+00:03:43,420 --> 00:03:49,240
+ enabled this thing. So, you might be familiar with GANs or VA's the original architectures
+
+39
+00:03:49,240 --> 00:03:53,120
+ but how do they come to make them so effective in practice that is what we will try to look
+
+40
+00:03:53,120 --> 00:03:59,680
+ at today. And the same story kind of holds for text generation also text generation or
+
+41
+00:03:59,680 --> 00:04:05,000
+ text understanding or text image any application that involves text for that matter. So, this
+
+42
+00:04:05,000 --> 00:04:12,640
+ like wave also started for text around 2013 and so, we started seeing various neural network
+
+43
+00:04:12,640 --> 00:04:16,880
+ for deep learning models which are very effective at doing very specific tasks in the period
+
+44
+00:04:16,880 --> 00:04:24,120
+ of 2013 to 2018 and 19. And after that we kind of had like within few years we had the breakthroughs
+
+45
+00:04:24,120 --> 00:04:28,880
+ of GPT models GPT3 models and then we have so many different models like Lama mid-journey
+
+46
+00:04:28,880 --> 00:04:34,360
+ all these things. Who can now process any general takes general instruction beyond any
+
+47
+00:04:34,360 --> 00:04:40,600
+ specific task definition. So, like this also has its own independent story which is slightly
+
+48
+00:04:40,600 --> 00:04:45,080
+ different from what you see in the image domain and we will try to go through both of these
+
+49
+00:04:45,080 --> 00:04:54,520
+ in the slideshow. And so, these technologies have become so good in recent times that there
+
+50
+00:04:54,520 --> 00:05:00,800
+ they can be found anywhere in many different applications for example in you can see in
+
+51
+00:05:00,800 --> 00:05:06,920
+ Google photos or any like iOS photo apps that you can now take a picture and remove anything
+
+52
+00:05:06,920 --> 00:05:11,200
+ that you don't want in the photo like you can remove noise or you can even edit photos
+
+53
+00:05:11,200 --> 00:05:17,040
+ in any way you want while keeping the main subject intact. And then you also have various
+
+54
+00:05:17,040 --> 00:05:21,480
+ applications like text to image generation such as mid-journey that I mentioned earlier.
+
+55
+00:05:21,480 --> 00:05:28,640
+ So, they are also so good that you can create art in any style for any like complexity any
+
+56
+00:05:28,640 --> 00:05:35,400
+ level of detail using just a textual prompt. And so, all of these are like very high quality
+
+57
+00:05:35,400 --> 00:05:39,880
+ like highly advanced technologies that are being used in our day-to-day lives. So, lot
+
+58
+00:05:39,880 --> 00:05:45,800
+ of engineering has gone into this and we will try to understand that. And so, it's kind
+
+59
+00:05:45,800 --> 00:05:49,720
+ of a similar story in text generation also but one thing that I want to highlight here
+
+60
+00:05:49,720 --> 00:05:55,200
+ is that it's not perfect here nothing. So, all the technologies that we have right now
+
+61
+00:05:55,200 --> 00:06:01,160
+ they also have their challenges. For example, one thing that we are showing that by using
+
+62
+00:06:01,160 --> 00:06:05,840
+ CADGEPD or any of these kind of systems or any image generation systems initially they
+
+63
+00:06:05,840 --> 00:06:11,280
+ might seem perfect but there are always some shortcomings that we are still trying to address.
+
+64
+00:06:11,280 --> 00:06:16,840
+ So, all of these even though they are such advanced and like they might seem like match
+
+65
+00:06:16,840 --> 00:06:21,640
+ your technologies they still have a lot of gaps that we still are trying to and want
+
+66
+00:06:21,640 --> 00:06:26,160
+ to cover. So, for example, you can see like in reasoning and in mathematical reasoning
+
+67
+00:06:26,160 --> 00:06:32,000
+ or in following instructions or like when to listen to a human how to argue with a human
+
+68
+00:06:32,000 --> 00:06:36,640
+ all those kind of in all those kind of settings the LLMs don't really understand what to do
+
+69
+00:06:36,640 --> 00:06:44,100
+ what value system to follow. So, with that with the instruction covered now let's get
+
+70
+00:06:44,100 --> 00:06:50,160
+ into the specifics of image generation models and how we got from like initial GAN architectures
+
+71
+00:06:50,160 --> 00:06:57,360
+ to something that are so useful today right. So, this is what so you might have come across
+
+72
+00:06:57,360 --> 00:07:02,640
+ this basic architecture of how a generative adversarial network or GANs look like. So,
+
+73
+00:07:02,640 --> 00:07:08,060
+ this was the original architecture that was proposed and it simply kind of gave a recipe
+
+74
+00:07:08,060 --> 00:07:14,840
+ of how we can train image generation networks without going much into the details. So, here
+
+75
+00:07:14,840 --> 00:07:19,800
+ you can see that you have one generator which tries to create new images from random noise.
+
+76
+00:07:19,800 --> 00:07:23,600
+ So, this is like a fake image generator you can think of it like that. So, image that
+
+77
+00:07:23,600 --> 00:07:28,400
+ is not coming in from some data set and then you have another channel which is a real image
+
+78
+00:07:28,400 --> 00:07:34,080
+ possibly taken from some web source or some camera taken photo and you have a discriminator
+
+79
+00:07:34,080 --> 00:07:38,640
+ network which tries to distinguish between these two photos and this is the whole learning
+
+80
+00:07:38,640 --> 00:07:44,240
+ pipeline and you can think of how you can train this is for the generator the goal is
+
+81
+00:07:44,240 --> 00:07:50,320
+ to create images that the discriminator will not be able to distinguish and the role of
+
+82
+00:07:50,320 --> 00:07:56,040
+ the discriminator is to understand like which one is the real image and which one is the
+
+83
+00:07:56,040 --> 00:08:01,440
+ generated creator image and you can see this as a minimax game which is also the loss function
+
+84
+00:08:01,440 --> 00:08:07,160
+ that we optimize for training these models. So, what you are doing is so the generator
+
+85
+00:08:07,160 --> 00:08:11,080
+ G and the discriminator D are kind of competing each other. So, that's why it's called the
+
+86
+00:08:11,080 --> 00:08:16,640
+ minimax game. So, their objectives are opposing and because they are opposing you can take
+
+87
+00:08:16,640 --> 00:08:21,360
+ like you can once you start optimizing them they will start going towards the solution
+
+88
+00:08:21,360 --> 00:08:26,480
+ which is better for both of these networks right and the loss function can be written
+
+89
+00:08:26,480 --> 00:08:31,880
+ in two parts. So, one is for the like this full thing can be seen as the loss function
+
+90
+00:08:31,880 --> 00:08:36,200
+ for the discriminator where there are two components one is the data component. So, samples coming
+
+91
+00:08:36,200 --> 00:08:41,600
+ in from the actual real data and the second part is so you can see like the Z is sampled
+
+92
+00:08:41,600 --> 00:08:45,800
+ from a probability distribution. So, this is where this random noise distribution is
+
+93
+00:08:45,800 --> 00:08:50,000
+ coming in. So, in the second part you are trying to for the discriminator you are trying
+
+94
+00:08:50,000 --> 00:08:56,320
+ to make sure that the discriminator identifies it as a fake image right and so that is how
+
+95
+00:08:56,320 --> 00:08:59,560
+ the discriminator will see this loss function but the generator will see the loss function
+
+96
+00:08:59,560 --> 00:09:04,440
+ slightly differently. It does not look at the real images in this context. So, it just
+
+97
+00:09:04,440 --> 00:09:09,240
+ looks at the second part because that is where the G function is involved and here it tries
+
+98
+00:09:09,240 --> 00:09:16,480
+ to see whether the discriminator loss is or the discriminator score is minimized. So,
+
+99
+00:09:16,480 --> 00:09:20,040
+ it is trying to make sure that discriminator is not able to understand that it is a fake
+
+100
+00:09:20,040 --> 00:09:25,800
+ image. So, that is how this min max game is created and in this you can think of all of
+
+101
+00:09:25,800 --> 00:09:30,840
+ these things like d theta and g phi the discriminator generator network are all any kind of neural
+
+102
+00:09:30,840 --> 00:09:36,440
+ networks that can take in a certain input dimension. So, here example it is random noise and gives
+
+103
+00:09:36,440 --> 00:09:40,920
+ out some output dimension right. So, it can be a simple feed for a neural network which
+
+104
+00:09:40,920 --> 00:09:44,760
+ just matches the dimension at the input and output. So, this was this is what the original
+
+105
+00:09:44,760 --> 00:09:50,240
+ paper proposed and as we saw earlier the image quality like it was able to create image but
+
+106
+00:09:50,240 --> 00:09:56,400
+ it is not perfect. So, people had to come up with better solutions right. So, this is
+
+107
+00:09:56,400 --> 00:10:03,120
+ basically how as I explained how this optimization works and so, for training the discriminator
+
+108
+00:10:03,120 --> 00:10:06,760
+ you have the full loss function and you are kind of trying to optimize the parameters
+
+109
+00:10:06,760 --> 00:10:12,880
+ of the discriminator and this is the second component which is which is only needed for
+
+110
+00:10:12,880 --> 00:10:17,960
+ the generator training and you can see like this using this you are trying to optimize
+
+111
+00:10:17,960 --> 00:10:24,200
+ the weights only of the generator right. But, this approach was not perfect while this gave
+
+112
+00:10:24,200 --> 00:10:29,840
+ like a starting point but and this was one of the first networks which was able to create
+
+113
+00:10:29,840 --> 00:10:35,200
+ images that was somewhat sensible but it had many problems. So, like the first problem
+
+114
+00:10:35,200 --> 00:10:39,960
+ that become very noticeable was oscillations between generator and discriminator right.
+
+115
+00:10:39,960 --> 00:10:45,320
+ So, if you look at the original diagram. So, these two networks are kind of computing
+
+116
+00:10:45,320 --> 00:10:50,520
+ each other. So, if you do not have a very strong discriminator then the generator can
+
+117
+00:10:50,520 --> 00:10:56,160
+ easily full the discriminator and the discriminator will kind of keep chasing the generator around
+
+118
+00:10:56,160 --> 00:11:00,320
+ right and even if an ideal setting it can happen that the model goes to a degenerate
+
+119
+00:11:00,320 --> 00:11:05,760
+ solution where it is just kind of like in each iteration of discriminator and generator
+
+120
+00:11:05,760 --> 00:11:11,080
+ optimization it just flips around. So, you have the generator getting better in one iteration
+
+121
+00:11:11,080 --> 00:11:15,720
+ and in the next iteration the discriminator getting better right but it is not really
+
+122
+00:11:15,720 --> 00:11:20,240
+ getting to a like finding a good solution. So, that can happen and that is what is called
+
+123
+00:11:20,240 --> 00:11:25,120
+ the oscillation problem. Then there can be a mode collapse problem. So, what can happen
+
+124
+00:11:25,120 --> 00:11:31,080
+ here the generator can sometimes just find one particular type of images that it continues
+
+125
+00:11:31,080 --> 00:11:35,400
+ to generate and that image can be noise as well and somehow if the discriminator fails
+
+126
+00:11:35,400 --> 00:11:41,160
+ to identify that image properly. So, the discriminator will be kind of like suck at accuracy 0 or
+
+127
+00:11:41,160 --> 00:11:46,720
+ 100% and the generator will be stuck just generating that kind of images. So, this is
+
+128
+00:11:46,720 --> 00:11:51,400
+ what is called mode collapse. So, that is basically in the space of all images you find
+
+129
+00:11:51,400 --> 00:11:56,880
+ one mode and you just are stuck there. So, that is why it is called mode collapse and
+
+130
+00:11:56,880 --> 00:12:01,120
+ there can be other problems also. So, if the networks are not well balanced or the training
+
+131
+00:12:01,120 --> 00:12:06,600
+ is not stable for example, if the discriminator is too strong then the gradient for the generator
+
+132
+00:12:06,600 --> 00:12:12,240
+ will just vanish because the discriminator will give perfectly classify the all the real
+
+133
+00:12:12,240 --> 00:12:16,920
+ and fake images. So, the generator will not see any gradient coming through the discriminator.
+
+134
+00:12:16,920 --> 00:12:21,280
+ So, this is also another problem and the other scenario might also happen on the discriminator
+
+135
+00:12:21,280 --> 00:12:27,280
+ is we the generator can produce non-realistic images even though it does not look like image
+
+136
+00:12:27,280 --> 00:12:32,360
+ it can still fool the discriminator very easily. So, the main thing that you are noticing here
+
+137
+00:12:32,360 --> 00:12:37,280
+ is there are lot of stability problems that were there with the original gain architecture
+
+138
+00:12:37,280 --> 00:12:42,040
+ and also it was not able to create very high fidelity images that we might want to from
+
+139
+00:12:42,040 --> 00:12:49,200
+ these ones. So, these are kind of some example outputs from the original models and as you
+
+140
+00:12:49,200 --> 00:12:55,360
+ can see the top two are rather simplistic images. So, it was able to create MNIST visit
+
+141
+00:12:55,360 --> 00:13:00,920
+ because it is not a very complex scene. Similarly, for face images it is just a phase that it
+
+142
+00:13:00,920 --> 00:13:05,440
+ had to generate and there was not much diversity in the faces data sets. So, there also it
+
+143
+00:13:05,440 --> 00:13:11,320
+ was able to learn something sensible. But when it comes to these two settings like the
+
+144
+00:13:11,320 --> 00:13:16,480
+ setting C and D, these were based on the C4 data set where you have more complex images,
+
+145
+00:13:16,480 --> 00:13:22,280
+ complex scenes and that is where the original gain totally collapsed. It was not able to
+
+146
+00:13:22,280 --> 00:13:26,000
+ learn very good thing and you can see like it is very heavy mixture of different kinds
+
+147
+00:13:26,000 --> 00:13:33,040
+ of suppressants and you cannot make out what the object is. So, the first kind of big breakthrough
+
+148
+00:13:33,040 --> 00:13:39,040
+ that happened in this space was through the DCGAN architecture and the key thing of the
+
+149
+00:13:39,040 --> 00:13:45,080
+ DCGAN architecture was that instead of the originally proposed neural networks for the
+
+150
+00:13:45,080 --> 00:13:49,640
+ generator and the discriminator functions, DCGAN proposed that you should use CNNs because
+
+151
+00:13:49,640 --> 00:13:55,880
+ it was well understood that CNNs are the kind of networks that are good at processing images
+
+152
+00:13:55,880 --> 00:14:00,600
+ because of their inductive biases of how they process local regions and then try to gather
+
+153
+00:14:00,600 --> 00:14:07,080
+ global features through Pune. So, this paper proposed that what you can do is you can have
+
+154
+00:14:07,080 --> 00:14:13,120
+ two CNNs, one for the generator and one for the discriminator and that will help you process
+
+155
+00:14:13,120 --> 00:14:19,400
+ images and get like extract both global and local features very easily. And they removed
+
+156
+00:14:19,400 --> 00:14:24,440
+ all the fully connected layers and they also like did some training optimization through
+
+157
+00:14:24,440 --> 00:14:29,840
+ batch normalization and all of these things together kind of lead to significant improvement
+
+158
+00:14:29,840 --> 00:14:36,160
+ in the image qualities that were generated. So, now when it comes to CNNs, the traditional
+
+159
+00:14:36,160 --> 00:14:42,400
+ CNN that you might have seen is how you process input image and find the output vector or
+
+160
+00:14:42,400 --> 00:14:50,680
+ output score. So, that is the traditional structural flow of image like you start processing
+
+161
+00:14:50,680 --> 00:14:58,480
+ an image and go by 3 by 3 or 5 by 5 kernels and process them down to a smaller sized vector.
+
+162
+00:14:58,480 --> 00:15:04,400
+ So, it usually does a dimension reduction and that works okay for the discriminator because
+
+163
+00:15:04,400 --> 00:15:08,120
+ the input of the discriminator is an image and you are trying to find the score out of
+
+164
+00:15:08,120 --> 00:15:13,080
+ it. So, that perfectly fills the discriminator network. But the problem appears in the generator
+
+165
+00:15:13,080 --> 00:15:18,320
+ network where you have to start from a random vector as you saw in the original GAN architecture.
+
+166
+00:15:18,320 --> 00:15:24,320
+ You have to start from a random vector and you have to reach like an actual image dimension.
+
+167
+00:15:24,320 --> 00:15:30,040
+ So, which can be say a 64 cross 64 image with three channels if it is an RGB image. So,
+
+168
+00:15:30,040 --> 00:15:35,520
+ how to do that? So, they came up with a novel solution called fractional striding or a transpose
+
+169
+00:15:35,520 --> 00:15:42,920
+ convolution which is kind of the reverse process of what the convolution does. So, this is
+
+170
+00:15:42,920 --> 00:15:47,160
+ what a normal convolution kernel looks like for you and the all the normal CNN networks
+
+171
+00:15:47,160 --> 00:15:53,320
+ for say image classification use this. And here what you see is that for the image you
+
+172
+00:15:53,320 --> 00:16:00,600
+ kind of slide around 5 by 5 or any kind of size kernel over that image and you get scores
+
+173
+00:16:00,600 --> 00:16:05,560
+ for each of the cells. And if you notice if you don't have this padding, what you will
+
+174
+00:16:05,560 --> 00:16:12,560
+ get? You will get a smaller image. So, this will be more clear. So, in this case you have
+
+175
+00:16:12,560 --> 00:16:17,880
+ a stride 1. So, it's just moving one box at a time. So, that's why you also have a padding.
+
+176
+00:16:17,880 --> 00:16:22,360
+ So, you are seeing an image output that is the same dimension as the input. But let's
+
+177
+00:16:22,360 --> 00:16:26,800
+ you make the stride 2. So, you are kind of moving the kernel faster over the image. So,
+
+178
+00:16:26,800 --> 00:16:31,880
+ you are jumping one cell in between. So, then you can see if you start with a 5 by 5 or
+
+179
+00:16:31,880 --> 00:16:37,080
+ 6 by 6 image, you end up in a 3 cross 3 image. So, you kind of have the dimension of the
+
+180
+00:16:37,080 --> 00:16:42,080
+ image. So, this is what happens with stride. So, if you increase stride by something, your
+
+181
+00:16:42,080 --> 00:16:47,960
+ image kind of becomes smaller and smaller by that factor. So, now what you can think
+
+182
+00:16:47,960 --> 00:16:52,800
+ of? You just see the inverse process of this. So, what you did earlier, you were jumping
+
+183
+00:16:52,800 --> 00:16:57,120
+ pixels. So, if you had processed say the first pixel in the first kernel, you will skip the
+
+184
+00:16:57,120 --> 00:17:01,440
+ in between and go to the next one. So, just to invert the process, what you can do is
+
+185
+00:17:01,440 --> 00:17:06,880
+ you can wait in between. So, essentially how is that achieved? You take the original image
+
+186
+00:17:06,880 --> 00:17:11,880
+ and you kind of put empty spaces in between. So, this is same as padding as you do like
+
+187
+00:17:11,880 --> 00:17:17,320
+ empty cells, which you can assign like a zero score or a nearest neighbor score or any kind
+
+188
+00:17:17,320 --> 00:17:21,720
+ of heuristic you can apply there. But the main idea is that you kind of put the actual
+
+189
+00:17:21,720 --> 00:17:27,400
+ image pixels further apart. And that is what is called a fractional stride because within
+
+190
+00:17:27,400 --> 00:17:31,680
+ each move, you are not going to the next pixel, but rather you are going to the next pixel
+
+191
+00:17:31,680 --> 00:17:36,480
+ into three moves or two moves or three moves. So, that's why it becomes like a fractional
+
+192
+00:17:36,480 --> 00:17:41,960
+ stride. And if you have some image of the three cross three, your output would become
+
+193
+00:17:41,960 --> 00:17:47,200
+ larger. So, this is the main idea behind how to start from a smaller dimensional vector
+
+194
+00:17:47,200 --> 00:17:52,720
+ and actually reaching a larger sized image matrix, which has to be like a larger kind
+
+195
+00:17:52,720 --> 00:18:02,240
+ of a tensor structure, say 64 cross 64 cross three. So, those optimization kind of figuring
+
+196
+00:18:02,240 --> 00:18:08,800
+ out how to run convolution in the opposite directions was to create images and then using
+
+197
+00:18:08,800 --> 00:18:14,400
+ convolutional networks for both the generator and discriminator significantly moved the
+
+198
+00:18:14,400 --> 00:18:21,280
+ needle ads. So, if you see in these images, you can actually start to make out very like
+
+199
+00:18:21,280 --> 00:18:25,320
+ proper shapes. So, for example, these are bad images and you can clearly make out that,
+
+200
+00:18:25,320 --> 00:18:30,800
+ okay, this is one consistent photo of a bit, which has some patterns or some colors and
+
+201
+00:18:30,800 --> 00:18:35,000
+ most of the scenes are also like somewhat complex. You can see make out multiple objects.
+
+202
+00:18:35,000 --> 00:18:39,200
+ So, if there is a window, there is a bed. So, this was not possible in the previous architecture,
+
+203
+00:18:39,200 --> 00:18:45,040
+ but was now possible to create, right? But even in this generation, if you see why the
+
+204
+00:18:45,040 --> 00:18:50,160
+ objects are becoming clearer, it was still not perfect as what a image or what a human
+
+205
+00:18:50,160 --> 00:18:58,840
+ would consider as a real good quality image. So, some more improvements are required. So,
+
+206
+00:18:58,840 --> 00:19:03,500
+ the next kind of big step that happened in this space is something called progressive
+
+207
+00:19:03,500 --> 00:19:09,120
+ gas. So, what was observed in the previous models is that you were trying to generate
+
+208
+00:19:09,120 --> 00:19:14,520
+ the image in one shot. So, you have some random noises input for the generator and you try
+
+209
+00:19:14,520 --> 00:19:19,320
+ to go to the image by just going through one network and there is one optimization being
+
+210
+00:19:19,320 --> 00:19:29,960
+ done at the final thing, final image, right? So, what this paper proposed is instead of
+
+211
+00:19:29,960 --> 00:19:34,880
+ going to the higher dimension that you are targeting for, for example, say 64 cross 64,
+
+212
+00:19:34,880 --> 00:19:38,800
+ how do you, what happens if you go through it step by step? So, instead of going jumping
+
+213
+00:19:38,800 --> 00:19:44,480
+ to 64, what if you first created a 16 by 16 image, then 32 cross 32. So, that way you
+
+214
+00:19:44,480 --> 00:19:49,320
+ can think of you first, I did the image, what the image should contain and then kind of you
+
+215
+00:19:49,320 --> 00:19:54,080
+ are adding more and more details to that image as you are going to higher and higher resolutions.
+
+216
+00:19:54,080 --> 00:19:59,840
+ So, this is what is why it is called progressive gas, where you are kind of like growing the
+
+217
+00:19:59,840 --> 00:20:05,720
+ generator and discriminator in size throughout the training process. So, how do you achieve
+
+218
+00:20:05,720 --> 00:20:14,040
+ this? So, basically you train the network step by step to generate image at every resolution.
+
+219
+00:20:14,040 --> 00:20:20,480
+ Right? So, for example, you can start at the very minimum size, so which is 4 cross 4,
+
+220
+00:20:20,480 --> 00:20:24,240
+ you first start training the model, the generator and the discriminator both for that dimension
+
+221
+00:20:24,240 --> 00:20:29,320
+ and once the model stabilizes there like your loss is kind of saturated, then you go ahead
+
+222
+00:20:29,320 --> 00:20:33,640
+ and add some new components. So, as now the training process starts happening at 8 cross
+
+223
+00:20:33,640 --> 00:20:38,920
+ 8. So, what this does is that it does not load the model to learn all the feature complexities
+
+224
+00:20:38,920 --> 00:20:43,320
+ or like the processing that request to happen within the generator in a single go. So, it
+
+225
+00:20:43,320 --> 00:20:49,360
+ can happen step by step in multiple phase training process and what was observed in this paper
+
+226
+00:20:49,360 --> 00:20:56,720
+ that using this process you can go to a much larger dimension like 1,024 cross 1,024 pixel
+
+227
+00:20:56,720 --> 00:21:02,840
+ which is like what you generally use. So, we usually take photos around the resolution
+
+228
+00:21:02,840 --> 00:21:08,400
+ of 1,000 to 4,000 pixels with an height and we are able to for the first time reach this
+
+229
+00:21:08,400 --> 00:21:14,280
+ dimension through a GAN generation process and the earlier bound were like 32 cross 32
+
+230
+00:21:14,280 --> 00:21:22,440
+ or 64 cross 64. So, this was like a significant jump in improvement. Right? So, how was this
+
+231
+00:21:22,440 --> 00:21:28,880
+ like achieved technically? So, you can imagine like you can just do the training and start
+
+232
+00:21:28,880 --> 00:21:34,520
+ adding layers to the process, but it does not work that well if you just do that blindly.
+
+233
+00:21:34,520 --> 00:21:41,240
+ So, there are few things that this paper did. So, the initial, so the phase 2 and 3 that
+
+234
+00:21:41,240 --> 00:21:44,880
+ I explained. So, basically you start with phase 1 and phase 2 and 3 is where you kind
+
+235
+00:21:44,880 --> 00:21:50,200
+ of grow the process and that is what is shown here. Just suppose you are at this stage,
+
+236
+00:21:50,200 --> 00:21:54,680
+ so some training has happened and you are kind of at this stage where you have a 16
+
+237
+00:21:54,680 --> 00:22:02,560
+ cross 16 dimension output on both sides and you want to take it to like 32 cross 32. So,
+
+238
+00:22:02,560 --> 00:22:08,200
+ if you just slap in the intermediate layer of say the deconvolution and convolution to
+
+239
+00:22:08,200 --> 00:22:13,440
+ 32 dimension, it will not work because this layer will be random and the model will not
+
+240
+00:22:13,440 --> 00:22:18,200
+ be able to train again. So, like this initial part of the network is trained, but the intermediate
+
+241
+00:22:18,200 --> 00:22:22,960
+ layer is random way. So, what will happen is that the full model will almost like start
+
+242
+00:22:22,960 --> 00:22:28,040
+ training from beginning again. So, what the paper proposed is that you can kind of slowly
+
+243
+00:22:28,040 --> 00:22:33,960
+ move from the previous network to the next network. So, you do this by creating a routing
+
+244
+00:22:33,960 --> 00:22:40,200
+ layer. So, for example, you have this original 2 RGB which is the 1 cross 1 convolution path
+
+245
+00:22:40,200 --> 00:22:46,120
+ which is giving you the 16 cross 16 image. You take that as it is and you do some, so
+
+246
+00:22:46,120 --> 00:22:50,280
+ you have this 2X which is nearest neighbor filtering. So, you just take this 16 cross
+
+247
+00:22:50,280 --> 00:22:55,200
+ 16 image and with a very basic interpolation you make it 32 cross 32. So, that will at
+
+248
+00:22:55,200 --> 00:23:01,960
+ least look like image and to that you add this output of the 32 cross 32 pipeline which
+
+249
+00:23:01,960 --> 00:23:08,000
+ is somewhat noise and somewhat image and which is what you want to train. And you start with
+
+250
+00:23:08,000 --> 00:23:15,320
+ the alpha value of 0. So, what will happen? The network will first see only this bypass
+
+251
+00:23:15,320 --> 00:23:21,480
+ and once you start training and start increasing the alpha magnitude, the model will start
+
+252
+00:23:21,480 --> 00:23:26,640
+ seeing this like secondary path and it will start to train this. And as you like finally
+
+253
+00:23:26,640 --> 00:23:31,280
+ settle on alpha equals to 1 through training, you can then throw out this 2 RGB path and
+
+254
+00:23:31,280 --> 00:23:36,160
+ you can finally get to the actual larger network. And you can keep repeating this process as
+
+255
+00:23:36,160 --> 00:23:45,360
+ much as you want. So, you can go to like 10242048 or even 4K images using this process. So,
+
+256
+00:23:45,360 --> 00:23:50,680
+ this solves a lot of problems that were kind of distilled from the original model. So,
+
+257
+00:23:50,680 --> 00:23:54,960
+ the original model had the problems of mode collapse and everything. But since this architecture
+
+258
+00:23:54,960 --> 00:24:00,080
+ like beyond using the CNN this architecture kind of showed how you can learn the complexities
+
+259
+00:24:00,080 --> 00:24:05,600
+ in step instead of trying to learn them together. And this was what was the reason for the original
+
+260
+00:24:05,600 --> 00:24:09,960
+ models mode collapse. So, because you are trying to learn a very complex distribution
+
+261
+00:24:09,960 --> 00:24:16,400
+ at one go, that's why it was always like converging to or collapsing to one particular
+
+262
+00:24:16,400 --> 00:24:20,840
+ kind of images or random noise. But if you kind of do this training progressively as
+
+263
+00:24:20,840 --> 00:24:26,560
+ this paper did, you can see that it is able to learn this distribution of multiple modalities
+
+264
+00:24:26,560 --> 00:24:32,880
+ very nicely. So, this problem of mode collapse was kind of gone and that helped in increasing
+
+265
+00:24:32,880 --> 00:24:42,320
+ the fidelity significantly. And as you can see from this again, this was like a significantly
+
+266
+00:24:42,320 --> 00:24:47,920
+ large jump and you can actually like so these are 1024 cross 1024 dimensional images and
+
+267
+00:24:47,920 --> 00:24:55,800
+ you can make out the details very easily. So, now another so that was kind of the progression
+
+268
+00:24:55,800 --> 00:25:01,120
+ of GAN and GAN actually was a very unstable architecture and it took a lot of effort like
+
+269
+00:25:01,120 --> 00:25:06,560
+ say five, six years worth of effort to come to like come from the original GAN architecture
+
+270
+00:25:06,560 --> 00:25:11,640
+ to the final GAN architecture that we saw. So, GAN always have this stability problem
+
+271
+00:25:11,640 --> 00:25:16,080
+ and even with the newer architectures, if you increase the complexity or if you go to
+
+272
+00:25:16,080 --> 00:25:20,560
+ a new domain for doing image generation. So, for example, you want to do medical image
+
+273
+00:25:20,560 --> 00:25:25,400
+ generation, a lot of tuning again comes back into the picture because the GAN models do
+
+274
+00:25:25,400 --> 00:25:29,240
+ not work that well out of the box because of their instability and we always need to
+
+275
+00:25:29,240 --> 00:25:35,760
+ start with a lot of hyper parameter tuning and adjustment of the architecture. So, another
+
+276
+00:25:35,760 --> 00:25:40,580
+ architecture which kind of solved that problem is known as VQVA. So, this was not a GAN based
+
+277
+00:25:40,580 --> 00:25:46,120
+ model but had a similar idea key. You start from a noise and come back to an image but
+
+278
+00:25:46,120 --> 00:25:52,160
+ this architecture was much more stable compared to the GAN architectures just in two generations.
+
+279
+00:25:52,160 --> 00:25:57,400
+ So, VQVA was the original architecture and after that they came up with VQVA too which
+
+280
+00:25:57,400 --> 00:26:05,240
+ was like almost at the final stage of what GAN was able to achieve. So, what does this
+
+281
+00:26:05,240 --> 00:26:11,600
+ architecture do is, so from the name you can understand that this is kind of expanded
+
+282
+00:26:11,600 --> 00:26:18,000
+ out in an autoencoder fashion. So, you have a encoder network which takes in any image.
+
+283
+00:26:18,000 --> 00:26:23,000
+ It goes through a CNN and you get a representation and you are training a decoder network to
+
+284
+00:26:23,000 --> 00:26:26,040
+ take the representation. So, if you forget about the intermediate layer, you just take
+
+285
+00:26:26,040 --> 00:26:31,760
+ that representation and try to decode that. So, what this essentially doing like what
+
+286
+00:26:31,760 --> 00:26:37,720
+ essentially autoencoder does is that you try to learn a bottleneck or a intermediate representation
+
+287
+00:26:37,720 --> 00:26:43,920
+ which is a low dimensional representation of the original image space. And what this
+
+288
+00:26:43,920 --> 00:26:51,560
+ paper is essentially doing is kind of making use of that fact you can do that. So, this
+
+289
+00:26:51,560 --> 00:26:55,520
+ was the original autoencoder architecture but if you just take an autoencoder architecture
+
+290
+00:26:55,520 --> 00:26:59,240
+ you still cannot generate an image. So, you will have this intermediate representation
+
+291
+00:26:59,240 --> 00:27:05,640
+ from the encoder but how do you, so at inference time how do you get a new representation for
+
+292
+00:27:05,640 --> 00:27:09,200
+ creating a new image, right? So, you might have a text or something based on which you
+
+293
+00:27:09,200 --> 00:27:13,040
+ want to create an image or you might just want to sample a new image. So, you cannot
+
+294
+00:27:13,040 --> 00:27:18,600
+ do that if you just have autoencoder architecture. So, that's where the VAE or variational autoencoder
+
+295
+00:27:18,600 --> 00:27:26,280
+ architecture comes in and so that's a older like that's a older existing architecture.
+
+296
+00:27:26,280 --> 00:27:30,720
+ What this paper specifically proposed is something called vector quantize variational autoencoder.
+
+297
+00:27:30,720 --> 00:27:35,920
+ So, it kind of combines two things one is the idea of variational autoencoder and the
+
+298
+00:27:35,920 --> 00:27:41,080
+ second is quantization, right? So, first of all what variational autoencoder will do is
+
+299
+00:27:41,080 --> 00:27:47,480
+ instead of going from the like representation directly it tries to learn a distribution
+
+300
+00:27:47,480 --> 00:27:52,280
+ of representation instead in between, right? So, given an image you try to figure out what
+
+301
+00:27:52,280 --> 00:27:57,640
+ is the latent representation in an intermediate space. So, if you have that then you can start
+
+302
+00:27:57,640 --> 00:28:03,120
+ sampling, right? So, that's how the intermediate representation or intermediate distribution
+
+303
+00:28:03,120 --> 00:28:08,400
+ helps. So, that is where the variational part comes in and then you have the vector quantization
+
+304
+00:28:08,400 --> 00:28:14,080
+ part and why you do this is in traditional autoencoders or variational autoencoders the
+
+305
+00:28:14,080 --> 00:28:19,080
+ distribution, the nature of the distribution is actually rather simple. So, you will use
+
+306
+00:28:19,080 --> 00:28:24,440
+ something like a Gaussian distribution which only has a single modality. Now, if you put
+
+307
+00:28:24,440 --> 00:28:31,000
+ so, instead of that if you use a vector quantize set up what will happen all of these embeddings
+
+308
+00:28:31,000 --> 00:28:36,480
+ that you have in the quantize dictionary the vector which is called the code book are independent
+
+309
+00:28:36,480 --> 00:28:42,280
+ to be learned that you kind of move away from the like the Gaussian assumption or the normal
+
+310
+00:28:42,280 --> 00:28:47,440
+ distribution assumption also. So, that's why this kind of performs very nicely. So, since
+
+311
+00:28:47,440 --> 00:28:53,420
+ you have this code book it kind of allows you to learn independent highly like they
+
+312
+00:28:53,420 --> 00:28:58,060
+ have like immense amount of freedom to choose what this vector is. So, the network can do
+
+313
+00:28:58,060 --> 00:29:03,040
+ that and because of that this model can learn like very high quality intermediate distribution
+
+314
+00:29:03,040 --> 00:29:08,600
+ which is which does not have to like conform to any existing distribution structure like
+
+315
+00:29:08,600 --> 00:29:14,400
+ any traditional distribution structure. So, how did the training work then? So, the loss
+
+316
+00:29:14,400 --> 00:29:20,280
+ function was quite linear but also simple. So, it just had 3 components that you kind
+
+317
+00:29:20,280 --> 00:29:25,440
+ of intuitively need to do. So, the first thing obviously is a reconstruction loss. So, what
+
+318
+00:29:25,440 --> 00:29:30,360
+ reconstruction does is you have some representation as the input you want the decoder to be able
+
+319
+00:29:30,360 --> 00:29:35,880
+ to convert that input to an image. So, this is almost like the generator thing that you
+
+320
+00:29:35,880 --> 00:29:41,440
+ do like almost like the generator network. So, by doing this you are ensuring that you
+
+321
+00:29:41,440 --> 00:29:46,080
+ have a decoder network which given an embedding of something coming or sample from somewhere
+
+322
+00:29:46,080 --> 00:29:51,040
+ would be able to create a image or draw image. So, this is the first part but that just solves
+
+323
+00:29:51,040 --> 00:29:56,520
+ one part of the problem. So, you also need to figure out the right space for the representation
+
+324
+00:29:56,520 --> 00:30:02,400
+ and also the right code book. So, that is what is done in the next two steps. So, the
+
+325
+00:30:02,400 --> 00:30:09,320
+ first step is kind of say that whatever code book you have your embedding should come close
+
+326
+00:30:09,320 --> 00:30:13,560
+ to this code book. So, this you will have access to this code book during the inference
+
+327
+00:30:13,560 --> 00:30:18,320
+ process. So, you want the encodings that you have from some existing images during the
+
+328
+00:30:18,320 --> 00:30:23,600
+ training time should fall close to the code book. So, that is what is done here. So, if
+
+329
+00:30:23,600 --> 00:30:28,840
+ you just forget about the sd term it is z of ex minus e. So, you are kind of minimizing
+
+330
+00:30:28,840 --> 00:30:33,800
+ the distance between the embedding and some chosen code from that code book. And the stop
+
+331
+00:30:33,800 --> 00:30:38,040
+ gradient comes in to help because then you will just optimize for the embedding. So,
+
+332
+00:30:38,040 --> 00:30:43,280
+ the gradient will only flow to the encoder network and not will not update the code book
+
+333
+00:30:43,280 --> 00:30:48,320
+ in this part. And the second or the third term here is kind of doing the opposite thing.
+
+334
+00:30:48,320 --> 00:30:52,440
+ So, here you do a stop gradient on the embedding side. So, here what you are saying, okay,
+
+335
+00:30:52,440 --> 00:30:56,360
+ I have an image embedding. Now, bring my code book closer to the image embedding. So, you
+
+336
+00:30:56,360 --> 00:31:01,520
+ are kind of allowing the network to move both of these things together closer together so
+
+337
+00:31:01,520 --> 00:31:06,320
+ that there is less fluctuation during training. So, this both of these loss function terms
+
+338
+00:31:06,320 --> 00:31:11,920
+ kind of stabilizes the training process in terms of what encoding you are getting from
+
+339
+00:31:11,920 --> 00:31:16,040
+ the network, right? Otherwise, it can fluctuate a lot because your initial embedding space
+
+340
+00:31:16,040 --> 00:31:22,400
+ would be very random, right? And another detail here that is important is how to come up with
+
+341
+00:31:22,400 --> 00:31:29,680
+ this individual codes. So, that is very simple. So, you just encode a given input image say
+
+342
+00:31:29,680 --> 00:31:36,040
+ is what we are calling Xi or Ej and you just find out which is the nearest vector within
+
+343
+00:31:36,040 --> 00:31:40,160
+ this code book. So, suppose you have one million code vectors within this code book and you
+
+344
+00:31:40,160 --> 00:31:44,360
+ just find out the one nearest embedding and that is sufficient for like training this
+
+345
+00:31:44,360 --> 00:31:48,880
+ network, right? So, you can make this code book as large as possible, as big as possible
+
+346
+00:31:48,880 --> 00:31:53,080
+ so that will increase your parameter size of the network, but it will not increase the
+
+347
+00:31:53,080 --> 00:31:58,200
+ latency because the lookup is kind of fixed time using various optimizations that you
+
+348
+00:31:58,200 --> 00:32:04,720
+ can do for vector search, right? So, that is how you train the like that is how the original
+
+349
+00:32:04,720 --> 00:32:10,960
+ VQVA idea looked like and you can train this using this loss function, but this still had
+
+350
+00:32:10,960 --> 00:32:15,000
+ some shortcomings. It was able to get to like really good quality pictures, but there was
+
+351
+00:32:15,000 --> 00:32:20,720
+ still some shortcomings because of this fixed CNN network as we saw in the progressive scan
+
+352
+00:32:20,720 --> 00:32:26,280
+ also. Having a single network to come like come and go from the embedding level to the
+
+353
+00:32:26,280 --> 00:32:31,000
+ final image is slightly difficult. So, this paper also kind of came up with a similar
+
+354
+00:32:31,000 --> 00:32:37,560
+ idea where you try to learn a layered process of generating the image. So, what it allows
+
+355
+00:32:37,560 --> 00:32:42,200
+ you to do first to come up with lower level features and also like learn those lower level
+
+356
+00:32:42,200 --> 00:32:46,720
+ features and from there to expand out the actual details within the image, right? So,
+
+357
+00:32:46,720 --> 00:32:53,600
+ this is what was called the VQVA to architecture and what did what this did is it like at the
+
+358
+00:32:53,600 --> 00:33:00,160
+ beginning itself, it initialized several layers of hierarchy from the image. So, if you see
+
+359
+00:33:00,160 --> 00:33:04,440
+ how the image was processed here through a single block of encoder, instead of that,
+
+360
+00:33:04,440 --> 00:33:09,800
+ you just imagine that it goes through multiple layers of encodings, right? So, first you
+
+361
+00:33:09,800 --> 00:33:14,120
+ will do a encoding, you will go to a feature map which is much larger in size because it's
+
+362
+00:33:14,120 --> 00:33:20,240
+ a CNN and then if you add another layer of CNN that feature map will reduce slightly in
+
+363
+00:33:20,240 --> 00:33:26,240
+ size. So, that will be like a more high level or abstract representation of the image, but
+
+364
+00:33:26,240 --> 00:33:32,280
+ also like it will be more compressed, right? So, that is what is like happening exactly
+
+365
+00:33:32,280 --> 00:33:37,800
+ here. So, you have multiple levels of encoder and you supervise at every layer of the representation
+
+366
+00:33:37,800 --> 00:33:44,360
+ or like some layers of the representation even if not all, right? And what you do for
+
+367
+00:33:44,360 --> 00:33:50,040
+ training is that now once you have that, you try to train the VQVA network at every stage,
+
+368
+00:33:50,040 --> 00:33:56,520
+ right? So, you have this like bigger feature map, you go there from the, through the quantization
+
+369
+00:33:56,520 --> 00:34:03,000
+ process and you train that quantization process to go back to a decoder to the actual image.
+
+370
+00:34:03,000 --> 00:34:07,080
+ You add another layer of encoder, you get a lower, like a higher level representation
+
+371
+00:34:07,080 --> 00:34:14,880
+ which is smaller in size and then you go through the, go through another VQVA quantizer and
+
+372
+00:34:14,880 --> 00:34:19,360
+ get something back, right? So, what this is giving you, like it will give you multiple
+
+373
+00:34:19,360 --> 00:34:24,320
+ levels of code books quantizations, which kind of have a hierarchical structure. So,
+
+374
+00:34:24,320 --> 00:34:31,160
+ you can always first start with a higher level VQ like quantization during sampling, from
+
+375
+00:34:31,160 --> 00:34:36,080
+ that figure out what is the lower level quantization and from there you can go to the reconstruction.
+
+376
+00:34:36,080 --> 00:34:41,000
+ And this is what the sampling process on the right here does is once you have trained this
+
+377
+00:34:41,000 --> 00:34:45,520
+ network, you can just throw away the encoder that is not required anymore and you can fit
+
+378
+00:34:45,520 --> 00:34:50,440
+ another network to go through this hierarchy. So, it basically starts by sampling from the
+
+379
+00:34:50,440 --> 00:34:54,920
+ highest level of representation and step by step figures out what is the next level of
+
+380
+00:34:54,920 --> 00:34:59,560
+ representation. And this kind of give you a hierarchical decoding process which finally
+
+381
+00:34:59,560 --> 00:35:05,080
+ goes to a very high quality high fidelity image and this network was able to create images
+
+382
+00:35:05,080 --> 00:35:10,000
+ which are, which are like much more detailed and could handle much more complexities in
+
+383
+00:35:10,000 --> 00:35:14,760
+ the images, right? So, as you can see, this is what the different levels of hierarchy
+
+384
+00:35:14,760 --> 00:35:18,840
+ look like, like as you decoded them. And as you can see, like the higher level feature
+
+385
+00:35:18,840 --> 00:35:24,800
+ we will have will kind of dictate what is the object and what is the scene content.
+
+386
+00:35:24,800 --> 00:35:29,640
+ And as you go through the layers of the hierarchy, it will add more and more detail like the
+
+387
+00:35:29,640 --> 00:35:37,680
+ cares and the leaves in the background, right? So, what this architecture kind of did is
+
+388
+00:35:37,680 --> 00:35:43,400
+ first of all, it allowed you a lot of flexibility in the latent space by having that code book.
+
+389
+00:35:43,400 --> 00:35:49,120
+ So, now you are not restricted to say something like a guardian representation which was often,
+
+390
+00:35:49,120 --> 00:35:53,040
+ which can often create bloody images but not like very highly detailed images. So, these
+
+391
+00:35:53,040 --> 00:35:57,900
+ network was for the first time able to get like a lot of detail into the generated images
+
+392
+00:35:57,900 --> 00:36:04,920
+ and this paper also proposed a novel loss function that was able to train this VQVI architecture
+
+393
+00:36:04,920 --> 00:36:12,280
+ in a very efficient and optimal manner, right? So, this, yeah, so with this I will kind of
+
+394
+00:36:12,280 --> 00:36:20,680
+ end the image part, like the imagination part and this was around 19, 2020 and this kind
+
+395
+00:36:20,680 --> 00:36:25,640
+ of became like the final point of imagination through GAN or VAE kind of architectures.
+
+396
+00:36:25,640 --> 00:36:31,480
+ After this also, many different GAN models are proposed but beyond this, a new architecture
+
+397
+00:36:31,480 --> 00:36:36,120
+ kind of came into picture which is called diffusion models and that is what is used nowadays.
+
+398
+00:36:36,120 --> 00:36:40,920
+ And diffusion models also allows you a lot of flexibility and it's kind of similar to
+
+399
+00:36:40,920 --> 00:36:45,280
+ theoretical decoding that you learn during the process. So, I will not cover that but
+
+400
+00:36:45,280 --> 00:36:52,440
+ you can go check out like the recent advancement in that field also, right? And other than
+
+401
+00:36:52,440 --> 00:36:58,100
+ the, just other, like other than the architectures that we are developing here, there are other
+
+402
+00:36:58,100 --> 00:37:02,880
+ interesting research questions also which was kind of solved fairly. So, there are a
+
+403
+00:37:02,880 --> 00:37:07,640
+ lot of metrics developed because when you are going to such high quality images, standard
+
+404
+00:37:07,640 --> 00:37:14,600
+ error metrics or loss functions stop working very well. Like for example, if you have mean
+
+405
+00:37:14,600 --> 00:37:20,320
+ squared error, that can understand the difference between a real image and a fake image when
+
+406
+00:37:20,320 --> 00:37:25,080
+ the difference is large. But if the images are very close, they will not be able to detect
+
+407
+00:37:25,080 --> 00:37:31,560
+ like the smaller discrepancies that are there in the generated images. So, like later on
+
+408
+00:37:31,560 --> 00:37:37,880
+ metrics like FID and inception scores, these things are proposed. So, these are model based
+
+409
+00:37:37,880 --> 00:37:42,880
+ metrics which were able to understand how, what was the fidelity level of the images,
+
+410
+00:37:42,880 --> 00:37:47,640
+ how detailed were the images, all these things. So, there are questions like this that were
+
+411
+00:37:47,640 --> 00:37:52,720
+ also simultaneously solved. There are architectural questions that were solved, like system side
+
+412
+00:37:52,720 --> 00:37:56,240
+ architectural questions that were solved. So, all of these things also happened together
+
+413
+00:37:56,240 --> 00:38:02,800
+ and this kind of led to the final like the high quality image generator that we see today.
+
+414
+00:38:02,800 --> 00:38:27,200
+ So, okay. So, now we will move on to the like the large language generation section and this
+
+415
+00:38:27,200 --> 00:38:33,360
+ also has kind of become important in the last like six, seven years with the evolution of
+
+416
+00:38:33,360 --> 00:38:37,840
+ creativity and this kind of models and the applications of those models that we are seeing
+
+417
+00:38:37,840 --> 00:38:42,680
+ now like almost in every application. Right. And this is, this also went through kind of
+
+418
+00:38:42,680 --> 00:38:49,040
+ a similar trajectory of how you took the original architecture or original idea of language modeling
+
+419
+00:38:49,040 --> 00:38:56,400
+ that was present, the kids back and how it came to the stage that we have today. Right.
+
+420
+00:38:56,400 --> 00:39:03,000
+ So, what are elements basically? So, large language models are simply models that can
+
+421
+00:39:03,000 --> 00:39:08,640
+ generate language and can talk to humans in a way. Right. So, if you have a very perfect
+
+422
+00:39:08,640 --> 00:39:13,600
+ language model, you can make it to generate anything. Right. And this technology has recently
+
+423
+00:39:13,600 --> 00:39:19,440
+ become very popular and very successful and with models like cloud, productivity, Gemini,
+
+424
+00:39:19,440 --> 00:39:24,360
+ Lama, like various applications have also popular and it's like known to almost everyone
+
+425
+00:39:24,360 --> 00:39:32,960
+ who are not working in this domain also. Right. But coming to like, coming to this recent
+
+426
+00:39:32,960 --> 00:39:38,360
+ state of LLMs was a much more mixed process of development. Like lot of improvements happened
+
+427
+00:39:38,360 --> 00:39:42,680
+ in many different spaces that we are seeing this. So, it was not just an architectural
+
+428
+00:39:42,680 --> 00:39:47,560
+ improvement here. So, a lot of other things also needed to improve to kind of get to where
+
+429
+00:39:47,560 --> 00:39:52,840
+ so this was slightly more complex than the landscape of image generation. So, we'll look
+
+430
+00:39:52,840 --> 00:39:58,440
+ at a few of these challenges that research was facing and how did they come to solve
+
+431
+00:39:58,440 --> 00:40:05,320
+ those problems. Right. So, I will first quickly define like what the basic language modeling
+
+432
+00:40:05,320 --> 00:40:11,440
+ are like looked like initially before say 2018, 2019 and like what was the transition
+
+433
+00:40:11,440 --> 00:40:17,080
+ that happened after that. Right. So, the idea of language model was very old. So, it started
+
+434
+00:40:17,080 --> 00:40:23,760
+ around 1950s and 1980s popular building statistical language models based on say n-grams or other
+
+435
+00:40:23,760 --> 00:40:29,280
+ hand designed features. And the goal was to basically fit a distribution to any human
+
+436
+00:40:29,280 --> 00:40:32,760
+ language. Right. So, it didn't have any fancy goal back then. We are just trying to learn
+
+437
+00:40:32,760 --> 00:40:40,560
+ a parametric model that can say given a context what is the next possible probable word. Right.
+
+438
+00:40:40,560 --> 00:40:46,000
+ And so, that can be just seen mathematically as if you have a context like this, you are
+
+439
+00:40:46,000 --> 00:40:51,800
+ trying to come up with the next token in a way or like the next character in the text
+
+440
+00:40:51,800 --> 00:40:57,720
+ sequence. Right. And this was important because if you have a parametric model like this,
+
+441
+00:40:57,720 --> 00:41:02,680
+ you can do a lot of things like you can of course, you can generate new text and you
+
+442
+00:41:02,680 --> 00:41:06,920
+ can also do certain statistical studies of these models. You can understand how distribution
+
+443
+00:41:06,920 --> 00:41:12,520
+ varies between various languages and within even within a language how the like what is
+
+444
+00:41:12,520 --> 00:41:17,080
+ the distribution of various word sentences and all of these things. Right. So, it had
+
+445
+00:41:17,080 --> 00:41:23,320
+ some linguistic importance. And so, the original kind of original effort towards building these
+
+446
+00:41:23,320 --> 00:41:28,400
+ language models are focused first on n-grams before MLPs or neural networks. Then there
+
+447
+00:41:28,400 --> 00:41:33,360
+ are a lot of neural network based language models which was still trying to kind of model
+
+448
+00:41:33,360 --> 00:41:39,600
+ these kind of like or trying to approximate these kind of a function. But they are still
+
+449
+00:41:39,600 --> 00:41:44,360
+ like not as powerful because there are a lot of assumptions that were going into the picture.
+
+450
+00:41:44,360 --> 00:41:49,000
+ Like for n-grams, you were not able to fit very long input sequences. You were truncating
+
+451
+00:41:49,000 --> 00:41:54,640
+ them off at say 2-gram or 3-grams. So, it cannot like generate as complex a model and
+
+452
+00:41:54,640 --> 00:42:00,520
+ it was also tabularized in a way. So, you were not fitting any neural network at that point.
+
+453
+00:42:00,520 --> 00:42:07,440
+ But then with MLPs, you tried fitting ANNs or what like ANNs to this to learn this n-gram
+
+454
+00:42:07,440 --> 00:42:12,840
+ model. But there also, you were having challenges because you can fit again a fixed length context
+
+455
+00:42:12,840 --> 00:42:17,880
+ window even though that was bigger than a statistical n-gram model that was still limited.
+
+456
+00:42:17,880 --> 00:42:24,040
+ And then what to make was, so it was exploiting this idea of language modeling to learn representations
+
+457
+00:42:24,040 --> 00:42:30,240
+ or vector representations for these words or sentences. So, this is like one of the biggest
+
+458
+00:42:30,240 --> 00:42:38,080
+ applications that we are still able to exploit. So, all of these kind of came before and these
+
+459
+00:42:38,080 --> 00:42:45,880
+ were seen as a tool for solving other problems but were never like directly usable. And one
+
+460
+00:42:45,880 --> 00:42:51,140
+ of the major reason was because like this language itself is very complex, but the underlying
+
+461
+00:42:51,140 --> 00:42:55,560
+ models that we are using either statistical or a simple neural network were not complex
+
+462
+00:42:55,560 --> 00:43:00,520
+ enough to learn the distribution. But after that, we started seeing complex networks like
+
+463
+00:43:00,520 --> 00:43:05,800
+ ANNs, LSTMs, or transformers. So, the key thing that changed between this and this is
+
+464
+00:43:05,800 --> 00:43:14,480
+ that your context window became infinite almost. So, now you are able to factorize the model
+
+465
+00:43:14,480 --> 00:43:19,560
+ language models as by just simple change rule of probability and there is no approximation
+
+466
+00:43:19,560 --> 00:43:24,320
+ that is happening in this factorization. So, that gives a lot of power to these models.
+
+467
+00:43:24,320 --> 00:43:29,560
+ So, one of the important key things of human language is that you can have very long conversations
+
+468
+00:43:29,560 --> 00:43:37,880
+ and can remember things from like past situations. Hey, so that is what these like long factorizations
+
+469
+00:43:37,880 --> 00:43:42,000
+ can allow and that is what became possible with these kind of models that they were able
+
+470
+00:43:42,000 --> 00:43:50,080
+ to capture very long context and our systems like GPUs and servers have become powerful
+
+471
+00:43:50,080 --> 00:43:58,480
+ enough to handle these kind of highly complex models. So, this is what a standard like a
+
+472
+00:43:58,480 --> 00:44:04,360
+ block diagram of this model should look like. So, you have input context of some n number
+
+473
+00:44:04,360 --> 00:44:09,400
+ of words and this can be any length in modern architectures and you are trying to just predict
+
+474
+00:44:09,400 --> 00:44:16,000
+ the next word that you can have. And how do you train this is something called maximum
+
+475
+00:44:16,000 --> 00:44:20,760
+ likelihood estimate. So, what you are trying to see you if you come up with the distribution
+
+476
+00:44:20,760 --> 00:44:27,520
+ of the next word from the network say by applying a softmax over a set of logits then you can
+
+477
+00:44:27,520 --> 00:44:31,960
+ just see what is the probability of the ground truth token that I have in my dataset and
+
+478
+00:44:31,960 --> 00:44:37,160
+ just focus on maximizing that. So, this is what is traditionally known as maximum likelihood
+
+479
+00:44:37,160 --> 00:44:41,960
+ estimate finding the maximum likelihood estimate and also called as the cross-entropy loss
+
+480
+00:44:41,960 --> 00:44:50,400
+ in general in the natural language literature. And so, this is like the standard training
+
+481
+00:44:50,400 --> 00:44:55,200
+ procedure that is still being followed in all of the networks. So, this is in slight contrast
+
+482
+00:44:55,200 --> 00:45:00,080
+ to what you saw in the image generation. So, there you saw that the loss function also
+
+483
+00:45:00,080 --> 00:45:05,320
+ needed to evolve but here the key loss function for training the raw language model has almost
+
+484
+00:45:05,320 --> 00:45:10,320
+ remained the same. It is still this probability of the ground truth token that you are trying
+
+485
+00:45:10,320 --> 00:45:15,800
+ to maximize. And once you have trained this network inference is also very simple you
+
+486
+00:45:15,800 --> 00:45:20,840
+ can just pass in the context get the distribution for the next token take the max or sample
+
+487
+00:45:20,840 --> 00:45:25,960
+ from it and you can look through it and you can start generating languages. And also the
+
+488
+00:45:25,960 --> 00:45:29,800
+ intermediate vectors that you get from such models again can be used as a representation
+
+489
+00:45:29,800 --> 00:45:34,760
+ for the text and that is also used in many different applications like if you have any
+
+490
+00:45:34,760 --> 00:45:39,280
+ sort of classifiers or recommendation systems that you see use these sort of embeddings
+
+491
+00:45:39,280 --> 00:45:48,320
+ as features for doing classification and stuff. So, now with the like so basically you had
+
+492
+00:45:48,320 --> 00:45:53,500
+ the loss function in place from long back. So, that cross-entropy loss function was used
+
+493
+00:45:53,500 --> 00:45:57,920
+ even if you go back like 10 years from now that loss function was still being used for
+
+494
+00:45:57,920 --> 00:46:03,720
+ training RNNs and LSTM based language models. But what kind of change in these factors where
+
+495
+00:46:03,720 --> 00:46:12,680
+ lots of developments in other areas. So, one of the key area of implement that was necessary
+
+496
+00:46:12,680 --> 00:46:19,160
+ was the tokenizer. So, if you see in the original architecture I kind of intuitively gave the
+
+497
+00:46:19,160 --> 00:46:24,160
+ input context as like by splitting them into words as the input to the network. So, that
+
+498
+00:46:24,160 --> 00:46:30,080
+ is where the sequence is coming from. And if you think about this, this works if you
+
+499
+00:46:30,080 --> 00:46:34,840
+ don't have a language where say the character space is there or if you have word switcher
+
+500
+00:46:34,840 --> 00:46:40,760
+ very common. But if you have word switcher complex for example long words like tokenizer
+
+501
+00:46:40,760 --> 00:46:45,560
+ then you have either have to make the vocab size very large or you have to somehow figure
+
+502
+00:46:45,560 --> 00:46:50,160
+ out like how to handle these words. Otherwise what will happen is this will just be treated
+
+503
+00:46:50,160 --> 00:46:54,720
+ as unseen words and you will have like a fixed representation for each of these unseen words.
+
+504
+00:46:54,720 --> 00:46:59,960
+ So, that is not very good for training neural network models you want to have representation
+
+505
+00:46:59,960 --> 00:47:06,640
+ for everything that is part of your network. So, to solve that problem one intuitive approach
+
+506
+00:47:06,640 --> 00:47:11,120
+ is that you start representing each character as a token. So, then what you can do is you
+
+507
+00:47:11,120 --> 00:47:15,840
+ can break this input sequence simply just in terms of character instead of words. So,
+
+508
+00:47:15,840 --> 00:47:22,080
+ that will take care of having no out of distribution or out of vocab token. But the problem that
+
+509
+00:47:22,080 --> 00:47:27,560
+ it creates is that it will make the sequences very long and the modern architectures like
+
+510
+00:47:27,560 --> 00:47:32,280
+ transformers are kind of quadratically dependent on the like have quadratic time complexity
+
+511
+00:47:32,280 --> 00:47:36,440
+ on the sequence length. So, if you make the sequence length by having characters say five
+
+512
+00:47:36,440 --> 00:47:41,440
+ times longer your model training time and inference time will become almost 25 times
+
+513
+00:47:41,440 --> 00:47:47,400
+ longer. So, that is prohibitive. So, we needed some other solutions. So, that is where this
+
+514
+00:47:47,400 --> 00:47:54,080
+ idea of tokenizer comes in and like some improvements like key improvements in tokenizer kind of
+
+515
+00:47:54,080 --> 00:47:59,760
+ enable the modern models to process any kind of words any novel words in the context.
+
+516
+00:47:59,760 --> 00:48:06,400
+ So, the main idea is that you have full words which can go out of vocab because you cannot
+
+517
+00:48:06,400 --> 00:48:11,160
+ store all possible words of a language. There can be millions of words possible and if you
+
+518
+00:48:11,160 --> 00:48:15,680
+ try to store so many things the complexity of the embedding there would be very large
+
+519
+00:48:15,680 --> 00:48:19,960
+ and on the other hand you have the characters. Characters will make your sequence length
+
+520
+00:48:19,960 --> 00:48:25,200
+ very long. So, you need a middle ground between them and that is where ideas like subwords
+
+521
+00:48:25,200 --> 00:48:29,680
+ and byte pairs came in and which essentially almost solved this problem.
+
+522
+00:48:29,680 --> 00:48:36,680
+ So, what the idea of byte pair encoding or a subword tokenization is that if you have
+
+523
+00:48:36,680 --> 00:48:42,760
+ a text corpus you will see some like groups of characters which are sometimes words or
+
+524
+00:48:42,760 --> 00:48:47,300
+ sometimes can be subwords that appear very frequently. For example, here you can see
+
+525
+00:48:47,300 --> 00:48:54,360
+ the pair of characters or like the PO is coming very frequently in the vocab then you also
+
+526
+00:48:54,360 --> 00:48:59,160
+ have like the KE as a pattern that is repeating in the vocab. So, what byte pair encoding
+
+527
+00:48:59,160 --> 00:49:03,680
+ does is that it essentially figures out all such patterns that occur frequently in the
+
+528
+00:49:03,680 --> 00:49:09,680
+ dataset and just creates a vocab out of that. Now, you can intuitively think that what kind
+
+529
+00:49:09,680 --> 00:49:15,280
+ of token patterns that will be most frequently seen. So, obviously very common words like
+
+530
+00:49:15,280 --> 00:49:21,160
+ the me, I, your. So, all of all these kinds of words will be very frequently seen in a
+
+531
+00:49:21,160 --> 00:49:26,520
+ corpus. So, this would automatically be captured by this tokenization process. So, BPA kind
+
+532
+00:49:26,520 --> 00:49:31,800
+ of includes the most frequent words by default and it will also have certain constituent
+
+533
+00:49:31,800 --> 00:49:37,200
+ subwords that would help you to later reconstruct bigger words that you have not seen before.
+
+534
+00:49:37,200 --> 00:49:41,960
+ So, that allows you to avoid the out of vocab problem when you don't have not seen the vocab
+
+535
+00:49:41,960 --> 00:49:49,080
+ during printing data and it also kind of allows you to handle that if there is some word like
+
+536
+00:49:49,080 --> 00:49:54,000
+ let's say for index. So, if you let's say this is a word that is coming in from some
+
+537
+00:49:54,000 --> 00:49:58,280
+ specific domain for which you have not even seen the intermediate patterns that exist
+
+538
+00:49:58,280 --> 00:50:04,720
+ within that word. So, the BPA tokenizer still contains the individual character and will
+
+539
+00:50:04,720 --> 00:50:10,480
+ tokenize any unseen words by at least at a character level. So, it can start from full
+
+540
+00:50:10,480 --> 00:50:15,400
+ words then to subwords if it has not seen that and if it's a very novel word that it
+
+541
+00:50:15,400 --> 00:50:19,400
+ has like not even seen the patterns within it, it will just break it down to all characters
+
+542
+00:50:19,400 --> 00:50:24,080
+ and it will always allow the transformer model or the language model to have a unique representation
+
+543
+00:50:24,080 --> 00:50:33,480
+ for those. So, and how is this built is essentially you start with, so you first start with the
+
+544
+00:50:33,480 --> 00:50:37,920
+ array of all the characters that you want to cover. So, this is for example the character
+
+545
+00:50:37,920 --> 00:50:44,240
+ essentially English alphabet or any other language alphabet and then you start figuring
+
+546
+00:50:44,240 --> 00:50:48,520
+ out what are the most common patterns that you want to add to the vocab. So, if you have
+
+547
+00:50:48,520 --> 00:50:53,920
+ the first character, if you first have the characters in your list of vocab, then what
+
+548
+00:50:53,920 --> 00:50:58,880
+ you can do, you can start looking at pairs of these characters and see which ones are
+
+549
+00:50:58,880 --> 00:51:04,600
+ next most frequent in the dataset and then you can repeat the process to formulate bigger
+
+550
+00:51:04,600 --> 00:51:08,640
+ and bigger patterns and then you will also have words and subwords all included in the
+
+551
+00:51:08,640 --> 00:51:13,760
+ vocab and you can stop at some vocab size V so that you have the most common things
+
+552
+00:51:13,760 --> 00:51:18,200
+ up until that point included in the vocab and anything that is beyond that will be reconstructed
+
+553
+00:51:18,200 --> 00:51:25,980
+ using the tokenization mechanism. So, basically this BP tokenizer or subword tokenization
+
+554
+00:51:25,980 --> 00:51:32,800
+ kind of solved a big problem that was lingering for like almost a decade but this didn't solve
+
+555
+00:51:32,800 --> 00:51:37,160
+ all like many other problems also which are still kind of existing problems and people
+
+556
+00:51:37,160 --> 00:51:41,680
+ are trying to come up with like intelligent solutions. So, one is that you have to keep
+
+557
+00:51:41,680 --> 00:51:46,880
+ in mind which languages you want to support and if you build a tokenizer based on say
+
+558
+00:51:46,880 --> 00:51:52,460
+ English corpus or even a mixed language corpus, you may miss out certain languages during
+
+559
+00:51:52,460 --> 00:51:58,400
+ the inference time. So, this always becomes a tradeoff to which languages you are using,
+
+560
+00:51:58,400 --> 00:52:03,400
+ which corpus you are using for building this corpus will dictate performance of uncertain
+
+561
+00:52:03,400 --> 00:52:07,840
+ languages at the inference time. So, this is a very important thing to keep in mind and
+
+562
+00:52:07,840 --> 00:52:14,520
+ then there is also inference latency that you have to consider. So, suppose you start
+
+563
+00:52:14,520 --> 00:52:21,080
+ like build a tokenizer vocab of size 40,000 tokens then your vocab might not be large
+
+564
+00:52:21,080 --> 00:52:25,280
+ enough that your some of the sequences are becoming very long. So, your inference latency
+
+565
+00:52:25,280 --> 00:52:30,760
+ might still be high but if you start in increasing the tokenizer vocab size then your inference
+
+566
+00:52:30,760 --> 00:52:36,680
+ latency will go down but you might start seeing some very unique long words which are not
+
+567
+00:52:36,680 --> 00:52:40,960
+ very frequent in the training set. So, in that case you might have to figure out how
+
+568
+00:52:40,960 --> 00:52:45,040
+ to get good representation for them. So, there are still some challenges in these approaches
+
+569
+00:52:45,040 --> 00:52:50,240
+ too and then there is one interesting challenge that as newer and newer governments are being
+
+570
+00:52:50,240 --> 00:52:54,320
+ covered for example, say if you want to include code generation, if you want to do mathematical
+
+571
+00:52:54,320 --> 00:52:59,440
+ reasoning. So, the kind of tokens or words that you see in those domains may not be covered
+
+572
+00:52:59,440 --> 00:53:05,540
+ in the tokenizer that you have built in now. So, that becomes another challenge as to how
+
+573
+00:53:05,540 --> 00:53:10,320
+ to cover like newer domains, what sort of tokenizers to build in the specific domains
+
+574
+00:53:10,320 --> 00:53:16,640
+ that also is a interesting challenge and then recently there have been introduction of image
+
+575
+00:53:16,640 --> 00:53:20,960
+ and speech in transformer models. So, people are trying to build tokenizers for this kind
+
+576
+00:53:20,960 --> 00:53:27,680
+ of data also where you can think of certain basis patterns that can exist in the image
+
+577
+00:53:27,680 --> 00:53:35,000
+ or speech vectors would be useful as entity within the tokenizer. So, that was the tokenizer
+
+578
+00:53:35,000 --> 00:53:41,560
+ story and so another problem that this language model evolution was kind of facing is how
+
+579
+00:53:41,560 --> 00:53:48,240
+ to evaluate these models. So, the natural loss function that is used which I showed earlier
+
+580
+00:53:48,240 --> 00:53:54,360
+ it is basically the log probability of this probability function. So, you are always optimizing
+
+581
+00:53:54,360 --> 00:53:58,800
+ for this thing right. So, this is your loss function in a way and you can observe whether
+
+582
+00:53:58,800 --> 00:54:02,720
+ this particular metric is improving as you are training your models. So, this naturally
+
+583
+00:54:02,720 --> 00:54:08,720
+ becomes a metric but what people noticed is that this is not a perfect evaluation metric
+
+584
+00:54:08,720 --> 00:54:14,240
+ for the actual downstream task. So, traditionally this is known as perplexity. So, perplexity
+
+585
+00:54:14,240 --> 00:54:21,360
+ is nothing but the two to the power the cross entropy loss with some normalization factor
+
+586
+00:54:21,360 --> 00:54:25,580
+ and this was good for understanding whether the training process of a language model is
+
+587
+00:54:25,580 --> 00:54:29,680
+ going well. So, for example, if you want to do cross validation you can do it using this
+
+588
+00:54:29,680 --> 00:54:35,000
+ metric but this was not indicative of any downstream performance that you might want
+
+589
+00:54:35,000 --> 00:54:40,320
+ to understand. So, if you have say accuracy on a sentiment classification benchmark or
+
+590
+00:54:40,320 --> 00:54:44,880
+ accuracy on a mathematical reasoning task in a long generation context right. So, that
+
+591
+00:54:44,880 --> 00:54:50,560
+ will not be covered by will not be understood by a metric like this. So, people tried to
+
+592
+00:54:50,560 --> 00:54:55,920
+ find out which sort of metric you can design for those. So, that is also a big area of
+
+593
+00:54:55,920 --> 00:55:01,400
+ research. So, one like interesting thing that I would want to comment here is if you see
+
+594
+00:55:01,400 --> 00:55:07,280
+ like the initial evolution of language models from say LST based models RNN based models
+
+595
+00:55:07,280 --> 00:55:12,560
+ to start of the GPT evolution which is GPT 2. So, you can see like there are significant
+
+596
+00:55:12,560 --> 00:55:17,360
+ drops in the perplexity metric right. So, it was noticeable but as soon as you started
+
+597
+00:55:17,360 --> 00:55:25,240
+ going beyond 29 into the more recent models see how the improvement in your perplexity
+
+598
+00:55:25,240 --> 00:55:32,120
+ has kind of decayed down to a few points. So, what is happening here is as you cross
+
+599
+00:55:32,120 --> 00:55:38,320
+ this GPT 2 model this like the language generation became very good. So, after that point you
+
+600
+00:55:38,320 --> 00:55:44,320
+ will not see much change in the actual distribution that this language model is creating but there
+
+601
+00:55:44,320 --> 00:55:48,960
+ would be very nuanced differences between the distributions from say GPT 2 to GPT 2 fine
+
+602
+00:55:48,960 --> 00:55:53,520
+ tuned which will make a big difference in the downstream task or the quality of the generations
+
+603
+00:55:53,520 --> 00:55:58,080
+ right. So, that is what the test perplexity was failing to cover and why we needed this
+
+604
+00:55:58,080 --> 00:56:04,360
+ evaluation metrics right. So, to solve this what people did is they came up with something
+
+605
+00:56:04,360 --> 00:56:10,120
+ called leaderboard based evaluations. So, in this leaderboard based evaluations you have
+
+606
+00:56:10,120 --> 00:56:15,680
+ multiple tasks that are kind of hidden from the researcher. So, there are in the background
+
+607
+00:56:15,680 --> 00:56:20,440
+ there are tasks like certain generation quality arithmetic reasoning logical reasoning as
+
+608
+00:56:20,440 --> 00:56:26,640
+ I have shown in this kind of on the right figure. So, these are the individual tasks
+
+609
+00:56:26,640 --> 00:56:32,600
+ and that is what you are kind of trying to see how these models perform on. So, if you
+
+610
+00:56:32,600 --> 00:56:38,820
+ have a new model for example GPT 4.01 what you do is you would take that model and run
+
+611
+00:56:38,820 --> 00:56:42,240
+ the forms that is there in the leaderboard or the task that is there in the leaderboard
+
+612
+00:56:42,240 --> 00:56:46,720
+ and you would submit them here and someone then would come like some evaluated human
+
+613
+00:56:46,720 --> 00:56:52,920
+ evaluator would come and see whether the outputs from this new model was any better than the
+
+614
+00:56:52,920 --> 00:56:57,480
+ older models. However, they are not allowed to see which model it was. So, you are kind
+
+615
+00:56:57,480 --> 00:57:03,840
+ of doing a blind anonymized comparison between models. So, this is basically a human mediated
+
+616
+00:57:03,840 --> 00:57:12,240
+ voting based evaluation mechanism which allows you to understand downstream performance of
+
+617
+00:57:12,240 --> 00:57:18,000
+ these newer and newer models right and goes much beyond perplexity. And as you can see
+
+618
+00:57:18,000 --> 00:57:24,560
+ with the new models that are coming up. So, this is what has become a challenge and what
+
+619
+00:57:24,560 --> 00:57:29,560
+ this lot of modern language model papers are kind of trying to solve is if you propose
+
+620
+00:57:29,560 --> 00:57:35,120
+ a new model for example GPT 4.0 you can see it kind of improved on algebraic reasoning
+
+621
+00:57:35,120 --> 00:57:40,480
+ but at the same time just lost all its performance on logical reasoning and numeric common sense
+
+622
+00:57:40,480 --> 00:57:45,840
+ right. So, this always keeps happening and this is what we are trying to like the research
+
+623
+00:57:45,840 --> 00:57:50,480
+ community is now trying to figure out how to align or like fix these language models
+
+624
+00:57:50,480 --> 00:57:56,400
+ in a way that they perform or understand all the requirements of human applications that
+
+625
+00:57:56,400 --> 00:58:06,280
+ might we might have. So, now we will look at one final thing which is the data aspect
+
+626
+00:58:06,280 --> 00:58:12,480
+ of language model 20. So, like we have gone through several aspects right now. So, we
+
+627
+00:58:12,480 --> 00:58:17,800
+ looked at evaluation matrix we looked at the pre-training loss function and we also looked
+
+628
+00:58:17,800 --> 00:58:22,760
+ at the like the organization approach. So, with all of this also there is still like
+
+629
+00:58:22,760 --> 00:58:29,440
+ lot of gaps to close. So, what researchers in mainly in open AI and sort of like anthropic
+
+630
+00:58:29,440 --> 00:58:37,160
+ notice is that as you increase the size of the training data that kind of gives non-linear
+
+631
+00:58:37,160 --> 00:58:43,240
+ improvements in your downstream task. So, this is what we came to know as emergence that
+
+632
+00:58:43,240 --> 00:58:47,200
+ as you are increasing the size of your training data set size and the size of your model the
+
+633
+00:58:47,200 --> 00:58:51,440
+ performance on the downstream task or the evaluation matrix that we showed earlier it would just
+
+634
+00:58:51,440 --> 00:58:58,120
+ go up exponentially right. So, that is where the requirement to understand and improve pre-training
+
+635
+00:58:58,120 --> 00:59:03,520
+ data became very important. So, the original models like the BERT or the GPT2 models were
+
+636
+00:59:03,520 --> 00:59:09,320
+ trained on very clean purpose that we had access to from earlier like corpus that was
+
+637
+00:59:09,320 --> 00:59:14,700
+ built for this kind of purposes before. So, that usually included book corpus or Wikipedia
+
+638
+00:59:14,700 --> 00:59:22,720
+ which usually contain like very clean text. But now as this like after more and more pre-training
+
+639
+00:59:22,720 --> 00:59:27,560
+ data came into the picture that how do you increase say how do you go from a billion
+
+640
+00:59:27,560 --> 00:59:31,920
+ token for pre-training to a trillion token corpus that becomes challenging. So, now you
+
+641
+00:59:31,920 --> 00:59:35,800
+ cannot do like even if you crawl Wikipedia you will not have that much data. So, what
+
+642
+00:59:35,800 --> 00:59:40,800
+ people started doing they started crawling the web as it is right. So, now when you start
+
+643
+00:59:40,800 --> 00:59:45,680
+ crawling the web a lot of noisy data start coming into picture. So, as you can see in
+
+644
+00:59:45,680 --> 00:59:51,800
+ this example like there will be if like this if you are crawling say HTML page. So, you
+
+645
+00:59:51,800 --> 00:59:55,600
+ will get text like this which will have a lot of JavaScript code which will have a lot
+
+646
+00:59:55,600 --> 01:00:00,320
+ of HTML code into the picture and your language model would be trained on that. Then say if
+
+647
+01:00:00,320 --> 01:00:04,800
+ you are looking at PDF it will have certain binary headers that the model will get trained
+
+648
+01:00:04,800 --> 01:00:09,680
+ and trained that. And if you are say having looking at other different domains also say
+
+649
+01:00:09,680 --> 01:00:15,640
+ GitHub Stack Overflow they will start seeing codes. So, as you increase data of course
+
+650
+01:00:15,640 --> 01:00:20,000
+ your scope of learning increase give what which sort of domains you are able to cover
+
+651
+01:00:20,000 --> 01:00:28,120
+ but it also created a problem of unclean data. So, filtering kind of became important and
+
+652
+01:00:28,120 --> 01:00:34,480
+ people started by doing heuristic filtering say if we just filter data based on certain
+
+653
+01:00:34,480 --> 01:00:39,080
+ websites you are else. That is one way to clean things. So, will likely certain websites
+
+654
+01:00:39,080 --> 01:00:42,760
+ which does not give you clean data. So, you started filtering it this way but that also
+
+655
+01:00:42,760 --> 01:00:48,360
+ became prohibitive because after certain scale you will kind of run out of ideas to apply
+
+656
+01:00:48,360 --> 01:00:53,840
+ heuristics and heuristics will always be kind of very strong. So, it will take out a lot
+
+657
+01:00:53,840 --> 01:01:00,000
+ of data. So, at some point you started like not caring about filtering but trying to find
+
+658
+01:01:00,000 --> 01:01:05,960
+ out other approaches as to how to do. And the problem that happened with this that if
+
+659
+01:01:05,960 --> 01:01:11,280
+ you let go of all filter and when you say need to get like 10 trillion token purpose
+
+660
+01:01:11,280 --> 01:01:16,800
+ you included that in the LLM. What will start happening is LLMs will also start generating
+
+661
+01:01:16,800 --> 01:01:21,040
+ uncontrolled generations like this right. So, you will give it some prompt but you will
+
+662
+01:01:21,040 --> 01:01:26,080
+ not know which structure or what kind of output it will give. So, it can look like that way
+
+663
+01:01:26,080 --> 01:01:30,440
+ it can be HTML page it can be anything because that has a finite probability in your language
+
+664
+01:01:30,440 --> 01:01:37,680
+ model. Right and even with the GPT-4 model GPT-3 model that we know now to be so successful
+
+665
+01:01:37,680 --> 01:01:42,520
+ the researchers of OpenAI revealed that the original models were actually not that great
+
+666
+01:01:42,520 --> 01:01:46,520
+ in terms of control. So, for example if you gave a prompt like explain the moon landing
+
+667
+01:01:46,520 --> 01:01:51,000
+ to a six year old it will start generating other questions instead of going to answer.
+
+668
+01:01:51,000 --> 01:01:55,920
+ So as you can see like we had a very strong probabilistic model parametric model for the
+
+669
+01:01:55,920 --> 01:02:02,120
+ distribution of language but we did not know what was like if we sample from it what would
+
+670
+01:02:02,120 --> 01:02:06,840
+ get generated because everything was possible like every other valid generation was possible
+
+671
+01:02:06,840 --> 01:02:12,400
+ from the distribution. Right so that's where this idea of post training came into the picture
+
+672
+01:02:12,400 --> 01:02:17,760
+ because as I said you can go so far with quality filtering and that becomes challenging as
+
+673
+01:02:17,760 --> 01:02:24,000
+ you increase the size of the corpus too much. So, people started looking at not constraining
+
+674
+01:02:24,000 --> 01:02:29,880
+ the corpus for pre training but rather thinking about how we can portray post train or fix
+
+675
+01:02:29,880 --> 01:02:35,000
+ the model itself after it has been pre trained and that is where this concept of alignment
+
+676
+01:02:35,000 --> 01:02:40,800
+ came into picture. So, the first so what alignment tries to do is if you have a raw language
+
+677
+01:02:40,800 --> 01:02:47,040
+ model after training the raw language model on the full pre training corpus you show it
+
+678
+01:02:47,040 --> 01:02:52,040
+ the clean data that you wanted it to generate and that's showing the clean data to the model
+
+679
+01:02:52,040 --> 01:02:56,440
+ is what become the research question key because these are very large language models how do
+
+680
+01:02:56,440 --> 01:03:00,800
+ you show this clean data and what should be the amount of clean data that you show what
+
+681
+01:03:00,800 --> 01:03:05,920
+ should be the approach to training become very challenging right. So, the basic approach
+
+682
+01:03:05,920 --> 01:03:10,520
+ that you can think of and is also still part of this alignment process is you basically
+
+683
+01:03:10,520 --> 01:03:16,440
+ do supervised fine tuning. So, say if you have good answers to questions like explain the
+
+684
+01:03:16,440 --> 01:03:23,160
+ moon landing to a six year old or things that children or like things that user would ask
+
+685
+01:03:23,160 --> 01:03:26,960
+ you give it such a data set of clean samples that would usually be like fifty thousand
+
+686
+01:03:26,960 --> 01:03:31,460
+ or hundred thousand samples and you just do supervised fine tuning of the data set right.
+
+687
+01:03:31,460 --> 01:03:36,280
+ But as you can understand these models have billions of parameters in them and so rich
+
+688
+01:03:36,280 --> 01:03:42,840
+ in knowledge that no matter how much such like how much such corpus you curate it will
+
+689
+01:03:42,840 --> 01:03:47,960
+ not be able to cover all kind of all of this kind of data right all of these kind of domains
+
+690
+01:03:47,960 --> 01:03:53,920
+ within your models knowledge. So, that creates a problem that your supervised fine tuning
+
+691
+01:03:53,920 --> 01:03:58,320
+ might address some problems it will not address all problems and then there is also the problem
+
+692
+01:03:58,320 --> 01:04:03,240
+ that since your models are so over parameterized the model can just remember these data points
+
+693
+01:04:03,240 --> 01:04:08,580
+ right. So, it will not actually align or it will not actually improve its probability
+
+694
+01:04:08,580 --> 01:04:13,640
+ distribution, but it rather remember these samples and would just start to hallucinate
+
+695
+01:04:13,640 --> 01:04:21,480
+ in a desert way that you again have no control over right. So, to solve that what people
+
+696
+01:04:21,480 --> 01:04:28,320
+ did is they both like started looking for solution in the reinforcement learning literature
+
+697
+01:04:28,320 --> 01:04:34,660
+ because what reinforcement learning allows you to do is kind of create samples in like
+
+698
+01:04:34,660 --> 01:04:40,960
+ in in an online process you can always create samples and then somehow process them or grade
+
+699
+01:04:40,960 --> 01:04:45,960
+ them using human evaluators to see which ones to prefer and which ones not to prefer. So,
+
+700
+01:04:45,960 --> 01:04:50,360
+ what this allowed is that you can have two different models or two different generations
+
+701
+01:04:50,360 --> 01:04:55,760
+ from a raw language model you can create multiple examples like A, B, C, D and you can then tell
+
+702
+01:04:55,760 --> 01:05:02,240
+ ask the human to rank these options or which one is the best way to respond to a human
+
+703
+01:05:02,240 --> 01:05:07,960
+ query right. So, this way what you are doing is this so this kind of introduces a exploration
+
+704
+01:05:07,960 --> 01:05:12,800
+ phase which ensures that you are covering the full parameter space or the full knowledge
+
+705
+01:05:12,800 --> 01:05:18,840
+ space of the language model right and based on that you can have you can like get what
+
+706
+01:05:18,840 --> 01:05:22,880
+ is called a preference data. So, for each query you will have multiple generations and
+
+707
+01:05:22,880 --> 01:05:26,480
+ then there would be order between them that generation one was better than generation
+
+708
+01:05:26,480 --> 01:05:31,160
+ two better than generation three and based on that you can create what is called a reward
+
+709
+01:05:31,160 --> 01:05:36,640
+ model. So, this is basically a ranking model or a scoring model which is by look this by
+
+710
+01:05:36,640 --> 01:05:44,840
+ looking at input input query and and the generation would just tell you how good that is so it
+
+711
+01:05:44,840 --> 01:05:49,400
+ will give you a score and then once you have this so you kind of did the first phase of
+
+712
+01:05:49,400 --> 01:05:54,920
+ exploration using this trained reward model you can do another phase of exploration where
+
+713
+01:05:54,920 --> 01:05:59,480
+ you take the reward model and start generating more samples from the language models right
+
+714
+01:05:59,480 --> 01:06:03,300
+ and once you have this generation you will see more and more reward values using the
+
+715
+01:06:03,300 --> 01:06:08,960
+ reward model based on that you can further optimize this language model. So, this kind
+
+716
+01:06:08,960 --> 01:06:14,440
+ of expanded the possibility of how much you can train with the finite amount of data into
+
+717
+01:06:14,440 --> 01:06:19,400
+ a large amount of data by just doing sampling right. So, this kind of covered the ground
+
+718
+01:06:19,400 --> 01:06:23,980
+ of the problems of hallucinations that we had earlier because we do not anymore want
+
+719
+01:06:23,980 --> 01:06:29,160
+ to fine tune on the data directly to just maximize the probability right. So, this is
+
+720
+01:06:29,160 --> 01:06:36,720
+ what was called as RLHF or reinforcement learning human feedback and this is the loss function
+
+721
+01:06:36,720 --> 01:06:41,440
+ that is usually used. So, this is a traditional reinforcement learning loss function where
+
+722
+01:06:41,440 --> 01:06:46,520
+ you have the expectation over some generated samples from your language model and you are
+
+723
+01:06:46,520 --> 01:06:50,480
+ trying to maximize the reward function that you have trained here the reward model and
+
+724
+01:06:50,480 --> 01:06:55,000
+ this is a regularization parameter is that is just saying that when you are doing this
+
+725
+01:06:55,000 --> 01:07:00,760
+ training you should not move too much away from the reference model and just stay close
+
+726
+01:07:00,760 --> 01:07:04,440
+ to that because if you train again based on the reward model too much it can start to
+
+727
+01:07:04,440 --> 01:07:09,600
+ hack the reward model or overfit to the reward model which again would be problematic. So,
+
+728
+01:07:09,600 --> 01:07:15,040
+ this overall function is what is like the traditional mechanism of training using RLHF
+
+729
+01:07:15,040 --> 01:07:22,160
+ and ensured that you are able to move beyond what the SFT was allowing you to do right.
+
+730
+01:07:22,160 --> 01:07:29,000
+ So, another kind of proposal another interesting direction that was developed based on this
+
+731
+01:07:29,000 --> 01:07:34,640
+ RLHF idea is that since the RLHF process was based on this fixed loss function that
+
+732
+01:07:34,640 --> 01:07:39,920
+ we kind of know of and the fixed data set. So, even if you are doing the sampling process
+
+733
+01:07:39,920 --> 01:07:45,440
+ it was found out that this essentially amounts to optimizing a fixed loss function without
+
+734
+01:07:45,440 --> 01:07:51,080
+ doing the sampling. So, you can just do a specific kind of fine tuning which as you can
+
+735
+01:07:51,080 --> 01:07:57,000
+ see it is very different from SFT but it takes into account that what sort of regularization
+
+736
+01:07:57,000 --> 01:08:01,480
+ you are trying to have what sort of reward process like sampling process you are doing
+
+737
+01:08:01,480 --> 01:08:08,240
+ in the RLHF process and it combined that to a single fine tuning process. So, you have
+
+738
+01:08:08,240 --> 01:08:13,160
+ this data set of preferences and you can just optimize this loss function on that preference
+
+739
+01:08:13,160 --> 01:08:19,840
+ data set and that amounts to doing the same thing as the longer RLHF process. So, this
+
+740
+01:08:19,840 --> 01:08:25,360
+ was useful in terms of kind of minimizing the training load and doing it more efficiently.
+
+741
+01:08:25,360 --> 01:08:29,720
+ So, you do not have to do the sampling process but it still does not get a lot of things
+
+742
+01:08:29,720 --> 01:08:35,240
+ perfect. So, there is still so RLHF is still in use. So, there are important things that
+
+743
+01:08:35,240 --> 01:08:39,760
+ you can do in RLHF like you can do credit assignment of intermediate steps in the process
+
+744
+01:08:39,760 --> 01:08:43,840
+ when you are doing reasoning. So, all of these are still being explored but DPO kind of allows
+
+745
+01:08:43,840 --> 01:08:50,240
+ you to do a quick fine tuning once you have a lot of preference data. So, both of these
+
+746
+01:08:50,240 --> 01:08:55,400
+ things have been combined in many follow up papers and just to quickly understand the
+
+747
+01:08:55,400 --> 01:09:00,480
+ loss function what this essentially is doing it is contrasting between the two generations
+
+748
+01:09:00,480 --> 01:09:06,200
+ that you have. So, if your preference data said that for the prompt x or the input x
+
+749
+01:09:06,200 --> 01:09:11,880
+ y w was better than y n what you are essentially doing is that pi theta or the trained model
+
+750
+01:09:11,880 --> 01:09:17,480
+ like the tuned model that you are getting should have a higher probability of y w over
+
+751
+01:09:17,480 --> 01:09:24,360
+ the reference and that gain should be more than the gain in the while like the bad generation.
+
+752
+01:09:24,360 --> 01:09:32,620
+ So, essentially you kind of increase the probability of y w in comparison to y n as it was in the
+
+753
+01:09:32,620 --> 01:09:37,160
+ reference model. So, you are kind of slightly tuning the model to have better probabilities
+
+754
+01:09:37,160 --> 01:09:45,880
+ for the winning solutions. So, that is kind of like all the things that I wanted to discuss.
+
+755
+01:09:45,880 --> 01:09:50,760
+ So, there are a lot of things that we did not discuss here and but are still like interesting
+
+756
+01:09:50,760 --> 01:09:55,400
+ directions to explore. So, there are a lot of system optimizations that have happened
+
+757
+01:09:55,400 --> 01:10:00,160
+ in the like in parallel in the background because of which we are able to do this kind
+
+758
+01:10:00,160 --> 01:10:05,800
+ of training center able to use this kind of models. So, for example, GPT4 or Claude models
+
+759
+01:10:05,800 --> 01:10:10,880
+ are so large in size that you cannot hold them in one GPU or even in four GPUs that
+
+760
+01:10:10,880 --> 01:10:17,360
+ you can have in one system. So, you need thousands of GPUs in a cluster on multiple like multiple
+
+761
+01:10:17,360 --> 01:10:23,120
+ computers to able to be able to host a single instance of say a GPT4 model right. So, there
+
+762
+01:10:23,120 --> 01:10:31,040
+ are a lot of effort went into GPTGP parallelization networking between these nodes to be able to
+
+763
+01:10:31,040 --> 01:10:35,440
+ do these kind of inference where a model is hosted between like a cluster of computers
+
+764
+01:10:35,440 --> 01:10:40,760
+ right. Then there are a lot of improvements made in terms of model parallelization is
+
+765
+01:10:40,760 --> 01:10:46,000
+ if you were to split this model into multiple systems how to do inference like because some
+
+766
+01:10:46,000 --> 01:10:51,320
+ layers are sitting in some of the GPUs and some other layers sitting in some other GPUs.
+
+767
+01:10:51,320 --> 01:10:55,440
+ So, the forward pass becomes different and if you have multiple data points across multiple
+
+768
+01:10:55,440 --> 01:11:03,400
+ nodes that also becomes difficult. So, like to reduce the throughput issues to reduce like
+
+769
+01:11:03,400 --> 01:11:08,960
+ how much communication is done between the nodes a lot of optimizations were required
+
+770
+01:11:08,960 --> 01:11:16,760
+ like for this also right and then we have also seen a lot of effort that has gone towards
+
+771
+01:11:16,760 --> 01:11:23,240
+ lower and mixed precision training and inference because as your model becomes larger and larger
+
+772
+01:11:23,240 --> 01:11:28,760
+ if you want to do say a local hosting or if you want to keep your data private. So, you
+
+773
+01:11:28,760 --> 01:11:33,920
+ might want to host these models in smaller GPUs or smaller systems and they are lower
+
+774
+01:11:33,920 --> 01:11:39,920
+ mixed precision inference because very helpful where instead of operating in the float 32
+
+775
+01:11:39,920 --> 01:11:46,040
+ or 32 bit integer mode you kind of quantize the points down or the parameters down to
+
+776
+01:11:46,040 --> 01:11:50,200
+ something like 4 bit or 8 bit integers right. That way your model size becomes smaller so
+
+777
+01:11:50,200 --> 01:11:56,160
+ you can do inference of a Lama model on a 16 GB single 16 GB GPU also right. So, that
+
+778
+01:11:56,160 --> 01:12:03,040
+ is what it allowed. So, similarly there are other optimizations for attention mechanism.
+
+779
+01:12:03,040 --> 01:12:09,160
+ So, flash attention is like used almost everywhere nowadays. Then there are optimizations then
+
+780
+01:12:09,160 --> 01:12:15,440
+ that came into the libraries also like fighters and TensorFlow and there are other open questions
+
+781
+01:12:15,440 --> 01:12:20,880
+ also. So, lower fine tuning was proposed to allow like smaller to tune this model for
+
+782
+01:12:20,880 --> 01:12:25,760
+ smaller tasks when you don't have much data then there is SLM distillation methods when
+
+783
+01:12:25,760 --> 01:12:31,040
+ you don't want to use the like don't want to give the cost of GPT-4 for a small task
+
+784
+01:12:31,040 --> 01:12:37,300
+ you can distill how to distill that capability of a larger model into a smaller model. All
+
+785
+01:12:37,300 --> 01:12:44,200
+ of these things have been explored and like what you are seeing nowadays in terms of these
+
+786
+01:12:44,200 --> 01:12:51,000
+ usable platforms like GPT-4 cloud is a result of all of these like innovations. So, with
+
+787
+01:12:51,000 --> 01:12:59,440
+ that I will end my talk and thank you. So, if there are any questions I can thank them.
+
+788
+01:12:59,440 --> 01:13:01,440
+ Thank you.
+
+789
+01:13:29,440 --> 01:13:36,440
+.
+
+790
+01:13:59,440 --> 01:14:09,440
+ Hi. So, for the questions should I access the chat from someone or.
+
+791
+01:14:09,440 --> 01:14:20,440
+ I think you will share the screen sir. Sorry. Okay. I will take it. I will stop sharing.
+
+792
+01:14:20,440 --> 01:14:30,440
+ Thank you.
+

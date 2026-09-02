@@ -1,0 +1,1996 @@
+1
+00:00:00,000 --> 00:00:12,160
+ So, welcome back. So, if you are having any questions please you know keep them. So, we
+
+2
+00:00:12,160 --> 00:00:16,760
+ are already noting down. So, towards the end we will have a long question answering session.
+
+3
+00:00:16,760 --> 00:00:24,200
+ So, at that time we will discuss. Let us go back to composition of transformation. So,
+
+4
+00:00:24,200 --> 00:00:34,080
+ the discussion that we had was that basically how you can design the architecture of neural
+
+5
+00:00:34,080 --> 00:00:44,000
+ network ok. For you to understand this you have to understand how a neural network operate
+
+6
+00:00:44,000 --> 00:00:58,640
+ ok. So, you see this is where sort of the term learning representation or representation
+
+7
+00:00:58,640 --> 00:01:03,960
+ learning comes into picture. So, this is another term you would have heard which is called
+
+8
+00:01:03,960 --> 00:01:23,420
+ representation learning right. So, what happens is each neuron in the neural network can be
+
+9
+00:01:23,420 --> 00:01:36,120
+ thought of as computing a useful I so, representation slash here I would use more the word feature
+
+10
+00:01:36,120 --> 00:01:47,760
+ ok representation or features of the input ok. In particular every layer is computing
+
+11
+00:01:47,760 --> 00:01:58,480
+ a useful representation of the input. So, if let us let us go into one example to make
+
+12
+00:01:58,480 --> 00:02:08,080
+ it very clear ok. So, you see these green data points are some data points in a x y space
+
+13
+00:02:08,080 --> 00:02:19,300
+ ok and blue data points are some other data points ok. Now, you see you can do this kind
+
+14
+00:02:19,300 --> 00:02:27,120
+ of a feature transformation. What is the feature transformation that we are doing? We are computing
+
+15
+00:02:27,120 --> 00:02:38,720
+ for every data point from its x and y value this particular two numbers. First is R what
+
+16
+00:02:38,720 --> 00:02:45,320
+ is R as you all know from your geometry knowledge R is nothing, but the radial distance of this
+
+17
+00:02:45,320 --> 00:02:50,600
+ particular point from the origin right this distance is R ok.
+
+18
+00:02:50,600 --> 00:02:56,120
+ So, this is the first thing that you compute and the other thing that you compute is this
+
+19
+00:02:56,120 --> 00:03:05,800
+ theta ok which is let me try to do it like this. So, for example, for this point this
+
+20
+00:03:05,800 --> 00:03:12,600
+ is going to be theta right this is going to be the theta and this you already know from
+
+21
+00:03:12,600 --> 00:03:23,560
+ your geometry. Now, consider this particular feature space where you are so, so R you can
+
+22
+00:03:23,560 --> 00:03:33,080
+ say is one useful feature it is the radius it is one useful feature of this particular
+
+23
+00:03:33,080 --> 00:03:41,840
+ data point theta is another useful feature which is the angle of this data point ok.
+
+24
+00:03:41,840 --> 00:03:53,080
+ Now you you now construct another space ok this space you represent each data point x
+
+25
+00:03:53,080 --> 00:04:07,800
+ axis value using R and its y axis value using theta ok. So, how will this particular distribution
+
+26
+00:04:07,800 --> 00:04:19,320
+ of points look like it will look like this because you see x axis is R. So, now now this
+
+27
+00:04:19,320 --> 00:04:26,360
+ particular distance is R right this particular distance is R ok. So, for the green point
+
+28
+00:04:26,360 --> 00:04:36,480
+ R will be much smaller than the blue point here and y axis value is theta ok y axis value
+
+29
+00:04:36,480 --> 00:04:46,120
+ is theta. So, each point has some theta ok ok. So, now now two three things you should
+
+30
+00:04:46,120 --> 00:04:54,240
+ observe first is you can have simply this R as a representation for a particular point
+
+31
+00:04:54,240 --> 00:05:02,960
+ ok. It is a useful feature in this particular problem see you your task is to segregate
+
+32
+00:05:02,960 --> 00:05:13,400
+ the green point from the blue point ok this red line here is the separator line ok. So,
+
+33
+00:05:13,400 --> 00:05:21,640
+ so this this red line is able to separate. So, if you just have a particular radial distance
+
+34
+00:05:21,640 --> 00:05:30,060
+ you are able to separate the green point from the blue point. So, R is a useful feature,
+
+35
+00:05:30,060 --> 00:05:35,600
+ but R is not a complete representation of the point, but it is a useful representation
+
+36
+00:05:35,600 --> 00:05:43,640
+ ok. When you take R and theta together they form a complete representation of the point
+
+37
+00:05:43,640 --> 00:05:52,600
+ because you can compute the x y back from R and theta ok.
+
+38
+00:05:52,600 --> 00:06:02,460
+ But for the purpose of this task for the purpose of segregating blue and green only the R is
+
+39
+00:06:02,460 --> 00:06:07,760
+ sufficient you can understand that right even if you do not have theta. So, if I have one
+
+40
+00:06:07,760 --> 00:06:17,520
+ neuron which is computing the R and then there is another neuron which is able to put a threshold
+
+41
+00:06:17,520 --> 00:06:29,260
+ on this R ok. Then that is good enough for this particular computation ok. So, this is
+
+42
+00:06:29,260 --> 00:06:43,320
+ the key idea. So, here R is a useful representation ok. So, let me just erase this. So, this is
+
+43
+00:06:43,320 --> 00:06:57,280
+ a useful representation ok may not be complete you can also have a complete representation
+
+44
+00:06:57,280 --> 00:07:09,600
+ which is given by R from a theta ok. The representation is useful because the end task becomes much
+
+45
+00:07:09,600 --> 00:07:19,640
+ simpler in this R theta space ok than it was in the original space ok. So, this is how
+
+46
+00:07:19,640 --> 00:07:29,400
+ the neural networks operate. Every layer of a neural network computes a useful representation
+
+47
+00:07:29,400 --> 00:07:41,240
+ of the input feature ok and then it the next layer uses this particular useful representation
+
+48
+00:07:41,240 --> 00:07:48,880
+ of the input feature to further compute some other useful feature ok.
+
+49
+00:07:48,880 --> 00:07:56,320
+ This is one thing there is another term that you will hear a lot in this context is that
+
+50
+00:07:56,320 --> 00:08:02,200
+ these are distributed representation. So, what does it mean by saying that these are
+
+51
+00:08:02,200 --> 00:08:10,680
+ distributed representation? The key idea here is that you see for each data point you can
+
+52
+00:08:10,680 --> 00:08:18,200
+ compute its useful feature which is R independently of all other data points and you can also
+
+53
+00:08:18,200 --> 00:08:24,280
+ do this in parallel ok. So, that is why this is called a distributed representation which
+
+54
+00:08:24,280 --> 00:08:31,760
+ means that the representation of one particular data point does not depend on the representation
+
+55
+00:08:31,760 --> 00:08:40,640
+ of the other data points. It only depends on the particular neural network weight or weights
+
+56
+00:08:40,640 --> 00:08:46,440
+ of that particular layer ok. So, this is the idea behind the distributed representation
+
+57
+00:08:46,440 --> 00:08:54,720
+ and neural networks operate by learning layers of increasingly useful distributed representation
+
+58
+00:08:54,720 --> 00:09:05,080
+ ok. So, representations are formed hierarchically in each layer progressively becoming more
+
+59
+00:09:05,080 --> 00:09:13,960
+ useful for the end task ok. That is why neural networks are also called feature encoders
+
+60
+00:09:13,960 --> 00:09:22,840
+ ok. Now, here notice another thing up till now whatever representation I have showed
+
+61
+00:09:22,840 --> 00:09:29,640
+ either this R or this other representation that we showed here using this H 1 and H
+
+62
+00:09:29,640 --> 00:09:39,920
+ 2 ok. Both these representations I have constructed manually ok, but now in neural networks what
+
+63
+00:09:39,920 --> 00:09:47,880
+ happens is you need not construct the representation manually you can learn the representation ok.
+
+64
+00:09:47,880 --> 00:09:54,480
+ So, that is why you sometimes will see that this neural network models are also called
+
+65
+00:09:54,480 --> 00:10:05,840
+ automatic feature learning model or representation learning model ok ok. So, here is another example
+
+66
+00:10:05,840 --> 00:10:12,320
+ to drive home the point that basically what you can think is you can think of a neural
+
+67
+00:10:12,320 --> 00:10:20,520
+ network as a composition of the feature transformation. So, what is happening here? So, let us say
+
+68
+00:10:20,520 --> 00:10:29,240
+ you have for a particular patient the age, gender and the stage of their cancer ok and
+
+69
+00:10:29,240 --> 00:10:34,840
+ let us say what you want to compute is the probability of being alive survivability
+
+70
+00:10:34,840 --> 00:10:43,720
+ or something like that ok. So, what you can see is basically that there
+
+71
+00:10:43,720 --> 00:10:51,680
+ are let us say two types of feature encoders. So, this is the whole neural network ok. So,
+
+72
+00:10:51,680 --> 00:11:01,640
+ the first part the top left part is this particular hidden representation what it is doing? It
+
+73
+00:11:01,640 --> 00:11:09,300
+ is giving high weightage to age and high weightage to the stage of cancer and it is predicting
+
+74
+00:11:09,300 --> 00:11:18,720
+ something ok. The second one is giving more weightage to gender and maybe age and stage
+
+75
+00:11:18,720 --> 00:11:26,400
+ of cancer. So, you can say that roughly the first neuron is capturing information which
+
+76
+00:11:26,400 --> 00:11:32,880
+ is the interaction between age and stage of cancer. So, maybe if the age is high and the
+
+77
+00:11:32,880 --> 00:11:38,560
+ stage is also high the probability of being alive is low or something like that ok. So,
+
+78
+00:11:38,560 --> 00:11:43,520
+ this is one way to think about it. On the other hand the there is also a gender
+
+79
+00:11:43,520 --> 00:11:50,560
+ component. So, maybe one gender has a higher probability of surviving cancer than the second
+
+80
+00:11:50,560 --> 00:12:01,280
+ gender. So, in that case this particular neuron is capturing that particular feature ok.
+
+81
+00:12:01,280 --> 00:12:08,920
+ And now the final layer is basically taking the output of these two neuron and trying
+
+82
+00:12:08,920 --> 00:12:22,200
+ to construct a final layer which is a linear layer which is a basically sort of a linear
+
+83
+00:12:22,200 --> 00:12:28,520
+ model. It is not exactly a linear model it is a linear separator, but the model is non-linear
+
+84
+00:12:28,520 --> 00:12:37,160
+ of the you know the final output ok. So, this is this is the composition of transformation
+
+85
+00:12:37,160 --> 00:12:42,280
+ view. So, this is you can think of this as this is one particular transformation, this
+
+86
+00:12:42,280 --> 00:12:47,480
+ is the second transformation and then this is the composition of transformation and
+
+87
+00:12:47,480 --> 00:13:00,640
+ transformation two ok. Now, what you can see is that. So, there is one result which says
+
+88
+00:13:00,640 --> 00:13:11,000
+ that a neural network with simply one hidden layer is a uniform function approximator.
+
+89
+00:13:11,000 --> 00:13:17,080
+ What does this mean? You take any function F there are certain conditions. So, the function
+
+90
+00:13:17,080 --> 00:13:26,600
+ has to be smooth function ok, its derivative has to be bounded etcetera ok. If that is
+
+91
+00:13:26,600 --> 00:13:34,920
+ the case then this particular function. So, the function will take different values for
+
+92
+00:13:34,920 --> 00:13:41,720
+ different input point A and let us say you have learned a one layer one two layer neural
+
+93
+00:13:41,720 --> 00:13:48,320
+ network basically a neural network with one hidden layer ok. Let us call that F dashed
+
+94
+00:13:48,320 --> 00:13:55,520
+ of A ok. So, the difference between these two or the distance. So, this is the norm
+
+95
+00:13:55,520 --> 00:14:03,760
+ function right. So, the distance between these two for different x values will be less than
+
+96
+00:14:03,760 --> 00:14:11,560
+ or equal to some epsilon for all x ok. So, this is what it means ok. So, for all input
+
+97
+00:14:11,560 --> 00:14:18,880
+ x the difference between the output of the neural network and the actual function F will
+
+98
+00:14:18,880 --> 00:14:27,520
+ be very low for all x ok. So, it is possible to construct for every F that kind every F
+
+99
+00:14:27,520 --> 00:14:33,800
+ satisfying certain properties that kind of a neural network ok.
+
+100
+00:14:33,800 --> 00:14:41,640
+ Now this is a very shallow neural network ok. So, if you construct a neural network with
+
+101
+00:14:41,640 --> 00:14:50,480
+ only one hidden layer this will be called a shallow neural network ok. And you can very
+
+102
+00:14:50,480 --> 00:14:55,760
+ easily learn using existing algorithm you can very easily learn this kind of a neural
+
+103
+00:14:55,760 --> 00:15:05,560
+ network. The problem is that not all functions can be efficiently represented with a single
+
+104
+00:15:05,560 --> 00:15:12,560
+ hidden layer. So, what do we mean by this? We mean to say that there are certain functions
+
+105
+00:15:12,560 --> 00:15:19,200
+ for which if you have to construct which can be approximated by a neural network of this
+
+106
+00:15:19,200 --> 00:15:28,120
+ form. Let us say this is the neural network ok. So, this is basically computing F of x
+
+107
+00:15:28,120 --> 00:15:39,280
+ this is just x ok. So, you can compute this F dash of x can compute F of x for a function.
+
+108
+00:15:39,280 --> 00:15:50,720
+ But the number of the number of let us say hidden unit that you will require here will
+
+109
+00:15:50,720 --> 00:16:01,400
+ be exponentially large or will be very large ok. So, it is a good. So, which means what
+
+110
+00:16:01,400 --> 00:16:06,360
+ does that mean? That means that since every layer is every neuron is connected to every
+
+111
+00:16:06,360 --> 00:16:10,960
+ neuron you will need to have weights here and you will need to have weights here. So, the
+
+112
+00:16:10,960 --> 00:16:17,400
+ number of weights will also be very very large ok. And as you know if the number of so weights
+
+113
+00:16:17,400 --> 00:16:22,560
+ are parameters of the neural network, if the number of weights is very very large the
+
+114
+00:16:22,560 --> 00:16:28,320
+ number of data points and the amount of computation that is needed to train this neural network
+
+115
+00:16:28,320 --> 00:16:37,720
+ will also be very very large ok. So, this is the problem with shallow neural network ok.
+
+116
+00:16:37,720 --> 00:16:46,560
+ The solution is to have deeper representation with which is the composition that we talked
+
+117
+00:16:46,560 --> 00:16:52,800
+ about that you build representations in one layer then you compose those representations
+
+118
+00:16:52,800 --> 00:17:01,160
+ to build representation in another layer ok. Let me just show with an example what I mean
+
+119
+00:17:01,160 --> 00:17:11,400
+ ok. So, suppose you have the input as an image ok. If you directly try to build let
+
+120
+00:17:11,400 --> 00:17:19,920
+ us say a face recognition or a face detector event neural network let us say ok. You it
+
+121
+00:17:19,920 --> 00:17:26,280
+ may not be you may need it may be possible ok with just one hidden layer, but the number
+
+122
+00:17:26,280 --> 00:17:35,160
+ of neurons. So, here you can see that each pixel is an input and also like in. So, this
+
+123
+00:17:35,160 --> 00:17:41,640
+ is the layer 1 the first hidden layer. So, this is layer 1 ok the first hidden layer.
+
+124
+00:17:41,640 --> 00:17:47,240
+ Here also each pixel corresponds to one output maybe there are certain number of channels
+
+125
+00:17:47,240 --> 00:17:51,920
+ which are being showed here we will come to that when we discuss convolutional neural
+
+126
+00:17:51,920 --> 00:18:00,200
+ network, but essentially you are saying that the number of outputs is roughly of the same
+
+127
+00:18:00,200 --> 00:18:08,320
+ order as the number of inputs ok, but if you try to achieve this face detection in one layer
+
+128
+00:18:08,320 --> 00:18:13,840
+ maybe it is possible to achieve that, but the number of output neurons that you will
+
+129
+00:18:13,840 --> 00:18:22,600
+ need in this layer will be very very large ok. But here you see it is possible to achieve
+
+130
+00:18:22,600 --> 00:18:30,080
+ edge detection using one layer of transformation. So, using one neuron you can achieve this
+
+131
+00:18:30,080 --> 00:18:37,720
+ edge detection here ok. Then taking the edge detector output as the input in one layer
+
+132
+00:18:37,720 --> 00:18:44,920
+ you can maybe say object path detector maybe corner detector or something like a like a
+
+133
+00:18:44,920 --> 00:18:51,960
+ circle detector or small polygon edge detector something like that ok. This kind of things
+
+134
+00:18:51,960 --> 00:19:00,400
+ you can construct ok and then maybe you can compose those to finally construct a face
+
+135
+00:19:00,400 --> 00:19:06,920
+ detector which is maybe a composition of some polygon some circle some triangle and so on
+
+136
+00:19:06,920 --> 00:19:12,640
+ and so forth ok. So, this is the this is what I mean by saying
+
+137
+00:19:12,640 --> 00:19:24,840
+ that there is merit in having a deep neural network even though you know theoretically
+
+138
+00:19:24,840 --> 00:19:31,400
+ it may be possible to achieve this using a single layer ok.
+
+139
+00:19:31,400 --> 00:19:42,040
+ Now, yeah so then some people ask so the people ask the question what is like when do we call
+
+140
+00:19:42,040 --> 00:19:46,840
+ a neural network deep. So, like I said deep learning is nothing but learning with neural
+
+141
+00:19:46,840 --> 00:19:51,600
+ network ok, but it is learning with deep neural network. So, then the question is how deep
+
+142
+00:19:51,600 --> 00:20:00,320
+ is deep ok and so I am just giving a ballpark number here. So, this is not set in stone
+
+143
+00:20:00,320 --> 00:20:08,440
+ or anything ok, but maybe three four layer is not so deep ok. So, if you use three or
+
+144
+00:20:08,440 --> 00:20:16,240
+ maybe even four layers then it is a shallow neural network after that it becomes a deep
+
+145
+00:20:16,240 --> 00:20:22,680
+ neural network. Now, then the question is why do we need to make this segregation between
+
+146
+00:20:22,680 --> 00:20:32,120
+ a deep neural network and shallow neural network ok and the reason is these kind of practical
+
+147
+00:20:32,120 --> 00:20:38,960
+ problems that you encounter when you try to train a deep neural network, but these problems
+
+148
+00:20:38,960 --> 00:20:44,980
+ are not so much encountered when you try to train a shallow neural network.
+
+149
+00:20:44,980 --> 00:20:50,880
+ So, what is the what is the problem? First problem is so all neural networks you need
+
+150
+00:20:50,880 --> 00:20:56,040
+ to use back propagation algorithm that is not a that is common between deep and shallow
+
+151
+00:20:56,040 --> 00:21:04,240
+ neural network. For designing deep neural network you need a modular approach. So, what
+
+152
+00:21:04,240 --> 00:21:12,480
+ I just showed here? So, maybe you have to have an idea of what kind of representation
+
+153
+00:21:12,480 --> 00:21:18,160
+ you are trying to achieve in each layer. So, like first layer is A j, second layer is object
+
+154
+00:21:18,160 --> 00:21:25,840
+ part maybe not each layer, but you know for many layers you need to have an idea of what
+
+155
+00:21:25,840 --> 00:21:30,560
+ kind of representation you are trying to achieve. This is the first thing.
+
+156
+00:21:30,560 --> 00:21:36,240
+ The second more important problem is that of vanishing gradients. So, as the number
+
+157
+00:21:36,240 --> 00:21:45,200
+ of layers increase what happens is when you try to back propagate the error to learn the
+
+158
+00:21:45,200 --> 00:21:55,240
+ way we will see the exact method in a minute. The gradient starts becoming very very low.
+
+159
+00:21:55,240 --> 00:22:01,820
+ What happens is that that causes training to be very very slow or sometimes it just stops
+
+160
+00:22:01,820 --> 00:22:08,000
+ training. So, that is the other problem that you need specialized training method for deep
+
+161
+00:22:08,000 --> 00:22:13,440
+ neural network in order to tackle the vanishing gradient problem which you do not need for
+
+162
+00:22:13,440 --> 00:22:19,960
+ the shallow neural network. So, these are the main reasons why this deep neural network
+
+163
+00:22:19,960 --> 00:22:27,040
+ is basically thought of as from a practical point of view as somewhat different than the
+
+164
+00:22:27,040 --> 00:22:35,000
+ shallow neural network. And yeah, so this is like the key point which is that it has
+
+165
+00:22:35,000 --> 00:22:40,600
+ been shown again and again in multiple different applications that this hierarchical buildup
+
+166
+00:22:40,600 --> 00:22:48,440
+ of useful features in a deep manner is much more helpful than if you try to fit a shallow
+
+167
+00:22:48,440 --> 00:22:58,520
+ neural network. So, we will come to this training of deep neural networks in a minute.
+
+168
+00:22:58,520 --> 00:23:06,720
+ Now let us discuss how we train a neural network. So, how do we train a neural network? So,
+
+169
+00:23:06,720 --> 00:23:17,880
+ this is the neural network. So, broadly these are the steps. What are the steps? You randomly
+
+170
+00:23:17,880 --> 00:23:24,360
+ initialize. So, when you have a neural network, so first at this point in time you know what
+
+171
+00:23:24,360 --> 00:23:30,060
+ is the architecture of the neural network which means you know how many layers are there,
+
+172
+00:23:30,060 --> 00:23:36,320
+ you know how many neurons are there in each layer and mostly in this particular lecture
+
+173
+00:23:36,320 --> 00:23:41,600
+ we are talking about fully connected layer. Of course, you can also not have fully connected
+
+174
+00:23:41,600 --> 00:23:48,480
+ layers, it will still work. But for simplicity of understanding today let us discuss only
+
+175
+00:23:48,480 --> 00:23:53,920
+ fully connected layers. So, that means you also know which neuron is connected to which
+
+176
+00:23:53,920 --> 00:24:01,880
+ neuron. So, everything is fixed now. So, if the architecture of the neural network
+
+177
+00:24:01,880 --> 00:24:09,880
+ is fixed as you know the weight matrices which is W kj and W ji in this particular case these
+
+178
+00:24:09,880 --> 00:24:20,640
+ are also fixed as I as we discussed earlier. So, what you do is you initialize these weight
+
+179
+00:24:20,640 --> 00:24:31,960
+ matrices with random value at the time of training. Then using this random weight you
+
+180
+00:24:31,960 --> 00:24:39,520
+ feed the input x. So, first of all you have a training dataset D. What is this training
+
+181
+00:24:39,520 --> 00:24:45,960
+ dataset going to be like? So, this training dataset is going to be like x i comma y i
+
+182
+00:24:45,960 --> 00:24:55,160
+ right input is x i, your input is x i and your output is y i and now you have i is equal
+
+183
+00:24:55,160 --> 00:25:02,880
+ to 1 to capital N. So, you have capital N many training data points which we discussed in
+
+184
+00:25:02,880 --> 00:25:07,160
+ the beginning. So, maybe you have 1 million training data points it is very common to
+
+185
+00:25:07,160 --> 00:25:15,780
+ have 1 million training data points today. So, for each input now you feed the input
+
+186
+00:25:15,780 --> 00:25:22,880
+ into the neural network and then you do the forward propagation calculation. The forward
+
+187
+00:25:22,880 --> 00:25:29,440
+ propagation calculation we have already seen how to do. So, first you come from layer 1
+
+188
+00:25:29,440 --> 00:25:34,280
+ you compute layer 2 from that you compute layer 3 and so on and so forth. So, this is
+
+189
+00:25:34,280 --> 00:25:40,040
+ the forward propagation calculation and then finally, you compute the predicted output
+
+190
+00:25:40,040 --> 00:25:46,680
+ ok. After you compute the predicted output let us call the predicted output something
+
+191
+00:25:46,680 --> 00:25:54,520
+ like y i hat and you have the true output also in the training data which is y i. So,
+
+192
+00:25:54,520 --> 00:26:02,560
+ now you compute you compare the predicted output with true output and you compute the
+
+193
+00:26:02,560 --> 00:26:11,240
+ error. So, depending on what the output is a different errors can be computed and then
+
+194
+00:26:11,240 --> 00:26:18,960
+ so, these errors are sometimes also called loss. So, there is a loss function which basically
+
+195
+00:26:18,960 --> 00:26:25,520
+ depends on of course, the parameters of the neural network let us call the parameter something
+
+196
+00:26:25,520 --> 00:26:35,920
+ like theta. So, theta here just for simplicity is w k j matrix and w j i matrix right the
+
+197
+00:26:35,920 --> 00:26:51,280
+ two matrices ok. And now this theta and also it depends on the input x i and the true level
+
+198
+00:26:51,280 --> 00:26:58,520
+ y i ok. And another way of thinking about it is suppose your neural network is f. So,
+
+199
+00:26:58,520 --> 00:27:03,960
+ your neural network is of course, parameterized by theta ok. So, suppose your neural network
+
+200
+00:27:03,960 --> 00:27:14,320
+ is outputting y hat i which is is equal to f of x i then you can also say this is a loss
+
+201
+00:27:14,320 --> 00:27:27,080
+ between f theta of x i which is y hat and y i ok. So, you compare this y hat which is
+
+202
+00:27:27,080 --> 00:27:36,000
+ f theta of x i with y i ok. So, this is how you compute the loss. Now you compute the
+
+203
+00:27:36,000 --> 00:27:44,920
+ total loss which is summation over i is equal to 1 to capital N l of x i and y i let us
+
+204
+00:27:44,920 --> 00:27:57,280
+ say and also theta of course ok. And then you minimize this total loss by adjusting the
+
+205
+00:27:57,280 --> 00:28:03,440
+ parameter. So, what you do you adjust the parameter theta such that this total loss
+
+206
+00:28:03,440 --> 00:28:10,160
+ is minimized. So, you minimize this total loss with respect to theta. So, that is the
+
+207
+00:28:10,160 --> 00:28:17,520
+ training problem of neural network ok. So, that is the overall scheme. Now how is this
+
+208
+00:28:17,520 --> 00:28:26,880
+ achieved? Of course, you have a neural network like this. So, algorithmically you put in
+
+209
+00:28:26,880 --> 00:28:36,600
+ the training inputs get the output ok. So, then you compare the output to the correct
+
+210
+00:28:36,600 --> 00:28:44,640
+ answers to look at the loss function j. So, this is this is. So, we are calling the loss
+
+211
+00:28:44,640 --> 00:28:53,040
+ function j here ok. We are calling the loss function j ok and then we adjust the weights
+
+212
+00:28:53,040 --> 00:28:58,840
+ and repeat ok. So, let us let us see how this goes on ok.
+
+213
+00:28:58,840 --> 00:29:09,200
+ Now before we do this this procedure is called a gradient descent procedure ok. So, now what
+
+214
+00:29:09,200 --> 00:29:17,640
+ is this gradient descent procedure? Let us see ok. So, the first step is clear I am going
+
+215
+00:29:17,640 --> 00:29:25,680
+ to quickly go over this pass input calculate each layer get output which is y hat. Evaluate
+
+216
+00:29:25,680 --> 00:29:37,360
+ j of y i y hat which is the loss function ok. So, these steps are pretty clear. Now the
+
+217
+00:29:37,360 --> 00:29:44,520
+ this step is calculate gradient of the loss function with respect to the parameter ok.
+
+218
+00:29:44,520 --> 00:29:54,220
+ So, what is the loss function? So, let me see. So, what is the loss function? So, remember
+
+219
+00:29:54,220 --> 00:30:03,240
+ we can think of neural network as this function approximator which is f from x to y. So, neural
+
+220
+00:30:03,240 --> 00:30:15,320
+ network is a mapping from x to y ok. f is a complex computation involving many weights
+
+221
+00:30:15,320 --> 00:30:25,920
+ w ok. For a given structure the weights define the function ok. So, like I said f of theta
+
+222
+00:30:25,920 --> 00:30:40,800
+ x is equal to y hat right. Now when we say j of f of x basically this j becomes a function
+
+223
+00:30:40,800 --> 00:30:49,040
+ of theta because you see both x and y are known ok. Only thing that is not known is
+
+224
+00:30:49,040 --> 00:30:58,800
+ theta which we have to minimize with respect to x ok. So, how do we do this gradient descent?
+
+225
+00:30:58,800 --> 00:31:08,120
+ We do the following ok. We compute the partial derivative of this function j ok. So, j here
+
+226
+00:31:08,120 --> 00:31:22,840
+ is the total loss function. Remember j is earlier we were writing as f of xi comma yi,
+
+227
+00:31:22,840 --> 00:31:31,120
+ but also actually your j of theta is summation over i is equal to 1 to capital N this thing
+
+228
+00:31:31,120 --> 00:31:43,120
+ ok. So, it is this total loss. So, this particular j is the total loss over all xi's and yi's
+
+229
+00:31:43,120 --> 00:31:49,440
+ ok. xi's and yi's are data point ok. So, it is the total loss over all xi's and yi's.
+
+230
+00:31:49,440 --> 00:31:56,800
+ Of course, theta's consist of all the w's. So, may be w k j etcetera etcetera. So, there
+
+231
+00:31:56,800 --> 00:32:08,680
+ are many w's ok. Now you compute this partial derivative of j with respect to every w k
+
+232
+00:32:08,680 --> 00:32:15,240
+ ok, every parameter k ok. So, how many partial derivatives are going to be there? As many
+
+233
+00:32:15,240 --> 00:32:20,720
+ as there are parameters ok. So, as many as there are parameters or weights in the neural
+
+234
+00:32:20,720 --> 00:32:27,440
+ network you are going to compute that many partial derivative ok. So, if we and this
+
+235
+00:32:27,440 --> 00:32:33,680
+ is going to be a very complex structure ok. So, there may be multiple layers, each layer
+
+236
+00:32:33,680 --> 00:32:40,560
+ may have a different size weight matrix ok. So, all these need to be kept track of by
+
+237
+00:32:40,560 --> 00:32:47,680
+ the software which is implementing this back propagation algorithm ok, but suppose you
+
+238
+00:32:47,680 --> 00:32:59,100
+ are able to compute this particular gradient which is this del of j comma w k ok ok. So,
+
+239
+00:32:59,100 --> 00:33:05,520
+ I will come to the backward pass in a minute, but suppose you are able to do that what happens
+
+240
+00:33:05,520 --> 00:33:14,240
+ to the updation step. So, you do this particular update which is the gradient descent update
+
+241
+00:33:14,240 --> 00:33:22,360
+ which is that every parameter. So, here you see the parameter is being denoted by w ok.
+
+242
+00:33:22,360 --> 00:33:33,080
+ The w t is basically the parameter in time step t and w t plus 1 is the parameter in
+
+243
+00:33:33,080 --> 00:33:40,560
+ time step t plus 1 ok. So, initially you random. So, initially what you have? You have w 0
+
+244
+00:33:40,560 --> 00:33:50,440
+ ok. w 0 you have initialized randomly ok. From w 0 you compute w 1 through this particular
+
+245
+00:33:50,440 --> 00:33:56,920
+ equation. What is the equation? The equation is the gradient descent step which is that
+
+246
+00:33:56,920 --> 00:34:08,680
+ w t plus 1 is w t minus eta t times this partial derivative with respect of the loss with respect
+
+247
+00:34:08,680 --> 00:34:16,280
+ to that parameter w that we have computed ok. So, this is the step. This step we will
+
+248
+00:34:16,280 --> 00:34:24,000
+ run iteratively until these w's are no longer changing which also happens when this particular
+
+249
+00:34:24,000 --> 00:34:31,480
+ gradient becomes 0 ok. These are these are well known results from optimization theory
+
+250
+00:34:31,480 --> 00:34:39,840
+ we I am not going to discuss it here ok, but this is the case ok. So, sounds good. So,
+
+251
+00:34:39,840 --> 00:34:45,280
+ if you have the partial derivative which is also called the gradient with respect to each
+
+252
+00:34:45,280 --> 00:34:54,840
+ parameter then you can do this step ok. Question is how do you your neural network is a complex
+
+253
+00:34:54,840 --> 00:35:05,880
+ function? So, here is a complex neural network structure right. So, this particular so in
+
+254
+00:35:05,880 --> 00:35:19,080
+ the final layer you are computing this yeah. So, this j you are computing here in the final
+
+255
+00:35:19,080 --> 00:35:29,600
+ layer right. So, the question is how do you compute this particular gradient for each
+
+256
+00:35:29,600 --> 00:35:38,280
+ w k ok that is the question ok and the answer is that just like you did layer by layer forward
+
+257
+00:35:38,280 --> 00:35:45,400
+ propagation you have to do a layer by layer backward propagation ok.
+
+258
+00:35:45,400 --> 00:35:58,640
+ So, first here you have this j of y i comma y i hat ok. From that you compute the derivative
+
+259
+00:35:58,640 --> 00:36:07,560
+ of j with respect to the third layer parameter. So, here w t 3 is denoting all the third
+
+260
+00:36:07,560 --> 00:36:16,040
+ layer parameters ok. Once you have these gradients then you can compute the gradients of the
+
+261
+00:36:16,040 --> 00:36:23,920
+ second layer parameter ok and then you can compute the gradient of the first layer parameter
+
+262
+00:36:23,920 --> 00:36:35,560
+ ok. This is how you do the backward path computation. So, this is the formula for the whole thing
+
+263
+00:36:35,560 --> 00:36:44,720
+ ok. Let me first try to derive the formula in a simpler network ok and then we will see
+
+264
+00:36:44,720 --> 00:36:51,880
+ how this goes ok. So, consider this very very simple. So, I have changed the notation just
+
+265
+00:36:51,880 --> 00:36:55,880
+ so that the calculation because this is a complex calculation. So, that the calculation
+
+266
+00:36:55,880 --> 00:37:03,720
+ is very simple. So, what is the calculation? You have x as the input. So, this is x ok
+
+267
+00:37:03,720 --> 00:37:13,560
+ x is the input. It is a two layer neural network first layer produces this output z ok. Not
+
+268
+00:37:13,560 --> 00:37:20,480
+ the first layer does not produce the output. This is the intermediate activation you can
+
+269
+00:37:20,480 --> 00:37:29,640
+ say ok. So, this z is the input to the activation function f is the activation function and
+
+270
+00:37:29,640 --> 00:37:35,800
+ a is the output of the activation function. So, this layer produces output a. This layer
+
+271
+00:37:35,800 --> 00:37:46,560
+ is x, x goes through this produces z, z goes through the activation function produces a.
+
+272
+00:37:46,560 --> 00:37:56,320
+ Then the final layer is s which is again a linear function of the output produced by
+
+273
+00:37:56,320 --> 00:38:05,880
+ this a ok. So, this is the neural network architecture that we want to see and what
+
+274
+00:38:05,880 --> 00:38:18,760
+ is our ask? Our ask is that we want to compute the derivative of s with respect to both u
+
+275
+00:38:18,760 --> 00:38:31,280
+ and w. So, our parameters are u and w and we want to compute derivative of s with respect
+
+276
+00:38:31,280 --> 00:38:38,000
+ to u ok. So, first derivative of s with respect to u is very simple to compute. What is it
+
+277
+00:38:38,000 --> 00:38:44,800
+ going to be? It is simply going to be it is simply going to be this a whatever is the
+
+278
+00:38:44,800 --> 00:38:52,640
+ activation output here. So, if you have in this layer if you have this a 1 and a 2. So,
+
+279
+00:38:52,640 --> 00:39:09,400
+ what is so let us say your s is going to be nothing but u i u 1 a 1 plus u 2 a 2 right
+
+280
+00:39:09,400 --> 00:39:18,200
+ here ok. So, what is the derivative of s with respect to let us say u 1 it is simply going
+
+281
+00:39:18,200 --> 00:39:23,720
+ to be a 1 ok. So, that is simple to compute because that is the output layer that is the
+
+282
+00:39:23,720 --> 00:39:32,720
+ final layer ok. Now, what is the derivative of s with respect
+
+283
+00:39:32,720 --> 00:39:44,000
+ to let us say this w i j this is what we want to compute ok. How do we compute this? So,
+
+284
+00:39:44,000 --> 00:40:02,080
+ we compute derivative of s, s is u transpose a ok. Now, what is the derivative of a with
+
+285
+00:40:02,080 --> 00:40:10,920
+ respect to w i j? So, u does not depend on w i j ok. So, this simply become derivative
+
+286
+00:40:10,920 --> 00:40:23,000
+ of a with respect to w i j ok. So, what is the derivative of a with respect to w i j?
+
+287
+00:40:23,000 --> 00:40:33,320
+ Again a if you remember a depends on z right a is f of z. So, you further use the chain
+
+288
+00:40:33,320 --> 00:40:42,000
+ rule to say derivative of a i with respect to z i and then derivative of z i with respect
+
+289
+00:40:42,000 --> 00:40:52,760
+ to w i j. Now, what is this term? This term is f dashed of z i and what is this term?
+
+290
+00:40:52,760 --> 00:41:01,800
+ This term is z i with respect to w i j this is nothing, but if you see ok z i with respect
+
+291
+00:41:01,800 --> 00:41:12,680
+ to w i j is simply x i right ok. So, sorry z i with respect to w i j. So, it is going
+
+292
+00:41:12,680 --> 00:41:20,520
+ to be x j yeah. So, derivative of this is z i with respect to w i j is going to be x
+
+293
+00:41:20,520 --> 00:41:38,640
+ j ok ok. So, what do we have here? We have u i times f dashed z i times x j ok. This
+
+294
+00:41:38,640 --> 00:41:46,240
+ is the derivative of w i j which is this particular parameter let us say with respect
+
+295
+00:41:46,240 --> 00:42:01,840
+ to the previous layer error ok. Now, if we see what was the derivative of let us see.
+
+296
+00:42:01,840 --> 00:42:13,880
+ So, yeah ok. So, what was ok? So, you can see that there are few signals that you need
+
+297
+00:42:13,880 --> 00:42:21,380
+ to take into account ok. So, what is the first signal? First signal is this upstream error.
+
+298
+00:42:21,380 --> 00:42:30,960
+ What is the upstream error? This is u i times f dashed z i ok. This is the upstream error
+
+299
+00:42:30,960 --> 00:42:39,320
+ signal ok. This is as I have written here the gradient of the error with respect to
+
+300
+00:42:39,320 --> 00:42:47,240
+ the activation in the current nodes ok. So, sometimes this is further split into the upstream
+
+301
+00:42:47,240 --> 00:42:54,440
+ error. So, as you are coming back in the neural network this can also split into more and
+
+302
+00:42:54,440 --> 00:43:02,160
+ more error signals ok. And the other thing is this downstream input which is in this
+
+303
+00:43:02,160 --> 00:43:09,800
+ particular case x j ok. So, just to be clear this is the layer where
+
+304
+00:43:09,800 --> 00:43:16,640
+ you are computing the error. This is the layer where so, let me just erase this. So, this
+
+305
+00:43:16,640 --> 00:43:23,040
+ is the layer because the w i j's are part of this layer right. So, this is the layer
+
+306
+00:43:23,040 --> 00:43:32,040
+ where you are computing the error. You are getting this if you remember is input from
+
+307
+00:43:32,040 --> 00:43:43,260
+ here error signal from upstairs and the derivative of the activation function. So, f dashed x
+
+308
+00:43:43,260 --> 00:43:54,840
+ times u i times this x this was the computation right if you remember here ok. So, this is
+
+309
+00:43:54,840 --> 00:44:09,840
+ the x j this is w i j ok and this is a i ok. So, your derivative let me say once more derivative
+
+310
+00:44:09,840 --> 00:44:25,280
+ of f with respect to w i j this is w i j this is x j this is a i ok. This is going to be
+
+311
+00:44:25,280 --> 00:44:33,680
+ equal to we have done this derivation already and this is u i of course this is u i ok.
+
+312
+00:44:33,680 --> 00:44:51,800
+ This is going to be u i time f dashed z i time x j ok. So, this is the derivative and
+
+313
+00:44:51,800 --> 00:45:00,440
+ you can see you need the error signal the signal here is basically the error signal
+
+314
+00:45:00,440 --> 00:45:09,000
+ that is coming from top ok. So, that is why you need to calculate from top down ok. So,
+
+315
+00:45:09,000 --> 00:45:20,680
+ this is the back propagation algorithm ok. Now, so up till now this is clear ok. So,
+
+316
+00:45:20,680 --> 00:45:27,840
+ you now know. So, this is basically for this deep neural network your formulas should come
+
+317
+00:45:27,840 --> 00:45:32,720
+ out to be something like this you should do the calculation by hand because this calculation
+
+318
+00:45:32,720 --> 00:45:38,120
+ will take more time you do the calculation by hand and check that this is actually the
+
+319
+00:45:38,120 --> 00:45:53,440
+ case ok. Now, let me come to this particular thing ok now what is the difference between
+
+320
+00:45:53,440 --> 00:46:02,240
+ training deep neural networks and shallow neural networks ok? So, in as I said now you
+
+321
+00:46:02,240 --> 00:46:11,240
+ can understand that you are multiplying many many upstream error signals into computing
+
+322
+00:46:11,240 --> 00:46:17,520
+ the derivative in this layer. So, let us say it is a 100 layer neural network ok; that
+
+323
+00:46:17,520 --> 00:46:24,920
+ means, you are propagating back 100 different error signals to finally compute the derivative
+
+324
+00:46:24,920 --> 00:46:33,000
+ of error e with respect to the parameters w in this particular layer ok.
+
+325
+00:46:33,000 --> 00:46:40,520
+ This derivative is going to be very very small ok because you are multiplying this many numbers
+
+326
+00:46:40,520 --> 00:46:46,240
+ and these numbers are generally small numbers ok. Sometimes they also explode that is the
+
+327
+00:46:46,240 --> 00:46:53,640
+ other side, but for the most common problem is the vanishing gradient problem. So, what
+
+328
+00:46:53,640 --> 00:47:00,840
+ happens if this number is small if this number is small what you recall your weight update
+
+329
+00:47:00,840 --> 00:47:10,600
+ now. So, W t plus 1 is equal to W t minus this learning rate eta t times this gradient
+
+330
+00:47:10,600 --> 00:47:17,720
+ of error with respect to W right. Now, this number is very small which means the change
+
+331
+00:47:17,720 --> 00:47:28,280
+ in W will be very very small which means it will take a long long time to learn this particular
+
+332
+00:47:28,280 --> 00:47:37,680
+ weight. What is the solution? The solution is something called unsupervised pre training.
+
+333
+00:47:37,680 --> 00:47:46,960
+ So, what is unsupervised pre training? What you do is first you learn the initial pre
+
+334
+00:47:46,960 --> 00:47:55,040
+ training weights of this particular layer by using an auto encoder network. So, you forget
+
+335
+00:47:55,040 --> 00:48:00,920
+ about so let me just erase this. So, you forget about this neural network for the timing this
+
+336
+00:48:00,920 --> 00:48:08,000
+ portion of the neural network which is a very deep neural network. You simply recreate,
+
+337
+00:48:08,000 --> 00:48:17,560
+ you simply try to recreate the input from this particular layer ok. You simply try to
+
+338
+00:48:17,560 --> 00:48:24,840
+ recreate the input from this particular layer and this you can think is something like you
+
+339
+00:48:24,840 --> 00:48:29,280
+ are learning a representation you may not be able to fully recreate the input, but you
+
+340
+00:48:29,280 --> 00:48:34,640
+ are trying to do something. The advantage of this is that this particular
+
+341
+00:48:34,640 --> 00:48:42,880
+ network is now a very shallow network. So, you can update the parameter of this particular
+
+342
+00:48:42,880 --> 00:48:54,560
+ network very very fast. So, then you have some initial parameter W 0 which are trained
+
+343
+00:48:54,560 --> 00:49:02,760
+ or achieved using what is called this supervised fine tuning ok. So, this is unannotated data
+
+344
+00:49:02,760 --> 00:49:09,400
+ ok you train. So, you train the first hidden layer, fix the parameters for the first hidden
+
+345
+00:49:09,400 --> 00:49:16,400
+ layer then train the second hidden layer in this manner and then once you have trained
+
+346
+00:49:16,400 --> 00:49:22,520
+ all the initial layer then you go ahead and do the back propagation on the entire neural
+
+347
+00:49:22,520 --> 00:49:29,240
+ network. This is going to be very very fast. So, this is sometimes called unsupervised
+
+348
+00:49:29,240 --> 00:49:38,520
+ pre-training of deep neural network and this achieve a much much faster training as compared
+
+349
+00:49:38,520 --> 00:49:54,480
+ to the traditional back propagation type training ok. So, this completes the all the theory portion
+
+350
+00:49:54,480 --> 00:50:05,240
+ of the neural network ok. Briefly, let us look at how this particular
+
+351
+00:50:05,240 --> 00:50:13,840
+ thing can be implemented using a software called PyTorch. This will be taught in much
+
+352
+00:50:13,840 --> 00:50:22,080
+ much more detail in the lab class ok, but just to give you an idea you need to write
+
+353
+00:50:22,080 --> 00:50:28,360
+ this Python program which will basically import all the Torch libraries. So, this is importing
+
+354
+00:50:28,360 --> 00:50:35,900
+ all the Torch libraries ok. Then you need to have all the hyper parameter. So, for example
+
+355
+00:50:35,900 --> 00:50:42,960
+ let us say I am trying to now define a neural network which will process let us say MNIST
+
+356
+00:50:42,960 --> 00:50:51,680
+ images and you know MNIST images are 28 cross 28 images ok. So, then you have basically
+
+357
+00:50:51,680 --> 00:50:59,800
+ your input size or the number of neurons in the input layer is going to be 784. Hidden
+
+358
+00:50:59,800 --> 00:51:05,800
+ size let us say we have taken 128 ok. Then we have taken number of classes which is also
+
+359
+00:51:05,800 --> 00:51:13,720
+ going to be the size of the output layer ok. Then we have defined some other things like
+
+360
+00:51:13,720 --> 00:51:21,840
+ how many epochs we want to train, what is the batch size, how many input data points
+
+361
+00:51:21,840 --> 00:51:31,920
+ do you want to consider at a time. This basically this is related to the speed of the training
+
+362
+00:51:31,920 --> 00:51:42,720
+ of the neural network ok. And then finally, learning rate which is the eta ok ok. And
+
+363
+00:51:42,720 --> 00:51:49,080
+ now then you can define the neural network model like this. So, you see what we have
+
+364
+00:51:49,080 --> 00:51:56,880
+ done is now we have defined these three layers basically the fully connected layer 1 which
+
+365
+00:51:56,880 --> 00:52:05,720
+ is NN dot linear and its size is input size cross hidden size ok. Then we have a ReLU
+
+366
+00:52:05,720 --> 00:52:13,600
+ activation function and then finally, we have another layer which is hidden size cross
+
+367
+00:52:13,600 --> 00:52:22,920
+ number of classes ok. And then we have to also define the forward path ok, how the forward
+
+368
+00:52:22,920 --> 00:52:32,240
+ computation goes. So, we take X ok and we readjust it a little bit and then we feed
+
+369
+00:52:32,240 --> 00:52:42,040
+ X to the fully connected layer, then the output is fed to the ReLU layer and then the output
+
+370
+00:52:42,040 --> 00:52:48,120
+ is fed to the other fully connected layer ok. So, the ReLU is actually not a layer here
+
+371
+00:52:48,120 --> 00:52:56,160
+ it is an activation function ok. And this is basically the actual pi dot code for training
+
+372
+00:52:56,160 --> 00:53:02,340
+ a multi-layer perception which can not training, but defining the model of the multi-layer
+
+373
+00:53:02,340 --> 00:53:10,200
+ perception ok. Yeah and if you just run this code. So, so maybe I will provide this code
+
+374
+00:53:10,200 --> 00:53:20,280
+ as a auxiliary as a extra file, you can just go through the whole code and then you can
+
+375
+00:53:20,280 --> 00:53:27,560
+ see that you can basically train the neural network to achieve about 96 percent accuracy.
+
+376
+00:53:27,560 --> 00:53:33,920
+ This is a very simple problem of course, for real world problems like this you need a more
+
+377
+00:53:33,920 --> 00:53:41,920
+ complex neural network architecture which we will discuss in the next discussion ok.
+
+378
+00:53:41,920 --> 00:53:50,000
+ And you can also compute a confusion matrix ok. So, with that I will stop and I will take
+
+379
+00:53:50,000 --> 00:54:10,060
+ questions ok. We will take we can take questions straight away I think yeah ok.
+
+380
+00:54:10,060 --> 00:54:24,880
+ Why are we using W transpose in which see here we are not using W transpose here we
+
+381
+00:54:24,880 --> 00:54:31,960
+ are simply using W. So, in particular all the transposition. So, let me let me just
+
+382
+00:54:31,960 --> 00:54:55,260
+ maybe show in a in a like just give me one minute I will just yeah. So, you see suppose
+
+383
+00:54:55,260 --> 00:55:02,500
+ your W is let us say let us say 2 cross 3 ok. So, suppose you have a neural network
+
+384
+00:55:02,500 --> 00:55:12,220
+ like this. So, you have x 1 or rather you have a layer like this x 1 x 3 and you have
+
+385
+00:55:12,220 --> 00:55:27,100
+ output let us say h 1 and h 2 ok. Now, you have W i j is connecting. So, suppose you
+
+386
+00:55:27,100 --> 00:55:39,380
+ have W i j which is connecting from x i to h j ok. So, how will it be? It will be so
+
+387
+00:55:39,380 --> 00:56:00,420
+ your W matrix will be looking like this W 11, W 12, W 13 right sorry. So, then so if
+
+388
+00:56:00,420 --> 00:56:15,180
+ it is connecting from x i to h j then you will have W 11, W 12, W 21, W 22 and W 31,
+
+389
+00:56:15,180 --> 00:56:30,540
+ W 32 right why because your i is 3 your i varies from 1 to 3 and your j varies from 1 to 2
+
+390
+00:56:30,540 --> 00:56:52,700
+ ok. Now, think about this i want to compute h j which is equal to summation over W i j
+
+391
+00:56:52,700 --> 00:57:05,660
+ x i i is equal to 1 to 3 ok. If I multiply this is my W if I do a matrix multiplication
+
+392
+00:57:05,660 --> 00:57:21,500
+ with x, x is going to be x 1, x 2 and x 3 ok. So, if I do a W times x what will happen?
+
+393
+00:57:21,500 --> 00:57:26,980
+ It will not be the dimensions are not agreeing right. So, in that case we have to do a W
+
+394
+00:57:26,980 --> 00:57:34,820
+ transpose x in that case you will see that W transpose x will basically be computing
+
+395
+00:57:34,820 --> 00:57:59,660
+ this ok. So, your h 1 will be W like let me just erase this portion now ok.
+
+396
+00:57:59,660 --> 00:58:10,580
+ So, so, so your W transpose is going to look like what? It is going to look like this now
+
+397
+00:58:10,580 --> 00:58:30,540
+ W 11, W 12, W 21, W 22 and W 31, W 32. If I now multiply this with x i, x 1, x 2 and
+
+398
+00:58:30,540 --> 00:58:42,180
+ x 3 ok. So, this times this is h 1, this times this is h 2 ok. So, the dimensions agree.
+
+399
+00:58:42,180 --> 00:58:54,860
+ So, that is why you sometimes do W transpose. Is there any way to determine how many hidden
+
+400
+00:58:54,860 --> 00:59:04,940
+ layers and you need in a layer should we have in a neural network ok. Yes, so the main strategy
+
+401
+00:59:04,940 --> 00:59:12,580
+ that you should follow. So, you should have a educated guess that how many hidden features
+
+402
+00:59:12,580 --> 00:59:18,580
+ or how many representations you need in the hidden layer ok.
+
+403
+00:59:18,580 --> 00:59:26,020
+ Now, suppose you think that it should be at least five, you train your neural network
+
+404
+00:59:26,020 --> 00:59:32,340
+ using just five units ok. You just define a neural network which has five as the number
+
+405
+00:59:32,340 --> 00:59:41,140
+ of hidden units and you train it and you calculate the test set error ok. And now if you see
+
+406
+00:59:41,140 --> 00:59:45,660
+ that or you do not even have to calculate the test set error, you first calculate the
+
+407
+00:59:45,660 --> 00:59:53,260
+ training set error itself ok. And if you see your training set error is very high then
+
+408
+00:59:53,260 --> 01:00:01,900
+ you have two choices either your number of hidden layers is not correct ok. In that case
+
+409
+01:00:01,900 --> 01:00:09,740
+ you can increase the number of hidden layer or in each of the layers your number of units
+
+410
+01:00:09,740 --> 01:00:19,380
+ is not correct ok. So, then you have to increase the number of units in a hidden layer ok.
+
+411
+01:00:19,380 --> 01:00:26,360
+ You can have both options ok. So, you can try try and increasing the number of layers.
+
+412
+01:00:26,360 --> 01:00:33,940
+ The positive of increasing the number of layers is that as I discussed you you will be creating
+
+413
+01:00:33,940 --> 01:00:38,980
+ much more efficient neural networks. The deep neural networks are more efficient. So, you
+
+414
+01:00:38,980 --> 01:00:45,780
+ need less number of hidden units ok. But the flip side of that is that your training time
+
+415
+01:00:45,780 --> 01:00:53,180
+ will increase and if you go very very deep then you may have to use specialized training
+
+416
+01:00:53,180 --> 01:00:59,540
+ techniques to train your neural networks. So, after you have gone let us say till four
+
+417
+01:00:59,540 --> 01:01:05,660
+ or five hidden layer, you should probably start increasing the number of units in each
+
+418
+01:01:05,660 --> 01:01:11,340
+ of these hidden layer ok. So, yeah so it is a trial and error process.
+
+419
+01:01:11,340 --> 01:01:18,420
+ There is no there is no foolproof way of knowing exactly how many. You have to have a initial
+
+420
+01:01:18,420 --> 01:01:24,460
+ guess that I will use initially you try two layer neural network with a certain number
+
+421
+01:01:24,460 --> 01:01:33,780
+ of units in a given layer ok. And then if your training set error is very high you keep
+
+422
+01:01:33,780 --> 01:01:40,180
+ increasing the number of layer and the number of units in each layer in order to achieve
+
+423
+01:01:40,180 --> 01:01:47,020
+ a particular training error rate which is satisfactory to you.
+
+424
+01:01:47,020 --> 01:01:55,100
+ How cyclic network be neural network? Earlier you mentioned cyclic graphs are not neural
+
+425
+01:01:55,100 --> 01:02:02,060
+ network. Yes so that is what I mentioned that cyclic graphs are not neural network. So,
+
+426
+01:02:02,060 --> 01:02:16,820
+ for example if you see yeah a graph I do not know if it is visible a graph like this ok
+
+427
+01:02:16,820 --> 01:02:24,380
+ a graph like this is not a neural network. Whereas a directed acyclic graph directed
+
+428
+01:02:24,380 --> 01:02:32,460
+ acyclic graph is a neural network. So, if you have a directed acyclic graph something
+
+429
+01:02:32,460 --> 01:02:44,140
+ like this ok it is a neural network. So, you can for example have very very complicated
+
+430
+01:02:44,140 --> 01:02:56,580
+ graph like this this is a valid neural network ok. But this one is not a neural network because
+
+431
+01:02:56,580 --> 01:03:03,780
+ there is a directed acyclic cycle. So, the way to understand which one is a neural network.
+
+432
+01:03:03,780 --> 01:03:12,980
+ So, here I mean so like I said there are I think there are two things that need to be
+
+433
+01:03:12,980 --> 01:03:20,940
+ mentioned. There is a particular type of neural network called multilayer perceptron or something
+
+434
+01:03:20,940 --> 01:03:27,980
+ also called sometimes also called feed forward neural network ok or sometimes also called
+
+435
+01:03:27,980 --> 01:03:35,140
+ fully connected neural network ok all of them they mean the same thing. These are the types
+
+436
+01:03:35,140 --> 01:03:40,180
+ of neural network that we discussed today for simplicity ok.
+
+437
+01:03:40,180 --> 01:03:45,860
+ So, for example this one is not that type of neural network ok this is a general neural
+
+438
+01:03:45,860 --> 01:03:51,940
+ network, but this is still a neural network because it is a network of neuron ok, but
+
+439
+01:03:51,940 --> 01:04:04,260
+ this is not a valid neural network I hope this is clear right.
+
+440
+01:04:04,260 --> 01:04:20,580
+ It understood the ZOR problem ok. So, let me go to the ZOR problem slide ok. So, this
+
+441
+01:04:20,580 --> 01:04:31,860
+ is the ZOR problem ok yeah. So, in this slide you see what is the output the output. So,
+
+442
+01:04:31,860 --> 01:04:38,780
+ first of all what is the input? Input is 0 comma 0 for this. So, each of these is data
+
+443
+01:04:38,780 --> 01:04:44,260
+ point. So, this is a data point, this is a data point, this is a data point, this is
+
+444
+01:04:44,260 --> 01:04:57,780
+ a data point ok. This is 1 comma 1, this is 1 comma 0 and this is 0 comma 1 ok. Output
+
+445
+01:04:57,780 --> 01:05:06,820
+ the y for this one is going to be 0, for this one is going to be 0 that is why minus the
+
+446
+01:05:06,820 --> 01:05:15,300
+ negative minus thing is written here, this one is going to be 1 ok and this one is going
+
+447
+01:05:15,300 --> 01:05:22,460
+ to be 1. So, that is why plus is written here ok. So, that is the ZOR problem this is the
+
+448
+01:05:22,460 --> 01:05:29,260
+ function you have to approximate using a neural network ok.
+
+449
+01:05:29,260 --> 01:05:34,260
+ And this is the neural network that we designed we discussed this maybe we do not have the
+
+450
+01:05:34,260 --> 01:05:42,060
+ time to go through that entire discussion now. So, you can see the all the calculation
+
+451
+01:05:42,060 --> 01:05:49,820
+ is given here ok. So, you will see that you are using two hidden neurons H 1 and H 2.
+
+452
+01:05:49,820 --> 01:05:57,580
+ H 1 neuron calculation for all the four points is given here ok. H 2 neuron calculation for
+
+453
+01:05:57,580 --> 01:06:04,580
+ all the four points is given here. What you will what you can see if you go through this
+
+454
+01:06:04,580 --> 01:06:13,180
+ is that H 1 is representing this particular boundary, H 2 is representing this particular
+
+455
+01:06:13,180 --> 01:06:25,740
+ boundary ok. And then the final neuron here Y that calculation is given here ok that is
+
+456
+01:06:25,740 --> 01:06:34,420
+ representing the final output where these two will come out to be 1 which is these two point
+
+457
+01:06:34,420 --> 01:06:51,180
+ and this and this will come out to be 0 ok. So, this you can check. Why bias taking both
+
+458
+01:06:51,180 --> 01:06:59,580
+ negative and positive value depending on what ok. So, bias you see like I told. So, what
+
+459
+01:06:59,580 --> 01:07:11,660
+ is the purpose of bias? So, let me just maybe go back to the bias line yeah right. So, the
+
+460
+01:07:11,660 --> 01:07:19,780
+ purpose of bias is to actually shift this activation function ok. So, suppose you have
+
+461
+01:07:19,780 --> 01:07:29,860
+ F of W transpose X plus D. W transpose X by the way as you understand is summation over
+
+462
+01:07:29,860 --> 01:07:42,980
+ W i X i i is equal to 1 to D ok. So, suppose this is 0 what will be the or let us say instead
+
+463
+01:07:42,980 --> 01:07:49,300
+ of this being 0 let us say this is plus 1. What will be the output of the sigmoid function?
+
+464
+01:07:49,300 --> 01:07:59,420
+ It will be plus 1 ok. Now, suppose you want that output of the sigmoid function to be
+
+465
+01:07:59,420 --> 01:08:10,220
+ 0 when this summation is plus 1, but plus 1 when this summation is plus 2 ok. So, what
+
+466
+01:08:10,220 --> 01:08:23,060
+ you can do? You can set B to be minus 1. So, then when W. So, I am just writing here W
+
+467
+01:08:23,060 --> 01:08:32,980
+ transpose X and W transpose X plus B and then output S these are the three things ok. So,
+
+468
+01:08:32,980 --> 01:08:41,340
+ if W transpose X is plus 1 then W transpose X plus B is going to be 0. So, output is going
+
+469
+01:08:41,340 --> 01:08:51,500
+ to be what? Output is going to be 0 ok or maybe like let us take this to be 1.1 something
+
+470
+01:08:51,500 --> 01:08:58,700
+ like that. So, then this is minus 0.1. So, output is going to be 0. When it is plus 2
+
+471
+01:08:58,700 --> 01:09:06,420
+ W transpose X is plus 2 then it is going to be plus 0.9. So, output is going to be 1.
+
+472
+01:09:06,420 --> 01:09:14,500
+ You can see from this particular equation this particular graph. So, what you have done
+
+473
+01:09:14,500 --> 01:09:24,300
+ effectively by setting B to be minus 1.1 what you have done is you have earlier the decision
+
+474
+01:09:24,300 --> 01:09:30,780
+ boundary was at 0 W transpose X is equal to 0. Now, you have moved to W transpose X is
+
+475
+01:09:30,780 --> 01:09:39,420
+ equal to 1 1 plus 1 1.1. So, the decision boundary is now at 1.1. So, that is the purpose
+
+476
+01:09:39,420 --> 01:09:50,420
+ of the bias. In the given example we are selecting weight like 20 or 0.6 how are we deriving
+
+477
+01:09:50,420 --> 01:09:58,940
+ those weights? Yes. So, like I said I am for the example I am coming up with the weight
+
+478
+01:09:58,940 --> 01:10:05,900
+ right. In real life you do not have to come up with the weight ok, but here I am coming
+
+479
+01:10:05,900 --> 01:10:18,260
+ up with the weight yeah. So, here I am coming up with the weight by simply inspecting what
+
+480
+01:10:18,260 --> 01:10:24,100
+ should be the output. So, for example, for this yellow line my weights are 20 20 and
+
+481
+01:10:24,100 --> 01:10:32,300
+ minus 10. Why am I saying this? Because for the yellow line you see when the input is
+
+482
+01:10:32,300 --> 01:10:43,660
+ 0 0 it should be 0 for all others it should be 1. So, sigma of minus 10 is 0 for all others
+
+483
+01:10:43,660 --> 01:10:52,220
+ it is 1. So, instead of 20 we could have also taken something like 30 30, but then what
+
+484
+01:10:52,220 --> 01:11:00,140
+ do I have to do? So, so so minus 10 will work here ok, but for this one if I take let us
+
+485
+01:11:00,140 --> 01:11:09,740
+ say 30 30 ok. Now, you see I want this one to be 0 ok. So, if I take this to be minus
+
+486
+01:11:09,740 --> 01:11:20,140
+ 30 this to be minus 30 ok. Now, this summation for 1 1 data point will become what minus
+
+487
+01:11:20,140 --> 01:11:29,420
+ 60 ok. So, so now this one should be 0 ok. So, how much ok. So, plus 30 will work for
+
+488
+01:11:29,420 --> 01:11:38,340
+ this one because it is going to be the resultant. So, plus 30 the resultant will be 30, but
+
+489
+01:11:38,340 --> 01:11:46,580
+ now if I say 30 30 and plus 30 here let us say ok. This one will also become negative
+
+490
+01:11:46,580 --> 01:11:54,480
+ you can see right because no this one will not become negative sorry if I take 40 here
+
+491
+01:11:54,480 --> 01:12:03,260
+ let us say then this will not work because minus 40 into 1. So, consider the case where
+
+492
+01:12:03,260 --> 01:12:12,340
+ if I take this to be minus 40 ok, then this data point will not be correctly satisfied.
+
+493
+01:12:12,340 --> 01:12:20,940
+ So, you have to take the weight such that all of these outputs are satisfied ok. So,
+
+494
+01:12:20,940 --> 01:12:27,860
+ that is how we are deriving the point. In general whenever we are deriving the weight
+
+495
+01:12:27,860 --> 01:12:35,740
+ we are deriving it based on the output of that layer. So, here we know output of each
+
+496
+01:12:35,740 --> 01:12:41,100
+ neuron beforehand this is going to be the output of each neuron that is why we can come
+
+497
+01:12:41,100 --> 01:12:45,700
+ up with the weight. Weights are not unique there can be many weights which will lead
+
+498
+01:12:45,700 --> 01:12:56,980
+ to this particular output ok. So, this is the end of the question answering
+
+499
+01:12:56,980 --> 01:12:58,620
+ session. Thank you very much.
+

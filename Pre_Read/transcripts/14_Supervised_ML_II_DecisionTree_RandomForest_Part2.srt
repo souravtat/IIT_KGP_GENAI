@@ -1,0 +1,1000 @@
+1
+00:00:00,000 --> 00:00:14,080
+ Welcome back. So, let us continue our discussion where we stopped. So, we understand that we
+
+2
+00:00:14,080 --> 00:00:19,600
+ need to look at the purity, we need to look at several other factors to decide when to
+
+3
+00:00:19,600 --> 00:00:25,580
+ stop growing the tree. In general, one of the things as I was mentioning that we always
+
+4
+00:00:25,580 --> 00:00:34,120
+ aim to avoid overfitting in decision trees and I mean what is desired is that we want
+
+5
+00:00:34,120 --> 00:00:40,600
+ a decision tree that is not very big in size yet that fits the training data reasonably
+
+6
+00:00:40,600 --> 00:00:48,520
+ well. So, this is an ideal compromise or ideal kind of tradeoff we want that we do not want
+
+7
+00:00:48,520 --> 00:00:56,240
+ a decision tree which is like very large, very deep, but we also want it to fit the
+
+8
+00:00:56,240 --> 00:01:03,320
+ training data properly. One extreme example of a simple decision tree is called decision
+
+9
+00:01:03,320 --> 00:01:08,000
+ stump where we only test the value of a single feature.
+
+10
+00:01:08,000 --> 00:01:15,160
+ So, just think that it just have like just one root node and the corresponding rule
+
+11
+00:01:15,160 --> 00:01:20,440
+ and the leaf nodes. So, that is the simplest version of decision tree. It is also called
+
+12
+00:01:20,440 --> 00:01:27,200
+ decision stump because this is not necessarily a tree, but this is not very powerful because
+
+13
+00:01:27,200 --> 00:01:31,920
+ it cannot generalize. Just think that you have 4 features, but you are just using only
+
+14
+00:01:31,920 --> 00:01:38,160
+ one feature to construct the decision stump. But what happens is that like we are going
+
+15
+00:01:38,160 --> 00:01:45,140
+ to discuss the ensemble of trees later in case of large ensemble where we are kind of
+
+16
+00:01:45,140 --> 00:01:52,880
+ combining a lot of decision stumps together. So, that can make a difference, but a single
+
+17
+00:01:52,880 --> 00:02:00,800
+ decision stump is not very powerful. On the other hand, let us say you have started
+
+18
+00:02:00,800 --> 00:02:05,640
+ building a tree, the tree have become very large and you are growing it, growing it,
+
+19
+00:02:05,640 --> 00:02:10,560
+ growing it. Now, at certain point you may also want to prune the tree. So, that means
+
+20
+00:02:10,560 --> 00:02:17,240
+ that you may want to cut the tree so that the resultant tree becomes a little less complex
+
+21
+00:02:17,240 --> 00:02:23,440
+ and more general. Now, one option is that while you are building the tree you stop,
+
+22
+00:02:23,440 --> 00:02:29,160
+ you do not build it to become very complex. So, that is like pruning while you are building
+
+23
+00:02:29,160 --> 00:02:35,200
+ the tree. The other option is that you prune after you have built the tree. So, this is
+
+24
+00:02:35,200 --> 00:02:44,600
+ kind of like a post pruning routine that. So, this is also called a post pruning because
+
+25
+00:02:44,600 --> 00:02:50,080
+ then already the tree has been built and you are trying to cut down the tree. So, then
+
+26
+00:02:50,080 --> 00:02:54,720
+ the question is like similar to the question like which node we should select, which feature
+
+27
+00:02:54,720 --> 00:03:00,400
+ we should select to grow the tree. Similarly, we have to judge which nodes to select when
+
+28
+00:03:00,400 --> 00:03:09,200
+ we are pruning the tree. So, for this again cross validation can be used like where we
+
+29
+00:03:09,200 --> 00:03:15,800
+ use our validation set which is separate from the training set and we prune every possible
+
+30
+00:03:15,800 --> 00:03:21,880
+ node that does not hurt the accuracy on the validation set. So, it is kind of like we
+
+31
+00:03:21,880 --> 00:03:31,480
+ prune one particular node, we see whether what is the accuracy and with every pruning
+
+32
+00:03:31,480 --> 00:03:42,200
+ we go ahead if the accuracy is not hurt. The other option is to greedily remove the node
+
+33
+00:03:42,200 --> 00:03:48,600
+ that improves the validation accuracy the most. So, suppose one option is that you are getting
+
+34
+00:03:48,600 --> 00:03:55,640
+ certain accuracy. Let us say you are getting 80 percent accuracy and you prune if the accuracy
+
+35
+00:03:55,640 --> 00:04:02,240
+ do not go less than 80 percent. The other thing is that you prune when you see that
+
+36
+00:04:02,240 --> 00:04:10,080
+ the accuracy has improved from 80 percent to 85 percent or 82 percent to 83 percent.
+
+37
+00:04:10,080 --> 00:04:18,440
+ So, to summarize all the discussions which we had around decision tree, decision tree
+
+38
+00:04:18,440 --> 00:04:26,240
+ is generally very simple and easy to interpret. They can easily handle different types of
+
+39
+00:04:26,240 --> 00:04:34,080
+ features like we looked at categorical features, it can take real numerical features, decision
+
+40
+00:04:34,080 --> 00:04:41,480
+ trees are very fast at times of testing because you only need to compare like you compare
+
+41
+00:04:41,480 --> 00:04:46,080
+ the rule at the root node, you compare the rule at the internal node, essentially if
+
+42
+00:04:46,080 --> 00:04:53,240
+ h is the height of the tree you just make h comparisons which is much better compared
+
+43
+00:04:53,240 --> 00:04:59,160
+ to let us say k nearest neighbor where to just find the k nearest neighbors you will have
+
+44
+00:04:59,160 --> 00:05:07,760
+ to compare with all possible like you have to make an all possible all pair comparison.
+
+45
+00:05:07,760 --> 00:05:14,520
+ The fourth point is that multiple decision trees can be combined via ensemble methods
+
+46
+00:05:14,520 --> 00:05:21,160
+ to make a very more or make more powerful model for example, random forest. So, we are
+
+47
+00:05:21,160 --> 00:05:27,760
+ again going to see this just in like couple of slides how multiple decision trees can
+
+48
+00:05:27,760 --> 00:05:32,360
+ be merged together can be combined together to make up a addition.
+
+49
+00:05:32,360 --> 00:05:37,680
+ So, these are all good things about decision trees, but there are also certain weaknesses
+
+50
+00:05:37,680 --> 00:05:46,560
+ of decision trees. For example, learning the best possible decision tree is a computationally
+
+51
+00:05:46,560 --> 00:05:55,000
+ hard problem. So, there you cannot guarantee that given a training data I have built the
+
+52
+00:05:55,000 --> 00:06:01,520
+ best possible tree because all the algorithms which we have discussed they all are some
+
+53
+00:06:01,520 --> 00:06:08,240
+ kind of greedy heuristic based algorithm. Sometimes the decision trees can grow large
+
+54
+00:06:08,240 --> 00:06:15,640
+ and can become very complex tend to overfit unless we early stop or we apply some pruning
+
+55
+00:06:15,640 --> 00:06:25,400
+ post post the tree is built. So, now let us look at ensemble classifier.
+
+56
+00:06:25,400 --> 00:06:35,080
+ So, so far knife base k nearest neighbor support vector machine decision tree they all were
+
+57
+00:06:35,080 --> 00:06:41,000
+ a single classifier. So, when I say single classifier you are building a single model
+
+58
+00:06:41,000 --> 00:06:46,920
+ which can classify a particular trace input. Now, we are going to talk about classific
+
+59
+00:06:46,920 --> 00:06:52,640
+ classifier models where essentially a decision is being made by multiple classifiers together
+
+60
+00:06:52,640 --> 00:07:01,880
+ not a single classifier. So, what are the benefits of this? So, essentially we can have
+
+61
+00:07:01,880 --> 00:07:10,880
+ multiple classifiers at work where every classifier conduct classification on the same set of class
+
+62
+00:07:10,880 --> 00:07:18,040
+ level, but they may use different input or may have different parameters. They may even
+
+63
+00:07:18,040 --> 00:07:23,680
+ produce different output for a certain example. So, just think of a scenario that let us say
+
+64
+00:07:23,680 --> 00:07:31,480
+ often time like in industry or even in academia where we will have to take a very important
+
+65
+00:07:31,480 --> 00:07:41,340
+ decision we form a committee rather than relying on one individual to apply their knowledge
+
+66
+00:07:41,340 --> 00:07:50,840
+ and decide on the behalf of a large organization. Because one individual may have may be very
+
+67
+00:07:50,840 --> 00:07:55,160
+ smart very intelligent, but they may have certain limitation they may not be able to
+
+68
+00:07:55,160 --> 00:08:01,280
+ see all possible combinations of facts. They may not be able to foresee what can be the
+
+69
+00:08:01,280 --> 00:08:06,960
+ impact of the decision they are taking now. Instead of that if you form a committee with
+
+70
+00:08:06,960 --> 00:08:15,040
+ let us say 5 people each 5 people can look at a problem from 5 different different viewpoints.
+
+71
+00:08:15,040 --> 00:08:22,760
+ At the same time they may have very complementary skill set like some committee some member
+
+72
+00:08:22,760 --> 00:08:27,280
+ of the committee may look at it from a financial viewpoint that what is going to be the financial
+
+73
+00:08:27,280 --> 00:08:33,840
+ implication of this particular decision some person may actually be looking at it from
+
+74
+00:08:33,840 --> 00:08:40,120
+ a personal or personal kind of point of view that what is going to be the impact of the
+
+75
+00:08:40,120 --> 00:08:43,040
+ current manpower which is there in the organization.
+
+76
+00:08:43,040 --> 00:08:49,480
+ So, different people may come with like different background and they can look at the same problem
+
+77
+00:08:49,480 --> 00:08:56,680
+ with different set of eyes. So, often time if you take a collective decision after discussing
+
+78
+00:08:56,680 --> 00:09:02,800
+ within the committee which have considered all these different aspects the decision turns
+
+79
+00:09:02,800 --> 00:09:08,360
+ out to be much better than if it was taken by one single individual. The same thing is
+
+80
+00:09:08,360 --> 00:09:16,440
+ true for ensembles that when you are looking at a single classification algorithm like
+
+81
+00:09:16,440 --> 00:09:23,160
+ decision tree it is just a single model which is making the decision. On the other hand
+
+82
+00:09:23,160 --> 00:09:29,400
+ if you can merge multiple classifiers each of them are looking at different aspects of
+
+83
+00:09:29,400 --> 00:09:35,800
+ the data and accordingly they are taking some decision and then the goal is to make sure
+
+84
+00:09:35,800 --> 00:09:39,680
+ that you combine the decision in a good way.
+
+85
+00:09:39,680 --> 00:09:48,640
+ Now, to achieve very good output from this ensembling ideally what we want is we want
+
+86
+00:09:48,640 --> 00:09:53,600
+ to learn different classifiers which look at different training examples so that they do
+
+87
+00:09:53,600 --> 00:10:00,640
+ not get biased by looking at the same data point. Similarly, another option is that you
+
+88
+00:10:00,640 --> 00:10:07,000
+ allow the one classifier to look at only a subset of features not all features and different
+
+89
+00:10:07,000 --> 00:10:14,840
+ classifiers look at some separate subset. So, this way you can ensure that you have
+
+90
+00:10:14,840 --> 00:10:21,120
+ a wide variety or diversity in the amount of data or the type of data different classifiers
+
+91
+00:10:21,120 --> 00:10:30,120
+ are seeing and typically this method tends to yield very good output.
+
+92
+00:10:30,120 --> 00:10:38,000
+ Now, in terms of performance it may happen that each of the classifiers the individual
+
+93
+00:10:38,000 --> 00:10:45,960
+ classifiers are not perfect in fact they may not be like very suitable compared to some
+
+94
+00:10:45,960 --> 00:10:52,280
+ other classifiers. But if they are complementary if they have some complementary skill set
+
+95
+00:10:52,280 --> 00:10:57,960
+ for example like where the training data points which are correctly classified by one classifier
+
+96
+00:10:57,960 --> 00:11:03,680
+ is not correctly classified by other classifier then you get the complementary inbuilt in
+
+97
+00:11:03,680 --> 00:11:11,160
+ the ensembling process. So, that way it can actually lead to much improvement so it can
+
+98
+00:11:11,160 --> 00:11:16,680
+ utilize this complementary property to offer potential improvement.
+
+99
+00:11:16,680 --> 00:11:24,720
+ Now, the whole problem boils down to ensemble learning. Learning this ensembling method
+
+100
+00:11:24,720 --> 00:11:33,600
+ one how to create classifiers with complementary performances and how to conduct voting or
+
+101
+00:11:33,600 --> 00:11:40,600
+ how to conduct the aggregation when different classifiers are giving different prediction
+
+102
+00:11:40,600 --> 00:11:52,600
+ for the same test input. In fact, in this context one particular term is often used
+
+103
+00:11:52,600 --> 00:12:00,160
+ is called strong learner versus weak learner. A strong learner is a model which look at
+
+104
+00:12:00,160 --> 00:12:08,320
+ level training data and they produce a classifier which can be arbitrarily accurate. So, that
+
+105
+00:12:08,320 --> 00:12:15,320
+ means which you can make it like very very very complex which can become very accurate
+
+106
+00:12:15,320 --> 00:12:22,760
+ but in turn it can be a very complex model. On the other hand weak learners look at the
+
+107
+00:12:22,760 --> 00:12:29,360
+ same level data for training but they may produce a classifier which is not very complex
+
+108
+00:12:29,360 --> 00:12:37,280
+ which is not very powerful but which is of course more accurate than random guessing.
+
+109
+00:12:37,280 --> 00:12:47,320
+ Ensembling is often to combine or boost weak learners to create a very strong learner alright.
+
+110
+00:12:47,320 --> 00:12:53,760
+ So, the idea we have an ensemble often is to derive a strong learner from a collection
+
+111
+00:12:53,760 --> 00:13:01,180
+ of weak learners. So, in this lecture we are going to talk about three different process
+
+112
+00:13:01,180 --> 00:13:08,600
+ of ensembles or approaches of ensembles one is called bagging. Bagging is the short form
+
+113
+00:13:08,600 --> 00:13:16,880
+ of bootstrap aggregating, boosting and finally random forest.
+
+114
+00:13:16,880 --> 00:13:28,360
+ So, for bagging algorithm let us say we have training data from X1, Y1, X2, Y2, X3, Y3
+
+115
+00:13:28,360 --> 00:13:37,520
+ all the way up to XNYN. Now we are creating a bootstrap sample. The bootstrap sample means
+
+116
+00:13:37,520 --> 00:13:44,120
+ this is a small sample of the training data and we build a model which is maybe a weak
+
+117
+00:13:44,120 --> 00:13:53,080
+ learner based on this small sample data. So, if you look at this particular equation
+
+118
+00:13:53,080 --> 00:14:05,680
+ let us say we are trying to create M models or M weak learners. So, for that we are creating
+
+119
+00:14:05,680 --> 00:14:10,680
+ M bootstrap samples from the training data. Each sample is let us say we call us like
+
+120
+00:14:10,680 --> 00:14:16,840
+ dm and we build a model gmx from the bootstrap data dm.
+
+121
+00:14:16,840 --> 00:14:31,960
+ So, let us say one, so if we look at an example like let us say X1, Y1, X2, Y2, X3, Y3, X4,
+
+122
+00:14:31,960 --> 00:14:42,000
+ Y4, X5, Y5 and let us say we are going to create 3, so M is equal to 3. So, we are going
+
+123
+00:14:42,000 --> 00:14:49,520
+ to create 3 bootstrap samples and train 3 different classifier. The first bootstrap
+
+124
+00:14:49,520 --> 00:14:59,600
+ sample may be X1, Y1, X2, Y2. The second bootstrap example may be X2, Y2, X3, Y3, X4, Y4 and
+
+125
+00:14:59,600 --> 00:15:08,280
+ the third may be X4, Y4 and X5, Y5. So, you see that in this case it is not guaranteed
+
+126
+00:15:08,280 --> 00:15:15,000
+ that every bootstrap sample will have exactly the same size. Similarly, they can have overlap.
+
+127
+00:15:15,000 --> 00:15:21,320
+ So, it is not that if you take one particular it is not like a partitioning like where
+
+128
+00:15:21,320 --> 00:15:28,560
+ you can only take one example or one data point part of one bootstrap sample. So, multiple
+
+129
+00:15:28,560 --> 00:15:35,480
+ bootstrap samples can have the same data point as it is in its collection. But then using
+
+130
+00:15:35,480 --> 00:15:42,800
+ this bootstrap sample, so let us say this is D1, this is D2, this is D3, you train 3
+
+131
+00:15:42,800 --> 00:15:49,880
+ different models G1, G2, G3 using this bootstrap data.
+
+132
+00:15:49,880 --> 00:15:59,680
+ Now, once this models are trained then we can either just take a simple average of the
+
+133
+00:15:59,680 --> 00:16:05,880
+ model output for regression problems and for classification problem we can compute a voting
+
+134
+00:16:05,880 --> 00:16:12,200
+ either let us say majority voting that depending on what the majority of the models are telling
+
+135
+00:16:12,200 --> 00:16:19,860
+ you pick the output from I mean the majority output from that or you can even have weighted
+
+136
+00:16:19,860 --> 00:16:26,760
+ voting which we will talk later. Now, one important thing about bagging or bootstrap
+
+137
+00:16:26,760 --> 00:16:33,800
+ aggregating is that the bootstrap sample of any instances are obtained by drawing in
+
+138
+00:16:33,800 --> 00:16:38,760
+ examples at random with replacement. So, as I mentioned this ensures that there can be
+
+139
+00:16:38,760 --> 00:16:50,200
+ also overlap between two bootstrap samples. Now, on average every bootstrap sample has
+
+140
+00:16:50,200 --> 00:16:58,040
+ 63 percent of the instances. So, this actually encourage predictors to have uncorrelated
+
+141
+00:16:58,040 --> 00:17:03,040
+ error. So, that means every predictor will have some examples which are new and which
+
+142
+00:17:03,040 --> 00:17:13,040
+ are not seen by other predictors. So, this is bagging. Now, let us come to the next
+
+143
+00:17:13,040 --> 00:17:20,860
+ ensemble method called boosting. So, in case of boosting we want to construct weak classifiers
+
+144
+00:17:20,860 --> 00:17:30,600
+ or weak learners using different data distribution. So, we first start with uniform waiting. So,
+
+145
+00:17:30,600 --> 00:17:37,480
+ we put every sample in the distribution uniform weight and it can be selected from like uniform
+
+146
+00:17:37,480 --> 00:17:43,800
+ weight then every step of learning we increase the weights of the examples which are not
+
+147
+00:17:43,800 --> 00:17:47,960
+ correctly learned by the weak learner. So, how to increase the weight essentially you
+
+148
+00:17:47,960 --> 00:17:53,200
+ can think of kind of repeating this example in the sample data set.
+
+149
+00:17:53,200 --> 00:18:02,400
+ So, for instance let us say you have x 1 y 1 x 2 y 2 x 3 y 3 initially all the examples
+
+150
+00:18:02,400 --> 00:18:07,120
+ are treated equally, but let us say in the first phase you see that you are making error
+
+151
+00:18:07,120 --> 00:18:13,400
+ on x 2 y 2. So, in that case in the training example you repeat x 2 y 2 multiple times.
+
+152
+00:18:13,400 --> 00:18:26,240
+ So, that way you are giving more weight to x 2 y 2. On the other hand if let us say some
+
+153
+00:18:26,240 --> 00:18:34,960
+ examples after you have given higher weight it is starting to perform better. So, in that
+
+154
+00:18:34,960 --> 00:18:39,840
+ case you can decrease the weight for those examples which are correctly learned by the
+
+155
+00:18:39,840 --> 00:18:49,560
+ weak learner. So, here the idea is that you want to focus
+
+156
+00:18:49,560 --> 00:18:56,600
+ on difficult examples which are not correctly classified in the previous step and increasingly
+
+157
+00:18:56,600 --> 00:19:07,760
+ you want to build the classifiers in increasing steps. So, this is something like this that
+
+158
+00:19:07,760 --> 00:19:14,400
+ initially you started with all training samples you build the first classifier then for the
+
+159
+00:19:14,400 --> 00:19:21,600
+ second classifier you change the weight depending on where you perform poorly then again in
+
+160
+00:19:21,600 --> 00:19:28,680
+ the next step you change the weight again and so on and finally you get the final classifier
+
+161
+00:19:28,680 --> 00:19:38,280
+ using a weighted combination of all the classifier decisions.
+
+162
+00:19:38,280 --> 00:19:44,240
+ So, how to combine this weak classifier decisions? So, as I mentioned like you can either have
+
+163
+00:19:44,240 --> 00:19:50,200
+ a simple straight majority voting or you can have weighted voting where you can construct
+
+164
+00:19:50,200 --> 00:19:56,000
+ the strong classifier by weighted voting of weak classifiers and the idea is that if you
+
+165
+00:19:56,000 --> 00:20:01,160
+ have a better weak classifier that should get a larger weight and you iteratively add
+
+166
+00:20:01,160 --> 00:20:06,520
+ weak classifier and you increase the accuracy of the combined classifier.
+
+167
+00:20:06,520 --> 00:20:13,160
+ So, let us just look at one example that if you have a single learner which is trying
+
+168
+00:20:13,160 --> 00:20:21,840
+ to differentiate between let us say blue sample and green sample you can have a single learner
+
+169
+00:20:21,840 --> 00:20:29,360
+ which classify like this and the combined classifier let us say initially it also follows the single
+
+170
+00:20:29,360 --> 00:20:35,760
+ learner. So, it is the same classification then we figured out that some cases it is
+
+171
+00:20:35,760 --> 00:20:43,840
+ not doing correct. So, if you look at this here for this example it was it made a mistake.
+
+172
+00:20:43,840 --> 00:20:49,040
+ So, all these green examples were correctly classified this blue ones were correctly classified
+
+173
+00:20:49,040 --> 00:20:55,700
+ but this green one was not classified properly. So, then I increase the weight of this and
+
+174
+00:20:55,700 --> 00:21:08,360
+ I try learning another classifier. Let us say the new classifier is like this now. So,
+
+175
+00:21:08,360 --> 00:21:13,280
+ in this case the combined classifier will look something like this, but again we are
+
+176
+00:21:13,280 --> 00:21:18,840
+ making further mistake. So, some cases we made more mistakes some cases we did not make
+
+177
+00:21:18,840 --> 00:21:26,120
+ mistake. So, accordingly we change the weight. So, if you can look at the the animation like
+
+178
+00:21:26,120 --> 00:21:31,440
+ each individual points now the weight is kind of changing and that is giving us another
+
+179
+00:21:31,440 --> 00:21:37,680
+ classifier. So, in result like the combined classifier is becoming something like this
+
+180
+00:21:37,680 --> 00:21:52,800
+ like which now correctly classifies all the blue points and all the green points. Now,
+
+181
+00:21:52,800 --> 00:22:00,440
+ let us come to the last type of ensembling method which is called random forest.
+
+182
+00:22:00,440 --> 00:22:06,840
+ Now, we have a single data set right like we have a single training data set. Now, how
+
+183
+00:22:06,840 --> 00:22:13,120
+ do we obtain all these week learners? Let us say if our week learners are decision trees.
+
+184
+00:22:13,120 --> 00:22:21,880
+ So, how do we create slightly different trees from the same data set? So, one option is
+
+185
+00:22:21,880 --> 00:22:29,800
+ bagging where we pick the random subsets of data points from the training set to create
+
+186
+00:22:29,800 --> 00:22:39,200
+ n smaller data sets and we fit a decision tree on every subset. So, this is called bagging.
+
+187
+00:22:39,200 --> 00:22:47,360
+ The other option is instead of taking a random subset of data points we take a random subset
+
+188
+00:22:47,360 --> 00:22:54,400
+ of the features and then fit different decision trees by constraining every decision tree
+
+189
+00:22:54,400 --> 00:23:05,960
+ to operate only on a random subset of features. So, let us just look at this example to make
+
+190
+00:23:05,960 --> 00:23:13,320
+ this point more clear. So, let us say these are our training set where we have apples
+
+191
+00:23:13,320 --> 00:23:25,520
+ and oranges. Now, in the in bagging we create n subsets with examples. So, these examples
+
+192
+00:23:25,520 --> 00:23:35,680
+ like we have some apples and some orange. Now, see you actually now build run a decision
+
+193
+00:23:35,680 --> 00:23:40,720
+ tree learning algorithm and you come up with a decision tree which divides the whole space
+
+194
+00:23:40,720 --> 00:23:48,860
+ into these two types. Similarly, now you have another subset of
+
+195
+00:23:48,860 --> 00:23:58,560
+ examples and that can lead to another division of the space. So, actually although you started
+
+196
+00:23:58,560 --> 00:24:05,280
+ with the same training set you see just because you picked like different training set or
+
+197
+00:24:05,280 --> 00:24:11,520
+ different like bootstrap sample for individual dynamic decision tree learning algorithm.
+
+198
+00:24:11,520 --> 00:24:21,400
+ You ended up having different ways to kind of separate out the whole space or the decision
+
+199
+00:24:21,400 --> 00:24:28,920
+ boundaries were taking different shapes. So, this is the beauty of bagging that we started
+
+200
+00:24:28,920 --> 00:24:38,800
+ with the same data, but in this process we ended up having a very like instantly generalizable
+
+201
+00:24:38,800 --> 00:24:46,680
+ classification algorithm because we got so many different diverse types of decision boundaries
+
+202
+00:24:46,680 --> 00:24:52,560
+ at the end. Now, when we are trying to test a sample.
+
+203
+00:24:52,560 --> 00:24:59,520
+ So, this is a test example we immediately depending on the boundary which each decision
+
+204
+00:24:59,520 --> 00:25:08,040
+ tree has created it fills I mean it kind of falls under like some area. So, let us say
+
+205
+00:25:08,040 --> 00:25:14,000
+ this test example here this is falling mostly in the green zone and a little bit part in
+
+206
+00:25:14,000 --> 00:25:20,640
+ the yellow zone. So, this is falling fully in the green zone, this is falling mostly
+
+207
+00:25:20,640 --> 00:25:26,280
+ in the yellow zone and this is falling mostly in the green zone. Now, if you take a majority
+
+208
+00:25:26,280 --> 00:25:35,840
+ vote in this case where 3 out of 4 weak learners are going to predict apple and 1 is going
+
+209
+00:25:35,840 --> 00:25:44,400
+ to predict orange you are going to pick the final output as apple with 75 percent confidence.
+
+210
+00:25:44,400 --> 00:25:52,600
+ So, this is how bagging works at inference time and in case of the random subspace method
+
+211
+00:25:52,600 --> 00:25:59,640
+ or feature bagging. So, here everyone is using the same number of test example training example.
+
+212
+00:25:59,640 --> 00:26:07,200
+ So, we are not taking any sample from the training example, but we are now looking at
+
+213
+00:26:07,200 --> 00:26:12,760
+ different features. So, here we are looking at the mass and color, here we are looking
+
+214
+00:26:12,760 --> 00:26:19,160
+ at the pH value and the texture, here we are looking at the pH value and the mass and based
+
+215
+00:26:19,160 --> 00:26:25,240
+ on these different features we are creating different decision tree, we are applying different
+
+216
+00:26:25,240 --> 00:26:31,320
+ decision tree learning algorithm to create like different decision boundaries and again
+
+217
+00:26:31,320 --> 00:26:39,120
+ at a time when a test sample comes you again see where it falls on and depending on that
+
+218
+00:26:39,120 --> 00:26:45,480
+ you predict like different outcome and after taking a voting you predict the final outcome
+
+219
+00:26:45,480 --> 00:26:47,280
+ with certain confidence.
+
+220
+00:26:47,280 --> 00:26:55,000
+ So, the difference between bagging and this random subspace method is in case of bagging
+
+221
+00:26:55,000 --> 00:27:03,320
+ the training data was getting split into multiple small samples while in case of random subspace
+
+222
+00:27:03,320 --> 00:27:09,800
+ method. So, the training data remains the same across different classifiers, but the features
+
+223
+00:27:09,800 --> 00:27:15,480
+ are different. So, the features which each individual classifiers are taking are different.
+
+224
+00:27:15,480 --> 00:27:21,720
+ So, it is resulting in a little different decision boundaries.
+
+225
+00:27:21,720 --> 00:27:31,400
+ Now, in case of random forest it actually combines all this. So, it first it looks at
+
+226
+00:27:31,400 --> 00:27:39,920
+ bagging like it kind of also apply this sampling or sampling of the training data set to create
+
+227
+00:27:39,920 --> 00:27:45,120
+ like bootstrap samples to train a decision tree algorithm. It also look at the random
+
+228
+00:27:45,120 --> 00:27:51,800
+ subspace method by taking random features it is kind of a best of both. So, where you
+
+229
+00:27:51,800 --> 00:27:59,680
+ both do a feature bagging as well as you do a sample bagging and then you build different
+
+230
+00:27:59,680 --> 00:28:06,440
+ decision trees based on different training data example different test data example sorry
+
+231
+00:28:06,440 --> 00:28:12,520
+ different training data example different feature set and then finally, out of all the
+
+232
+00:28:12,520 --> 00:28:18,200
+ weak learners which are out there you run a voting method and then you pick the final
+
+233
+00:28:18,200 --> 00:28:24,160
+ decision based on the individual weak learner decisions and running voting on top of that.
+
+234
+00:28:24,160 --> 00:28:30,820
+ So, to summarize bagging trains multiple instances of the same model on different data subset
+
+235
+00:28:30,820 --> 00:28:36,880
+ and combine their prediction. Random forest extends bagging by introducing additional
+
+236
+00:28:36,880 --> 00:28:43,200
+ randomness in feature selection for every tree enhancing the model diversity and reducing
+
+237
+00:28:43,200 --> 00:28:49,200
+ overfitting boosting iteratively trains models by focusing on error and adjusting ways to
+
+238
+00:28:49,200 --> 00:28:55,640
+ correct misclassified instances and enhance overall accuracy. Ensemble methods significantly
+
+239
+00:28:55,640 --> 00:29:01,960
+ enhance performance compared to single methods like decision tree.
+
+240
+00:29:01,960 --> 00:29:13,120
+ So, with this let me end this particular session and I would be happy to answer if there are
+
+241
+00:29:13,120 --> 00:29:34,800
+ any questions. Yeah, so in that example yes as I mentioned like I created a little confusion.
+
+242
+00:29:34,800 --> 00:29:43,040
+ So, in fact the same rule x1 greater than 3.5 works the left side it takes no the right
+
+243
+00:29:43,040 --> 00:29:48,240
+ side takes ES I was just reading it the opposite. So, that is why the confusion came, but you
+
+244
+00:29:48,240 --> 00:30:01,880
+ are right if the left side is no it works. So, thanks a lot for joining today. I hope
+
+245
+00:30:01,880 --> 00:30:07,720
+ you got to learn different supervised learning algorithms we have covered multiple algorithms
+
+246
+00:30:07,720 --> 00:30:14,120
+ including like single classification models like SVM, nearest neighbors, knife base and
+
+247
+00:30:14,120 --> 00:30:20,440
+ decision tree. We have also covered algorithms which talk about ensembling of different classifiers
+
+248
+00:30:20,440 --> 00:30:28,160
+ like bagging, boosting and decision random forest. I hope this two sessions were useful.
+
+249
+00:30:28,160 --> 00:30:33,520
+ If you have any further questions feel free to post and we will be happy the team will
+
+250
+00:30:33,520 --> 00:30:43,340
+ be happy to get back to you with the answers. Thanks a lot.
+

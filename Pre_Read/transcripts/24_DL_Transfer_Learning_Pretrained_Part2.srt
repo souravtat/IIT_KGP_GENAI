@@ -1,0 +1,2096 @@
+1
+00:00:00,000 --> 00:00:23,820
+ Welcome back, so now we will talk about adaptation, something which is extremely important for
+
+2
+00:00:23,820 --> 00:00:33,260
+ transfer learning, so in this case we will look into different technical aspects of adaptation,
+
+3
+00:00:33,260 --> 00:00:39,440
+ the objective would be to take the source model, pretend model and we try to see how
+
+4
+00:00:39,440 --> 00:00:45,640
+ we can adopt this particular model to the target task that we have, so we will see different
+
+5
+00:00:45,640 --> 00:00:53,000
+ sorts of challenges and then how we can like you know use some methodologies to tackle
+
+6
+00:00:53,000 --> 00:01:00,600
+ some of these problems and so on so forth, so the question is how to adapt, you know
+
+7
+00:01:00,600 --> 00:01:08,400
+ it is all about taking one particular model, applying to a new task, so there are several
+
+8
+00:01:08,400 --> 00:01:14,260
+ things that we have to keep in mind, first of all the architectural modifications, you
+
+9
+00:01:14,260 --> 00:01:23,380
+ know now again stepping back for a while, what we are trying to achieve in this case,
+
+10
+00:01:23,380 --> 00:01:34,060
+ we have a pre-trained model, existing model and we would like to make some changes to
+
+11
+00:01:34,060 --> 00:01:42,840
+ the model for a new task without retraining for this particular task from scratch, because
+
+12
+00:01:42,840 --> 00:01:48,960
+ we have limited data for the target task, we might have computational burden, computational
+
+13
+00:01:48,960 --> 00:01:55,140
+ limitations and so on so forth, so the question is how much we should change to the pre-trained
+
+14
+00:01:55,140 --> 00:02:01,160
+ model architectures for adaptation and there are various degrees of changes, change only
+
+15
+00:02:01,160 --> 00:02:04,760
+ one layer, two layer, three layer, all sorts of things and we will see different kinds
+
+16
+00:02:04,760 --> 00:02:11,040
+ of modifications for this adaptation.
+
+17
+00:02:11,040 --> 00:02:16,080
+ Second thing is optimization schemes, now it is not only that you know the architectural
+
+18
+00:02:16,080 --> 00:02:23,480
+ modification will give you all the necessary things, you need to also look into the optimization
+
+19
+00:02:23,480 --> 00:02:29,800
+ schemes to deal with this little bit of extra training that you need in order to adapt to
+
+20
+00:02:29,800 --> 00:02:36,400
+ the new task, so which ways to train during adaptation, what schedule you should follow,
+
+21
+00:02:36,400 --> 00:02:42,600
+ what should set the learning rate and all sorts of things and third, can we use more
+
+22
+00:02:42,600 --> 00:02:49,000
+ signals for example, the multitasking architectures, can we use signals from multiple tasks simultaneously
+
+23
+00:02:49,000 --> 00:02:54,360
+ or you can ensemble things from different places and so on so forth, so these are some
+
+24
+00:02:54,360 --> 00:02:59,640
+ of these things that we basically need to look into when we are trying to do adaptation.
+
+25
+00:02:59,640 --> 00:03:06,480
+ Now as a programmer and as a designer, the adaptation is something extremely critical
+
+26
+00:03:06,480 --> 00:03:13,320
+ for the deep learning, the pre-training and deep learning models.
+
+27
+00:03:13,320 --> 00:03:22,280
+ So let us look into the architectural changes, what we can do because often and almost always
+
+28
+00:03:22,280 --> 00:03:28,320
+ we have to do the architectural changes because we take one existing model, we make some changes
+
+29
+00:03:28,320 --> 00:03:31,240
+ and we apply to a new task.
+
+30
+00:03:31,240 --> 00:03:38,520
+ So broadly we achieve these things in two ways, number one we keep the pre-trained model
+
+31
+00:03:38,520 --> 00:03:46,240
+ internals unchanged, we do not even touch upon the internals, what we do, we do a very
+
+32
+00:03:46,240 --> 00:03:50,920
+ shallow thing like we add some classifier on top for example, if your objective is to
+
+33
+00:03:50,920 --> 00:03:56,200
+ do image classification and you already have say pre-trained image vectors, then you simply
+
+34
+00:03:56,200 --> 00:04:04,540
+ add one classification layer on top like polyconnected layer, softmax layer and so on so forth.
+
+35
+00:04:04,540 --> 00:04:09,840
+ So you just add classifier on the top embedding at the bottom, use outputs as features and
+
+36
+00:04:09,840 --> 00:04:15,120
+ so on so forth, so without changing the internal structure of this model, the model remains
+
+37
+00:04:15,120 --> 00:04:21,120
+ same as is only few changes here and there.
+
+38
+00:04:21,120 --> 00:04:26,960
+ The second thing is basically modifying the pre-trained model internal architecture and
+
+39
+00:04:26,960 --> 00:04:33,600
+ that is something little bit more intricate than the previous one and like the situation
+
+40
+00:04:33,600 --> 00:04:39,160
+ where this thing needs to be done is basically that if the task that we are dealing with
+
+41
+00:04:39,160 --> 00:04:44,320
+ is very different from what we already had, this whole task.
+
+42
+00:04:44,320 --> 00:04:48,400
+ So in a situation like this we may need to like initialize the encoder decoder slightly
+
+43
+00:04:48,400 --> 00:04:53,400
+ different way, we may need to play with the encoder architectures and so on so forth.
+
+44
+00:04:53,400 --> 00:04:56,640
+ We may need to add some adapters, special kind of things and so on and we will see in
+
+45
+00:04:56,640 --> 00:04:59,240
+ a moment how you can do all of this thing.
+
+46
+00:04:59,240 --> 00:05:06,760
+ So this is the first example of keeping your model architecture unchanged almost.
+
+47
+00:05:06,760 --> 00:05:13,400
+ You just do little bit of very shallow processing on top of the existing model.
+
+48
+00:05:13,400 --> 00:05:18,600
+ So what we do in this case, we simply remove the pre-training task head.
+
+49
+00:05:18,600 --> 00:05:22,800
+ So if the architect is something like this, this is for example the original architecture,
+
+50
+00:05:22,800 --> 00:05:30,640
+ so what we do is simply go and remove this particular one and we simply add for example
+
+51
+00:05:30,640 --> 00:05:34,280
+ as one more layer something like this here.
+
+52
+00:05:34,280 --> 00:05:39,560
+ So if there are four classes, we simply go and add and this is a fully connected layer
+
+53
+00:05:39,560 --> 00:05:43,640
+ or maybe it could be a softmax layer something like this.
+
+54
+00:05:43,640 --> 00:05:50,480
+ So you take out topmost layer, assuming that this particular task is for say image classification
+
+55
+00:05:50,480 --> 00:05:53,440
+ and you have to do some kind of image segmentation or something like that.
+
+56
+00:05:53,440 --> 00:05:57,760
+ We take out the layer for image classification, we add one more layer suitable for image segmentation
+
+57
+00:05:57,760 --> 00:06:01,560
+ and simply get things done.
+
+58
+00:06:01,560 --> 00:06:06,840
+ So in language model for example what we do, we basically add a particular layer depending
+
+59
+00:06:06,840 --> 00:06:11,000
+ upon the task that we are dealing with whether this is a process of tagging, whether classification
+
+60
+00:06:11,000 --> 00:06:12,960
+ and other things and so on and so forth.
+
+61
+00:06:12,960 --> 00:06:17,880
+ In a sense that we don't touch upon the other layers only we remove the top one and then
+
+62
+00:06:17,880 --> 00:06:19,880
+ make the changes.
+
+63
+00:06:19,880 --> 00:06:26,640
+ And this is something actually pretty common, comparatively very light weight and very easy
+
+64
+00:06:26,640 --> 00:06:32,280
+ to do in programming as well.
+
+65
+00:06:32,280 --> 00:06:38,760
+ Here we can add target specific layers on top or the bottom of the piton layer is also
+
+66
+00:06:38,760 --> 00:06:43,780
+ you can be added in the top layer or the bottom layer specific to the particular target.
+
+67
+00:06:43,780 --> 00:06:48,160
+ Again we are not going to change the internals of this particular architecture.
+
+68
+00:06:48,160 --> 00:06:52,520
+ The architecture remains the same, only the top or the bottom layers can be changed depending
+
+69
+00:06:52,520 --> 00:06:56,960
+ upon the task that we are dealing with.
+
+70
+00:06:56,960 --> 00:07:03,400
+ So often what we add, we add basically a single linear layer on top of the piton model and
+
+71
+00:07:03,400 --> 00:07:09,320
+ again retrain this particular model with the little bit of data that we have for the target
+
+72
+00:07:09,320 --> 00:07:14,320
+ task.
+
+73
+00:07:14,320 --> 00:07:19,800
+ So another one is basically more complex tasks for example we have to do, we can use the separate
+
+74
+00:07:19,800 --> 00:07:24,400
+ models for input, for output and so on and so forth.
+
+75
+00:07:24,400 --> 00:07:30,640
+ And this kind of architecture is extremely useful when we have to basically do the interaction
+
+76
+00:07:30,640 --> 00:07:37,480
+ between different tasks and the embeddings are not available beforehand and so on and
+
+77
+00:07:37,480 --> 00:07:38,480
+ so forth.
+
+78
+00:07:38,480 --> 00:07:39,480
+ So something like this.
+
+79
+00:07:39,480 --> 00:07:43,920
+ So in a situation like this what we can do, we can basically use the multiple inputs coming
+
+80
+00:07:43,920 --> 00:07:50,480
+ from different possible signals and basically we can concatenate all of the signals to a
+
+81
+00:07:50,480 --> 00:07:55,160
+ single vector and simply pass it along to the corresponding architectures.
+
+82
+00:07:55,160 --> 00:08:00,480
+ Once again we are not changing these architectures in any way, we are simply using these input
+
+83
+00:08:00,480 --> 00:08:05,520
+ signals or changing this output layer just to adapt to the corresponding target task
+
+84
+00:08:05,520 --> 00:08:10,400
+ that we are dealing with.
+
+85
+00:08:10,400 --> 00:08:15,400
+ Now the more challenging thing is basically modifying the model internals.
+
+86
+00:08:15,400 --> 00:08:21,300
+ In the previous case very little changes like either you change little bit in the input layer
+
+87
+00:08:21,300 --> 00:08:26,520
+ or you change little bit of the output layer and so on so forth.
+
+88
+00:08:26,520 --> 00:08:31,120
+ So in this case we would like to play with the changes in the model internals.
+
+89
+00:08:31,120 --> 00:08:39,040
+ The structure will go through numerous changes and we have to do little bit more processing.
+
+90
+00:08:39,040 --> 00:08:45,960
+ So this is required when the target task is structurally very different from the source
+
+91
+00:08:45,960 --> 00:08:52,720
+ task because we have taken the model from the source task to different trying to apply
+
+92
+00:08:52,720 --> 00:08:58,160
+ to a target task so if they are structurally very different the same architecture might
+
+93
+00:08:58,160 --> 00:09:00,480
+ not work very well.
+
+94
+00:09:00,480 --> 00:09:08,160
+ So in a situation like this we have to change the structure of this model some internals.
+
+95
+00:09:08,160 --> 00:09:16,120
+ So, for example, you pretend to the single input sequence but you are trying to adapt
+
+96
+00:09:16,120 --> 00:09:19,760
+ to a task with several input sequences for example.
+
+97
+00:09:19,760 --> 00:09:25,440
+ Say your objective was sentence classification, you are applying this for next sentence prediction
+
+98
+00:09:25,440 --> 00:09:29,680
+ tasks.
+
+99
+00:09:29,680 --> 00:09:33,520
+ So typical approach that we follow in this case, we pretend the model's weight to initialize
+
+100
+00:09:33,520 --> 00:09:36,600
+ as much as possible of a structurally different target task model.
+
+101
+00:09:36,600 --> 00:09:41,320
+ So whatever weight we had in the original model we will use that and then basically on top
+
+102
+00:09:41,320 --> 00:09:51,920
+ of this we are going to retrain this model based on the target data that we have.
+
+103
+00:09:51,920 --> 00:09:56,320
+ So often what we do is basically use following your language models to initialize encoder
+
+104
+00:09:56,320 --> 00:09:59,040
+ and decoder parameters for machine translation.
+
+105
+00:09:59,040 --> 00:10:06,840
+ So if our objective is to do machine translation for example, we can basically learn or basically
+
+106
+00:10:06,840 --> 00:10:10,880
+ lend the weights from the encoders and decoders and then straightaway apply for the machine
+
+107
+00:10:10,880 --> 00:10:16,600
+ translation task.
+
+108
+00:10:16,600 --> 00:10:19,640
+ So this is something that basically we could do here and there can change a lot of changes
+
+109
+00:10:19,640 --> 00:10:24,000
+ in this model architectures.
+
+110
+00:10:24,000 --> 00:10:33,280
+ Now for task specific modifications, we need to basically do, we need to add some capabilities.
+
+111
+00:10:33,280 --> 00:10:39,200
+ So we provide the pretend models with capabilities and this such that they are useful for the
+
+112
+00:10:39,200 --> 00:10:42,680
+ target tasks.
+
+113
+00:10:42,680 --> 00:10:48,080
+ So one of the common thing for example we do in say that language processing or in vision
+
+114
+00:10:48,080 --> 00:10:54,240
+ models and so on and so forth adding skip connections, residual connections or attentions
+
+115
+00:10:54,240 --> 00:10:56,920
+ and so on and so forth.
+
+116
+00:10:56,920 --> 00:11:01,960
+ So in the simpler case when we are not modifying these architectures, we are not adding anything
+
+117
+00:11:01,960 --> 00:11:02,960
+ like that.
+
+118
+00:11:02,960 --> 00:11:06,880
+ We are simply adding one more extra layer on top of it say fully connected layer, soft
+
+119
+00:11:06,880 --> 00:11:08,720
+ back layer and so on and so forth.
+
+120
+00:11:08,720 --> 00:11:12,800
+ No skip connection, no residual connection, no attention, nothing like that.
+
+121
+00:11:12,800 --> 00:11:18,440
+ But in this case because the target task is more demanding, structurally different than
+
+122
+00:11:18,440 --> 00:11:25,520
+ the source task, we are going to add say for example NLP, the attention layers or say in
+
+123
+00:11:25,520 --> 00:11:34,960
+ image we can use the residual connections like in ResNet and so on and so forth.
+
+124
+00:11:34,960 --> 00:11:42,160
+ So one of the major goals in adaptation that we must use the least number of parameters
+
+125
+00:11:42,160 --> 00:11:48,920
+ because the amount of data that we have is lesser compared to what we should have and
+
+126
+00:11:48,920 --> 00:11:53,560
+ therefore the number of parameter that we should use in a situation like this should
+
+127
+00:11:53,560 --> 00:11:58,960
+ be lesser than the original model.
+
+128
+00:11:58,960 --> 00:12:04,040
+ So we basically have to do less parameter tuning because this is anyway going to be fine tuning
+
+129
+00:12:04,040 --> 00:12:06,560
+ on sitting on top of this original model.
+
+130
+00:12:06,560 --> 00:12:14,960
+ So it is very useful given the increasing size of this model parameters and we generally
+
+131
+00:12:14,960 --> 00:12:19,780
+ add the bottleneck modules to achieve this called adapters.
+
+132
+00:12:19,780 --> 00:12:25,120
+ Adapter is typically a connecting component between different layers of the pretend models.
+
+133
+00:12:25,120 --> 00:12:30,160
+ So one of these adapters could be basically additional attention layer or it could be
+
+134
+00:12:30,160 --> 00:12:35,800
+ say for example the skip connection between two layers and so on and so forth.
+
+135
+00:12:35,800 --> 00:12:40,320
+ So this picture is something like this that there are different kinds of layers.
+
+136
+00:12:40,320 --> 00:12:46,080
+ So the A1 adapter is basically connecting this particular layer if I number this in
+
+137
+00:12:46,080 --> 00:12:51,400
+ this way 3 and 4.
+
+138
+00:12:51,400 --> 00:12:59,880
+ So this A1 is basically connecting 1 to 2, specific kind of adapter which will fulfill
+
+139
+00:12:59,880 --> 00:13:04,400
+ to some extent of course cannot fully fulfill the demand that we are having for the target
+
+140
+00:13:04,400 --> 00:13:10,040
+ task to some extent can fulfill the requirement and the limitations of this pretend model.
+
+141
+00:13:10,040 --> 00:13:13,520
+ Then A2 is connecting these two layers adapter.
+
+142
+00:13:13,520 --> 00:13:16,640
+ This is connecting these two layers and adapter and so on so forth.
+
+143
+00:13:16,640 --> 00:13:21,800
+ So as I mentioned the adapters could be something like the residual connections or the attentions
+
+144
+00:13:21,800 --> 00:13:24,000
+ and so on so forth.
+
+145
+00:13:24,000 --> 00:13:33,200
+ So the broad objective of the adapters basically is to fine tune this features little more given
+
+146
+00:13:33,200 --> 00:13:34,920
+ the nature of the task that we are dealing with.
+
+147
+00:13:34,920 --> 00:13:45,680
+ If the task is complex we require more fine tuning and therefore we have to be very careful.
+
+148
+00:13:45,680 --> 00:13:51,240
+ So as I mentioned the common thing that we do is residual connections in parallel to
+
+149
+00:13:51,240 --> 00:14:00,240
+ an existing layer so we can add residual connections between two different layers and so on.
+
+150
+00:14:00,240 --> 00:14:07,640
+ So often we do like we basically interleave these adapters in between different layers
+
+151
+00:14:07,640 --> 00:14:15,240
+ so that they can learn better representations from different layers.
+
+152
+00:14:15,240 --> 00:14:20,840
+ And so this could be different for example when this is a vision task we could add the
+
+153
+00:14:20,840 --> 00:14:23,520
+ convolutional kind of things.
+
+154
+00:14:23,520 --> 00:14:27,680
+ When you are dealing with NLP tasks we can add the self attention layers and so on so
+
+155
+00:14:27,680 --> 00:14:32,620
+ forth because the goals are different and therefore the adapters that we basically play
+
+156
+00:14:32,620 --> 00:14:36,800
+ with are different.
+
+157
+00:14:36,800 --> 00:14:43,440
+ So this is one good reference where they have used adapters to adapt these new models to
+
+158
+00:14:43,440 --> 00:14:49,760
+ the new tasks and achieved good performance even with the limited amount of data on the
+
+159
+00:14:49,760 --> 00:14:54,640
+ target domain.
+
+160
+00:14:54,640 --> 00:14:59,920
+ Next important component is weight update schedule.
+
+161
+00:14:59,920 --> 00:15:04,480
+ Now let us step back for a moment and try to think about on which set of we are standing
+
+162
+00:15:04,480 --> 00:15:06,560
+ so far.
+
+163
+00:15:06,560 --> 00:15:13,320
+ So we have original model, pretend model, we made some changes here and there maybe
+
+164
+00:15:13,320 --> 00:15:18,880
+ the simple changes like at top or at bottom or maybe like the model internals and so on
+
+165
+00:15:18,880 --> 00:15:21,280
+ so forth.
+
+166
+00:15:21,280 --> 00:15:25,600
+ So as you know a typical deep learning model is nothing but a collection of parameters
+
+167
+00:15:25,600 --> 00:15:28,160
+ that means the weights and biases.
+
+168
+00:15:28,160 --> 00:15:34,280
+ So the moment you make any changes to the model we have to learn this new weights accordingly
+
+169
+00:15:34,280 --> 00:15:37,640
+ as nicely as possible.
+
+170
+00:15:37,640 --> 00:15:42,640
+ So because somewhere we are making some changes, somewhere things are constant.
+
+171
+00:15:42,640 --> 00:15:48,200
+ So what strategies we should take to update the weights and that is a very critical thing
+
+172
+00:15:48,200 --> 00:15:53,360
+ in deep learning pre-training as deep learning like the domain adaptation or this transfer
+
+173
+00:15:53,360 --> 00:15:57,480
+ learning and deep learning.
+
+174
+00:15:57,480 --> 00:16:04,200
+ So the question is we have to update weights for sure but in which order this is something
+
+175
+00:16:04,200 --> 00:16:08,480
+ extremely critical and how should we do that?
+
+176
+00:16:08,480 --> 00:16:11,320
+ There could be many strategies to do that.
+
+177
+00:16:11,320 --> 00:16:17,160
+ So in which order we should do it and how should we do that?
+
+178
+00:16:17,160 --> 00:16:27,920
+ But the main goal that we have to keep in mind is that that in doing so we must not
+
+179
+00:16:27,920 --> 00:16:34,800
+ overwrite the information already there in the pre-trained models because the pre-trained
+
+180
+00:16:34,800 --> 00:16:42,240
+ models giving us the necessary background and the backbone on which we will be standing.
+
+181
+00:16:42,240 --> 00:16:49,480
+ Now if by adding new things we are going to change the weights to a great deal then the
+
+182
+00:16:49,480 --> 00:16:53,480
+ models are going to be changed a lot.
+
+183
+00:16:53,480 --> 00:17:01,480
+ So the original information will be lost and therefore this seriously questions the capabilities
+
+184
+00:17:01,480 --> 00:17:06,320
+ of this model, generalizations of this model on the new data and so on and so forth.
+
+185
+00:17:06,320 --> 00:17:10,000
+ So while for sure we have to change the weights we have to keep in mind that we are not going
+
+186
+00:17:10,000 --> 00:17:15,800
+ to overwrite the existing information.
+
+187
+00:17:15,800 --> 00:17:20,360
+ So common approach for weight update is basically from top to bottom.
+
+188
+00:17:20,360 --> 00:17:30,960
+ So you have multiple layers for example 1, 2, 3, 4 and every layer have some weights.
+
+189
+00:17:30,960 --> 00:17:38,600
+ So I consider this w1, this is w2, w3 and so on so forth.
+
+190
+00:17:38,600 --> 00:17:44,240
+ So the common approach that we follow very cost effective, easy to implement and all
+
+191
+00:17:44,240 --> 00:17:50,400
+ sorts of things is basically update from top to bottom.
+
+192
+00:17:50,400 --> 00:17:56,560
+ So you progressively in time we simply freeze the other layers, the weights in the other
+
+193
+00:17:56,560 --> 00:18:04,280
+ layers and simply update a particular layer one at a time from top to bottom that is very
+
+194
+00:18:04,280 --> 00:18:05,280
+ common.
+
+195
+00:18:05,280 --> 00:18:19,180
+ For example when I am trying to change this particular weight w3, w2 and w1 they will
+
+196
+00:18:19,180 --> 00:18:20,180
+ remain constant.
+
+197
+00:18:20,180 --> 00:18:23,560
+ I am not going to do anything on this.
+
+198
+00:18:23,560 --> 00:18:27,920
+ Then once I am done with w3 I achieved a good performance based on the data that I have
+
+199
+00:18:27,920 --> 00:18:33,960
+ in the target domain then I will basically freeze this one then I will go to the w2,
+
+200
+00:18:33,960 --> 00:18:41,880
+ make some changes while keeping other things frozen and then simply proceed.
+
+201
+00:18:41,880 --> 00:18:46,720
+ The other thing is basically progressively in intensity.
+
+202
+00:18:46,720 --> 00:18:53,320
+ So the learning rate is something is extremely critical for good optimization for getting
+
+203
+00:18:53,320 --> 00:19:00,080
+ the right objective for speeding up this model and so on so forth.
+
+204
+00:19:00,080 --> 00:19:05,520
+ Now the question is how we should vary the learning rates?
+
+205
+00:19:05,520 --> 00:19:09,960
+ What should the schedule for varying the learning rates?
+
+206
+00:19:09,960 --> 00:19:15,840
+ And then progressively versus the pre-tent model the regularization stuff.
+
+207
+00:19:15,840 --> 00:19:20,040
+ How we can basically make the model little regularized so that we do not lose any information
+
+208
+00:19:20,040 --> 00:19:22,160
+ that we already had.
+
+209
+00:19:22,160 --> 00:19:29,280
+ So in weight freezing what we do and that is the main intuition which drives the weight
+
+210
+00:19:29,280 --> 00:19:34,640
+ freezing is that we train all layers on data with different distribution and tasks like
+
+211
+00:19:34,640 --> 00:19:37,840
+ if we try to do that may lead to instability and poor solutions.
+
+212
+00:19:37,840 --> 00:19:43,400
+ There is a main concern that we have that we simultaneously try to learn all the layers
+
+213
+00:19:43,400 --> 00:19:48,520
+ and so on so forth may dismantle the entire thing that we have learnt because the data
+
+214
+00:19:48,520 --> 00:19:54,040
+ that we are dealing with very small in quantity and we cannot do very much.
+
+215
+00:19:54,040 --> 00:19:59,680
+ So then why not take this particular approach where we are not going to dismantle everything
+
+216
+00:19:59,680 --> 00:20:00,680
+ simultaneously.
+
+217
+00:20:00,680 --> 00:20:06,600
+ We simply take one at a time, make the changes, freeze it and then take the others.
+
+218
+00:20:06,600 --> 00:20:11,680
+ That is the more or less this idea.
+
+219
+00:20:11,680 --> 00:20:15,800
+ So we take individual layers, we adapt it to the new task, see how they are performing
+
+220
+00:20:15,800 --> 00:20:22,000
+ on the new task and simply freeze it and then proceed.
+
+221
+00:20:22,000 --> 00:20:26,920
+ So this something is called the layer wise training which is very old technique invented
+
+222
+00:20:26,920 --> 00:20:33,440
+ by one of the pioneers of deep learning back in 2006 and that is still widely used in the
+
+223
+00:20:33,440 --> 00:20:40,120
+ transfer learning based on the deep learning models.
+
+224
+00:20:40,120 --> 00:20:45,120
+ There are other approaches, very common approaches like chain thaw, gradual unfreezing, sequential
+
+225
+00:20:45,120 --> 00:20:50,000
+ unfreezing and so on so forth.
+
+226
+00:20:50,000 --> 00:20:54,760
+ So here what we do, freezing all but the top layer.
+
+227
+00:20:54,760 --> 00:21:01,320
+ So I freeze all the layers except the top layer and then simply go and train it because
+
+228
+00:21:01,320 --> 00:21:04,080
+ this only one layer I am going to make changes to.
+
+229
+00:21:04,080 --> 00:21:08,320
+ So extremely fast, requires little data and so on so forth.
+
+230
+00:21:08,320 --> 00:21:12,840
+ But optimization wise is probably not the right thing to do, is probably going to sacrifice
+
+231
+00:21:12,840 --> 00:21:17,320
+ this accuracy little bit, it may lose the generalizability of this model and so on so
+
+232
+00:21:17,320 --> 00:21:25,200
+ forth but is very cost effective and also requires lesser amount of data.
+
+233
+00:21:25,200 --> 00:21:28,840
+ The second approach is called the chain thaw.
+
+234
+00:21:28,840 --> 00:21:33,640
+ So in this case we no longer dealing with only a single layer, we are dealing with multiple
+
+235
+00:21:33,640 --> 00:21:42,080
+ layers but we train one layer at a time, we train a new layer something like this then
+
+236
+00:21:42,080 --> 00:21:47,360
+ train one layer at a time then what we do basically something like this then we train
+
+237
+00:21:47,360 --> 00:21:50,720
+ all layers.
+
+238
+00:21:50,720 --> 00:21:56,880
+ So gradually we will basically increase this intensity of training.
+
+239
+00:21:56,880 --> 00:22:03,080
+ When we basically added a new layer, we first train that then we have to make changes to
+
+240
+00:22:03,080 --> 00:22:07,120
+ the other existing layers because no longer they are very well connected.
+
+241
+00:22:07,120 --> 00:22:13,160
+ So we change, make changes to the layers one at a time and once this is done then we train
+
+242
+00:22:13,160 --> 00:22:15,240
+ all layers.
+
+243
+00:22:15,240 --> 00:22:19,760
+ Now one might be questioning that whether this is optimal thing to do, right?
+
+244
+00:22:19,760 --> 00:22:25,800
+ Suddenly this is not an optimal thing to do but when you are done with the second step
+
+245
+00:22:25,800 --> 00:22:31,960
+ training one layer at a time then you already have a good initial points and therefore standing
+
+246
+00:22:31,960 --> 00:22:39,360
+ on top of these when you train on all layers the things become little faster.
+
+247
+00:22:39,360 --> 00:22:43,400
+ The third approach is called gradual unfreezing.
+
+248
+00:22:43,400 --> 00:22:49,160
+ So in this case we will unfreeze one layer after another, initially everything is present
+
+249
+00:22:49,160 --> 00:22:51,520
+ we only unfreeze one layer after another.
+
+250
+00:22:51,520 --> 00:22:57,320
+ In the previous case we are freezing all else but only one but in this case we are taking
+
+251
+00:22:57,320 --> 00:23:02,760
+ the reverse approach, we will unfreeze one layer and then simply proceed make the changes
+
+252
+00:23:02,760 --> 00:23:07,680
+ and simply move on.
+
+253
+00:23:07,680 --> 00:23:14,440
+ So this is an example of like this gradual unfreezing one layer after the another one,
+
+254
+00:23:14,440 --> 00:23:19,280
+ something like this we will do.
+
+255
+00:23:19,280 --> 00:23:26,080
+ The final thing is called sequential unfreezing, now in all previous cases we are dealing with
+
+256
+00:23:26,080 --> 00:23:31,160
+ the weights associated with the different layers and so on so forth.
+
+257
+00:23:31,160 --> 00:23:38,280
+ But there are many hyper parameters that are extremely critical for models performance
+
+258
+00:23:38,280 --> 00:23:40,600
+ and I do not know yet how to deal with them.
+
+259
+00:23:40,600 --> 00:23:45,480
+ So in this case in the sequential unfreezing what we do we fine tune the additional parameters
+
+260
+00:23:45,480 --> 00:23:48,800
+ for different epochs gradually.
+
+261
+00:23:48,800 --> 00:23:50,840
+ So as you know in training what happens?
+
+262
+00:23:50,840 --> 00:23:56,640
+ Training happens to multiple epochs, first epoch you take all data, you make changes,
+
+263
+00:23:56,640 --> 00:24:00,960
+ second epoch you take other data, the same data but in a different sequence you make
+
+264
+00:24:00,960 --> 00:24:04,640
+ changes and so on so forth.
+
+265
+00:24:04,640 --> 00:24:10,720
+ So while we are basically proceeding epoch by epoch we would like to fine tune this additional
+
+266
+00:24:10,720 --> 00:24:14,520
+ parameters to the hyper parameters, they are not model parameters like weights and biases
+
+267
+00:24:14,520 --> 00:24:19,000
+ but they are extremely important parameters and we will try to basically control them
+
+268
+00:24:19,000 --> 00:24:25,600
+ nicely so that they can do very good job on the target task.
+
+269
+00:24:25,600 --> 00:24:31,760
+ So for example you can fine tune pretend parameters without embedding layers for several epochs
+
+270
+00:24:31,760 --> 00:24:36,140
+ and then see what happens.
+
+271
+00:24:36,140 --> 00:24:45,640
+ And you train all layers until convergence, something like this we could do gradually.
+
+272
+00:24:45,640 --> 00:24:51,320
+ So in sequential unfreezing finally what we do we train all parameters jointly, once we
+
+273
+00:24:51,320 --> 00:24:56,680
+ have done this sequentially after epoch by epoch finally we will train all parameters
+
+274
+00:24:56,680 --> 00:25:00,200
+ jointly to achieve better results.
+
+275
+00:25:00,200 --> 00:25:08,960
+ Now I must add in this is that that none of this approaches can guarantee the optimal
+
+276
+00:25:08,960 --> 00:25:17,640
+ performance, they are good balance between the effectiveness and the computational efficiency
+
+277
+00:25:17,640 --> 00:25:23,600
+ and the generalizability because you are operating on limited computing budget, we are operating
+
+278
+00:25:23,600 --> 00:25:26,920
+ on lesser amount of data.
+
+279
+00:25:26,920 --> 00:25:31,400
+ So all these the heuristics approaches that we have seen so far they can tackle some of
+
+280
+00:25:31,400 --> 00:25:37,200
+ the limitations to some extent but they certainly are not full proof approaches and one needs
+
+281
+00:25:37,200 --> 00:25:41,640
+ to basically adapt to the new tasks depending upon the performance.
+
+282
+00:25:41,640 --> 00:25:47,480
+ So one simple guideline that one can follow is that you look at the loss functions how
+
+283
+00:25:47,480 --> 00:25:52,480
+ they are basically behaving and so on so forth and then basically you can choose that which
+
+284
+00:25:52,480 --> 00:25:55,640
+ layers are actually affecting more.
+
+285
+00:25:55,640 --> 00:25:59,960
+ So you probably can focus on those layers which are affecting more, less on the layers
+
+286
+00:25:59,960 --> 00:26:06,640
+ which are affecting less and so on so forth.
+
+287
+00:26:06,640 --> 00:26:16,440
+ The another important thing is regularization because the setup we are operating on is something
+
+288
+00:26:16,440 --> 00:26:22,320
+ like this that we have a pre-trained model which is trained on large volume of data and
+
+289
+00:26:22,320 --> 00:26:27,600
+ we are trying to apply this model on new tasks sort of trying to adapt this particular model
+
+290
+00:26:27,600 --> 00:26:32,960
+ in new tasks and we are going to basically make some changes here and there but at the
+
+291
+00:26:32,960 --> 00:26:40,040
+ same time we are not we must not lose the original information.
+
+292
+00:26:40,040 --> 00:26:46,280
+ So if we let the parameters change a lot then they can dismantle the original learning
+
+293
+00:26:46,280 --> 00:26:48,280
+ that we had.
+
+294
+00:26:48,280 --> 00:26:53,240
+ So in addition to all of the things that we have seen so far we also need to add a regularization
+
+295
+00:26:53,240 --> 00:27:02,080
+ term so that the parameters in the new model or the learned parameter in the new models
+
+296
+00:27:02,080 --> 00:27:05,440
+ they remain as close to as the original model.
+
+297
+00:27:05,440 --> 00:27:09,560
+ So it is very popular L2 regularization that we apply in most of these learning models we
+
+298
+00:27:09,560 --> 00:27:10,560
+ can apply.
+
+299
+00:27:10,560 --> 00:27:17,680
+ So we simply add this particular term to the original objective function for the new task
+
+300
+00:27:17,680 --> 00:27:27,040
+ and we of course need to control the hyperparameter associated with this particular expression.
+
+301
+00:27:27,040 --> 00:27:28,800
+ So something like this is happening here.
+
+302
+00:27:28,800 --> 00:27:36,360
+ So we have for example this original model that we are having here and then we adapt
+
+303
+00:27:36,360 --> 00:27:42,120
+ to this particular new model something like that L1 prime, L2 prime, L1 prime and E prime
+
+304
+00:27:42,120 --> 00:27:47,400
+ and so on and so forth okay and they will have their own sets of new parameters.
+
+305
+00:27:47,400 --> 00:27:52,040
+ So the regularization term that we are dealing with is basically we will try to look into
+
+306
+00:27:52,040 --> 00:27:56,960
+ the difference between the original model parameters of different layers and the new
+
+307
+00:27:56,960 --> 00:28:04,920
+ model parameters of the new architecture that we are dealing with.
+
+308
+00:28:04,920 --> 00:28:15,040
+ The third important thing and this is extremely critical because this can overshoot the good
+
+309
+00:28:15,040 --> 00:28:22,040
+ optimal point often and can also speed up the training.
+
+310
+00:28:22,040 --> 00:28:28,160
+ So scheduling the learning rate that's a very critical component in this not only in
+
+311
+00:28:28,160 --> 00:28:34,200
+ the pre-training of the deep learning models or the transfer learning but this is also
+
+312
+00:28:34,200 --> 00:28:38,720
+ very critical for training the normal model as well.
+
+313
+00:28:38,720 --> 00:28:40,600
+ So what we like to do?
+
+314
+00:28:40,600 --> 00:28:47,120
+ The main idea is that we would like to use lower learning rates to avoid overwriting existing
+
+315
+00:28:47,120 --> 00:28:54,080
+ information because if you set a very big learning rate okay they can basically take
+
+316
+00:28:54,080 --> 00:29:01,640
+ your model to some other point and as a result you know you can have the overwriting of existing
+
+317
+00:29:01,640 --> 00:29:05,100
+ information that you had in the original model.
+
+318
+00:29:05,100 --> 00:29:10,360
+ So to tackle this problem what we do basically do?
+
+319
+00:29:10,360 --> 00:29:17,720
+ We take this approach is that in the lower layers typically we capture general information
+
+320
+00:29:17,720 --> 00:29:22,120
+ in a standard deep net that's the general belief is that the lower layers will capture
+
+321
+00:29:22,120 --> 00:29:31,520
+ general information and as you move up gradually they will modify the information or the features
+
+322
+00:29:31,520 --> 00:29:36,360
+ specific to a particular task that we are dealing with okay.
+
+323
+00:29:36,360 --> 00:29:40,920
+ So keeping in mind this observation what we do?
+
+324
+00:29:40,920 --> 00:29:49,360
+ So early in training the new model still needs to adapt to the target distribution okay because
+
+325
+00:29:49,360 --> 00:29:56,680
+ the new model that we have we have added few layers top or at the bottom we also probably
+
+326
+00:29:56,680 --> 00:30:01,280
+ have modified the internals little bit for example adding new attention layer or adding
+
+327
+00:30:01,280 --> 00:30:07,320
+ say skip connection and so on so forth so we need to basically train all these new parameters
+
+328
+00:30:07,320 --> 00:30:08,320
+ okay.
+
+329
+00:30:08,320 --> 00:30:13,240
+ So while we are very early in the training with respect to the new data or the target
+
+330
+00:30:13,240 --> 00:30:21,840
+ data that we have we need to adapt the distribution nicely and then in the late in training the
+
+331
+00:30:21,840 --> 00:30:27,000
+ model is close to convergence so we have to be little more careful in setting the learning
+
+332
+00:30:27,000 --> 00:30:31,440
+ rate as well okay so these three observations basically have to keep in mind while we are
+
+333
+00:30:31,440 --> 00:30:33,720
+ setting this thing.
+
+334
+00:30:33,720 --> 00:30:40,800
+ So one of the very effective learning rate schedule for transfer learning based on the
+
+335
+00:30:40,800 --> 00:30:46,200
+ deep learning is something like this that again it is driven by the observation that
+
+336
+00:30:46,200 --> 00:30:51,880
+ lower layers capture general information so we would like to use lower learning rates
+
+337
+00:30:51,880 --> 00:30:54,160
+ for lower layers.
+
+338
+00:30:54,160 --> 00:31:02,980
+ So essentially what we do we use a particular scheme where the learning rates will be adapted
+
+339
+00:31:02,980 --> 00:31:07,360
+ to a particular layer so alpha is a constant in this case and the alpha i is basically
+
+340
+00:31:07,360 --> 00:31:12,280
+ associated with a particular layer and d to the power i d is a basically constant factor
+
+341
+00:31:12,280 --> 00:31:18,240
+ and i is a layer so as you basically go up then it will basically you know modify this
+
+342
+00:31:18,240 --> 00:31:23,560
+ particular learning rate with respect to the layer depth and it will set accordingly okay
+
+343
+00:31:23,560 --> 00:31:32,000
+ as opposed to a fixed learning rate like alpha it will be different for different layers.
+
+344
+00:31:32,000 --> 00:31:40,040
+ So these are basically some of the main I would say the strategies to deal with the
+
+345
+00:31:40,040 --> 00:31:48,760
+ architectural changes when you make to adapt this new models to the new tasks.
+
+346
+00:31:48,760 --> 00:31:58,520
+ Now one of the common things that we do often like this is something that not exactly related
+
+347
+00:31:58,520 --> 00:32:05,560
+ to pre-training this can be done simultaneously as well as multitask learning okay.
+
+348
+00:32:05,560 --> 00:32:11,600
+ So in the setup something like this happens like we simultaneously undertake multiple
+
+349
+00:32:11,600 --> 00:32:18,600
+ tasks using a single network we do not want to use different networks for different tasks
+
+350
+00:32:18,600 --> 00:32:25,520
+ but rather only one network for different tasks okay and what we like to avoid we like
+
+351
+00:32:25,520 --> 00:32:31,800
+ to avoid having different like the models for different tasks okay because the general
+
+352
+00:32:31,800 --> 00:32:38,440
+ assumption is that that if the network is big enough then at least the lower layers
+
+353
+00:32:38,440 --> 00:32:45,760
+ can learn some common representations for tasks which share some commonality okay and
+
+354
+00:32:45,760 --> 00:32:50,880
+ standing on those assumptions can I come up with some architectures which will have
+
+355
+00:32:50,880 --> 00:32:57,120
+ lesser number of parameters which will require lesser number of data and so on so forth.
+
+356
+00:32:57,120 --> 00:33:02,040
+ So there are broadly two basic forms of MTL is hard parameter sharing and soft parameter
+
+357
+00:33:02,040 --> 00:33:05,000
+ sharing.
+
+358
+00:33:05,000 --> 00:33:15,280
+ So in hard parameter sharing so the models basically share weights between different tasks
+
+359
+00:33:15,280 --> 00:33:24,560
+ okay for example in this case so in this particular branch there is a common thread
+
+360
+00:33:24,560 --> 00:33:30,980
+ you can see okay nothing specific to particular tasks okay you can think about these are basically
+
+361
+00:33:30,980 --> 00:33:34,740
+ different blocks of individual models for example if you take transformer the transformer
+
+362
+00:33:34,740 --> 00:33:39,680
+ blocks if you take residual network it could be residual blocks and something like that
+
+363
+00:33:39,680 --> 00:33:48,360
+ very common but near the end of this network you can add two, three different branches
+
+364
+00:33:48,360 --> 00:33:51,440
+ or three, four whatever the number depends on the number of tasks that you are dealing
+
+365
+00:33:51,440 --> 00:33:58,400
+ with different branches okay which will basically do the task specific things and these blocks
+
+366
+00:33:58,400 --> 00:34:02,200
+ will basically have different sets of parameters okay.
+
+367
+00:34:02,200 --> 00:34:08,840
+ So this set is basically shared parameters and then only at the top level you have different
+
+368
+00:34:08,840 --> 00:34:14,680
+ parameters for different tasks and we call this hard parameter sharing.
+
+369
+00:34:14,680 --> 00:34:21,480
+ The second component or second very common approach that we follow is called soft parameter
+
+370
+00:34:21,480 --> 00:34:27,480
+ sharing so instead what we have in this case we will have say for example separate threads
+
+371
+00:34:27,480 --> 00:34:33,040
+ for separate tasks that we deal with so if you have three tasks we have separate threads
+
+372
+00:34:33,040 --> 00:34:38,400
+ but at the same time these separate models will also exchange information between themselves
+
+373
+00:34:38,400 --> 00:34:42,960
+ through the cross talks or cross links okay again they are different links they are all
+
+374
+00:34:42,960 --> 00:34:49,480
+ parameterized so something like you have a separate weight say w1, w2 it is a weight
+
+375
+00:34:49,480 --> 00:34:56,320
+ matrix and so on so forth 3, 4 and so on.
+
+376
+00:34:56,320 --> 00:35:01,960
+ So the cross talks will have these parameters associated with them so they will exchange
+
+377
+00:35:01,960 --> 00:35:06,680
+ the vectors so the representation learned in different blocks for the different tasks
+
+378
+00:35:06,680 --> 00:35:14,240
+ okay so that they can share information between themselves.
+
+379
+00:35:14,240 --> 00:35:23,240
+ So in vision one of the very popular architectures in MTL is called shared trunk okay so in this
+
+380
+00:35:23,240 --> 00:35:27,160
+ case what happens is that just like this one of this thing that in a hard parameter sharing
+
+381
+00:35:27,160 --> 00:35:33,160
+ we have seen in this case so all the entire thing there is a big trunk you know which
+
+382
+00:35:33,160 --> 00:35:38,480
+ is basically very common and so you have to do end tasks at the end of it okay from a
+
+383
+00:35:38,480 --> 00:35:44,600
+ particular image so image classification, image segmentation, object detection and all
+
+384
+00:35:44,600 --> 00:35:50,120
+ sorts of things okay so I naturally I do not want to do many things okay increasing the
+
+385
+00:35:50,120 --> 00:35:53,360
+ number of parameters in my model and so on so forth.
+
+386
+00:35:53,360 --> 00:35:59,760
+ So again the assumption is that the shared trunk will produce generally enough information
+
+387
+00:35:59,760 --> 00:36:05,440
+ which we can further fine tune to achieve our end goals several goals so all that basically
+
+388
+00:36:05,440 --> 00:36:15,320
+ you have to do at end of it so this is the final representation okay this one and end
+
+389
+00:36:15,320 --> 00:36:20,080
+ of it you can basically add this many branches number of the number of branches equals to
+
+390
+00:36:20,080 --> 00:36:26,120
+ the number of tasks that you have and accordingly you can basically add some little heads which
+
+391
+00:36:26,120 --> 00:36:35,400
+ will be responsible for basically you know serving your purpose.
+
+392
+00:36:35,400 --> 00:36:41,520
+ Cross stitching is another approach in multitask learning so in this case what happens is that
+
+393
+00:36:41,520 --> 00:36:49,200
+ you use separate network for each task okay if you obtain tasks you use separate network
+
+394
+00:36:49,200 --> 00:36:54,920
+ but the input to each layer is basically a linear combination of output from the previous
+
+395
+00:36:54,920 --> 00:36:59,800
+ layer of each network so as you can as you can see from this particular figure so this
+
+396
+00:36:59,800 --> 00:37:06,720
+ is basically there are two tasks only we are dealing with task A and task B task A and
+
+397
+00:37:06,720 --> 00:37:15,000
+ task B so because this particular network is responsible for task A this particular
+
+398
+00:37:15,000 --> 00:37:20,800
+ network is responsible for task B and they have identical structure okay there is one
+
+399
+00:37:20,800 --> 00:37:27,080
+ important constraint in this case in cross stitching and the parallel blocks in the network
+
+400
+00:37:27,080 --> 00:37:33,800
+ for example this block and this block okay so the representation coming from the parallel
+
+401
+00:37:33,800 --> 00:37:41,400
+ blocks okay will basically will be shared between these networks and through a linear
+
+402
+00:37:41,400 --> 00:37:45,920
+ combination okay so these weights you can see the alpha basically the linear combination
+
+403
+00:37:45,920 --> 00:37:53,160
+ of weights is coming from different blocks okay so linear combination will be done based
+
+404
+00:37:53,160 --> 00:38:00,360
+ on the representation which are coming from the parallel blocks okay so it will never
+
+405
+00:38:00,360 --> 00:38:03,880
+ happen something like this for example the information exchange will never happen something
+
+406
+00:38:03,880 --> 00:38:11,920
+ like this okay only through this corresponding parallel blocks some okay something like this
+
+407
+00:38:11,920 --> 00:38:15,900
+ and of course this particular model has many more parameters than a typical model that
+
+408
+00:38:15,900 --> 00:38:22,200
+ we have seen like shared trunk and so on and so forth but if the tasks are very different
+
+409
+00:38:22,200 --> 00:38:28,280
+ to each other for example in this case the cross stitching is a much better architecture
+
+410
+00:38:28,280 --> 00:38:33,360
+ compared to the shared trunk approach because in that case we are assuming that they substantially
+
+411
+00:38:33,360 --> 00:38:44,480
+ share the amount of features another approach is prediction distillation so in this case
+
+412
+00:38:44,480 --> 00:38:54,800
+ what happens is that you know we again use lot of parameters in this particular model
+
+413
+00:38:54,800 --> 00:39:00,360
+ so first we do predictions for each task and then these predictions are again combined
+
+414
+00:39:00,360 --> 00:39:04,560
+ using a multimodal network to produce the final output okay so this is two level training
+
+415
+00:39:04,560 --> 00:39:10,480
+ that we do okay first we basically apply one set of network then we use another network
+
+416
+00:39:10,480 --> 00:39:15,600
+ common network for multimodal distillation then it will generate vectors and then we
+
+417
+00:39:15,600 --> 00:39:22,600
+ basically fine tune this vector to produce this final output and I will end with this
+
+418
+00:39:22,600 --> 00:39:31,640
+ particular architecture so this is the nlp application is very common so in this case
+
+419
+00:39:31,640 --> 00:39:37,520
+ say for example you have architecture like transformer or bot okay something like this
+
+420
+00:39:37,520 --> 00:39:43,880
+ we can have or you have can have any other architectures okay so they will produce common
+
+421
+00:39:43,880 --> 00:39:49,600
+ representations for language okay nothing specific to particular task and then you can
+
+422
+00:39:49,600 --> 00:39:54,480
+ take the corresponding parts from this particular network to produce different sorts of things
+
+423
+00:39:54,480 --> 00:39:59,880
+ for example textual similarity relation extraction you would like to do some kind of inference
+
+424
+00:39:59,880 --> 00:40:04,440
+ or reasoning named entity recognition and so on and so forth okay the only thing that
+
+425
+00:40:04,440 --> 00:40:08,240
+ you need to be careful about is that while you are picking things from the pretend model
+
+426
+00:40:08,240 --> 00:40:13,560
+ in this case you have to choose the right thing okay so one thing you probably notice
+
+427
+00:40:13,560 --> 00:40:19,600
+ in this case here is that while we are doing textual similarity okay we are no longer using
+
+428
+00:40:19,600 --> 00:40:28,480
+ all hidden vectors okay the CLS token is good enough in this case okay because CLS token
+
+429
+00:40:28,480 --> 00:40:34,560
+ is the ultimate representation for the entire text that will be good enough but if we are
+
+430
+00:40:34,560 --> 00:40:39,800
+ doing say for example sequence tagging like named entity recognition then it's probably
+
+431
+00:40:39,800 --> 00:40:44,240
+ better to use all the information that we have so hidden vectors from different places
+
+432
+00:40:44,240 --> 00:40:49,320
+ in the network so in that case we will basically combine all the hidden vectors that we have
+
+433
+00:40:49,320 --> 00:40:56,640
+ in this particular network so depending upon the task one has to decide which portion of
+
+434
+00:40:56,640 --> 00:41:01,440
+ the representation that you have learned from the basic model will be useful for this particular
+
+435
+00:41:01,440 --> 00:41:08,720
+ task and on top of this you add the corresponding like this head for a specific task and optimize
+
+436
+00:41:08,720 --> 00:41:19,080
+ it using these target data that we have okay so I will stop here so if you have any question
+
+437
+00:41:19,080 --> 00:41:43,560
+ I can take up this questions okay so the question is why do we need transfer learning so as
+
+438
+00:41:43,560 --> 00:41:50,920
+ I mentioned we do transfer learning primarily for two things number one is that when we
+
+439
+00:41:50,920 --> 00:41:58,080
+ have lesser amount of data in the target task or target domain and second thing when we
+
+440
+00:41:58,080 --> 00:42:05,120
+ have the computational constraint because training deep networks from scratch on a new
+
+441
+00:42:05,120 --> 00:42:12,360
+ task will require both lot of computational power as well as a lot of annotated data so
+
+442
+00:42:12,360 --> 00:42:20,720
+ when you lack this thing then transfer learning is a is a viable thing to do it won't give
+
+443
+00:42:20,720 --> 00:42:26,520
+ you as much accuracy as you typically get when you try to learn a big models from scratch
+
+444
+00:42:26,520 --> 00:42:37,720
+ but that's a better alternative when you have these constraints the second question is how
+
+445
+00:42:37,720 --> 00:42:44,240
+ does the data distribution affect the quality of knowledge transfer so this is one of the
+
+446
+00:42:44,240 --> 00:42:51,040
+ most critical thing and that actually makes and breaks the quality of output that you
+
+447
+00:42:51,040 --> 00:43:00,160
+ get so often if the data distribution is very different from the one you had in the original
+
+448
+00:43:00,160 --> 00:43:06,880
+ model okay you might have unstable model in the sense that that you might get good performance
+
+449
+00:43:06,880 --> 00:43:12,200
+ on whatever little that that you have in the target domain but if the domain changes little
+
+450
+00:43:12,200 --> 00:43:17,880
+ bit here and there the data changes little bit here and there that might affect a lot
+
+451
+00:43:17,880 --> 00:43:22,440
+ so to tackle that one approach is basically to tackle this problem is basically adding
+
+452
+00:43:22,440 --> 00:43:28,080
+ regularization term to this particular model so that you don't over feed too much to the
+
+453
+00:43:28,080 --> 00:43:38,120
+ little data that you have for the target task third question is does data augmentation help
+
+454
+00:43:38,120 --> 00:43:44,520
+ transfer learning so data augmentation indeed helps transfer learning because you already
+
+455
+00:43:44,520 --> 00:43:52,720
+ have very little data for the target task so if you do data augmentation little bit
+
+456
+00:43:52,720 --> 00:43:58,480
+ then it can have it can add little bit of variety to the target task and that in turn
+
+457
+00:43:58,480 --> 00:44:07,920
+ help learn the model better and improve the generalization of this model why do we often
+
+458
+00:44:07,920 --> 00:44:14,520
+ fine tune the deeper layers so as I mentioned repeatedly that we often fine tune the deeper
+
+459
+00:44:14,520 --> 00:44:22,920
+ layers so reason is that that the initial layers or the layers like sitting at near
+
+460
+00:44:22,920 --> 00:44:30,000
+ the embedding layers and so on so forth so they capture the general information so general
+
+461
+00:44:30,000 --> 00:44:37,320
+ representations and as a result so they can be fine tuned or modified to serve different
+
+462
+00:44:37,320 --> 00:44:44,040
+ other purposes okay so if we try to fine tune those layers then we basically lose the general
+
+463
+00:44:44,040 --> 00:44:50,840
+ information and we have very little opportunity to get those information back in the top layers
+
+464
+00:44:50,840 --> 00:44:58,560
+ so as a result we can basically pick out the relevant part from the vectors that we are
+
+465
+00:44:58,560 --> 00:45:03,920
+ getting from the shallow layers and we can modify it depending upon the task that we
+
+466
+00:45:03,920 --> 00:45:13,760
+ were dealing with next question is what is the relationship between the layer freezing
+
+467
+00:45:13,760 --> 00:45:19,560
+ and the optimality of the objective function okay that's a very that's a very involved
+
+468
+00:45:19,560 --> 00:45:27,560
+ question so you might recall that layer freezing is basically while we are trying to update
+
+469
+00:45:27,560 --> 00:45:33,520
+ the weights we often we cannot do that like the entire network we cannot do that so we
+
+470
+00:45:33,520 --> 00:45:40,400
+ do layer freezing okay so we are freezing a particular layer we won't let it change
+
+471
+00:45:40,400 --> 00:45:47,360
+ okay and we are basically changing a particular other layer so naturally it does not give
+
+472
+00:45:47,360 --> 00:45:55,840
+ you the optimal solution like the objective function may not achieve the right value at
+
+473
+00:45:55,840 --> 00:46:02,560
+ the end of it but that's a viable alternative because the objective is to minimize the
+
+474
+00:46:02,560 --> 00:46:09,480
+ computational cost and this is one way you can achieve this one so to summarize the whole
+
+475
+00:46:09,480 --> 00:46:15,560
+ thing is that we cannot get the optimal solution for the objective function by layer freezing
+
+476
+00:46:15,560 --> 00:46:24,960
+ but just to reduce the computational burden we adopt this particular strategy.
+
+477
+00:46:24,960 --> 00:46:31,520
+ The next question is while fine-tuning a pre-tent model how do we schedule the learning rates
+
+478
+00:46:31,520 --> 00:46:40,440
+ okay so as you know the learning rates are extremely critical component in optimization
+
+479
+00:46:40,440 --> 00:46:44,800
+ so if they are big you may over shoot the destination if they are small it may take
+
+480
+00:46:44,800 --> 00:46:51,240
+ lot of time okay so while you fine-tune the pre-tent models typically when you are starting
+
+481
+00:46:51,240 --> 00:46:56,800
+ off we can keep the learning rates little high okay we can keep the learning rates for
+
+482
+00:46:56,800 --> 00:47:02,840
+ the deeper layers little high and the low for the shallow layers simply because if we
+
+483
+00:47:02,840 --> 00:47:06,640
+ set the learning rates to be very high for the shallow layers then basically we are going
+
+484
+00:47:06,640 --> 00:47:11,200
+ to lose the general information that we have learned and as a result we may not recover
+
+485
+00:47:11,200 --> 00:47:19,800
+ that while we are trying to fine-tune the deeper layers okay the next question is is
+
+486
+00:47:19,800 --> 00:47:27,880
+ batch normalization helpful in transfer learning so batch normalization is a very important
+
+487
+00:47:27,880 --> 00:47:33,040
+ regularization technique in transfer learning or rather in any deep learning so it is also
+
+488
+00:47:33,040 --> 00:47:40,360
+ true for transfer learning as well so it does help because this basically helps regularize
+
+489
+00:47:40,360 --> 00:47:49,440
+ this model better so when you are trying to adopt a model a changed model to a new data
+
+490
+00:47:49,440 --> 00:47:55,600
+ they will also go through lot of changes the distribution of this output layers in intermediate
+
+491
+00:47:55,600 --> 00:48:01,240
+ layers and so on and so forth and the batch normalization will regularize those changes
+
+492
+00:48:01,240 --> 00:48:10,680
+ okay and as a result it will achieve better generalization okay the next question is since
+
+493
+00:48:10,680 --> 00:48:17,800
+ data scarcity is a major issue in transfer learning why can't we use gain or generative
+
+494
+00:48:17,800 --> 00:48:24,200
+ adversarial network to generate more data and train a model what is the potential downside
+
+495
+00:48:24,200 --> 00:48:31,280
+ okay in fact the answer to the first question is if we do use gain to generate more data
+
+496
+00:48:31,280 --> 00:48:37,920
+ this kind of data augmentation technique okay in a different way they do use that one so
+
+497
+00:48:37,920 --> 00:48:43,840
+ yes this is a viable alternative to augment data using gain but the potential downside
+
+498
+00:48:43,840 --> 00:48:52,640
+ is this that if the target data target data that we have have very little variety then
+
+499
+00:48:52,640 --> 00:48:59,880
+ the gain will end up generating very similar kind of data okay so it will produce something
+
+500
+00:48:59,880 --> 00:49:06,960
+ like rich gets richer kind of model as a result those who are present in the data will benefit
+
+501
+00:49:06,960 --> 00:49:13,960
+ from it those who are not present are very less in numbers they will not benefit from
+
+502
+00:49:13,960 --> 00:49:19,000
+ it so yes if the diversity of the data even in the original in the original the target
+
+503
+00:49:19,000 --> 00:49:24,000
+ task is good enough then gain could be a very good approach otherwise that could be risky
+
+504
+00:49:24,000 --> 00:49:30,520
+ thing to do.
+
+505
+00:49:30,520 --> 00:49:36,080
+ Next question is can transfer learn models be attacked so as you know the attack is a
+
+506
+00:49:36,080 --> 00:49:41,800
+ very common thing in deep learning models like people can basically attack a learn model
+
+507
+00:49:41,800 --> 00:49:47,560
+ and get the original data even if you do not have the original data available okay so just
+
+508
+00:49:47,560 --> 00:49:53,120
+ like other models transfer learn models can be also attacked okay people can actually
+
+509
+00:49:53,120 --> 00:50:01,040
+ you know apply the attack methods to get back the data but it is less risky compared to
+
+510
+00:50:01,040 --> 00:50:07,880
+ the original models because of the additional fine tuning that we have done okay so unlike
+
+511
+00:50:07,880 --> 00:50:11,800
+ the original models where we basically know more or less how the models were trained and
+
+512
+00:50:11,800 --> 00:50:18,840
+ so on so forth so attack methods can relatively easily get back the original data.
+
+513
+00:50:18,840 --> 00:50:25,720
+ With the final and the last question what is the consequence of transferring based on
+
+514
+00:50:25,720 --> 00:50:34,920
+ a pre-tent model trained on highly imbalanced data okay that is again a general problem
+
+515
+00:50:34,920 --> 00:50:41,280
+ for any deep learning or any machine learning problem so if the pre-tent model was trained
+
+516
+00:50:41,280 --> 00:50:48,800
+ on highly imbalanced data that means it tends to do very well on the majority of this data
+
+517
+00:50:48,800 --> 00:50:57,940
+ and not so well on the rare data now if on the target domain or on the target tasks the
+
+518
+00:50:57,940 --> 00:51:06,640
+ data is coming from for example the rare category okay the model might go through a lot of changes
+
+519
+00:51:06,640 --> 00:51:11,840
+ because there is a mismatch between data distribution in the pre-tent model and in
+
+520
+00:51:11,840 --> 00:51:19,460
+ the new domain okay so the parameter might change a great deal that has some consequences
+
+521
+00:51:19,460 --> 00:51:28,000
+ in terms of losing the general information that we had in the original model okay so
+
+522
+00:51:28,000 --> 00:51:34,840
+ these are the questions the pre-structured question that I had and I thank you all of
+
+523
+00:51:34,840 --> 00:51:40,320
+ you for attending this and if you have any other question you can reach out to me through
+
+524
+00:51:40,320 --> 00:51:48,040
+ my emails and I am happy to respond to your questions.
+

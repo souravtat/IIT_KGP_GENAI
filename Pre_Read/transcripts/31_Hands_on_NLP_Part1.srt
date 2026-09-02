@@ -1,0 +1,2060 @@
+1
+00:00:00,000 --> 00:00:18,060
+ I hope I am audible clearly so ladies and gentlemen so this today's session will be
+
+2
+00:00:18,060 --> 00:00:23,680
+ basically related to the hands-on applications in NLP so already you have seen the theoretical
+
+3
+00:00:23,680 --> 00:00:28,660
+ part executed by Dr. Plavon Bhoomi beautifully and where you have learned about the theoretical
+
+4
+00:00:28,660 --> 00:00:34,900
+ aspects of NLP. Now in this particular session we are going to have some hands-on demonstrations
+
+5
+00:00:34,900 --> 00:00:42,320
+ on NLP so those who have attended my sessions earlier they know me quite well and in a few
+
+6
+00:00:42,320 --> 00:00:48,120
+ email communication you might have seen me actually I am Shobosachi Mukhopadhyay who
+
+7
+00:00:48,120 --> 00:00:53,400
+ is a research scholar from Center for Computational Data Sciences at IIT Kharagpur and also I
+
+8
+00:00:53,400 --> 00:01:01,940
+ am taking care of this particular high cohort 3. So let us start today's session so already
+
+9
+00:01:01,940 --> 00:01:07,260
+ all of you are quite aware as per our standard practice that we implement this type of the
+
+10
+00:01:07,260 --> 00:01:14,660
+ hands-on sessions in Google Colab. So I request all of you to open a Google Colab so as you
+
+11
+00:01:14,660 --> 00:01:19,900
+ can see on screen all of you are quite aware with these practices as you have gone through
+
+12
+00:01:19,900 --> 00:01:27,260
+ a multiple hands-on sessions including my two earlier sessions on supervised machine learning.
+
+13
+00:01:27,260 --> 00:01:33,180
+ So you know how to open Google Colab go to click on the welcome to Colab and then open
+
+14
+00:01:33,180 --> 00:01:39,460
+ a new notebook make sure that you are logged in from your Gmail account. So click on plus
+
+15
+00:01:39,460 --> 00:01:45,020
+ notebook and it will open up and you like as per the standard practice which I have
+
+16
+00:01:45,020 --> 00:01:50,380
+ mentioned that you can give some name like demo or something like this. So it will help
+
+17
+00:01:50,380 --> 00:02:00,940
+ you to execute this particular portion. So you may give some name like demo here and
+
+18
+00:02:00,940 --> 00:02:06,540
+ then you can click on keep on executing one by one part. So there are code section where
+
+19
+00:02:06,540 --> 00:02:10,860
+ you can write some code you can click on this run cell button it will execute properly and
+
+20
+00:02:10,860 --> 00:02:15,700
+ then you can see plus code plus text these two options are available in plus text you
+
+21
+00:02:15,700 --> 00:02:20,420
+ can add up some text. So all of you quite aware of this but I am just telling you as a part
+
+22
+00:02:20,420 --> 00:02:26,180
+ of the revision you can consider. Now this particular notebook link I will request moderator
+
+23
+00:02:26,180 --> 00:02:33,700
+ to share with all of you. Remember that apart from the GitHub link notebook link will be
+
+24
+00:02:33,700 --> 00:02:40,620
+ shared to all of you. So you can also have the access on the notebook part as well.
+
+25
+00:02:40,620 --> 00:02:47,380
+ So this particular GitHub section if you go to my Google apart from the link those who
+
+26
+00:02:47,380 --> 00:02:57,420
+ want to directly access my GitHub they can search in Google. So it will appear you can
+
+27
+00:02:57,420 --> 00:03:04,580
+ directly go to my GitHub account apart from the link I am just showing how to access it.
+
+28
+00:03:04,580 --> 00:03:12,100
+ So here you can go there and you can click on the second top repository one is in leadership
+
+29
+00:03:12,100 --> 00:03:15,540
+ second one is the natural language processing as you can see in the screen you can click
+
+30
+00:03:15,540 --> 00:03:22,140
+ on it and then you open the second one NLP hands on a beginner's guide you just open
+
+31
+00:03:22,140 --> 00:03:27,220
+ it up and you can use it. So this is another option you can directly open it up from the
+
+32
+00:03:27,220 --> 00:03:31,500
+ link given in comment box section or you can use the Google search. So this is another
+
+33
+00:03:31,500 --> 00:03:40,580
+ option. So let us start the session. So as a just as a beginner's approach. So what
+
+34
+00:03:40,580 --> 00:03:47,980
+ I have done I have given a few basic overview during our discussions for the sake of our
+
+35
+00:03:47,980 --> 00:03:55,420
+ discussions. So now the natural language processing what does it imply. So from first up you have
+
+36
+00:03:55,420 --> 00:04:00,660
+ learned that NLP is an interdisciplinary field which is merging with the machine learning
+
+37
+00:04:00,660 --> 00:04:08,100
+ concepts computer science as well as the linguistic. So it will give you the idea to how to comprehend
+
+38
+00:04:08,100 --> 00:04:14,820
+ and handle the human languages quite effectively. So in basically here you can see two types
+
+39
+00:04:14,820 --> 00:04:20,540
+ of the categories key categories if I mentioned. So one is for the natural language understanding
+
+40
+00:04:20,540 --> 00:04:26,500
+ in short we call them as the NLU and which basically focus on the interpreting and understanding
+
+41
+00:04:26,500 --> 00:04:31,620
+ of the human languages including for example there are stocks like sentiment analysis extracting
+
+42
+00:04:31,620 --> 00:04:37,820
+ information from the text or speech recognition text classification etc. And the other part
+
+43
+00:04:37,820 --> 00:04:43,620
+ that is called the natural language generation energy. So what does it imply. It actually
+
+44
+00:04:43,620 --> 00:04:49,820
+ focuses on producing human readable text from the structure data and it involves stocks
+
+45
+00:04:49,820 --> 00:04:55,540
+ like language translation or the summarization or dialogue generation etc. So these are the
+
+46
+00:04:55,540 --> 00:05:01,700
+ tasks we basically implement and it is being applied in many more fields. For example we
+
+47
+00:05:01,700 --> 00:05:07,420
+ can talk about the customer support through virtual assistants or the chatbots content
+
+48
+00:05:07,420 --> 00:05:12,300
+ analysis topic modeling which we will see in today's session also topic modeling or
+
+49
+00:05:12,300 --> 00:05:16,780
+ the sentiment analysis or for example in the information retrieval through question and
+
+50
+00:05:16,780 --> 00:05:23,580
+ answer system systems or the search engines etc. Now first of all we will see some of
+
+51
+00:05:23,580 --> 00:05:28,940
+ the important NLP libraries in Python. So there are four libraries which we will discuss
+
+52
+00:05:28,940 --> 00:05:34,180
+ and each of those libraries we will hit upon with the examples so that the concepts remain
+
+53
+00:05:34,180 --> 00:05:40,580
+ clear to all of you. So natural language toolkits first of all we shall talk about. So it is
+
+54
+00:05:40,580 --> 00:05:47,980
+ a very high versatile and widely used Python library for NLP task and it offers a comprehensive
+
+55
+00:05:47,980 --> 00:05:54,780
+ set of tools and resources for text processing which includes the functionalities like stemming,
+
+56
+00:05:54,780 --> 00:06:01,220
+ tokenization, lemmatization or for example part of speech tagging in short we call them
+
+57
+00:06:01,220 --> 00:06:08,540
+ as the POS tagging. So these are the possible implementation which we can do in terms of
+
+58
+00:06:08,540 --> 00:06:13,700
+ the natural language toolkit or NLTK. And besides we can talk about the spatial library.
+
+59
+00:06:13,700 --> 00:06:20,900
+ Now there is one interesting thing that spatial library here you see C is capital can you
+
+60
+00:06:20,900 --> 00:06:24,460
+ observe it. So Python is a case sensitive language right from my first session I am
+
+61
+00:06:24,460 --> 00:06:29,380
+ mentioning and also Mr. Baira during his Python session also highlighted that there should
+
+62
+00:06:29,380 --> 00:06:35,540
+ not be any kind of the error related to the upper case and lower case implementation.
+
+63
+00:06:35,540 --> 00:06:41,580
+ It will land up with error and you will not be able to execute the course section properly.
+
+64
+00:06:41,580 --> 00:06:47,140
+ So because of that upper case and lower case combination you have to be very careful enough.
+
+65
+00:06:47,140 --> 00:06:52,220
+ So this in spassie the C will be capital. So it is a high performance library for the
+
+66
+00:06:52,220 --> 00:06:59,460
+ advanced NLP task which is being used for the task like POS tagging, name, entity recognition
+
+67
+00:06:59,460 --> 00:07:05,020
+ or in short we call them as the NIR or for example tokenization etc. And another one
+
+68
+00:07:05,020 --> 00:07:11,740
+ will be the text block. So you all have the hands on demonstration all those tools. So
+
+69
+00:07:11,740 --> 00:07:16,780
+ nothing to worry about it. So another interesting library that is the text block. So text block
+
+70
+00:07:16,780 --> 00:07:24,700
+ is nothing but a user friendly library which is built on the top of the NLTK and pattern.
+
+71
+00:07:24,700 --> 00:07:30,260
+ So it basically implement the task like noun phrase extraction or the sentiment analysis
+
+72
+00:07:30,260 --> 00:07:37,380
+ even for the POS tagging we also use it. So it basically helps to implement a much more
+
+73
+00:07:37,380 --> 00:07:41,060
+ sophisticated way in terms of the NLP project implementation.
+
+74
+00:07:41,060 --> 00:07:45,980
+ And then definitely we can also spoke about the Jensen library. So it is the powerful library
+
+75
+00:07:45,980 --> 00:07:52,100
+ for the topic modeling. It offers optimized algorithms like latent Dirichlet allocation
+
+76
+00:07:52,100 --> 00:07:59,220
+ LDA or the doc2vec, what2vec. So it helps to implement like the generating word embedding
+
+77
+00:07:59,220 --> 00:08:04,620
+ for beta text representation, text similarity analysis and topic discovery. Now I believe
+
+78
+00:08:04,620 --> 00:08:09,060
+ all of you have got the idea that right from the beginning which you have discussed that
+
+79
+00:08:09,060 --> 00:08:13,940
+ NLP is two parts of the implementation angle natural language understanding and natural
+
+80
+00:08:13,940 --> 00:08:15,580
+ language generation.
+
+81
+00:08:15,580 --> 00:08:20,580
+ We have spoken about the examples, few of the few important examples which we have seen
+
+82
+00:08:20,580 --> 00:08:25,740
+ in our daily life and then four important libraries which we are going to implement
+
+83
+00:08:25,740 --> 00:08:35,420
+ through the hands-on part. So I repeat NLTK, SPACI, text block and Jensen. Now first part
+
+84
+00:08:35,420 --> 00:08:38,460
+ that is the data preprocessing as well as text cleaning.
+
+85
+00:08:38,460 --> 00:08:42,900
+ So during machine learning session you may remember I mentioned that data preprocessing
+
+86
+00:08:42,900 --> 00:08:47,260
+ is very very important. Whatever the optimized algorithm you may use if your preprocessing
+
+87
+00:08:47,260 --> 00:08:51,740
+ steps are not correct you are not going to land up with the proper result. So because
+
+88
+00:08:51,740 --> 00:08:57,340
+ of that reason in NLP also your data preprocessing is very much important.
+
+89
+00:08:57,340 --> 00:09:05,340
+ So here we are going to use the two important things that will be the natural language toolkit
+
+90
+00:09:05,340 --> 00:09:10,060
+ NLTK and another one will be the regular expression RE. So steps in the code so what
+
+91
+00:09:10,060 --> 00:09:14,100
+ are the steps we are going to implement these are the very basic beginning remember the
+
+92
+00:09:14,100 --> 00:09:19,260
+ steps what we are going to follow. So first step will be lower casing, converts the text
+
+93
+00:09:19,260 --> 00:09:26,540
+ to lower case. First step second one will be removing the punctuation not only punctuation
+
+94
+00:09:26,540 --> 00:09:30,980
+ including the special character as well. So punctuation and special character you have
+
+95
+00:09:30,980 --> 00:09:35,340
+ to remove it and third one will be the tokenization. So in tokenization what you will do you will
+
+96
+00:09:35,340 --> 00:09:42,340
+ split the text into individual words. For instance the sentence I love programming
+
+97
+00:09:42,340 --> 00:09:47,540
+ you can tokenize it like I love programming you are splitting the sentence into three
+
+98
+00:09:47,540 --> 00:09:53,740
+ individual words. So this is called tokenization then the removal of the stop words.
+
+99
+00:09:53,740 --> 00:09:59,780
+ So it filter out the very common words like for example the is which are present in the
+
+100
+00:09:59,780 --> 00:10:06,780
+ sentence which are not the essential part of the NLP. So that you can do and the lemmatization.
+
+101
+00:10:06,780 --> 00:10:13,340
+ In the lemmatization what we are doing reducing the word to its base from running to run.
+
+102
+00:10:13,340 --> 00:10:18,740
+ So I repeat the steps which we are going to follow first of all we will do the lower casing.
+
+103
+00:10:18,740 --> 00:10:23,660
+ This is the lower casing part converting the text to lower case first of all. Second one
+
+104
+00:10:23,660 --> 00:10:28,820
+ is the removing the punctuation it will strip out all the punctuation or the special character
+
+105
+00:10:28,820 --> 00:10:37,300
+ which are present here. Third one is the tokenization splitting the sentence into individual words
+
+106
+00:10:37,300 --> 00:10:47,220
+ and then removing stop words is and we are going to remove it removing stop words because
+
+107
+00:10:47,220 --> 00:10:51,260
+ these are not the essential part of the NLP task. So we are removing it and then finally
+
+108
+00:10:51,260 --> 00:10:55,940
+ the lemmatization. The lemmatization what we are doing we are reducing the words to
+
+109
+00:10:55,940 --> 00:11:03,980
+ their base from running to run keeping to keep in this way.
+
+110
+00:11:03,980 --> 00:11:11,660
+ Now let us start our hands on part. So I request all of you to open your Python I mean open
+
+111
+00:11:11,660 --> 00:11:16,600
+ the Google Colab already you have opened it up and you have given some name like demo
+
+112
+00:11:16,600 --> 00:11:20,340
+ if you have followed my earlier instruction and those who have not directed please do this
+
+113
+00:11:20,340 --> 00:11:26,740
+ part. So I am going back to my original demo window. So here what we will do? So first
+
+114
+00:11:26,740 --> 00:11:32,740
+ of all it will be import RE. It will import the regular expression which is very much
+
+115
+00:11:32,740 --> 00:11:39,280
+ important for the text pre-processing purpose. Then from NLTK import NLTK we will import
+
+116
+00:11:39,280 --> 00:11:44,260
+ the NLTK part. It is very much important for the tokenization and other NLP related task
+
+117
+00:11:44,260 --> 00:11:50,320
+ implementation NLTK stands for the natural language toolkit and then from NLTK dot corpus
+
+118
+00:11:50,320 --> 00:11:56,480
+ import stop words. So we will import all the stop word corpus from NLTK. So you will see
+
+119
+00:11:56,480 --> 00:12:03,580
+ lot of common stop words which are present which will load and then from NLTK dot tokenize
+
+120
+00:12:03,580 --> 00:12:10,780
+ we shall import the word underscore tokenize. So it will make the word tokenization implementation
+
+121
+00:12:10,780 --> 00:12:18,820
+ from NLTK. So it will all the necessary tasks related to the NLP you can do it easily like
+
+122
+00:12:18,820 --> 00:12:25,280
+ for example here I have mentioned like it can help to split a text into individual words.
+
+123
+00:12:25,280 --> 00:12:28,980
+ So it will basically implement a tokenization operation which I mentioned earlier. So just
+
+124
+00:12:28,980 --> 00:12:35,460
+ a second you can remember that which I have mentioned earlier that each of the cases with
+
+125
+00:12:35,460 --> 00:12:40,300
+ the codes I have also added some explanation for you with the has sign. So you can easily
+
+126
+00:12:40,300 --> 00:12:45,260
+ follow and you can easily implement it for your execution purpose. Then from NLTK dot
+
+127
+00:12:45,260 --> 00:12:51,220
+ stem we shall import the ordinate lemmatizer operation. So it will do the all the lemmatization
+
+128
+00:12:51,220 --> 00:12:57,780
+ operation. So you already have seen that we will go back to our source word the base form
+
+129
+00:12:57,780 --> 00:13:06,260
+ of the word keeping to keep or for example running to run in this way. So I am just clicking
+
+130
+00:13:06,260 --> 00:13:11,940
+ on the run cell button and meanwhile it is executing. So I shall go back and I am just
+
+131
+00:13:11,940 --> 00:13:17,540
+ showing you another interesting code sharing tool that is snippet.io. So just for your knowledge
+
+132
+00:13:17,540 --> 00:13:24,620
+ purpose I am sharing it. This particular link will not be required for all of you as I have
+
+133
+00:13:24,620 --> 00:13:29,940
+ already shared my Github link as well as the notebook link. This is just for your knowledge
+
+134
+00:13:29,940 --> 00:13:36,500
+ purpose I am just mentioning that snippet.io is a very good code sharing platform. Like
+
+135
+00:13:36,500 --> 00:13:40,300
+ for example as you can see I have written all those codes but I can give this particular
+
+136
+00:13:40,300 --> 00:13:45,340
+ link to all of you. But the problem is that if you make any changes in the code during
+
+137
+00:13:45,340 --> 00:13:52,300
+ copy pasting or during reproducing the result, I do not have the control on this. So that
+
+138
+00:13:52,300 --> 00:13:57,300
+ is the reason I am not sharing here because there are 1190 amount of the participants.
+
+139
+00:13:57,300 --> 00:14:02,140
+ So it will be very difficult to control through a snippet.io. So that is why I have not shared
+
+140
+00:14:02,140 --> 00:14:07,700
+ this particular link. It is good for the small crowd for example in classroom based small
+
+141
+00:14:07,700 --> 00:14:12,420
+ crowd. It is very much easy for controlling purpose but here it will not be easier to
+
+142
+00:14:12,420 --> 00:14:16,980
+ control that is why I have not shared it rather I have given my notebook link and Github link.
+
+143
+00:14:16,980 --> 00:14:21,700
+ So that all of you can easily implement. But for your knowledge purpose I have just mentioned
+
+144
+00:14:21,700 --> 00:14:26,980
+ that snippet.io is also a very good platform where you can also execute, you can share
+
+145
+00:14:26,980 --> 00:14:35,660
+ the codes mutually and it is a very good effective code sharing platform during the hands-on
+
+146
+00:14:35,660 --> 00:14:40,940
+ practices. Anyway so let me go back to my original notebook. So as you can see it has
+
+147
+00:14:40,940 --> 00:14:46,820
+ implemented the green tick has appeared and the running execution time is 7 seconds.
+
+148
+00:14:46,820 --> 00:14:51,940
+ So it is now 11.28. So I think 11.30 would be good enough to implement this particular
+
+149
+00:14:51,940 --> 00:14:56,540
+ portion. All of you please implement it. Then we shall go ahead for downloading the NLTK
+
+150
+00:14:56,540 --> 00:15:02,900
+ resources. So remember we first imported RE that is for the importing of the regular expression
+
+151
+00:15:02,900 --> 00:15:07,980
+ module. Second one we have imported the NLTK or the natural language toolkit. Third one
+
+152
+00:15:07,980 --> 00:15:12,980
+ we have imported the stop words from NLTK.corpus. Then in the next step what we have done we
+
+153
+00:15:12,980 --> 00:15:18,580
+ have word_tokenize which we have imported for implementing the tokenize operation and
+
+154
+00:15:18,580 --> 00:15:24,300
+ then we also have imported the wordnet lemmatizer to implement the lemmatization operation.
+
+155
+00:15:24,300 --> 00:15:29,820
+ So these are the basic parts which we have implemented. Then once you complete the step
+
+156
+00:15:29,820 --> 00:15:36,260
+ by 11.30 we shall move to the next step of downloading the NLTK resources. So what we
+
+157
+00:15:36,260 --> 00:15:44,700
+ will do here? So we will basically download punk. So it is one of the tokenizer model
+
+158
+00:15:44,700 --> 00:15:49,060
+ which are necessary for the tokenization all type of the supports you will get from here.
+
+159
+00:15:49,060 --> 00:15:54,460
+ Then the next part will be for the stop words. So you will get and download all the necessary
+
+160
+00:15:54,460 --> 00:16:00,940
+ stop words from the which are required for the English languages. So you can do it from
+
+161
+00:16:00,940 --> 00:16:08,100
+ here. Then NLTK.download wordnet. So it will download the wordnet lexicon for a large lexicon
+
+162
+00:16:08,100 --> 00:16:14,260
+ database of English. So then we can also give the additional support of the NLTK.download
+
+163
+00:16:14,260 --> 00:16:20,340
+ with the help of the punk tab. So these are the resources which we will download. So already
+
+164
+00:16:20,340 --> 00:16:25,860
+ I have explained to all of you. So once you finish it then you implement this next portion
+
+165
+00:16:25,860 --> 00:16:33,660
+ in your Google collapse cell. So it is now 11.30 so I believe all of you have been able
+
+166
+00:16:33,660 --> 00:16:44,460
+ to finish it up. So just do it. Also I am doing it for you. So done. As we can say the
+
+167
+00:16:44,460 --> 00:16:48,900
+ green tick has appeared with the execution time 0 seconds. So please complete this step.
+
+168
+00:16:48,900 --> 00:17:15,660
+ So it is 11.30 please complete this step by 11.31. So once you finish it up we will go
+
+169
+00:17:15,660 --> 00:17:35,220
+ to a example text and step by step we shall implement all those necessary operations.
+
+170
+00:17:35,220 --> 00:17:49,860
+ Because we can see similar type of the implementation everything I have given in my snippet.io.
+
+171
+00:17:49,860 --> 00:17:54,100
+ So those who are attending the session just make a note of it snippet.io is a good platform
+
+172
+00:17:54,100 --> 00:17:59,180
+ for code sharing purpose. You yourself can explore it out. But remember that once you
+
+173
+00:17:59,180 --> 00:18:04,320
+ share with the participants for example if you can use it for your own teaching purpose
+
+174
+00:18:04,320 --> 00:18:09,380
+ learning purpose but you will not have the control. If he or she makes any changes then
+
+175
+00:18:09,380 --> 00:18:17,460
+ it will be difficult for time bounded sessions. So that is why the safer side is to share
+
+176
+00:18:17,460 --> 00:18:24,820
+ the course with the help of the GitHub links or even Collab links. These are much safer
+
+177
+00:18:24,820 --> 00:18:41,780
+ for core sharing purpose.
+
+178
+00:18:41,780 --> 00:18:46,020
+ So let us start discussing the next part. It is already 11.32 so I believe that all of
+
+179
+00:18:46,020 --> 00:18:50,060
+ you have completed the earlier step that is downloading the NLTK resources. And the next
+
+180
+00:18:50,060 --> 00:18:56,800
+ step what we are going to do here we shall basically discuss about the let me just tell
+
+181
+00:18:56,800 --> 00:19:02,800
+ it from here also here every portion is written. So basically this is the example text. So
+
+182
+00:19:02,800 --> 00:19:08,560
+ as you can see this is an example sentence to the state text preprocessing we shall clean
+
+183
+00:19:08,560 --> 00:19:14,560
+ it and tokenize. So as you can see under double code we have written a sentence and we have
+
+184
+00:19:14,560 --> 00:19:16,700
+ assigned it as text.
+
+185
+00:19:16,700 --> 00:19:21,300
+ And now as you can see deliberately whatever the to implement all the basic operations
+
+186
+00:19:21,300 --> 00:19:27,640
+ related to NLP what we have added that in the text which is containing capital letters
+
+187
+00:19:27,640 --> 00:19:32,960
+ top words which we want to remove actually or for example in case of capital letter we
+
+188
+00:19:32,960 --> 00:19:37,360
+ will convert into the lower case. So all those operations we shall perform. So to execute
+
+189
+00:19:37,360 --> 00:19:41,300
+ those things first of all those attributes should be in the original sentence otherwise
+
+190
+00:19:41,300 --> 00:19:46,820
+ you will not be able to do that operation and then also it can contain the punctuation.
+
+191
+00:19:46,820 --> 00:19:51,620
+ If the punctuation will be there then only you can remove it. So keeping those factor
+
+192
+00:19:51,620 --> 00:19:57,700
+ in the mind we have given a one sentence. So if you are for example if you are reproducing
+
+193
+00:19:57,700 --> 00:20:05,540
+ these results and then you want to find out one particular similar type of the sessions
+
+194
+00:20:05,540 --> 00:20:11,140
+ for yourself or to you want to teach somebody else. So make sure the reference sentence
+
+195
+00:20:11,140 --> 00:20:15,540
+ you want to gives everybody is different from this particular sentence that should contribute
+
+196
+00:20:15,540 --> 00:20:19,940
+ this type of the attributes then only we shall be able to implement all those things because
+
+197
+00:20:19,940 --> 00:20:25,140
+ at the first step you have to convert it into the lower case letter.
+
+198
+00:20:25,140 --> 00:20:33,920
+ So first of all what we are doing we are defining a function that is preprocessed text. So
+
+199
+00:20:33,920 --> 00:20:41,260
+ def preprocess underscore text the first the argument which will pass that is the text
+
+200
+00:20:41,260 --> 00:20:46,940
+ which we have stored a given sentence and then what we are doing we are lower casing
+
+201
+00:20:46,940 --> 00:20:52,740
+ the text. So text equals to text dot lower. So it will convert all the upper case material
+
+202
+00:20:52,740 --> 00:20:58,540
+ to lower case and then what we will do in the next step as per our standard practice
+
+203
+00:20:58,540 --> 00:21:01,940
+ which we have learned from this notebook section you can go to the original notebook
+
+204
+00:21:01,940 --> 00:21:08,140
+ and you can cross check remove the removal of the punctuation and special characters.
+
+205
+00:21:08,140 --> 00:21:13,700
+ So in this way we have step by step we have implemented here. So here also in the next
+
+206
+00:21:13,700 --> 00:21:18,300
+ part what we shall do we shall remove the punctuation and the special character.
+
+207
+00:21:18,300 --> 00:21:29,820
+ So text equals to dot read or sub. So what we will do we will remove all the punctuation
+
+208
+00:21:29,820 --> 00:21:35,540
+ and the special characters and that is why the text which function we are taking that
+
+209
+00:21:35,540 --> 00:21:42,020
+ should be given there under the read or sub function. And then what we will do we will
+
+210
+00:21:42,020 --> 00:21:48,460
+ tokenize the text. So this particular case what will happen it will split the text into
+
+211
+00:21:48,460 --> 00:21:56,540
+ the individual words. So basically like for example I am running I am running. So three
+
+212
+00:21:56,540 --> 00:22:04,860
+ parts it will split and then remove stop words. So here set stop words dot English. So it
+
+213
+00:22:04,860 --> 00:22:10,980
+ will load a set of the stop words from the NLTK library and it will store it under the
+
+214
+00:22:10,980 --> 00:22:19,340
+ stop words. And then tokens word for word in tokens if word are not in stop words.
+
+215
+00:22:19,340 --> 00:22:27,380
+ So under tokens it will only preserve those materials which are not the stop words. The
+
+216
+00:22:27,380 --> 00:22:30,940
+ part of the sentence which will be preserved there those are not the stop words. Stop words
+
+217
+00:22:30,940 --> 00:22:36,500
+ will be chopped out. And then the lemmatizer, lemmatizer word, word net lemmatizer operation
+
+218
+00:22:36,500 --> 00:22:41,860
+ we shall implement under the lemmatization. So word not word net in lemmatizer we will
+
+219
+00:22:41,860 --> 00:22:47,500
+ create an instance. Name to word net lemmatizer we will store it under lemmatizer and lemmatizer
+
+220
+00:22:47,500 --> 00:22:53,820
+ dot lemmatize word for word in tokens. So lemmatization part operation will be applied
+
+221
+00:22:53,820 --> 00:22:58,860
+ over all the tokens which we have extracted out from a sentence. Like for example running
+
+222
+00:22:58,860 --> 00:23:05,700
+ to run, keeping to keep in this way the lemmatization operation will happen. And then finally we
+
+223
+00:23:05,700 --> 00:23:12,060
+ shall return the tokens which are cleaned basically which will be cleaned from all those
+
+224
+00:23:12,060 --> 00:23:17,860
+ the stop words part and entire part will be tokenized and the lemmatized.
+
+225
+00:23:17,860 --> 00:23:24,540
+ So let us execute this particular portion. So you can see it has run the cell successfully.
+
+226
+00:23:24,540 --> 00:23:30,820
+ So implement this particular segment of the cell. Start from the example text and then
+
+227
+00:23:30,820 --> 00:23:41,700
+ complete up to this return tokens. So it is now 1037. So this is little bit of larger chunk
+
+228
+00:23:41,700 --> 00:23:47,100
+ of the code. So what you do you implement it by 1141 and while implementation go through
+
+229
+00:23:47,100 --> 00:23:51,140
+ the instructions carefully each line although I have explained but it will be better for
+
+230
+00:23:51,140 --> 00:23:56,540
+ you that if you yourself can read it. So you can you can scroll it a bit. If you want to
+
+231
+00:23:56,540 --> 00:24:01,980
+ read the comments present in the code you can you can move it like this. So the left
+
+232
+00:24:01,980 --> 00:24:05,460
+ hand side will go you can see the code the right hand side you will move you can see
+
+233
+00:24:05,460 --> 00:24:10,820
+ all those important implementation steps are highlighted which I have mentioned during
+
+234
+00:24:10,820 --> 00:24:27,500
+ the execution part.
+
+235
+00:24:27,500 --> 00:24:36,980
+ So make sure that you are doing it properly. So I repeat the steps we have taken my meanwhile
+
+236
+00:24:36,980 --> 00:24:41,260
+ you are implementing I am just repeating the steps just for your so that all of you can
+
+237
+00:24:41,260 --> 00:24:46,300
+ follow it and for your assistant purpose all the instructions are written with the hash
+
+238
+00:24:46,300 --> 00:24:49,900
+ sign. All of you know that right from the beginning I am mentioning during the supervised
+
+239
+00:24:49,900 --> 00:24:53,860
+ learning sessions I also highlighted that I have added some some comments so that all
+
+240
+00:24:53,860 --> 00:24:58,820
+ of you can easily understand. So example text we have considered one text which comprises
+
+241
+00:24:58,820 --> 00:25:04,260
+ of the capital letter stop words punctuation etc. Then we have from the pre process text
+
+242
+00:25:04,260 --> 00:25:09,100
+ function under that we first have implemented the lower casing operation. Then with the
+
+243
+00:25:09,100 --> 00:25:15,220
+ reserve function where we have taken the text as an input and we have removed all the punctuation
+
+244
+00:25:15,220 --> 00:25:21,740
+ of the special characters. So here w stands for the word characters and s for the space
+
+245
+00:25:21,740 --> 00:25:23,260
+ characters.
+
+246
+00:25:23,260 --> 00:25:28,820
+ So now we have tokenized the text so we have implemented the tokenized operation then we
+
+247
+00:25:28,820 --> 00:25:33,580
+ have removed the stop words and finally the lemmatization operation and then we have returned
+
+248
+00:25:33,580 --> 00:25:40,860
+ the tokens which are basically cleaned tokenized stop word free and lemmatized. So this is
+
+249
+00:25:40,860 --> 00:25:45,740
+ what we have implemented as per our standard discussion which we have made during the original
+
+250
+00:25:45,740 --> 00:25:46,740
+ load book.
+
+251
+00:25:46,740 --> 00:25:51,060
+ I repeat I am repeating it again because there are lot of people who are new to NLP and as
+
+252
+00:25:51,060 --> 00:25:57,580
+ well as the new to Python programming. So if I re-explain twice or thrice it will be
+
+253
+00:25:57,580 --> 00:26:02,740
+ easier for them to follow it up a bit. So that is why I am re-explaining it and those
+
+254
+00:26:02,740 --> 00:26:11,180
+ who are already expert kindly cooperate because or you can also consider it as a good revision.
+
+255
+00:26:11,180 --> 00:26:22,900
+ So anyway so let us implement this portion and then we shall move by it. So complete
+
+256
+00:26:22,900 --> 00:26:27,300
+ up to return tokens complete up to this. This is the last line of this will be the last
+
+257
+00:26:27,300 --> 00:26:39,360
+ line of execution. So I shall wait for another more minute and then we shall process the
+
+258
+00:26:39,360 --> 00:26:48,340
+ example text as a part of the next implementation and we will be able to see the clean tokens
+
+259
+00:26:48,340 --> 00:27:00,780
+ as an output. So this part we will implement very soon. So complete up to return tokens
+
+260
+00:27:00,780 --> 00:27:27,620
+ and then we shall move on to the next part. So complete up to return tokens. So complete.
+
+261
+00:27:27,620 --> 00:27:37,380
+ I shall wait for few more seconds. So I believe all of you are doing it and while implementing
+
+262
+00:27:37,380 --> 00:27:42,020
+ it is not only running the course understanding the each line of the code and when you are
+
+263
+00:27:42,020 --> 00:27:46,540
+ getting output interpretation of the output are also very important. So that is why I
+
+264
+00:27:46,540 --> 00:27:54,460
+ am telling just call a bit and read the comments given there. Although I have basically explained
+
+265
+00:27:54,460 --> 00:27:59,100
+ what are happening in each case but it is always better that if you go to the right side and
+
+266
+00:27:59,100 --> 00:28:10,380
+ also you are reading them. Now in the next part it is already 1141. So I believe that
+
+267
+00:28:10,380 --> 00:28:13,100
+ all of you are quite okay if I move to the next part.
+
+268
+00:28:13,100 --> 00:28:17,540
+ So process the example text. So pre process under course text you are applying this function
+
+269
+00:28:17,540 --> 00:28:22,860
+ over text and you are storing it under the clean text and then we are printing the clean
+
+270
+00:28:22,860 --> 00:28:29,180
+ token. So in the clean tokens you can see the output after once we implement this particular
+
+271
+00:28:29,180 --> 00:28:33,240
+ portion we will be able to see all those clean tokens. So in the clean tokens you can see
+
+272
+00:28:33,240 --> 00:28:38,860
+ example sentence demonstrate text pre processing well clean tokenize. So these are the clean
+
+273
+00:28:38,860 --> 00:28:47,460
+ tokens as simple as that because this was the original sentence and after the pre processing
+
+274
+00:28:47,460 --> 00:28:54,540
+ steps implementing pre processing step successfully we are getting this particular segment as
+
+275
+00:28:54,540 --> 00:28:59,180
+ an output. So I believe now it is quite clear to all of you.
+
+276
+00:28:59,180 --> 00:29:06,100
+ So please implement this step. So it is now 1142 please implement this one within a minute
+
+277
+00:29:06,100 --> 00:29:12,460
+ by 1143 please complete this particular step. Then we shall go ahead for implementing the
+
+278
+00:29:12,460 --> 00:29:29,540
+ specific from the original notebook this is the part.
+
+279
+00:29:29,540 --> 00:29:56,980
+ So I hope all of you are finishing this I shall wait for 20 minutes.
+
+280
+00:29:56,980 --> 00:30:06,460
+ And then move to the next portion of discussion. So in those who are following my Github you
+
+281
+00:30:06,460 --> 00:30:12,740
+ will get this output and those who are following it from directly from the notebook they will
+
+282
+00:30:12,740 --> 00:30:20,340
+ get this output. I mean same output but I am just showing so that all of you can remain
+
+283
+00:30:20,340 --> 00:30:34,500
+ in the same page. So from Github this is the output which are highlighted in the screen
+
+284
+00:30:34,500 --> 00:30:45,500
+ and same output you will get those who are directly implementing from the notebook.
+
+285
+00:30:45,500 --> 00:30:50,460
+ Anyway so let us move to the next part. Now before going to the next part as a summary
+
+286
+00:30:50,460 --> 00:30:55,260
+ which we can say that this particular chunk of code which we have implemented. So here
+
+287
+00:30:55,260 --> 00:31:02,420
+ we have demonstrated the cleaning and pre processing text using the NLTK where we have
+
+288
+00:31:02,420 --> 00:31:06,380
+ covered different steps. At the beginning we have done the lower casing then we have
+
+289
+00:31:06,380 --> 00:31:13,180
+ removed the punctuations as the vessel character and then followed by the tokenization removal
+
+290
+00:31:13,180 --> 00:31:18,020
+ of the stop wars and lemmatization. So these were the steps which we have implemented.
+
+291
+00:31:18,020 --> 00:31:23,340
+ And this pre processing pipeline is very much important for preparing the raw text data
+
+292
+00:31:23,340 --> 00:31:28,220
+ which you can implement for several tasks led to the sentiment analysis or for the text
+
+293
+00:31:28,220 --> 00:31:33,780
+ classification and other relevant natural language processing or the NLP task.
+
+294
+00:31:33,780 --> 00:31:44,420
+ So like we have discussed in the notebook first portion is done. Implementation of the
+
+295
+00:31:44,420 --> 00:31:49,540
+ NLTK toolkits we have done. Now as I have mentioned that in each case each necessary
+
+296
+00:31:49,540 --> 00:31:54,180
+ or important NLP libraries in Python we shall discuss one by one. So first portion is done
+
+297
+00:31:54,180 --> 00:32:08,660
+ now we shall move to the SPACI. Now it is done for SPACI. So before implementing SPACI
+
+298
+00:32:08,660 --> 00:32:15,940
+ let us discuss a few important part. Part of speech tagging and named entity recognition.
+
+299
+00:32:15,940 --> 00:32:21,260
+ So in part of speech tagging we call them in short as POS and named entity recognition
+
+300
+00:32:21,260 --> 00:32:27,820
+ we call them in short as NER. So background concept and the steps in the code which we
+
+301
+00:32:27,820 --> 00:32:35,700
+ will implement we shall load this SPACI model. So here we will be able to see an encode which
+
+302
+00:32:35,700 --> 00:32:41,420
+ is a lightweight model that includes the NER stands for the named entity recognition or
+
+303
+00:32:41,420 --> 00:32:46,820
+ POS which is the abbreviated format of the part of speech tagging as well as tokenization.
+
+304
+00:32:46,820 --> 00:32:52,140
+ So in the part of speech tagging each word in the text is stuck to the grammatical role
+
+305
+00:32:52,140 --> 00:33:00,020
+ it can be pronoun, verb, adjective or adverb. So let us one of the simple example which
+
+306
+00:33:00,020 --> 00:33:08,540
+ you can consider a particular sentence that is that the quick brown fox jumps over the
+
+307
+00:33:08,540 --> 00:33:14,420
+ lazy dog. This is the sentence for example if you are considering. The quick brown fox
+
+308
+00:33:14,420 --> 00:33:20,940
+ jumps over the lazy dog if this is the sentence. So here how we are going to discuss about
+
+309
+00:33:20,940 --> 00:33:31,500
+ the POS tags. So from your basic knowledge of the school level English whatever the whether
+
+310
+00:33:31,500 --> 00:33:36,020
+ you have English as a first language or second language does not matter. These are the very
+
+311
+00:33:36,020 --> 00:33:42,180
+ basic steps you all have learned during our school level. So in POS tags like for example
+
+312
+00:33:42,180 --> 00:33:50,500
+ the, there is a determiner in NLP we deal with the abbreviated form as DT. Just you just
+
+313
+00:33:50,500 --> 00:33:55,460
+ made learning thing will be the abbreviated form otherwise you will not be able to understand
+
+314
+00:33:55,460 --> 00:34:00,180
+ what is the POS tagging coming up. So that is why this we are discussing this particular
+
+315
+00:34:00,180 --> 00:34:06,820
+ part. Then for example the quick, quick is adjective in abbreviated form in NLP which
+
+316
+00:34:06,820 --> 00:34:12,740
+ we follow it is JJ. Then brown is also adjective definitely it will be JJ as an abbreviated
+
+317
+00:34:12,740 --> 00:34:22,100
+ annotation. Fox now so we shall follow it as NN. Then jumps VBZ in is the abbreviated
+
+318
+00:34:22,100 --> 00:34:30,740
+ form over preposition. So here we follow it as IN then the determiner as DT then lazy
+
+319
+00:34:30,740 --> 00:34:39,620
+ adjective as JJ dog as NN. Now so there we can talk about a few more examples. This has
+
+320
+00:34:39,620 --> 00:34:43,380
+ been extracted from this given sentence. You can cross check the given sentence and you
+
+321
+00:34:43,380 --> 00:34:48,500
+ can check their corresponding POS tags. We will be able to understand it. Now we shall
+
+322
+00:34:48,500 --> 00:34:53,260
+ still have a look on the few of the overviews of the other POS tags and their categories.
+
+323
+00:34:53,260 --> 00:35:01,020
+ So here you can see personal pronouns which we call it as PRP like I, you, he, she, it,
+
+324
+00:35:01,020 --> 00:35:07,060
+ we, they, these are the personal pronouns or for example positive pronouns. In the next
+
+325
+00:35:07,060 --> 00:35:10,460
+ part which we can say positive pronouns. So how it is being differentiated with the personal
+
+326
+00:35:10,460 --> 00:35:20,940
+ pronoun we add up a dollar sign with it. So like my, your, his, her or we can talk about
+
+327
+00:35:20,940 --> 00:35:29,700
+ it is our their number. So these are the basically the positive pronouns which you can execute.
+
+328
+00:35:29,700 --> 00:35:35,900
+ So also remember that there will be common question which often comes in our mind. Then
+
+329
+00:35:35,900 --> 00:35:43,140
+ what will be in case of the number? So in number we do not have any specific tag but
+
+330
+00:35:43,140 --> 00:35:49,300
+ in general we call it as the cardinal number. So the abbreviated form is CD. So it can be
+
+331
+00:35:49,300 --> 00:36:00,180
+ 1, 2, 3, some other numbers 100, 142, 42. So we tag it as CD. So we have spoken about
+
+332
+00:36:00,180 --> 00:36:05,540
+ the pronoun, we have spoken about the cardinal numbers. Now we will see some of the interesting
+
+333
+00:36:05,540 --> 00:36:10,740
+ tags that are the adverbs. So the more you will practice it you can remember nothing
+
+334
+00:36:10,740 --> 00:36:16,540
+ to worry about it, nothing to worry about it. But I am just discussing because it will
+
+335
+00:36:16,540 --> 00:36:22,660
+ help you to see that how NLP deals with it that is it.
+
+336
+00:36:22,660 --> 00:36:29,740
+ So like for example adverb. So in adverb like for example quickly very well we call them
+
+337
+00:36:29,740 --> 00:36:37,140
+ we basically annotate them as the RB. Or for example if you are comparing adverbs there
+
+338
+00:36:37,140 --> 00:36:43,940
+ are also the adverbs which we compare like faster, better, smarter in this way. So there
+
+339
+00:36:43,940 --> 00:36:51,340
+ are comparative angles. So in the abbreviated form we write them as the RBR. Then another
+
+340
+00:36:51,340 --> 00:36:59,940
+ one is the superlative. Now superlative all of you know fastest, best, smartest, tallest,
+
+341
+00:36:59,940 --> 00:37:06,620
+ shortest. So these are the superlative game. So here you can see we can abbreviate it from
+
+342
+00:37:06,620 --> 00:37:14,220
+ we can keep it as the RPS. And then some of the angles that are the punctuation which comes
+
+343
+00:37:14,220 --> 00:37:20,580
+ up. So like for example full stop. So you can keep them as a period or for example punk
+
+344
+00:37:20,580 --> 00:37:22,420
+ these are the general punctuation.
+
+345
+00:37:22,420 --> 00:37:29,700
+ So basically full stop we write it as the annotation for this dot this is basically stands for
+
+346
+00:37:29,700 --> 00:37:34,820
+ the period. Then for example comma question mark exclamation mark in this way you can
+
+347
+00:37:34,820 --> 00:37:39,740
+ see there are other punctuation part. And also there are symbols which comes under the
+
+348
+00:37:39,740 --> 00:37:46,500
+ sign categories like exclamatory or the percentage or the or the ampersand at the rate or this
+
+349
+00:37:46,500 --> 00:37:50,280
+ dollar sign. In this way these are the few of the symbols which you can consider which
+
+350
+00:37:50,280 --> 00:38:00,100
+ comes under this. So these all are the part of the POS tag which we have discussed here.
+
+351
+00:38:00,100 --> 00:38:05,900
+ Now here we shall move for the name entity recognition. The name entity recognition some
+
+352
+00:38:05,900 --> 00:38:11,620
+ of the very interesting case. Like for example the sentence which is given the Barakovama
+
+353
+00:38:11,620 --> 00:38:17,980
+ visited the Eiffel Tower. Here we are also taking one particular sentence. Barakovama
+
+354
+00:38:17,980 --> 00:38:24,660
+ visited the Eiffel Tower in Paris last summer. For example this is the sentence. Now what
+
+355
+00:38:24,660 --> 00:38:31,580
+ are the NER tags or the name entity recognition? Barakovama person name here or the Eiffel
+
+356
+00:38:31,580 --> 00:38:36,900
+ Tower location in short we are giving them as the lock or for example Paris it is also
+
+357
+00:38:36,900 --> 00:38:39,460
+ a location in short we are writing as the lock.
+
+358
+00:38:39,460 --> 00:38:45,180
+ So in this example as you can see NER or the name entity recognition helps to identify
+
+359
+00:38:45,180 --> 00:38:52,500
+ and categorize the specific names and location in the text. So this is how the interpretation
+
+360
+00:38:52,500 --> 00:39:03,100
+ is done. Now let us start the implementation in our original Python notebook section.
+
+361
+00:39:03,100 --> 00:39:10,620
+ Now let us start with the importing SPACI. So in what we will do? It is a very much advanced
+
+362
+00:39:10,620 --> 00:39:17,220
+ NLP library SPACI. So we are loading it up. Then what we will see? We shall load the SPACI's
+
+363
+00:39:17,220 --> 00:39:23,700
+ English model. So as we have seen we have we are loading the this small or lightweight
+
+364
+00:39:23,700 --> 00:39:28,780
+ English language model NSM score offset with the help of this SPACI load and we are storing
+
+365
+00:39:28,780 --> 00:39:34,820
+ it under the NLP. And then what we are doing? We are putting a sample text there. So like
+
+366
+00:39:34,820 --> 00:39:41,420
+ here the sample text is Apple is looking at buying UK startup for 1 billion USD. Steve
+
+367
+00:39:41,420 --> 00:39:49,640
+ Jobs founded Apple in 1976 and we are storing it under text. So here we have seen the basically
+
+368
+00:39:49,640 --> 00:39:56,020
+ presence of the named entities and some of the financial information etc. Now we can
+
+369
+00:39:56,020 --> 00:40:03,220
+ process the text using SPACI. So we are applying the NLP function over text and we are storing
+
+370
+00:40:03,220 --> 00:40:08,700
+ it under doc. Now our target will be to extract two part. One is the POS tagging and then
+
+371
+00:40:08,700 --> 00:40:13,740
+ will be the named entity recognition. So POS tagging what we will do? We will print POS
+
+372
+00:40:13,740 --> 00:40:21,140
+ tagging. So part of speech tagging will be implemented one by one. POS tag will be printed
+
+373
+00:40:21,140 --> 00:40:25,300
+ one by one. So for token that is why this particular for loop is implemented for token
+
+374
+00:40:25,300 --> 00:40:34,340
+ in doc. Print token dot text, token dot position and token dot tag. So token present in the
+
+375
+00:40:34,340 --> 00:40:40,260
+ text they are part of speech tagging token dot POS that means that part of speech tagging
+
+376
+00:40:40,260 --> 00:40:46,180
+ and their original tag token dot tag which is present in the NLP that would be printed
+
+377
+00:40:46,180 --> 00:40:55,780
+ one by one. So like for example just one example case I am mentioning like is auxiliary verb
+
+378
+00:40:55,780 --> 00:41:04,020
+ then VBG is the corresponding tag. Looking again verb their corresponding tag is VBG.
+
+379
+00:41:04,020 --> 00:41:10,640
+ So in this way you can see noun verb different symbols numbers which are present in the text
+
+380
+00:41:10,640 --> 00:41:16,300
+ you can cross check by yourself or punctuation marks or some cardinal number like 1976 is
+
+381
+00:41:16,300 --> 00:41:22,820
+ the cardinal number. So their corresponding tag is CD. So in this way so the tokens they
+
+382
+00:41:22,820 --> 00:41:28,140
+ are their corresponding POS and the tag. These three things are being printed like the way
+
+383
+00:41:28,140 --> 00:41:32,300
+ it has been printed here. So you can yourself just check the output and try to understand
+
+384
+00:41:32,300 --> 00:41:38,540
+ it with the concept which is been shared in the notebook and as well as in the GitHub
+
+385
+00:41:38,540 --> 00:41:39,540
+ link.
+
+386
+00:41:39,540 --> 00:41:45,780
+ Same thing is will be printed for the named entity recognition. So print named entities
+
+387
+00:41:45,780 --> 00:41:53,900
+ so for ENT in doc ENT print ENT dot text their ENT dot level add spastic explanation. So
+
+388
+00:41:53,900 --> 00:41:59,580
+ as you see in the output named entity the way we are printing it. So first portion if we
+
+389
+00:41:59,580 --> 00:42:05,620
+ see in the code that is ENT dot text. So here what is this first portion is the apple then
+
+390
+00:42:05,620 --> 00:42:11,420
+ what we are printing ENT dot level. So what is the level here if this is the apple that
+
+391
+00:42:11,420 --> 00:42:17,140
+ means it is an organization and then what we are printing the spastic explanation of
+
+392
+00:42:17,140 --> 00:42:18,460
+ that ENT level.
+
+393
+00:42:18,460 --> 00:42:24,780
+ So this organization can be what are those organizations it can be companies it can be
+
+394
+00:42:24,780 --> 00:42:33,340
+ agencies it can be institution etc. Similar way or for example 1 billion USD. That is what
+
+395
+00:42:33,340 --> 00:42:40,020
+ type of that that is money. Now this money can be a monetary values or it can be a including
+
+396
+00:42:40,020 --> 00:42:45,980
+ it a possible unit may be there. So in this way you can check out Steve Jobs, Apple or
+
+397
+00:42:45,980 --> 00:42:51,780
+ their dates like for a Steve Jobs is a person. This person can be a pupil including fictional
+
+398
+00:42:51,780 --> 00:42:57,400
+ characters may be or for example Apple which is an organization. This organization can
+
+399
+00:42:57,400 --> 00:43:02,500
+ be like which we have discussed here companies or agencies institution because here Apple
+
+400
+00:43:02,500 --> 00:43:07,380
+ has appeared twice. That is why it is appearing twice. At the beginning Apple is looking at
+
+401
+00:43:07,380 --> 00:43:12,860
+ buying UK startup for 1 billion USD Steve Jobs founded Apple in 1976. So that is why it has
+
+402
+00:43:12,860 --> 00:43:16,100
+ appeared twice in named entity recognition part.
+
+403
+00:43:16,100 --> 00:43:23,460
+ In 1976 it is a date. Now it can be absolute or relative dates or certain periods. So explanation
+
+404
+00:43:23,460 --> 00:43:32,500
+ possible what is that thing that explanation is coming under this parenthesis. So just
+
+405
+00:43:32,500 --> 00:43:38,900
+ implement this chunk of the code and just see the interpretation like I told you that
+
+406
+00:43:38,900 --> 00:43:43,900
+ running code successfully is one thing and understanding each steps and their output
+
+407
+00:43:43,900 --> 00:43:48,900
+ is also very important. So I have just two or three out of these output I have mentioned
+
+408
+00:43:48,900 --> 00:43:53,700
+ two or three examples what they are actually implying yourself try to understand it. Just
+
+409
+00:43:53,700 --> 00:44:01,660
+ cross check with the output. So it is now 1157 and by 12 you just finish this part. So
+
+410
+00:44:01,660 --> 00:44:06,860
+ I think 3 minutes will be good enough to finish this part. Then we shall summarize it and
+
+411
+00:44:06,860 --> 00:44:21,020
+ move to the sentiment analysis part.
+
+412
+00:44:21,020 --> 00:44:37,420
+ Thank you.
+
+413
+00:44:51,020 --> 00:45:20,340
+. So those who are getting the output just have a look at the output.
+
+414
+00:45:20,340 --> 00:45:29,980
+ Name the entities and POS tagging so you yourself will be able to understand it. The English
+
+415
+00:45:29,980 --> 00:45:35,860
+ angle it is a very basic level of English which you have learned in our school days.
+
+416
+00:45:35,860 --> 00:45:41,660
+ Nothing to worry about. Just corresponding their tags how they are being interpreted
+
+417
+00:45:41,660 --> 00:45:53,380
+ in NLP that is very much important just to know. The concepts are very simple. So I shall
+
+418
+00:45:53,380 --> 00:45:56,820
+ wait for another more minute and then move to the next part.
+
+419
+00:45:56,820 --> 00:46:00,700
+ So those who are now new to the coding but gradually getting familiar with the coding
+
+420
+00:46:00,700 --> 00:46:06,180
+ for them I am just saying like I mentioned in each session that the way you will print
+
+421
+00:46:06,180 --> 00:46:10,940
+ in this order you will see the output. Like in the first case of the POS tagging token
+
+422
+00:46:10,940 --> 00:46:19,580
+ text token POS or part of switch tagging and then their corresponding tag. Token dot part
+
+423
+00:46:19,580 --> 00:46:25,060
+ of switch and their corresponding tag will be printed in this order. So like for example
+
+424
+00:46:25,060 --> 00:46:35,140
+ buying it is the token present in the text. I am repeating it again. I already have explained
+
+425
+00:46:35,140 --> 00:46:40,900
+ I am just repeating for example those who are new they can easily see it. Then bar this is
+
+426
+00:46:40,900 --> 00:46:50,100
+ for the token part of switch. Then their corresponding tag POS tag in NLP we use it as VBG as simple
+
+427
+00:46:50,100 --> 00:46:57,700
+ as that. Similarly ENT dot text ENT dot label and SPACI dot explain for the ENT that can
+
+428
+00:46:57,700 --> 00:47:02,980
+ be also doable in any year or the entity recognition.
+
+429
+00:47:02,980 --> 00:47:08,820
+ So like the example which I have taken for example this particular case 1976 which is
+
+430
+00:47:08,820 --> 00:47:13,980
+ a date and explanation as a part of that it can be absolute or relative date or certain
+
+431
+00:47:13,980 --> 00:47:20,460
+ period can be considered which is the explanation. So I believe all of you are now able to understand
+
+432
+00:47:20,460 --> 00:47:24,380
+ it please finish it up. I shall wait for few more seconds and then we shall move towards
+
+433
+00:47:24,380 --> 00:47:36,300
+ the next part that would be the sentiment analysis part.
+
+434
+00:47:36,300 --> 00:47:43,780
+ So as a summary we can mention that this particular examples in this particular examples which
+
+435
+00:47:43,780 --> 00:47:51,700
+ we have seen that how to use SPACI for this two key NLP task one is the any a name entity
+
+436
+00:47:51,700 --> 00:47:56,940
+ recognition the other one is the previous tag or the part of switch tag. These are very
+
+437
+00:47:56,940 --> 00:48:03,860
+ much essential for understanding and the meaning of the text and their structure.
+
+438
+00:48:03,860 --> 00:48:07,460
+ So I believe that all of you are now getting some confidence especially those who are new
+
+439
+00:48:07,460 --> 00:48:13,580
+ in NLP those who know I already mentioned finally considered as a good revision but at
+
+440
+00:48:13,580 --> 00:48:18,460
+ least those who are new I hope that all of you are getting some confidence. So that after
+
+441
+00:48:18,460 --> 00:48:23,860
+ reproducing this result you yourself can play around with your own examples and understand
+
+442
+00:48:23,860 --> 00:48:28,980
+ that how it is happening. So it will give you a lot of confidence regarding the text
+
+443
+00:48:28,980 --> 00:48:34,860
+ processing and the text analysis part under NLP as well as machine learning.
+
+444
+00:48:34,860 --> 00:48:44,060
+ Now the sentiment analysis portion so here we will see sentiment analysis in Python using
+
+445
+00:48:44,060 --> 00:48:48,620
+ the text block library. So as you can see in the original discussion this is the third
+
+446
+00:48:48,620 --> 00:48:57,940
+ important NLP library which I mentioned at the beginning. You see when we discussed about
+
+447
+00:48:57,940 --> 00:49:03,860
+ the important NLP libraries in Python first part we have spoken about the NLTK natural
+
+448
+00:49:03,860 --> 00:49:10,580
+ language toolkit then we have spoken about the SPACI and the third one is the text block.
+
+449
+00:49:10,580 --> 00:49:29,620
+ Now let us discuss this part. Now from text block import text block then the next sample
+
+450
+00:49:29,620 --> 00:49:37,420
+ text will come up. So under the text we are writing I absolute love this product it is
+
+451
+00:49:37,420 --> 00:49:49,020
+ fantastic and works like a charm and then we shall create a text block object.
+
+452
+00:49:49,020 --> 00:49:52,980
+ So here what we will do we will apply text block function over text and we shall store
+
+453
+00:49:52,980 --> 00:50:00,620
+ it under block like what we have done here and then block dot sentiment we will store
+
+454
+00:50:00,620 --> 00:50:08,140
+ it under sentiment that is performing of the sentiment analysis and then output sentiment
+
+455
+00:50:08,140 --> 00:50:14,620
+ polarity and the subjectivity. So from print polarity sentiment polarity you will see the
+
+456
+00:50:14,620 --> 00:50:21,980
+ polarity so minus 1 is the negative to plus 1 positive and then we will also see the subjectivity
+
+457
+00:50:21,980 --> 00:50:28,460
+ by printing subjectivity sentiment or subjectivity 0 is the objective 1 is the subject. Now before
+
+458
+00:50:28,460 --> 00:50:33,940
+ implementing coding part I am explaining the concept related to the polarity and subjectivity
+
+459
+00:50:33,940 --> 00:50:37,680
+ then we will implement it we will get the score we will try to understand the interpretation
+
+460
+00:50:37,680 --> 00:50:42,560
+ that is a separate thing we will go that but before going printing this portion I am just
+
+461
+00:50:42,560 --> 00:50:47,860
+ explaining this part what is polarity as you can see in the screen it measures the sentiments
+
+462
+00:50:47,860 --> 00:50:54,060
+ positivity or negativity. So if it is minus 1 then it is negative if it is 0 then it will
+
+463
+00:50:54,060 --> 00:51:00,380
+ be neutral if it is 1 then it will be positive as simple as that.
+
+464
+00:51:00,380 --> 00:51:10,940
+ Similarly for the subjectivity subjectivity it will range from 0 to 1 as we can see highlighted
+
+465
+00:51:10,940 --> 00:51:21,020
+ portion in the screen it will range from 0 to 1. So 0 means objective and 1 means subject.
+
+466
+00:51:21,020 --> 00:51:25,900
+ It will indicate whether the text is based on the fact or personal opinion that means
+
+467
+00:51:25,900 --> 00:51:36,580
+ if you are quoting getting score 0 that is fact sun rises in the east it is a fact. So
+
+468
+00:51:36,580 --> 00:51:43,820
+ it is objective but subjective means personal opinion personal bias will be there. So that
+
+469
+00:51:43,820 --> 00:51:48,740
+ means if you are going getting score 0 or near by 0 it is more objective cases if you
+
+470
+00:51:48,740 --> 00:51:54,540
+ are getting score 1 or near by 1 it will be subjective case personal bias personal opinion
+
+471
+00:51:54,540 --> 00:52:01,380
+ like if I say for example that Sachin Tendulkar is my favorite cricketer if I say just for
+
+472
+00:52:01,380 --> 00:52:06,820
+ an example. So it is sharing my personal opinion it is a subjective case you may have some
+
+473
+00:52:06,820 --> 00:52:11,420
+ different opinion right. So it is a subjective case.
+
+474
+00:52:11,420 --> 00:52:18,940
+ So in this way we define the polarity and subjectivity. So let us implement this particular
+
+475
+00:52:18,940 --> 00:52:25,180
+ portion now 1 by 1 and let us calculate the polarity and the subjectivity case. As you
+
+476
+00:52:25,180 --> 00:52:31,540
+ can see polarity here you have got the value 0.5125 and the subjectivity 0.75. We shall
+
+477
+00:52:31,540 --> 00:52:37,420
+ go for this interpretation of the output first you implement this chunk of the code and then
+
+478
+00:52:37,420 --> 00:52:41,380
+ we shall go for the interpretation purpose see the output. So as you can see the grinting
+
+479
+00:52:41,380 --> 00:52:46,940
+ has appeared with the 0 second and we got the polarity and the subjectivity score.
+
+480
+00:52:46,940 --> 00:52:52,020
+ So before going to the for the interpretation you just implement this is 12.6 please finish
+
+481
+00:52:52,020 --> 00:53:08,580
+ this step by 12.8 and then we shall move towards the interpretation purpose.
+
+482
+00:53:08,580 --> 00:53:25,940
+ So let us go for the interpretation purpose. So first we shall go for the interpretation.
+
+483
+00:53:25,940 --> 00:53:43,700
+ So first I shall go for the interpretation purpose. So first I shall go for the interpretation
+
+484
+00:53:43,700 --> 00:53:53,780
+ purpose. So first I shall go for the interpretation purpose.
+
+485
+00:53:53,780 --> 00:54:06,260
+ So those who have implemented fine those who are still doing it please complete it make
+
+486
+00:54:06,260 --> 00:54:11,140
+ sure that you are not making any mistake if you are typing make sure that you are typing
+
+487
+00:54:11,140 --> 00:54:17,540
+ correctly those who are copying the cells make sure that you are copying properly and
+
+488
+00:54:17,540 --> 00:54:22,940
+ understanding these steps because each explanation is given with the hash sign and also check
+
+489
+00:54:22,940 --> 00:54:28,380
+ the outputs which you are getting I shall explain them very soon.
+
+490
+00:54:28,380 --> 00:54:31,300
+ So I shall wait for another more minute and then move to the next step. So please make
+
+491
+00:54:31,300 --> 00:54:38,620
+ sure that all of you are implementing it smoothly. Understanding is very much important for each
+
+492
+00:54:38,620 --> 00:54:47,740
+ of the operations. So remember that we are implementing the sentiment analysis part.
+
+493
+00:54:47,740 --> 00:54:52,260
+ So I hope now it is quite clear to all of you that how the text block performs like we have
+
+494
+00:54:52,260 --> 00:54:57,180
+ planned for the NLTK library of this passive. Now you are quite aware of the text block
+
+495
+00:55:22,260 --> 00:55:50,620
+. Now you see that we have got the polarity value 0.5125 and the subjectivity value
+
+496
+00:55:50,620 --> 00:55:56,020
+ is 0.75. Now what does the imply? So as you can see polarity value we have learned that
+
+497
+00:55:56,020 --> 00:56:00,780
+ if it is minus 1 it will be negative it is 0 it is neutral and if it is 1 then it is positive.
+
+498
+00:56:00,780 --> 00:56:09,820
+ Now 5125 is at some type of the moderately positive but not so overwhelming. So this
+
+499
+00:56:09,820 --> 00:56:18,620
+ particular language conveys that it has a general favorable tone but not very much optimistic
+
+500
+00:56:18,620 --> 00:56:28,220
+ or enthusiastic. So it is moderately positive around 0.5125 it is moderately positive. Similarly
+
+501
+00:56:28,220 --> 00:56:34,820
+ for the subjectivity score it is 0.75. Now as we have learned that it is 0 then it is
+
+502
+00:56:34,820 --> 00:56:43,300
+ a fact or nearby 0 it is nearby facts. So around objectivity will be there something
+
+503
+00:56:43,300 --> 00:56:48,860
+ related to the objectivity will be there but the more it will go towards 1 especially over
+
+504
+00:56:48,860 --> 00:56:55,980
+ 0.5 that has a stronger subjectivity. That means the personal opinion or the personal
+
+505
+00:56:55,980 --> 00:57:06,020
+ bias will be strong there. So if I say with a subjectivity score of 0.75 the text contains
+
+506
+00:57:06,020 --> 00:57:15,520
+ a strong personal bias subjective expression or opinion rather than it is a purely based
+
+507
+00:57:15,520 --> 00:57:22,220
+ on facts or the objective analysis. Hope now it is quite clear to all of you.
+
+508
+00:57:22,220 --> 00:57:29,900
+ So this portion of the code what we have learned it has shown us sample text which is moderately
+
+509
+00:57:29,900 --> 00:57:36,280
+ positive with a significant degree of subjectivity and text blob is simply effective for the
+
+510
+00:57:36,280 --> 00:57:44,140
+ sentiment analysis task. So in this segment we have learnt about text blob their functionalities,
+
+511
+00:57:44,140 --> 00:57:49,900
+ polarity and subjectivity and how to implement text blob for sentiment analysis. In the next
+
+512
+00:57:49,900 --> 00:57:56,380
+ part we shall go and implement for the topic modeling and document clustering. So there
+
+513
+00:57:56,380 --> 00:58:01,640
+ will be a break of 5 minutes and then we shall start our discussions on the topic modeling
+
+514
+00:58:01,640 --> 00:58:19,620
+ and document clustering. Stay tuned.
+
+515
+00:58:31,640 --> 00:58:41,640
+ [BLANK_AUDIO]
+

@@ -1,0 +1,3408 @@
+1
+00:00:00,000 --> 00:00:06,200
+ So please join the live lectures only using your registered ID as standard is tracked
+
+2
+00:00:06,200 --> 00:00:10,760
+ only with the registered ID and the login ID which you have purchased for the course.
+
+3
+00:00:10,760 --> 00:00:14,800
+ If you have joined with registered ID, it will be captured, that ends will be captured and
+
+4
+00:00:14,800 --> 00:00:18,280
+ you check any spelling mistakes when you enter during the session.
+
+5
+00:00:18,280 --> 00:00:22,960
+ Otherwise, sign out from the login and re-login with the exact login ID.
+
+6
+00:00:22,960 --> 00:00:27,640
+ So each every web page session will be unique and shared every week over email, community
+
+7
+00:00:27,640 --> 00:00:30,140
+ and from course batch.
+
+8
+00:00:30,140 --> 00:00:35,200
+ To set up the WebEx layout option for learners, go to the layout option showing it on the
+
+9
+00:00:35,200 --> 00:00:40,000
+ screen at the top right hand side, click on the stack mode, again click on the stack mode
+
+10
+00:00:40,000 --> 00:00:43,240
+ and below that you can see this enable full screen mode.
+
+11
+00:00:43,240 --> 00:00:45,840
+ So just enable that also.
+
+12
+00:00:45,840 --> 00:00:50,560
+ This will show you it in full screen mode for the presenter of the presenter.
+
+13
+00:00:50,560 --> 00:00:52,640
+ So please put your queries in Q&A session.
+
+14
+00:00:52,640 --> 00:00:57,240
+ So please be assured that if professors are unable to attend all your queries in Q&A session,
+
+15
+00:00:57,240 --> 00:01:00,840
+ it will be answered and uploaded in our discussion room.
+
+16
+00:01:00,840 --> 00:01:05,080
+ So for the assignment availability for the week 2, assignment will be enabled at 2 p.m.
+
+17
+00:01:05,080 --> 00:01:10,880
+ For the week 1 assignments that mission deadline on 16th February that is tomorrow at 11 p.m.
+
+18
+00:01:10,880 --> 00:01:15,080
+ And solution for the week 1 assignment will be available 17th February that is Monday
+
+19
+00:01:15,080 --> 00:01:16,840
+ by 11 a.m.
+
+20
+00:01:16,840 --> 00:01:21,480
+ So assignment evaluations will be done by IATKHB professors prior to the conclusion of the
+
+21
+00:01:21,480 --> 00:01:24,040
+ course and will be made available on the portal.
+
+22
+00:01:24,040 --> 00:01:28,320
+ You can access the evaluation commands once the assignment has been evaluated.
+
+23
+00:01:28,320 --> 00:01:31,400
+ So kindly refer reference materials from course batch.
+
+24
+00:01:31,400 --> 00:01:33,560
+ We'll walk into the portal.
+
+25
+00:01:33,560 --> 00:01:34,680
+ You can go to the course batch.
+
+26
+00:01:34,680 --> 00:01:37,400
+ You can refer the materials from reference section.
+
+27
+00:01:37,400 --> 00:01:41,240
+ And other documents, pre-read materials will be available in the discussion room and answers
+
+28
+00:01:41,240 --> 00:01:45,800
+ for the question answers, important supporting documents will be available in community.
+
+29
+00:01:45,800 --> 00:01:49,800
+ So all the important documents are tagged in the highlight section for easy access.
+
+30
+00:01:49,800 --> 00:01:56,120
+ Today we have a quiz for the week 1, so this will be available today, Saturday, 15th February
+
+31
+00:01:56,120 --> 00:01:59,440
+ 2025 between 5 p.m. till 7 p.m.
+
+32
+00:01:59,440 --> 00:02:02,240
+ The duration of the quiz will be 30 minutes.
+
+33
+00:02:02,240 --> 00:02:07,640
+ So once you start that quiz, you should complete before 30 minutes, within 30 minutes.
+
+34
+00:02:07,640 --> 00:02:12,640
+ Please ensure your network availability and the power backup during that taking that quiz.
+
+35
+00:02:12,640 --> 00:02:17,480
+ Please try to attend your quiz by desktop only.
+
+36
+00:02:17,480 --> 00:02:21,080
+ So don't try it in mobile, it's for better or easy access.
+
+37
+00:02:21,080 --> 00:02:25,480
+ So results for that assessment quiz will be available at 9 p.m. on the same day.
+
+38
+00:02:25,480 --> 00:02:29,720
+ To view the marks obtained, click on the terms taken, you'll be able to see the quiz answers.
+
+39
+00:02:29,720 --> 00:02:33,800
+ Then WhatsApp notification adjusts will be sent only for those who have given consent
+
+40
+00:02:33,800 --> 00:02:34,800
+ in the platform.
+
+41
+00:02:34,800 --> 00:02:39,080
+ So please log into the platform, give the consent that I will show you during the break
+
+42
+00:02:39,080 --> 00:02:40,080
+ time.
+
+43
+00:02:40,080 --> 00:02:41,080
+ So you can give the notification adjust.
+
+44
+00:02:41,080 --> 00:02:44,280
+ You will be getting the notification adjust only after giving the consent.
+
+45
+00:02:44,280 --> 00:02:49,560
+ In case of any issues, if you want to connect with us, please reach out to us info.tcs.nobla.tcs.com.
+
+46
+00:02:49,560 --> 00:02:52,720
+ Once again, thank you all for joining today's session.
+
+47
+00:02:52,720 --> 00:02:54,920
+ Sir, over to you.
+
+48
+00:02:54,920 --> 00:02:55,920
+ Okay.
+
+49
+00:02:55,920 --> 00:02:56,920
+ Okay.
+
+50
+00:02:56,920 --> 00:02:57,920
+ Thank you.
+
+51
+00:02:57,920 --> 00:02:58,920
+ Yes.
+
+52
+00:02:58,920 --> 00:03:03,120
+ So today we are going to start a new session.
+
+53
+00:03:03,120 --> 00:03:10,960
+ As a statistical learning, we will talk about its fundamental aspects which are essential
+
+54
+00:03:10,960 --> 00:03:20,560
+ for not only statistical understanding, but it is the foundation for machine learning especially.
+
+55
+00:03:20,560 --> 00:03:29,320
+ We will try to bridge the gap between the languages where the machine learning practitioners
+
+56
+00:03:29,320 --> 00:03:37,400
+ use and the statisticians use such that the flow of the understanding will be smooth.
+
+57
+00:03:37,400 --> 00:03:45,320
+ And people have a more transparent perspective over the context.
+
+58
+00:03:45,320 --> 00:03:50,080
+ So first let us start with statistical learning.
+
+59
+00:03:50,080 --> 00:04:00,000
+ The learning procedure mostly in machine learning setup, it is a generalization from learning
+
+60
+00:04:00,000 --> 00:04:04,760
+ by memorization to learning by generalization.
+
+61
+00:04:04,760 --> 00:04:13,560
+ So initially whatever the information is gathered and passed to the machine, the extension
+
+62
+00:04:13,560 --> 00:04:20,880
+ of that information for those segments of the data where the information is not available,
+
+63
+00:04:20,880 --> 00:04:27,160
+ that is the job a machine learning problem must do.
+
+64
+00:04:27,160 --> 00:04:35,680
+ And if we have little bit more prior knowledge about the mechanism, then it might create
+
+65
+00:04:35,680 --> 00:04:45,120
+ certain bias based on the prior information or it may sync with the new data that are
+
+66
+00:04:45,120 --> 00:04:49,520
+ coming to it.
+
+67
+00:04:49,520 --> 00:05:07,480
+ So now when do we need to do the machine learning when the tasks are too complex or to be constructed
+
+68
+00:05:07,480 --> 00:05:25,840
+ in one program and when the situations are adaptive.
+
+69
+00:05:25,840 --> 00:05:35,000
+ I assume that in future courses, the experts will talk more details about these different
+
+70
+00:05:35,000 --> 00:05:41,960
+ types of learning, but before going to that we just touch upon the aspects such that we
+
+71
+00:05:41,960 --> 00:05:46,360
+ can connect it to the statistical aspect.
+
+72
+00:05:46,360 --> 00:05:52,600
+ So most of the cases we divide the learning process either supervised learning or unsupervised
+
+73
+00:05:52,600 --> 00:06:07,600
+ learning, in supervised learning the label to the data are present as a consequence at
+
+74
+00:06:07,600 --> 00:06:16,520
+ the end of the day it becomes easier to train the data and to the segregation.
+
+75
+00:06:16,520 --> 00:06:22,680
+ You can consider that classification problem is one of the supervised learning regression
+
+76
+00:06:22,680 --> 00:06:28,680
+ problem is a supervised learning problem, but unsupervised learning where the levels
+
+77
+00:06:28,680 --> 00:06:37,440
+ are not present to the data and from the data itself machine has to identify certain features
+
+78
+00:06:37,440 --> 00:06:42,280
+ and segregate them in different buckets that is unsupervised learning.
+
+79
+00:06:42,280 --> 00:06:48,960
+ So as a consequence the clustering can be considered as an unsupervised learning.
+
+80
+00:06:48,960 --> 00:06:55,680
+ Now active and passive this is also another story which is similar to the previous one
+
+81
+00:06:55,680 --> 00:07:01,960
+ when it is passive learning most of the cases levels are present, but when it is active
+
+82
+00:07:01,960 --> 00:07:09,560
+ learning that the machine not only should learn the feature they also start to categorization
+
+83
+00:07:09,560 --> 00:07:18,080
+ and rectify the information that they have it has gathered and modify it accordingly.
+
+84
+00:07:18,080 --> 00:07:25,720
+ Then teacher student model when there is a large model already existing and we want to
+
+85
+00:07:25,720 --> 00:07:32,080
+ implement a part or the entire model to another setup then there is a teacher student type
+
+86
+00:07:32,080 --> 00:07:41,720
+ of model we call where a complete scenario is known, but something new is dataset is
+
+87
+00:07:41,720 --> 00:07:50,200
+ there we want to invoke the existing infrastructure and the mechanism for the new setup and there
+
+88
+00:07:50,200 --> 00:07:53,560
+ the teacher student model often used.
+
+89
+00:07:53,560 --> 00:07:59,920
+ And online and batch learning in statistics online learning is also sometime known as the
+
+90
+00:07:59,920 --> 00:08:07,480
+ surveillance problem and batch learning is known as the retrospective study.
+
+91
+00:08:07,480 --> 00:08:13,680
+ So this is very important for signal detection as well as the machine learning problem sorry
+
+92
+00:08:13,680 --> 00:08:17,080
+ not as well as the medical research.
+
+93
+00:08:17,080 --> 00:08:26,880
+ So in the online problem the data are updated in a sequential order and the information are
+
+94
+00:08:26,880 --> 00:08:34,760
+ also get enhanced as a consequence the inform the conclusion becomes dynamic.
+
+95
+00:08:34,760 --> 00:08:40,040
+ On the other hand batch learning as it is retrospective we assume that a certain segment
+
+96
+00:08:40,040 --> 00:08:48,480
+ of the data available we do analysis of the entire data as a whole in batch learning problem.
+
+97
+00:08:48,480 --> 00:08:57,560
+ I am sure that future days the experts will go in deep with this type of learning processes
+
+98
+00:08:57,560 --> 00:09:03,320
+ we are today we are going to make connection this type of thing with the statistical learning.
+
+99
+00:09:03,320 --> 00:09:06,800
+ So what is the essence of statistical learning?
+
+100
+00:09:06,800 --> 00:09:16,560
+ So we typically want to estimate some function that is the ultimate goal and that function
+
+101
+00:09:16,560 --> 00:09:24,520
+ here we call it in short here we call it f some unknown function it could be anything
+
+102
+00:09:24,520 --> 00:09:32,240
+ the purpose is mostly two one is prediction another is inference prediction means based
+
+103
+00:09:32,240 --> 00:09:37,880
+ on that function f whatever the model we get from this f.
+
+104
+00:09:37,880 --> 00:09:51,720
+ So f is for the model so f is for the model and from that model whatever prediction we
+
+105
+00:09:51,720 --> 00:10:00,440
+ can do given one variable predict for the other that is known as the prediction problem.
+
+106
+00:10:00,440 --> 00:10:22,760
+ So based on the model on the model predict one variable or more than one variable given
+
+107
+00:10:22,760 --> 00:10:30,520
+ the other or other more than one variables we can do.
+
+108
+00:10:30,520 --> 00:10:48,520
+ And inference is talking about the specification of model parameter.
+
+109
+00:10:48,520 --> 00:10:56,000
+ So in short if we give an example the regression is a very prominent example we want to fit
+
+110
+00:10:56,000 --> 00:11:03,840
+ a regression for that there will be certain function and based on an input variable or
+
+111
+00:11:03,840 --> 00:11:07,720
+ the regression variable or the feature variable we want to predict the response variable that
+
+112
+00:11:07,720 --> 00:11:15,880
+ is a prediction problem and whether a feature variable is will be present in the regression
+
+113
+00:11:15,880 --> 00:11:20,840
+ model or not the coefficient associated to that feature variable is significant enough
+
+114
+00:11:20,840 --> 00:11:22,360
+ or not.
+
+115
+00:11:22,360 --> 00:11:30,440
+ So that is an inferential problem which is also crucial because if we do not require
+
+116
+00:11:30,440 --> 00:11:36,600
+ a parameter or a feature in the model but still we keep on collecting the data that
+
+117
+00:11:36,600 --> 00:11:43,600
+ means it will require a space in the storage it will require time for the collection and
+
+118
+00:11:43,600 --> 00:11:49,320
+ fetching and retrieving and processing the data will be unnecessary which we do not want
+
+119
+00:11:49,320 --> 00:11:57,960
+ for the sake of complexity of the problem.
+
+120
+00:11:57,960 --> 00:12:02,880
+ In a broader sense we can address this problem in two different ways one is the parametric
+
+121
+00:12:02,880 --> 00:12:08,560
+ method another is the non-parametric method when we talk about the parametric method the
+
+122
+00:12:08,560 --> 00:12:15,920
+ models are driven by parameter often we write in the form f theta in such that theta is
+
+123
+00:12:15,920 --> 00:12:23,120
+ the parameter and f is the function dependent on theta and there will be variable x y so
+
+124
+00:12:23,120 --> 00:12:30,840
+ on and so forth associated to the function and non-parametric is the setup where definitely
+
+125
+00:12:30,840 --> 00:12:42,960
+ there will be a function f which is also dependent on the variables but no such parameter is
+
+126
+00:12:42,960 --> 00:12:54,000
+ associated with it but the restriction is often done like that f is continuous or f
+
+127
+00:12:54,000 --> 00:13:08,560
+ is twice so f f prime f double prime exist so these type of assumptions are often made
+
+128
+00:13:08,560 --> 00:13:16,400
+ to establish the mathematical theory for non-parametric setup and rest of the story goes for the
+
+129
+00:13:16,400 --> 00:13:24,860
+ large number so establishment of the I mean the nice behavior for non-parametric method
+
+130
+00:13:24,860 --> 00:13:35,400
+ often we require the large numbers which are not a problem and nowadays because of the
+
+131
+00:13:35,400 --> 00:13:41,160
+ computer that we have plenty of data unless otherwise there is a specific type of problem
+
+132
+00:13:41,160 --> 00:13:49,520
+ like biomedical problem or at the same time maybe say some sociological data analysis
+
+133
+00:13:49,520 --> 00:13:57,840
+ so though in those cases really sometime the problem the data set is small so I hope I
+
+134
+00:13:57,840 --> 00:14:03,960
+ could make little bit clear about the setup that there is a parametric structure to address
+
+135
+00:14:03,960 --> 00:14:08,920
+ the problem there is a non-parametric structure the non-parametric structure flexibility is
+
+136
+00:14:08,920 --> 00:14:18,280
+ more precision is comparatively less parametric structure if the assumption is correct the
+
+137
+00:14:18,280 --> 00:14:24,920
+ precision is very high but if the assumption is wrong then definitely the precision is
+
+138
+00:14:24,920 --> 00:14:36,040
+ low we will try to establish all those thing in a formal way now let us enter in the parametric
+
+139
+00:14:36,040 --> 00:14:44,160
+ structure so whatever we consider as learning eventually in statistical term it is an estimation
+
+140
+00:14:44,160 --> 00:14:52,040
+ problem so in estimation problem specifically for the parametric structure what we consider
+
+141
+00:14:52,040 --> 00:15:19,600
+ that data given then model assumed and parameters estimated.
+
+142
+00:15:19,600 --> 00:15:32,060
+ So try to see the entire structure that the data set is present with us and we have assumed
+
+143
+00:15:32,060 --> 00:15:37,880
+ that the data are coming from a particular model there is no guarantee that the model
+
+144
+00:15:37,880 --> 00:15:46,200
+ will be correct there is a method for validation definitely but at the very beginning there
+
+145
+00:15:46,200 --> 00:15:55,400
+ is no guarantee that the model will be correct and then finally we estimate the model parameters
+
+146
+00:15:55,400 --> 00:16:01,080
+ and find do the validation.
+
+147
+00:16:01,080 --> 00:16:15,320
+ Now here is a catch now there is a catch that whether we will directly jump into the problem
+
+148
+00:16:15,320 --> 00:16:24,360
+ for estimating the function or we can do it in a different way so the parametric structure
+
+149
+00:16:24,360 --> 00:16:29,480
+ in non-parametric structure it is the way that we directly jump to the estimation of
+
+150
+00:16:29,480 --> 00:16:35,760
+ the function but in a non-parametric structure there is certain flexibility.
+
+151
+00:16:35,760 --> 00:16:44,760
+ So what we call demonstrate in this way so suppose this is the parameter space so this
+
+152
+00:16:44,760 --> 00:16:55,440
+ is this thing we write as a script theta which is the parameter space.
+
+153
+00:16:55,440 --> 00:17:11,000
+ On the other hand this is the function space or the model space ok so this is the model
+
+154
+00:17:11,000 --> 00:17:21,720
+ space now suppose if I choose one point in the if I choose one point in the parameter
+
+155
+00:17:21,720 --> 00:17:28,200
+ space that will be associated one model in the model space.
+
+156
+00:17:28,200 --> 00:17:35,160
+ So there will be a one to one connection and if there is more than one parameter which
+
+157
+00:17:35,160 --> 00:17:42,160
+ is giving only same model then that will be trouble so it is supposed to be one to one
+
+158
+00:17:42,160 --> 00:17:45,000
+ mapping otherwise there will be trouble.
+
+159
+00:17:45,000 --> 00:17:54,040
+ And with the advantage of this one our goal is to construct an estimation method such
+
+160
+00:17:54,040 --> 00:18:02,480
+ that we can go to the true parameter in a very steady rate such that if I go to the
+
+161
+00:18:02,480 --> 00:18:11,280
+ true parameter then we will converge to the true model we will also converge we will also
+
+162
+00:18:11,280 --> 00:18:17,960
+ converge to the true model with a very high accuracy that is the fundamental idea.
+
+163
+00:18:17,960 --> 00:18:25,240
+ So for example if I consider this regression structure which is very simple suppose a simple
+
+164
+00:18:25,240 --> 00:18:31,800
+ linear regression structure data are scattered and we have a line.
+
+165
+00:18:31,800 --> 00:18:41,280
+ So this line has a intercept and a slope.
+
+166
+00:18:41,280 --> 00:18:48,040
+ So eventually it is beta naught plus beta 1 x this line.
+
+167
+00:18:48,040 --> 00:18:59,480
+ Now this is the model space ok corresponding parameter space is this one that in 2D this
+
+168
+00:18:59,480 --> 00:19:02,960
+ is beta naught line this is beta 1 line.
+
+169
+00:19:02,960 --> 00:19:10,760
+ So for this straight line I have one point beta naught beta 1.
+
+170
+00:19:10,760 --> 00:19:17,560
+ So one point here is giving one model here if I consider another point here that might
+
+171
+00:19:17,560 --> 00:19:23,120
+ give certain different line here ok.
+
+172
+00:19:23,120 --> 00:19:30,920
+ So that is the fundamental idea that if I have a point here I will get one model there.
+
+173
+00:19:30,920 --> 00:19:41,640
+ Now if I approach to this point one beta naught beta 1 vector is approaching to this point
+
+174
+00:19:41,640 --> 00:19:49,780
+ then gradually the lines will also become very close to this one and finally overlap
+
+175
+00:19:49,780 --> 00:19:50,780
+ with that line.
+
+176
+00:19:50,780 --> 00:20:00,280
+ So this this is the story of entire estimation problem or model parameter learning problem.
+
+177
+00:20:00,280 --> 00:20:08,320
+ So gradually let us make it formal and try to explain the necessary terminologies which
+
+178
+00:20:08,320 --> 00:20:15,720
+ will be useful for better understanding in future.
+
+179
+00:20:15,720 --> 00:20:21,200
+ So this is how the parameter space and the model are associated with.
+
+180
+00:20:21,200 --> 00:20:28,040
+ We will study few things which are the definition of the estimator estimator for the parameter,
+
+181
+00:20:28,040 --> 00:20:34,560
+ some good properties of an estimator and different model estimation problem.
+
+182
+00:20:34,560 --> 00:20:45,640
+ One is moment based estimation problem and rest are MLE and least square as an example
+
+183
+00:20:45,640 --> 00:20:52,620
+ we will discuss both of them can be clubbed together under one umbrella which is known
+
+184
+00:20:52,620 --> 00:20:58,560
+ as M estimator.
+
+185
+00:20:58,560 --> 00:21:06,640
+ And when we say it is an M estimator it means that we get the estimator the choice of the
+
+186
+00:21:06,640 --> 00:21:11,960
+ estimator after minimization or maximization of certain type of function.
+
+187
+00:21:11,960 --> 00:21:19,480
+ In general it might be considered as a cost function but we get the estimator through
+
+188
+00:21:19,480 --> 00:21:39,540
+ minimization or maximization so either minimization or maximization so this is the problem.
+
+189
+00:21:39,540 --> 00:21:46,800
+ So let us start with the definition of an estimator to define an estimator first we
+
+190
+00:21:46,800 --> 00:21:54,160
+ introduce a terminology which is known as statistic remember that s is not here only
+
+191
+00:21:54,160 --> 00:22:00,600
+ up to c statistic a statistic is a function of data it is a function of data only if some
+
+192
+00:22:00,600 --> 00:22:06,800
+ parameter value is known it could be involved there but if the parameter value is not known
+
+193
+00:22:06,800 --> 00:22:13,600
+ then we should not consider it as a statistic and if a statistic is used for estimation
+
+194
+00:22:13,600 --> 00:22:20,600
+ of a parameter or a function of a parameter then it is known as a estimator of that parametric
+
+195
+00:22:20,600 --> 00:22:21,600
+ function.
+
+196
+00:22:21,600 --> 00:22:28,280
+ So here we have written in general g theta g theta can be theta only and tx is statistic
+
+197
+00:22:28,280 --> 00:22:35,960
+ which is a function of data if the data value is known then statistic itself has only one
+
+198
+00:22:35,960 --> 00:22:43,760
+ value the statistic has only one value but if we consider the statistic as a function
+
+199
+00:22:43,760 --> 00:22:48,480
+ of random variable then it is also a random variable.
+
+200
+00:22:48,480 --> 00:22:56,120
+ So given the values of the data the statistic can take only one value given one set of data
+
+201
+00:22:56,120 --> 00:23:05,040
+ but on the other hand if we consider the data in the form of random variable then the statistic
+
+202
+00:23:05,040 --> 00:23:16,480
+ itself is a random variable and it will have a distribution so it is a random variable
+
+203
+00:23:16,480 --> 00:23:24,760
+ and this one is a particular value, okay.
+
+204
+00:23:24,760 --> 00:23:30,960
+ Given the data it is a particular value and in general it is a random variable.
+
+205
+00:23:30,960 --> 00:23:39,720
+ So how to conceptualize the thing, suppose we are addressing a problem and each of you
+
+206
+00:23:39,720 --> 00:23:45,320
+ each candidate of you are addressing the same problem.
+
+207
+00:23:45,320 --> 00:23:54,640
+ So each of you are collecting data separately constructing the same statistic you know the
+
+208
+00:23:54,640 --> 00:23:58,720
+ model you know everything how to do the analysis.
+
+209
+00:23:58,720 --> 00:24:06,000
+ So you collect the data individually you collect go and for the field for survey and collect
+
+210
+00:24:06,000 --> 00:24:12,440
+ the data and finally construct the test statistic to estimate the parameter.
+
+211
+00:24:12,440 --> 00:24:19,560
+ So here you consider the situation which is very much obvious that each of you will get
+
+212
+00:24:19,560 --> 00:24:28,800
+ different data and as you get different data that estimated value will be different for
+
+213
+00:24:28,800 --> 00:24:32,840
+ each of you but each of you have only one data.
+
+214
+00:24:32,840 --> 00:24:38,520
+ Now if we collect all the data or the all the all the statistic value that you have
+
+215
+00:24:38,520 --> 00:24:48,240
+ calculated then and club together all the values then it is you will find a distribution
+
+216
+00:24:48,240 --> 00:24:57,600
+ and the distribution will be the distribution of this random variable which is T of X, okay.
+
+217
+00:24:57,600 --> 00:25:05,080
+ So now let us move forward for more formal definition, okay.
+
+218
+00:25:05,080 --> 00:25:11,560
+ So before we go let me just give you one example such that which is a statistic which is not
+
+219
+00:25:11,560 --> 00:25:14,800
+ a statistic it will be little bit clear.
+
+220
+00:25:14,800 --> 00:25:35,520
+ So for example let us consider that X1, X2, Xn are random samples
+
+221
+00:25:35,520 --> 00:25:47,240
+ from say normal mu sigma square where mu unknown sigma square unknown.
+
+222
+00:25:47,240 --> 00:25:57,080
+ So here very simply I can write one function which is xi minus x bar whole square i running
+
+223
+00:25:57,080 --> 00:26:12,400
+ from 1 to n 1 upon n and another function 1 upon n sum over xi minus x bar sorry xi
+
+224
+00:26:12,400 --> 00:26:26,800
+ minus mu whole square i running from 1 to n. So as mu unknown this is a statistic and
+
+225
+00:26:26,800 --> 00:26:39,160
+ this is not a this is not a statistic because mu is an unknown parameter which is involved
+
+226
+00:26:39,160 --> 00:26:47,960
+ here, here only the data present no unknown parameter present hence it is a statistic.
+
+227
+00:26:47,960 --> 00:26:57,440
+ And if the mu value known then also it will become a statistic otherwise not and if mu
+
+228
+00:26:57,440 --> 00:27:03,320
+ known or mu unknown this could be used as an estimator of sigma square.
+
+229
+00:27:03,320 --> 00:27:11,280
+ So this could be used as an estimator of sigma square but this could be used as an estimator
+
+230
+00:27:11,280 --> 00:27:32,080
+ of sigma square only when mu know can be used as an estimator of sigma square when and in
+
+231
+00:27:32,080 --> 00:27:38,840
+ that case it will become also a statistic. So that is the fundamental difference between
+
+232
+00:27:38,840 --> 00:27:49,540
+ the notion of statistic and the estimator as an application of statistic.
+
+233
+00:27:49,540 --> 00:27:57,720
+ Now few properties which we desire that an estimator will have the first and foremost
+
+234
+00:27:57,720 --> 00:28:06,200
+ is the unbiasedness. So unbiasedness of an estimator eventually demands a theoretical
+
+235
+00:28:06,200 --> 00:28:16,960
+ requirement which says that the expectation of the statistic value is same as the parameter
+
+236
+00:28:16,960 --> 00:28:24,720
+ value or the function of the parameter value. And if it holds for all parameter theta then
+
+237
+00:28:24,720 --> 00:28:31,640
+ only we will call it is an unbiased estimator. So otherwise it will not be considered as
+
+238
+00:28:31,640 --> 00:28:58,800
+ an unbiased estimator. Now suppose let us have an example that X1, X2 again Xm random
+
+239
+00:28:58,800 --> 00:29:11,160
+ square then notice that if I write this quantity sum over Xi square I running from 1 to n 1
+
+240
+00:29:11,160 --> 00:29:32,920
+ upon n. So average of Xi square. So first of all it is a statistic. Without any doubt
+
+241
+00:29:32,920 --> 00:29:37,540
+ it is a statistic. Now if I want to estimate sigma square can I use this one what will
+
+242
+00:29:37,540 --> 00:29:47,120
+ be the situation. So notice that if I take the expectation so I can use definitely because
+
+243
+00:29:47,120 --> 00:29:52,840
+ it is a statistic I can make use of it for estimating sigma square.
+
+244
+00:29:52,840 --> 00:30:06,520
+ But if I want to study its feature if 1 to n expectation of Xi square which is integration
+
+245
+00:30:06,520 --> 00:30:15,560
+ or whatever here from definition you can very easily go that expectation of Xi square I
+
+246
+00:30:15,560 --> 00:30:25,520
+ running from 1 to n which is 1 upon n each of the term is mu square plus sigma I running
+
+247
+00:30:25,520 --> 00:30:34,840
+ from 1 to n as a consequence it is mu square plus sigma. So definitely it is not an unbiased
+
+248
+00:30:34,840 --> 00:30:52,280
+ estimator of sigma square. So it is not an unbiased estimator of sigma square because
+
+249
+00:30:52,280 --> 00:31:09,820
+ you see that some added quantity is present. Now suppose if mu equal to 0 then expectation
+
+250
+00:31:09,820 --> 00:31:22,840
+ of 1 upon so let us call gx or maybe some other function we are saying t. So let us call t
+
+251
+00:31:22,840 --> 00:31:41,000
+ 1x expectation of t 1x is sigma square. But notice only when mu is specified to 0 it is
+
+252
+00:31:41,000 --> 00:31:48,100
+ able to estimate unbiased lift for sigma square. But in general it is not true notice the condition
+
+253
+00:31:48,100 --> 00:31:55,320
+ that expectation of tx equal to g theta for all theta. So here in this example what is
+
+254
+00:31:55,320 --> 00:32:05,160
+ theta? Theta is a two component vector mu and sigma square. So for all possible values
+
+255
+00:32:05,160 --> 00:32:15,560
+ tx is expectation of tx the mean of tx is not sigma square only for a particular value
+
+256
+00:32:15,560 --> 00:32:21,920
+ of mu it is sigma square. So in general tx is not an unbiased estimator.
+
+257
+00:32:21,920 --> 00:32:29,120
+ So there is a bias and the bias is mu square, mu square is the bias. So which is the gap
+
+258
+00:32:29,120 --> 00:32:39,640
+ between the true value and the expected value that is known as the bias of the estimator.
+
+259
+00:32:39,640 --> 00:32:50,260
+ And this is a technical statement that even though the estimator is unbiased estimator
+
+260
+00:32:50,260 --> 00:32:58,440
+ it will exactly take the value of the true parameter that probability can be 0 ok. So
+
+261
+00:32:58,440 --> 00:33:04,640
+ those who are little bit advanced in this area may focus on this otherwise it is not
+
+262
+00:33:04,640 --> 00:33:12,360
+ necessary. Then we will come to the consistency.
+
+263
+00:33:12,360 --> 00:33:21,080
+ Now before going to that let us try to see it another example. So here what we have seen
+
+264
+00:33:21,080 --> 00:33:31,720
+ that we cannot estimate sigma square by the help of averaging Xi square variance we cannot
+
+265
+00:33:31,720 --> 00:33:40,860
+ estimate by the averaging Xi square. Now can we to go in a different way if I consider
+
+266
+00:33:40,860 --> 00:33:55,280
+ t2 of the data as x bar square which is 1 upon n sum over Xi I running from 1 to n and
+
+267
+00:33:55,280 --> 00:34:02,480
+ then take the square. So consider the difference, here I have made the square then I have taken
+
+268
+00:34:02,480 --> 00:34:09,280
+ the average, here I am doing the average and then I am taking the square.
+
+269
+00:34:09,280 --> 00:34:18,920
+ Now if you look at any probability book that is suggested here x bar is following normal
+
+270
+00:34:18,920 --> 00:34:30,720
+ mu sigma square by n. So in that situation this symbol is well accepted symbol and it
+
+271
+00:34:30,720 --> 00:34:40,800
+ says that x bar follows normal mu sigma square by n. So as a consequence whatever we are
+
+272
+00:34:40,800 --> 00:34:52,200
+ seeing here that if we take expectation of x bar square which will be no sorry which
+
+273
+00:34:52,200 --> 00:35:05,360
+ will be mu square plus sigma square by n. So this quantity we can use so let us consider
+
+274
+00:35:05,360 --> 00:35:21,920
+ a different way that can be used as an estimator of let us say we are talking about mu square.
+
+275
+00:35:21,920 --> 00:35:35,400
+ So mu square hat is this one. Now notice this thing that this quantity is also biased but
+
+276
+00:35:35,400 --> 00:35:46,920
+ the advantage is this that sigma square by n is going to 0 decreasing to 0 as n is increasing
+
+277
+00:35:46,920 --> 00:35:52,560
+ to infinity. So that is what an advantage to us.
+
+278
+00:35:52,560 --> 00:35:58,180
+ So we were willing to summarize the thing in this way that if we want to estimate mu
+
+279
+00:35:58,180 --> 00:36:06,120
+ square again if we can use this expression as an estimator of mu square. But in that
+
+280
+00:36:06,120 --> 00:36:23,480
+ case so if I use mu 2 hat as t 1 x then expectation of t 1 x that you have already seen that it
+
+281
+00:36:23,480 --> 00:36:30,720
+ is sigma square plus mu square. So in that case this is biased and which does not go
+
+282
+00:36:30,720 --> 00:36:45,240
+ to 0 which does not reduce to 0 as n goes to infinity.
+
+283
+00:36:45,240 --> 00:36:51,800
+ So that is the fundamental thing that here the bias does not not going to 0 here the
+
+284
+00:36:51,800 --> 00:36:58,040
+ bias is going to 0. So very natural we will prefer this one when the bias is going to
+
+285
+00:36:58,040 --> 00:37:06,160
+ 0 if you have large sum. So consider that these 2 are the estimation of mu square problem.
+
+286
+00:37:06,160 --> 00:37:13,260
+ So now we will give the formal definition and see try to explain with the diagrams.
+
+287
+00:37:13,260 --> 00:37:21,920
+ So the notion of this type of estimator is known as the consistent estimator and estimator
+
+288
+00:37:21,920 --> 00:37:33,280
+ Tn which is a function of n sample size. So n is the sample size is said to be consistent
+
+289
+00:37:33,280 --> 00:37:41,440
+ for g theta if the difference between Tn and g theta that is becoming bounded that become
+
+290
+00:37:41,440 --> 00:37:50,540
+ very very small as n goes to infinity. So the difference between the estimated value
+
+291
+00:37:50,540 --> 00:37:59,000
+ and the true value their gap become very very small. So in a in a if you want to see in
+
+292
+00:37:59,000 --> 00:38:09,360
+ an interval then suppose here is g theta then the estimator will lie with the very small
+
+293
+00:38:09,360 --> 00:38:19,080
+ neighborhood of it or if you want to visualize it in a higher dimension then already we have
+
+294
+00:38:19,080 --> 00:38:28,600
+ shown you that the estimator will fall within a very small neighborhood of the parameter
+
+295
+00:38:28,600 --> 00:38:34,160
+ and as a consequence the model will come close to the true model.
+
+296
+00:38:34,160 --> 00:38:38,740
+ So that is what we are looking for. So if we are very close to the parameter the true
+
+297
+00:38:38,740 --> 00:38:44,640
+ models will be coming very the estimated models will be coming very close to the true one.
+
+298
+00:38:44,640 --> 00:39:00,640
+ So that is the idea. So here we are considering the mean estimation problem for the data coming
+
+299
+00:39:00,640 --> 00:39:13,200
+ from normal mu maybe say 1 ok. We are willing to estimate mean. So x bar is the estimator
+
+300
+00:39:13,200 --> 00:39:20,780
+ mu hat as simple as that. So the blue one is the true mean and the red one is the sorry
+
+301
+00:39:20,780 --> 00:39:26,680
+ blue one is the estimated mean the red one is the true mean as a consequence whatever
+
+302
+00:39:26,680 --> 00:39:34,720
+ you can see that we have drawn 25 samples and each time 25 samples drawn the process
+
+303
+00:39:34,720 --> 00:39:43,640
+ is is iterated for 10,000 time and this histogram you can observe. So this is how the distribution
+
+304
+00:39:43,640 --> 00:39:50,680
+ of an estimator generate eventually. In practice it happens through the collection
+
+305
+00:39:50,680 --> 00:39:57,200
+ of data in simulation you can do by the computer and this is the estimated distribution of
+
+306
+00:39:57,200 --> 00:40:05,160
+ x bar and this is the blue one is the mean of the all mean of sample size 25 and the
+
+307
+00:40:05,160 --> 00:40:11,000
+ red one is the true mean which is 0. So here you can see that the true mean location and
+
+308
+00:40:11,000 --> 00:40:18,520
+ the estimated mean average is the same. If you increase the but here you notice the spread
+
+309
+00:40:18,520 --> 00:40:25,200
+ spread is almost from minus 0.6 to plus 0.6. The same story repeats if you increase the
+
+310
+00:40:25,200 --> 00:40:32,600
+ sample size but the spread has become less.
+
+311
+00:40:32,600 --> 00:40:41,160
+ Again if you increase the sample size to 500 spread has become even smaller but the center
+
+312
+00:40:41,160 --> 00:40:51,160
+ part remains same. The true value is well captured by the estimated one. If you combine
+
+313
+00:40:51,160 --> 00:41:00,080
+ all these three histograms so the sample size 25 with blue, 50 with green and 500 with black
+
+314
+00:41:00,080 --> 00:41:07,320
+ if you combine them you can see these smoothed out density functions of the unbiased estimator
+
+315
+00:41:07,320 --> 00:41:14,040
+ for mean. All of them are unbiased very nicely centered at 0 but depending on the sample
+
+316
+00:41:14,040 --> 00:41:20,760
+ size the spreads are different but the advantage is that if we increase the sample size it
+
+317
+00:41:20,760 --> 00:41:29,160
+ becomes very very close to the true one and as a consequence as n goes to infinity it
+
+318
+00:41:29,160 --> 00:41:34,200
+ will converge to the true one with a very high probability which is eventually the
+
+319
+00:41:34,200 --> 00:41:37,080
+ demand of the consistency.
+
+320
+00:41:37,080 --> 00:41:45,160
+ Now we have seen the feature of consistency for an unbiased estimator of mu via x bar
+
+321
+00:41:45,160 --> 00:41:55,400
+ x bar is an unbiased estimator mu hat we have done this. Now let us talk about mu square
+
+322
+00:41:55,400 --> 00:42:06,560
+ ok as we have discussed here the if we talk about the estimation of mu square we can use
+
+323
+00:42:06,560 --> 00:42:17,960
+ this one t 2 x which is x bar square. Now x bar square if we see the distribution what
+
+324
+00:42:17,960 --> 00:42:29,440
+ you will observe here that if we have 25 sample sizes so x 1, x 2, x n they follows normal
+
+325
+00:42:29,440 --> 00:42:38,760
+ 0, 1 square maybe or sigma square whatever. Now what is mu square mu square is definitely
+
+326
+00:42:38,760 --> 00:42:52,440
+ 0 undoubtedly but if I use x bar square as an estimator of mu square or maybe as we
+
+327
+00:42:52,440 --> 00:43:01,400
+ mentioned then you can see that the estimator has a certain amount of bias it is falling
+
+328
+00:43:01,400 --> 00:43:08,680
+ here it is not close to 0 ok. Now if you increase the sample size it become
+
+329
+00:43:08,680 --> 00:43:16,760
+ little bit closer to 0 if you increase the sample size from 50 to 500 it becomes very
+
+330
+00:43:16,760 --> 00:43:25,480
+ very close to 0 but not exactly 0. So the consistency holds although the unbiased property
+
+331
+00:43:25,480 --> 00:43:33,480
+ is not there. Now if you combine all these three histograms so this is the true mean
+
+332
+00:43:33,480 --> 00:43:48,440
+ which is the red line. Now if the sample size increases from 50 to sorry 25 to 50 and finally
+
+333
+00:43:48,440 --> 00:44:01,000
+ we have 500. So this is how the bias reduces and the consistency increases with the variance
+
+334
+00:44:01,000 --> 00:44:07,160
+ also decreases. So ultimately it is going to the true value with a very high accuracy
+
+335
+00:44:07,160 --> 00:44:17,360
+ which is the demanding feature for the consistency. And notice one thing whatever may it be biasness
+
+336
+00:44:17,360 --> 00:44:24,360
+ or unbiasedness is not a very big deal as long as the estimator is consistent.
+
+337
+00:44:24,360 --> 00:44:32,840
+ So keep this thing in mind unbiasedness is a fairy tale we often cannot attain unbiasedness
+
+338
+00:44:32,840 --> 00:44:40,880
+ for real life problem but consistency is such a demand which we must maintain otherwise
+
+339
+00:44:40,880 --> 00:44:49,440
+ many uncertainty in the prediction and the model building will be there which will be
+
+340
+00:44:49,440 --> 00:44:58,800
+ not good for any practice. Here are the also the cross sectional view example the same story
+
+341
+00:44:58,800 --> 00:45:08,480
+ that I have told you for the mean estimation. Here you see that how the fluctuation decreases.
+
+342
+00:45:08,480 --> 00:45:16,680
+ So if I have less number of observation the fluctuation is more as long as here this blue
+
+343
+00:45:16,680 --> 00:45:24,200
+ line we have 25 observation the green line we have 50 observation. The fluctuations become
+
+344
+00:45:24,200 --> 00:45:31,520
+ comparatively less and when we consider the 500 observation the fluctuation is even less
+
+345
+00:45:31,520 --> 00:45:38,960
+ but all of them are fluctuating around me. So mu hat estimation problem here and this
+
+346
+00:45:38,960 --> 00:45:52,840
+ is this estimation problem is mu square. So here the cross sectional view gives you the
+
+347
+00:45:52,840 --> 00:46:02,440
+ clear idea how the histograms or the density function that you have seen are looking narrower
+
+348
+00:46:02,440 --> 00:46:11,160
+ as the sample size increases. So and finally if you have one cross section
+
+349
+00:46:11,160 --> 00:46:17,760
+ here another cross section here another cross section here you will get three density which
+
+350
+00:46:17,760 --> 00:46:23,960
+ are nothing but the same that one you have already seen. So this is how the consistency
+
+351
+00:46:23,960 --> 00:46:30,560
+ notion of the consistency is present in statistical analysis which is at the same time demanding
+
+352
+00:46:30,560 --> 00:46:36,960
+ for any learning problem if the estimator is not consistent inevitably whatever you
+
+353
+00:46:36,960 --> 00:46:44,400
+ do the end of the day the uncertainty in prediction will be huge which is not at all a demandable
+
+354
+00:46:44,400 --> 00:46:54,520
+ thing. Now let us go for the accuracy measure.
+
+355
+00:46:54,520 --> 00:47:00,720
+ So accuracy measure first let us talk about bias which we have already discussed that
+
+356
+00:47:00,720 --> 00:47:07,760
+ bias is the gap between the true one and the estimated one. The true one is the expected
+
+357
+00:47:07,760 --> 00:47:14,440
+ value of the true one whatever made me and g theta is the value which you are willing
+
+358
+00:47:14,440 --> 00:47:24,480
+ to estimate. So as a consequence this is the measurement of bias. So bias when I am using
+
+359
+00:47:24,480 --> 00:47:33,800
+ tx to estimate g theta. So that is the way we try to represent and that should be true
+
+360
+00:47:33,800 --> 00:47:44,120
+ for all parameter theta. Now notice the thing that bias when we talk about we do not use
+
+361
+00:47:44,120 --> 00:47:57,800
+ any absolute value. So only the positive biasness negative biasness is also used positive biasness
+
+362
+00:47:57,800 --> 00:48:03,600
+ means this expected value is larger than the true value and negative biasness is the expected
+
+363
+00:48:03,600 --> 00:48:12,720
+ value is smaller than the true value. But in general if g theta is a vector value parameter
+
+364
+00:48:12,720 --> 00:48:21,080
+ like beta naught beta 1 for regression then individually for beta naught beta 1 you can
+
+365
+00:48:21,080 --> 00:48:28,000
+ talk about biasness. But as a vector it is either unbiased or it is biased. So upward
+
+366
+00:48:28,000 --> 00:48:35,120
+ bias or positively biased negatively biased that story can be told only for one parameter
+
+367
+00:48:35,120 --> 00:48:39,680
+ or one parametric function. If you have more than one parameter or parametric function
+
+368
+00:48:39,680 --> 00:48:47,540
+ no point to talking about upward bias or downward bias.
+
+369
+00:48:47,540 --> 00:48:57,080
+ Now this gap is considered in real line that means individually term by term gap you are
+
+370
+00:48:57,080 --> 00:49:06,760
+ considering and that is the bias. If you want to accumulate them then you can take the absolute
+
+371
+00:49:06,760 --> 00:49:16,600
+ value and take the sum or other way we try to represent the thing in terms of the square
+
+372
+00:49:16,600 --> 00:49:25,680
+ distance. So here for one variable or one parameter the mean squared error mean squared
+
+373
+00:49:25,680 --> 00:49:52,160
+ error so the terminology itself represents the expression. So mean for mean this is the
+
+374
+00:49:52,160 --> 00:50:05,000
+ mean. So the mean is represented by this expectation squared error is this quantity. So Tx minus
+
+375
+00:50:05,000 --> 00:50:10,120
+ g theta whole square that is the squared error you take the expectation and that is eventually
+
+376
+00:50:10,120 --> 00:50:17,720
+ becomes the mean squared error. Mean squared error and that should be defined for all parameter
+
+377
+00:50:17,720 --> 00:50:27,120
+ theta. Now if we do a little bit decomposition of this one for that you can use a simple
+
+378
+00:50:27,120 --> 00:50:36,600
+ trick for a class 7 level not even beyond that. With inside it you use the two term
+
+379
+00:50:36,600 --> 00:50:52,640
+ minus expectation of x sorry you just implement a adjustment negative of expectation of Tx
+
+380
+00:50:52,640 --> 00:51:04,080
+ plus expectation of x. So this adjustment you do inside it take the square expand it
+
+381
+00:51:04,080 --> 00:51:11,880
+ take the expectation you will be done and what you will get you will get this decomposition
+
+382
+00:51:11,880 --> 00:51:26,640
+ which is known as a bias variance decomposition. So bias variance decomposition splits the
+
+383
+00:51:26,640 --> 00:51:31,840
+ mean squared error into two non-negative term as it is variance it is non-negative as it
+
+384
+00:51:31,840 --> 00:51:44,760
+ is bias squared definitely it is also non-negative. So this bias variance decomposition tells you
+
+385
+00:51:44,760 --> 00:51:54,900
+ that how much fluctuation the estimator has and how much away it is from the true value.
+
+386
+00:51:54,900 --> 00:52:08,520
+ Now why we prefer this one so computation of MSC is comparatively easy that is the first
+
+387
+00:52:08,520 --> 00:52:20,440
+ fundamental thing. Second fundamental thing is this one that if the MSC of the estimator
+
+388
+00:52:20,440 --> 00:52:32,980
+ goes to 0 as n goes to infinity then definitely the Tnx is a consistent estimate. So that
+
+389
+00:52:32,980 --> 00:52:41,700
+ is the biggest advantage that is why people prefer mostly to go by the MSC. MSC takes
+
+390
+00:52:41,700 --> 00:52:47,840
+ care two thing together one is the variance another is the bias. So what does it say it
+
+391
+00:52:47,840 --> 00:52:53,580
+ says two thing that the fluctuation of the estimator is reducing MSC is going to 0 means
+
+392
+00:52:53,580 --> 00:53:01,440
+ variance is going to 0 bias is going to 0 that means fluctuation is reducing at the
+
+393
+00:53:01,440 --> 00:53:06,160
+ same time the estimator is going to the true value of the parameter.
+
+394
+00:53:06,160 --> 00:53:14,000
+ So you try to observe this thing that suppose you have a scenario where this is the true
+
+395
+00:53:14,000 --> 00:53:27,880
+ parameter theta and you have an estimator which is having distribution here and as a
+
+396
+00:53:27,880 --> 00:53:43,680
+ consequence it has certain amount of bias. So bias means this gap. Now what is the what
+
+397
+00:53:43,680 --> 00:53:50,940
+ is happening if the MSC is going to 0? MSC is going to 0 means you are having another
+
+398
+00:53:50,940 --> 00:53:59,520
+ estimator as n goes to infinity its bias is reducing maybe say it is coming closer to
+
+399
+00:53:59,520 --> 00:54:09,920
+ here from say 50 sample to 500 sample. So it is becoming closer to here and its fluctuation
+
+400
+00:54:09,920 --> 00:54:17,240
+ the thickness that is what we have told you in the last lecture the cartosis is increased.
+
+401
+00:54:17,240 --> 00:54:26,640
+ So now the bias has reduced and eventually as the n even more increases the fluctuation
+
+402
+00:54:26,640 --> 00:54:37,380
+ decreases and as a consequence the bias is also so maybe the true mean is coming here.
+
+403
+00:54:37,380 --> 00:54:48,840
+ So as a consequence the bias reduces bias is going to 0 and variance is also going to
+
+404
+00:54:48,840 --> 00:54:53,400
+ 0. So this is how when the bias and variance both
+
+405
+00:54:53,400 --> 00:55:00,760
+ of them reduces we are going to have a consistent estimator for the parameter which is a sufficient
+
+406
+00:55:00,760 --> 00:55:09,660
+ condition. And those type of estimator where the it is becoming unbiased as n goes to infinity
+
+407
+00:55:09,660 --> 00:55:20,480
+ then it is known as the asymptotically unbiased estimator. Notice that for a biasness we just
+
+408
+00:55:20,480 --> 00:55:31,620
+ use L1 norm or eventually what you know as the absolute distance. On the other hand the
+
+409
+00:55:31,620 --> 00:55:44,020
+ MSC is using L2 norm which is also known as the Euclidean distance.
+
+410
+00:55:44,020 --> 00:55:54,340
+ So based on Euclidean distance we construct MSC based on L1 distance or the absolute distance
+
+411
+00:55:54,340 --> 00:56:02,380
+ if we are focusing only in the magnitude then we are using L1 norm and we are getting the
+
+412
+00:56:02,380 --> 00:56:13,820
+ bias amount from there. So let us not make it more technical. Here I am giving you one
+
+413
+00:56:13,820 --> 00:56:24,060
+ exercise which you can do by simulation if you are not technical enough with the language
+
+414
+00:56:24,060 --> 00:56:31,300
+ of the subject. Still you can do the simulation that x1, x2, xn iid distribution for random
+
+415
+00:56:31,300 --> 00:56:36,780
+ variable mu variance sigma square I am not specifying the distribution ok.
+
+416
+00:56:36,780 --> 00:56:43,260
+ So it could be normal you can do it for normal but for normal even proving this thing is
+
+417
+00:56:43,260 --> 00:56:53,860
+ much more easier. You can use it for normal or some other variables but keep the mean
+
+418
+00:56:53,860 --> 00:57:01,140
+ fixed keep the variance fixed that is the idea mean fixed variance fixed. Then Tn x
+
+419
+00:57:01,140 --> 00:57:12,340
+ is x bar s1 square is 1 upon n minus 1 xi minus x bar and s2 square 1 upon n xi minus x.
+
+420
+00:57:12,340 --> 00:57:18,860
+ So try to check already I have done that simulation that Tn x is an unbiased estimator
+
+421
+00:57:18,860 --> 00:57:26,300
+ for mu s1 square is an unbiased estimator of sigma square this thing little bit algebra
+
+422
+00:57:26,300 --> 00:57:35,900
+ you have to do for your make your hand dirty and s2 square is an asymptotically unbiased
+
+423
+00:57:35,900 --> 00:57:41,740
+ estimator as n goes to infinity it will be. For normal distribution it is pretty simple
+
+424
+00:57:41,740 --> 00:57:47,660
+ but for non-normal distribution it requires little bit work.
+
+425
+00:57:47,660 --> 00:58:01,500
+ Now on the contrary to our general perception that s2 square which is a biased estimator
+
+426
+00:58:01,500 --> 00:58:15,060
+ or asymptotically unbiased estimator it has mse less compared to the mse that of the s1
+
+427
+00:58:15,060 --> 00:58:24,300
+ which is unbiased estimator and you will be able to see that if you do the simulation.
+
+428
+00:58:24,300 --> 00:58:33,180
+ The same story you can observe in ridge regression ridge regression I hope will be taught in
+
+429
+00:58:33,180 --> 00:58:41,580
+ your regression course that when the inversion is not possible for x transpose x matrix the
+
+430
+00:58:41,580 --> 00:58:46,220
+ regression fitting then we introduce a certain amount of bias.
+
+431
+00:58:46,220 --> 00:58:52,740
+ So suppose the parameter say beta i is here if we only go for the unbiased estimator it
+
+432
+00:58:52,740 --> 00:59:06,220
+ has a huge fluctuation. But if we go for a certain amount of bias estimator it has very
+
+433
+00:59:06,220 --> 00:59:17,180
+ less fluctuation as a consequence it has a very less fluctuation as a consequence the
+
+434
+00:59:17,180 --> 00:59:29,420
+ bias estimator although it is biased it will have a less mse compared to the unbiased estimator.
+
+435
+00:59:29,420 --> 00:59:40,140
+ So it is not I mean impractical or rare situation that the biased estimator is often giving
+
+436
+00:59:40,140 --> 00:59:49,700
+ the better mse compared to the unbiased estimator. So what is the takeaway that consistency is
+
+437
+00:59:49,700 --> 00:59:57,220
+ the ultimate goal for an estimation or learning problem that we are looking for unbiased is
+
+438
+00:59:57,220 --> 01:00:05,620
+ good even if we do not get unbiased we have nothing to be I mean disappointed as long
+
+439
+01:00:05,620 --> 01:00:12,540
+ as we have an estimator which is consistent may not be unbiased that also very good for
+
+440
+01:00:12,540 --> 01:00:18,820
+ the estimation problem.
+
+441
+01:00:18,820 --> 01:00:28,620
+ Now we can discuss few methods of estimation one of them is the method of movement which
+
+442
+01:00:28,620 --> 01:00:40,120
+ is a pretty simple method. Method of movement means we will estimate the parameters or through
+
+443
+01:00:40,120 --> 01:00:48,260
+ a moment equality. So what does it mean if I have the parameter f theta and the function
+
+444
+01:00:48,260 --> 01:00:55,380
+ f theta then we will calculate the parameter value through the equation solving and the
+
+445
+01:00:55,380 --> 01:01:03,500
+ equations will be constructed in this form. So I am talking about two problems which you
+
+446
+01:01:03,500 --> 01:01:07,980
+ will be able to see that how they are connected and how they are different.
+
+447
+01:01:07,980 --> 01:01:22,900
+ So first of all x i is following normal mu sigma square. So expectation of x first order
+
+448
+01:01:22,900 --> 01:01:33,380
+ raw moment is mu which is estimated by x bar which is 1 upon n sum over x i i running
+
+449
+01:01:33,380 --> 01:01:44,620
+ from 1 to n. So this is the expectation. Now on the other hand sigma square variance
+
+450
+01:01:44,620 --> 01:01:53,460
+ of x which is sigma square which is estimated by 1 upon n sum over x i minus x bar whole
+
+451
+01:01:53,460 --> 01:01:57,340
+ square i running from 1.
+
+452
+01:01:57,340 --> 01:02:08,180
+ So here you can see that given the data so this is from the data. So this is the data
+
+453
+01:02:08,180 --> 01:02:14,540
+ analog of mean this is the data analog of variance. So these two things are from using
+
+454
+01:02:14,540 --> 01:02:23,340
+ the data and these two things are theoretical. Equate them sorted here it is already sorted.
+
+455
+01:02:23,340 --> 01:02:40,500
+ But if you consider another situation where say y i's are following gamma alpha lambda
+
+456
+01:02:40,500 --> 01:02:58,540
+ then expectation of y equal to alpha for lambda expectation of variance of y variance of y
+
+457
+01:02:58,540 --> 01:03:17,140
+ equal to alpha by lambda square. So in this scenario what we will have alpha upon lambda
+
+458
+01:03:17,140 --> 01:03:27,140
+ equal to y bar sample mean as we have constructed here alpha upon lambda square equal to so
+
+459
+01:03:27,140 --> 01:03:48,140
+ let us call that h 1 square or may be a square in this context so a square.
+
+460
+01:03:48,140 --> 01:03:55,460
+ Now you see that the right hand side computation remains same for a given set of data but the
+
+461
+01:03:55,460 --> 01:04:03,340
+ left hand side computation they become different as a consequence whatever we have we can solve
+
+462
+01:04:03,340 --> 01:04:16,500
+ it very easily for alpha and lambda. Remember this thing here alpha is the shape parameter
+
+463
+01:04:16,500 --> 01:04:26,260
+ lambda is the rate parameter. Lambda is not scale parameter here it is the rate parameter
+
+464
+01:04:26,260 --> 01:04:32,460
+ that is why the mean has become alpha upon lambda and the variance has become alpha upon
+
+465
+01:04:32,460 --> 01:04:43,180
+ lambda square. Now for example as many unknown parameters you have that many equations you
+
+466
+01:04:43,180 --> 01:04:48,260
+ have to construct and finally solve them for all those unknown parameters.
+
+467
+01:04:48,260 --> 01:04:58,140
+ So if it is k construct k such equations and it is preferred that as many lowest order
+
+468
+01:04:58,140 --> 01:05:08,180
+ moment we can use better use that that is the way of approach. Now here for the given
+
+469
+01:05:08,180 --> 01:05:19,500
+ set of data I have tried to show you this method of moment the true parameter for normal
+
+470
+01:05:19,500 --> 01:05:35,220
+ is sorry. True parameter is considered to be 1.3 and the method of moment estimate has
+
+471
+01:05:35,220 --> 01:05:42,580
+ become this one the true sigma is this and the method of moment estimator is this one.
+
+472
+01:05:42,580 --> 01:06:01,220
+ So as a consequence if that means we have used this model and as a consequence you can
+
+473
+01:06:01,220 --> 01:06:10,020
+ see that how the curves become close to one another this is the CDF the black one is the
+
+474
+01:06:10,020 --> 01:06:15,740
+ true one the red one is the estimated one and how close they are even with the method
+
+475
+01:06:15,740 --> 01:06:23,220
+ of moment estimation and this is how the histogram of the data and the PDFs are also very close
+
+476
+01:06:23,220 --> 01:06:37,020
+ enough and there will be certain situations where the moments theoretically will not exist.
+
+477
+01:06:37,020 --> 01:06:49,980
+ One such example is if we consider fx equal to 1 by pi 1 plus x square. So this is a situation
+
+478
+01:06:49,980 --> 01:07:05,060
+ which is known as the quasi distribution this is quasi distribution with mu equal to 0 mu
+
+479
+01:07:05,060 --> 01:07:14,060
+ is the location parameter sigma is the scale parameter 1 or or another random variable
+
+480
+01:07:14,060 --> 01:07:37,380
+ for discrete setup you can consider if I am remembering correctly say k square pi square
+
+481
+01:07:37,380 --> 01:07:54,940
+ 6 I mean k equal to 1 after so on. So if if we consider this summation this type of situation
+
+482
+01:07:54,940 --> 01:08:01,020
+ the mean does not exist as a consequence the higher dimension does not exist. So sorry
+
+483
+01:08:01,020 --> 01:08:06,740
+ higher higher moments does not exist. So we cannot go for the method of moment estimation
+
+484
+01:08:06,740 --> 01:08:13,500
+ we require some other estimator which are typically used as maximum likelihood estimator.
+
+485
+01:08:13,500 --> 01:08:25,540
+ So let us have a break and after that we will continue with the maximum. So now let us continue
+
+486
+01:08:25,540 --> 01:08:33,780
+ with estimation process which is eventually a learning process and this is how any model
+
+487
+01:08:33,780 --> 01:08:41,380
+ parameter can be estimated or trained the model training can be done.
+
+488
+01:08:41,380 --> 01:08:49,780
+ Now the fundamental aspect of model training now what we will discuss is based on the cost
+
+489
+01:08:49,780 --> 01:08:56,700
+ function. So and in a general class it is known as an aim estimator two examples we
+
+490
+01:08:56,700 --> 01:09:04,380
+ will talk about will not go in the details calculation of all of them but how and their
+
+491
+01:09:04,380 --> 01:09:12,700
+ approaches and how the mechanism should work that is the thing we will talk in this setup.
+
+492
+01:09:12,700 --> 01:09:21,140
+ I am sure that in future you will get the scope of specific you are working out all
+
+493
+01:09:21,140 --> 01:09:29,100
+ this thing in a specific examples and for real data today hypothetically or theoretically
+
+494
+01:09:29,100 --> 01:09:35,580
+ let us conceptualize the thing later on you will have more details examples and the hands
+
+495
+01:09:35,580 --> 01:09:41,220
+ on associated to it for the time being let us see how what are the core of the thing
+
+496
+01:09:41,220 --> 01:09:52,060
+ and how it works. So first of all the maximum likelihood estimate which is a very popular
+
+497
+01:09:52,060 --> 01:10:05,220
+ estimator in statistics and machine learning this estimator tries to visualize or that
+
+498
+01:10:05,220 --> 01:10:15,380
+ consider the data in such a way that we have observed a data that means it is the most
+
+499
+01:10:15,380 --> 01:10:16,380
+ likely data.
+
+500
+01:10:16,380 --> 01:10:28,900
+ So I am repeating we observe a data because it is the most likely data and we want to
+
+501
+01:10:28,900 --> 01:10:40,140
+ get out information based on this assumption. So if I consider a particular probability
+
+502
+01:10:40,140 --> 01:10:47,580
+ distribution very simply I am saying say this is one probability for one probability for
+
+503
+01:10:47,580 --> 01:11:00,900
+ 2, 3, 4, 5, 6, 7 so on and on. Very easily one can identify that the 3 is the most likely
+
+504
+01:11:00,900 --> 01:11:10,140
+ data of this distribution. On the other hand if you consider a continuous distribution this
+
+505
+01:11:10,140 --> 01:11:20,340
+ is the value which is most likely ok for which the pdf or pmf has the highest peak that is
+
+506
+01:11:20,340 --> 01:11:28,660
+ eventually the more. Now here as we consider this one it is a pdf or pmf so the parameter
+
+507
+01:11:28,660 --> 01:11:35,900
+ is unknown or may be a fixed constant may be known may be unknown and the probability
+
+508
+01:11:35,900 --> 01:11:43,580
+ distribution you can see accordingly. Now if you the story of the maximum likelihood
+
+509
+01:11:43,580 --> 01:11:50,620
+ is told in this way that suppose x1, x2, xn they are the random sample from a particular
+
+510
+01:11:50,620 --> 01:11:56,380
+ distribution f theta they are iid that means they are random sample theta is the unknown
+
+511
+01:11:56,380 --> 01:12:05,180
+ parameter from the parameter space then the joint pdf of x1, x2, xn is this that means
+
+512
+01:12:05,180 --> 01:12:09,980
+ they are product and then comes the notion of the likelihood.
+
+513
+01:12:09,980 --> 01:12:21,660
+ So what does it say that I have the joint pdf x1, x2, xn based on that and a parameter
+
+514
+01:12:21,660 --> 01:12:29,540
+ theta. Now if I plug in the values of x i's with whichever numerical value I have observed
+
+515
+01:12:29,540 --> 01:12:37,420
+ from the data then it will be a function of theta then it will be a function of theta
+
+516
+01:12:37,420 --> 01:12:48,180
+ only what we write in the form l theta given x. After plugging in the value of x i's in
+
+517
+01:12:48,180 --> 01:12:56,460
+ the data from the data we consider the expression of the joint density as a function of the
+
+518
+01:12:56,460 --> 01:13:03,900
+ parameter which is known as the likelihood function and we want to maximize the likelihood
+
+519
+01:13:03,900 --> 01:13:11,020
+ for the estimation of theta. Why we do that the idea is same as I have
+
+520
+01:13:11,020 --> 01:13:19,300
+ told you that we assume that the data is the most likely data that is why we have observed.
+
+521
+01:13:19,300 --> 01:13:29,160
+ So eventually we are doing a back calculation or back calculation such that we can portray
+
+522
+01:13:29,160 --> 01:13:37,140
+ the given data as the most likely data or the given data is the mode of the distribution.
+
+523
+01:13:37,140 --> 01:13:44,780
+ So with an example let us diagrammatic example let us try to conceptualize then we will go
+
+524
+01:13:44,780 --> 01:13:58,140
+ for the mathematics. So suppose we have an x follows normal mu 1 sigma 1 for the simplicity
+
+525
+01:13:58,140 --> 01:14:13,180
+ and the observed value of x is 5.45. So this is observed and that value is here.
+
+526
+01:14:13,180 --> 01:14:26,740
+ Now for which pdf this 5.45 has the maximum height. So the pdf will look based on the
+
+527
+01:14:26,740 --> 01:14:38,020
+ normal distribution. So fx is e to the power minus half x minus mu divided by 1 whole square
+
+528
+01:14:38,020 --> 01:14:45,900
+ divided by root 2 pi into 1. So this is the pdf. Now if I choose the particular value
+
+529
+01:14:45,900 --> 01:14:59,220
+ of mu equal to 1.5 then this is the black pdf and its value at 5.45 you can see it is here.
+
+530
+01:14:59,220 --> 01:15:08,720
+ Then if I choose the mu equal to 3.5 then it is the yellow pdf and its value the value
+
+531
+01:15:08,720 --> 01:15:17,260
+ of 5.45 evaluated on this yellow pdf is here. On the other hand if we choose the value of
+
+532
+01:15:17,260 --> 01:15:29,360
+ mu as 6.5 then we have the green pdf for which the value of 5.45 evaluated on the green pdf
+
+533
+01:15:29,360 --> 01:15:40,700
+ is here. At the same time if we choose the mu value as 5 then the pdf value is here and
+
+534
+01:15:40,700 --> 01:15:48,060
+ finally if we choose the pdf value as 5.45 then the pdf value is here. So eventually
+
+535
+01:15:48,060 --> 01:15:56,580
+ this is the search process. So I am searching for all possible values of mu and for each
+
+536
+01:15:56,580 --> 01:16:07,180
+ value of mu I am calculating the expression e to the power minus half 5.45 minus mu whole
+
+537
+01:16:07,180 --> 01:16:24,460
+ square divided by pi that is l mu given data. So this is how it looks and for each mu I
+
+538
+01:16:24,460 --> 01:16:29,440
+ am calculating this value this value this value. So for different different values of
+
+539
+01:16:29,440 --> 01:16:34,780
+ mu I am getting this number. I am looking for that mu which will give me the highest
+
+540
+01:16:34,780 --> 01:16:41,500
+ value and that is what is done by the maximum likelihood estimate.
+
+541
+01:16:41,500 --> 01:16:51,500
+ So now let us make it formal that l theta given data is this function. We want to maximize
+
+542
+01:16:51,500 --> 01:16:58,340
+ this function with respect to theta r max means eventually the maxima that means the
+
+543
+01:16:58,340 --> 01:17:08,220
+ value of theta for which l theta is attaining maximum or eventually it is the log of l theta
+
+544
+01:17:08,220 --> 01:17:15,260
+ is attaining the maximum. It is we can use log because log is a function which is defined
+
+545
+01:17:15,260 --> 01:17:24,860
+ on the positive part of real axis and pdf are always non negative. If the pdf value
+
+546
+01:17:24,860 --> 01:17:30,820
+ the joint density value is 0 then it is not in the competition. If it is non 0 we can
+
+547
+01:17:30,820 --> 01:17:37,420
+ take the log and we can compare often taking log is much more easier that that is the thing
+
+548
+01:17:37,420 --> 01:17:40,580
+ you can see for normal distribution itself.
+
+549
+01:17:40,580 --> 01:17:49,220
+ Because even even if you take the log if you take the log of this expression rest all of
+
+550
+01:17:49,220 --> 01:17:58,700
+ them will become constant ultimately you have to deal with x i x minus mu by 1 whole square.
+
+551
+01:17:58,700 --> 01:18:04,640
+ So this is the expression the negative half. So after taking log you will get this type
+
+552
+01:18:04,640 --> 01:18:08,580
+ of expression. So dealing with this expression is much more easier than the exponent and
+
+553
+01:18:08,580 --> 01:18:15,220
+ so on and so forth. So taking log is often useful. So this is how maximum likelihood
+
+554
+01:18:15,220 --> 01:18:26,220
+ estimation is often obtained. MLE has few properties like it need not be unique well
+
+555
+01:18:26,220 --> 01:18:32,820
+ we can show you certain examples. It need not be an unbiased estimator. So for example
+
+556
+01:18:32,820 --> 01:18:42,740
+ 1 upon n sum over x i minus x bar whole square i running from 1 to n that is the MLE of sigma
+
+557
+01:18:42,740 --> 01:18:54,900
+ square which is a biased estimator. MLE need not be unique. So MLE is always a consistent
+
+558
+01:18:54,900 --> 01:19:01,980
+ estimator. This proof is little long but it holds. MLE is asymptotically normally distributed
+
+559
+01:19:01,980 --> 01:19:06,540
+ up to certain regularity condition. If the range of the random variable is free from
+
+560
+01:19:06,540 --> 01:19:13,220
+ the parameter that means it is not like normal distribution, binomial distribution or something.
+
+561
+01:19:13,220 --> 01:19:25,680
+ Not of this form, not of this form that x follows uniform 0 theta. So here the range
+
+562
+01:19:25,680 --> 01:19:33,740
+ depends on 0 to theta. So upper bound is given. The range depends on 0 to theta in that case
+
+563
+01:19:33,740 --> 01:19:38,260
+ it will not hold and likelihood is mootly differentiable after third order derivative
+
+564
+01:19:38,260 --> 01:19:42,380
+ and the integration can be interpreted. So these are the technical requirements. Apart
+
+565
+01:19:42,380 --> 01:19:51,740
+ from that likelihood is a very well behaving estimator often difficult to get but that
+
+566
+01:19:51,740 --> 01:20:01,500
+ is a computational issue. For that people do many Markovchen Monte Carlo method or people
+
+567
+01:20:01,500 --> 01:20:08,260
+ also do gradient descent method. All those types of optimization techniques can be used
+
+568
+01:20:08,260 --> 01:20:19,100
+ for getting the solution but that the difficulty does not stop us for obtaining the solution.
+
+569
+01:20:19,100 --> 01:20:32,060
+ Here let me give you one example where the consistency uniqueness is a issue. Suppose
+
+570
+01:20:32,060 --> 01:20:43,060
+ instead of normal you have the density like this e to the power minus x minus mu mod instead
+
+571
+01:20:43,060 --> 01:20:53,380
+ of square it is mod divided by 2 fx. Suppose this is the density and if you have n such
+
+572
+01:20:53,380 --> 01:21:00,160
+ observation then it is sum over running i running from 1 to n and 2 to the power n it
+
+573
+01:21:00,160 --> 01:21:17,260
+ will be. As a consequence you can see that it will look like this. Normal is this smooth
+
+574
+01:21:17,260 --> 01:21:28,300
+ and this is double exponential. A potential model for the error distribution when sometime
+
+575
+01:21:28,300 --> 01:21:39,280
+ normal you are not using or you are doing a regression problem when the error are considered
+
+576
+01:21:39,280 --> 01:21:45,080
+ the measurement error is considered to be the absolute distance then this is a very
+
+577
+01:21:45,080 --> 01:21:55,000
+ potential one for the error model. Now if you go by this one the MLE of mu is
+
+578
+01:21:55,000 --> 01:22:03,480
+ the median is the sample median. And in the last lecture we have discussed that the sample
+
+579
+01:22:03,480 --> 01:22:15,280
+ median can be unique if the observation n if n is got to keep odd number of observation
+
+580
+01:22:15,280 --> 01:22:31,840
+ then it has a unique median if n is even then it has non-unique median. So as a consequence
+
+581
+01:22:31,840 --> 01:22:45,360
+ MLE can be non-unique this is the counter is. So here I have just tried to demonstrate.
+
+582
+01:22:45,360 --> 01:22:57,680
+ Suppose you are getting many messages in your either cell phone or WhatsApp or many. So
+
+583
+01:22:57,680 --> 01:23:09,680
+ first 10 messages of your first 10 messages of the day you are considering and how many
+
+584
+01:23:09,680 --> 01:23:15,500
+ of them are the proper message and rest all are promo or you can consider the how many
+
+585
+01:23:15,500 --> 01:23:21,280
+ of them are promo messages and rest of them are valid message.
+
+586
+01:23:21,280 --> 01:23:29,360
+ So these are 50 such days trial hypothetically 50 such days trial and you are willing to
+
+587
+01:23:29,360 --> 01:23:35,600
+ check what is the proportion of the promo messages are entering. So these are the these
+
+588
+01:23:35,600 --> 01:23:44,600
+ are the 50 observations that we have and from there I am constructing the binomial PDF.
+
+589
+01:23:44,600 --> 01:24:01,800
+ So P to the power x i 1 minus P to the power n so 10 minus x i product over i running from
+
+590
+01:24:01,800 --> 01:24:10,520
+ 1 to 50. So 50 days I have taken the data and definitely n choose x so this is 10 choose
+
+591
+01:24:10,520 --> 01:24:20,040
+ 50. So this is how the PDF looks and product over all the PDF and we are looking for the
+
+592
+01:24:20,040 --> 01:24:31,960
+ value of so this is L P given data. So this is the likelihood function for the parameter
+
+593
+01:24:31,960 --> 01:24:39,340
+ P and given the data x 1, x 2, x n. So 50 observations I have I want to maximize the
+
+594
+01:24:39,340 --> 01:24:45,260
+ likelihood. So here for simplicity I have done it for grid search and here you can see
+
+595
+01:24:45,260 --> 01:24:54,000
+ that it has taken certain peak and the base value is the estimate of the P.
+
+596
+01:24:54,000 --> 01:25:00,640
+ Now instead of the product of the densities if I take the log likelihood then the same
+
+597
+01:25:00,640 --> 01:25:09,120
+ story you will be observing the location of the maxima has remain unaltered but the function
+
+598
+01:25:09,120 --> 01:25:18,240
+ have changed and both in both of the cases MLE is observed to be 7.72 where the true
+
+599
+01:25:18,240 --> 01:25:29,120
+ value true value was 0.7. So it is a close one based on the 50 observation if you increase
+
+600
+01:25:29,120 --> 01:25:34,080
+ the observation it will get much more closer value.
+
+601
+01:25:34,080 --> 01:25:44,400
+ Finally speaking we can what we should do we should take log of this we should take derivative
+
+602
+01:25:44,400 --> 01:25:56,520
+ with respect to P equate with 0 and solve it ultimately P hat MLE will come as say x
+
+603
+01:25:56,520 --> 01:26:05,880
+ bar whatever observation x bar divided by 10. So that will be the MLE in this situation.
+
+604
+01:26:05,880 --> 01:26:14,360
+ So it is a very simple problem that one can very easily do but my emphasize for this example
+
+605
+01:26:14,360 --> 01:26:22,720
+ was that if you take log the maxima will be unchanged and taking after taking log the
+
+606
+01:26:22,720 --> 01:26:34,120
+ problem much much will be much more easier to handle and well here the advantage is that
+
+607
+01:26:34,120 --> 01:26:40,840
+ that you can take the differentiation but differentiation is one of the way for obtaining
+
+608
+01:26:40,840 --> 01:26:50,880
+ the maxima even if it is not differentiable like this function that we have discussed.
+
+609
+01:26:50,880 --> 01:26:56,240
+ If the function is not differentiable with with respect to the parameter still we can
+
+610
+01:26:56,240 --> 01:27:03,480
+ manage to obtain the minima or the maxima whatever we are looking for if it is MLE depending
+
+611
+01:27:03,480 --> 01:27:09,460
+ on the minimum of this exponent is eventually gives us the maximum. So ultimately it is
+
+612
+01:27:09,460 --> 01:27:23,200
+ an MST. So this is the take away from this example. Now the problem becomes much more
+
+613
+01:27:23,200 --> 01:27:33,680
+ interesting if we have more than one distribution and that more than one distribution and their
+
+614
+01:27:33,680 --> 01:27:41,340
+ mixture. So let me just try to emphasize the thing that mixture distribution means you
+
+615
+01:27:41,340 --> 01:27:53,420
+ have two competing or two or more such distributions one is this one another might be this one.
+
+616
+01:27:53,420 --> 01:28:02,580
+ So end of the day what is happening with certain probability I will go to this rate distribution
+
+617
+01:28:02,580 --> 01:28:07,340
+ and draw a sample with certain probability I will go to this rate distribution and draw
+
+618
+01:28:07,340 --> 01:28:14,060
+ a sample with 1 minus that probability I will go to this distribution and a sample.
+
+619
+01:28:14,060 --> 01:28:19,340
+ Again I will flip a coin I will go to this distribution I will draw a sample again I
+
+620
+01:28:19,340 --> 01:28:24,620
+ will flip a coin I will go might be again going to this distribution and draw a sample.
+
+621
+01:28:24,620 --> 01:28:33,740
+ So in this way the mixture distribution is constructed or conceptualized it is not like
+
+622
+01:28:33,740 --> 01:28:38,820
+ that I will have an observation from here and I will have an observation from here and
+
+623
+01:28:38,820 --> 01:28:45,860
+ get a linear combination of that it is not that one. Mixed there means we will draw from
+
+624
+01:28:45,860 --> 01:28:52,220
+ only one distribution at each time which distribution I will draw that will be a probabilistic
+
+625
+01:28:52,220 --> 01:28:58,340
+ decision. So mixture distribution is a very good model
+
+626
+01:28:58,340 --> 01:29:08,220
+ for the more complex densities because eventually the density appear to us like maybe like this.
+
+627
+01:29:08,220 --> 01:29:17,820
+ So this red curve or the blue curve will not be known visible to us we will only have this
+
+628
+01:29:17,820 --> 01:29:26,220
+ pink curve as a whole. So the mixture distribution can be used for more complex or sophisticated
+
+629
+01:29:26,220 --> 01:29:32,700
+ data. Hidden mark for hidden markup model it is a definite application. Incomplete data
+
+630
+01:29:32,700 --> 01:29:39,700
+ model also can be treated in a mixture distribution. So without going for the technicalities I am
+
+631
+01:29:39,700 --> 01:29:50,220
+ just giving you the s m that it is again a maximum likelihood problem, m stivation problem
+
+632
+01:29:50,220 --> 01:29:57,540
+ on, but it has a certain variable which is missing that means from which distribution
+
+633
+01:29:57,540 --> 01:30:04,220
+ the data is coming that level is missing. So here the z is the level in substance.
+
+634
+01:30:04,220 --> 01:30:09,900
+ So it has been integrated out with respect to z and we have the likelihood of the parameter
+
+635
+01:30:09,900 --> 01:30:18,940
+ and the data. This type of maximum likelihood problem is solved in EM algorithm. In EM algorithm
+
+636
+01:30:18,940 --> 01:30:27,180
+ it has two steps one step is the expectation step. So in there the expectation is taken
+
+637
+01:30:27,180 --> 01:30:36,540
+ for the unobserved value of the data given the observed part and the estimated parameter
+
+638
+01:30:36,540 --> 01:30:45,020
+ at stage t for the iteration, for the likelihood we take the expectation and then we write
+
+639
+01:30:45,020 --> 01:30:54,300
+ the complete likelihood and we do the maximization and repeat the process until you convert to
+
+640
+01:30:54,300 --> 01:31:01,700
+ a particular precise solution. So here I am trying to show you another example
+
+641
+01:31:01,700 --> 01:31:07,660
+ the source of the data is given. So eventually the data will look like this. We will have
+
+642
+01:31:07,660 --> 01:31:12,820
+ no distinction from where the data are coming. So this is a typical example of the mixture
+
+643
+01:31:12,820 --> 01:31:21,420
+ distribution and originally if you want to look then this is one distribution this is
+
+644
+01:31:21,420 --> 01:31:28,380
+ another distribution. But end of the day we see only the black one. The job is to find
+
+645
+01:31:28,380 --> 01:31:41,180
+ the parameter mu 1, mu 2, sigma 2, sigma 1 and this is pi 1, pi 2 such that pi 1 plus
+
+646
+01:31:41,180 --> 01:31:51,380
+ pi 2 equal to 1. So all these parameters are supposed to be estimated in a mixture distribution.
+
+647
+01:31:51,380 --> 01:31:57,340
+ So here is another example of the data Gaussian mixture model. So here you can see that there
+
+648
+01:31:57,340 --> 01:32:04,140
+ are two mixture distribution but eventually it is looking little bit non Gaussian because
+
+649
+01:32:04,140 --> 01:32:09,380
+ they are mixed. They are not the linear combination of normal. Linear combination of normal is
+
+650
+01:32:09,380 --> 01:32:13,860
+ again normal that is the thing we will show you in the next lecture. But here what you
+
+651
+01:32:13,860 --> 01:32:20,980
+ can see that the this blue the green one yellow one both of them are normal itself but they
+
+652
+01:32:20,980 --> 01:32:30,300
+ are mixture is no longer normal ok. So this is how the mixture distribution looks and
+
+653
+01:32:30,300 --> 01:32:35,820
+ we can evaluate or the parameter values from the data.
+
+654
+01:32:35,820 --> 01:32:45,980
+ So here I am showing you one example for the sake of demonstration that 272 observation
+
+655
+01:32:45,980 --> 01:32:52,020
+ of two variables we will go one variable first and then for the two variables. So this is
+
+656
+01:32:52,020 --> 01:33:03,500
+ an usually known as the faithful data for the eruption of a spring. So it has two component
+
+657
+01:33:03,500 --> 01:33:10,500
+ the eruption time and the waiting time. So there is a gap between two eruptions that
+
+658
+01:33:10,500 --> 01:33:17,180
+ is the waiting time and when the eruption starts how long it will continue that is the
+
+659
+01:33:17,180 --> 01:33:21,460
+ eruption time. So we have assumed that there are two normal
+
+660
+01:33:21,460 --> 01:33:28,500
+ distribution one with parameter mu 1 sigma 1 another with parameter mu 2 sigma 2 and
+
+661
+01:33:28,500 --> 01:33:34,700
+ with probability p for the shorter waiting time probability 1 minus p for the longer
+
+662
+01:33:34,700 --> 01:33:40,820
+ waiting. So the marginal pdf is a linear combination of the pdf it is not the linear combination
+
+663
+01:33:40,820 --> 01:33:45,540
+ of the data. Now marginal pdf is the linear combination of the or the convex combination
+
+664
+01:33:45,540 --> 01:33:52,780
+ of the pdf. Now in each step each step and m step and the steps I have already explicitly
+
+665
+01:33:52,780 --> 01:33:58,900
+ written and the code is have provided to you. I know only art so I have written the code
+
+666
+01:33:58,900 --> 01:34:04,100
+ in art you can copy paste the code in charity we will get it converted to python whatever
+
+667
+01:34:04,100 --> 01:34:12,460
+ language you want. So now here if Z equals to 1 it is giving
+
+668
+01:34:12,460 --> 01:34:19,660
+ the shorter length if it is 0 for the longer length of waiting time. So this is how the
+
+669
+01:34:19,660 --> 01:34:26,740
+ expectation of Z i is at each step and then again write down the complete likelihood.
+
+670
+01:34:26,740 --> 01:34:37,100
+ So notice this is the marginal likelihood this is marginal when the labels are not known
+
+671
+01:34:37,100 --> 01:34:48,460
+ this is the complete when the labels are plugged in. So based on that we repeat the process
+
+672
+01:34:48,460 --> 01:34:55,060
+ and after repetition we will converge to a particular value which are close enough to
+
+673
+01:34:55,060 --> 01:35:02,620
+ one another and in that case we stop the iteration.
+
+674
+01:35:02,620 --> 01:35:09,740
+ And here you can see that there is a two such pillars multimodal distributions we call one
+
+675
+01:35:09,740 --> 01:35:16,180
+ is fitted for the green one another is the red one and the combined pdf which is the
+
+676
+01:35:16,180 --> 01:35:26,620
+ marginal pdf that is shown in the dotted blue card. So this is for one dimension and for
+
+677
+01:35:26,620 --> 01:35:36,340
+ two dimension also here the eruption time and waiting time. So for one margin whatever
+
+678
+01:35:36,340 --> 01:35:44,500
+ this is the eruption and the waiting so whatever we have done this is for waiting time.
+
+679
+01:35:44,500 --> 01:35:52,580
+ So for this one we have done we have another component which is the duration of eruption
+
+680
+01:35:52,580 --> 01:36:00,420
+ and combining together you have this is one cluster this is another cluster. So this is
+
+681
+01:36:00,420 --> 01:36:07,540
+ eventually a clustering problem solving. So this is you can say it is a mixture Gaussian
+
+682
+01:36:07,540 --> 01:36:13,820
+ fitting you can see it is an EM algorithm problem but end of the day it is solving clustering
+
+683
+01:36:13,820 --> 01:36:22,300
+ problem. So that is why the understanding of the MLE is very much important and it is
+
+684
+01:36:22,300 --> 01:36:27,260
+ a model driven clustering problem. It is not like K-means clustering it is a model driven
+
+685
+01:36:27,260 --> 01:36:32,700
+ clustering problem we have the parameter we have the distribution and eventually we are
+
+686
+01:36:32,700 --> 01:36:36,260
+ considering the data as a mixture of different models.
+
+687
+01:36:36,260 --> 01:36:43,540
+ So here we can obtain all the parameter values of specific distribution and the mixing probabilities
+
+688
+01:36:43,540 --> 01:36:53,700
+ as well through EM algorithm. Now with a short note to another criteria of estimation which
+
+689
+01:36:53,700 --> 01:37:01,700
+ is very popular for regression known as the least square estimation. So here as of now
+
+690
+01:37:01,700 --> 01:37:09,140
+ we have maximized the likelihood so one maximization problem another is least square estimation
+
+691
+01:37:09,140 --> 01:37:17,500
+ that means square error is minimized. So that is that could be another criteria of estimation.
+
+692
+01:37:17,500 --> 01:37:24,700
+ So consider the simple linear regression model that y the mean value of y is a linear function
+
+693
+01:37:24,700 --> 01:37:31,300
+ of x and consider the normal distribution for the error. So as a consequence yi's are
+
+694
+01:37:31,300 --> 01:37:40,380
+ following normal distribution as always data given x i's are constants yi's are random
+
+695
+01:37:40,380 --> 01:37:48,220
+ variable and epsilon i's ok. So I have ok so epsilon i's are the error ok. So they
+
+696
+01:37:48,220 --> 01:37:54,460
+ are random error they are independently and identically distributed ok.
+
+697
+01:37:54,460 --> 01:38:02,820
+ Now the least square problem is for one two variables it is very simple you can consider
+
+698
+01:38:02,820 --> 01:38:13,540
+ the true value true value and the predicted value their difference make it square and
+
+699
+01:38:13,540 --> 01:38:19,740
+ try to minimize this square error. You can take it absolute value that is also a valid
+
+700
+01:38:19,740 --> 01:38:27,180
+ problem but the advantage of squaring it is it will be differentiable. If we take absolute
+
+701
+01:38:27,180 --> 01:38:37,420
+ value here it will not be differentiable ok. Now with a notation s suffix x y is this beta
+
+702
+01:38:37,420 --> 01:38:43,780
+ if we differentiate this quantity with respect to beta naught beta 1 and equate with 0 solve
+
+703
+01:38:43,780 --> 01:38:49,660
+ it with doing all this stuff we will get this one and this. I am not doing this thing because
+
+704
+01:38:49,660 --> 01:38:54,900
+ nowadays software will do it for you ok. So these simple things will be easily dealt by
+
+705
+01:38:54,900 --> 01:39:03,180
+ the software. So beta 1 hat can be written down in this form s suffix x y divided by
+
+706
+01:39:03,180 --> 01:39:11,340
+ s suffix double x s suffix double x means it will be sum over x i minus x bar whole square.
+
+707
+01:39:11,340 --> 01:39:19,940
+ So each y i's will be replaced by x i itself ok similarly y i and beta naught is this.
+
+708
+01:39:19,940 --> 01:39:27,260
+ So you can very easily get the prediction line as this one. So if you plug in a new value
+
+709
+01:39:27,260 --> 01:39:35,820
+ of x naught you will get the value of y. So this is the prediction problem as well as
+
+710
+01:39:35,820 --> 01:39:46,700
+ the estimation problem together. Now in statistics the inferential problem is very much important
+
+711
+01:39:46,700 --> 01:39:51,820
+ because we need to know whether these values are significantly close to certain number
+
+712
+01:39:51,820 --> 01:39:58,420
+ or not or they are close to 0 or not. So these are the thing that is very much important
+
+713
+01:39:58,420 --> 01:40:07,100
+ in statistical aspect and sometime of the machine learning problem as well. So here the schematic
+
+714
+01:40:07,100 --> 01:40:14,780
+ diagram that this is the red line is the fitted line the blue dots are the data. So this much
+
+715
+01:40:14,780 --> 01:40:21,820
+ is the gap between the data and the predicted line and e i is the error we want to minimize
+
+716
+01:40:21,820 --> 01:40:28,700
+ the square n. So that is the whole idea. Here is a complete worked out example that
+
+717
+01:40:28,700 --> 01:40:36,180
+ x is a regressor variable feature variable y is the response variable as a consequence
+
+718
+01:40:36,180 --> 01:40:43,620
+ we call calculate all the necessary thing and finally end up with this prediction line.
+
+719
+01:40:43,620 --> 01:40:49,420
+ This is a very simple structure anybody and everybody can do. Notice one thing as of now
+
+720
+01:40:49,420 --> 01:40:55,740
+ this prediction structure we have never used normality. Normal assumption of the error
+
+721
+01:40:55,740 --> 01:41:01,780
+ we have done at the very beginning but we have never used normality.
+
+722
+01:41:01,780 --> 01:41:07,260
+ So up to this much prediction line through least square method you can get without assumption
+
+723
+01:41:07,260 --> 01:41:12,460
+ of normality but if you need to check the significant value for each of the parameter
+
+724
+01:41:12,460 --> 01:41:18,220
+ beta naught, beta 1 and so on and so forth you require the normality assumption which
+
+725
+01:41:18,220 --> 01:41:25,420
+ makes the life much more easier. Otherwise some resampling techniques can be implemented.
+
+726
+01:41:25,420 --> 01:41:31,860
+ We can make it more general for more feature earlier it was only up to this much. Now you
+
+727
+01:41:31,860 --> 01:41:36,740
+ can incorporate more variables more feature vector this thing we will talk in the great
+
+728
+01:41:36,740 --> 01:41:45,020
+ details in the next lecture. And the similar way we can construct the model but here the
+
+729
+01:41:45,020 --> 01:41:51,380
+ least square condition will the entire model will look like y is the response variable
+
+730
+01:41:51,380 --> 01:41:58,700
+ x is the feature matrix, beta is the parameter, epsilon is the error vector. So this is error
+
+731
+01:41:58,700 --> 01:42:09,740
+ vector, true error vector this is response and this is feature and this is the model
+
+732
+01:42:09,740 --> 01:42:16,380
+ parameter. As a consequence we need to minimize the
+
+733
+01:42:16,380 --> 01:42:24,380
+ least square error and obtain the value of the beta. Now let us see that the square error
+
+734
+01:42:24,380 --> 01:42:30,500
+ so y is a vector x is a matrix beta is a vector end of the day y minus x beta is also a vector
+
+735
+01:42:30,500 --> 01:42:39,540
+ n component vector. So that vector transpose the same vector it eventually boils down to
+
+736
+01:42:39,540 --> 01:42:47,500
+ this expression for more variables of x i ok. Here you have only one x value here you
+
+737
+01:42:47,500 --> 01:42:54,980
+ have k such component of x i and the same thing in you can write in a matrix notation
+
+738
+01:42:54,980 --> 01:43:02,620
+ like this. Now open the I mean just follow the note from the previous lecture there we
+
+739
+01:43:02,620 --> 01:43:09,520
+ have given you how to differentiate with respect to a vector, differentiate this entire expression
+
+740
+01:43:09,520 --> 01:43:14,940
+ with respect to the beta vector this component will vanish you will have contribution from
+
+741
+01:43:14,940 --> 01:43:20,860
+ here you will have contribution from here and equate with a 0 vector solve it you will
+
+742
+01:43:20,860 --> 01:43:29,340
+ get beta hat that means the estimated value of beta as this.
+
+743
+01:43:29,340 --> 01:43:36,540
+ Now here is the simple linear regression structure what is the straight line so this is another
+
+744
+01:43:36,540 --> 01:43:42,940
+ important data of people often use the cells with respect to the advertisement in different
+
+745
+01:43:42,940 --> 01:43:51,220
+ platform TV or TV and radio. So if I use only TV it is a simple linear regression problem
+
+746
+01:43:51,220 --> 01:43:58,940
+ if I have more than one regressors then it is eventually giving us a plane. So the red
+
+747
+01:43:58,940 --> 01:44:05,820
+ dots are the data and the plane is the fitted regression surface of the plane. Now few geometric
+
+748
+01:44:05,820 --> 01:44:14,000
+ property that is important here to be noticed that if I want to predict the value of y what
+
+749
+01:44:14,000 --> 01:44:21,660
+ I can do I can use x and use the estimated value of beta which eventually gives me a
+
+750
+01:44:21,660 --> 01:44:33,780
+ matrix like this multiplied by y and interestingly this matrix is the projection matrix of any
+
+751
+01:44:33,780 --> 01:44:42,380
+ vector y in the feature space. Feature space means whatever x matrix I have if I consider
+
+752
+01:44:42,380 --> 01:44:56,140
+ all possible linear combination of the column x 1 x 2 x and first column is 1 and so first
+
+753
+01:44:56,140 --> 01:45:06,780
+ column is 1. If I consider all possible linear combination of all these columns then the
+
+754
+01:45:06,780 --> 01:45:12,300
+ space that we generate that is known as the feature space. So as a consequence this PX
+
+755
+01:45:12,300 --> 01:45:19,900
+ matrix what it what it is doing here any y variable response variable it brings it down
+
+756
+01:45:19,900 --> 01:45:24,860
+ to the feature space and regression is only that nothing more than that can be done by
+
+757
+01:45:24,860 --> 01:45:32,780
+ a prior regression. And what is the estimated error that is the true value of y minus the
+
+758
+01:45:32,780 --> 01:45:38,500
+ estimated value of y which can be written as identity minus Px into y.
+
+759
+01:45:38,500 --> 01:45:48,940
+ Now you have this e vector and this estimated vector or the predicted vector y take their
+
+760
+01:45:48,940 --> 01:45:56,980
+ dot product and do the calculation you will get 0 vector which means that this predicted
+
+761
+01:45:56,980 --> 01:46:07,060
+ value and the true value so this is the error. So this much is the error and this is the
+
+762
+01:46:07,060 --> 01:46:15,420
+ prediction they are perpendicular to each other geometrically that is given here. And
+
+763
+01:46:15,420 --> 01:46:21,980
+ if we consider the covariance of them it will eventually become 0 which eventually lead
+
+764
+01:46:21,980 --> 01:46:31,260
+ to independence if the normal distribution assumption is present otherwise not. So covariance
+
+765
+01:46:31,260 --> 01:46:38,180
+ 0 is will be okay but independence will be only because of normality this thing we will
+
+766
+01:46:38,180 --> 01:46:45,740
+ elaborate in the next lecture. And added advantage of this model is with
+
+767
+01:46:45,740 --> 01:46:52,700
+ another dataset I am just schematic diagram I am giving. So here is the stock 1 is predicted
+
+768
+01:46:52,700 --> 01:47:00,940
+ via stock 2 and stock 3 with a simple linear regression model say y equal to stock 1 is
+
+769
+01:47:00,940 --> 01:47:15,840
+ beta 0 plus beta 1 x 1 plus beta 2 x 2. So this is stock 2 this is stock 3 but if we add
+
+770
+01:47:15,840 --> 01:47:25,380
+ so based on this you get this model but if we add another component if we add another
+
+771
+01:47:25,380 --> 01:47:35,460
+ component to it say beta 3 x 1 x 2 that is also possible. If we add another component
+
+772
+01:47:35,460 --> 01:47:46,280
+ still we can solve that problem but the model will become much more adjustable with the
+
+773
+01:47:46,280 --> 01:47:51,700
+ interaction effect of stock 1 and stock 2 and instead of straight flat plane you have
+
+774
+01:47:51,700 --> 01:48:01,100
+ a twisted plane or twisted surface. So this is what the generalization of interaction
+
+775
+01:48:01,100 --> 01:48:07,340
+ we can do in the model but everything falls under the least square minimization problem
+
+776
+01:48:07,340 --> 01:48:15,020
+ and which we can solve through the square error minimization as an M estimation problem
+
+777
+01:48:15,020 --> 01:48:22,780
+ for entire setup. So before concluding let us have a demonstration of this EM algorithm
+
+778
+01:48:22,780 --> 01:48:51,700
+ whatever I have shown you here if the software supports let me just give it a try RStudio
+
+779
+01:48:51,700 --> 01:48:58,860
+ okay so that may I have the screen yes thank you.
+
+780
+01:48:58,860 --> 01:49:10,580
+ So that data set that we have already talked about the waiting time for eruption and by
+
+781
+01:49:10,580 --> 01:49:18,500
+ various two normal distributions we are trying to show their EM approach for solution let
+
+782
+01:49:18,500 --> 01:49:27,500
+ us see the diagram. So you see that the histograms are fixed from the data and as the iteration
+
+783
+01:49:27,500 --> 01:49:36,820
+ moves the densities are adjusting themselves such that it will converge to an optimal situation
+
+784
+01:49:36,820 --> 01:49:43,980
+ where the successive iterations are almost closed enough for obtaining the true parameter
+
+785
+01:49:43,980 --> 01:49:50,700
+ value. So deliberately I have chosen the parameter which is a little bit away from the true one
+
+786
+01:49:50,700 --> 01:49:54,780
+ and such that the convergence takes little bit more time.
+
+787
+01:49:54,780 --> 01:50:10,380
+ So here okay so finally we have got this one. So with the iteration you can see that
+
+788
+01:50:10,380 --> 01:50:20,940
+ it has taken 32 iterations to have almost consecutively similar value in the successive
+
+789
+01:50:20,940 --> 01:50:28,780
+ iteration. So this is how EM approaches but there is a chance that it might get stuck
+
+790
+01:50:28,780 --> 01:50:37,580
+ with the local optimal value. So I think I should stop now if I have queries let us
+
+791
+01:50:37,580 --> 01:50:58,900
+ have it. The code is appended with the BDF. Could you please provide an example of active
+
+792
+01:50:58,900 --> 01:51:06,820
+ and passive. So in active so whatever the learning you are seeing in EM algorithm that
+
+793
+01:51:06,820 --> 01:51:15,060
+ is an active learning. Eventually we do not say much about the parameters the data itself
+
+794
+01:51:15,060 --> 01:51:21,800
+ at the algorithm itself adjust with the thing but in passive learning if we specify the
+
+795
+01:51:21,800 --> 01:51:33,660
+ parameter labeling and we estimate individually the parameter then that is a passive learning.
+
+796
+01:51:33,660 --> 01:51:43,060
+ What was the other name of the online learning in statistics? So online learning in statistics
+
+797
+01:51:43,060 --> 01:51:50,020
+ sometimes is known as a surveillance process. So if a process is going on it is often done
+
+798
+01:51:50,020 --> 01:51:59,460
+ for signals as well as the statistical quality control. That if a process is set on if certain
+
+799
+01:51:59,460 --> 01:52:05,780
+ changes happening we are supposed to detect the change as early as possible. So that is
+
+800
+01:52:05,780 --> 01:52:14,180
+ a surveillance problem or online term is nowadays also very much popular in statistical learning.
+
+801
+01:52:14,180 --> 01:52:25,540
+ But for the static learning what is that is known as the retrospective study and it is
+
+802
+01:52:25,540 --> 01:52:33,460
+ not exactly online but say for example phase 4 clinical trials when study suppose when
+
+803
+01:52:33,460 --> 01:52:41,700
+ people take medicine for a particular disease or a person is taking then the person usually
+
+804
+01:52:41,700 --> 01:52:48,340
+ take more than one disease a more than one medicine for the treatment. And if the person
+
+805
+01:52:48,340 --> 01:52:54,140
+ is getting some ADR adverse drug reaction or the side effect like what we say then there
+
+806
+01:52:54,140 --> 01:53:00,300
+ is a repository you can report that because of this group of medicines I am having this
+
+807
+01:53:00,300 --> 01:53:08,980
+ much of this side effect and then it is a causal analysis which is done at the phase
+
+808
+01:53:08,980 --> 01:53:15,100
+ 4 of clinical trials that for which combination of or for the which medicine this side effect
+
+809
+01:53:15,100 --> 01:53:20,060
+ is happening. So it is also important that as early as possible
+
+810
+01:53:20,060 --> 01:53:26,260
+ the detection is done it will be better to take a preventive action for the entire system
+
+811
+01:53:26,260 --> 01:53:35,660
+ of the or the fatality. Are we trying to estimate the distribution of the given data set using
+
+812
+01:53:35,660 --> 01:53:48,260
+ the statistic and assuming the model yes. So data set given model assumed and statistics
+
+813
+01:53:48,260 --> 01:53:53,980
+ are used to obtain the parameter value or approximate the parameter value which is nothing but
+
+814
+01:53:53,980 --> 01:53:58,520
+ the either in statistics it is estimation process in machine learning it is a learning
+
+815
+01:53:58,520 --> 01:54:00,820
+ process as simple as that.
+
+816
+01:54:00,820 --> 01:54:07,920
+ Another non-statistic background and getting very difficult for understanding the class
+
+817
+01:54:07,920 --> 01:54:15,820
+ can you please suggest how can I proceed a general query from many participants definitely.
+
+818
+01:54:15,820 --> 01:54:26,380
+ So it is recommended that you first take up one very easy reading book and one very easy
+
+819
+01:54:26,380 --> 01:54:32,580
+ going YouTube lecture whatever is possible for you. Easy reading book I think I have
+
+820
+01:54:32,580 --> 01:54:39,220
+ suggested one that Miller and Miller's Jay Freud's mathematical statistic that is a book
+
+821
+01:54:39,220 --> 01:54:47,980
+ what anybody will be able to read or maybe one more book I will suggest the organizer
+
+822
+01:54:47,980 --> 01:54:55,820
+ will communicate to you the from that book I have taken this regression example model
+
+823
+01:54:55,820 --> 01:55:04,940
+ fitting this that one no not this. So another book maybe I will suggest which will be even
+
+824
+01:55:04,940 --> 01:55:13,460
+ more easier but at least one one basic book you have to see read out otherwise it will
+
+825
+01:55:13,460 --> 01:55:16,420
+ be definitely problematic.
+
+826
+01:55:16,420 --> 01:55:24,380
+ And in YouTube lecture well there are many lectures available in the website you can
+
+827
+01:55:24,380 --> 01:55:30,820
+ see one lecture series is also available at my home page in Google my Google home page
+
+828
+01:55:30,820 --> 01:55:36,300
+ if you find it is useful you can go for it basic probability statistics and little bit
+
+829
+01:55:36,300 --> 01:55:43,180
+ of inference is completely done there with required details and examples it has been
+
+830
+01:55:43,180 --> 01:55:49,860
+ worked out completely. So I hope it will be useful for you book suggestion I will share
+
+831
+01:55:49,860 --> 01:55:57,300
+ with you one I have shared and two book suggestion is already there in my home page also one
+
+832
+01:55:57,300 --> 01:56:03,580
+ is little advanced and the another one is basic the Miller's Miller is very basic another
+
+833
+01:56:03,580 --> 01:56:15,900
+ one also I will upload there or maybe I will share with you coordinator thank you can you
+
+834
+01:56:15,900 --> 01:56:21,060
+ please elaborate more on IID distribution of the data provided an example are there some
+
+835
+01:56:21,060 --> 01:56:41,820
+ other types of data distribution similar criteria. So what does it mean IID so we say X and
+
+836
+01:56:41,820 --> 01:57:01,220
+ Y are IID or X1, X2, Xn are IID IID means independently and identically distributed.
+
+837
+01:57:01,220 --> 01:57:06,140
+ So I am talking about X and Y such that it will be general can be generalized for X1
+
+838
+01:57:06,140 --> 01:57:20,140
+ so suppose the core is this suppose this is the CDF of X, so that is capital F X, FXT
+
+839
+01:57:20,140 --> 01:57:30,820
+ this is the CDF of X and if Y has to be IID with X that means the CDF of Y will overlap
+
+840
+01:57:30,820 --> 01:57:45,940
+ on the CDF of X. So it might be GYT but whatever may be F or G you call does not matter so
+
+841
+01:57:45,940 --> 01:57:59,820
+ this is GYT they will overlap that means probability X less than equal to T is same as probability
+
+842
+01:57:59,820 --> 01:58:11,100
+ capital Y less than equal to T for or T belongs to real number this is one of the aspects
+
+843
+01:58:11,100 --> 01:58:19,660
+ for simplicity I am writing in this way and second thing is the impact X will not influence
+
+844
+01:58:19,660 --> 01:58:26,140
+ the distribution of Y, Y will not influence the distribution of X so they are independent.
+
+845
+01:58:26,140 --> 01:58:42,020
+ So that means probability XY they belongs to the set A cross B as a Cartesian product
+
+846
+01:58:42,020 --> 01:58:53,180
+ which is probability X belongs to A, Y into probability Y belongs to P and this AB is
+
+847
+01:58:53,180 --> 01:59:05,500
+ of this type of set minus infinity to T1 minus infinity to T2 this is the technical meaning.
+
+848
+01:59:05,500 --> 01:59:13,340
+ So they are not interacting with each other so they are not influencing one another distribution
+
+849
+01:59:13,340 --> 01:59:21,220
+ that means independence and whatever may be that point you choose their probability will
+
+850
+01:59:21,220 --> 01:59:32,940
+ be same up to that point that is identical CDF these two combiningly known as independently
+
+851
+01:59:32,940 --> 01:59:40,540
+ and identically distributed which distribution that is that we are not specifying but these
+
+852
+01:59:40,540 --> 01:59:51,180
+ two common features are shared among themselves and you can extend the same story for infertility.
+

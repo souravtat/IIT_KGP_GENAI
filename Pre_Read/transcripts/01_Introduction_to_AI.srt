@@ -1,0 +1,3076 @@
+1
+00:00:00,000 --> 00:00:09,760
+ Yeah, good morning and welcome to this program on Hands-on Approach to Artificial Intelligence
+
+2
+00:00:09,760 --> 00:00:11,840
+ for Real World Applications.
+
+3
+00:00:11,840 --> 00:00:18,760
+ So, in today's one hour lecture, I am going to introduce what is artificial intelligence.
+
+4
+00:00:18,760 --> 00:00:25,360
+ The details of this techniques will be covered in subsequent lectures by other teachers.
+
+5
+00:00:25,360 --> 00:00:32,840
+ So, just to introduce what is artificial intelligence before that let us see how our natural intelligence
+
+6
+00:00:32,840 --> 00:00:34,960
+ actually works.
+
+7
+00:00:34,960 --> 00:00:40,160
+ So, I start with these two pictures.
+
+8
+00:00:40,160 --> 00:00:43,640
+ The question is do you recognize these pictures?
+
+9
+00:00:43,640 --> 00:00:49,400
+ Now, whether you recognize or not that is not that important, what is important is how
+
+10
+00:00:49,400 --> 00:00:51,320
+ do you recognize?
+
+11
+00:00:51,320 --> 00:01:00,240
+ Obviously, I believe that you know the picture on the left is cave painting from Ajanta
+
+12
+00:01:00,240 --> 00:01:06,480
+ caves and picture on the right is our parliament building, old parliament building I will say
+
+13
+00:01:06,480 --> 00:01:08,200
+ in New Delhi.
+
+14
+00:01:08,200 --> 00:01:10,960
+ Now, how do you recognize?
+
+15
+00:01:10,960 --> 00:01:18,280
+ Naturally, you must have seen these pictures in your history book during your school days
+
+16
+00:01:18,280 --> 00:01:23,340
+ or maybe somebody has shown you these pictures a number of times, possibly some of you have
+
+17
+00:01:23,340 --> 00:01:29,080
+ visited these places, gone to the Ajanta caves and seen these paintings yourselves.
+
+18
+00:01:29,080 --> 00:01:36,680
+ So, when you look or when you see such pictures, what you do is you create a description of
+
+19
+00:01:36,680 --> 00:01:39,160
+ these pictures some form of description.
+
+20
+00:01:39,160 --> 00:01:45,160
+ Why I am saying some form of description is that even if the same objects or same pictures
+
+21
+00:01:45,160 --> 00:01:51,440
+ are shown to you in a distorted fashion, in the sense right now the pictures which are
+
+22
+00:01:51,440 --> 00:01:59,280
+ shown are in color, so if instead of color just black and white version of the same pictures
+
+23
+00:01:59,280 --> 00:02:04,760
+ are shown to you or the pictures are slightly distorted, it is scaled up, scaled down, rotated
+
+24
+00:02:04,760 --> 00:02:06,880
+ even then you will be able to understand.
+
+25
+00:02:06,880 --> 00:02:16,640
+ So, that clearly says that what you have understood is not the picture itself or point by point
+
+26
+00:02:16,640 --> 00:02:23,520
+ content of the picture, but some description you have made of this picture and these picture
+
+27
+00:02:23,520 --> 00:02:30,080
+ these descriptions are stored in your brain in some form of a model.
+
+28
+00:02:30,080 --> 00:02:37,320
+ So, next time when similar such pictures are shown to you, you try to extract similar such
+
+29
+00:02:37,320 --> 00:02:43,680
+ descriptions and then try to associate those new pictures to one of the pictures which
+
+30
+00:02:43,680 --> 00:02:49,000
+ are stored in your brain based on some sort of similarity or dissimilarity.
+
+31
+00:02:49,000 --> 00:02:56,120
+ So, that is how our natural intelligence works and naturally when you understand something
+
+32
+00:02:56,120 --> 00:03:01,840
+ or when you form a model this model does not is not formed in a single instance.
+
+33
+00:03:01,840 --> 00:03:07,920
+ Say for example, in your school days when you have started learning the alphabets A,
+
+34
+00:03:07,920 --> 00:03:14,680
+ B, C, D and all, so your parents or your school teachers must have told you A for apple, B
+
+35
+00:03:14,680 --> 00:03:21,000
+ for ball and that has been told a number of times, it is not only once and after hearing
+
+36
+00:03:21,000 --> 00:03:27,880
+ that after looking at those characters a number of times you have been able to remember it
+
+37
+00:03:27,880 --> 00:03:33,560
+ or you have been able to create a model of that which has been stored in the brain.
+
+38
+00:03:33,560 --> 00:03:38,920
+ So, when you talk about machine learning or artificial intelligence, you find that at
+
+39
+00:03:38,920 --> 00:03:45,160
+ the input we have the signal which are the raw signal, this signal can be an image, this
+
+40
+00:03:45,160 --> 00:03:49,520
+ signal can be some time domain signal something like a speech and all that.
+
+41
+00:03:49,520 --> 00:03:55,080
+ So, when I talk about image, it is the visual recognition that comes into picture and when
+
+42
+00:03:55,080 --> 00:03:59,800
+ it is a time domain signal like some music or speech, it is our auditory system that
+
+43
+00:03:59,800 --> 00:04:01,480
+ comes into picture.
+
+44
+00:04:01,480 --> 00:04:06,760
+ So, we should be able to recognize whether you are watching a dog, whether you are watching
+
+45
+00:04:06,760 --> 00:04:09,440
+ a bird, what type of bird it is.
+
+46
+00:04:09,440 --> 00:04:15,040
+ Similarly, when it comes to your auditory signal or speech, you should be able to recognize
+
+47
+00:04:15,040 --> 00:04:22,120
+ whether you are listening to say Hemant Kumar or you are listening to Latha Mangaskar and
+
+48
+00:04:22,120 --> 00:04:23,960
+ you can easily identify that.
+
+49
+00:04:23,960 --> 00:04:26,200
+ So, how does it actually work?
+
+50
+00:04:26,200 --> 00:04:33,200
+ So, given an input signal, the first thing as I said that we create a description, some
+
+51
+00:04:33,200 --> 00:04:34,200
+ sort of description.
+
+52
+00:04:34,200 --> 00:04:39,480
+ Similarly, come to coming to machine learning for given signals, we try to find out some
+
+53
+00:04:39,480 --> 00:04:46,320
+ sort of features, not a single one, multiple number of features from those signals and those
+
+54
+00:04:46,320 --> 00:04:49,240
+ features are put in the form of a feature vector.
+
+55
+00:04:49,240 --> 00:04:54,440
+ So, every feature vector represents a particular signal.
+
+56
+00:04:54,440 --> 00:04:59,120
+ Now, how this feature vectors are important?
+
+57
+00:04:59,120 --> 00:05:04,880
+ The moment you convert or you translate a signal from the raw domain say for example,
+
+58
+00:05:04,880 --> 00:05:11,080
+ from image to a vector, the moment I put it in the form of a vector, my recognition task
+
+59
+00:05:11,080 --> 00:05:13,040
+ becomes very easy.
+
+60
+00:05:13,040 --> 00:05:21,760
+ Let us say for example, we have a vector of say three-dimensional, you just extract three
+
+61
+00:05:21,760 --> 00:05:27,160
+ different properties or three different features from the given signal and you have a three-dimensional
+
+62
+00:05:27,160 --> 00:05:28,160
+ feature vector.
+
+63
+00:05:28,160 --> 00:05:33,520
+ Now, once I have this three-dimensional feature vector, then this feature vector represents
+
+64
+00:05:33,520 --> 00:05:36,240
+ a point in our three-dimensional space.
+
+65
+00:05:36,240 --> 00:05:42,600
+ So, if I have two different signals or if I have two instances of the same signal, it
+
+66
+00:05:42,600 --> 00:05:48,080
+ is quite likely that the feature vectors corresponding to those two different signals will be very
+
+67
+00:05:48,080 --> 00:05:53,720
+ similar or they will be very close in the three-dimensional feature space whereas, if
+
+68
+00:05:53,720 --> 00:05:59,640
+ I take two signals which are very wide say for example, I have a picture of a bird and
+
+69
+00:05:59,640 --> 00:06:03,640
+ I have another picture which is the picture of a car.
+
+70
+00:06:03,640 --> 00:06:08,560
+ So, again those two three-dimensional feature vectors that you create one out of bird and
+
+71
+00:06:08,560 --> 00:06:14,260
+ one out of car, these two feature vectors will be very different and in my three-dimensional
+
+72
+00:06:14,260 --> 00:06:18,640
+ feature space, the distance between these two points will be very large.
+
+73
+00:06:18,640 --> 00:06:25,160
+ So, I can just find out whether two signals are similar or they are dissimilar depending
+
+74
+00:06:25,160 --> 00:06:28,720
+ upon what is the distance between the corresponding feature vectors.
+
+75
+00:06:28,720 --> 00:06:34,760
+ So, once I have this feature vectors, then I can put, I can fit those feature vectors
+
+76
+00:06:34,760 --> 00:06:40,920
+ into a classifier or the classifier will classify other or recognize the signal to be whether
+
+77
+00:06:40,920 --> 00:06:44,320
+ it is a bird, whether it is a car, whether it is a dog and all that.
+
+78
+00:06:44,320 --> 00:06:51,200
+ So, I can have different types of classifiers, some are Bayesian classifiers, SVM, neural
+
+79
+00:06:51,200 --> 00:06:53,080
+ network and all that.
+
+80
+00:06:53,080 --> 00:06:57,800
+ Out of that I will put more emphasis on neural network because all your subsequent lectures
+
+81
+00:06:57,800 --> 00:07:01,920
+ are mostly going to be based on neural network approach.
+
+82
+00:07:01,920 --> 00:07:07,880
+ So, let us see when I say descriptors, what are different types of descriptors we have.
+
+83
+00:07:07,880 --> 00:07:16,040
+ So, here I have shown few images, you find that on the top I have the silhouette or just
+
+84
+00:07:16,040 --> 00:07:22,520
+ the boundary of two different animals and you can easily recognize that the left one
+
+85
+00:07:22,520 --> 00:07:28,880
+ is the boundary of a horse and the right one is the boundary of a zebra.
+
+86
+00:07:28,880 --> 00:07:34,680
+ However, given only this boundary information, if I want to compute what is the difference
+
+87
+00:07:34,680 --> 00:07:40,240
+ between these two boundaries, the difference is very very small or they are very very similar.
+
+88
+00:07:40,240 --> 00:07:46,640
+ So, maybe based on just this, I will come to a bit later that how from these boundaries
+
+89
+00:07:46,640 --> 00:07:54,360
+ we can extract different information which can be useful for differentiating between
+
+90
+00:07:54,360 --> 00:07:58,120
+ these two animals or different types of animals.
+
+91
+00:07:58,120 --> 00:08:02,320
+ But as I said, as I was saying that based on just this boundary information, it is very
+
+92
+00:08:02,320 --> 00:08:06,200
+ difficult to differentiate between a horse and a zebra.
+
+93
+00:08:06,200 --> 00:08:10,920
+ So, in addition to boundary information, so with this boundary information it is quite
+
+94
+00:08:10,920 --> 00:08:15,280
+ possible that I will be able to differentiate between a horse or a zebra that is a class
+
+95
+00:08:15,280 --> 00:08:20,680
+ of horse and zebra and class of birds, but differentiation between a horse and zebra
+
+96
+00:08:20,680 --> 00:08:22,920
+ becomes very very difficult.
+
+97
+00:08:22,920 --> 00:08:30,320
+ So, in addition to this boundary information, we need some more information and you remember
+
+98
+00:08:30,320 --> 00:08:36,840
+ that in case of a zebra, if you look at the body of a zebra, mostly you have black and
+
+99
+00:08:36,840 --> 00:08:41,800
+ white stripes whereas in case of horse, you do not have black and white stripes.
+
+100
+00:08:41,800 --> 00:08:47,160
+ So, along with the boundary information you use some more information which is the region
+
+101
+00:08:47,160 --> 00:08:53,840
+ information and these two informations put together gives you a feature vector which
+
+102
+00:08:53,840 --> 00:08:58,080
+ can be used for differentiation between a horse and a zebra.
+
+103
+00:08:58,080 --> 00:09:04,880
+ Now, when you come to the region property or the region descriptors, we can have intensity
+
+104
+00:09:04,880 --> 00:09:13,000
+ profile as has been shown on the image on the right hand side, you can have color as shown
+
+105
+00:09:13,000 --> 00:09:19,680
+ on the left bottom image or you can also have texture as shown in the right bottom image.
+
+106
+00:09:19,680 --> 00:09:26,400
+ So, these are different types of informations that can be extracted from the same image and
+
+107
+00:09:26,400 --> 00:09:31,240
+ when you talk about this informations, obviously as we are talking about feature vector, so
+
+108
+00:09:31,240 --> 00:09:38,900
+ these informations are to be quantified or I should able to compute some new numerical
+
+109
+00:09:38,900 --> 00:09:42,560
+ values representing these region properties.
+
+110
+00:09:42,560 --> 00:09:47,560
+ So, I will come to that a bit later, let us see what how this boundary descriptor can
+
+111
+00:09:47,560 --> 00:09:48,560
+ be generated.
+
+112
+00:09:48,560 --> 00:09:55,840
+ So, you find that I have given a closed curved boundary and what I can do is, I can find
+
+113
+00:09:55,840 --> 00:10:00,400
+ out or I can represent this boundary by a polygon.
+
+114
+00:10:00,400 --> 00:10:06,040
+ There are different algorithms, how you can get a polygonal approximation of a curved
+
+115
+00:10:06,040 --> 00:10:10,600
+ boundary I am not going into that, but for the time being let us take it for granted
+
+116
+00:10:10,600 --> 00:10:13,040
+ that given a curved boundary I can have a polygon.
+
+117
+00:10:13,040 --> 00:10:17,280
+ So, what I have is a polygon something like this.
+
+118
+00:10:17,280 --> 00:10:24,240
+ Once I have such a polygon for every such polygon, obviously I have a number of internal
+
+119
+00:10:24,240 --> 00:10:30,800
+ angles, so let us put this internal angles as alpha 1, alpha 2, alpha 3, alpha 4 and
+
+120
+00:10:30,800 --> 00:10:31,800
+ so on.
+
+121
+00:10:31,800 --> 00:10:36,160
+ Now, these angles can be scanned either in the clockwise direction or in anticlockwise
+
+122
+00:10:36,160 --> 00:10:45,240
+ direction I can use any of them, but I have to keep in mind that if I use clockwise convention
+
+123
+00:10:45,240 --> 00:10:48,440
+ I always have to use clockwise rotation.
+
+124
+00:10:48,440 --> 00:10:54,280
+ If I use anticlockwise I always have to use anticlockwise, so if you scan these images
+
+125
+00:10:54,280 --> 00:11:01,280
+ either in clockwise or in anticlockwise fashion, then you have you find that I have a sequence
+
+126
+00:11:01,280 --> 00:11:07,240
+ of internal angles say alpha 1, alpha 2, alpha 3 and for 4 and so on.
+
+127
+00:11:07,240 --> 00:11:11,720
+ These internal angles of the sequence now I can take this as a time series, so there
+
+128
+00:11:11,720 --> 00:11:18,360
+ is no time involved in it, but it is a sequence of some angle values.
+
+129
+00:11:18,360 --> 00:11:25,240
+ In this sequence I can have an autoregressive model over this sequence.
+
+130
+00:11:25,240 --> 00:11:32,240
+ So, in this autoregressive model what I do is I give an any angle alpha i, ith angle
+
+131
+00:11:32,240 --> 00:11:39,800
+ I can represent this as a linear combination of p number of previous angles, so the expression
+
+132
+00:11:39,800 --> 00:11:41,080
+ comes something like this.
+
+133
+00:11:41,080 --> 00:11:47,560
+ So, alpha i is equal to beta k alpha i minus k where k varies from 1 to p, so this is a
+
+134
+00:11:47,560 --> 00:11:49,800
+ pth order autoregression model.
+
+135
+00:11:49,800 --> 00:11:57,040
+ So, you find that there are p number of coefficients beta k which are autoregression coefficients
+
+136
+00:11:57,040 --> 00:12:03,600
+ and I will get if there are say n number of internal angles or if the number of vertices
+
+137
+00:12:03,600 --> 00:12:07,800
+ of the polygon are n, I will have n number of such equations.
+
+138
+00:12:07,800 --> 00:12:13,400
+ And you solve all these equations simultaneously and you get the values of your coefficients
+
+139
+00:12:13,400 --> 00:12:19,560
+ beta 1 to beta p and these coefficients this set of coefficients will be different for
+
+140
+00:12:19,560 --> 00:12:21,200
+ different types of polygons.
+
+141
+00:12:21,200 --> 00:12:28,520
+ So, I can represent or I can use these coefficients as some sort of description or approximate
+
+142
+00:12:28,520 --> 00:12:34,760
+ description of the given boundary shape, this is one set of features that I can have.
+
+143
+00:12:34,760 --> 00:12:41,400
+ Another set of features that I can have is you see that when I represented this as a
+
+144
+00:12:41,400 --> 00:12:51,920
+ polygon I have missed a number of detailed information, so if I want to include some
+
+145
+00:12:51,920 --> 00:12:56,920
+ such detailed information in the description I generate, then I can follow it something
+
+146
+00:12:56,920 --> 00:13:03,040
+ like this say given another boundary close boundary suppose I have a polygonal description
+
+147
+00:13:03,040 --> 00:13:04,040
+ like this.
+
+148
+00:13:04,040 --> 00:13:09,880
+ Out of this if I take just this particular segment on the left side, so segment is over
+
+149
+00:13:09,880 --> 00:13:16,400
+ here, now the kind of processing that I can do over this segment is I represented this
+
+150
+00:13:16,400 --> 00:13:22,760
+ you just rotate this by an angle, so that the linear segments becomes horizontal and
+
+151
+00:13:22,760 --> 00:13:29,720
+ the curved boundary that particular segment now is a function of the distance on the linear
+
+152
+00:13:29,720 --> 00:13:34,400
+ segment which was the linear approximation of this curve boundary.
+
+153
+00:13:34,400 --> 00:13:39,840
+ And if I normalize this particular segment in the sense the area between the curved segment
+
+154
+00:13:39,840 --> 00:13:46,280
+ and the horizontal axis I make it equal to 1, so that is the kind of normalization that
+
+155
+00:13:46,280 --> 00:13:47,760
+ I perform.
+
+156
+00:13:47,760 --> 00:13:54,180
+ So if the area between the curved segment and the horizontal axis becomes 1 then I can
+
+157
+00:13:54,180 --> 00:13:57,800
+ consider this to be a probability density function.
+
+158
+00:13:57,800 --> 00:14:06,600
+ So what I get is PR versus R that is the probability of occurrence of R, once I represent this
+
+159
+00:14:06,600 --> 00:14:14,000
+ as a probability distribution function then I can compute different statistical moments.
+
+160
+00:14:14,000 --> 00:14:19,680
+ So you find that the statistical moment of order 2 this is very very familiar it is nothing
+
+161
+00:14:19,680 --> 00:14:21,700
+ but what is called variance.
+
+162
+00:14:21,700 --> 00:14:27,360
+ I can have other form of statistical variance statistical moment also, so statistical moment
+
+163
+00:14:27,360 --> 00:14:32,600
+ of order 3 which is called skewness, statistical moment of order 4 which is called kurtosis
+
+164
+00:14:32,600 --> 00:14:39,320
+ and all that, out of this the third order statistical moment which is skewness it is
+
+165
+00:14:39,320 --> 00:14:45,600
+ very easy to understand what it gives it gives whether your distribution is skewed towards
+
+166
+00:14:45,600 --> 00:14:52,160
+ left or skewed towards right, similarly each of these statistical moments give you some
+
+167
+00:14:52,160 --> 00:14:55,960
+ information of shape of the boundary.
+
+168
+00:14:55,960 --> 00:15:04,400
+ So what I can do is earlier we have got the auto regression coefficients and I can concatenate
+
+169
+00:15:04,400 --> 00:15:09,360
+ with the set of auto regression coefficients all these statistical moment values.
+
+170
+00:15:09,360 --> 00:15:12,360
+ So I get a larger feature vector.
+
+171
+00:15:12,360 --> 00:15:17,600
+ So this is the set of feature vector that you can get simply from the boundary information.
+
+172
+00:15:17,600 --> 00:15:22,400
+ Now what are the different types of region descriptors I can have?
+
+173
+00:15:22,400 --> 00:15:28,400
+ You find again on the left I have shown the black and white image for that I can have intensity
+
+174
+00:15:28,400 --> 00:15:33,960
+ histogram I believe all of you know what is the intensity histogram and this intensity
+
+175
+00:15:33,960 --> 00:15:41,960
+ histogram if I normalize that is sum of contents of all the histogram means is equal to 1 then
+
+176
+00:15:41,960 --> 00:15:49,720
+ this normalized intensity histogram can be considered as a frequency of occurrence of
+
+177
+00:15:49,720 --> 00:15:56,800
+ different intensity values that means what is the probability of occurrence of different
+
+178
+00:15:56,800 --> 00:15:58,520
+ intensity value within this image.
+
+179
+00:15:58,520 --> 00:16:01,640
+ So again it becomes a probability density function.
+
+180
+00:16:01,640 --> 00:16:06,600
+ So once it is a probability density function again I can compute a different types of statistical
+
+181
+00:16:06,600 --> 00:16:13,080
+ moments which gives you information of what is the shape of the histogram of that black
+
+182
+00:16:13,080 --> 00:16:15,360
+ and white image.
+
+183
+00:16:15,360 --> 00:16:22,000
+ Similarly if I want to find out the color distribution or color properties you know
+
+184
+00:16:22,000 --> 00:16:27,800
+ color image consists of three different planes the red, green and blue plane.
+
+185
+00:16:27,800 --> 00:16:34,040
+ For each of the planes I can compute similar such histograms for each of the histograms
+
+186
+00:16:34,040 --> 00:16:40,640
+ you can compute the statistical moments all these things taken together gives you some
+
+187
+00:16:40,640 --> 00:16:47,080
+ information of how the intensity profile of the images, how the color profile of the images.
+
+188
+00:16:47,080 --> 00:16:54,080
+ The same thing comes when it comes to this texture again from the texture I can compute
+
+189
+00:16:54,080 --> 00:17:00,440
+ a different types of properties one of them is what is called a co-occurrence matrix.
+
+190
+00:17:00,440 --> 00:17:11,120
+ The co-occurrence matrix is given two intensity values i and j and some positional constant
+
+191
+00:17:11,120 --> 00:17:17,800
+ say distance in this particular case I have shown a 45 degree ij that means if I take
+
+192
+00:17:17,800 --> 00:17:25,400
+ two pixels two points p and q which are at a distance of one and oriented in the direction
+
+193
+00:17:25,400 --> 00:17:37,000
+ of 45 degree then if the intensity of pixel p is i let us let us say 10 and intensity
+
+194
+00:17:37,000 --> 00:17:44,880
+ at pixel say 15 then I want to find out that how many times these two intensity values
+
+195
+00:17:44,880 --> 00:17:54,040
+ 10 and 15 following this positional constant 145 degree occurs within that particular texture
+
+196
+00:17:54,040 --> 00:17:57,440
+ and that I do for every pair of intensity values.
+
+197
+00:17:57,440 --> 00:18:07,480
+ So you find that for a particular positional constant say 145 degree I get one matrix which
+
+198
+00:18:07,480 --> 00:18:13,200
+ is called a co-occurrence matrix that how many times 10 and 15 these two intensities
+
+199
+00:18:13,200 --> 00:18:19,840
+ following this particular constant occurred within this given image.
+
+200
+00:18:19,840 --> 00:18:24,120
+ So this is for one constant positional constant I can compute this for multiple positional
+
+201
+00:18:24,120 --> 00:18:25,240
+ constant.
+
+202
+00:18:25,240 --> 00:18:30,960
+ So this co-occurrence matrix in that case will be different for different types of textures
+
+203
+00:18:30,960 --> 00:18:36,080
+ and once I have this co-occurrence matrix if I normalize this co-occurrence matrix that
+
+204
+00:18:36,080 --> 00:18:43,800
+ is some of all the elements of in the matrix I want to make it equal to one then it becomes
+
+205
+00:18:43,800 --> 00:18:49,960
+ a joint probability distribution function and the moment it becomes a joint probability
+
+206
+00:18:49,960 --> 00:18:54,240
+ distribution function again I compute all these I can compute all these different values
+
+207
+00:18:54,240 --> 00:19:00,280
+ which gives you some information of what is the texture that I have and these values will
+
+208
+00:19:00,280 --> 00:19:03,280
+ be texture dependent.
+
+209
+00:19:03,280 --> 00:19:10,680
+ So you find that we have computed descriptors based on the boundary and we have computed
+
+210
+00:19:10,680 --> 00:19:15,440
+ descriptors based on the intensity profile we have computed descriptors based on the
+
+211
+00:19:15,440 --> 00:19:20,800
+ color profile we have computed descriptors based on the texture.
+
+212
+00:19:20,800 --> 00:19:26,160
+ All these different quantities that we have computed if we concatenate them one after
+
+213
+00:19:26,160 --> 00:19:31,600
+ another then what we get is a feature vector and these feature vectors are likely to be
+
+214
+00:19:31,600 --> 00:19:36,040
+ different for different objects because different objects will have different shapes they will
+
+215
+00:19:36,040 --> 00:19:39,320
+ have different colors they will have different intensity profile they will have different
+
+216
+00:19:39,320 --> 00:19:41,560
+ color profile.
+
+217
+00:19:41,560 --> 00:19:45,160
+ So once I have these vectors as I said that in my feature space if I have this hundreds
+
+218
+00:19:45,160 --> 00:19:51,520
+ such vectors hundreds such components feature components then I define a feature space of
+
+219
+00:19:51,520 --> 00:19:57,240
+ dimension 100 and each of these vectors becomes a single point in that hundred dimensional
+
+220
+00:19:57,240 --> 00:19:58,600
+ feature space.
+
+221
+00:19:58,600 --> 00:20:03,680
+ So given two such vectors if the distance between these two vectors these two points
+
+222
+00:20:03,680 --> 00:20:09,680
+ is small I can put them in the same category if it is high then they will be in different
+
+223
+00:20:09,680 --> 00:20:13,520
+ categories that is basically how your machine learning works.
+
+224
+00:20:13,520 --> 00:20:18,360
+ These are other types of regional descriptors that we can compute one is based on weblet
+
+225
+00:20:18,360 --> 00:20:25,040
+ transformation I can compute the descriptor based on another very very popular filter
+
+226
+00:20:25,040 --> 00:20:34,160
+ which is called Gabor filter now I spent some time over here because you find that these
+
+227
+00:20:34,160 --> 00:20:44,300
+ are two templates which are shown over here as two small images just below the bigger
+
+228
+00:20:44,300 --> 00:20:47,440
+ image that we have right.
+
+229
+00:20:47,440 --> 00:20:54,640
+ If I convolve this given image with the template on the left then an output image that I get
+
+230
+00:20:54,640 --> 00:21:02,760
+ which is on the bottom left similarly if I convolve the same given image with the template
+
+231
+00:21:02,760 --> 00:21:07,280
+ on the right that is the smaller image your output will be what you get on the bottom
+
+232
+00:21:07,280 --> 00:21:09,140
+ right.
+
+233
+00:21:09,140 --> 00:21:16,400
+ So you find that information content of the output image on the left and the information
+
+234
+00:21:16,400 --> 00:21:21,320
+ content on the output image on the right they are different and they will also be different
+
+235
+00:21:21,320 --> 00:21:29,480
+ if your input images are different I can compute some property from these output images may
+
+236
+00:21:29,480 --> 00:21:35,160
+ be simply the energy content of these images the energy content is nothing but sum of squares
+
+237
+00:21:35,160 --> 00:21:40,400
+ of all the pixels within these images.
+
+238
+00:21:40,400 --> 00:21:45,400
+ So given different images the energy contents of the outputs will be different not only
+
+239
+00:21:45,400 --> 00:21:52,480
+ that if the templates that I use the templates are different then the energy content of the
+
+240
+00:21:52,480 --> 00:21:57,440
+ corresponding output even if my input image is same that will also be different.
+
+241
+00:21:57,440 --> 00:22:03,800
+ So if I have large number of such templates convolve your input signal or input image
+
+242
+00:22:03,800 --> 00:22:10,340
+ with all those different templates and the output image that you get from different templates
+
+243
+00:22:10,340 --> 00:22:17,880
+ you compute the energy content of the output images put all those energies in a particular
+
+244
+00:22:17,880 --> 00:22:23,560
+ order that also becomes a feature vector right and why I said that I am going to spend more
+
+245
+00:22:23,560 --> 00:22:28,440
+ time on this is I am talking about convolution.
+
+246
+00:22:28,440 --> 00:22:34,040
+ So this convolution operation helps you to find out the feature vectors which are descriptors
+
+247
+00:22:34,040 --> 00:22:42,060
+ of your input signal most of the part of this particular program will be on deep learning
+
+248
+00:22:42,060 --> 00:22:48,840
+ and deep neural network and the basis of the deep neural network is the convolution operation
+
+249
+00:22:48,840 --> 00:22:53,920
+ the basic neural network which is used is the convolution neural network.
+
+250
+00:22:53,920 --> 00:23:00,280
+ So this is the convolution operation and in those cases the convolution kernel which in
+
+251
+00:23:00,280 --> 00:23:05,320
+ this particular case I am saying these are Gabor kernels and for Gabor kernels like the
+
+252
+00:23:05,320 --> 00:23:11,400
+ mathematical expression is also given G is equal to exponential of minus half x prime
+
+253
+00:23:11,400 --> 00:23:17,520
+ square by sigma x square plus y prime square by sigma y square cosine omega x prime this
+
+254
+00:23:17,520 --> 00:23:20,640
+ is a fixed form of a Gabor filter.
+
+255
+00:23:20,640 --> 00:23:27,960
+ Now for different signals I may need different types of such kernels which will give you
+
+256
+00:23:27,960 --> 00:23:30,720
+ the appropriate type of information.
+
+257
+00:23:30,720 --> 00:23:35,760
+ So in case of convolutional neural network which is the basis of deep learning these
+
+258
+00:23:35,760 --> 00:23:41,120
+ convolution kernels are actually learnt they are not fixed.
+
+259
+00:23:41,120 --> 00:23:45,800
+ So the parameters of the convolution kernel will be learnt using the learning mechanism
+
+260
+00:23:45,800 --> 00:23:52,160
+ which is the back propagation learning or gradient descent procedure I will touch upon
+
+261
+00:23:52,160 --> 00:23:54,480
+ that briefly.
+
+262
+00:23:54,480 --> 00:23:59,680
+ So this is what I said that given any input signal I represent those signals by feature
+
+263
+00:23:59,680 --> 00:24:05,320
+ vectors and the feature vectors are nothing but different points in the feature space.
+
+264
+00:24:05,320 --> 00:24:10,720
+ Let me assume that I am finding out say two dimensional feature vectors that means I just
+
+265
+00:24:10,720 --> 00:24:17,880
+ compute two different features whatever it is I mean just for the ease of putting them
+
+266
+00:24:17,880 --> 00:24:20,840
+ in a two dimensional plane.
+
+267
+00:24:20,840 --> 00:24:25,760
+ So if I have a bird for the bird maybe I will get a 2D feature vector the features are x
+
+268
+00:24:25,760 --> 00:24:29,640
+ 1 and x 2 that will be placed somewhere over here.
+
+269
+00:24:29,640 --> 00:24:34,360
+ You take another bird because the two birds are not identical so it is quite natural that
+
+270
+00:24:34,360 --> 00:24:38,480
+ the feature vectors will not be identical but they will be very similar.
+
+271
+00:24:38,480 --> 00:24:44,080
+ So the feature vector of the second bird will be somewhere near the previous feature vector
+
+272
+00:24:44,080 --> 00:24:46,240
+ that we had.
+
+273
+00:24:46,240 --> 00:24:52,400
+ The third bird will also be somewhere over here but if I have a car the same 2D feature
+
+274
+00:24:52,400 --> 00:24:57,800
+ vector for the car is likely to be very different from the feature vectors of birds.
+
+275
+00:24:57,800 --> 00:25:02,080
+ So they will be put a bit away from the previous set of feature vectors.
+
+276
+00:25:02,080 --> 00:25:07,000
+ Similarly another car which will be near to car if I have a dog the feature vector will
+
+277
+00:25:07,000 --> 00:25:09,320
+ be placed somewhere over here.
+
+278
+00:25:09,320 --> 00:25:19,480
+ So if I continue you find that feature vectors for different classes of objects they form
+
+279
+00:25:19,480 --> 00:25:21,940
+ clusters for the same class.
+
+280
+00:25:21,940 --> 00:25:26,480
+ So here I have feature vectors corresponding to the birds here I have feature vectors corresponding
+
+281
+00:25:26,480 --> 00:25:31,720
+ to cars that is again a cluster here they are feature vectors corresponding to dogs
+
+282
+00:25:31,720 --> 00:25:34,480
+ it also again forms a cluster.
+
+283
+00:25:34,480 --> 00:25:41,280
+ So effectively what I have is a distribution of the feature vectors and this distribution
+
+284
+00:25:41,280 --> 00:25:45,640
+ is object dependent or category dependent.
+
+285
+00:25:45,640 --> 00:25:53,480
+ So in terms of artificial intelligence we call them class conditional probability density.
+
+286
+00:25:53,480 --> 00:26:00,480
+ Now once I have these different clusters my recognition task becomes very simple what
+
+287
+00:26:00,480 --> 00:26:06,360
+ I can find out is what are the boundaries among these clusters.
+
+288
+00:26:06,360 --> 00:26:13,800
+ So given these 3 different clusters I can have 2 boundaries as shown over here hopefully
+
+289
+00:26:13,800 --> 00:26:19,120
+ I mean if you are fortunate enough these boundaries will be linear but the boundaries are not
+
+290
+00:26:19,120 --> 00:26:24,640
+ linear always that depends upon I mean whether it will be a linear boundary or non-linear
+
+291
+00:26:24,640 --> 00:26:29,280
+ boundary that depends upon the nature of the probability distribution function that you
+
+292
+00:26:29,280 --> 00:26:30,280
+ have.
+
+293
+00:26:30,280 --> 00:26:36,280
+ So once I have these 2 boundaries you find that these 2 boundaries divide the feature
+
+294
+00:26:36,280 --> 00:26:39,200
+ space into 3 different sub regions.
+
+295
+00:26:39,200 --> 00:26:45,520
+ One of the sub region is A, one of the sub region is B another sub region is C. So this
+
+296
+00:26:45,520 --> 00:26:50,920
+ is what is learning what you have learned is based on the feature vectors which are known
+
+297
+00:26:50,920 --> 00:26:57,920
+ and their class I can find out class conditional probability density function this is for the
+
+298
+00:26:57,920 --> 00:27:00,760
+ known classes for the known samples.
+
+299
+00:27:00,760 --> 00:27:07,760
+ Once I have this class conditional probability density function then I find out the boundaries
+
+300
+00:27:07,760 --> 00:27:10,240
+ between pairs of classes.
+
+301
+00:27:10,240 --> 00:27:15,680
+ Once I have these boundaries basically using these boundaries you are dividing the feature
+
+302
+00:27:15,680 --> 00:27:19,720
+ space into a number of sub regions.
+
+303
+00:27:19,720 --> 00:27:26,080
+ Now if an unknown feature vector is given to you I just find out whether that unknown
+
+304
+00:27:26,080 --> 00:27:32,420
+ feature vector belongs to class A region A or unknown feature vector falls in region
+
+305
+00:27:32,420 --> 00:27:39,960
+ B or it falls in region C. So if the unknown feature vector falls in region B my immediate
+
+306
+00:27:39,960 --> 00:27:46,880
+ interpretation will be that particular object or that particular signal or image is the
+
+307
+00:27:46,880 --> 00:27:49,200
+ image of a car.
+
+308
+00:27:49,200 --> 00:27:54,560
+ If the unknown feature vector falls in region A my immediate interpretation is that particular
+
+309
+00:27:54,560 --> 00:27:57,520
+ image is the image of a bird.
+
+310
+00:27:57,520 --> 00:28:00,660
+ So this is how your classification works.
+
+311
+00:28:00,660 --> 00:28:04,480
+ So firstly we have to get the feature vectors get large number of feature vectors of known
+
+312
+00:28:04,480 --> 00:28:09,400
+ classes using those large number of feature vectors we are training the classifiers and
+
+313
+00:28:09,400 --> 00:28:14,720
+ when we train the classifiers basically we find out the different sub regions within
+
+314
+00:28:14,720 --> 00:28:17,580
+ the feature space.
+
+315
+00:28:17,580 --> 00:28:24,920
+ So this is what I mean graphically if I want to put those class conditional feature vectors
+
+316
+00:28:24,920 --> 00:28:29,080
+ class conditional probability density functions this is how it will look like we call it p
+
+317
+00:28:29,080 --> 00:28:36,320
+ of x given omega i where x is the feature vector and omega i is the ith class this may
+
+318
+00:28:36,320 --> 00:28:42,320
+ be class of birds it may be class of cars and so on.
+
+319
+00:28:42,320 --> 00:28:47,840
+ But the simple base classification rule is so there what I had is p of x given omega i
+
+320
+00:28:47,840 --> 00:28:52,700
+ along with that we have another probability which is p of omega i that is what is the
+
+321
+00:28:52,700 --> 00:28:59,400
+ probability that given in a particular environment or in a particular problem domain what is
+
+322
+00:28:59,400 --> 00:29:08,840
+ the likelihood of the occurrence of a particular class that is what is p omega i.
+
+323
+00:29:08,840 --> 00:29:16,560
+ What I am saying this is suppose your environment is a forest in the forest it is quite likely
+
+324
+00:29:16,560 --> 00:29:22,320
+ that you will have wild animals and it is unlikely that you will have a car but even
+
+325
+00:29:22,320 --> 00:29:33,640
+ having a car is not impossible because we have enthusiastic tourists who may enter the
+
+326
+00:29:33,640 --> 00:29:40,240
+ jungle with a car right but the probability of finding a car is much less than probability
+
+327
+00:29:40,240 --> 00:29:42,720
+ of finding a wild animal.
+
+328
+00:29:42,720 --> 00:29:50,480
+ So if my classes are say omega 1 which is class of wild animal and omega 2 which is the class
+
+329
+00:29:50,480 --> 00:29:57,880
+ of car then p of omega 1 that is apriori probability of a wild animal will be much more than the
+
+330
+00:29:57,880 --> 00:30:05,320
+ apriori probability of a car so that is what this p of omega i means what is the apriori
+
+331
+00:30:05,320 --> 00:30:06,320
+ probability.
+
+332
+00:30:06,320 --> 00:30:11,240
+ X is the unknown feature vector so I want to find out given an unknown feature vector
+
+333
+00:30:11,240 --> 00:30:17,080
+ to which classes belong so I have to compute what is p of omega i given x and the base
+
+334
+00:30:17,080 --> 00:30:22,160
+ dual this is basic probability theory that gives this.
+
+335
+00:30:22,160 --> 00:30:27,720
+ So if I have now c number of classes for every such class I find out what is the p of omega
+
+336
+00:30:27,720 --> 00:30:35,100
+ i given x for i varying from 1 to c and for whichever class for whichever value of i this
+
+337
+00:30:35,100 --> 00:30:45,020
+ p of omega i j given x is maximum I classify my input vector x to that corresponding class.
+
+338
+00:30:45,020 --> 00:30:51,160
+ So classification rule is very simple this if p of omega i given x is greater than p
+
+339
+00:30:51,160 --> 00:30:58,440
+ of omega j given x for all j not equal to i then our decision is in favor of class omega
+
+340
+00:30:58,440 --> 00:31:04,960
+ i that is what our base classification rule is further adjust mathematical details and
+
+341
+00:31:04,960 --> 00:31:08,400
+ skipping it for the time being for the sake of time.
+
+342
+00:31:08,400 --> 00:31:14,000
+ So as I said that we have different types of classifiers just now what I said is a base
+
+343
+00:31:14,000 --> 00:31:19,760
+ classifier we can also have support vector machine so what this support vector machine
+
+344
+00:31:19,760 --> 00:31:31,940
+ does in our earlier diagram over here when we have shown this class boundaries.
+
+345
+00:31:31,940 --> 00:31:36,360
+ So I have a boundary between every pair of classes what should be the position of this
+
+346
+00:31:36,360 --> 00:31:44,120
+ boundary the support vector machine because depending upon the position of the boundary
+
+347
+00:31:44,120 --> 00:31:50,240
+ the error in your classification will depend if the position of the boundary is not at
+
+348
+00:31:50,240 --> 00:31:54,380
+ appropriate place then error in classification will be more.
+
+349
+00:31:54,380 --> 00:32:01,600
+ So support vector machine is a tool which tries to find out the best possible position
+
+350
+00:32:01,600 --> 00:32:09,840
+ of these interclass boundaries so that the error in your classification is minimized.
+
+351
+00:32:09,840 --> 00:32:15,880
+ Similarly we can also have a type of classifier which is called linear machine we have neural
+
+352
+00:32:15,880 --> 00:32:18,120
+ network we have deep neural network.
+
+353
+00:32:18,120 --> 00:32:23,040
+ So as I said that most of your subsequent lectures will be on neural network and deep
+
+354
+00:32:23,040 --> 00:32:27,760
+ neural network so you will have details of this neural network and deep neural network
+
+355
+00:32:27,760 --> 00:32:28,760
+ lectures.
+
+356
+00:32:28,760 --> 00:32:36,000
+ I will just brief give a brief on what is neural network and what is deep neural network.
+
+357
+00:32:36,000 --> 00:32:43,400
+ The neural network is actually motivated by our concept of our brain works though now
+
+358
+00:32:43,400 --> 00:32:50,800
+ people have started realizing that what we believed when this neural network was introduced
+
+359
+00:32:50,800 --> 00:32:57,760
+ our belief on how our human brain works it is not may not be similar.
+
+360
+00:32:57,760 --> 00:33:05,120
+ But anyway so a neural network consists of a number of basic elements which are neurons.
+
+361
+00:33:05,120 --> 00:33:12,720
+ To the neurons the neuron gets input as the feature vector a feature vector as the input
+
+362
+00:33:12,720 --> 00:33:16,000
+ makes linear combinations of different components of the feature vector.
+
+363
+00:33:16,000 --> 00:33:19,320
+ So for that I have an white vector.
+
+364
+00:33:19,320 --> 00:33:24,680
+ So it computes the dot product between your feature vector and the weight vector that
+
+365
+00:33:24,680 --> 00:33:33,960
+ is W transpose X and then performs a non-linear function F over this W transpose X to give
+
+366
+00:33:33,960 --> 00:33:36,840
+ you the output of a neuron.
+
+367
+00:33:36,840 --> 00:33:45,280
+ These neurons can be used to compute various types of functions and combinations of neurons
+
+368
+00:33:45,280 --> 00:33:50,120
+ or a network of neurons can be used as classifiers.
+
+369
+00:33:50,120 --> 00:33:56,160
+ So the non-linear function one of the non-linear function that is that can be used is a threshold
+
+370
+00:33:56,160 --> 00:34:02,560
+ function which is given over here that F of X if X is greater than or equal to 0 the output
+
+371
+00:34:02,560 --> 00:34:06,440
+ will be 1 if X is less than 0 the output will be 0.
+
+372
+00:34:06,440 --> 00:34:11,320
+ This is one type of non-linear that can non-linearity that can be used as an activation function
+
+373
+00:34:11,320 --> 00:34:12,360
+ of a neuron.
+
+374
+00:34:12,360 --> 00:34:17,920
+ Similarly the other kind of non-linearity is a sigmoidal function which is given by this.
+
+375
+00:34:17,920 --> 00:34:23,840
+ So you find that the difference between the threshold function and that the logistic regression
+
+376
+00:34:23,840 --> 00:34:28,640
+ of sigmoidal function is that the threshold function change was abrupt.
+
+377
+00:34:28,640 --> 00:34:35,480
+ But in case of the sigmoidal function the change from 0 to 1 that is continuous it is
+
+378
+00:34:35,480 --> 00:34:37,160
+ not abrupt.
+
+379
+00:34:37,160 --> 00:34:44,600
+ So as a result the threshold function is not differentiable whereas the sigmoidal function
+
+380
+00:34:44,600 --> 00:34:50,280
+ is differentiable and you will do it later in subsequent lectures when details of neural
+
+381
+00:34:50,280 --> 00:34:56,400
+ network will be told that this continuous function output function non-linear function
+
+382
+00:34:56,400 --> 00:35:03,800
+ is very very important because the way the neural networks are trained that uses the concept
+
+383
+00:35:03,800 --> 00:35:05,440
+ of differential calculus.
+
+384
+00:35:05,440 --> 00:35:10,460
+ So differentiability of these non-linear functions are very very important.
+
+385
+00:35:10,460 --> 00:35:17,240
+ So for neural network the non-linearity which is used is one of the non-linearity is this
+
+386
+00:35:17,240 --> 00:35:21,160
+ sigmoidal function there are other kind of non-linearity also that will be told in your
+
+387
+00:35:21,160 --> 00:35:22,160
+ subsequent lectures.
+
+388
+00:35:22,160 --> 00:35:27,440
+ So for example this Rayleigh or rectified linear unit is one of the non-linear functions
+
+389
+00:35:27,440 --> 00:35:32,240
+ which is used widely used in deep neural network there are reasons for it instead of using
+
+390
+00:35:32,240 --> 00:35:36,880
+ sigmoidal function they use Rayleigh non-linear.
+
+391
+00:35:36,880 --> 00:35:48,400
+ So a neural network is basically an combination or an interconnect of different neurons.
+
+392
+00:35:48,400 --> 00:35:53,680
+ So given this interconnect of different neurons these neurons are arranged in a number of
+
+393
+00:35:53,680 --> 00:35:57,800
+ layers and every layer we have a number of neurons.
+
+394
+00:35:57,800 --> 00:36:09,120
+ So effectively you have a typical neural network will appear something like this where you
+
+395
+00:36:09,120 --> 00:36:15,880
+ have different layers of neurons and in every layer you have different numbers of neurons.
+
+396
+00:36:15,880 --> 00:36:23,160
+ So let us see that just to give an introduction that how these what these neurons can do.
+
+397
+00:36:23,160 --> 00:36:32,880
+ So first of all I will take a single neuron and if I take a logical function say and function
+
+398
+00:36:32,880 --> 00:36:41,600
+ and all of you know that and function works like this that ending of two input components
+
+399
+00:36:41,600 --> 00:36:47,840
+ binary components if both the inputs are X 1 and X 2 and my output is Y then if both
+
+400
+00:36:47,840 --> 00:36:53,200
+ the inputs are 0 output is 0 if any of the input is 0 output is also 0 if both the inputs
+
+401
+00:36:53,200 --> 00:36:55,840
+ are 1 output is 1.
+
+402
+00:36:55,840 --> 00:37:02,960
+ So I can consider this function as a classification function as a classification job and function
+
+403
+00:37:02,960 --> 00:37:09,040
+ as a classification job that if both the input components of the feature vector 1 I will
+
+404
+00:37:09,040 --> 00:37:13,840
+ put that input into one class correspondingly the output will be 1 if any of the inputs
+
+405
+00:37:13,840 --> 00:37:20,440
+ or both of the inputs are 0s then output is 0 and I put it in another class.
+
+406
+00:37:20,440 --> 00:37:31,320
+ So you find that for 0 0 or 0 1 or 1 0 these are the outputs and for 1 1 the output is
+
+407
+00:37:31,320 --> 00:37:34,600
+ this ok.
+
+408
+00:37:34,600 --> 00:37:38,760
+ So these are two different classes one is represented by 0 the other one is represented
+
+409
+00:37:38,760 --> 00:37:40,360
+ by 1.
+
+410
+00:37:40,360 --> 00:37:47,560
+ Now my boundary can be a straight line whose equation is X 1 plus X 2 minus 1.5 is equal
+
+411
+00:37:47,560 --> 00:37:54,880
+ to 0 there can be a large number of boundary equations which will satisfy which will work
+
+412
+00:37:54,880 --> 00:37:56,840
+ for this classification problem.
+
+413
+00:37:56,840 --> 00:38:02,160
+ But I just take one of them that is X 1 plus X 2 minus 1.5 equal to 0.
+
+414
+00:38:02,160 --> 00:38:08,360
+ So here if I put any of X 1 or X 2 or both of them to be 0 you find that your output
+
+415
+00:38:08,360 --> 00:38:14,320
+ will be negative put the threshold function output will be 0 only when both are 1s then
+
+416
+00:38:14,320 --> 00:38:18,600
+ output is 0.5 which is greater than 0 so put the threshold output will be 1.
+
+417
+00:38:18,600 --> 00:38:22,720
+ So your classification task is satisfied.
+
+418
+00:38:22,720 --> 00:38:28,000
+ How can I use a neural network for doing this task?
+
+419
+00:38:28,000 --> 00:38:35,800
+ My neuron is this this one is bias I have 2 inputs X 1 X 2 and I have a bias term 1.
+
+420
+00:38:35,800 --> 00:38:46,640
+ So my input vector becomes 1 X 1 X 2 weights I put as minus 1.5 1 1 so your linear combination
+
+421
+00:38:46,640 --> 00:38:51,200
+ of the inputs is obviously becomes X 1 plus X 2 minus 1.5.
+
+422
+00:38:51,200 --> 00:38:58,200
+ Now we put the threshold so if this linear combination is greater than 0 it will be 0.5
+
+423
+00:38:58,200 --> 00:39:03,280
+ if both X 1 and X 2 are 1 then output will be 1 if any of the inputs is 0 or both of
+
+424
+00:39:03,280 --> 00:39:08,500
+ them is 0 then output will be 0 so my classification is satisfied.
+
+425
+00:39:08,500 --> 00:39:18,660
+ Similarly you can also verify I am just keeping some slides for the sake of time if the feature
+
+426
+00:39:18,660 --> 00:39:26,080
+ vectors again I use 1 X 1 X 2 as my input vector now I change the weight vector like
+
+427
+00:39:26,080 --> 00:39:32,840
+ earlier it was minus 1.5 now I make it minus 0.5 the other 2 are 1 1 remains as it is so
+
+428
+00:39:32,840 --> 00:39:40,440
+ here you find that only when both X 1 X 2 are 0 output will be 0 if any of X 1 X 2 or
+
+429
+00:39:40,440 --> 00:39:45,160
+ both of them are 1s output will be 1 after the nonlinear function.
+
+430
+00:39:45,160 --> 00:39:48,840
+ So simply this implements an OR function.
+
+431
+00:39:48,840 --> 00:39:55,440
+ So a neural network can implement an OR function single neuron can implement an OR function
+
+432
+00:39:55,440 --> 00:39:57,240
+ and AND function.
+
+433
+00:39:57,240 --> 00:40:03,680
+ Let us come to another function which is XOR function in case of XOR function you find
+
+434
+00:40:03,680 --> 00:40:11,480
+ that I cannot classify or generate design a classifier using a single neuron because
+
+435
+00:40:11,480 --> 00:40:14,840
+ there is not a single boundary there are 2 boundaries.
+
+436
+00:40:14,840 --> 00:40:21,280
+ So I can break this XOR function in this manner you all know this I am not going to into detail
+
+437
+00:40:21,280 --> 00:40:29,400
+ so you find that I have hierarchy of functions OR function, NAND function and AND function.
+
+438
+00:40:29,400 --> 00:40:35,680
+ So this first 2 can be implemented using 2 neurons and in the second level in neuron
+
+439
+00:40:35,680 --> 00:40:37,540
+ I will have final AND function.
+
+440
+00:40:37,540 --> 00:40:44,200
+ So my neural network now consists of 3 neurons which are interconnected like this the first
+
+441
+00:40:44,200 --> 00:40:52,360
+ one computes X 1 plus X 2 X 1 or X 2 the second one is X 1 NANDed with X 2 which is X 1 complement
+
+442
+00:40:52,360 --> 00:40:59,160
+ or X 2 complement and the third one is the ending of these 2 that will be my final XOR
+
+443
+00:40:59,160 --> 00:41:00,160
+ output.
+
+444
+00:41:00,160 --> 00:41:07,520
+ So that is if I have a nonlinear boundary between classes then I cannot use a single neuron
+
+445
+00:41:07,520 --> 00:41:14,940
+ to have the classification but I have to have multiple layers of neurons to represent that
+
+446
+00:41:14,940 --> 00:41:16,440
+ boundary.
+
+447
+00:41:16,440 --> 00:41:20,560
+ So a neural network typically or multi-layer neural network will be typically something
+
+448
+00:41:20,560 --> 00:41:24,760
+ like this each of these are different layers of neurons.
+
+449
+00:41:24,760 --> 00:41:29,440
+ So from every layer you feed the data to the next layer and so on.
+
+450
+00:41:29,440 --> 00:41:37,920
+ So a function that you are computing is embedded function where F k is the function of F k
+
+451
+00:41:37,920 --> 00:41:44,760
+ minus 1 something which is again function of F k minus 2 something and at the first level
+
+452
+00:41:44,760 --> 00:41:48,760
+ or the bottom most level I have F 1 X.
+
+453
+00:41:48,760 --> 00:41:53,960
+ So I have F 2 of F 1 X, F 3 of F 2 of F 1 X and so on.
+
+454
+00:41:53,960 --> 00:41:59,680
+ So these are basically embedding of different functions finally, combinedly that gives you
+
+455
+00:41:59,680 --> 00:42:04,280
+ a nonlinear function and nonlinear function which is very very powerful for performing
+
+456
+00:42:04,280 --> 00:42:07,600
+ the classification tasks.
+
+457
+00:42:07,600 --> 00:42:12,440
+ So this is what I said this is a typically multi-layer neural network and the way you
+
+458
+00:42:12,440 --> 00:42:17,320
+ train this network what I said is back propagation learning how do you train?
+
+459
+00:42:17,320 --> 00:42:21,440
+ As I said that initially for training you give a number of samples for which the classes
+
+460
+00:42:21,440 --> 00:42:22,440
+ are known.
+
+461
+00:42:22,440 --> 00:42:30,840
+ So I know the target output for those samples but given a new sample my actual output I
+
+462
+00:42:30,840 --> 00:42:34,520
+ get is O it is not target output.
+
+463
+00:42:34,520 --> 00:42:38,120
+ So I have an error which is O minus OT.
+
+464
+00:42:38,120 --> 00:42:43,240
+ So back propagation learning the way it tends the network is so you find that I put theta
+
+465
+00:42:43,240 --> 00:42:48,320
+ as the set of parameters where parameters are the interconnection weights.
+
+466
+00:42:48,320 --> 00:42:56,160
+ So your output is a function of interconnection weights depending given your input X.
+
+467
+00:42:56,160 --> 00:43:01,320
+ So the way you try to minimize this error is you try to tune this interconnection weights
+
+468
+00:43:01,320 --> 00:43:08,840
+ W ij in such a manner that your error that is O minus OT is minimized and for doing that
+
+469
+00:43:08,840 --> 00:43:14,540
+ what you do is a gradient descent approach the mathematical expression for that is given
+
+470
+00:43:14,540 --> 00:43:15,540
+ at the bottom.
+
+471
+00:43:15,540 --> 00:43:21,640
+ So if you take the derivative I said that differential calculus is very very important
+
+472
+00:43:21,640 --> 00:43:25,680
+ for training of the neural network and this is where you use the differentiation.
+
+473
+00:43:25,680 --> 00:43:31,640
+ So you take the derivative of error with respect to the set of parameters and based on the
+
+474
+00:43:31,640 --> 00:43:39,640
+ gradient of this based on this derivative you try to update the parameters theta until
+
+475
+00:43:39,640 --> 00:43:45,520
+ the error is minimized that is how a neural network is trained.
+
+476
+00:43:45,520 --> 00:43:51,040
+ Now all this that I said are handcrafted features right we said that we will have intensity profile
+
+477
+00:43:51,040 --> 00:43:57,920
+ we will have this color profile and all that we will have boundary descriptors these are
+
+478
+00:43:57,920 --> 00:44:01,640
+ called handcrafted features because we the users tell that what kind of features that
+
+479
+00:44:01,640 --> 00:44:03,640
+ we are looking for.
+
+480
+00:44:03,640 --> 00:44:08,240
+ Now let us take an example that how do you recognize the Taj Mahal.
+
+481
+00:44:08,240 --> 00:44:11,800
+ So all of you know that it is a Taj Mahal.
+
+482
+00:44:11,800 --> 00:44:20,400
+ But if I say that you are wrong will you agree I show you the next slide this is the one
+
+483
+00:44:20,400 --> 00:44:25,200
+ that I have shown you before and this is the one which is actually Taj Mahal.
+
+484
+00:44:25,200 --> 00:44:30,160
+ So you find that these two monuments are very very similar.
+
+485
+00:44:30,160 --> 00:44:36,640
+ So based on the handcrafted features that we have talked about earlier using those possibly
+
+486
+00:44:36,640 --> 00:44:40,680
+ we cannot differentiate between these two monuments.
+
+487
+00:44:40,680 --> 00:44:44,200
+ So that is where the handcrafted features fell.
+
+488
+00:44:44,200 --> 00:44:47,360
+ So here what we need is the machine crafted features.
+
+489
+00:44:47,360 --> 00:44:54,480
+ So instead of telling what kind of feature we want you leave this job to the machine
+
+490
+00:44:54,480 --> 00:45:00,960
+ to decide that what kind of features the machine wants or machine will use or extract to differentiate
+
+491
+00:45:00,960 --> 00:45:06,720
+ between these two kind of the different types of objects.
+
+492
+00:45:06,720 --> 00:45:17,960
+ So for that you can have another kind of neural network which is called this is a network
+
+493
+00:45:17,960 --> 00:45:25,240
+ which is a three layer network where the number of input nodes and the number of output nodes
+
+494
+00:45:25,240 --> 00:45:30,480
+ they are same and in between what I have is a bottle neck layer.
+
+495
+00:45:30,480 --> 00:45:34,720
+ This is a kind of network which is called an autoencoder.
+
+496
+00:45:34,720 --> 00:45:40,160
+ What I want is whatever signal you give to the input I want the same signal to be reconstructed
+
+497
+00:45:40,160 --> 00:45:42,440
+ at the output.
+
+498
+00:45:42,440 --> 00:45:47,360
+ So I compute what is the error between the given signal X and the reconstructed signal
+
+499
+00:45:47,360 --> 00:45:48,640
+ X hat.
+
+500
+00:45:48,640 --> 00:45:54,500
+ While the information flows from the input to output it passes through this bottle neck
+
+501
+00:45:54,500 --> 00:46:01,160
+ layer where the number of neurons is much less than the number of neurons in the signal
+
+502
+00:46:01,160 --> 00:46:06,480
+ and your output side which is the decoder side is able to reconstruct the signal using
+
+503
+00:46:06,480 --> 00:46:09,800
+ whatever is available whatever is fed from the middle layer.
+
+504
+00:46:09,800 --> 00:46:15,880
+ That means in the middle layer you are capturing some description of the input signal but at
+
+505
+00:46:15,880 --> 00:46:22,400
+ a much lower dimension which is sufficient for the decoder or the output layer to reconstruct
+
+506
+00:46:22,400 --> 00:46:24,200
+ the same signal.
+
+507
+00:46:24,200 --> 00:46:30,480
+ So after this network is properly trained what I get at the middle layer is a descriptor
+
+508
+00:46:30,480 --> 00:46:37,560
+ a low dimensional descriptor or feature vector of the input signal.
+
+509
+00:46:37,560 --> 00:46:42,680
+ So once this network is properly trained this autoencoder is properly trained I can remove
+
+510
+00:46:42,680 --> 00:46:49,420
+ the output layer because I do not want reconstruction I want the descriptor of the feature vector
+
+511
+00:46:49,420 --> 00:46:56,480
+ which is available from the middle layer and these descriptors can now be given for used
+
+512
+00:46:56,480 --> 00:46:58,560
+ for the classification purpose.
+
+513
+00:46:58,560 --> 00:47:05,580
+ So this is my autoencoder model if you analyze these are the different types of features
+
+514
+00:47:05,580 --> 00:47:12,280
+ which this autoencoder actually encodes I am not going to that details and as I said
+
+515
+00:47:12,280 --> 00:47:18,480
+ that after training you remove this decoder layer or the output layer that is what is
+
+516
+00:47:18,480 --> 00:47:23,320
+ that is not required I need output from the bottle neck layer as the feature vectors and
+
+517
+00:47:23,320 --> 00:47:30,440
+ use these feature vectors for training the classifier and for subsequently classifying
+
+518
+00:47:30,440 --> 00:47:34,800
+ the different objects.
+
+519
+00:47:34,800 --> 00:47:41,400
+ So the traditional machine learning where we had handcrafted features that can be avoided
+
+520
+00:47:41,400 --> 00:47:46,040
+ and use this machine crafted features that the machine itself uses.
+
+521
+00:47:46,040 --> 00:47:49,960
+ Now I will come to this convolution neural network as I said that convolution is a very
+
+522
+00:47:49,960 --> 00:47:54,700
+ very important step in modern machine learning or deep learning techniques.
+
+523
+00:47:54,700 --> 00:48:02,160
+ So here I give just two different templates I am not going into what these templates are
+
+524
+00:48:02,160 --> 00:48:03,920
+ that will be clear.
+
+525
+00:48:03,920 --> 00:48:11,000
+ So if you convolve say on the left I have an input image convolve these images with
+
+526
+00:48:11,000 --> 00:48:23,320
+ just these first kernel you will get image on the middle convolve the same image with
+
+527
+00:48:23,320 --> 00:48:28,040
+ the right kernel you will get image on the right.
+
+528
+00:48:28,040 --> 00:48:33,520
+ So if you just analyze these two images what is there on the middle and what is there on
+
+529
+00:48:33,520 --> 00:48:39,440
+ the right you find that the in the middle image you have extracted horizontal edges on
+
+530
+00:48:39,440 --> 00:48:42,680
+ the right image you have extracted vertical edges.
+
+531
+00:48:42,680 --> 00:48:49,060
+ If I superimpose these two I will get all the edges of the given image and these edges
+
+532
+00:48:49,060 --> 00:48:54,080
+ will definitely be different for different types of images two different images will
+
+533
+00:48:54,080 --> 00:48:56,920
+ not have same set of images.
+
+534
+00:48:56,920 --> 00:49:03,160
+ So this convolution helps you to find out the descriptors or features of a given image
+
+535
+00:49:03,160 --> 00:49:07,200
+ and that is the basis of your convolution neural network.
+
+536
+00:49:07,200 --> 00:49:13,620
+ So here when I said that these are my kernels I have two 3 by 3 kernels.
+
+537
+00:49:13,620 --> 00:49:19,480
+ So instead of specifying this kernels as minus 1, minus 2, minus 1, 0, 0, 0, 1, 2, 1 and
+
+538
+00:49:19,480 --> 00:49:25,240
+ all that I put this kernels as variables this kernel elements are variables say A, B, C,
+
+539
+00:49:25,240 --> 00:49:27,800
+ D, E, F, G, H and all that.
+
+540
+00:49:27,800 --> 00:49:34,880
+ And while training the neural network or deep neural network I want to tune the values of
+
+541
+00:49:34,880 --> 00:49:38,040
+ these kernel coefficients.
+
+542
+00:49:38,040 --> 00:49:43,880
+ So my entire training will be something like this I will again I mean short is of time
+
+543
+00:49:43,880 --> 00:49:50,360
+ so this is how the convolution actually works yeah I will come to this.
+
+544
+00:49:50,360 --> 00:49:59,240
+ So you have input image I have the final classifier output the rightmost block.
+
+545
+00:49:59,240 --> 00:50:03,840
+ These are the convolution layers in the convolution layers you have a number of kernels it need
+
+546
+00:50:03,840 --> 00:50:08,760
+ not be one kernel only I can have a multiple number of kernels and depending upon the number
+
+547
+00:50:08,760 --> 00:50:13,820
+ of kernels that you have you have the dimensions in the future vectors.
+
+548
+00:50:13,820 --> 00:50:18,080
+ If the number of kernels is 5 you compute 5 dimensional feature vector if the number
+
+549
+00:50:18,080 --> 00:50:24,560
+ of kernels is say 100 you compute 100 dimensional feature vector every convolution kernel gives
+
+550
+00:50:24,560 --> 00:50:26,960
+ you one feature.
+
+551
+00:50:26,960 --> 00:50:33,040
+ Initially these kernels are not fixed the kernels have different kernel coefficients
+
+552
+00:50:33,040 --> 00:50:41,280
+ which are variables and by back propagation learning you set what the proper kernel coefficients
+
+553
+00:50:41,280 --> 00:50:43,280
+ will be.
+
+554
+00:50:43,280 --> 00:50:47,960
+ So in a typical CNN architecture or a deep neural network architecture this is the architecture
+
+555
+00:50:47,960 --> 00:50:53,440
+ we have you have a convolution layer then there is nonlinearity as we said then we have
+
+556
+00:50:53,440 --> 00:50:57,600
+ a pooling layer pooling layer reduces the dimensionality of the feature maps that you
+
+557
+00:50:57,600 --> 00:50:58,600
+ have.
+
+558
+00:50:58,600 --> 00:51:08,400
+ So this is a stack of computation units or one unit within a CNN architecture or deep
+
+559
+00:51:08,400 --> 00:51:10,360
+ neural network architecture.
+
+560
+00:51:10,360 --> 00:51:17,920
+ You have repetitions or stacks of these units and depending upon what is the size of the
+
+561
+00:51:17,920 --> 00:51:25,560
+ stack whether I will have 5 such units, 10 such units, 100 such units that is what defines
+
+562
+00:51:25,560 --> 00:51:31,200
+ tells you what is the depth of the network and when you say deep neural network the term
+
+563
+00:51:31,200 --> 00:51:39,000
+ deep actually means depth that is how many layers of these units convolution layer nonlinearity
+
+564
+00:51:39,000 --> 00:51:42,240
+ layer and pooling layer we have.
+
+565
+00:51:42,240 --> 00:51:48,880
+ And you find that before classifier before this class I have a fully connected layer
+
+566
+00:51:48,880 --> 00:51:52,800
+ this fully connected layer is nothing but the multi layer neural network that we talked
+
+567
+00:51:52,800 --> 00:51:54,200
+ earlier.
+
+568
+00:51:54,200 --> 00:51:59,480
+ So before this fully connected layer the purpose of using convolution nonlinearity and pooling
+
+569
+00:51:59,480 --> 00:52:05,360
+ is that you extract the feature vectors or features from the given image and once this
+
+570
+00:52:05,360 --> 00:52:10,160
+ features are extracted these features are given to the fully connected layer for classification
+
+571
+00:52:10,160 --> 00:52:12,160
+ purpose.
+
+572
+00:52:12,160 --> 00:52:18,240
+ Taining in this case earlier we said that you give the feature vectors and you compute what
+
+573
+00:52:18,240 --> 00:52:23,800
+ is the output find out what is the error between the output and the target output and you minimize
+
+574
+00:52:23,800 --> 00:52:30,520
+ your parameters theta using the back propagation algorithm or gradient descent algorithm such
+
+575
+00:52:30,520 --> 00:52:33,920
+ that you can minimize the error.
+
+576
+00:52:33,920 --> 00:52:42,360
+ Here again say if I give an input image which is the image of a bird at the classifier output
+
+577
+00:52:42,360 --> 00:52:46,840
+ I have a number of nodes one node for every class.
+
+578
+00:52:46,840 --> 00:52:54,920
+ So if I give an input the image of a bird I want that my target output will be that
+
+579
+00:52:54,920 --> 00:52:59,360
+ the output node corresponding to bird will be 1 all other output nodes will be 0 that
+
+580
+00:52:59,360 --> 00:53:04,420
+ is what is my target if I get anything else that is my error.
+
+581
+00:53:04,420 --> 00:53:08,520
+ So I compute what is the error between the target and actual output that you get and
+
+582
+00:53:08,520 --> 00:53:17,600
+ then through back propagation through gradient descent you modify the weight vectors as well
+
+583
+00:53:17,600 --> 00:53:26,360
+ as modify the coefficients within the kernel in such a way that your error at the output
+
+584
+00:53:26,360 --> 00:53:30,000
+ will be minimized and that you do for all the classes.
+
+585
+00:53:30,000 --> 00:53:37,880
+ So finally at the end when your network is trained now you give an input image the network
+
+586
+00:53:37,880 --> 00:53:42,440
+ is likely to give you the corresponding output image.
+
+587
+00:53:42,440 --> 00:53:48,320
+ So this is how your CNN architecture or deep neural network architecture works.
+
+588
+00:53:48,320 --> 00:53:58,200
+ I will just skip all these I will come to one particular topic that is the neural network
+
+589
+00:53:58,200 --> 00:54:05,000
+ of the model that we have told so far we have talked only about understanding what a given
+
+590
+00:54:05,000 --> 00:54:12,240
+ object is or given images whether an input image is a bird or the input image is a dog
+
+591
+00:54:12,240 --> 00:54:17,640
+ it is a car and all that that means we are discriminating among different objects or
+
+592
+00:54:17,640 --> 00:54:19,320
+ different classes.
+
+593
+00:54:19,320 --> 00:54:27,680
+ So this is the model which is called the discriminative model Richard Feynman I hope all of you have
+
+594
+00:54:27,680 --> 00:54:36,800
+ heard his name the great physicist he once said that what I cannot create I do not understand.
+
+595
+00:54:36,800 --> 00:54:44,440
+ So till now what we have said that is that we have understood what the input object is
+
+596
+00:54:44,440 --> 00:54:53,560
+ but that was superficial because until and unless I am able to create the same object
+
+597
+00:54:53,560 --> 00:54:59,860
+ based on what I have understood I did not really understand it.
+
+598
+00:54:59,860 --> 00:55:05,600
+ So that means we have to have another kind of model which is called a generative model.
+
+599
+00:55:05,600 --> 00:55:11,760
+ So for a generative model again you train the model with a large number of the input
+
+600
+00:55:11,760 --> 00:55:19,720
+ data and once the model is trained properly I want that given some brief description of
+
+601
+00:55:19,720 --> 00:55:23,000
+ the object I should be able to generate that object.
+
+602
+00:55:23,000 --> 00:55:26,980
+ So this brief description is nothing but the future vector.
+
+603
+00:55:26,980 --> 00:55:33,320
+ So what I mean by that is suppose I give a description suppose these are the features
+
+604
+00:55:33,320 --> 00:55:38,200
+ how big is the animal how many legs it has so these are different features.
+
+605
+00:55:38,200 --> 00:55:44,160
+ So if I simply say that I have a big animal which has 4 legs it has big ears long trunk
+
+606
+00:55:44,160 --> 00:55:49,880
+ a pair of tasks and all that with the help of this my generative model should be able
+
+607
+00:55:49,880 --> 00:55:53,180
+ to generate what this object is.
+
+608
+00:55:53,180 --> 00:55:59,800
+ I believe you have been able to guess which animal I am talking about it is nothing but
+
+609
+00:55:59,800 --> 00:56:03,240
+ an elephant right.
+
+610
+00:56:03,240 --> 00:56:10,820
+ So we are actually generative models because given this short of description crisp description
+
+611
+00:56:10,820 --> 00:56:17,800
+ I have been able to say that it is nothing but an animal a generative model is expected
+
+612
+00:56:17,800 --> 00:56:20,320
+ to work in similar manner.
+
+613
+00:56:20,320 --> 00:56:25,080
+ Give the feature vector the generative model should be able to give you the image or give
+
+614
+00:56:25,080 --> 00:56:32,480
+ the feature vectors the generative model should be able to generate speech.
+
+615
+00:56:32,480 --> 00:56:44,760
+ Of course there is risk involved in generative models it can lead to many of the problems.
+
+616
+00:56:44,760 --> 00:56:50,800
+ So this is what the feature vectors or the latent vectors that we have because of lack
+
+617
+00:56:50,800 --> 00:56:53,920
+ of time I cannot go further.
+
+618
+00:56:53,920 --> 00:57:02,420
+ So all these that we have talked about today they will be discussed in details in subsequent
+
+619
+00:57:02,420 --> 00:57:03,420
+ lectures.
+
+620
+00:57:03,420 --> 00:57:13,120
+ I believe there are lectures on generative models as well yeah okay thank you.
+
+621
+00:57:13,120 --> 00:57:24,360
+ What is the bias in neuron see bias term is given an input vector say if I talk about
+
+622
+00:57:24,360 --> 00:57:30,840
+ two dimensional vectors okay x1 and x2.
+
+623
+00:57:30,840 --> 00:57:40,520
+ But even in two dimension you find that if I have boundary which is a linear boundary
+
+624
+00:57:40,520 --> 00:57:50,400
+ the equation of the linear boundary will be of the form ax1 plus bx2 plus c equal to 0.
+
+625
+00:57:50,400 --> 00:57:58,400
+ So if I say that a, b and c they are the parameters which define the linear boundary and x1 and
+
+626
+00:57:58,400 --> 00:58:00,080
+ x2 are the features.
+
+627
+00:58:00,080 --> 00:58:07,960
+ I have three parameters and two features I said that I want to have a linear combination
+
+628
+00:58:07,960 --> 00:58:11,480
+ of the input vector with those parameters.
+
+629
+00:58:11,480 --> 00:58:18,640
+ So that I can generate the output right mathematically instead of saying that I have two features
+
+630
+00:58:18,640 --> 00:58:24,800
+ in my two dimensional feature vector if I introduce just one more term that is 1.
+
+631
+00:58:24,800 --> 00:58:44,920
+ So I make my feature vector as 1 I think I can use this.
+
+632
+00:58:44,920 --> 00:58:54,760
+ So I had two features x1, x2 and I had a boundary of this form.
+
+633
+00:58:54,760 --> 00:59:06,560
+ The boundary had a equation ax1 plus bx2 plus c is equal to 0 right.
+
+634
+00:59:06,560 --> 00:59:19,680
+ Here my weight vector w is equal to cab this is my weight vector and my feature vector
+
+635
+00:59:19,680 --> 00:59:25,720
+ is x1, x2.
+
+636
+00:59:25,720 --> 00:59:38,360
+ So instead of x1, x2 if I write it as 1, x1, x2 then you find that I can put this expression
+
+637
+00:59:38,360 --> 00:59:44,280
+ as w transpose x is equal to 0.
+
+638
+00:59:44,280 --> 00:59:51,120
+ So just by appending a third element in my feature vector 1 my mathematical expression
+
+639
+00:59:51,120 --> 01:00:01,800
+ becomes very simple right and I can treat this w as a vector or as a parameter which
+
+640
+01:00:01,800 --> 01:00:04,640
+ can be tuned by back propagation.
+
+641
+01:00:04,640 --> 01:00:10,480
+ So that is how we are introducing a term which is bias term.
+
+642
+01:00:10,480 --> 01:00:20,360
+ So if the same is coming as a neuron in the neuron I will have c, a and b at the output
+
+643
+01:00:20,360 --> 01:00:24,800
+ I will have af of w transpose x.
+
+644
+01:00:24,800 --> 01:00:28,800
+ This is what the bias term does ok.
+
+645
+01:00:28,800 --> 01:00:56,360
+ You can act a white board here also white key curve or here white again.
+
+646
+01:00:56,360 --> 01:01:24,600
+ Where are these Bayes' rules required and applicable?
+
+647
+01:01:24,600 --> 01:01:37,320
+ When I talked about Bayes' rules I said let me write it P of omega i given x is equal
+
+648
+01:01:37,320 --> 01:01:52,200
+ to P of x given omega i into P of omega i upon P of x ok.
+
+649
+01:01:52,200 --> 01:01:58,960
+ Let me just forget about P of x because P of x will come in every such term.
+
+650
+01:01:58,960 --> 01:02:03,280
+ So that can be ignored.
+
+651
+01:02:03,280 --> 01:02:09,780
+ So effectively P of omega i given x becomes P of x given omega i into P of omega i.
+
+652
+01:02:09,780 --> 01:02:14,920
+ As I said P of omega i is the a priori probability of a particular class occurrence of a particular
+
+653
+01:02:14,920 --> 01:02:20,320
+ class how frequently you are going to encounter that particular class.
+
+654
+01:02:20,320 --> 01:02:30,680
+ This is the feature vector for every feature vector and where this is required while training
+
+655
+01:02:30,680 --> 01:02:32,840
+ your classifier.
+
+656
+01:02:32,840 --> 01:02:40,640
+ You take a large number of samples say for example class barred.
+
+657
+01:02:40,640 --> 01:02:43,960
+ I take a large number of images of barred.
+
+658
+01:02:43,960 --> 01:02:46,800
+ I take a large number of images of dog.
+
+659
+01:02:46,800 --> 01:02:51,040
+ Because these are the two classes that I have.
+
+660
+01:02:51,040 --> 01:02:59,240
+ From the samples of barred you compute feature vectors x let me call it x barred.
+
+661
+01:02:59,240 --> 01:03:07,640
+ From the samples of dog you compute the feature vectors let me call it x dog ok.
+
+662
+01:03:07,640 --> 01:03:12,960
+ But from the feature vectors until and unless it is stored from which class the feature
+
+663
+01:03:12,960 --> 01:03:17,440
+ vector has been computed you do not know right given only the feature vectors I do not know
+
+664
+01:03:17,440 --> 01:03:21,840
+ from which class whether the feature vector is from a barred or a dog.
+
+665
+01:03:21,840 --> 01:03:30,720
+ So for training the way the feature vectors are given is it are given as pair x barred.
+
+666
+01:03:30,720 --> 01:03:39,040
+ That is I know that these feature vectors are computed from the samples of barred.
+
+667
+01:03:39,040 --> 01:03:45,080
+ This is used for training similarly for all the feature vectors which are taken from the
+
+668
+01:03:45,080 --> 01:03:51,800
+ class dog these are given in the form x given dog right.
+
+669
+01:03:51,800 --> 01:03:59,320
+ So given this large number of feature vectors x now you compute what is the distribution
+
+670
+01:03:59,320 --> 01:04:01,880
+ of the switcher vectors.
+
+671
+01:04:01,880 --> 01:04:09,360
+ So if I assume that this distribution in most double cases we assume that given large number
+
+672
+01:04:09,360 --> 01:04:15,360
+ of feature vectors usually it follows the Gaussian distribution of the normal distribution.
+
+673
+01:04:15,360 --> 01:04:26,840
+ So for the normal distribution I will have a vector mu and a covariance matrix sigma.
+
+674
+01:04:26,840 --> 01:04:35,400
+ So for all the samples which are taken from class dog I will have a mean mu which is mu
+
+675
+01:04:35,400 --> 01:04:43,360
+ of dog and the covariance matrix sigma which is also computed from the same samples which
+
+676
+01:04:43,360 --> 01:04:46,480
+ are taken from dog.
+
+677
+01:04:46,480 --> 01:04:51,440
+ So this are the parameters of my distribution.
+
+678
+01:04:51,440 --> 01:04:58,960
+ Similarly coming to the barreds I will have mu for barreds I will have the covariance
+
+679
+01:04:58,960 --> 01:05:03,060
+ matrix sigma for barreds.
+
+680
+01:05:03,060 --> 01:05:14,760
+ So when I say this P of x given omega i this P of x given omega i is computed from this
+
+681
+01:05:14,760 --> 01:05:17,920
+ known feature vectors.
+
+682
+01:05:17,920 --> 01:05:30,600
+ So here for barred I will have P of x given omega b which is the class barred and this
+
+683
+01:05:30,600 --> 01:05:40,200
+ will have a distribution say normal distribution having mean mu barred and the covariance matrix
+
+684
+01:05:40,200 --> 01:05:43,200
+ sigma barred.
+
+685
+01:05:43,200 --> 01:05:49,560
+ That is the distribution of the feature vectors corresponding to this.
+
+686
+01:05:49,560 --> 01:05:55,280
+ Similarly for the distribution corresponding to dogs instead of mu b and sigma b it will
+
+687
+01:05:55,280 --> 01:05:56,480
+ be mu d sigma d.
+
+688
+01:05:56,480 --> 01:06:04,160
+ So that is the normal distribution of having parameters mu d and sigma d.
+
+689
+01:06:04,160 --> 01:06:15,880
+ So first when I compute this a posteriori probability I compute P of barred given x
+
+690
+01:06:15,880 --> 01:06:32,040
+ which is equal to P of x given barred into a posteriori probability P of barred.
+
+691
+01:06:32,040 --> 01:06:40,440
+ And this P of x given barred has to be computed from this distribution for this feature vector
+
+692
+01:06:40,440 --> 01:06:41,440
+ x.
+
+693
+01:06:41,440 --> 01:06:47,880
+ Similarly I will compute P of d given x that is dog given x.
+
+694
+01:06:47,880 --> 01:06:55,640
+ So out of these two whichever is more if P of b given x is more than P of d given x then
+
+695
+01:06:55,640 --> 01:07:00,920
+ this unknown feature vector x will be classified to barred or it will be classified to dog
+
+696
+01:07:00,920 --> 01:07:03,840
+ if it is otherwise.
+
+697
+01:07:03,840 --> 01:07:09,320
+ So this a priori probabilities or the class conditional probability density function is
+
+698
+01:07:09,320 --> 01:07:17,860
+ to be computed beforehand using the known samples and this distribution that you compute
+
+699
+01:07:17,860 --> 01:07:28,880
+ using that distribution you have to compute P of x given omega i for unknown x.
+
+700
+01:07:28,880 --> 01:07:45,360
+ Now how to clear this let me write how this probability distribution will look like just
+
+701
+01:07:45,360 --> 01:08:11,720
+ a mathematical expression P of x given let me write say barred it will be 1 upon 2 pi
+
+702
+01:08:11,720 --> 01:08:20,320
+ to the power d by 2 we are talking about barred right.
+
+703
+01:08:20,320 --> 01:08:33,480
+ So my sigma will be sigma barred to the power half and then I will have an exponential term
+
+704
+01:08:33,480 --> 01:09:00,440
+ exponential minus half into x minus mu b transpose sigma b inverse x minus mu b that is the expression
+
+705
+01:09:00,440 --> 01:09:04,400
+ for class conditional probability density.
+
+706
+01:09:04,400 --> 01:09:08,840
+ So this is the class conditional probability density for class barred.
+
+707
+01:09:08,840 --> 01:09:13,400
+ So you find that in the expression I have the covariance matrix corresponding to the
+
+708
+01:09:13,400 --> 01:09:22,360
+ feature vectors of barred and also the mean of the vectors of the class barred.
+
+709
+01:09:22,360 --> 01:09:29,440
+ So this covariance matrix sigma b and mu b these are the two parameters which has to
+
+710
+01:09:29,440 --> 01:09:37,440
+ be computed using the known vectors and after these known vectors from these known vectors
+
+711
+01:09:37,440 --> 01:09:39,360
+ you get these two parameters.
+
+712
+01:09:39,360 --> 01:09:45,880
+ Now I have the analytical expression of the conditional probability density function.
+
+713
+01:09:45,880 --> 01:09:52,560
+ So now for any unknown feature vector x I want to compute P of x given omega i where
+
+714
+01:09:52,560 --> 01:10:02,960
+ now the omega i is barred that unknown x has to be fed here these two are the unknown feature
+
+715
+01:10:02,960 --> 01:10:03,960
+ vectors.
+
+716
+01:10:03,960 --> 01:10:08,200
+ So using those unknown feature vector values here I have to compute what is P of x given
+
+717
+01:10:08,200 --> 01:10:12,680
+ b for the corresponding x ok.
+
+718
+01:10:12,680 --> 01:10:17,760
+ So that is where your class conditional probability density comes into picture this helps in taking
+
+719
+01:10:17,760 --> 01:10:23,400
+ the decision or computation of a posteriori probability value.
+
+720
+01:10:23,400 --> 01:10:31,700
+ And for whichever class the posteriori probability value is maximum we classify that unknown
+
+721
+01:10:31,700 --> 01:10:44,440
+ feature vector x to that corresponding class ok.
+
+722
+01:10:44,440 --> 01:10:51,920
+ What are the different types of learning tasks a i can perform ok.
+
+723
+01:10:51,920 --> 01:11:02,440
+ Given today's chat GPT or even this deep seek I do not think there is any domain where
+
+724
+01:11:02,440 --> 01:11:11,080
+ a i cannot perform the task a i can perform or learn almost everything right.
+
+725
+01:11:11,080 --> 01:11:20,680
+ So when we talk about what a i can learn mostly the kind of thing that I have discussed is
+
+726
+01:11:20,680 --> 01:11:28,840
+ based on images that is the visual signal a i can learn the audio signals ok.
+
+727
+01:11:28,840 --> 01:11:37,160
+ Say for example I can use artificial intelligence I mean something which is easily conceivable
+
+728
+01:11:37,160 --> 01:11:45,640
+ I can use the same a i model for monitoring a power plant how.
+
+729
+01:11:45,640 --> 01:11:52,120
+ Say in case of a power plant there are different machines every machine is a dynamic machine
+
+730
+01:11:52,120 --> 01:12:00,560
+ it is creating vibration ok and that vibration is nothing but a time domain signal.
+
+731
+01:12:00,560 --> 01:12:08,560
+ When you drive a car you find that when you are driving you get some noise that noise
+
+732
+01:12:08,560 --> 01:12:14,600
+ is because of the vibration which is created by engine it is also the acoustic vibration
+
+733
+01:12:14,600 --> 01:12:19,680
+ which is created because of friction between the car wheel and the road.
+
+734
+01:12:19,680 --> 01:12:26,040
+ Just yesterday I was coming back from Calcutta the driver stopped in between and said sir
+
+735
+01:12:26,040 --> 01:12:32,400
+ I get some peculiar sound from the wheel possibly there is some problem.
+
+736
+01:12:32,400 --> 01:12:39,940
+ So you find that he had recognized that there might be some problem based on some abnormality
+
+737
+01:12:39,940 --> 01:12:44,560
+ that he observed from the sound.
+
+738
+01:12:44,560 --> 01:12:55,160
+ So we can train an a i model to find out or to detect any sort of abnormality in any kind
+
+739
+01:12:55,160 --> 01:13:01,400
+ of environment and the moment you get such a kind of abnormality you get an warning you
+
+740
+01:13:01,400 --> 01:13:06,160
+ get an alarm and you can take the particular action.
+
+741
+01:13:06,160 --> 01:13:16,120
+ I was taking example of a power plant there also the vibration sound the sound of vibration
+
+742
+01:13:16,120 --> 01:13:18,520
+ that has a particular pattern.
+
+743
+01:13:18,520 --> 01:13:26,040
+ If anything goes wrong anywhere the vibration pattern will be different.
+
+744
+01:13:26,040 --> 01:13:33,400
+ Now it is not possible for a human being always to manually here physically here the vibration
+
+745
+01:13:33,400 --> 01:13:37,840
+ pattern and detect if there is an abnormality or not.
+
+746
+01:13:37,840 --> 01:13:46,840
+ So that is a typical case where such a kind of a i model can be used which will keep on
+
+747
+01:13:46,840 --> 01:13:51,120
+ considering the vibration pattern and the moments of abnormality is detected it will
+
+748
+01:13:51,120 --> 01:13:54,240
+ raise an alarm.
+
+749
+01:13:54,240 --> 01:14:02,760
+ So this is another example a i is extensively being used in healthcare in medical sciences.
+
+750
+01:14:02,760 --> 01:14:13,720
+ a i being used in language translation think of our Indian scenario we have so many states
+
+751
+01:14:13,720 --> 01:14:17,440
+ in every state we have a different language.
+
+752
+01:14:17,440 --> 01:14:24,280
+ When I go to north I am comfortable I mean a bit comfortable with Hindi so I can communicate.
+
+753
+01:14:24,280 --> 01:14:29,320
+ When I go to south I do not know anything of Tamil.
+
+754
+01:14:29,320 --> 01:14:32,680
+ So I cannot communicate with those people.
+
+755
+01:14:32,680 --> 01:14:38,560
+ So my medium of communication becomes English but if you go to remote villages in Tamil
+
+756
+01:14:38,560 --> 01:14:44,680
+ narrow you do not you cannot expect them to know English so how do I communicate.
+
+757
+01:14:44,680 --> 01:14:51,320
+ So there if I have a language translator which can language which can translate from English
+
+758
+01:14:51,320 --> 01:14:58,280
+ to Tamil or say from Bengali to Tamil or Tamil to English Tamil to Bengali then our
+
+759
+01:14:58,280 --> 01:15:00,440
+ life will be very easy.
+
+760
+01:15:00,440 --> 01:15:09,640
+ So this is another domain where artificial intelligence or a i models can take a big role.
+
+761
+01:15:09,640 --> 01:15:18,160
+ So the examples are many whatever you think of whatever you can do today's a i can do
+
+762
+01:15:18,160 --> 01:15:21,160
+ the same thing.
+
+763
+01:15:21,160 --> 01:15:34,720
+ So the domain where a i can perform is almost unlimited maybe sky is the limit.
+
+764
+01:15:34,720 --> 01:15:43,300
+ What are other types of objects a i can discriminate other than images anything that you can measure
+
+765
+01:15:43,300 --> 01:15:52,400
+ and quantify a i can work on that every a i model needs an input signal.
+
+766
+01:15:52,400 --> 01:15:58,960
+ So anything that can be measured that gives a signal images I talked about that is just
+
+767
+01:15:58,960 --> 01:16:04,840
+ a visual signal similarly there are audio signals which are acoustic signals so anything
+
+768
+01:16:04,840 --> 01:16:12,160
+ that can be measured can be fed into a i model because a i model needs a signal.
+
+769
+01:16:12,160 --> 01:16:14,700
+ Any other question? No. Thank you. Thank you very much.
+

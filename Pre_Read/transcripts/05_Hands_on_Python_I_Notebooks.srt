@@ -1,0 +1,1612 @@
+1
+00:00:00,000 --> 00:00:06,400
+ So good morning everyone, everyone present.
+
+2
+00:00:06,400 --> 00:00:09,480
+ So my name is Suman Kumar Vera.
+
+3
+00:00:09,480 --> 00:00:17,800
+ I am one of the research scholars in IIT Kharagpur and this is your first hands on session in
+
+4
+00:00:17,800 --> 00:00:19,680
+ this course.
+
+5
+00:00:19,680 --> 00:00:29,560
+ So I will be introducing you to some platforms where you can do Python coding.
+
+6
+00:00:29,560 --> 00:00:40,760
+ And this will be a very introductory course on the basics of Python coding.
+
+7
+00:00:40,760 --> 00:00:51,320
+ So I have this class on today on Python platforms like Colab and Jupiter if you are able to
+
+8
+00:00:51,320 --> 00:01:03,080
+ view my screen and next week I have NumPy and Panda's class.
+
+9
+00:01:03,080 --> 00:01:09,120
+ So this Colab notebook that I will be using today will be shared to you.
+
+10
+00:01:09,120 --> 00:01:16,320
+ I hope it has already been shared to you the link of this Colab notebook and if you have
+
+11
+00:01:16,320 --> 00:01:21,880
+ the link I would request you to open it.
+
+12
+00:01:21,880 --> 00:01:31,660
+ And another thing if you are not logged in to your Google Chrome browser in this manner
+
+13
+00:01:31,660 --> 00:01:35,720
+ I would request you to log in.
+
+14
+00:01:35,720 --> 00:01:46,200
+ Like do not use incognito tab or do not just use it in a non logged in manner because then
+
+15
+00:01:46,200 --> 00:01:51,800
+ possibly you will not get access to Google Colab facilities.
+
+16
+00:01:51,800 --> 00:02:01,960
+ So I would request you to log in and open this Colab notebook with the link provided
+
+17
+00:02:01,960 --> 00:02:13,160
+ to you.
+
+18
+00:02:13,160 --> 00:02:19,840
+ So I will ask everybody to log in, if they are not already logged in and I will wait
+
+19
+00:02:19,840 --> 00:02:47,000
+ one minute and after one minute I will proceed further.
+
+20
+00:02:47,000 --> 00:02:51,720
+ Can you please share that link here in the chat sir if you are able to do it.
+
+21
+00:02:51,720 --> 00:03:17,800
+ Is it not shared already?
+
+22
+00:03:17,800 --> 00:03:35,160
+ Thank you.
+
+23
+00:03:35,160 --> 00:03:51,200
+ Thank you.
+
+24
+00:03:51,200 --> 00:04:09,640
+ Thank you.
+
+25
+00:04:09,640 --> 00:04:27,000
+ Can it be shared?
+
+26
+00:04:27,000 --> 00:04:39,880
+ Yes.
+
+27
+00:04:39,880 --> 00:05:05,480
+ So if anyone having problem with copying the link if you have access to the chat just copy
+
+28
+00:05:05,480 --> 00:05:13,200
+ the link from there using the normal paradigm right clicking and copying the link and in
+
+29
+00:05:13,200 --> 00:05:19,760
+ your browser I would request you to open it with you logged in to through your Gmail or
+
+30
+00:05:19,760 --> 00:05:49,480
+ Google account in the Google Chrome browser yeah that's how you can copy them copy the
+
+31
+00:05:49,480 --> 00:06:06,880
+ link yeah right clicking and copy option is available there.
+
+32
+00:06:06,880 --> 00:06:33,560
+ Yeah, it has been shown properly how to open that link.
+
+33
+00:06:33,560 --> 00:07:03,360
+ Yeah, so I think all of you have gotten the link and opened this python collab link.
+
+34
+00:07:03,360 --> 00:07:12,800
+ So as I was saying before that today we will be seeing two main platforms for python coding
+
+35
+00:07:12,800 --> 00:07:18,400
+ one would be Jupyter that would run locally on your system and one would be collab the
+
+36
+00:07:18,400 --> 00:07:26,360
+ one that you are able to view right now is the collab in online mode we usually use it
+
+37
+00:07:26,360 --> 00:07:39,200
+ and we see how Jupyter works through Anaconda so Anaconda is a nice platform where what
+
+38
+00:07:39,200 --> 00:07:45,360
+ you have you will have pre-built facilities for python coding.
+
+39
+00:07:45,360 --> 00:07:53,600
+ So here the download link of Anaconda has been provided if you click on this and click
+
+40
+00:07:53,600 --> 00:08:01,280
+ on this again so you will be navigated to a Anaconda download page.
+
+41
+00:08:01,280 --> 00:08:10,920
+ So you will be redirected to a page like this here what you can do you can skip the registration
+
+42
+00:08:10,920 --> 00:08:20,080
+ you can skip the registration you can click here and according to your operating system
+
+43
+00:08:20,080 --> 00:08:27,720
+ you can download the Anaconda installer by clicking on this it will automatically detect
+
+44
+00:08:27,720 --> 00:08:35,080
+ your operating system like I have windows installed right now so it is showing me windows
+
+45
+00:08:35,080 --> 00:08:45,120
+ download okay so I would request you to download it let me recap that again this is hands on
+
+46
+00:08:45,120 --> 00:08:51,360
+ python the notebook the link of this notebook has been provided to you and here in the cell
+
+47
+00:08:51,360 --> 00:08:58,360
+ you would see a download link for Anaconda if you click on this Anaconda link you would
+
+48
+00:08:58,360 --> 00:09:07,120
+ be redirected to this page here if you click on this download page you would come here
+
+49
+00:09:07,120 --> 00:09:17,240
+ and skip registration for now and download the installer.
+
+50
+00:09:17,240 --> 00:09:44,080
+ The view is not this way I need okay yeah so yeah is there a synchronization problem
+
+51
+00:09:44,080 --> 00:09:49,480
+ between audio and video or something like that because we are possibly clear from our
+
+52
+00:09:49,480 --> 00:10:01,520
+ end is there some issue but oh it is fine now okay so I do not know how much content
+
+53
+00:10:01,520 --> 00:10:09,240
+ was visible to the participants so if they have already access to this python notebook
+
+54
+00:10:09,240 --> 00:10:15,880
+ in this cell they have a download link for Anaconda so I would request them to click
+
+55
+00:10:15,880 --> 00:10:22,160
+ on this Anaconda download link and they would be redirected to a page like this a download
+
+56
+00:10:22,160 --> 00:10:28,600
+ page of Anaconda okay clicking on this Anaconda link they would be redirected click on this
+
+57
+00:10:28,600 --> 00:10:36,200
+ the download link and for now you can skip this registration and download the Anaconda
+
+58
+00:10:36,200 --> 00:10:43,840
+ installer I hope everyone is clear with this step and you can download it if you click
+
+59
+00:10:43,840 --> 00:10:51,360
+ on download the download would start like here at this corner I see the download has
+
+60
+00:10:51,360 --> 00:11:08,400
+ been start okay and after downloading you can install this .exe file like how you install
+
+61
+00:11:08,400 --> 00:11:17,080
+ any other software in your Windows system okay so depending on your internet speed it
+
+62
+00:11:17,080 --> 00:11:24,440
+ might take a few minutes to get downloaded and maybe 5 to 7 minutes for installing it
+
+63
+00:11:24,440 --> 00:11:37,560
+ so those who do not already have this installed I would wait 5 minutes for them to install
+
+64
+00:11:37,560 --> 00:11:51,320
+ it and then we will proceed further.
+
+65
+00:11:51,320 --> 00:12:09,360
+ Thank you.
+
+66
+00:12:09,360 --> 00:12:26,720
+ Thank you.
+
+67
+00:12:39,360 --> 00:12:58,720
+.
+
+68
+00:12:58,720 --> 00:13:08,320
+ Thank you.
+
+69
+00:13:08,320 --> 00:13:37,720
+ See if you are logged into your browser with any other email apart from the gmail like for
+
+70
+00:13:37,720 --> 00:13:45,160
+ example institutional email then there might be a problem in accessing colab so I would
+
+71
+00:13:45,160 --> 00:13:52,060
+ request everybody to log in using their gmail account if you are having any access problem
+
+72
+00:14:07,720 --> 00:14:23,300
+.
+
+73
+00:14:37,720 --> 00:14:54,300
+.
+
+74
+00:14:54,300 --> 00:15:11,000
+ Thank you.
+
+75
+00:15:11,000 --> 00:15:32,200
+ Thank you.
+
+76
+00:15:32,200 --> 00:15:44,720
+ So I do not know how well you are able to view my screen here there is this anaconda exe
+
+77
+00:15:44,720 --> 00:15:52,840
+ file okay so after you download it you need to right click it just like you install any
+
+78
+00:15:52,840 --> 00:15:57,720
+ other software but I do not know till how much it would get installed right now because
+
+79
+00:15:57,720 --> 00:16:03,580
+ I already have anaconda running in my system so double click it and something like this
+
+80
+00:16:03,580 --> 00:16:14,720
+ would pop up then clicking on next and I agree okay and just me because it is fine for all
+
+81
+00:16:14,720 --> 00:16:22,600
+ users or multiple users if you have in your PC then next and here the location where you
+
+82
+00:16:22,600 --> 00:16:34,280
+ want to install your anaconda okay this would require 5.2 GB or some space okay and clicking
+
+83
+00:16:34,280 --> 00:16:41,480
+ on next would install it and after that there are no more steps just you need to come till
+
+84
+00:16:41,480 --> 00:16:44,400
+ this step and click on next.
+
+85
+00:16:44,400 --> 00:16:49,160
+ So right clicking on the anaconda exe file you would have something like this and clicking
+
+86
+00:16:49,160 --> 00:16:56,740
+ on next would get you something like this and once you agree then the next page and clicking
+
+87
+00:16:56,740 --> 00:17:19,940
+ on next you would just have to select the location or default it would come and clicking
+
+88
+00:17:19,940 --> 00:17:33,540
+ okay so I already have it installed I already have it installed so I will not install it
+
+89
+00:17:33,540 --> 00:17:41,300
+ again once you have actually successfully installed it what you would see if you search
+
+90
+00:17:41,300 --> 00:17:51,300
+ anaconda in your system there would something like this anaconda navigator you would able
+
+91
+00:17:51,300 --> 00:17:54,940
+ to see okay.
+
+92
+00:17:54,940 --> 00:18:07,620
+ So once you click on this anaconda navigator something like this would pop up okay so let
+
+93
+00:18:07,620 --> 00:18:20,940
+ me repeat again once you have anaconda installed in your system just search in your system anaconda
+
+94
+00:18:20,940 --> 00:18:27,900
+ and you would have something like this anaconda navigator if you click on this something like
+
+95
+00:18:27,900 --> 00:18:39,900
+ this would pop up okay so here you would see a lot of things something called jupiter lab
+
+96
+00:18:39,900 --> 00:18:48,220
+ something called jupiter then notebook and another thing you have R studio also here
+
+97
+00:18:48,220 --> 00:18:54,540
+ just to let you know R studio is also in here but I will only show you the things regarding
+
+98
+00:18:54,540 --> 00:19:06,220
+ python so here the next thing I would want you to know so here you have home and then
+
+99
+00:19:06,220 --> 00:19:16,060
+ what you have just below home environments okay if you click on environments you would
+
+100
+00:19:16,060 --> 00:19:26,660
+ be led to a page like this okay where at the bottom you see something like create so clicking
+
+101
+00:19:26,660 --> 00:19:38,620
+ on this create button you would be navigated to creating a specific environment for your
+
+102
+00:19:38,620 --> 00:19:47,900
+ work purpose okay so if you are able to view this create new environment there are packages
+
+103
+00:19:47,900 --> 00:19:56,860
+ option okay packages option python then R and here it is showing the version of python
+
+104
+00:19:56,860 --> 00:20:08,940
+ 3.12.9 if you click on this button it would show you other versions also okay so 3.9 maybe
+
+105
+00:20:08,940 --> 00:20:15,340
+ some programs are not compatible with older version or very newer version of python then
+
+106
+00:20:15,340 --> 00:20:25,820
+ you may need to select a specific python version for your purpose so you would select that specific
+
+107
+00:20:25,820 --> 00:20:33,980
+ version and by environment what you understand just like the environment normal general definition
+
+108
+00:20:33,980 --> 00:20:42,220
+ of environment the surroundings what we have around us so here in python when we are creating
+
+109
+00:20:42,220 --> 00:20:49,860
+ an environment we have a specific python and with respect to that specific python you have
+
+110
+00:20:49,860 --> 00:20:58,060
+ other packages installed okay like for the next class that we will be having the next
+
+111
+00:20:58,060 --> 00:21:06,340
+ lab class on next week we will be having numpy and pandas okay so those are part of the environment
+
+112
+00:21:06,340 --> 00:21:25,220
+ okay now if suppose I want to name it suppose AI underscore demo this is the name I am trying
+
+113
+00:21:25,220 --> 00:21:31,940
+ to give to the environment you can give any name to the environment as per your choice
+
+114
+00:21:31,940 --> 00:21:41,860
+ okay and you can select any version just just arbitrarily I am choosing this 3.1.16 version
+
+115
+00:21:41,860 --> 00:21:48,860
+ and python check-in because I would not require R for my purpose and if you click this click
+
+116
+00:21:48,860 --> 00:21:55,900
+ on this create so here you would be able to see an environment being created with the name
+
+117
+00:21:55,900 --> 00:22:07,980
+ AI demo okay and you can give any name by clicking on this create plus create button you would
+
+118
+00:22:07,980 --> 00:22:18,060
+ be able to create an environment so once you have created an environment what do you have
+
+119
+00:22:18,060 --> 00:22:27,960
+ I would I would want you to get back to this home screen okay and in home click on this
+
+120
+00:22:27,960 --> 00:22:34,580
+ all application on this part what you have see you have the names of the environments
+
+121
+00:22:34,580 --> 00:22:45,900
+ that are currently present okay if you click this it have the base the AI demo that I just
+
+122
+00:22:45,900 --> 00:22:50,860
+ have created or you may have created in by any other name that is being shown to you
+
+123
+00:22:50,860 --> 00:22:59,140
+ and the demo this demo I created a while ago so you have this and you have with respect
+
+124
+00:22:59,140 --> 00:23:07,700
+ to this environment you have these things now for our purpose we would only install this
+
+125
+00:23:07,700 --> 00:23:14,540
+ Jupyter notebook okay this Jupyter notebook others other things like spider you can also
+
+126
+00:23:14,540 --> 00:23:23,340
+ like play with but not now and R studio as I have shown for the time being let us check
+
+127
+00:23:23,340 --> 00:23:28,380
+ us with this Jupyter notebook here there is a button called install if you click on this
+
+128
+00:23:28,380 --> 00:23:41,980
+ install this specific Jupyter notebook would be installed in your environment okay so it
+
+129
+00:23:41,980 --> 00:23:51,180
+ might take one or one and a half minutes so I would request you to install this Jupyter
+
+130
+00:23:51,180 --> 00:24:09,220
+ notebook and I would wait till then yeah it has been successfully installed once it has
+
+131
+00:24:09,220 --> 00:24:17,340
+ been successfully installed like previously what you are seeing this button below while
+
+132
+00:24:17,340 --> 00:24:23,100
+ showing installed now once it has been installed the Jupyter notebook at the end it is showing
+
+133
+00:24:23,100 --> 00:24:36,300
+ launch okay so I have it installed and I can launch it so those who have successfully installed
+
+134
+00:24:36,300 --> 00:24:46,660
+ it I would request them to launch click on this launch and in your default browser a
+
+135
+00:24:46,660 --> 00:25:03,300
+ new table pop up with your like files and folders all these things okay this has popped
+
+136
+00:25:03,300 --> 00:25:12,880
+ up and let me wait for one minute so what I was saying once you have this anaconda
+
+137
+00:25:12,880 --> 00:25:21,660
+ you create an environment okay and in that environment what you do you would install
+
+138
+00:25:21,660 --> 00:25:27,300
+ Jupyter notebook like this there will be an install button you install Jupyter notebook
+
+139
+00:25:27,300 --> 00:25:31,820
+ and once it has been installed you would see this launch button and clicking on the launch
+
+140
+00:25:31,820 --> 00:25:40,460
+ button in your default browser a new tab would open and you would be able to view your files
+
+141
+00:25:40,460 --> 00:25:55,500
+ and folders right here okay so now I can zoom in since I am on my browser so here there
+
+142
+00:25:55,500 --> 00:26:05,980
+ is this new there is this new button clicking on this new button and coming to this python
+
+143
+00:26:05,980 --> 00:26:17,660
+ 3 clicking on this a new notebook would pop up so those who have already seen the collab
+
+144
+00:26:17,660 --> 00:26:25,060
+ notebook it is similar like these are cells this is one cell you can click on you can
+
+145
+00:26:25,060 --> 00:26:37,700
+ come here and
+
+146
+00:26:37,700 --> 00:26:44,220
+ this plus sign yeah this plus sign would create new cells okay this plus sign click on this
+
+147
+00:26:44,220 --> 00:27:02,980
+ and these cells are created and when you are at a particular cell file
+
+148
+00:27:02,980 --> 00:27:10,660
+ actually clicking on escape and pressing the d twice double d would delete all your cells
+
+149
+00:27:10,660 --> 00:27:21,540
+ and here there is also a delete the cells will be deleted so these particular particular
+
+150
+00:27:21,540 --> 00:27:25,500
+ box like things are cells.
+
+151
+00:27:25,500 --> 00:27:33,300
+ So currently I have one cell right now so another thing I would want you to get familiar
+
+152
+00:27:33,300 --> 00:27:42,580
+ with so so as I was saying that there is there are two libraries we would be learning on
+
+153
+00:27:42,580 --> 00:27:53,300
+ next week numpy and pandas so when you have like I am talking about numpy okay so support
+
+154
+00:27:53,300 --> 00:28:00,820
+ I am importing numpy import numpy this is like we will be discussing it further so import
+
+155
+00:28:00,820 --> 00:28:13,220
+ numpy and numpy as mp and if you are trying to see so once you have imported like import
+
+156
+00:28:13,220 --> 00:28:19,220
+ means you do not have that you are importing it from somewhere else and suppose you wish
+
+157
+00:28:19,220 --> 00:28:38,580
+ to check the version of it print np.version so no need to be scared with these type of
+
+158
+00:28:38,580 --> 00:28:46,620
+ codes if you are very very new to python programming this is just usual stuff and like today as
+
+159
+00:28:46,620 --> 00:28:51,580
+ we proceed further and tomorrow like on the next class also we will be learning the nitty-gritty
+
+160
+00:28:51,580 --> 00:28:59,180
+ details about these type of codes so for the timing I would request you to just type it
+
+161
+00:28:59,180 --> 00:29:06,420
+ and check if you are having the same type of error that says module not found error.
+
+162
+00:29:06,420 --> 00:29:18,340
+ So there is no module named numpy so there has to be a module named numpy okay so what
+
+163
+00:29:18,340 --> 00:29:28,340
+ is the thing let us get back to the basics once so here in anaconda navigator you have
+
+164
+00:29:28,340 --> 00:29:36,500
+ your own environment and in this environment if you come to this environment button you
+
+165
+00:29:36,500 --> 00:29:42,580
+ have your own environment activated and it is showing the installed packages and if you
+
+166
+00:29:42,580 --> 00:29:50,780
+ scroll here and you actually go through the names that are provided here okay there is
+
+167
+00:29:50,780 --> 00:29:58,320
+ no numpy installed okay so numpy is a package that you need to install to perform some specific
+
+168
+00:29:58,320 --> 00:30:05,980
+ task as you proceed further in this course there will be other packages also like when
+
+169
+00:30:05,980 --> 00:30:11,220
+ you dive into deep learning then tensorflow pie torch all those packages should be necessary
+
+170
+00:30:11,220 --> 00:30:19,060
+ then you would be required to install those packages and packages and your environment
+
+171
+00:30:19,060 --> 00:30:26,140
+ and trust me this creating environment is very much necessary because if you do not have
+
+172
+00:30:26,140 --> 00:30:31,420
+ knowledge regarding your own environment and the packages that are installed along with
+
+173
+00:30:31,420 --> 00:30:50,580
+ their versions you might and so you might face some difficulties like recently I have
+
+174
+00:30:50,580 --> 00:30:57,220
+ a like because of our latest version of pandas I was having a problem that should not appear
+
+175
+00:30:57,220 --> 00:31:08,500
+ actual at all then I did use the pandas version then it got corrected on its own okay so here
+
+176
+00:31:08,500 --> 00:31:14,940
+ there is something called installed and if you click on this and click on this not installed
+
+177
+00:31:14,940 --> 00:31:24,260
+ and here on the packages if you search numpy a few things would pop up which are not installed
+
+178
+00:31:24,260 --> 00:31:32,980
+ okay and here if you come down a bit there would be a numpy thing okay if you click
+
+179
+00:31:32,980 --> 00:31:39,140
+ on this and click apply here at the bottom right corner you would have applied right
+
+180
+00:31:39,140 --> 00:31:46,700
+ bottom right corner this apply if you click on this this numpy would be installed in your
+
+181
+00:32:09,140 --> 00:32:18,820
+ yeah so I have now numpy installed and how you can see it here you have not installed
+
+182
+00:32:18,820 --> 00:32:27,460
+ if you click this and click on installed you would see numpy present here okay so I would
+
+183
+00:32:27,460 --> 00:32:36,140
+ wait for 2 minutes for you all to do this and install this numpy package in your environment
+
+184
+00:32:36,140 --> 00:32:46,480
+ so you have a clear understanding of the environment and the packages installed in it okay for
+
+185
+00:32:46,480 --> 00:32:52,740
+ specific purpose I would obviously encourage you to have a specific environment and packages
+
+186
+00:32:52,740 --> 00:33:18,940
+ installed in it okay so let us wait for 2 minutes at 12 sharp I will proceed further
+
+187
+00:33:18,940 --> 00:33:21,200
+ (coughing)
+
+188
+00:33:48,940 --> 00:33:50,940
+ (coughing)
+
+189
+00:34:18,940 --> 00:34:38,940
+ (coughing)
+
+190
+00:34:48,940 --> 00:35:02,940
+ (coughing)
+
+191
+00:35:02,940 --> 00:35:14,940
+ (coughing)
+
+192
+00:35:14,940 --> 00:35:34,940
+ (coughing)
+
+193
+00:35:34,940 --> 00:35:57,940
+ So, I hope everybody was able to install this new package named NumPy to their environment. So, just a little recap. So, once you have your own created environment activated here, you just need to search for a specific library.
+
+194
+00:35:57,940 --> 00:36:07,940
+ And for here we have searched NumPy and we have installed it and NumPy is currently, NumPy should be currently present in our environment.
+
+195
+00:36:07,940 --> 00:36:22,940
+ So, previously what we did, we here what we opened, we opened a Jupyter Notebook for our environment and we have our Jupyter Notebook running in our browser.
+
+196
+00:36:22,940 --> 00:36:41,940
+ So, here what we have, import NumPy and Np, print Np.version. Previously when we run it, so here there is this run button, you can by clicking this run button you can run it or on your computer you can click control enter, pressing together control enter.
+
+197
+00:36:41,940 --> 00:37:02,940
+ So, here if you like previously this module not found error we encountered because NumPy was not there, now it should not be there. So, I am running it, you can run it clicking this run, run, run selected cell or control enter.
+
+198
+00:37:02,940 --> 00:37:15,940
+ When you are presented a specific cell, you can in your keyboard you can click control enter. So, clicking on control enter, it is showing us 2.2.2.
+
+199
+00:37:15,940 --> 00:37:34,940
+ So, this specific NumPy version 2.2.2 has been installed in our environment ok. So, now I hope we can proceed further.
+
+200
+00:37:34,940 --> 00:37:53,940
+ So, here like now we would like to go back to our Colab Notebook. I hope Colab font is quite clear.
+
+201
+00:37:53,940 --> 00:38:12,940
+ So, as I was saying, so you have Anaconda downloaded and Anaconda installed then you have Jupiter installed for your particular environment and specific libraries and packages installed for your particular environment.
+
+202
+00:38:12,940 --> 00:38:33,940
+ Ok, so now we are getting back to Colab. So, the facility that you had of creating environment, creating environment in Google Colab is not that much straightforward.
+
+203
+00:38:33,940 --> 00:38:56,940
+ Ok, so, but Google Colab has a very nice facility that is access of GPU ok. So, if you click here on runtime and if you click on change runtime type, you would see hardware accelerators.
+
+204
+00:38:56,940 --> 00:39:12,940
+ Here you would be able to see GPU, T4 GPU ok. So, for the timing we would not require GPU because we are not doing any computer intensive task like this for this preliminary tutorials.
+
+205
+00:39:12,940 --> 00:39:27,940
+ Later for training like big deep learning models, you may need GPUs ok. So, that is a big facility provided by Colab because in our home computer or our laptops we may not have GPUs ok.
+
+206
+00:39:27,940 --> 00:39:55,940
+ So, that is a good thing provided by Google Colab ok. Now, when we are in Google Colab, so there are specific codes written here, but here what I would like you to do not just execute these cells, but I would request you to create a new Google Colab.
+
+207
+00:39:55,940 --> 00:40:14,940
+ Notebook, for that what you have, if you have already this one opened with you, you can click on file and new notebook in drive that will automatically create a new notebook in your drive ok.
+
+208
+00:40:14,940 --> 00:40:42,940
+ So, here clicking on file and clicking on new notebook in drive creates as a fresh notebook ok. And here you can change the name of the notebook, here it is untitled 0.
+
+209
+00:40:42,940 --> 00:41:08,940
+ Suppose I name this i demo ok or whatever name you would like, here you have ok. So, and say for example, like if you could not follow the opening the actual given hands on Python notebook,
+
+210
+00:41:08,940 --> 00:41:22,940
+ then what how you can open Google Colab, first and foremost you need to be logged in like this way, you need to be logged in to your Google account ok.
+
+211
+00:41:22,940 --> 00:41:41,940
+ Here in the search bar what you can search Colab ok, you can search Colab and once you search it, Google would give you some results and if you click on this, welcome to Colab.
+
+212
+00:41:41,940 --> 00:42:06,940
+ The first results that appearing if you click on this, then you would be led to this page, here like I have everything logged in that that is why I have my already existing notebooks here.
+
+213
+00:42:06,940 --> 00:42:19,940
+ So, here what you can do you can click on this new notebook right, you can click on this new notebook and it would create you a new notebook ok.
+
+214
+00:42:19,940 --> 00:42:46,940
+ So, let me close it and get back to this part. So, let us I would wait for 2 minutes and in the meantime I would repeat the steps, I would wait for 2 minutes and if you are not like
+
+215
+00:42:46,940 --> 00:42:53,940
+ you could not open it by now, you should do it and let me just recap the few steps.
+
+216
+00:42:53,940 --> 00:43:05,940
+ If you have the hands on Python notebook present here, you can click on file and new notebook in drive that would create you a new notebook.
+
+217
+00:43:05,940 --> 00:43:27,940
+ If you could not follow then on the search bar, if you just type Colab and search it, the first result clicking on the first result would open you something like this and clicking on this new notebook tab here in this blue would create you a new notebook.
+
+218
+00:43:27,940 --> 00:43:35,940
+ So, if anybody is lagging behind I would wait till 12.10 and I would get back to 12.10.
+
+219
+00:43:57,940 --> 00:44:04,940
+ So, if anybody is lagging behind I would wait till 12.10.
+
+220
+00:44:04,940 --> 00:44:09,940
+ If anybody is lagging behind I would wait till 12.10.
+
+221
+00:44:09,940 --> 00:44:15,940
+ If anybody is lagging behind I would wait till 12.10.
+
+222
+00:44:15,940 --> 00:44:29,940
+ If anybody is lagging behind I would wait till 12.10.
+
+223
+00:44:29,940 --> 00:44:46,940
+ If anybody is lagging behind I would wait till 12.10.
+
+224
+00:44:46,940 --> 00:45:01,940
+ If anybody is lagging behind I would wait till 12.10.
+
+225
+00:45:01,940 --> 00:45:17,940
+ If anybody is lagging behind I would wait till 12.10.
+
+226
+00:45:17,940 --> 00:45:46,940
+ If anybody is lagging behind I would wait till 12.10.
+
+227
+00:45:46,940 --> 00:45:49,940
+ So, I think we should now proceed further.
+
+228
+00:45:49,940 --> 00:46:05,940
+ So, now we would see a few of these cells how, what they mean and what they contribute to our Python programming lab.
+
+229
+00:46:05,940 --> 00:46:17,940
+ So, suppose you as I was saying in the Anaconda also there are specific versions of Python present.
+
+230
+00:46:17,940 --> 00:46:33,940
+ So, suppose you have this Google collab opened and you wish to check the Python version present right now.
+
+231
+00:46:33,940 --> 00:46:49,940
+ So, for this particular cell to execute this particular cell like this particular cell you have like a box what you can do you can click on this play button thing right here.
+
+232
+00:46:49,940 --> 00:46:58,940
+ And see once I have this mouse pointer at this play button what it is showing control plus enter.
+
+233
+00:46:58,940 --> 00:47:04,940
+ So, clicking control plus enter in your keyboard does the same thing as a clicking on this play button.
+
+234
+00:47:04,940 --> 00:47:13,940
+ So, I am clicking on this play button and it is getting executed and it is showing me the Python version is 3.11.11.
+
+235
+00:47:13,940 --> 00:47:28,940
+ So, as I said that don't just execute these things click create a new collab notebook for yourself.
+
+236
+00:47:28,940 --> 00:47:44,940
+ Here what you can do you can do the coding import says and dot.
+
+237
+00:47:44,940 --> 00:48:13,940
+ So, I would request you those who are coding with me to create this another notebook and check the Python version.
+
+238
+00:48:13,940 --> 00:48:22,940
+ For that what you need to do import sys that is a short from for system for some system related tasks.
+
+239
+00:48:22,940 --> 00:48:30,940
+ This sys library is necessary that is why we are importing this sys and we are checking the version of it.
+
+240
+00:48:30,940 --> 00:48:40,940
+ Now there is a slight difference between the between the code I had here and I have here.
+
+241
+00:48:40,940 --> 00:48:51,940
+ So, if you already have noticed the difference this print statement is missing in this new notebook.
+
+242
+00:48:51,940 --> 00:49:13,940
+ So, what that thing is the same output comes if I have the print or I don't have the print.
+
+243
+00:49:13,940 --> 00:49:30,940
+ So, this thing is the last line the last line it if it is printing something of a cell then giving print statement or not giving the print statement prints the things.
+
+244
+00:49:30,940 --> 00:49:42,940
+ So, giving the print statement for the last line for the last line if it is supposed to print something giving the print statement at the last line like does the same thing.
+
+245
+00:49:42,940 --> 00:49:45,940
+ It may it prints ok.
+
+246
+00:49:45,940 --> 00:49:55,940
+ So, if you are having confusion with this print thing we would be witnessing code that would clear your doubt ok.
+
+247
+00:49:55,940 --> 00:50:08,940
+ Now the other thing as I was saying I was telling you that GPU is also facility provided by Google Colab ok.
+
+248
+00:50:08,940 --> 00:50:15,940
+ For that what you need to do like I would not get into the details of Torch right now.
+
+249
+00:50:15,940 --> 00:50:25,940
+ So, this just understand this Torch is a library Torch is a library that is used to handle GPU related task ok.
+
+250
+00:50:25,940 --> 00:50:44,940
+ So, and like if anyone is very much new to programming they can for them I would say Torch dot CUDA dot is available like very much English like sentences like CUDA that is related to GPU ok.
+
+251
+00:50:44,940 --> 00:50:56,940
+ So, in GPU there are CUDA course that is why using this CUDA keyword it is reference and is available is it available.
+
+252
+00:50:56,940 --> 00:51:04,940
+ And in the comment what is written check if GPU is available it is used to check GPU is available.
+
+253
+00:51:04,940 --> 00:51:18,940
+ Now if you just run it let me let me check what the output is false that means GPU is not available ok.
+
+254
+00:51:18,940 --> 00:51:23,940
+ Because in runtime it is running on a CPU only ok.
+
+255
+00:51:23,940 --> 00:51:32,940
+ And as I was telling you earlier if you come to this runtime and if you click on this change runtime type.
+
+256
+00:51:32,940 --> 00:51:43,940
+ And if you select a GPU like for free they are only giving us T4 GPU if you click on this and click on this save right here.
+
+257
+00:51:43,940 --> 00:51:58,940
+ So, what you have they are connecting it and you would have a GPU with you.
+
+258
+00:51:58,940 --> 00:52:07,940
+ So, you have T4 RAM T4 GPU right here it is showing you T4 previously it was not showing T4 it was just showing RAM and disk.
+
+259
+00:52:07,940 --> 00:52:23,940
+ And if you now execute this thing it is showing you true that means you have access to the T4 GPU.
+
+260
+00:52:23,940 --> 00:52:34,940
+ So, let me wait for one minute for you to execute this for you to understand the GPUs.
+
+261
+00:52:53,940 --> 00:53:03,940
+ Ok.
+
+262
+00:53:23,940 --> 00:53:41,940
+ Ok, so I hope everybody is like understood the very the very starting point of using GPUs through Google Collab.
+
+263
+00:53:41,940 --> 00:53:49,940
+ And they have a T4 GPU for our purpose we do not we are not doing any computer intensive tasks so we would not GPU.
+
+264
+00:53:49,940 --> 00:53:55,940
+ So, what I would rather do I would disconnect the runtime and change it to a CPU runtime.
+
+265
+00:53:55,940 --> 00:54:02,940
+ So, hardware accelerator previously when using GPU you have T4 GPUs now I am getting back to CPU ok.
+
+266
+00:54:02,940 --> 00:54:07,940
+ So, I have CPU and I am saving it ok.
+
+267
+00:54:07,940 --> 00:54:20,940
+ Now, if you remember the Jupyter notebook that we were using we were checking the NumPy version ok.
+
+268
+00:54:20,940 --> 00:54:33,940
+ So, now what we are doing we are we wish to check the NumPy version provided in this specific Jupyter notebook.
+
+269
+00:54:33,940 --> 00:54:44,940
+ So, I would request you to get back to the blank notebook that you have created and import your NumPy.
+
+270
+00:54:44,940 --> 00:55:02,940
+ See one thing you might have noticed that not yet import NumPy as np dot double underscore version.
+
+271
+00:55:02,940 --> 00:55:06,940
+ If you are executing it it is showing you 1.26.4.
+
+272
+00:55:06,940 --> 00:55:21,940
+ Now, what the thing is apart from providing GPUs what this Google Collab provides you Google Collab previously have loaded these like specific libraries that are present.
+
+273
+00:55:21,940 --> 00:55:36,940
+ Like at the first when we were running in our Jupyter notebook the NumPy version it was throwing us an error that NumPy module is not installed in your system.
+
+274
+00:55:36,940 --> 00:56:00,940
+ But for Jupyter for Collab NumPy is already present. So, it would not throw us an error rather it would show us the version ok.
+
+275
+00:56:00,940 --> 00:56:16,940
+ And I would request and encourage you to do the things till now that has been done if you haven't already and now we can possibly have a 5 minutes break and get back after 5 minutes.
+
+276
+00:56:16,940 --> 00:56:37,940
+ So, I would request you to provide us a 5 minutes break ok. So, welcome back I hope I am audible and I am visible also and my screen is also visible I hope.
+
+277
+00:56:37,940 --> 00:56:39,940
+ Yes sir.
+
+278
+00:56:39,940 --> 00:57:08,940
+ Yeah the screen is visible so we can resume now ok. So, the break is over and we are back. So, now what we will be doing we will be like after knowing a few peripheral things regarding Python coding like environment like packages libraries all those things
+
+279
+00:57:08,940 --> 00:57:24,940
+ and setting up our platform for coding like Jupyter or Collab. Now what we will be doing we will be going through a few basics of Python ok.
+
+280
+00:57:24,940 --> 00:57:50,940
+ So, if we like wish to take suppose we are all familiar with the terms input and output input something you give to something you give to someone or someone and output is the outcome that you receive.
+
+281
+00:57:50,940 --> 00:58:08,940
+ So, here suppose we have a Python program and we would like to give it an input of something and we wish to have an outcome ok.
+
+282
+00:58:08,940 --> 00:58:26,940
+ So, what is good with Python is it is a very English like language ok. So, here what you can do you can just click input and give this sign.
+
+283
+00:58:26,940 --> 00:58:45,940
+ You know this will not work actually because that is IP that stands for input then you can do it like this input and here you can print what is your name.
+
+284
+00:58:45,940 --> 00:59:08,940
+ So, all these coding syntax what you need to do you need to understand through intuition and these are actually really easy to understand and to be honest no matter how good a programmer is he or she most of the time forgets the syntax.
+
+285
+00:59:08,940 --> 00:59:26,940
+ So, if you are cannot remember the syntax itself that is not a problem. Syntax you can refer to a book for getting the syntax or you can refer to the internet for getting the syntax ok.
+
+286
+00:59:26,940 --> 00:59:49,940
+ So, the syntax here like this name input you can understand like I want something as input and the input is what is your name this would be displayed as a text and some input would come and that input would be stored in IP ok.
+
+287
+00:59:49,940 --> 01:00:08,940
+ So, if I take the cursor here it is showing us input variable this is a very nice feature of Google Colab this IP is a variable and it is like in the colon it is being shown as str we will come to that that what are these things.
+
+288
+01:00:08,940 --> 01:00:28,940
+ So, if you just execute this code pressing on this play button or control enter it is showing this text message what is your name and until I give actually an input this would keep getting executed.
+
+289
+01:00:28,940 --> 01:00:57,940
+ So, suppose I give the name Tom what is your name give Tom ok. So, it is stop and input the Tom has been saved in IP actually how you can understand it if you print IP here like using the print or just like a new cell.
+
+290
+01:00:57,940 --> 01:01:21,940
+ If you execute this cell writing IP here what you would see that Tom the value ok. So, this sign necessarily means that whatever on the right hand side this is equals to sign what it means whatever is in the right hand side it will be appended onto the left hand side ok.
+
+291
+01:01:21,940 --> 01:01:38,940
+ So, we have a variable here and in the IP variable it is getting stored ok. So, in the IP we have now Tom. So, the program we were having here. So, hi what is your name and we are modifying the print statement hello.
+
+292
+01:01:38,940 --> 01:02:06,940
+ Now, here is a thing I would want you to know that putting the F here like let us do the actual coding print and this is F string like suppose just you want to print hello how are you.
+
+293
+01:02:06,940 --> 01:02:24,940
+ And we want to give the value of the variable IP here like we wish to print hello how are you Tom. So, if we just execute it it would take the name, but it is not giving us the value of IP just showing us IP whatever in the quotation ok.
+
+294
+01:02:24,940 --> 01:02:48,940
+ So, we actually wish the value of IP that was stored as Tom to be displayed here for that what we need to do we need to put a F here F string. If you put F string here what happens in braces in braces these are braces.
+
+295
+01:02:48,940 --> 01:03:08,940
+ In this braces whatever it is written it gets executed. Now, if you execute it actually what is your name suppose Tom hello how are you Tom ok. So, this is how you can take input ok.
+
+296
+01:03:08,940 --> 01:03:30,940
+ So, now getting back to this suppose like through programming what we necessarily do solve a few problems ok. Now, think about this very basic problem ask the price of two products from the user and tell the user the total price very naive type of programming.
+
+297
+01:03:30,940 --> 01:03:58,940
+ But for starting let us like understand it like we would take price of two products from the user and we wish to get the total price ok. So, for that what we have done first product price input what is the price of the first product second product price.
+
+298
+01:03:58,940 --> 01:04:14,940
+ So, these are what these are variables that would have some value first product price second product price these are variables. So, what is the price of the first product what is the price of the second products and what we are necessarily doing we are summing this up.
+
+299
+01:04:14,940 --> 01:04:32,940
+ Total price is equals to first product first second product very English like and mathematics like approach right. So, you get two values and you are summing these up and you are printing the total price ok.
+
+300
+01:04:32,940 --> 01:04:44,940
+ So, those who are I would just wait for one minute and those who are coding with me I would request them to do this code and check the output that is coming.
+
+301
+01:04:44,940 --> 01:05:13,940
+ I would just wait for one minute.
+
+302
+01:05:14,940 --> 01:05:43,940
+ Ok.
+
+303
+01:05:43,940 --> 01:06:06,940
+ Yeah. So, we are back. So, here if you have executed the program what it would do like let us let us run it. So, we are running it is asking of the product of first price of first product suppose we are giving 10 it is asking as the price of second product suppose we are giving 20 and it is giving
+
+304
+01:06:06,940 --> 01:06:27,940
+ the price of the total product as 10 20, but it is not the correct output right. So, what is being happened that previously when we took our cursor to here it was it was showing us the that this is a variable and this is a string s t r stands for string.
+
+305
+01:06:27,940 --> 01:06:46,940
+ So, this string is first product price and it is in quotation it is showing us 10 in quotes. So, when we actually do this plus operation here what it is doing it is just summing up these two strings like 10 20 ok.
+
+306
+01:06:46,940 --> 01:07:11,940
+ So, this like necessarily leads us to a concept of the type of variable. So, a string or a group of characters that is different from price because price is a number maybe integer number or decimal point number, but that is not a string.
+
+307
+01:07:11,940 --> 01:07:36,940
+ A name can be string or a group of characters, but not a price ok. So, now this this if you check using this type thing I would request everyone to at least like do this type thing type and check the type of a specific variable ok.
+
+308
+01:07:36,940 --> 01:07:52,940
+ So, here what it is showing s t r that means string the type of first product price is string this type you it would be very helpful for you to check the type when you actually do big coding that what is the type of this ok.
+
+309
+01:07:52,940 --> 01:08:16,940
+ So, this type is very important and if you check the type of this string it comes as s t r string ok. So, now what we need to do we need to convert this string into input ok to get that total to sum it up correctly ok.
+
+310
+01:08:22,940 --> 01:08:37,940
+ So, here what is being done so, here we have the input just like that, but in front of input what we are doing we are printing this float we are appending this float keyword ok.
+
+311
+01:08:37,940 --> 01:08:56,940
+ Like intuitively you can understand the thing that we had previously as string value we are converting it to a float value right. So, if we execute this right now so, it is asking us the product of the first price.
+
+312
+01:08:56,940 --> 01:09:13,940
+ Now, if you give 10 and if you give 20 for the second product it is showing us 30 now it is correct. So, these values need to be converted into integers or floating point numbers for this case I am using floating point.
+
+313
+01:09:13,940 --> 01:09:32,940
+ So, I can provide decimal values also. So, like this for first product suppose 10.5 and for the second product suppose 20.5 and it is giving us the result 31.0 ok.
+
+314
+01:09:32,940 --> 01:09:54,940
+ So, there are types associated with the specific variables ok. On next class also when we would see more complex data types like dictionaries like arrays there are data types associated with them.
+
+315
+01:09:54,940 --> 01:10:05,940
+ So, one operation might not work with one operation might work with one specific data type, but not with all specific data types ok.
+
+316
+01:10:05,940 --> 01:10:27,940
+ So, you need to be careful about that and you need to be concerned about the data types of the variables you would be using in python ok. So, there are different variable type in python integer floating point string Boolean. Boolean means true or false ok.
+
+317
+01:10:27,940 --> 01:10:45,940
+ And if we come to the concept of lists what we have like intuitively what you can understand list means a collection of things like when you go to the grocery shop you make a list of the items that you need to buy.
+
+318
+01:10:45,940 --> 01:11:03,940
+ So, there suppose you are heading to a food shop there you make a list that I need to buy banana apple mango. In that manner python also has a list concept. So, the thing is like that.
+
+319
+01:11:03,940 --> 01:11:19,940
+ So, I would request everyone to write the program here list a is equals to banana apple mango and printing the list ok. So, it is giving us the list ok.
+
+320
+01:11:19,940 --> 01:11:40,940
+ Now, suppose we are creating another list list b that some other things that we need to buy from grocery stores biscuit and cake ok. So, these are two items in list b and these are a few fruits in list a.
+
+321
+01:11:40,940 --> 01:11:50,940
+ Now, suppose you wish to join these two lists suppose you have headed to a store where both groceries and fruits are available like a supermarket thing.
+
+322
+01:11:50,940 --> 01:12:06,940
+ So, you wish to concatenate these two lists and save it like you plus using plus what you are doing you are summing up the items here and saving it to a new list c and you are printing that list.
+
+323
+01:12:06,940 --> 01:12:17,940
+ And I would wait for one minute and request you to code this much to get to get a good hold of what lists are in python.
+
+324
+01:12:36,940 --> 01:12:47,940
+ Now, suppose we are creating another list list b that some other things that we need to buy from grocery stores biscuit and cake ok.
+
+325
+01:12:47,940 --> 01:12:58,940
+ So, suppose we are creating another list list b that some other things that we need to buy from grocery stores biscuit and cake ok.
+
+326
+01:12:58,940 --> 01:13:25,940
+ So, we are back and I hope you have done this.
+
+327
+01:13:25,940 --> 01:13:44,940
+ List joining type of thing and as I was telling you that getting the type of whatever type of things that you are using is very important taking using this type thing.
+
+328
+01:13:44,940 --> 01:13:55,940
+ So, type list c if you actually execute this thing it is showing you a list.
+
+329
+01:13:55,940 --> 01:14:05,940
+ So, what I have done I have created a new cell and there I am taking the type of list c and it is showing us list ok.
+
+330
+01:14:05,940 --> 01:14:21,940
+ So, now coming to this that in list c you can print list c over here.
+
+331
+01:14:21,940 --> 01:14:37,940
+ So, list c has these many items ok. So, now we would head to something called for loops in python to get the individual elements of a list.
+
+332
+01:14:37,940 --> 01:14:58,940
+ So, list c has these many items. So, one by one we would like to print them. So, what we are doing for very English like intuitive thing for item in list c print the item you understand for item in list c print the item ok.
+
+333
+01:14:58,940 --> 01:15:08,940
+ So, here what you can buy suppose like if you are like me very forgetful person I forget a lot of things.
+
+334
+01:15:08,940 --> 01:15:23,940
+ So, like explicitly what you try you are trying to do you are trying to give yourself instruction that I need to buy this item.
+
+335
+01:15:23,940 --> 01:15:42,940
+ So, if you execute this. So, it would give you these instructions I need to buy banana. So, for first item the banana item it is getting executed one time and it is printing I need to banana the first item banana then apple mango biscuit cake ok.
+
+336
+01:15:42,940 --> 01:15:56,940
+ So, that is how you can use for loop. So, I hope you are fine with it for loop and let us wait for 30 seconds for you to code the for loop.
+
+337
+01:16:12,940 --> 01:16:25,940
+ So, I hope you are comfortable with the for loop thing. So, let us head forward.
+
+338
+01:16:25,940 --> 01:16:41,940
+ So, what I have here I have I wish to have a list of numbers now ok list of numbers like previously when we had the grocery list we had string type of things
+
+339
+01:16:41,940 --> 01:16:52,940
+ like name of fruits groceries etcetera. Now, I wish to have something like this where I would have a list from 10 to 16.
+
+340
+01:16:52,940 --> 01:17:08,940
+ And you need to notice a thing that lists are always enclosed by these things these are brackets ok these are brackets.
+
+341
+01:17:08,940 --> 01:17:27,940
+ So, you have lists enclosed in this thing ok. So, apart from this like explicitly writing from 10 through 16 ok like actually 10 through 16 what you can do you can write list of numbers
+
+342
+01:17:27,940 --> 01:17:38,940
+ is equals to list range you understand intuitively like range I would give two points and you cover the range ok from 10 to 17.
+
+343
+01:17:38,940 --> 01:17:53,940
+ And I wish to print the numbers in this manner like what is being happened here for I in range for I in range 0 to the length
+
+344
+01:17:53,940 --> 01:18:08,940
+ an alien length of list of numbers like there would be a length of this particular list like 0 like 1, 2, 3, 4, 5, 6, 7.
+
+345
+01:18:08,940 --> 01:18:34,940
+ The length of this list would be let us print it alien and in parenthesis what we will have we will have the list of
+
+346
+01:18:34,940 --> 01:18:58,940
+ numbers ok. And if we have the length of the list is 7 and so here what this thing is from 0 to 7 and one is one is actually
+
+347
+01:18:58,940 --> 01:19:18,940
+ skip that means after 10 go to 11 if something else was written here that would be skip character start and skip ok.
+
+348
+01:19:18,940 --> 01:19:28,940
+ So, here if you have actually coded it with me and check check out the output it is showing like this 10 through 16.
+
+349
+01:19:28,940 --> 01:19:37,940
+ But suppose I change this one from two like skip a character then 10, 12, 14, 16 one character has been skipped.
+
+350
+01:19:37,940 --> 01:19:46,940
+ So, this is skip intuitively you need to understand and the best way to understand is this code yourself and change this value.
+
+351
+01:19:46,940 --> 01:20:06,940
+ So, instead of 2 you put 3 here and check what is happening ok. So, once we have this what we have added to next is.
+
+352
+01:20:06,940 --> 01:20:16,940
+ So, another thing I would like to tell you here for i in range this is somewhat different from the previous one right list of numbers.
+
+353
+01:20:16,940 --> 01:20:35,940
+ We are previously printing in item but list of number we are giving an index type of thing here ok list of numbers then this is actually an index.
+
+354
+01:20:35,940 --> 01:20:45,940
+ So, in this list 10 has the index 0, 11 has the index 1, 12 has the index 2 this way ok.
+
+355
+01:20:45,940 --> 01:20:52,940
+ So, giving the list of numbers list of numbers here you have a index here.
+
+356
+01:20:52,940 --> 01:20:56,940
+ So, 10 is associated with index 0 and that is how ok.
+
+357
+01:20:56,940 --> 01:21:07,940
+ So, now what we are trying to do we are creating a problem for ourselves. So, ask the price of two products from the user and tell the user that same problem we come up to.
+
+358
+01:21:07,940 --> 01:21:16,940
+ And if we execute this what is the price of first product suppose somebody enters it like this dollar 100 ok.
+
+359
+01:21:16,940 --> 01:21:29,940
+ And second product dollar 200 ok. So, now total price is dollar 300.
+
+360
+01:21:29,940 --> 01:21:38,940
+ So, these dollars are not being summed up ok. So, what we are doing if we check out the index here.
+
+361
+01:21:38,940 --> 01:21:49,940
+ So, dollar is the 0th index right 1 has index 1, 0 has index 2, the next 0, the next 0 has index 3.
+
+362
+01:21:49,940 --> 01:22:01,940
+ So, here what we are doing whatever the input value was we are taking from 0 and in python things start with 0 you need to remember it.
+
+363
+01:22:01,940 --> 01:22:13,940
+ Like 0 position, 1st position, 2nd position that is how things take place ok.
+
+364
+01:22:13,940 --> 01:22:22,940
+ So, we are skipping this 0th position. So, the dollar is not counted and the remaining we are taking into account ok.
+
+365
+01:22:22,940 --> 01:22:35,940
+ So, here is a modified version of that program what it essentially leads to if the product of the first price this is less than side right.
+
+366
+01:22:35,940 --> 01:22:49,940
+ If like intuitively you can understand like if you like invite me to your birthday party I will bring you a present like that sort of thing.
+
+367
+01:22:49,940 --> 01:22:54,940
+ If the first condition is satisfied then the next thing happens ok.
+
+368
+01:22:54,940 --> 01:23:02,940
+ So, if the first condition does not satisfy like if you do not invite me to your birthday I will there is no question of buying a gift for you ok.
+
+369
+01:23:02,940 --> 01:23:08,940
+ So, first product price if that is less than 0 like product of the price how can be less than 0.
+
+370
+01:23:08,940 --> 01:23:15,940
+ Then you print this the price of the product cannot be negative entire enter the price again ok.
+
+371
+01:23:15,940 --> 01:23:22,940
+ And you run this loop you get the value of the price again ok.
+
+372
+01:23:22,940 --> 01:23:31,940
+ And does the same thing previously like what is the price suppose I enter negative 700 ok.
+
+373
+01:23:31,940 --> 01:23:48,940
+ So, it would why is it taking ok there must be some problem let me go through the code.
+
+374
+01:24:01,940 --> 01:24:26,940
+ Ok, so this first statement is being executed here.
+
+375
+01:24:26,940 --> 01:24:39,940
+ So, first product it will skip the first character. So, it has skipped the negative and the problem would occur if like suppose somebody gives dollar negative 700.
+
+376
+01:24:39,940 --> 01:24:46,940
+ Now, it would come to the loop that what is the price cannot be negative enter the price again what is the price.
+
+377
+01:24:46,940 --> 01:25:04,940
+ So, now suppose I am giving 100 and for the second product I am giving 300 and it is giving 0 y ok.
+
+378
+01:25:04,940 --> 01:25:19,940
+ Let us run again and dollar 200 and dollar 400 now correct result would come 600 because it is keeping the first character as of this.
+
+379
+01:25:19,940 --> 01:25:33,940
+ So, you can consider this as a problem you can you can suppose you are trying to build a system where these different type of prices would come and you have to sum up those prices and get the final value of all the products.
+
+380
+01:25:33,940 --> 01:25:45,940
+ So, you might encounter a user might give like absurd inputs. So, somehow you need to correct the form of those inputs or ask the user to give the correct input.
+
+381
+01:25:45,940 --> 01:25:53,940
+ You can create a problem within yourself and understand it I hope you get the essence ok.
+
+382
+01:25:53,940 --> 01:26:08,940
+ So, another small thing I would show you that ST is equals to Python and let us print the type of this ok.
+
+383
+01:26:08,940 --> 01:26:26,940
+ It is actually a string type that it would show you str like this str that means string and this is somewhat collection of both small letters and capital letters.
+
+384
+01:26:26,940 --> 01:26:43,940
+ So, if we convert this to like this dot that means ST dot upper that convert it to upper case and ST dot lower and convert it to lower case and this is just printing ST ok the string as itself.
+
+385
+01:26:43,940 --> 01:26:55,940
+ So, intuitively you can understand this it would convert to upper case the second one would be converted to lower case and it would print like this.
+
+386
+01:26:55,940 --> 01:27:12,940
+ So, and another thing in this textbook suppose what was happening here like somebody that problem I imagine problem I told you suppose the value is entered like this instead of dollar 1000.
+
+387
+01:27:12,940 --> 01:27:34,940
+ So, what you can do ST that this string dot replace this with nothing and if you actually try printing these values see.
+
+388
+01:27:34,940 --> 01:27:48,940
+ So, here I need to add the print statement unless it would not print the values ok.
+
+389
+01:27:48,940 --> 01:27:58,940
+ So, that is also a string and dot replace that means replace in the string the dollar character with nothing just remove it ok.
+
+390
+01:27:58,940 --> 01:28:06,940
+ So, intuitively I hope you have understand next week we will proceed further from here diving deep into NumPy and pandas.
+
+391
+01:28:06,940 --> 01:28:09,940
+ So, this much till now.
+
+392
+01:28:09,940 --> 01:28:22,940
+ So, we would just take a very small break of 2 minutes and we will get back to question and answer 2 minutes break please ok.
+
+393
+01:28:22,940 --> 01:28:28,940
+ So, we are back with the question answers that we had during our session.
+
+394
+01:28:28,940 --> 01:28:32,940
+ So, can we have the questions on screen please ok.
+
+395
+01:28:32,940 --> 01:28:37,940
+ So, we have the first question that says anaconda silicon and anaconda intel.
+
+396
+01:28:37,940 --> 01:28:49,940
+ So, what to choose I guess this variations of anaconda depends upon the system or the hardware that you are using.
+
+397
+01:28:49,940 --> 01:29:03,940
+ So, anaconda silicon I guess that is that would be exclusive to Mac machines those who are using Mac and anaconda intel if you are using other systems ok.
+
+398
+01:29:03,940 --> 01:29:08,940
+ So, this would be specific to the device that you are using ok.
+
+399
+01:29:08,940 --> 01:29:19,940
+ So, second question please do we have to register anaconda at the time of opening navigator no, no not necessary.
+
+400
+01:29:19,940 --> 01:29:29,940
+ You skip all those unnecessary steps and directly jump into creating environment then loading the necessary packages and straight into coding.
+
+401
+01:29:29,940 --> 01:29:32,940
+ No need to register for any of those things ok.
+
+402
+01:29:32,940 --> 01:29:39,940
+ Next question thank you ok. So, thank you I hope we are done for the day.
+
+403
+01:29:39,940 --> 01:29:51,940
+ We would meet next week on another lab session from where we left we continue from here dipping diving deep into NumPy and pandas ok. Thank you.
+

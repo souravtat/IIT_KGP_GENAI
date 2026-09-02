@@ -1,0 +1,196 @@
+1
+00:00:00,000 --> 00:00:10,560
+ How to handle case when the input context is higher than the input context window what
+
+2
+00:00:10,560 --> 00:00:12,320
+ techniques can be used ok.
+
+3
+00:00:12,320 --> 00:00:17,640
+ So, in general the context window defines the amount of takes that you can fit to the
+
+4
+00:00:17,640 --> 00:00:18,640
+ LLM.
+
+5
+00:00:18,640 --> 00:00:23,120
+ So, suppose your context window is of 50 words then you can fit maximum 50 words.
+
+6
+00:00:23,120 --> 00:00:29,320
+ So, if you just fit it a document having 100 then rest of the 50 that is the last 50 they
+
+7
+00:00:29,320 --> 00:00:30,700
+ will be truncated.
+
+8
+00:00:30,700 --> 00:00:36,140
+ Now if you think that you have to fit the entire document at once one of the ideas could
+
+9
+00:00:36,140 --> 00:00:41,440
+ be chunking; that means, you split the documents into two chunks of 50 50 and you pass them
+
+10
+00:00:41,440 --> 00:00:46,240
+ one by one and then basically combine, cut in it or combine the information in some way
+
+11
+00:00:46,240 --> 00:00:47,240
+ ok.
+
+12
+00:00:47,240 --> 00:00:52,160
+ There are different ways of combining this, but what you are basically losing that if
+
+13
+00:00:52,160 --> 00:00:57,000
+ you are basically fitting the entire document it will capture the entire context, but if
+
+14
+00:00:57,000 --> 00:01:01,200
+ you have to split it into two then the first part cannot get the context information from
+
+15
+00:01:01,200 --> 00:01:03,080
+ the second one that is the part we are losing.
+
+16
+00:01:03,080 --> 00:01:11,040
+ So, in general that is why we are looking for the models having the larger context window
+
+17
+00:01:11,040 --> 00:01:12,040
+ ok.
+
+18
+00:01:12,040 --> 00:01:16,440
+ In top underscore catcher where likelihood weight comes from ok.
+
+19
+00:01:16,440 --> 00:01:20,720
+ So, the likelihood weight comes from your probability distributions we have basically this language
+
+20
+00:01:20,720 --> 00:01:25,480
+ models of this like we have this trigram or bigram models that you learn from the large
+
+21
+00:01:25,480 --> 00:01:26,480
+ corpus.
+
+22
+00:01:26,480 --> 00:01:31,840
+ So, that means if we are talking about the trigram so, like it is a continuation of three
+
+23
+00:01:31,840 --> 00:01:32,840
+ words.
+
+24
+00:01:32,840 --> 00:01:37,280
+ So, here we are checking that given the previous two words what is the probability of getting
+
+25
+00:01:37,280 --> 00:01:38,280
+ the third word.
+
+26
+00:01:38,280 --> 00:01:42,040
+ So, from a large corpus you gather this kind of probabilities that basically gives you
+
+27
+00:01:42,040 --> 00:01:47,240
+ the likelihood that is what is the probability of appearing the next word given and that
+
+28
+00:01:47,240 --> 00:01:51,320
+ probability we are using for the likelihood part that you are getting from the large corpus
+
+29
+00:01:51,320 --> 00:01:53,440
+ of the vocabulary.
+
+30
+00:01:53,440 --> 00:02:00,320
+ So, in top underscore K what if probability is very close or equal for two words.
+
+31
+00:02:00,320 --> 00:02:06,240
+ So, it is basically equal you can go with the any of this ok and if it is not equal
+
+32
+00:02:06,240 --> 00:02:10,580
+ you can go with the highest one generally this LLM they follow the greedy strategy in
+
+33
+00:02:10,580 --> 00:02:11,580
+ the prompting.
+
+34
+00:02:11,580 --> 00:02:17,160
+ So, whatever is the best it basically goes with that in the top underscore K.
+
+35
+00:02:17,160 --> 00:02:23,560
+ Then you tokenize are LLMs considering the memory each token takes or just number of
+
+36
+00:02:23,560 --> 00:02:24,560
+ tokens.
+
+37
+00:02:24,560 --> 00:02:30,320
+ LLMs from like open AIs have limit for number of tokens for free and paid versions what
+
+38
+00:02:30,320 --> 00:02:36,440
+ does it means technically again the number of tokens is basically related to a context
+
+39
+00:02:36,440 --> 00:02:37,440
+ window.
+
+40
+00:02:37,440 --> 00:02:45,120
+ So, if it is a free LLM in that case whatever the context window you cannot go beyond that.
+
+41
+00:02:45,120 --> 00:02:50,960
+ So, rest of the tokens will be truncated now in open AIs they have their paid version.
+
+42
+00:02:50,960 --> 00:02:56,960
+ So, basically in the free they basically fix max document length that you can give as input
+
+43
+00:02:56,960 --> 00:03:01,440
+ that is why they put this constant and for the paid version; obviously, you have different
+
+44
+00:03:01,440 --> 00:03:05,840
+ kind of schemes and based on that you can feed different kind of documents or basically
+
+45
+00:03:05,840 --> 00:03:07,840
+ different document lengths.
+
+46
+00:03:07,840 --> 00:03:12,600
+ But when you come to the free LLMs considering the memory each token takes or just the number
+
+47
+00:03:12,600 --> 00:03:13,600
+ of tokens.
+
+48
+00:03:13,600 --> 00:03:18,320
+ No, it does not consider the memory it consider the number of tokens that you are feeding
+
+49
+00:03:18,320 --> 00:03:25,480
+ fine and thanks everyone.
+

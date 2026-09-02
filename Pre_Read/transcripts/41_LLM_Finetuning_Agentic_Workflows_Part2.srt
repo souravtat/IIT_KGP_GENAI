@@ -1,0 +1,796 @@
+1
+00:00:00,000 --> 00:00:15,940
+ So, I hope that we were able to understand that how this chatting works and you probably
+
+2
+00:00:15,940 --> 00:00:26,400
+ executed it and you can just type exit to exit from this loop and you can utilize this
+
+3
+00:00:26,400 --> 00:00:34,320
+ in any of the aspect of your work. So, let us now move on to this part of the course
+
+4
+00:00:34,320 --> 00:00:39,600
+ where we will discuss about this fine tuning process and we for that we will need to install
+
+5
+00:00:39,600 --> 00:00:44,000
+ these few things. One is evaluate herring phase, I do not remember if we will need to
+
+6
+00:00:44,000 --> 00:00:47,760
+ install this herring phase library or not, but yeah. So, this is data sets also we are
+
+7
+00:00:47,760 --> 00:00:57,560
+ going to use. So, what is data sets? So, let us go on to this data sets thing. So, data
+
+8
+00:00:57,560 --> 00:01:03,280
+ sets you will see that in herring phase it is another library that gives you direct access
+
+9
+00:01:03,280 --> 00:01:08,640
+ to data sets. Also if you have some local data sets with you, you can load those data
+
+10
+00:01:08,640 --> 00:01:13,920
+ set using this data sets library. So, that does it can be streamlined basically the part
+
+11
+00:01:13,920 --> 00:01:18,600
+ where we are just going to give to the model. So, we are going to train a model we are going
+
+12
+00:01:18,600 --> 00:01:25,040
+ to test some model. So, for that you will see that using this data sets will be handy
+
+13
+00:01:25,040 --> 00:01:30,760
+ because it will convert it to the perfect like pipeline that will be required by the
+
+14
+00:01:30,760 --> 00:01:35,800
+ model. So, you do not have to do any kind of preprocessing and all from your end or
+
+15
+00:01:35,800 --> 00:01:40,720
+ rather you can just give this that this is the location of my data set and you can load
+
+16
+00:01:40,720 --> 00:01:45,840
+ it and of course, the data set library already provides you with some data sets that are
+
+17
+00:01:45,840 --> 00:01:51,320
+ available in their sections. You can directly give the name of the data set and load that
+
+18
+00:01:51,320 --> 00:01:56,560
+ data set directly without you having any data set installed in your system.
+
+19
+00:01:56,560 --> 00:02:03,880
+ So, I am briefing you once more. So, this data set you can use to have your local data
+
+20
+00:02:03,880 --> 00:02:09,800
+ sets load into this models and all for training the model. Again you can use this data sets
+
+21
+00:02:09,800 --> 00:02:15,960
+ and they have their versions where these versions are already provided by Hugging Face maybe
+
+22
+00:02:15,960 --> 00:02:20,160
+ some of the data sets are there maybe not all the data sets, but some famous data sets
+
+23
+00:02:20,160 --> 00:02:25,120
+ are already present here you can directly load this using this data set subject and
+
+24
+00:02:25,120 --> 00:02:34,960
+ use that into your model. So, the data set that we are using here the data set that we
+
+25
+00:02:34,960 --> 00:02:48,640
+ are using in our case is already present in this data set library is already present in
+
+26
+00:02:48,640 --> 00:02:56,360
+ this data set library and we are going to use that to train and test a small model that
+
+27
+00:02:56,360 --> 00:03:04,240
+ is GPT2. So, this GPT2 is free available you do not need a get a repository for that. So,
+
+28
+00:03:04,240 --> 00:03:09,060
+ that is a good thing and we can have a test of idea like how that can be done.
+
+29
+00:03:09,060 --> 00:03:16,080
+ So, in general what we are going to do I am just giving you a good idea about it. So,
+
+30
+00:03:16,080 --> 00:03:29,080
+ this will be tweets and there will be the sentiments. So, these are the tweets and these
+
+31
+00:03:29,080 --> 00:03:36,600
+ are the sentiments and we want to train that model using the data that we have. So, we
+
+32
+00:03:36,600 --> 00:03:47,040
+ will get this training data and we pass this to the LLM essentially we just pass this tweet
+
+33
+00:03:47,040 --> 00:03:57,000
+ to the LLM asking what will be the sentiment of this. So, we pass that and the LLM generate
+
+34
+00:03:57,000 --> 00:04:11,640
+ a sentiment and the actual sentiment related to that particular tweet is used to calculate
+
+35
+00:04:11,640 --> 00:04:18,680
+ the loss. So, this is the loss function that we use and then again you can back propagate
+
+36
+00:04:18,680 --> 00:04:26,760
+ this loss through the model to actually train it. So, this is the general procedure that
+
+37
+00:04:26,760 --> 00:04:39,760
+ we will follow. So, we install this require libraries using this function I can just see.
+
+38
+00:04:39,760 --> 00:04:45,240
+ These are the various libraries again we are going to use. So, from transformers it directly
+
+39
+00:04:45,240 --> 00:04:51,360
+ gives you again access to GPT2 tokenizer we have already seen tokenizer for T5 model here
+
+40
+00:04:51,360 --> 00:04:57,920
+ we are seeing the tokenizer for GPT2 model. Then again this transformers for GPT2 for
+
+41
+00:04:57,920 --> 00:05:05,720
+ sequence classification. So, this is the model actual model from transformers we are taking
+
+42
+00:05:05,720 --> 00:05:10,920
+ two different classes one is the trainer class we already talked about it and the initial
+
+43
+00:05:10,920 --> 00:05:17,880
+ section and this training arguments. Training arguments actually gives you the flexibility
+
+44
+00:05:17,880 --> 00:05:21,880
+ of providing the arguments for training that how much you want to train for what will be
+
+45
+00:05:21,880 --> 00:05:26,680
+ the different parameters for training and all. And this trainer class is responsible
+
+46
+00:05:26,680 --> 00:05:34,320
+ for training the model basically the learning this gradients through this models. And the
+
+47
+00:05:34,320 --> 00:05:39,680
+ other things we have already seen from datasets we are importing this loaded dataset function
+
+48
+00:05:39,680 --> 00:05:45,000
+ it actually gives us access to that dataset that is present either in our local system
+
+49
+00:05:45,000 --> 00:05:52,800
+ or in our hugging page library right. So, this load dataset is there and once we have
+
+50
+00:05:52,800 --> 00:05:59,640
+ this present we will see that we will provide this as an input to the model. So, this is
+
+51
+00:05:59,640 --> 00:06:05,200
+ one important steps at least for this particular task where we are setting the OS environment
+
+52
+00:06:05,200 --> 00:06:11,720
+ when DB underscore disabled and we are making it true because what happens is that it might
+
+53
+00:06:11,720 --> 00:06:16,200
+ require access to when DB some of the time to log the different things that the model
+
+54
+00:06:16,200 --> 00:06:21,760
+ is performing. So, we do not want that we do not want any kind of like warning messages
+
+55
+00:06:21,760 --> 00:06:28,160
+ here also. So, that is why we are just disabling this particular facility we do not want log,
+
+56
+00:06:28,160 --> 00:06:31,520
+ but once we are doing some research work or something like that you probably want this
+
+57
+00:06:31,520 --> 00:06:37,440
+ log to be true. So, this load dataset is very easy function
+
+58
+00:06:37,440 --> 00:06:43,000
+ which is give the name of the dataset. So, the name of the dataset is MTEB slash twit
+
+59
+00:06:43,000 --> 00:06:47,360
+ sentiment extraction. So, this dataset is already provided by hugging face you can directly
+
+60
+00:06:47,360 --> 00:06:56,120
+ load this into this using this load dataset function. And let us see that what is the
+
+61
+00:06:56,120 --> 00:07:02,560
+ dataset that we have. So, in this DF we are actually storing this train part of this dataset.
+
+62
+00:07:02,560 --> 00:07:08,160
+ So, this dataset has this train function this test function. So, there are different sections
+
+63
+00:07:08,160 --> 00:07:13,760
+ of this dataset already provided to you. So, that in the DF we are just storing this train
+
+64
+00:07:13,760 --> 00:07:21,000
+ dataset. So, it will download this dataset and all once we have that we can just see
+
+65
+00:07:21,000 --> 00:07:26,400
+ what is the data that we have. So, I have responded it if I were going. So, these are
+
+66
+00:07:26,400 --> 00:07:30,440
+ the different text in the training set and this is the level level is nothing but the
+
+67
+00:07:30,440 --> 00:07:35,440
+ sentiment of course. And you can get the idea about this dataset
+
+68
+00:07:35,440 --> 00:07:41,480
+ what is this dataset about and all in that particular section in the dataset library.
+
+69
+00:07:41,480 --> 00:07:48,280
+ If you just search with this name of twit sentiment analysis you will see that what dataset we
+
+70
+00:07:48,280 --> 00:07:56,640
+ are using. So, you search the internet and you will see that there are different information
+
+71
+00:07:56,640 --> 00:08:02,160
+ about this dataset. So, here you will see that what is the dataset that we are working
+
+72
+00:08:02,160 --> 00:08:07,060
+ with. And you can go through this research papers also which actually talks about this
+
+73
+00:08:07,060 --> 00:08:30,040
+ dataset and works with this dataset. So, this is the training data that we have. So, now
+
+74
+00:08:30,040 --> 00:08:35,060
+ we want to load the model tokenizer. So, why this is important in the very first stage
+
+75
+00:08:35,060 --> 00:08:39,560
+ here is because we are going to train a model and the tokenizer will be used to tokenize
+
+76
+00:08:39,560 --> 00:08:45,180
+ this input text. We have already discussed this why that is important. So, now this tokenizer
+
+77
+00:08:45,180 --> 00:08:51,060
+ will have this GPT2 tokenizer object that we have used from pretend and we are giving
+
+78
+00:08:51,060 --> 00:08:55,860
+ the name of the model as GPT2. It can access to some other models this is a very small
+
+79
+00:08:55,860 --> 00:09:03,140
+ model. And this tokenizer will just put this pad token as the end of sentence token. So,
+
+80
+00:09:03,140 --> 00:09:10,340
+ in the previous like thing we were seeing that they were warning that pad token is replaced
+
+81
+00:09:10,340 --> 00:09:15,940
+ using end of sentence token. So, to do that we are just replacing it by ourselves manually
+
+82
+00:09:15,940 --> 00:09:23,940
+ and as simple as that we are just replacing this tokenizer values. So, function to tokenize
+
+83
+00:09:23,940 --> 00:09:29,220
+ each example. So, what happens we are going to loop through each of this text one by one
+
+84
+00:09:29,220 --> 00:09:35,540
+ and we are to tokenize this text in the examples. For that we are creating a spatial function
+
+85
+00:09:35,540 --> 00:09:42,540
+ of tokenizer and it takes the examples and it returns each of the tokenized examples.
+
+86
+00:09:42,540 --> 00:09:47,860
+ So, examples text it passes it through this tokenizer object and returns the tokenized
+
+87
+00:09:47,860 --> 00:09:54,460
+ text. So, now the tokenized dataset how we can just confirm we can just use this dataset
+
+88
+00:09:54,460 --> 00:10:00,420
+ dot map function and we can give this tokenized function it actually tokenizes using the tokenizer
+
+89
+00:10:00,420 --> 00:10:06,860
+ and batch equal to true actually ensures that you are using batch execution and this batching
+
+90
+00:10:06,860 --> 00:10:11,980
+ is actually done the batch size and all the other parameters are actually selected automatically
+
+91
+00:10:11,980 --> 00:10:17,900
+ you do not have to do anything. So, if you run that you will see that the tokenizer is
+
+92
+00:10:17,900 --> 00:10:23,820
+ being loaded downloaded. So, it will take some time and once that is done it will just tokenize
+
+93
+00:10:23,820 --> 00:10:26,020
+ your particular dataset.
+
+94
+00:10:26,020 --> 00:10:36,260
+ Now, you see that we have this tokenized dataset and now we are going to test and train split
+
+95
+00:10:36,260 --> 00:10:41,100
+ this dataset. Now, you might be confused because we have already taken the train part of the
+
+96
+00:10:41,100 --> 00:10:46,540
+ data actually we are not going to use a big amount of dataset, but instead we are just
+
+97
+00:10:46,540 --> 00:10:51,420
+ taking the strain section we are splitting this strain sectioning into two parts again
+
+98
+00:10:51,420 --> 00:10:57,240
+ which is the train part and this test part. So, the train part in the second phase is
+
+99
+00:10:57,240 --> 00:11:04,660
+ going to be used for training the model and the test part is used to test the model.
+
+100
+00:11:04,660 --> 00:11:15,420
+ So, it is downloaded and it is executed properly right. So, now what we want is we want to
+
+101
+00:11:15,420 --> 00:11:23,740
+ get from this tokenized datasets a train part and a test part and we want to suffer this
+
+102
+00:11:23,740 --> 00:11:30,900
+ and keep the seed to be 42 and the like requirement of this seeding is of course, because we want
+
+103
+00:11:30,900 --> 00:11:35,620
+ same result during the development time or testing time right we do not want it to be
+
+104
+00:11:35,620 --> 00:11:41,740
+ fluctuating because if you train with different set of training data the result output will
+
+105
+00:11:41,740 --> 00:11:46,460
+ be different. So, we want to keep this fixed, but in a real environment probably you are
+
+106
+00:11:46,460 --> 00:11:52,500
+ not going to use this kind of criteria and we are selecting only 1000 data points for
+
+107
+00:11:52,500 --> 00:11:58,300
+ this training set and 1000 data points from this testing set and we are storing those
+
+108
+00:11:58,300 --> 00:12:03,940
+ into this small train set and small test set we are probably going to use much smaller
+
+109
+00:12:03,940 --> 00:12:10,820
+ set than this also for training the model. So, we have to select a small fragment of
+
+110
+00:12:10,820 --> 00:12:15,300
+ the data. So, again we are like we are just changing this. So, we are just taking let
+
+111
+00:12:15,300 --> 00:12:20,860
+ us say 100 data points for training and 100 data points for testing this will also work,
+
+112
+00:12:20,860 --> 00:12:23,660
+ but not that great.
+
+113
+00:12:23,660 --> 00:12:30,900
+ So, model equals to GPT 2 for sequence classification actually gives you this model that you have
+
+114
+00:12:30,900 --> 00:12:36,860
+ already loaded which is the GPT 2 models and we have provided this number of levels that
+
+115
+00:12:36,860 --> 00:12:41,260
+ the model is going to output because it is kind of classification task you are going
+
+116
+00:12:41,260 --> 00:12:47,960
+ to classify the sentiments. So, as the source tells that if you give this model if you just
+
+117
+00:12:47,960 --> 00:12:52,220
+ create this model I think the model will be downloaded it will take some time. So, let
+
+118
+00:12:52,220 --> 00:12:57,100
+ us move on to this different part ok. So, it is a smaller model it downloaded ok.
+
+119
+00:12:57,100 --> 00:13:04,300
+ So, now we will define the matrix that will be used to evaluate this particular model.
+
+120
+00:13:04,300 --> 00:13:11,180
+ So, for evaluation we are going to load this accuracy matrix and the matrix will be calculated
+
+121
+00:13:11,180 --> 00:13:15,020
+ based on this particular function. So, I am not going into the details of the function
+
+122
+00:13:15,020 --> 00:13:21,380
+ it actually takes the predicted scores and the actual scores and create a function that
+
+123
+00:13:21,380 --> 00:13:28,300
+ actually measures this accuracy right. So, this metric is actually this evaluate that
+
+124
+00:13:28,300 --> 00:13:32,380
+ load function that actually provides you with this accuracy function.
+
+125
+00:13:32,380 --> 00:13:37,700
+ Let us move on to this training parameters. This training parameters are a bit of important
+
+126
+00:13:37,700 --> 00:13:43,860
+ criteria because you are going to use this parameters based on your own system and based
+
+127
+00:13:43,860 --> 00:13:48,580
+ on your own data most of the time. So, this output directory will create this
+
+128
+00:13:48,580 --> 00:13:53,420
+ trained trainer directory that will store this output directory. If you are using a
+
+129
+00:13:53,420 --> 00:13:59,140
+ local system probably you will be having that and you can use that later also. So, part
+
+130
+00:13:59,140 --> 00:14:05,220
+ device train batch size. So, this is the batch size that that we are going to give here we
+
+131
+00:14:05,220 --> 00:14:09,260
+ are giving the device eval batch size. So, for training the batch size can be fixed for
+
+132
+00:14:09,260 --> 00:14:14,860
+ evaluation the different batch size can be fixed. Gradient accumulation steps is given
+
+133
+00:14:14,860 --> 00:14:20,820
+ as four. So, basically after four steps the gradient will be calculated and report to
+
+134
+00:14:20,820 --> 00:14:26,060
+ none is this is used because we are already we have already told that we are omitting
+
+135
+00:14:26,060 --> 00:14:31,780
+ this Vandy belonging which we do not require. So, we are just keeping it as none.
+
+136
+00:14:31,780 --> 00:14:37,260
+ Now, the trainer function as it is provided by this trainer class you will see that it
+
+137
+00:14:37,260 --> 00:14:42,260
+ takes this model which is this GPT 2 model that we have already loaded this arguments
+
+138
+00:14:42,260 --> 00:14:48,220
+ which provides you the training argument that we have created here. The train dataset which
+
+139
+00:14:48,220 --> 00:14:53,060
+ we are providing this small train data sets the 100 data only. So, we are just going through
+
+140
+00:14:53,060 --> 00:15:01,140
+ this 100 data and we are having this small eval data sets also for the evaluation and
+
+141
+00:15:01,140 --> 00:15:05,820
+ the matrix is calculated using this compute matrix function that that is present here.
+
+142
+00:15:05,820 --> 00:15:22,620
+ So, now if we just run this. So, the matrix is calculated let us first evaluate using
+
+143
+00:15:22,620 --> 00:15:31,740
+ this trainer dot evaluate function I have to load this trainer class first. So, we will
+
+144
+00:15:31,740 --> 00:15:35,540
+ just evaluate the trainer class. So, while we are doing it we are just seeing that by
+
+145
+00:15:35,540 --> 00:15:42,480
+ default what is the performance of the model without any training on the data. So, we get
+
+146
+00:15:42,480 --> 00:15:50,660
+ an eval accuracy of 0.34 not very good. So, let us run the trainer. So, it is a very
+
+147
+00:15:50,660 --> 00:15:56,340
+ small dataset. So, you do not expect much of an improvement, but once the training is
+
+148
+00:15:56,340 --> 00:16:21,740
+ done we will see that what is the different kind of output we get right.
+
+149
+00:16:21,740 --> 00:16:32,380
+ So, after this probably what is the expectation here is that once we train this model even
+
+150
+00:16:32,380 --> 00:16:39,220
+ with very small data we will get a small improvement in our training output after the training
+
+151
+00:16:39,220 --> 00:16:46,740
+ is performed. So, this is the expected thing. So, we try to use our own datasets for our
+
+152
+00:16:46,740 --> 00:16:53,100
+ own tasks. So, for example, if we have a translation task for our own purpose or maybe we are having
+
+153
+00:16:53,100 --> 00:16:57,740
+ a particular task where we are going to give customers feedback or something like that
+
+154
+00:16:57,740 --> 00:17:03,180
+ and if we have a specialized data of our own and we can use that to train our model and
+
+155
+00:17:03,180 --> 00:17:08,260
+ we will see that this model without in the training version of this model will perform
+
+156
+00:17:08,260 --> 00:17:12,460
+ better than the zero short version of this base model right.
+
+157
+00:17:12,460 --> 00:17:17,900
+ So, this is the expectation and the expectation in this particular case is that after training
+
+158
+00:17:17,900 --> 00:17:27,120
+ even with this small data we should have a better score in the evaluation. Let us see
+
+159
+00:17:27,120 --> 00:17:33,580
+ eval accuracy is 0.37. So, it is from 3437 of course like it would not improve much,
+
+160
+00:17:33,580 --> 00:17:37,660
+ but if you increase this number to let us say 1000 data it will take some more time
+
+161
+00:17:37,660 --> 00:17:43,180
+ for training the T4 GPS is not that great, but yeah. So, that is the expectation.
+
+162
+00:17:43,180 --> 00:17:49,900
+ So, I think like in today's section you will have understood about how we can prompt the
+
+163
+00:17:49,900 --> 00:17:56,580
+ large language models, how this chat function works, how the prompt can be handled in a
+
+164
+00:17:56,580 --> 00:18:02,940
+ manner where you can just use a particular loop to like provide information as an user
+
+165
+00:18:02,940 --> 00:18:07,640
+ to the model and get the output from the generated output from the model and once you have all
+
+166
+00:18:07,640 --> 00:18:12,820
+ those things done how you can use this training data set that you already have using this
+
+167
+00:18:12,820 --> 00:18:18,460
+ transformers data set library if it is present in the transformers library of or an offline
+
+168
+00:18:18,460 --> 00:18:24,260
+ library you can load that and how you can train a model for your specific task.
+
+169
+00:18:24,260 --> 00:18:43,660
+ So, I think this is done and we can have some questions if you are having.
+
+170
+00:18:43,660 --> 00:19:04,320
+ Does quantization compromise with model functional capability and performance of course yes.
+
+171
+00:19:04,320 --> 00:19:10,680
+ So, once you quantize a model it will have some effect on the quality of the output it
+
+172
+00:19:10,680 --> 00:19:17,000
+ generally reduces to a point that is usable most of the time, but as I told you the 8
+
+173
+00:19:17,000 --> 00:19:22,880
+ bit quantized models or the 4 bits one are basically the 4 bits are unusable in most
+
+174
+00:19:22,880 --> 00:19:28,600
+ of the cases, but for 8 bits you can go like get away with some of the task.
+
+175
+00:19:28,600 --> 00:19:35,400
+ We generally use 16 bit or in a very special case where we have a very less amount of VRAM
+
+176
+00:19:35,400 --> 00:19:42,160
+ available we use this 8 bit quantization that actually works, but 4 bit we try to avoid
+
+177
+00:19:42,160 --> 00:19:45,640
+ that.
+
+178
+00:19:45,640 --> 00:19:50,360
+ Once I request for access for a model how long would it take for MetaLama3 requested
+
+179
+00:19:50,360 --> 00:19:53,240
+ for access and so spending status I see for this yeah.
+
+180
+00:19:53,240 --> 00:19:56,840
+ So, you will see this error because you still do not have access.
+
+181
+00:19:56,840 --> 00:20:03,720
+ So, it depends on the model some of the models you may get in some hours to like for Lama
+
+182
+00:20:03,720 --> 00:20:10,920
+ models it might take a week also it depends on the model for Lama3 I think week you can
+
+183
+00:20:10,920 --> 00:20:15,720
+ expect that max.
+
+184
+00:20:15,720 --> 00:20:21,640
+ To fine tune the model how many such prompts are needed do we need to anticipate all possible
+
+185
+00:20:21,640 --> 00:20:27,600
+ scenarios and use all for all of them how many such prompts are needed.
+
+186
+00:20:27,600 --> 00:20:32,600
+ I think like you are talking about the data that we are using so it is of course depending
+
+187
+00:20:32,600 --> 00:20:34,280
+ on the data you are having right.
+
+188
+00:20:34,280 --> 00:20:38,320
+ So, if you have enough resources if you have enough data probably you will use end up using
+
+189
+00:20:38,320 --> 00:20:39,720
+ all the data that you have.
+
+190
+00:20:39,720 --> 00:20:43,840
+ So, there is no limitation that you will be using only a small amount of the data or small
+
+191
+00:20:43,840 --> 00:20:45,080
+ fragment of the data.
+
+192
+00:20:45,080 --> 00:20:52,160
+ So, it already depends on the like model that you are going to train the data that you are
+
+193
+00:20:52,160 --> 00:20:56,600
+ already having and the resources that you are having basically the GPUs in our case because
+
+194
+00:20:56,600 --> 00:21:05,560
+ the GPUs are very very important for large language model training and all.
+
+195
+00:21:05,560 --> 00:21:11,280
+ Since it will take time for Lama model to get access any other model with quick access
+
+196
+00:21:11,280 --> 00:21:18,080
+ token you can use Mistrol they have like only a single day and there are other models that
+
+197
+00:21:18,080 --> 00:21:23,040
+ you can use like Zephyr that you would not even require this access token.
+
+198
+00:21:23,040 --> 00:21:29,560
+ So, you can directly access those models they have this pipeline available ok.
+
+199
+00:21:29,560 --> 00:21:33,120
+ Thank you I think we can end this session.
+

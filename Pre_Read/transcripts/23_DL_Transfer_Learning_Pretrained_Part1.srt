@@ -1,0 +1,2532 @@
+1
+00:00:00,000 --> 00:00:12,280
+ Okay, good morning all of you.
+
+2
+00:00:12,280 --> 00:00:21,440
+ So I'm going to talk about deep learning in particular the transfer learning from deep
+
+3
+00:00:21,440 --> 00:00:23,760
+ pretend models.
+
+4
+00:00:23,760 --> 00:00:29,560
+ So transfer learning has a very long history and I'm not going to talk about the other
+
+5
+00:00:29,560 --> 00:00:35,180
+ kinds of transfer learning but I'm primarily going to focus on the kind of transfer learning
+
+6
+00:00:35,180 --> 00:00:38,800
+ that we do from deep learning models.
+
+7
+00:00:38,800 --> 00:00:43,760
+ So I will briefly touch upon what is transfer learning and then I'll directly come into
+
+8
+00:00:43,760 --> 00:00:49,280
+ the deep learning best models and try to show you what are the things that we do in deep
+
+9
+00:00:49,280 --> 00:00:56,760
+ learning to transfer, what are the different challenges, the computational issues, the
+
+10
+00:00:56,760 --> 00:01:02,800
+ changes that you need to make in the model parameters, the model architectures, some
+
+11
+00:01:02,800 --> 00:01:09,440
+ applications of transfer learning and then I will end up with some of the very well known
+
+12
+00:01:09,440 --> 00:01:18,840
+ open source pretend models which are the backbone of any kind of transfer learning in deep learning.
+
+13
+00:01:18,840 --> 00:01:30,040
+ So before I get into transfer learning I quickly review the deep nets because this is something
+
+14
+00:01:30,040 --> 00:01:36,120
+ on which we will be standing our entire talk, so the foundation for the kind of talk that
+
+15
+00:01:36,120 --> 00:01:38,960
+ we are going to do today.
+
+16
+00:01:38,960 --> 00:01:45,080
+ So as you know the deep learnings are extremely effective, so sorry there is a spelling mistake
+
+17
+00:01:45,080 --> 00:01:52,200
+ it should be effective primarily because they can learn representation automatically for
+
+18
+00:01:52,200 --> 00:01:55,200
+ specific tasks.
+
+19
+00:01:55,200 --> 00:02:02,360
+ So if you recall the conventional machine learning, the traditional machine learning what happens
+
+20
+00:02:02,360 --> 00:02:10,400
+ in this case that the future engineering is typically done by the human expert, somebody
+
+21
+00:02:10,400 --> 00:02:16,240
+ who knows the domain, for example somebody who understand image very well or somebody
+
+22
+00:02:16,240 --> 00:02:22,080
+ who understand the language very well, so they can extract the features from the corresponding
+
+23
+00:02:22,080 --> 00:02:27,920
+ domain and then it comes to the typical machine learning models like support vector machine,
+
+24
+00:02:27,920 --> 00:02:31,920
+ logistic regression, decision tree and all sorts of things.
+
+25
+00:02:31,920 --> 00:02:38,000
+ The good thing about deep learning is that we do not need to do all kinds of stuff, the
+
+26
+00:02:38,000 --> 00:02:44,320
+ future engineering is done automatically, specific to a particular task, the model itself
+
+27
+00:02:44,320 --> 00:02:49,680
+ will learn the representation based on the data and based on the objective function that
+
+28
+00:02:49,680 --> 00:02:55,880
+ we have, so that gives the power, the main power.
+
+29
+00:02:55,880 --> 00:03:00,840
+ So very little or no manual intervention required and I will come to this particular point when
+
+30
+00:03:00,840 --> 00:03:06,720
+ I talk about things where we need very little or very little manual intervention in situation
+
+31
+00:03:06,720 --> 00:03:09,440
+ like this.
+
+32
+00:03:09,440 --> 00:03:16,000
+ So the typical structure I believe this people have been talking about these things for quite
+
+33
+00:03:16,000 --> 00:03:22,440
+ some time in the last few lectures, I just quickly give the basics of these deep nets.
+
+34
+00:03:22,440 --> 00:03:28,720
+ So deep net is nothing but a very big and complex mathematical function and typically
+
+35
+00:03:28,720 --> 00:03:35,840
+ they have millions and billions of parameters which we call weights and biases and so on
+
+36
+00:03:35,840 --> 00:03:38,080
+ and so forth.
+
+37
+00:03:38,080 --> 00:03:42,400
+ And the parameters they do everything for you.
+
+38
+00:03:42,400 --> 00:03:47,360
+ So they are the real workhorse for all the things that you did learning.
+
+39
+00:03:47,360 --> 00:03:52,760
+ So if you get them right then they can do good things for you.
+
+40
+00:03:52,760 --> 00:03:59,200
+ So in order to get them right we need to train these things very nicely and that itself is
+
+41
+00:03:59,200 --> 00:04:06,800
+ a very big challenge not only computationally but at the same time it requires lot of data
+
+42
+00:04:06,800 --> 00:04:07,800
+ to do it.
+
+43
+00:04:07,800 --> 00:04:14,120
+ And one of these major motivations for using transfer learning is to minimize the necessity
+
+44
+00:04:14,120 --> 00:04:21,560
+ of data and we would like to transfer a particular knowledge or representation from the other
+
+45
+00:04:21,560 --> 00:04:26,840
+ domains and try to adapt it.
+
+46
+00:04:26,840 --> 00:04:33,960
+ Now all of you probably know that there are various kinds of deep nets.
+
+47
+00:04:33,960 --> 00:04:38,320
+ First that comes to our mind is the vanilla neural network which we also call the feed
+
+48
+00:04:38,320 --> 00:04:40,880
+ forward neural network.
+
+49
+00:04:40,880 --> 00:04:44,960
+ So basically what you have you have that all the layers are connected with the next layer
+
+50
+00:04:44,960 --> 00:04:49,720
+ and also and so forth fully connected layers and you simply perform computation from left
+
+51
+00:04:49,720 --> 00:04:52,440
+ to right and predict something.
+
+52
+00:04:52,440 --> 00:04:54,360
+ So this is good for the tabular data.
+
+53
+00:04:54,360 --> 00:04:59,520
+ We assume that the features are already in good form and we can do lots of the traditional
+
+54
+00:04:59,520 --> 00:05:04,720
+ tasks that the conventional machine learning people do.
+
+55
+00:05:04,720 --> 00:05:09,880
+ The second most important thing is the convolutional neural network.
+
+56
+00:05:09,880 --> 00:05:16,200
+ So this kind of neural network is very useful for image and video data.
+
+57
+00:05:16,200 --> 00:05:22,640
+ In this case we need much more sophisticated future engineering than the tabular data.
+
+58
+00:05:22,640 --> 00:05:27,880
+ So we have lot of layers you know these convolutional layers, max pooling layers, fully connected
+
+59
+00:05:27,880 --> 00:05:33,120
+ layers and all sorts of things and they will extract some interesting features for the task
+
+60
+00:05:33,120 --> 00:05:38,560
+ that we are dealing with and then they can do the magic for you.
+
+61
+00:05:38,560 --> 00:05:45,360
+ The third category of models recurrent neural nets specifically for temporal data.
+
+62
+00:05:45,360 --> 00:05:52,700
+ So by temporal data I mean the time series data or where the things have sequences.
+
+63
+00:05:52,700 --> 00:05:58,240
+ For example the natural language text which is a very good example of sequence data because
+
+64
+00:05:58,240 --> 00:06:03,640
+ the words are dependent and if you change the word the order of different words then
+
+65
+00:06:03,640 --> 00:06:06,240
+ they can carry different meanings.
+
+66
+00:06:06,240 --> 00:06:11,960
+ So for those kind of tasks for example something that you have to deal with the natural languages
+
+67
+00:06:11,960 --> 00:06:15,860
+ the recurrent neural nets are extremely good models.
+
+68
+00:06:15,860 --> 00:06:23,040
+ Now more recently and I think something that is ruling the entire deep learning community
+
+69
+00:06:23,040 --> 00:06:30,360
+ is the attention based nets in particular the transformer and its different variants.
+
+70
+00:06:30,360 --> 00:06:38,000
+ So unlike recurrent neural nets they are not that recursively dependent different states.
+
+71
+00:06:38,000 --> 00:06:45,080
+ This can be done in parallel with the concept called self-attention which can capture extremely
+
+72
+00:06:45,080 --> 00:06:51,880
+ powerful dependencies between different symbols appeared in the input data and then you can
+
+73
+00:06:51,880 --> 00:06:55,000
+ basically do all sorts of things.
+
+74
+00:06:55,000 --> 00:07:01,920
+ So the generative BI for example the chat GPT and other things essentially relying on
+
+75
+00:07:01,920 --> 00:07:04,320
+ the transformer model.
+
+76
+00:07:04,320 --> 00:07:12,480
+ In all of these cases we will see how these architectures can be changed or modified to
+
+77
+00:07:12,480 --> 00:07:17,920
+ achieve the transfer learning.
+
+78
+00:07:17,920 --> 00:07:24,360
+ So the essence of deep learning is basically representation learning.
+
+79
+00:07:24,360 --> 00:07:27,640
+ So that's the power main power of deep learning.
+
+80
+00:07:27,640 --> 00:07:36,080
+ So the input data could be like image, video, text or audio and then you have this model
+
+81
+00:07:36,080 --> 00:07:42,600
+ involving a billion sometimes millions and billions of parameters and they will produce
+
+82
+00:07:42,600 --> 00:07:49,260
+ a hidden vector of some dimension fixed dimension typically the numerical the real number vectors
+
+83
+00:07:49,260 --> 00:07:55,840
+ and these vectors will finally help us to produce the final output.
+
+84
+00:07:55,840 --> 00:08:02,440
+ Now the vectors that we get from these models is not human understandable in the sense that
+
+85
+00:08:02,440 --> 00:08:07,040
+ if we try we cannot really make sense out of it.
+
+86
+00:08:07,040 --> 00:08:14,360
+ So all the machines do they know that how this can be used different models the computational
+
+87
+00:08:14,360 --> 00:08:20,000
+ models they understand how this can be used to achieve the final goal.
+
+88
+00:08:20,000 --> 00:08:25,400
+ So to give you a little bit of sense of these vectors created by the deep learning models.
+
+89
+00:08:25,400 --> 00:08:30,120
+ So ultimately what they do they follow discriminative sort of the learning paradigm.
+
+90
+00:08:30,120 --> 00:08:35,660
+ So if two objects are very different to each other then the vectors produced by the deep
+
+91
+00:08:35,660 --> 00:08:40,360
+ learning models will be very different so angle between them will be very high or distance
+
+92
+00:08:40,360 --> 00:08:45,040
+ between them will be very high or something like that.
+
+93
+00:08:45,040 --> 00:08:54,120
+ So the typical deep learning model as I mentioned will involve a millions and billions of parameters
+
+94
+00:08:54,120 --> 00:09:00,520
+ you know and these parameters typically are organized in a particular way so that you
+
+95
+00:09:00,520 --> 00:09:05,520
+ can do the lot of feature engineering and so on and so forth.
+
+96
+00:09:05,520 --> 00:09:11,280
+ So whenever I talk about the parameters I will denote by this set of parameters W typically
+
+97
+00:09:11,280 --> 00:09:21,400
+ the weights and B for the biases.
+
+98
+00:09:21,400 --> 00:09:27,040
+ So typically these two sets of parameters that you have in the deep learning models will
+
+99
+00:09:27,040 --> 00:09:29,840
+ determine everything for you.
+
+100
+00:09:29,840 --> 00:09:35,800
+ So general belief is that higher the number of parameters better capability that they
+
+101
+00:09:35,800 --> 00:09:42,960
+ have but the downside is that higher the model more computational power will be required
+
+102
+00:09:42,960 --> 00:09:51,120
+ more data will be required and that is where transfer learning comes into picture.
+
+103
+00:09:51,120 --> 00:09:58,800
+ The first question that we encounter in transfer learning why transfer learning.
+
+104
+00:09:58,800 --> 00:10:06,440
+ So the first assumption on which transfer learning stands is that there are many tasks
+
+105
+00:10:06,440 --> 00:10:10,200
+ that we do often they share common knowledge.
+
+106
+00:10:10,200 --> 00:10:19,120
+ For example the linguistic representations of text fragments will share some common things
+
+107
+00:10:19,120 --> 00:10:25,360
+ and that can be exploited to achieve different text processing applications.
+
+108
+00:10:25,360 --> 00:10:31,760
+ For example if we are dealing with say natural language text we may need to classify the
+
+109
+00:10:31,760 --> 00:10:34,960
+ particular text into a particular category.
+
+110
+00:10:34,960 --> 00:10:39,800
+ We may need to group the text in different groups.
+
+111
+00:10:39,800 --> 00:10:44,960
+ We may need to find out the orientation of the text for example whether this is positive
+
+112
+00:10:44,960 --> 00:10:47,460
+ or negative and so on and so forth.
+
+113
+00:10:47,460 --> 00:10:54,720
+ So although they have different tasks they do share the common linguistic characteristics
+
+114
+00:10:54,720 --> 00:10:57,240
+ that can be exploited in this case.
+
+115
+00:10:57,240 --> 00:11:04,600
+ Now coming to images for example many images will share the structural similarities.
+
+116
+00:11:04,600 --> 00:11:10,560
+ For example the shape of an image is an extremely powerful signal which can be used to do many
+
+117
+00:11:10,560 --> 00:11:16,800
+ downstream tasks for example image classification, image captioning, segmentation and so on and
+
+118
+00:11:16,800 --> 00:11:17,800
+ so forth.
+
+119
+00:11:17,800 --> 00:11:24,200
+ Now the same feature for example in case of image the edges can be used to many other
+
+120
+00:11:24,200 --> 00:11:25,200
+ domains.
+
+121
+00:11:25,200 --> 00:11:31,960
+ So the question is why can't we exploit the common representation that the tasks share
+
+122
+00:11:31,960 --> 00:11:37,040
+ so that we can minimize the computational requirements, we can minimize the necessity
+
+123
+00:11:37,040 --> 00:11:41,800
+ of data and so on and so forth.
+
+124
+00:11:41,800 --> 00:11:47,620
+ The second and one of the most important sort of the motivations behind transfer learning
+
+125
+00:11:47,620 --> 00:11:51,960
+ is the annotation cost of data.
+
+126
+00:11:51,960 --> 00:11:57,560
+ So in order to train a very big deep net you require a lot of data and often the data requires
+
+127
+00:11:57,560 --> 00:12:04,440
+ annotation and the annotation is not only time consuming at the same time it's expensive
+
+128
+00:12:04,440 --> 00:12:12,520
+ and at the same time more data that you have there will be a lot of noise and processing
+
+129
+00:12:12,520 --> 00:12:18,440
+ pre-processing data and cleaning up things will also be extremely challenging.
+
+130
+00:12:18,440 --> 00:12:23,520
+ So what we do we basically make use of HMAS supervision as available to us and then try
+
+131
+00:12:23,520 --> 00:12:29,720
+ to modify on top of this sitting on top of this to achieve something.
+
+132
+00:12:29,720 --> 00:12:35,560
+ The third important point is building large models from scratch is extremely time consuming.
+
+133
+00:12:35,560 --> 00:12:38,160
+ They are computationally very heavy.
+
+134
+00:12:38,160 --> 00:12:43,680
+ So not only computationally very heavy they also consume a lot of power so that also is
+
+135
+00:12:43,680 --> 00:12:49,680
+ kind of damaging for the environment, generates a lot of carbon, footprints and so on so forth.
+
+136
+00:12:49,680 --> 00:12:54,680
+ So for many different perspective that if you could minimize the computational burden
+
+137
+00:12:54,680 --> 00:13:02,320
+ for training the deep networks we can do lot of good things and this is one of the major
+
+138
+00:13:02,320 --> 00:13:10,280
+ objectives of the transfer learning that we are dealing with.
+
+139
+00:13:10,280 --> 00:13:14,680
+ Now to give a pictorial view of transfer learning.
+
+140
+00:13:14,680 --> 00:13:18,280
+ Now on the left side you can see the traditional machine learning model.
+
+141
+00:13:18,280 --> 00:13:24,360
+ So you have different tasks for example task 1, task 2, task 3 and then you have annotated
+
+142
+00:13:24,360 --> 00:13:25,360
+ data for example.
+
+143
+00:13:25,360 --> 00:13:28,160
+ These are the annotated data that you have.
+
+144
+00:13:28,160 --> 00:13:34,800
+ So all the data annotations for different tasks and then there is a model, the different
+
+145
+00:13:34,800 --> 00:13:40,520
+ learning systems for different data and so on so forth.
+
+146
+00:13:40,520 --> 00:13:48,400
+ And for each task the machine learning model will learn a new model based on the task and
+
+147
+00:13:48,400 --> 00:13:54,320
+ the data and they do not share anything between themselves.
+
+148
+00:13:54,320 --> 00:13:59,920
+ And contrast in transfer learning what happens is that say you have a source task and then
+
+149
+00:13:59,920 --> 00:14:04,920
+ you have some annotated data in the source task we know and then you have another target
+
+150
+00:14:04,920 --> 00:14:09,840
+ task for which we do not have annotated data.
+
+151
+00:14:09,840 --> 00:14:13,680
+ So something that we learn from the source task for example in terms of knowledge in
+
+152
+00:14:13,680 --> 00:14:18,920
+ terms of particular system and also on so forth can be exploited in this case.
+
+153
+00:14:18,920 --> 00:14:25,880
+ So we are not going to train the models from scratch every time we encounter a new task.
+
+154
+00:14:25,880 --> 00:14:34,560
+ What we do we try to figure out often what is the closest possible existing task where
+
+155
+00:14:34,560 --> 00:14:37,280
+ the model is there.
+
+156
+00:14:37,280 --> 00:14:43,080
+ Do they share any structural similarity, semantic similarity if the answer is yes.
+
+157
+00:14:43,080 --> 00:14:48,960
+ We will take that the existing model we will try to modify this in some way or the other
+
+158
+00:14:48,960 --> 00:14:53,880
+ and then we basically try to apply this on a new task.
+
+159
+00:14:53,880 --> 00:14:58,080
+ Now of course there are a lot of downsides of it and I will discuss while I talk about
+
+160
+00:14:58,080 --> 00:15:06,400
+ all of these things later on in few minutes.
+
+161
+00:15:06,400 --> 00:15:10,880
+ So what are the key questions in transfer learning?
+
+162
+00:15:10,880 --> 00:15:15,960
+ The first question is what to transfer.
+
+163
+00:15:15,960 --> 00:15:22,960
+ So it is not very easy that you take something and then go and straight away apply on a new
+
+164
+00:15:22,960 --> 00:15:24,720
+ task and so on so forth.
+
+165
+00:15:24,720 --> 00:15:27,480
+ So that may not give you the desired result.
+
+166
+00:15:27,480 --> 00:15:33,680
+ So the first question that we should be asking ourselves what to transfer.
+
+167
+00:15:33,680 --> 00:15:39,440
+ So in doing so what we need to do we need to identify which portion of knowledge is source
+
+168
+00:15:39,440 --> 00:15:43,840
+ specific and what is common between the source and the target.
+
+169
+00:15:43,840 --> 00:15:51,720
+ So once you identify that then you can target that common representation of the common knowledge
+
+170
+00:15:51,720 --> 00:15:59,280
+ and modify with respect to the task that we are dealing with and so little bit of like
+
+171
+00:15:59,280 --> 00:16:04,760
+ changes we can made to the big existing model.
+
+172
+00:16:04,760 --> 00:16:09,160
+ The second question went to transfer.
+
+173
+00:16:09,160 --> 00:16:14,240
+ So the ultimate objective is to improve in some way or the other.
+
+174
+00:16:14,240 --> 00:16:19,920
+ Computationally of course we do not want to degrade the accuracy substantially that something
+
+175
+00:16:19,920 --> 00:16:22,600
+ has to be kept in mind.
+
+176
+00:16:22,600 --> 00:16:28,400
+ So our objective would be to utilize transfer learning to improve the target tasks and results
+
+177
+00:16:28,400 --> 00:16:32,080
+ and we certainly do not want to degrade them.
+
+178
+00:16:32,080 --> 00:16:36,600
+ So then we have to basically keep in mind when we can do the transfer learning so that
+
+179
+00:16:36,600 --> 00:16:38,840
+ we can achieve this one.
+
+180
+00:16:38,840 --> 00:16:43,600
+ Now when I am saying that not degrade them that means I am not saying that you cannot
+
+181
+00:16:43,600 --> 00:16:45,680
+ degrade them numerically.
+
+182
+00:16:45,680 --> 00:16:51,480
+ So even if like often in fact we will see that the transfer learning models they do degrade
+
+183
+00:16:51,480 --> 00:16:56,640
+ performance if you transfer the knowledge compared to if you try to do things from scratch
+
+184
+00:16:56,640 --> 00:16:59,640
+ using lot of data and big models.
+
+185
+00:16:59,640 --> 00:17:04,240
+ But the amount of degradation should be minimal.
+
+186
+00:17:04,240 --> 00:17:07,440
+ If there is substantial amount of degradation then the transfer learning is not going to
+
+187
+00:17:07,440 --> 00:17:11,040
+ serve the purpose.
+
+188
+00:17:11,040 --> 00:17:17,600
+ And the third question is the technical question of building these models, training these models
+
+189
+00:17:17,600 --> 00:17:20,400
+ and all of these things how to transfer.
+
+190
+00:17:20,400 --> 00:17:25,680
+ So we have to transfer one model to the other tasks and therefore what are the changes that
+
+191
+00:17:25,680 --> 00:17:30,720
+ you have to make to the existing algorithms and different techniques and how you can train
+
+192
+00:17:30,720 --> 00:17:35,120
+ and re-train them what are the minimal amount of data that we make use of, computational
+
+193
+00:17:35,120 --> 00:17:37,960
+ challenges and so on so forth.
+
+194
+00:17:37,960 --> 00:17:42,480
+ So these three key questions that we need to be very clear about before we try to apply
+
+195
+00:17:42,480 --> 00:17:47,780
+ transfer learning.
+
+196
+00:17:47,780 --> 00:17:57,280
+ So these pictures give you the sort of this taxonomy of transfer learning strategies.
+
+197
+00:17:57,280 --> 00:18:02,560
+ So the lot of things that we know about transfer learning and depending upon the availability
+
+198
+00:18:02,560 --> 00:18:08,000
+ of data we can categorize a particular thing into a particular category.
+
+199
+00:18:08,000 --> 00:18:16,480
+ So first of all that we can assume that the label data are available in a target domain.
+
+200
+00:18:16,480 --> 00:18:22,920
+ So we have a source domain, that's the paradigm we are operating on and we have a target domain.
+
+201
+00:18:22,920 --> 00:18:34,680
+ And the source domain basically something where we have the original model in this case.
+
+202
+00:18:34,680 --> 00:18:42,760
+ Then the models comes to the target domain, basically we will try to apply for this one.
+
+203
+00:18:42,760 --> 00:18:46,880
+ So all basically we are going to do, we are going to this particular model that we have
+
+204
+00:18:46,880 --> 00:18:53,360
+ in the source domain and in this case if we have some label data available in the target
+
+205
+00:18:53,360 --> 00:18:56,560
+ domain what we should do.
+
+206
+00:18:56,560 --> 00:19:02,640
+ So in a setup like this we can apply inductive transfer learning.
+
+207
+00:19:02,640 --> 00:19:06,000
+ So inductive transfer learning again there are various cases.
+
+208
+00:19:06,000 --> 00:19:11,200
+ So no label data in a source domain, so what we do we apply something like the source self
+
+209
+00:19:11,200 --> 00:19:17,340
+ transfer learning, in case we have the label data available in the source domain we can
+
+210
+00:19:17,340 --> 00:19:24,720
+ apply the kind of learning where the source and the target tasks can be learned simultaneously.
+
+211
+00:19:24,720 --> 00:19:27,960
+ And all of the things that we do in this case is called multi task learning and I will touch
+
+212
+00:19:27,960 --> 00:19:31,840
+ upon that particular issue later in this particular lecture.
+
+213
+00:19:31,840 --> 00:19:39,960
+ In the second scenario the label data are available only in a source domain and the
+
+214
+00:19:39,960 --> 00:19:43,760
+ no label data available in the target domain.
+
+215
+00:19:43,760 --> 00:19:50,280
+ In a situation like that what we can do, we can do transductive transfer learning, this
+
+216
+00:19:50,280 --> 00:19:53,040
+ another branch of transfer learning.
+
+217
+00:19:53,040 --> 00:19:57,600
+ So the main assumption that we make in this case is that the different domains but single
+
+218
+00:19:57,600 --> 00:20:01,760
+ task, the same task but the domains are different.
+
+219
+00:20:01,760 --> 00:20:08,440
+ So what we can do, we can do a thing called the domain adaptation.
+
+220
+00:20:08,440 --> 00:20:13,520
+ The other assumption that we can make is that the single domain and single task, then in
+
+221
+00:20:13,520 --> 00:20:17,080
+ that case also we can do the sample selection bias, there could be a lot of issues sample
+
+222
+00:20:17,080 --> 00:20:21,800
+ selection bias, covariance shift and so on and so forth.
+
+223
+00:20:21,800 --> 00:20:29,280
+ The third situation in transfer learning the no label data in both source and target domain.
+
+224
+00:20:29,280 --> 00:20:33,800
+ So in neither of these domain the label data available.
+
+225
+00:20:33,800 --> 00:20:38,600
+ So in this particular situation we simply do the unsupervised transfer learning, no label
+
+226
+00:20:38,600 --> 00:20:43,840
+ data is typically used and we can basically transfer one model, the source model to the
+
+227
+00:20:43,840 --> 00:20:51,560
+ target domain without using any kind of data.
+
+228
+00:20:51,560 --> 00:21:00,800
+ Now coming to the transfer learning, so again I would like to reiterate that you learn one
+
+229
+00:21:00,800 --> 00:21:04,880
+ particular task and then transfer to another task.
+
+230
+00:21:04,880 --> 00:21:08,680
+ So that is the kind of setup we are operating on.
+
+231
+00:21:08,680 --> 00:21:12,560
+ So broadly we have two major components for this one.
+
+232
+00:21:12,560 --> 00:21:19,120
+ One is pre-training a particular model and then we would like to adopt this particular
+
+233
+00:21:19,120 --> 00:21:23,960
+ model for the kind of application we are targeting.
+
+234
+00:21:23,960 --> 00:21:29,320
+ So pre-training will give you the initial base model on top of which we will be standing
+
+235
+00:21:29,320 --> 00:21:31,200
+ and modifying.
+
+236
+00:21:31,200 --> 00:21:36,400
+ So I am just showing few examples, there are a lot of examples one can pick.
+
+237
+00:21:36,400 --> 00:21:44,640
+ So one of the oldest thing in somewhat close to deep learning is what to make.
+
+238
+00:21:44,640 --> 00:21:52,840
+ So the objective was to create the vectors of the words from a natural language text.
+
+239
+00:21:52,840 --> 00:21:58,920
+ This is one of the pre-trained model in unsupervised training is done based on a very big natural
+
+240
+00:21:58,920 --> 00:22:06,680
+ language corpus and then at the end of it we create a vectors for each of these words
+
+241
+00:22:06,680 --> 00:22:08,960
+ in a particular language.
+
+242
+00:22:08,960 --> 00:22:18,040
+ The objective is basically if two words are appearing in different context in a big corpus
+
+243
+00:22:18,040 --> 00:22:22,640
+ then the vectors between them should have very high angle.
+
+244
+00:22:22,640 --> 00:22:28,640
+ If they are appearing in the same context that means probably they are meaningfully same.
+
+245
+00:22:28,640 --> 00:22:33,240
+ So the vectors should have very small angle between them.
+
+246
+00:22:33,240 --> 00:22:41,960
+ GPT is something that we all know, so it is a transformer based model created by OpenAI
+
+247
+00:22:41,960 --> 00:22:47,360
+ and that is something we like everybody is using nowadays.
+
+248
+00:22:47,360 --> 00:22:52,880
+ So that again is a language model which is trained on a very huge volume of data of different
+
+249
+00:22:52,880 --> 00:22:57,440
+ tasks and so on and so forth and at the end of it we have a language model, again it is
+
+250
+00:22:57,440 --> 00:23:01,560
+ a vector manipulation on all sorts of things.
+
+251
+00:23:01,560 --> 00:23:08,160
+ But the bi-regional transformer which is basically the backbone of GPT and all modern language
+
+252
+00:23:08,160 --> 00:23:11,000
+ models in deep learning.
+
+253
+00:23:11,000 --> 00:23:16,560
+ So again you go and create the hidden representations for different words, sentences, paragraphs
+
+254
+00:23:16,560 --> 00:23:18,560
+ and so on and so forth.
+
+255
+00:23:18,560 --> 00:23:24,560
+ So these are all like some of the pre-trained models available and given a particular task
+
+256
+00:23:24,560 --> 00:23:30,840
+ for example say I would like to achieve classification on text or say I would like to perform classification
+
+257
+00:23:30,840 --> 00:23:36,920
+ on the product reviews or I would like to classification say news items and all sorts
+
+258
+00:23:36,920 --> 00:23:39,000
+ of things.
+
+259
+00:23:39,000 --> 00:23:44,200
+ So which is a kind of supervised learning setup and often you need lot of data to do
+
+260
+00:23:44,200 --> 00:23:45,200
+ that.
+
+261
+00:23:45,200 --> 00:23:48,960
+ So what we can do basically we can choose one of the speed and models like what to make
+
+262
+00:23:48,960 --> 00:23:53,940
+ GPT or BART and then you can use little bit of data from classification, the domain of
+
+263
+00:23:53,940 --> 00:23:58,320
+ classification we are targeting, we modify this particular vectors little bit and get
+
+264
+00:23:58,320 --> 00:24:00,880
+ things done.
+
+265
+00:24:00,880 --> 00:24:05,240
+ Similarly question answering is also another popular task, extremely powerful task in NLP
+
+266
+00:24:05,240 --> 00:24:11,880
+ and what we do basically we take these vectors and then we can basically modify these vectors
+
+267
+00:24:11,880 --> 00:24:20,440
+ based on the questions and the answers that we have and build our new models.
+
+268
+00:24:20,440 --> 00:24:25,160
+ Text leveling for example if you give a particular sequence, for example you spot the name, dentities
+
+269
+00:24:25,160 --> 00:24:27,200
+ in a text and so on.
+
+270
+00:24:27,200 --> 00:24:31,880
+ So how you can basically do that leveling task and so on.
+
+271
+00:24:31,880 --> 00:24:36,320
+ So one thing I once again re-iter and that is very important to remember is that in deep
+
+272
+00:24:36,320 --> 00:24:42,400
+ learning is basically the objective is to do given the input data we would like to give
+
+273
+00:24:42,400 --> 00:24:45,640
+ the end goal, I mean end task.
+
+274
+00:24:45,640 --> 00:24:54,920
+ But in the middle the entire the objective of training, processing and everything goes
+
+275
+00:24:54,920 --> 00:25:00,200
+ into creating the good high quality vectors from the raw data.
+
+276
+00:25:00,200 --> 00:25:04,760
+ So everything that you do in deep learning is in vector form.
+
+277
+00:25:04,760 --> 00:25:10,760
+ So image is converted to vector, audio is converted to vector, text is converted to
+
+278
+00:25:10,760 --> 00:25:16,400
+ vector, video is converted to vector, vectors of real numbers, that is what the machines
+
+279
+00:25:16,400 --> 00:25:21,000
+ can understand and all we do basically we take the input data convert this into vector
+
+280
+00:25:21,000 --> 00:25:23,660
+ and then we use this vector to achieve the final goal.
+
+281
+00:25:23,660 --> 00:25:28,560
+ So the vector does not make any sense to a human being, not understandable because often
+
+282
+00:25:28,560 --> 00:25:34,920
+ this is very high dimensional but what we know is that if two things are different the
+
+283
+00:25:34,920 --> 00:25:39,000
+ angles between or the distance between these two vectors will be different, that's all
+
+284
+00:25:39,000 --> 00:25:43,880
+ we know and then on top of this basically we can apply some kind of this mathematical
+
+285
+00:25:43,880 --> 00:25:51,160
+ models to predict the final end goal.
+
+286
+00:25:51,160 --> 00:25:57,320
+ So coming to the pre-training in little bit of more detail, so one is basically unlabeled
+
+287
+00:25:57,320 --> 00:26:02,160
+ data and cell supervision and that is something extremely very popular nowadays because the
+
+288
+00:26:02,160 --> 00:26:09,200
+ unlabeled data is widely available on the web elsewhere and when we have to do pre-training
+
+289
+00:26:09,200 --> 00:26:16,400
+ based on the unlabeled data we have to apply the self-supervision mode, we cannot do supervised
+
+290
+00:26:16,400 --> 00:26:19,280
+ mode.
+
+291
+00:26:19,280 --> 00:26:26,520
+ So for example it is easy to gather the large corpus from Wikipedia, news, web crawls, social
+
+292
+00:26:26,520 --> 00:26:31,080
+ media and et cetera, et cetera, anybody can go and crawl the data, you do not need any
+
+293
+00:26:31,080 --> 00:26:36,300
+ kind of supervision to do that, you also do not need any kind of annotation, so you simply
+
+294
+00:26:36,300 --> 00:26:40,080
+ go and pick them up.
+
+295
+00:26:40,080 --> 00:26:50,200
+ So what the main, the hypothesis behind this approach is that the training assumes that
+
+296
+00:26:50,200 --> 00:26:53,880
+ the things which are appearing in the same context are distributionally similar, which
+
+297
+00:26:53,880 --> 00:26:58,520
+ is called distributional hypothesis.
+
+298
+00:26:58,520 --> 00:27:05,600
+ So in supervised pre-training, which is pretty common in computer vision, so what we have
+
+299
+00:27:05,600 --> 00:27:10,760
+ is essentially that computer vision, machine translation and so on and so forth.
+
+300
+00:27:10,760 --> 00:27:16,040
+ So we have explicit access to the training data in the sense that we have the original
+
+301
+00:27:16,040 --> 00:27:20,680
+ input data, say for example an image and its corresponding levels, say for example this
+
+302
+00:27:20,680 --> 00:27:26,600
+ is cat, this is dog, this is human being, this is a green field and so on and so forth.
+
+303
+00:27:26,600 --> 00:27:31,800
+ So we have explicit access to all the data that we have and the levels which you can
+
+304
+00:27:31,800 --> 00:27:34,240
+ make use of.
+
+305
+00:27:34,240 --> 00:27:39,520
+ Now in machine translation for example we have the source language text, say in English
+
+306
+00:27:39,520 --> 00:27:43,420
+ we have the corresponding translation available in target language, say for example in Hindi
+
+307
+00:27:43,420 --> 00:27:48,000
+ or in Bengali and then we can basically make use of to learn the association between the
+
+308
+00:27:48,000 --> 00:27:51,040
+ source language and the target language.
+
+309
+00:27:51,040 --> 00:27:55,480
+ In question answering for example, say we have some question answering data set in say
+
+310
+00:27:55,480 --> 00:28:00,800
+ news for example, news domain, then can we basically use that same thing, similar thing
+
+311
+00:28:00,800 --> 00:28:03,720
+ in medical domain for example.
+
+312
+00:28:03,720 --> 00:28:08,040
+ So all of these things can be done through the supervised pre-training.
+
+313
+00:28:08,040 --> 00:28:15,080
+ Now self-supervision is something extremely powerful and most of the today's the big language
+
+314
+00:28:15,080 --> 00:28:21,520
+ models are basically driven by the self-supervised paradigm.
+
+315
+00:28:21,520 --> 00:28:25,160
+ And so I will talk about those things later in this particular lecture.
+
+316
+00:28:25,160 --> 00:28:30,800
+ So for example, the BART, GPT and all of these things they use huge amount of self-supervision
+
+317
+00:28:30,800 --> 00:28:37,200
+ while they are learning these models.
+
+318
+00:28:37,200 --> 00:28:43,760
+ So just to give you a little bit of sense and I believe deep learning basics have been covered
+
+319
+00:28:43,760 --> 00:28:49,400
+ in this particular series and I would like to briefly touch upon that just to make things
+
+320
+00:28:49,400 --> 00:28:54,400
+ little like continuous between different lectures.
+
+321
+00:28:54,400 --> 00:29:03,520
+ So word embedding methods, what they do, they learn one vector per word and fixed dimensional
+
+322
+00:29:03,520 --> 00:29:04,520
+ vectors.
+
+323
+00:29:04,520 --> 00:29:09,320
+ So every word will be converted to a fixed dimensional vector.
+
+324
+00:29:09,320 --> 00:29:14,520
+ So all of these entries, this is 0.9, this is 0.1 and so on so forth.
+
+325
+00:29:14,520 --> 00:29:20,880
+ So all these vectors will have some, all the real number vectors.
+
+326
+00:29:20,880 --> 00:29:27,360
+ And the objective as I mentioned is that, that if two words are meaningfully, semantically
+
+327
+00:29:27,360 --> 00:29:32,560
+ not similar, they must have different vectors.
+
+328
+00:29:32,560 --> 00:29:33,560
+ That's all we know.
+
+329
+00:29:33,560 --> 00:29:38,440
+ If you try to make some sense out of these vectors, that is going to be challenging because
+
+330
+00:29:38,440 --> 00:29:40,400
+ you do not know what they are.
+
+331
+00:29:40,400 --> 00:29:45,000
+ But you can do some kind of processing like these computing similarity, computing distances
+
+332
+00:29:45,000 --> 00:29:50,440
+ and so on so forth and you try to understand that the quality of vectors and so on so forth.
+
+333
+00:29:50,440 --> 00:29:56,600
+ So they are once again relying on the distributional assumptions in deep learning, or in most of
+
+334
+00:29:56,600 --> 00:30:02,440
+ the language processing tasks, that if two words are distributionally similar in terms
+
+335
+00:30:02,440 --> 00:30:06,560
+ of the context, they should have the same vectors.
+
+336
+00:30:06,560 --> 00:30:12,680
+ And the vectors will have the same dimension.
+
+337
+00:30:12,680 --> 00:30:20,200
+ So for example, this is another example, so we have vectors like for example cat and dog
+
+338
+00:30:20,200 --> 00:30:21,960
+ and so on so forth.
+
+339
+00:30:21,960 --> 00:30:25,880
+ And we have a sentence like say, I love my cat and dog.
+
+340
+00:30:25,880 --> 00:30:31,600
+ And we like to basically, you know, annotate this data, like for example, we would like
+
+341
+00:30:31,600 --> 00:30:36,600
+ to tag this particular sequence of things in terms of verbs, in terms of, for example,
+
+342
+00:30:36,600 --> 00:30:40,880
+ the nouns and so on so forth, which we can parse with this tagging.
+
+343
+00:30:40,880 --> 00:30:48,880
+ And in this kind of application, we can actually make use of these vectors that we have.
+
+344
+00:30:48,880 --> 00:30:58,160
+ So as I mentioned, the things basically are not very independent.
+
+345
+00:30:58,160 --> 00:31:04,520
+ So for example, the meanings of words again, context dependent.
+
+346
+00:31:04,520 --> 00:31:09,840
+ So in the previous case, typically what we do, we create one vector for each word, you
+
+347
+00:31:09,840 --> 00:31:15,720
+ know, from a very large corpus, we train it, then we get the vectors and so on so forth.
+
+348
+00:31:15,720 --> 00:31:23,480
+ But that has very limited application and utility in the sense that in language, often
+
+349
+00:31:23,480 --> 00:31:30,400
+ the words and the meanings are basically they depend on the context in which they are appearing.
+
+350
+00:31:30,400 --> 00:31:35,920
+ So these two sentences make things very clear that we have two cats or it is running cats
+
+351
+00:31:35,920 --> 00:31:37,520
+ and dogs.
+
+352
+00:31:37,520 --> 00:31:44,640
+ So what ideally we should be doing in a situation like this, we must have the different vectors
+
+353
+00:31:44,640 --> 00:31:52,080
+ for the word cats because they are appearing in different context.
+
+354
+00:31:52,080 --> 00:31:54,000
+ So these are basically some of these examples.
+
+355
+00:31:54,000 --> 00:31:58,160
+ We are moving from the fixed vector to, for example, these words in context and we will
+
+356
+00:31:58,160 --> 00:32:06,240
+ adapt these kind of vectors to make sure that they represent the context adequately.
+
+357
+00:32:06,240 --> 00:32:14,720
+ So language modeling is something that we apply a lot and all generative say these models
+
+358
+00:32:14,720 --> 00:32:19,760
+ that we see today, GPT, question answering, all sorts of things, they essentially rely
+
+359
+00:32:19,760 --> 00:32:23,320
+ on the language modeling.
+
+360
+00:32:23,320 --> 00:32:30,120
+ So to simply define this term language modeling, we like to learn the probability of a piece
+
+361
+00:32:30,120 --> 00:32:35,200
+ of text that we see or we generate.
+
+362
+00:32:35,200 --> 00:32:40,880
+ The simple example is, for example, when you are typing something on say word, MS word,
+
+363
+00:32:40,880 --> 00:32:45,400
+ if you make some mistake, for example, you've forgotten a particular article or preposition,
+
+364
+00:32:45,400 --> 00:32:50,400
+ you wrongly use some say tense of a particular verb and all sorts of things, the system will
+
+365
+00:32:50,400 --> 00:32:54,440
+ flag it that this is not the right thing to do.
+
+366
+00:32:54,440 --> 00:32:56,520
+ So how do they understand?
+
+367
+00:32:56,520 --> 00:33:03,640
+ The simple logic is that, that they use a huge volume of say clean text, the correct
+
+368
+00:33:03,640 --> 00:33:10,240
+ language text and they try to understand that given some text, what is the probability
+
+369
+00:33:10,240 --> 00:33:16,640
+ that the next word or some other word appearing in the text basically, you know, happened
+
+370
+00:33:16,640 --> 00:33:21,180
+ in the text that we have seen so far in a clean text.
+
+371
+00:33:21,180 --> 00:33:27,040
+ So if this is linguistically correct thing to do, then the probability of the text that
+
+372
+00:33:27,040 --> 00:33:31,040
+ you are trying to predict for would be extremely high given the other text.
+
+373
+00:33:31,040 --> 00:33:33,520
+ If not, they are going to be wrong.
+
+374
+00:33:33,520 --> 00:33:37,400
+ So they will generate some kind of probability distribution given some text, whether this
+
+375
+00:33:37,400 --> 00:33:40,400
+ is possible to generate the other text and so on and so forth.
+
+376
+00:33:40,400 --> 00:33:44,000
+ And all these models that we do right now, the GPT, the transformers and all sorts of
+
+377
+00:33:44,000 --> 00:33:48,120
+ things essentially make the model language in a specific way so that they can solve the
+
+378
+00:33:48,120 --> 00:33:52,040
+ target purpose.
+
+379
+00:33:52,040 --> 00:33:56,720
+ So the good thing about this one is that, that it doesn't require any human annotation.
+
+380
+00:33:56,720 --> 00:34:01,320
+ We can go and collect good quality text, for example, the news items and all so on and
+
+381
+00:34:01,320 --> 00:34:11,240
+ so forth and we can basically use those things straightaway without requiring any manual intervention.
+
+382
+00:34:11,240 --> 00:34:16,720
+ And so typically like languages, every language that we know, most of these popular languages,
+
+383
+00:34:16,720 --> 00:34:22,080
+ they have enough text available and that actually helps us to learn the high capacity model
+
+384
+00:34:22,080 --> 00:34:29,880
+ because all these models will require lot of data to train rightly.
+
+385
+00:34:29,880 --> 00:34:36,840
+ Okay now, deep learning models are basically, as I mentioned previously, that they are full
+
+386
+00:34:36,840 --> 00:34:37,840
+ of parameters.
+
+387
+00:34:37,840 --> 00:34:38,840
+ Okay?
+
+388
+00:34:38,840 --> 00:34:42,000
+ They are a very big mathematical models.
+
+389
+00:34:42,000 --> 00:34:50,480
+ The mathematics is simple, but the way things are organized often not that easily understandable
+
+390
+00:34:50,480 --> 00:34:51,480
+ to human being.
+
+391
+00:34:51,480 --> 00:34:57,520
+ Like we understand little bit partly or some like, you know, what we are trying to do in
+
+392
+00:34:57,520 --> 00:35:02,400
+ a particular neuron or so on and so forth, but we don't fully understand what they do
+
+393
+00:35:02,400 --> 00:35:04,720
+ at the end of it.
+
+394
+00:35:04,720 --> 00:35:13,240
+ But intuitively what we typically try to do is that, that we try to combine the raw data
+
+395
+00:35:13,240 --> 00:35:20,160
+ in a form which will help us to achieve the end goal.
+
+396
+00:35:20,160 --> 00:35:26,320
+ And the combination only takes place through some mathematical models.
+
+397
+00:35:26,320 --> 00:35:31,560
+ For example, the linear regression, what we typically do is assume that this basically
+
+398
+00:35:31,560 --> 00:35:35,960
+ the final prediction will depend on the linear combination of the input features.
+
+399
+00:35:35,960 --> 00:35:36,960
+ Okay?
+
+400
+00:35:36,960 --> 00:35:42,280
+ Or a logistic regression, what we assume is that, that the things can be separated using
+
+401
+00:35:42,280 --> 00:35:45,120
+ a linear decision boundary and so on and so forth.
+
+402
+00:35:45,120 --> 00:35:51,160
+ So under any deep learning model, we make certain assumptions, okay?
+
+403
+00:35:51,160 --> 00:35:56,200
+ And then we basically try and explore and try to see whether this is serving our purpose
+
+404
+00:35:56,200 --> 00:35:58,920
+ for the end goal, okay?
+
+405
+00:35:58,920 --> 00:36:05,840
+ So one of the very fast model in language modeling is basically this created by the Benjiro,
+
+406
+00:36:05,840 --> 00:36:09,920
+ one of the pioneers of modern AI.
+
+407
+00:36:09,920 --> 00:36:16,760
+ So in this case, what they did, they basically used a very shallow neural network using this
+
+408
+00:36:16,760 --> 00:36:22,240
+ different words, what you can see that different words here, okay?
+
+409
+00:36:22,240 --> 00:36:27,720
+ And then using this context, they are trying to create, for example, this probability of
+
+410
+00:36:27,720 --> 00:36:33,760
+ a particular word appearing in a particular situation, given the context vector, okay?
+
+411
+00:36:33,760 --> 00:36:37,720
+ So the context in this case is basically a vector, okay?
+
+412
+00:36:37,720 --> 00:36:41,480
+ So the context of a particular vector, we encode the entire thing in the form of a vector
+
+413
+00:36:41,480 --> 00:36:43,000
+ of some dimension.
+
+414
+00:36:43,000 --> 00:36:49,760
+ And given this particular vector, is it possible to generate a particular word?
+
+415
+00:36:49,760 --> 00:36:52,640
+ And we simply try to measure the similarity.
+
+416
+00:36:52,640 --> 00:36:56,880
+ If the similarity is very high, that means the context can rightly generate the word
+
+417
+00:36:56,880 --> 00:37:02,280
+ and therefore the word can be placed in this particular position, okay?
+
+418
+00:37:02,280 --> 00:37:07,360
+ If the probability is low, then we know that context is not capable of generating the particular
+
+419
+00:37:07,360 --> 00:37:10,400
+ word and something is wrong, so we flag it, okay?
+
+420
+00:37:10,400 --> 00:37:16,880
+ So that's the kind of shallow network that the initial model that people have developed.
+
+421
+00:37:16,880 --> 00:37:22,040
+ Now of course the shallow networks have a lot of limitations because they are not able
+
+422
+00:37:22,040 --> 00:37:29,960
+ to capture extremely intricate complex dependencies between different things, okay?
+
+423
+00:37:29,960 --> 00:37:38,120
+ Now stepping aside for a moment, if we pose this question even to somebody who understand
+
+424
+00:37:38,120 --> 00:37:44,520
+ human language very well, that if you give him a piece of text and ask him to say whether
+
+425
+00:37:44,520 --> 00:37:49,920
+ this text is reflecting a positive thing about somebody or a negative thing about somebody,
+
+426
+00:37:49,920 --> 00:37:51,080
+ okay?
+
+427
+00:37:51,080 --> 00:37:56,480
+ Now anybody who understand language little bit, he or she should be able to answer this
+
+428
+00:37:56,480 --> 00:37:59,840
+ question straight away that this is positive, this is negative and all sorts of because
+
+429
+00:37:59,840 --> 00:38:04,560
+ we have some prior knowledge about the language we are dealing with.
+
+430
+00:38:04,560 --> 00:38:10,440
+ Now the moment you ask the human being the same person that how did you decide it, okay?
+
+431
+00:38:10,440 --> 00:38:16,520
+ You tell us a methodology through which you have decided this is negative but this is
+
+432
+00:38:16,520 --> 00:38:17,520
+ positive.
+
+433
+00:38:17,520 --> 00:38:22,000
+ It is very difficult and nearly impossible to come up with a particular method and algorithm
+
+434
+00:38:22,000 --> 00:38:24,600
+ to tell that this is the way I have decided it, okay?
+
+435
+00:38:24,600 --> 00:38:29,160
+ Therefore you cannot teach that particular thing to somebody that this is how you should
+
+436
+00:38:29,160 --> 00:38:31,400
+ take the decision.
+
+437
+00:38:31,400 --> 00:38:37,360
+ So in a nutshell, we are very good at doing the end goal, okay?
+
+438
+00:38:37,360 --> 00:38:42,840
+ On the input data but we do not understand the internal mechanism through which we achieve
+
+439
+00:38:42,840 --> 00:38:45,280
+ this, okay?
+
+440
+00:38:45,280 --> 00:38:49,760
+ And that is where all these deep models comes into picture.
+
+441
+00:38:49,760 --> 00:38:51,200
+ So now how to achieve this one?
+
+442
+00:38:51,200 --> 00:38:55,800
+ The only thing that we have here some numbers because machines have machine only understand
+
+443
+00:38:55,800 --> 00:39:01,120
+ numbers and then from one set of numbers we would like to achieve another set of numbers.
+
+444
+00:39:01,120 --> 00:39:07,240
+ So the only way you can manipulate these things through mathematical models and to combine
+
+445
+00:39:07,240 --> 00:39:12,320
+ different things in a particular way and a layer basically nothing but combines information
+
+446
+00:39:12,320 --> 00:39:13,560
+ in a particular way.
+
+447
+00:39:13,560 --> 00:39:16,480
+ So more layers means more combination.
+
+448
+00:39:16,480 --> 00:39:21,520
+ More combinations means more intricate dependencies, okay?
+
+449
+00:39:21,520 --> 00:39:27,560
+ So for example, when you are trying to judge the orientation of a particular sentence,
+
+450
+00:39:27,560 --> 00:39:31,280
+ then there could be three, four words in a particular sentence which in combination will
+
+451
+00:39:31,280 --> 00:39:34,280
+ help us decide that this is negative, this is positive.
+
+452
+00:39:34,280 --> 00:39:37,400
+ So you need to capture that kind of dependencies.
+
+453
+00:39:37,400 --> 00:39:43,280
+ So the deep models that we basically often play with is very good at capturing those kind
+
+454
+00:39:43,280 --> 00:39:45,360
+ of dependencies.
+
+455
+00:39:45,360 --> 00:39:48,800
+ So the typical assumption behind most of the deep learning models is that they deeper the
+
+456
+00:39:48,800 --> 00:39:54,360
+ models and better they are in capturing those kind of dependencies.
+
+457
+00:39:54,360 --> 00:40:00,720
+ So we basically then explored these deeper models and something that is extremely popular
+
+458
+00:40:00,720 --> 00:40:07,080
+ is called BART is a bi-directional encoder from transformers.
+
+459
+00:40:07,080 --> 00:40:11,400
+ So once again is primarily for the language processing tasks but people also apply this
+
+460
+00:40:11,400 --> 00:40:13,280
+ on images as well.
+
+461
+00:40:13,280 --> 00:40:17,240
+ So there they use multiple layers to capture many kind of dependencies using attentions
+
+462
+00:40:17,240 --> 00:40:22,840
+ and so on and so forth.
+
+463
+00:40:22,840 --> 00:40:29,880
+ Okay, now we talked about the embedding of words and all deep learning models essentially
+
+464
+00:40:29,880 --> 00:40:32,760
+ embed words or text.
+
+465
+00:40:32,760 --> 00:40:38,960
+ So once again, the embedding means that a vector representing a particular word, sentence
+
+466
+00:40:38,960 --> 00:40:42,440
+ or anything like for image or everything else.
+
+467
+00:40:42,440 --> 00:40:46,080
+ And that's the main building block of this deep learning, modern deep learning models
+
+468
+00:40:46,080 --> 00:40:49,240
+ and AI models.
+
+469
+00:40:49,240 --> 00:40:50,600
+ The question is why embedding?
+
+470
+00:40:50,600 --> 00:40:58,800
+ I mean why we really would like to do embedding of words, images and all sorts of things.
+
+471
+00:40:58,800 --> 00:41:04,520
+ So the fundamental assumption behind embedding is that the embeddings are basically parameters
+
+472
+00:41:04,520 --> 00:41:10,600
+ okay and they are unknown initially and therefore we can use some learning mechanism to learn
+
+473
+00:41:10,600 --> 00:41:11,600
+ them okay.
+
+474
+00:41:11,600 --> 00:41:17,760
+ So they are learnable and that basically gives us the main power from the raw data.
+
+475
+00:41:17,760 --> 00:41:24,760
+ Second thing is that there are many tasks that we deal with often, they share representations
+
+476
+00:41:24,760 --> 00:41:25,760
+ okay.
+
+477
+00:41:25,760 --> 00:41:31,000
+ So if that is the case, then why not simply use these embeddings from one task to another
+
+478
+00:41:31,000 --> 00:41:33,160
+ one okay.
+
+479
+00:41:33,160 --> 00:41:39,880
+ And third and most importantly, embedding typically gives you a lower dimensional compact
+
+480
+00:41:39,880 --> 00:41:46,920
+ vector, dense vectors okay, say 100, 200, 300 so on and so forth okay.
+
+481
+00:41:46,920 --> 00:41:54,560
+ And most of the entries in these vectors have some non-zero numerical value okay, that's
+
+482
+00:41:54,560 --> 00:41:59,400
+ why you call dense vectors and that makes the things very efficient you know.
+
+483
+00:41:59,400 --> 00:42:02,600
+ We can efficiently manipulate these things because at the end of anything we have to
+
+484
+00:42:02,600 --> 00:42:06,600
+ compute the similarities between different vectors.
+
+485
+00:42:06,600 --> 00:42:13,360
+ So if we have these small dimensional vectors with like the compact dense vectors then you
+
+486
+00:42:13,360 --> 00:42:22,120
+ can manipulate them efficiently and this gives us computational power okay.
+
+487
+00:42:22,120 --> 00:42:26,960
+ So coming back to our previous one, the neural language modeling stuff.
+
+488
+00:42:26,960 --> 00:42:33,960
+ So we basically pre-tend the language and then create these word vectors.
+
+489
+00:42:33,960 --> 00:42:36,600
+ So we call it pre-tend word vectors and so on and so forth.
+
+490
+00:42:36,600 --> 00:42:40,080
+ This is one architecturally extremely popular.
+
+491
+00:42:40,080 --> 00:42:45,840
+ The other kind of stuff that we know of is like multitask word embeddings okay.
+
+492
+00:42:45,840 --> 00:42:52,080
+ So in multitask word embedding, what happens is that we simultaneously try to learn embeddings
+
+493
+00:42:52,080 --> 00:42:55,680
+ okay for different tasks.
+
+494
+00:42:55,680 --> 00:42:59,560
+ And as you know that basically we use different kinds of layers.
+
+495
+00:42:59,560 --> 00:43:03,040
+ So I believe that in our previous lectures on deep learning touched upon different kinds
+
+496
+00:43:03,040 --> 00:43:04,340
+ of layers.
+
+497
+00:43:04,340 --> 00:43:09,760
+ So for example, so this is one architecture and there is no end of variation of different
+
+498
+00:43:09,760 --> 00:43:11,400
+ architectures okay.
+
+499
+00:43:11,400 --> 00:43:14,540
+ So this is one architectures that work pretty well.
+
+500
+00:43:14,540 --> 00:43:20,160
+ So convolutional layer followed by the max pooling layer, followed by the classical, the
+
+501
+00:43:20,160 --> 00:43:24,600
+ fully connected layer, then softmax layer and so on and so forth.
+
+502
+00:43:24,600 --> 00:43:33,920
+ So at the very fast layer okay, what you have the input data okay.
+
+503
+00:43:33,920 --> 00:43:39,480
+ So if you are dealing with languages, you can give the words in a sentences or in paragraphs
+
+504
+00:43:39,480 --> 00:43:41,160
+ and so on and so forth.
+
+505
+00:43:41,160 --> 00:43:43,160
+ If you are dealing with images, then you can give images.
+
+506
+00:43:43,160 --> 00:43:46,520
+ If you have audio signals, you can give audio signals something like that.
+
+507
+00:43:46,520 --> 00:43:49,640
+ And on top of this basically you apply many many layers.
+
+508
+00:43:49,640 --> 00:43:54,160
+ So in this particular architecture, they decided to use convolution, then max pooling, then
+
+509
+00:43:54,160 --> 00:43:59,960
+ the fully connected layer, then the softmax layer and finally the end goal okay.
+
+510
+00:43:59,960 --> 00:44:06,200
+ And because the two tasks are being learned simultaneously in this particular setup, we
+
+511
+00:44:06,200 --> 00:44:10,720
+ are calling this multitask learning and in this way for example, if you apply this one
+
+512
+00:44:10,720 --> 00:44:22,200
+ a language processing tasks, we can get the embeddings based on this multitask learning.
+
+513
+00:44:22,200 --> 00:44:27,560
+ So these other important things, sentence and document vectors, you know, not only that
+
+514
+00:44:27,560 --> 00:44:35,760
+ what vectors we deal with, we also deal with sentence and document vectors okay.
+
+515
+00:44:35,760 --> 00:44:42,160
+ So this is one of the very oldest, very old work on the unsupervised paragraph embedding.
+
+516
+00:44:42,160 --> 00:44:48,480
+ So what we have in this case that we would like to, so basically do the paragraph embedding
+
+517
+00:44:48,480 --> 00:44:50,360
+ using a distributed memory.
+
+518
+00:44:50,360 --> 00:44:55,960
+ So we basically feed the entire paragraph to a particular model and then we create this
+
+519
+00:44:55,960 --> 00:44:58,000
+ word vectors and so on and so forth.
+
+520
+00:44:58,000 --> 00:45:02,200
+ We create some kind of average of this word vectors and finally produce this final output
+
+521
+00:45:02,200 --> 00:45:03,200
+ okay.
+
+522
+00:45:03,200 --> 00:45:08,040
+ There are other approaches as well that people have followed but the broad goal of this one
+
+523
+00:45:08,040 --> 00:45:13,800
+ is basically given a piece of text is a paragraph typically, we would like to create a vector
+
+524
+00:45:13,800 --> 00:45:19,840
+ which will represent the meaning or semantics whatever you can call it of the piece of text
+
+525
+00:45:19,840 --> 00:45:21,400
+ given in the paragraph okay.
+
+526
+00:45:21,400 --> 00:45:25,480
+ Just like the word embedding, you have the paragraph embedding and this is pretty common
+
+527
+00:45:25,480 --> 00:45:31,240
+ in the modern AI NLP.
+
+528
+00:45:31,240 --> 00:45:34,600
+ Now another popular task, next sentence prediction.
+
+529
+00:45:34,600 --> 00:45:40,880
+ So you have a sentence okay and then you would like to see whether the next sentence is coherent
+
+530
+00:45:40,880 --> 00:45:42,040
+ with the previous sentence.
+
+531
+00:45:42,040 --> 00:45:47,680
+ Now often when we write like the languages like say paragraphs and all sorts of things
+
+532
+00:45:47,680 --> 00:45:52,240
+ and so on and so forth, it is important to understand whether the sentence which is coming
+
+533
+00:45:52,240 --> 00:45:59,160
+ next is a good one compared to the like given the context that we are dealing with okay.
+
+534
+00:45:59,160 --> 00:46:04,680
+ So for this kind of stuff what we need to have, we need to have an architecture say
+
+535
+00:46:04,680 --> 00:46:11,200
+ for example this is the previous sentence okay and given the previous sentence, we like
+
+536
+00:46:11,200 --> 00:46:15,400
+ to predict the next sentence that means the words of next sentence and whether they could
+
+537
+00:46:15,400 --> 00:46:26,880
+ basically come next okay and this kind of model so called the sequence to sequence model.
+
+538
+00:46:26,880 --> 00:46:32,600
+ Now we also do pre training on auto encoders okay so auto encoders means that I do not
+
+539
+00:46:32,600 --> 00:46:40,080
+ need any supervised data to create the encodings or encodings of the original data.
+
+540
+00:46:40,080 --> 00:46:46,120
+ So what we try to do basically we have some input data and how we can represent for example
+
+541
+00:46:46,120 --> 00:46:56,240
+ in this case this is the input data and then what model we can learn from this so that
+
+542
+00:46:56,240 --> 00:47:00,840
+ the model will again generate the original data.
+
+543
+00:47:00,840 --> 00:47:05,080
+ That is why we are calling this an auto encoder you know I do not need any supervised learning
+
+544
+00:47:05,080 --> 00:47:10,120
+ setup I do not need any annotated data nothing like that so it will just convert the original
+
+545
+00:47:10,120 --> 00:47:16,360
+ data into a vector form and again we will use that vector form to generate the original
+
+546
+00:47:16,360 --> 00:47:18,680
+ data in the same form.
+
+547
+00:47:18,680 --> 00:47:27,400
+ So if the new data that we generate from the original data can be generated very nicely
+
+548
+00:47:27,400 --> 00:47:32,720
+ or as is then the encoding that we have generated is a good one okay and that is also very popular
+
+549
+00:47:32,720 --> 00:47:38,320
+ very well known approach in pre training you know unsupervised pre training where no manual
+
+550
+00:47:38,320 --> 00:47:46,320
+ intervention required at all okay.
+
+551
+00:47:46,320 --> 00:47:54,800
+ All what vectors once again the real power house for all modern the language processing
+
+552
+00:47:54,800 --> 00:48:01,560
+ tasks you know GPT and all sorts of things that we see okay.
+
+553
+00:48:01,560 --> 00:48:10,040
+ So this is for example you know one such example taken from a particular vector created by
+
+554
+00:48:10,040 --> 00:48:14,600
+ one of the very popular molecular glove so these are the basically the nearest neighbor
+
+555
+00:48:14,600 --> 00:48:21,840
+ vectors for word play you know verbs are basically playing played nouns are game games players
+
+556
+00:48:21,840 --> 00:48:25,720
+ football adjective multiplayer and so on so forth.
+
+557
+00:48:25,720 --> 00:48:31,440
+ So if you like to answer the question something like that given a particular word find out
+
+558
+00:48:31,440 --> 00:48:38,880
+ different sorts of things parser speech etcetera which are very close to this particular word
+
+559
+00:48:38,880 --> 00:48:44,240
+ then you can actually use this pre trained word vectors to achieve this goal okay.
+
+560
+00:48:44,240 --> 00:48:49,320
+ Once again basically we apply the contextual word vectors okay not a fixed word vector
+
+561
+00:48:49,320 --> 00:48:55,480
+ for a particular word in a given language.
+
+562
+00:48:55,480 --> 00:49:01,000
+ Now the key idea in context vector is this okay.
+
+563
+00:49:01,000 --> 00:49:08,360
+ So instead of learning one vector per word we like to learn a vector that depends on
+
+564
+00:49:08,360 --> 00:49:12,280
+ the context okay.
+
+565
+00:49:12,280 --> 00:49:21,200
+ So for example in this case so given the context the kids play a game in the park so this is
+
+566
+00:49:21,200 --> 00:49:25,360
+ my context the text context given okay.
+
+567
+00:49:25,360 --> 00:49:36,320
+ I like to learn a vector for word play this must be unequal to the vector that you get
+
+568
+00:49:36,320 --> 00:49:42,040
+ if the context is the broad way play premiered yesterday okay.
+
+569
+00:49:42,040 --> 00:49:46,800
+ So although the word we are interested in play for which we would like to create context
+
+570
+00:49:46,800 --> 00:49:52,680
+ vector the context are different and therefore the vector should be different and that is
+
+571
+00:49:52,680 --> 00:50:00,040
+ extremely useful to capture the meaning of text because text is basically very difficult
+
+572
+00:50:00,040 --> 00:50:03,480
+ to understand often because of its varying semantics depending upon the situation and
+
+573
+00:50:03,480 --> 00:50:08,360
+ so on so forth okay and for this like there are many approaches in fact load of language
+
+574
+00:50:08,360 --> 00:50:13,440
+ models are available using deep learnings where things are used to create the context
+
+575
+00:50:13,440 --> 00:50:20,740
+ vector contextual vector for different words okay and that helps us to determine the meanings
+
+576
+00:50:20,740 --> 00:50:24,880
+ of different things and very useful in application like question answering reasoning and all
+
+577
+00:50:24,880 --> 00:50:30,880
+ sorts of things okay.
+
+578
+00:50:30,880 --> 00:50:39,480
+ So one of the interesting architectures is tag LM so tag language model and I will always
+
+579
+00:50:39,480 --> 00:50:48,160
+ use this like this you know acronym LM for language modeling next onwards.
+
+580
+00:50:48,160 --> 00:50:53,720
+ So in this case what they are trying to do they pre-train two language models one in
+
+581
+00:50:53,720 --> 00:50:59,440
+ forward direction another in backward direction okay so there are two language models that
+
+582
+00:50:59,440 --> 00:51:03,840
+ we have in this case so this is the forward direction language model this is the backward
+
+583
+00:51:03,840 --> 00:51:09,440
+ direction language model okay and then we are basically using these things to a sequence
+
+584
+00:51:09,440 --> 00:51:17,840
+ tagger for example that we would like to tag a particular sentence like their parser speech
+
+585
+00:51:17,840 --> 00:51:21,440
+ and so on and so forth okay.
+
+586
+00:51:21,440 --> 00:51:29,420
+ So the reason that we do it because we would like to capture the context from both direction
+
+587
+00:51:29,420 --> 00:51:33,440
+ okay typically if you go from one direction to the other left right for example you can
+
+588
+00:51:33,440 --> 00:51:40,000
+ capture the left context very nicely but we may not be able to capture the right context
+
+589
+00:51:40,000 --> 00:51:42,640
+ so we need to basically capture this one.
+
+590
+00:51:42,640 --> 00:51:49,520
+ So what this particular model has done they have taken two identical language models the
+
+591
+00:51:49,520 --> 00:51:57,580
+ sequence models okay but the way they have used this raw data okay is something like
+
+592
+00:51:57,580 --> 00:52:03,040
+ this and one model will take the context from left to right the other model will take the
+
+593
+00:52:03,040 --> 00:52:08,800
+ context from right to left so the model will generate two kinds of vector for each word
+
+594
+00:52:08,800 --> 00:52:13,520
+ because they have two different contexts and then we combine these two vectors to produce
+
+595
+00:52:13,520 --> 00:52:17,640
+ a final vector for each of these words and then we use this for any downstream task like
+
+596
+00:52:17,640 --> 00:52:22,860
+ sequence tagging and semantics and all other things okay.
+
+597
+00:52:22,860 --> 00:52:32,280
+ So in these two situations so we basically use this context vector to speed up things
+
+598
+00:52:32,280 --> 00:52:40,080
+ to achieve other things and so on and so forth okay so unsupervised pre-training for sequence
+
+599
+00:52:40,080 --> 00:52:45,360
+ to sequence models so we have say for example we have the pre-training encoder and decoder
+
+600
+00:52:45,360 --> 00:52:52,760
+ with language models so in this case we basically have this encoding and then decoding and we
+
+601
+00:52:52,760 --> 00:52:57,680
+ have multiple layers of this particular model and often we use a softmax layer at the end
+
+602
+00:52:57,680 --> 00:53:05,320
+ of it that's pretty common which is just before the prediction layer and so on so forth.
+
+603
+00:53:05,320 --> 00:53:11,200
+ Quickly coming to GPT something is ruling the world so we also heavily rely on these
+
+604
+00:53:11,200 --> 00:53:17,280
+ pre-trained models so it's a very complex model based on transformer so we have so
+
+605
+00:53:17,280 --> 00:53:21,760
+ on the left side what we can see is basically the transformer block I'm not getting into
+
+606
+00:53:21,760 --> 00:53:24,960
+ details of transformer because that is something probably will be covered in language modeling
+
+607
+00:53:24,960 --> 00:53:31,840
+ thing so just to give you a sense of what it is without getting into the details a transformer
+
+608
+00:53:31,840 --> 00:53:38,040
+ is basically a very complex combination of different layers okay so you have the embedding
+
+609
+00:53:38,040 --> 00:53:43,800
+ layers where you are taking these embeddings of these words then you try to see the similarity
+
+610
+00:53:43,800 --> 00:53:49,120
+ between different embeddings then you combine weights with this one so on so forth you normalize
+
+611
+00:53:49,120 --> 00:53:54,840
+ these things little bit then you apply a feed forward network so that you can exchange information
+
+612
+00:53:54,840 --> 00:53:59,440
+ then you apply layer normalization to squash this values little bit and so on so forth and
+
+613
+00:53:59,440 --> 00:54:04,800
+ then you stack up multiple such things in this case 12 such things you stack up to produce
+
+614
+00:54:04,800 --> 00:54:11,440
+ this final thing okay and these vectors the final vectors produced by GPT is typically
+
+615
+00:54:11,440 --> 00:54:17,600
+ used for many many different applications for example classification entailment computing
+
+616
+00:54:17,600 --> 00:54:22,240
+ similarity between takes to understand whether they reflect the same thing or not answering
+
+617
+00:54:22,240 --> 00:54:28,280
+ multiple size questions fill in the blanks and all sorts of things okay and the GPT something
+
+618
+00:54:28,280 --> 00:54:33,960
+ is basically you know although they do use some level of supervision but bulk of the
+
+619
+00:54:33,960 --> 00:54:40,440
+ thing that in GPT uses basically the unsupervised data okay data without any annotation from
+
+620
+00:54:40,440 --> 00:54:48,520
+ the raw text okay so quickly coming to BART architecture so again I am not getting into
+
+621
+00:54:48,520 --> 00:54:52,360
+ details of BART because that is not within the scope of my particular lecture but just
+
+622
+00:54:52,360 --> 00:54:57,600
+ to give you a sense of what they do so in pre training what we do basically you know BART
+
+623
+00:54:57,600 --> 00:55:04,200
+ is again bidirectional transformer so you use the same architecture but once again you
+
+624
+00:55:04,200 --> 00:55:10,320
+ take from left to right left context and then from the right context and then you basically
+
+625
+00:55:10,320 --> 00:55:18,560
+ mask few words okay and try to predict those masks word so nicely and so how we can adjust
+
+626
+00:55:18,560 --> 00:55:24,520
+ this vectors so that we can create those things okay and then basically we can go and fine
+
+627
+00:55:24,520 --> 00:55:29,920
+ tune these vectors because they are all generic fine tune these vectors for individual tasks
+
+628
+00:55:29,920 --> 00:55:35,920
+ for example question answering, name data recognition, language understanding and all
+
+629
+00:55:35,920 --> 00:55:54,200
+ sorts of things okay now okay now I will come to one of the most important part of
+
+630
+00:55:54,200 --> 00:56:01,240
+ this transfer learning which is adaptation and in this particular segment I will talk
+
+631
+00:56:01,240 --> 00:56:06,160
+ about how to actually adapt different models existing models depending up on the tasks
+
+632
+00:56:06,160 --> 00:56:11,840
+ that you are dealing with okay so before we get into that we take a short break and then
+
+633
+00:56:11,840 --> 00:56:29,720
+ we come back and talk about different approaches for adaptation.
+

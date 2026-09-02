@@ -1,0 +1,364 @@
+ Good morning everyone. I welcome you all on behalf of TCS Ion and IIT Kharagpur for Week 10 session of IIT Kharagpur AI 4-i CPS Certificate Program.
+ Today we have two sessions. First one is Introduction to NLP and will be given by Dr. Blaben-Bowmixer.
+ And the second session is on Hands-On NLP Lab and will be given by Mr. Sabeh Satsumukhapadhyasar.
+ Participants, before going to the session, we have few general instructions for you all.
+ To set up your WebEx layout, go to "Layout" in the screen which will be in the top right corner, select "Stack" and enable "Full Screen Mode".
+ The WebEx session will be unique and shared every week over email, community and via course batch.
+ Raw recordings of the session will be available by end of the day and the detailed recording will be available on Monday.
+ Week 10 assignment will be enabled today at 2pm.
+ Week 10 assignment submission deadline is on 27th of April, Sunday till 11pm and the solution for the assignment will be available on 28th of April, Monday at 11am.
+ We have a quiz for week 9 will be available today at 5pm and the duration of the quiz will be 30 minutes.
+ If you have any issues during the quiz, please contact with our helpdesk email address info.tcsionup@tts.com.
+ The results for the quiz will be available at 9pm today.
+ To view the marks, obtain click on the "Attempts taken" column in the quiz node.
+ And the deadline to update your rich profile is on or before 30th of April, 2025.
+ The WhatsApp notification address will be sent only for those who have given consent in the platform.
+ If you have any queries or any issues, you can reach out to us to have a helpdesk email address info.tcsionup@tts.com.
+ Thank you everyone for joining in today's session. Thank you sir. Over to you.
+ Good morning and welcome to this session.
+ Introduction to natural language processing.
+ I am Dr. Plabun Kumar Bhomik. I belong to the Department of Artificial Intelligence, IIT Kharagpur.
+ So as you know, this field of natural language processing has become one of the most prominent areas in the domain of AI.
+ And if you think about this modern AI paradigm, which was the web of this modern AI paradigm was started from the computer vision domain with the invention of this convolutional neural network kind of architecture.
+ And then perhaps this natural language processing domain was lagging at that point of time in the sense that they were yet to come up with deep neural architecture for NLP applications and tasks.
+ But gradually they kind of coming up with new architectures in the form of recurrent neural networks and then in 2017 something happened in the form of transformer architecture which changed the face of not only NLP but also the domain of AI in general.
+ Now this transformer architecture was a kind of foundation to all the kind of comprehensive large language models that we can see nowadays.
+ And these large language models or the foundational models which are not really tied to only natural language processing domain but they are pervading the other domains like computer vision or multimodal data processing architectures.
+ So today I am going to take you through a kind of evolution of techniques or paradigms in this natural language processing area.
+ So as you see this is an introductory lecture to NLP so I am not going to go into the details of each and every technique. So rather I will try to cover a brief overview of different tasks and how those tasks have been addressed historically and in the light of the modern architectural perspectives.
+ And finally as I understand that there are other modules which will take you through the detailed architectures for the modern techniques in NLP so I will restrict my lecture to this brief overview of the tasks related to natural language processing.
+ So let me start with some applications to motivate the case of natural language processing.
+ So nowadays you can see that these chatbots are all over in our social sphere like we use these chatbots through different applications like Siri, Google Assistant, Cortana and as you can see that we can ask questions and then the system provide answers and based on that maybe the user provide another comment or some doubt.
+ And the system provides answer. So it is like a dialogic system is or discourse is going on and these sometimes they are very natural and sometimes it may be kind of thought from the user end that maybe some human agent is working behind this setup.
+ So they have become very natural and again thanks to the modern inventions in this natural language processing area.
+ So while we communicate with different linguistic communities like let us say Indian person who is proficient in Bengali and Hindi is trying to communicate with some other linguistic person from other linguistic background let us say English and other.
+ So in some cases the language may become a barrier in understanding the utterances from the other linguistic community person or something written by in other language.
+ So in that case this case of machine translation is very much important and this task machine translation task has been attempted to be solved for quite a long time.
+ And nowadays as you can see at least for popular languages in the world we have more or less satisfactory machine translation system with more or less good accuracy of performance.
+ Now if you think about email editors for example someone who is using Google and maybe similar applications. So there you can see that sometimes we forgot to attach some document while we write like find attached.
+ So in that case the assistant will prompt like have you forgot to attach something or if I write something which is not grammatically correct like there is something that I can do.
+ So here you can see that there is a case of grammatical mistake and the editor will prompt or highlight these grammatical mistakes so that you can write better emails which is correct in grammatical sense and sometimes correct in pragmatic sense as well.
+ Think about a product company which has launched a product recently and wants to see the view of the users. So in that case what can be done or traditionally what people have done.
+ They have taken the people's review maybe some surveys that they conducted and those surveys are conducted manually and as well as the analysis of the survey are done manually.
+ So in that sense this is a very time and effort consuming activity. Now what can be done rather if the systems can automatically understand the text that is provided by the reviewer and to understand what is the emotion that is being reflected by the user.
+ So then perhaps you can track the kind of usability of the product.
+ So as you can see for this particular case we are trying to track the opinion of the people on the topic say sprout coffee and you can see that sometimes the emotion is positive and in some place or some time point it has got a deep
+ and again it rises towards the positive direction. And you can see that this can be very clearly automated given the performance of the natural language processing system.
+ Extracting information from unstructured text so you can see that let us say we have one Wikipedia article about Albert Einstein and it contains sentences that are statements that talks about Albert Einstein different features of Albert Einstein.
+ For example his birthplace, the places where he studied or the kind of theory that he has proposed.
+ Now this particular text is very good for human understanding but this text is not really good for understanding of the computer program because this text is unstructured and this natural language as we can see and we will be seeing later.
+ This might be ambiguous and in that case these programs they may not get the essence of the topic very clearly.
+ So that necessitates extraction of structured information from the unstructured text.
+ So what do you mean by that? So if you look at the Wikipedia articles for each Wikipedia article you will be seeing something called Infobox which is a kind of structured version of some information that are present in the text.
+ So for example here I can see that Albert Einstein was born on 14th March 1879, he died in some year and he has got citizenship in different countries.
+ So this is what we call as structured data and if we can automatically extract this structured data out of this unstructured data then perhaps this structured data can be used by computer programs.
+ For example the chatbot assistants which are trying to answer user query they will be finding it very easier if the information is structured.
+ So this is another view of this structured information as you can see the Albert Einstein is being depicted as a node and the related information they are connected via some edges.
+ So we can see that there is a kind of network structure and this kind of network structure which we want to extract automatically from this unstructured text and this is what we call as information extraction.
+ Sometimes the text may be very long and before going to the text sometimes we would like to get a glimpse of what exactly or in summary what does it talk about.
+ So for example this is a kind of movie review about the famous movie Kalki 2898 AD movie. So it is a very long text but for a user who is sometimes very busy it will be very good for him or her if a summary of it is created and presented to him or her
+ may be based on the summary the user can decide whether to go into the detailed deliberation about this topic.
+ So again you can think about research papers where people write research articles and each research articles or most of the research articles they have abstracts.
+ And these abstracts they can be thought of as summary of the entire research articles generally what people do researches do they first try to look at the abstract and try to guess whether this article would be useful for that user or not.
+ Now this process if that can be automated then it will save huge amount of human effort and time. Again we would we always like to ask questions and for example we want to have very pinpointed answer to the question in many cases.
+ So here we are asking what would be the weight of a person in the moon if the person's weight in the art is 78 kg.
+ So this was put to one of the chat box like chat gpt and it gave a very step wise and clear precise answer to this and if this is made available to the user this will be of greater benefit in different aspects.
+ So let me take you through the evolution in the language processing area. So we started with what we call as rule based natural language processing.
+ So mostly the tasks for example I can just talk about a task of parts of speech tagging where for a given sentence I would like to annotate each of the words to its corresponding grammatical category like say noun verb adjective adverb.
+ So I can write a rule like a verb will always be followed by a noun. So then if a token or a word is tagged as noun the next token maybe would be tagged as verb.
+ So basically these are rule based systems and as you know that for each task you have to write the rules it is not only each task you have to write the rules for every language.
+ So though these were very useful back say in 1980s but they were very much dependent on the task and the language that is why they were not very transferable to other languages or other tasks.
+ So then then came the era of statistical natural language processing where we started to use the concept of machine learning to solve the similar tasks.
+ So in that respect different architectures or different models came into picture. So first thing that was very important at that point of time was probabilistic language model.
+ So where we were trying to compute the likelihood of a sequence of words or what is the likelihood of one word given another sequence of words.
+ And also we came up with models or machine learning solutions using hidden markup model conditional random fields. Now the general traits of all these kind of models were that they were dependent on manual feature extraction.
+ So the pipeline was that you extract some features from the token of the sentences and you feed that to the machine learning model and the machine learning model will predict something that is important for you.
+ But again as you see that this is dependent on the features so we have to design language specific solution but again you do not really need to write the rule.
+ So that is the kind of benefit that we have on top of this as compared to this rule based NLP.
+ So here we are doing away with the rules but again it is dependent on the language as well as the task as far as the feature extraction is concerned.
+ Because this feature extraction is pretty much language dependent as well as task dependent.
+ Now the third wave came in the form of neural natural language processing where we were doing away with the dependency on the feature extraction right.
+ So we can leave it to the neural models to extract or automatically extract the features which are relevant for a given task.
+ And in that sense we talked about different architectures starting from word to wake, get a recurrent unit, recurrent neural networks, long short term memory.
+ But again these kind of solutions where task specific for example you have to come up with a different architecture to solve for example a sentiment classification problem where for a given sentence you want to classify the sentence into positive or neutral or negative emotion.
+ Or if you have a kind of different task like you want to check the grammaticality of a sentence you have to design a completely new architecture right.
+ And then came the most important moment in the natural language processing technology domain which we call as a transformer moment with the advent of the architecture which we famously call as transformer.
+ So again the transformer is reliant on this idea of the self-attention where the basic idea is that the words in a sentence they attend to the other words in a sentence.
+ And there are other architectural innovations which made this transformer architecture to be the foundational block of all the subsequent famous architectures.
+ Now again any solution that you want to come up with this transformer architecture they are mostly supervised in nature and as it is supervised in nature you have to come up with task specific data set and using this task specific data set you have to train your
+ transformer model in a kind of supervised manner and as you know that if you want to solve a different task again you have to come up with a data set that is relevant to that task and retrain or maybe train from scratch another transformer architecture or model.
+ Now following that the idea of pre-training come into picture.
+ So the basic idea is that well I will like to do away with the task specific element in this training.
+ So what we would like to do we will train this model using some huge amount of data set without any supervision or supervised level.
+ For example I will not really look at whether a sentence is grammatically correct or not.
+ I will not look at those tasks whether a particular sentence is having positive negative or neutral emotion.
+ Only thing that is available to us is a huge chunk of text and this text is nothing but a sequence of words or tokens.
+ And we will what we like to do we will like to predict the next token very accurately with respect to the training data.
+ And as you can see that as we are not using any explicitly supervision level we are we can really train this system using huge data set as it is not reliant on annotated data which is very hard to get in many cases.
+ Now after we get a pre-trained model it is very generic and it can be adapted to different applications and this adaptation is done using this idea of fine tuning.
+ And for that you need a very small amount of data set which can fine tune the pre-trained model to you need to solve the specific task.
+ Again the kind of architectures that are important or that came up with this kind of paradigm is BRT or GPT architectures.
+ The philosophy is pre-trained once and fine tuned multiple times.
+ So we can pretend a BART model or a GPT model using a huge amount of data set or text but you can take that pre-trained model to solve different tasks and as many as you can you can do that.
+ And finally as the scale of the models become larger and larger they are able to solve the problem again even without fine tuning and these models are called foundational models.
+ So there we can see the effect that they have a kind of emergent behavior so you can see that they can solve a task for which this has not been specifically trained for.
+ So that brings about the ideas like in-context learning or prompt engineering where you can prompt the model to generate tokens and this prompt will encode the intention of the user which the user wants the model to do.
+ And we know there are very famous models in this direction like different GPT versions, Lama and nowadays Deepseek has really created a huge role in the community.
+ So with this if I try to summarize this evolution, so we started with rule-based natural language processing.
+ And in that rule-based natural language processing as you can see that we are reliant on a set of rules.
+ So for example if we think about machine translation task we have a source text and what we can do for each word we, so let's say we are translating from Hindi to English.
+ So for each Hindi word we can just say what is the corresponding English word and that set of rule will give you something called direct translation and you can get a target text.
+ Or what you can do we can elevate the model a bit more, you can get the grammatical structure of the sentence in Hindi at this point of time.
+ And you can say for a given grammatical structure what would be the corresponding grammatical structure in English and then you translate that back into the or convert that into the final text.
+ So the essence is that here we are using a set of rules.
+ Now again as we talked about earlier rules are not really scalable, so that's where people came up with the idea of statistical NLP where we will annotate a sizable amount of corpora and train a machine learning model to solve our task.
+ So for example the same machine translation task can be solved using a machine learning model.
+ And the third block in this evolution is neural natural language processing where we have something called encoder decoder architecture.
+ And in the encoder architecture what does it do? It takes as input the source language sentence and then come up with a representation and that representation is fed to the decoder and the decoder will output the translated tokens one by one.
+ So let us look at different aspects of language would we call as linguistic levels and the corresponding technology.
+ So what we have so some cases or in most of the cases we want to understand a sentence we have to understand the words and in order to understand the words we want to understand the components of the words.
+ So I will come to that what we mean by the components of the words.
+ Now after we understand the components of the words perhaps we can understand what is the grammatical category that the word or the token belong to.
+ So that brings us to the idea of part source speech.
+ Now after we get the word level grammatical category then perhaps we want to see the structure of the entire sentence.
+ For example a sentence may contain a noun phrase or a verb phrase the noun phrase again can be divided into say a determiner and a nominal phrase so and so forth.
+ So there is a kind of recursive structure of the sentence as far as the grammaticality is concerned and again you know that grammar for any language is governed by a set of rules.
+ Whenever you are trying to do a kind of syntactic analysis of a sentence we have to check whether they are following the rules and given the rule how we can understand the syntactic structure of the sentence.
+ Now again a sentence can be syntactically correct grammatically correct but that may not be meaningful.
+ So that is where the idea of semantics come into picture to assign meaning to the utterances right.
+ And again we are talking about sentence level utterances but again a communication in many cases or most of the cases is a kind of sequence of sentences collection of sentences.
+ And this collection of sentences they are not kind of random assortment of the sentences they have a very coherent structure in different ways.
+ So these kind of structure is what we call as discourse right.
+ Now the corresponding technologies are for morphology we have morphological analyzer which takes as input a word and tries to come up with the composition or breaking the word into different components.
+ Now for perso speech what we call what we have is perso speech tagging for syntactic analysis we have got parsing and for semantics we have we need to check the semantics in the word level.
+ We need to check the semantics in maybe sentence level or maybe word level and as well as we need to check the semantics between the components in the sentence.
+ Again I will be going through different examples of all these and finally whenever discourse comes into picture sometimes we want to segment long text into meaningful blocks.
+ So very simple example of this meaningful blocks may be the paragraphs, paragraphs may be the sentences. Sometimes we refer a particular token in a sentence through another token in another sentence.
+ So for example I forgot my keys today and the next sentence is it might be in my bag so this token it refers to the word key so that is what we call as coreference.
+ And sometimes that structure of the discourse may not be linear there might be hierarchical structure.
+ So for example if you think about a book a book is divided into different chapters and each chapter is divided into different sections and each section may be divided into different subsections.
+ So you see that is what we that is a kind of example of what we call as a discourse structure.
+ So what comprises NLP it is a combination of two things one is core NLP technologies in the form of language modeling,
+ speech tagging, named identity recognition, syntactic parsing so and so forth.
+ And different applications in the form of machine translation, dialogue systems, information extraction, summarization, question answering as you can see that
+ these applications they might require different NLP technologies to be involved.
+ So for example this question answering may be to solve question answering application we may take input from parser speech tagging.
+ We may take cues from named entity recognition which can tag the named entities in a sentence.
+ So the foundational technology are like this language modeling, parser speech tagging, named entity recognition, syntactic parsing, word sense disambiguation all these things.
+ And build on top of that we can devise these applications in the form of machine translation or question answering or sentiment analysis.
+ Now let us look at the challenges in solving this NLP problem.
+ The most famous problem is what we call as ambiguity.
+ So let us take a view of this particular sentence I made her duck.
+ Now this can be treated in different flavors or different ways.
+ So for example this can mean that this may mean I cooked water fowl for her or this may mean I cooked water fowl belonging to her
+ or it may mean I created a kind of say toy duck that she owns or I caused her to quickly lower down her head or body.
+ It may mean many things but at this point of time we are not really sure what meaning can be assigned to this and this is what we call as ambiguity.
+ Where you have different possibilities for a given input.
+ And sometimes it may make use of the context in which this sentence is appearing.
+ And let us say you are writing something about cricket match.
+ Now let us say the bowler is saying that I made her duck.
+ So in that case you can see that possibly the last sentence would be the most appropriate one.
+ So the context becomes very important to resolve these kinds of ambiguities.
+ Some ambiguities are very easy to resolve.
+ So for example here the spy saw the policeman with binocular.
+ Now this binocular can be attached to either the spy or the police or attached to the bird saw or it can be attached to the policeman.
+ So in the first case I am not sure what where I should attach it to.
+ But in the next sentence where I say I the bird saw the bird watcher with binocular.
+ Of course the bird does not have a binocular the binoculars must be with this with the bird watcher.
+ So in the second case the ambiguity the extent of ambiguity is much lower than the extent of ambiguity that we have in the first sentence.
+ So whenever we have an ambiguous sentence that may lead to different ways of analyzing the sentence.
+ So for example here we are attaching this glass with this man.
+ Here the sense is the man with the glass but others in the other sense that I saw with the man with glasses so the glass is with me.
+ In that case the glass is not attached to the man right.
+ The other challenge is natural language is very sparse what do you mean by that?
+ So there is a very small number of sentences which are used frequently and almost all the or maybe significant number of words are used very infrequently.
+ So as you can see here we have plotted in the X axis.
+ So we have computed the rank or frequency of the words let us say from a text corpora a huge collection of text.
+ And we have ranked them so the highest frequent word will be getting say rank 1 and this and the rank increase as the frequency decreases right.
+ As you can see the number of such high frequent words are very less so they are occupying this part.
+ But the majority of the words they are having low frequency right.
+ So the same plot is the same idea is plotted in log log scale.
+ So here you can see the number of highly frequent words are very sparse but the curve is becoming dense for the rare words.
+ So the kind of take away from this slide is that the most of the words are rare right.
+ Now think about a kind of problem that is solving is a kind of machine learning model.
+ And there if you do not see a word in your corpora so for the word or the utterances that involve those words cannot be treated very efficiently.
+ So that is where this rare words they are really not good for us right but that is the kind of reality.
+ Now the expressions they have variations what do you mean by that?
+ The same meaning can be expressed using different forms right.
+ So for example I can say she gave the book to Tom or I can say the same thing using the other sentence she gave Tom the book right.
+ Or I can say some kids pop by or same sense can be represented using the sentence of few children visit it right.
+ Or more so in the third third third third example is a very nice one.
+ Is that window still open?
+ It is kind of similar to saying that please close the door right.
+ But you see that they are having different expressions.
+ The expression varies but the meaning they are being the same.
+ Sometimes we try to compose multiple tokens to come up with new tokens.
+ So for example I can add two tokens like tooth and brush to come up with tooth brush right.
+ And here this composition is meaning is kind of here this combination is composition and meaningful right.
+ It retains the meaning of the constituent words right.
+ So it is a brush to deal with the tooth right it is something to do with the tooth.
+ But in the other cases the meaning is non-compositional.
+ So for example I can add butter and fly to come up with butterfly and this butterfly does not have nothing to do with butter right.
+ So in that case this is what we call as non-compositional combination right.
+ Now in many cases we would very much like to predict what would be the next token if we have already seen a sequence of tokens.
+ So here we have already seen a sequence I would like to have a and then we have to predict what would be the right choice between cup, word and haircut.
+ Now we can assign a kind of probabilistic weight on these possibilities.
+ So let us say I can say that probability of cup seeing after seeing I would like to have a is higher than probability of haircut seeing this sequence.
+ And this again is higher than the probability of word given I would like to have right.
+ So here we are trying to conceptualize in a model which takes as a sequence of tokens and output are the next token.
+ And this model would facilitate this kind of transformation or maybe output right.
+ So this is what we call as probabilistic language model where we would like to compute the probability of the sequence what sequence w1 to wn.
+ So it is a kind of joint probability and this joint probability can be broken down using a chain rule of this form right.
+ Now if we look at these example the probability of the sequence the dog barks so it can be broken down into probability of dog, probability of dog, dog and probability of barks the dog right.
+ Now let us try to see how to estimate this probability right.
+ So the way to estimate this probability is to have a huge corpora text corpora with us and this particular quantity can be estimated by counting this entire the frequency of this entire sequence
+ and divided by the frequency of the prefix and all the other words all the words we are just trying to normalize this count using this summation right.
+ Now you see that some in many cases if you have a very longer sequence they are infrequent you can see that right.
+ Individual words are more or less frequent you can see them, but if you speak a sentence the sentence may not be appearing multiple times in a text corpora.
+ So that is why these estimation they are not reliable because this entire sequence may be very the frequency of the sequence may be very low may be 1 or may be sometimes 0 right.
+ Now what we do to resolve this issue we use an approximation which we call as Markov approximation.
+ So here we say that the probability of one word depends only on the previous word.
+ So this particular quantity now we have approximated to say p w 1 p w 2 given w 1 p w 3 given w 2 p w n given w n minus 1.
+ So you can see that this w n depends only on w n minus 1 as compared to this entire sequence right.
+ And here you can see that the same way as we have estimated these quantity we can estimate this probability w n given w n minus 1.
+ So here we are taking two tokens into account. So these kind of models are called bi gram models.
+ Now in general if you have n number of tokens here in general this is called a n gram model right.
+ So this is what we call famously as probabilistic language model and depending on the number of such tokens we can term them as bi gram, trigram or in general n gram.
+ Now people try to think whether we can have a continuous or vector based representation of the words right.
+ The idea came into picture by looking at the fact that some words they tend to co-occur with some other words as compared to the different other words right.
+ Now can we encode these kind of co-occurrences right and what we want if two words are co-occurring in a given context then we would like to have their vector representation to be very close to each other right.
+ So let us say I have a vector representation for say banking and a vector representation for crisis and we want them to be very close to each other as they are appearing close to each other right.
+ And whenever two vectors are close to each other their dot product would be very high so that is why this dot product is a kind of indicator whether a particular word occurs in the context of another word.
+ So these probability whether a particular word occurs in the context of a context word is proportional to the dot product between their vector representation.
+ And again this idea was I think what was instrumental and again a kind of foundational thing for this NLP revolution.
+ And you can see that these vectors they show very nice behaviors like the driver and drive and driver is connected in the same way as swim and swimmer.
+ You can see these vectors are parallel to each other more or less parallel to each other right.
+ And these vector representations are kind of used very frequently almost all the neural models where we start with a kind of embedding of a vector or word.
+ And then that embedding is fed to the neural architecture so that is more or less the order of the day.
+ So these kind of representation which we call as continuous representation.
+ Now let us look at the anatomy of the words so the words are not that atoms.
+ So they are composed of what we call as morphemes and these morphemes are like meaningful minimal components of the words.
+ So if you take the example of misunderstanding it is a composition of misunderstanding and yes.
+ And whenever we talk about morphological analysis we take the word and try to find the root form of it.
+ So this is what we call as the root form and this is in noun and this is represented in plural form.
+ In perso speech tagging what we do we take the words of the tokens in the sentence and try to assign a grammatical category to the words.
+ So this is essentially what we call as the perso speech tagging.
+ So for example here we tag this token the with determiner, grand with adjective, jury with noun, commented with verb in past form so and so forth.
+ And this tag set they are standardized so one standard is pay entry bank tag set which are which is kind of widely used across many NLP communities.
+ And again there are models like hidden markup model which tries to find out what are the kind of possible cases like say Janet is most likely to assign to be the noun proper noun.
+ And will maybe assign to model or it may be a kind of verb or it may be noun you can see that all the possibilities are marked and back and again be assigned different perso speech possible categories.
+ Now for this perso speech tagging task what we want we want to find our kind of optimal path in this entire lattice like the first would be tagged with NLP, the second would be tagged with MD, the third would be tagged with back and so on so forth.
+ So again I am not going to the detail of the models that will require huge amount of time but I am just going to give you an essence of this.
+ Now in neural perso speech tagger what we have we have got again the input to be the sequence of tokens and again we convert them into embeddings or the vectors as we have talked about.
+ And then perhaps we can feed that to an architecture like say recurrent neural network which will process these tokens temporally and they will come up with some state representation after we have seen.
+ So this state representation involves the fact that we have seen Janet and Will this state representation will involve the fact that we have seen Janet Will back.
+ And now taking this representation of the state again that will be kind of vector we will feed that to a kind of prediction head and this will kind of generate a kind of softmax distribution over the tags.
+ And finally we will be outputting the token which has got the maximum softmax probability right.
+ The second important task is named entity recognition. So basically we want to identify the phrases which are representation of entities or relations right.
+ So entities in the form of say name of the people place organization so and so forth.
+ So for example if we look at this example Michael Dell is the CEO of Dell Computer Corporation and lives in Austin Texas.
+ So you can see this Michael Dell can be tagged with people Dell Computer Corporation would be tagged with organization and Austin Texas would be tagged with places.
+ But again see this named entity may be application specific.
+ So for example if we talk about car ads in a sentence in an ad like for sale 2022 Toyota Prius 20,000 mile $15K based offer available starting say July this.
+ Now you can see that this Toyota would be tagged with make this will be tagged with year Prius will be tagged with model and 2020,000 mile will be tagged with mileage and this $15K or based offer would be tagged with price.
+ And the way to represent this task is that we invent three tags one is outside name entity beginning of name entity and inside name entity.
+ And we like to tag each token to either of these three tags.
+ So for example here we can say that this Michael is a beginning of a name entity and Dell is a end of name entity and these all are outside name entity again be this Dell is a beginning of another name entity in this one so forth.
+ So now after we look at the word level analysis we now elevate the task to a sentence level analysis right.
+ So if we are given with a sentence how to analyze the structure of the sentence and this analysis can be done in different ways.
+ So one such paradigm is what we call as phrase structured grammar.
+ So here we are looking at composition of the different phrases and try to compose these phrases to come up with more abstract phrase representation.
+ For example this word the is can be tagged with the term minor ship can be tagged with noun and these two can be composed to get say one phrase noun phrase.
+ And a verb and one adverb can and again one prepositional phrase can be composed to get a verb phrase and then you can compose these two to get a sentence.
+ So essentially we are representing rules like sentence means that noun phrase followed by a verb phrase.
+ A noun phrase can be divided or disintegrated into the term minor followed by a noun so and so forth right.
+ There is another paradigm which we call as the dependency grammar here we so you can see this kind of free like structure.
+ This phrase structure grammar the analysis will give you a kind of free like structure.
+ Whereas compared to that this dependency grammar will yield a kind of graph like structure where there is a dependency between a kind of head token and a dependent token right.
+ So there is a kind of directed edge between the head token and the dependent token.
+ And you can see that we are encoding some relationship in the form of say subject, object, participial modifier so and so forth right.
+ Now whenever we talk about semantic analysis we have talked briefly about syntactic analysis.
+ So when we talk about semantic analysis the semantic analysis has to be done in two levels.
+ One is word level the other is the sentence level.
+ Now in word level semantics there are different approaches like people have used knowledge based approach where there is a kind of knowledge encoded for different words.
+ And we tried to see the distance between the meaning of the words using that knowledge structure or we do it with something called distributional hypothesis which says you know a word by the context in which it appears.
+ And a very important task in this respect is what we call as word sense disambiguation. So given a word appearing in a context can we find out the proper sense of the word given the fact that there is an ambiguity in understanding the meaning of the word in many cases right.
+ And whenever we talk about sentence level semantics we would like to find out semantic relationship between different phrases in the sentence with the main verb.
+ And that is what we call as semantic role labeling.
+ So whenever we talk about this knowledge based approaches we have got we have to encourage the knowledge about the word so the token.
+ So for example we have a kind of information about wheeled vehicle which has part break or wheel or splasher right.
+ Now the self propelled vehicle is a type of wheeled vehicle motor vehicle is a type of self propelled vehicle.
+ So what you can see that we have different categories of the words and each category now these categories are related via different semantic relationship.
+ And the semantic relationships are of this form say class subclass or this part has part or is part of relationship and there are other more relationships right.
+ And this has been captured beautifully through this project what we call as word net.
+ What a word net does it categories or clusters the words in different senses.
+ So for example the word mouse it can be categorized into multiple linguistic categories like say noun or verb.
+ Now if we think about noun there might be different senses of mouse and each sense will give you a sense category right.
+ So for example one sense may be any of the numerous small rodents.
+ Other mouse sense may be a swollen bruise caused by blow to the eye or it can be a computer mouse right.
+ So there are different senses of the same token right.
+ But the senses as you can see they may be close to each other or they may be very different.
+ For example these sense and these sense they are completely different right.
+ Now given that kind of structure so what we have say let us say standard so medium of exchange is a type of standard.
+ Currency is a type of medium of exchange.
+ Coinage is a type of currency.
+ Coin is a type of coin and nickel dime they are type of coins right.
+ Now you can see that given the structure what we like to check what is the kind of semantic similarity between a pair of senses.
+ So for example this dance and choreography these are the two kind of senses.
+ And we know that the distance between dance and choreography should be less than the distance between clown and bridge right.
+ So here we are trying to check how close the meaning of two units of the languages are.
+ So how we can achieve that given we have this kind of structure.
+ So maybe we can compute the distance from travelling from one node to the other node.
+ If we are trying to check the distance between say nickel and dime.
+ So basically we have 1 and 2 right or nickel and coin right.
+ So nickel and coin is shorter than say nickel and dime.
+ But nickel and dime distance is shorter than say nickel and money which will take a longer route in this graph right.
+ So these are kind of approaches what we call as the knowledge based similarity approaches.
+ So the question is can we measure the distance in the sense graph using some path based measures or different other measures.
+ So there is a kind of whole body of literature which has addressed this question.
+ Now after we know different kind of senses that a token can be assigned to.
+ The next task is given a word is appearing in a context maybe in a sentence how to disambiguate the proper sense.
+ So for example the word serve has got different meanings right.
+ Now it has appeared in say four context.
+ So for example he serve so these are the four senses right S1, S2, S3, S4.
+ Now these are the four context in which the verb serve is appearing.
+ Now as I can see that these sense of serve like they rarely serve red meat preferring to previous seafood.
+ So this would be mapped to the sense S2 which talks about provide right.
+ Now if you think about this monica could not return step is served.
+ So it is serve which is related to say put a ball in play stroke the that puts the ball in play.
+ Now these sense of serve is kind of serving office right.
+ So this will be tagged to S1 and again this will be tagged to the fourth one will be tagged to S3.
+ So the idea is that given a particular word there are possible senses like we have three possible senses of electric.
+ We have only one possible sense of getter.
+ We have got seven possible senses of bus.
+ We have got three possible sense of players so and so forth.
+ Now given this how do we really find out the proper sense and this proper sense is marked in blue right.
+ So our task is given this word X1 appearing in this context.
+ And given that this X1 can be attached with these three senses what would be the exact sense which is our Y1.
+ So this can be realized in a kind of neural architecture.
+ Again this is a kind of different example than this but again that will preserve the sense I guess.
+ So this is the input sequence I found the jar empty.
+ Now I will pass that through a neural encoder and essentially we will be getting as output.
+ An example of a neural encoder can be say RNN or say LSTN so and so forth right.
+ And we will be getting again for each one vector representation.
+ Now let us say we are interested to find the sense the proper sense of found right.
+ As you can see these sense for these all these senses we also can represent them using some vector in a vector space.
+ And we will try to see how much these vector is closer to each of these vectors.
+ And as you can see that as this sense 9 representation is closer to the vector representation of found.
+ Then we will tag or we will this will be this token will be re-submigrated as find 9 var.
+ So a very important idea about the representation of the word is you shall know a word by the company it keeps that goes back to say 1957.
+ So the essence is that two target words are distributionally close and of course they are semantically related if they have many common strongly co-occurring words.
+ So for example doctor and surgeon they are very closely tied up because they appear very closely or co-occur frequently.
+ And also doctor and scalpel they also co-occur very frequently because doctors they perform surgery using scalpel.
+ So if you look at this example what we are trying to see that this is the kind of word and I am trying to see what are the other words this is co-occurring with.
+ And if this word is co-occurring with certain word will be marking that cell to be 1 and the other cells to be 0.
+ So this means that apricot does not appear with arts but apricot appears with boil.
+ Now you can see that we can get a vector representation of all these which will capture the context in which these words have appeared.
+ Now you can see these two vectors they are pretty much close to each other and we can say that this apricot and pineapple they are very much closer meaning in semantic space.
+ But apricot is not very much closer to digital in the semantic space because the vector representation of apricot and the vector representation of digital is completely different.
+ There is a very small amount of overlap but the distance between digital and information is very low as they have or distance is really 0 as they have the similar vector representation.
+ Now this thing we have already talked about these kind of context representation gives rise to a continuous representation of the words in the terms of vector.
+ So for example this is the vector representation of brother and this is the vector representation of sister and you can see that brother and sister is related to similar way than nephew and niece uncle and aunt right.
+ So the very renowned idea or the famous idea behind this was in the form of this word to wake or glove embedding.
+ So I think we would take a break for 5 minutes and then come back to talk about the remaining thing.
+ So thank you.

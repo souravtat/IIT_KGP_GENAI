@@ -1,0 +1,456 @@
+ just let me know when to start. Yes, we can start.
+ Hello everyone, welcome to the second session of today's lectures. I am, my name is Avigyan.
+ I am a faculty member in the department of computer science and engineering at IIT Kharagpur
+ and today I am going to talk about supervised machine learning. You have already heard from
+ professor Shudhishthir Sarkar about logistic and linear regressions. I will continue talking
+ about other supervised machine learning models, for example, base classifier, KNN and support
+ vector machine or SVM. So, just a quick recap, classification is a problem which is defined
+ with respect to a tuple x and y, where x is a set of attributes or feature or it are also
+ called like independent variables associated with some input and y are the class or labels
+ or the dependent variable associated with the output. Once we have a record of a lot
+ of such x and y's, the task is to learn a model that can map each attribute set x into
+ one of the predefined classables y, so that when a new test data point comes, the model
+ can look at the x for the test set and can predict the y for the same test set.
+ So, for example, one example classification task is categorizing email messages as spam
+ or non-spam. So, in this case the attribute set or x will be the features which are extracted
+ from the email message either the header or the body of the email and the class label
+ will be spam or non-spam. And in this case, since we are talking about only two classes
+ in the prediction or in the class label, so this is called a binary classification task.
+ On the other hand, let us take another example like identifying tumor cells to be malignant
+ or benign, in this case the features can be the x-ray image or MRI scan and it can contain
+ a lot of features like that or you can even take the pixel values which are there in the
+ image they all form the attribute set x. This is the general approach of building any classifier,
+ so you have a training set. The training set is used to learn a model using some learning
+ algorithm and this step is called an induction step. Once the model is learned, then for
+ a given test input in the real application scenario, you apply the model and try to predict
+ what is going to be the label of that particular particular input which has come and this step
+ is called deduction. So, in case of induction, we use the training data set to learn a model
+ and in case of deduction, we use the same model to predict output for a test input.
+ So in this lecture, we are going to talk about several classification techniques, notably
+ we will talk about knife base nearest neighbor and support vector machines. You have already
+ heard about logistic and linear regression. So, I have removed them from this list. Logistic
+ regression is a classification model which I am not going to cover, but in the next
+ lecture next week, I am also going to cover decision tree and the boosting, bagging and
+ random forest methods. The only thing which we will not cover which will be covered in
+ some little lectures is on neural networks. So, let us just start our discussion on knife
+ base. Before that, let us take an example application. Let us just assume that we have
+ been asked to recognize digits from a lot of handwritten digits. So, now in like where
+ this kind of problem can occur, let us say a particular bank is trying to automate the
+ check processing service. So, if you want to automate that, then the
+ check is placed on a particular machine, it is scanned and from that scanned check leaf,
+ you will have to deduct the amount which has been asked to be deducted from the account
+ of the payee. Now in this case, the numbers that means the amount which needs to be deducted
+ from the payee's account, that will be written like an handwritten digit. Let us say someone
+ wants to give a 50,000 rupees check, the amount part will have something like this.
+ Now the job of the algorithm to figure out what exactly the person has written. Is this
+ a 5 or a 6? Is this a 0 or 1? Is this again like another 0 or 1 or maybe 6 or something
+ like that? So, this is called a handwritten digit recognition problem. So, we are looking
+ at the handwritten digits, we want to actually map them to a particular number. In this example,
+ let us say that we are looking at an scanned image of handwritten digit, here we can clearly
+ understand this is a 5, but for a computer to understand this, basically the input is
+ a set of pixel values. So, essentially here it is a 30 cross 30 box. So, there are 900
+ pixel values there, essentially every pixel value you can take as a feature. So, there
+ are like 900 features, each feature is just either 0 or 1. So, here let us say I present
+ all the pixel values as x 1 to x n and every x 1 to x n is either 0 or 1, in this picture
+ it is either a blue pixel or a red pixel and then we want to predict a level y.
+ Now, in this case just for simplicity, we are thinking of the prediction to be only
+ either 5 or 6, just to think of this as a binary classification problem, but in reality
+ you would like to have a 9 class or 10 class classification starting from 0 all the way
+ to 9. So, given a particular input image, you will have to recognize whether the digit
+ inside that image is whether 0, 1, 2, 3 all the way up to 9, one of them. Now, for this
+ example let us just focus or restrict ourselves to only a binary prediction 5 or 6.
+ Now, so once we understand this, so if you look at this, so every pixel value is essentially
+ this x 1, x 2 all the way up to x n. So, what we are interested in is knowing the probability
+ of a given level, probability of a level given all the pixel values. So, if we think of them
+ as the pixel values in the image, this is either 5 or 6. So, we are going to determine
+ the probability of 5 given all the pixel value, probability of 6 given all the pixel value
+ and take the one which leads to the highest probability. So, that is why this arg max
+ is applied and that y is going to be our prediction. So, if the probability of 5 given all the
+ pixel value is more than the probability of 6 given the pixel value, then the prediction
+ will be 5. Now, the question is how do we compute this
+ probability? Now, in general if you think of this, given all the pixel values whether
+ it is a 5 or 6 that is our fundamental question. So, we cannot directly compute this. So, we
+ will have to compute this through some other mechanism and this is where Bayes rule or
+ Bayes theorem comes into picture. So, Bayes rule says that probability of y given x 1
+ all the way up to x n is equal to probability of x 1 all the way up to x n given y into
+ probability of y divided by probability of x 1 all the way up to x n. Now, this particular
+ term is called likelihood, this particular term is called prior.
+ Now, what is this? So, if you think about it essentially what this probability is saying
+ probability of x 1 all the way up to x n given y that when you are writing let us say 5 and
+ this let us say my box. So, which of the pixel values are getting turned on? So, essentially
+ if you think about this if this is my 5. So, all the pixel values where I am just writing
+ over. So, they will become red if you think like red to be 1 and white to be 0. So, then
+ only this pixel values will have 1 and all others will have 0.
+ Now, computing this is much easier because you are already knowing that y value is 5
+ like there is no kind of there is no suspense regarding y we are knowingly writing 5. So,
+ so that way if you collect a lot of 5 written by like different people. So, some people
+ may write 5 like this some people may write 5 like this some people may write 5 like this.
+ So, there are a lot of variations of 5 which people can write if you can collect a lot
+ of data like that you will know which of the pixel values are typically turned on when
+ someone writes 5 in any of the styles. So, this is why we say that this likelihood function
+ actually captures how features are generated by the class level. So, here the class level
+ is 5 or 6. So, the likelihood function is going to capture which of the input features
+ or the input pixel values are 1 which of them are 0 as if being generated by the class level
+ 5 or 6 and the prior at the same time is also simple.
+ So, probability of y. So, if you have a lot of checks like going back to our this check
+ example if you have a lot of check books or check leaves you know how many times people
+ write like 50000 how many times people write 60000. So, essentially how many times the letter
+ or the digit 5 is written how many times the letter the digit 6 is written this we can
+ capture if we have sufficient number of check leaves. So, that gives us the probability
+ of y. So, essentially by looking at a lot of examples we can we can identify probability
+ of x 1 all the way up to x n given y some at the same time the probability of y can
+ also be figured out if we have enough training data. So, that way we can compute this I will
+ talk for now we can treat the denominator to be a normalization constant we will see
+ that this constant actually do not matter when we are trying to compute the level the
+ out the final outcome. So, see that when we are in our digit recognition
+ task that we are trying to capture probability of y is equal to 5 given all the pixel values
+ probability of y is equal to 6 given all the 6 pixel values this is what we are getting
+ probability of x 1 till x n given y is equal to 5 probability of x 1 till x n given y is
+ equal to 6 and if you look at carefully the denominator in both cases are the same constant.
+ So, when you are comparing between probability of y is equal to 5 and probability of y is
+ equal to 6 and trying to determine which one is larger than the other you can simply discard
+ the denominator because they are the same. So, that does not impact your calculation.
+ So, to classify we are just going to compute these two probabilities the likelihood and
+ the prior and based on which one is greater we are going to predict the class length.
+ Now, so we understand that for the base classifier we just need to learn two functions the likelihood
+ function and the prior function. Now, the problem with explicitly modeling this is that
+ so, we are basically looking at all the pixel values together and then determining what
+ are going to be the values like whether 1 or 0 given a particular value of y.
+ Now, typically so, this kind of tells us that we have to keep track of a whole lot combination
+ of values like 0, 1, 1, 0, 1 and every value is dependent on each other. Now, that will
+ lead to very high space and time complexity and typically to learn this we will need a
+ lot of training data which we ideally do not have. Now, to simplify this in the knife based
+ classification model there is a knife based assumption and this assumption is that given
+ a particular class level the features or in this case let us say the pixel values they
+ are independent of each other. So, for example, again going back to our example of digit and
+ the corresponding pixel. So, let us say when I write 6 the what the knife based assumption
+ says is that if you take a particular pixel value here whether it is turned on and or
+ off does not depend on the adjacent pixel value. So, it does not depend on any other
+ pixel value in the image. So, whether it is turned on and on or off that solely depends
+ on only the digit what is being written here alright understood.
+ So, if I am writing 6 like this all this pixels are getting turned on, but they are independent
+ of pixels other pixels in the image. So, they are only dependent on the digit which is being
+ written here. So, that is the knife based assumption. So, if you if we write it in mathematical
+ expression essentially the probability of x 1 to x n given y is just a product of probability
+ individual probabilities of x i given y. So, if there are let us say 10 pixels here it
+ is just going to be a multiplication of 10 different probabilities that means the values
+ of 10 different pixels in that image. Now, why is this useful as I mentioned that
+ in in case we wanted to get all the pixel combinations. So, this actually leads to a
+ lot of combinatorial explosion and the number of parameters we will have to learn for that
+ model is 2 times 2 to the power n minus 1 which is a huge number. On the other hand
+ if we have the independence assumption in that case the number of parameters which are
+ there for modeling the individual probabilities is way lesser and in fact it boils down to
+ 2 times n where n is the number of pixels. Now, as I was mentioning earlier that when
+ we have decided to use a knife based classifier we need to train it with some data. Now, in
+ this case now you can take a lot of check lips for example and see how different customers
+ in a bank have written 5 or 6. So, if you know that this was indeed 50000 rupees you
+ can figure out like these are different ways people have written 5 or 0.
+ Similarly, if you know that the actual money which was transacted was like 60000 or 660000
+ you can look at that check lip and then look at like how people have written 6 and and
+ see more data you collect you actually get to know more variations. So, this is a let
+ us say standard 6, but if you look at this this is really something which otherwise it
+ will not appear to be a 6 these are this. So, the only way to know this different variations
+ is to gather as much data as possible. So, that you do not miss any like new customer
+ who may have a different writing style than all other people.
+ So, again this is something as I was mentioning earlier that once you have a collection of
+ records the training data it is in general training is very easy. So, you kind of estimate
+ the fraction of records with y the value of y to be v and the probability of y is equal
+ to v is essentially just the count of records. So, you know how many records are there you
+ know out of them how many records have y of a particular value v. Now, in this case let
+ us say you have 100 check leaves and out of all the 100 check leaves in 50 check leaves
+ you have the digit 5 and in 50 check leaves you have the digit 6 in that case the probability
+ of y is equal to 5 or probability of y is equal to 6 will be 50 percent or 0.5.
+ Similarly, to note the probability of a particular pixel value to be let us say u in this case
+ like just 0 or 1 given a probability given a particular y value is again you can just
+ simply count. So, you can count in how many of your examples when I have written 5 like
+ I means like some customer has written 5 in how many cases this particular pixel value
+ was 1 and in how many cases let us say this particular pixel value was 0. So, you can
+ simply compute that that will give you this a probability of x i is equal to u now in
+ this case u is just 0 or 1 and v in this case is 5 or 6 in our example.
+ So, this is how we compute this and in general knife base training is quite easy. The only
+ issue is that in many cases some of this counts may be 0. So, for example, here you are looking
+ at the count of records count is equal to count y is equal to v it may so happen that
+ let us say you are trying to have a class level which is not present in the dataset which
+ you have given. For example, if you have collected a dataset full of like 50000 rupees check leaves
+ in that case like there is no mention of digit 6 in that case the count will simply be 0.
+ Now, the problem is just not about count being 0 because then your probability is just 0,
+ but the problem is that to compute the individual conditional probabilities the count comes
+ in the denominator. So, if this is 0 then you will get an error because you are trying
+ to divide by 0. Now, to overcome this instead of just having
+ the probability to just be a fraction of counts we tend to add some extra values like in this
+ case we add plus 1 in the numerator and we add 2 in the denominator. So, this particular
+ technique is called smoothing technique so that the values does not become 0 and does
+ not cause any problem in the calculation. So, typically like we collect so many different
+ pixels sorry we collect so many different examples as training data and then we actually
+ average all the trainings of one digit versus another digit and then in the test time you
+ try to figure out a given a particular pixel value like whether this is going to be 6 or
+ this is going to be 5. Now, one example is let us say when you provide
+ this particular image to the naive based model it predicts 5 with a very high probability
+ of 1. So, the probability of 6 in this case is just like 0. When given this image you
+ get a probability of 6 sorry we you get a prediction of 6 again with a very high probability,
+ but one problem with this kind of classification model is that since it has been trained on
+ just like 5 or 6. So, given a new data point even if that data point does not belong to
+ any of these classes it will kind of force it to take except one class. So, in this case
+ it has predicted it to be 5 although clearly this is not a 5.
+ Now, how can we mitigate this problem? The problem can be easily mitigated if instead
+ of learning a binary classifier like where we are just trying to differentiate between
+ digit 5 and digit 6. If we learnt a multiclass 10 class classifier between 0 to 9 then in
+ that case we would have seen enough example of 2 and in that case we could have predicted
+ this properly because we are anyway training for that. So, so often time the binary classification
+ is just not sufficient and depending on the problem you will have to pick multiclass classification
+ and not restrict with binary classification, but the same knife based classification technique
+ can work because it is again talking about just the probability it does not matter whether
+ you are having just like 2 classes, 2 output classes or 10 output class. You are going
+ to check which probability is higher and then only going to assign that particular output
+ to that particular input data for whom you got the maximum probability.
+ Let us look at another example. So, this is an example about given a weather condition
+ whether a match is going to be played or not. You can imagine this to be let us say a cricket
+ match. So, you know so essentially let us say you know when the outlook was sunny based
+ on your training data, 2 times match was played and 3 times match was not played. Similarly,
+ when there is the outlook is overcast, 4 times the match was played and none of the times
+ the match was not played and you get all this data point based on the observations.
+ Now, a new day comes and the new day has certain values like the outlook is sunny, the temperature
+ is cold, humidity is high, there is wind in the ground and you will have to determine
+ whether there any match will get played or not. So, to do that what we will have to do
+ sorry there was a little mistake here. So, essentially here outlook is sunny and we are
+ looking at whether the on a particular I mean how many days the outlook was sunny and how
+ many days the outlook was not sunny. Similarly, how many days the outlook was overcast, how
+ many days the outlook was not overcast, how many days the outlook was rainy, how many
+ days the outlook was not rainy and correspondingly we know how many days there was a match played
+ and how many days the match was not played. Now, based on this we can compute the probability
+ that if it is sunny then in that case the probability of match getting played is 2 by 9, while when
+ the outlook is not sunny in that case there is 3 by 5 probability of there being no match.
+ So, you compute all this information and then you apply it in the actual test example. Now,
+ in this case this was the test example. The likelihood of a match being played is so when
+ outlook is sunny you look at 2 by 9. So, this 2 by 9 corresponds to that when the outlook
+ when the temperature is cool. So, temperature cool is this. So, this is 3 by 9. So, you
+ get 3 by 9. Similarly, humidity is high humidity high you get 3 by 9 again. So, you get 3 by
+ 9 and you can do all the way up to this you get a value of 0.0053. Similarly, the likelihood
+ of there being no match is just 3 by 5. Here if you look at this was 3 by 5 because outlook
+ is sunny 1 by 5 temperature cool you look at cool 1 by 5 4 by 5 4 by 5 comes from here
+ the humidity was high and so on and the value is 0.206. Now, since 0.0053 is lower than 0.0206
+ our prediction is that given the current weather condition there is going to be no match.
+ Now, in knife base we actually made this knife base assumption where we said that all features
+ are independent given the class level Y. Now, the question is that does it hold for the digit
+ recognition problem. So, in digit recognition you see that when I am writing this 5 it is
+ often there is a correlation that if a particular. So, if a particular digit is actually turned
+ on there is a very high probability that the digits adjacent to that will also be turned
+ on. Now, you cannot write 5 for example, like this right like let us say one thing is turned
+ on one thing is not turned on this will not become like a 5, but when you actually connect
+ all these dots and then only it becomes a 5 right. So, there is a very high correlation
+ between what a particular pixel value a particular pixel will take and the correlation is with
+ its neighbors like it depends on the neighbors around it. If a particular value is 1 a pixel
+ value there is a very high likelihood that the neighbor will also have a pixel value
+ 1. Similarly, if the pixel value is 0 then there will be a very high probability that
+ the neighboring pixel value will also be 0. So, the bottom line is that this independence
+ assumption does not actually hold for a digit recognition problem and not only in this case
+ in many other scenario for example, if our the class level let us say it follows a ZOR
+ function. In this case you see that the output depends on both x 1 and x 2 you cannot you
+ cannot just separate them out just you cannot treat them independently because otherwise
+ like that is the property of this ZOR function right like when both are 0 the value becomes
+ 1 when both are 1 the value becomes 1 and all of the scenario the value is not going
+ to be 1 right. So, sorry when both are 0 the value is going to be 0. So, probability of
+ y 0 this becomes 1. Similarly, when both are 0 the value is 1. So, the value is 0. So,
+ probability of y is equal to 1 given x 1 x 2 will be 0. Now, this clearly is dependent
+ on both x 1 and x 2 value and you cannot determine this independent of each other.
+ So, the bottom line is that the knife base assumption is almost never true, but still
+ we use them because knife base often perform significantly well even when its assumption
+ do not hold. And as you see in machine learning a lot of things although like there are theories
+ behind all the models how the models have been developed there is a mathematical foundation,
+ but the end of the day it is also very application driven field.
+ So, if in reality you see that some particular model or some approach is working very well
+ even if like there is no solid theoretical backing of why it is working so well we still
+ tend to take that because it is working very well. So, we do not care often about like
+ whether there it is theoretical sound or not. So, the same thing holds for knife base knife
+ base often works very well in practice and this is why it is often classification algorithm
+ of choice for a lot of application. Now, one thing in case of knife base is that
+ often time we may have to deal with multiplying a lot of small probabilities because you see
+ that here after the independence assumption what we did was so essentially probability
+ of x 1 all the way up to x n given y this was a multiplication of individual probability
+ values individual conditional probability value. Now, what happens that often time these probabilities
+ are very small and if you are multiplying over a lot of pixels. So, let us say your
+ image has 2000 pixels. So, in that case if you just input it in any software it will
+ be very close to 0. So, in this case like even if you think of a value to be like 0.5
+ a particular probability value if you multiply it by 2000 times; that means, like 0.5 to
+ 2 to the power 2000 it will be like 0 because this will be very small number which I mean
+ in general the computational software will just treat to be 0. So, this actually this
+ is also known as a floating point under flow that when you are multiplying lots of probabilities
+ then it can lead to a floating point under flow and to counter that often time we use
+ logarithm. So, instead of multiplying two values let
+ us say x and y if we take a log of that and then it becomes log of x plus log of y. So,
+ it is better to sum logs of probabilities than multiplying the individual probabilities
+ because then just sum does not lead to floating point under flow.
+ So, essentially the night base it becomes like this that instead of earlier we were looking
+ at the multiplication of the likelihood and the prior function. In this case we are just
+ taking the logarithm of the prior and then summing it up with the logarithm of the likelihood
+ and then whichever is giving us the highest value we are just going to take that. So,
+ that arg max stays, but internally the multiplication of probabilities actually gets replaced by
+ a sum of logarithm. So, instead of just comparing directly the probabilities we compare the
+ logarithm of the probabilities. So, to summarize we defined the base classifier, but saw that
+ it is kind of intractable to compute a probability of x 1 till x n given y. So, we actually use
+ the night base assumption that everything is independent given the class level y and
+ to counter or avoid the floating point under flow we used logarithms.
+ Now, in general night base is very easy to implement and often it works very well and
+ it is often a very good first attempt or first classification attempt to try and then depending
+ on the result either you take it if the performance is above a certain threshold if not then you
+ tend to look for some other algorithms. Now, let us also look at some other algorithm
+ beyond night base and this algorithm is called nearest neighbor classifier or often time you
+ may have heard this abbreviation called KNN. K stands for the number of neighbors you are
+ considering. So, KNN is called KN nearest neighbor algorithm.
+ So, this is an example of something called an instance base classifier. So, what is an
+ instance base classifier? So, essentially in your training data if you go back to our
+ example of this check leaves. So, let us say a bank is collecting all the check leaves
+ which are deposited in its system and then depending on the bank clerk or by the bank
+ officer whoever has released the amount it can know that this check leaf this particular
+ digits which were written there it correspond to this actual number.
+ Now this you can think of this like the set of all stored data. In this case let us say
+ the attributes you can think of the pixel values and the class is like 5, 6, 7, 8 like
+ the way we have written. Now some new check leaf comes, some new customer has written
+ an amount and we will have to determine what is this amount. So, one option is that you
+ actually look at the training record and training record is going to tell you what is the level
+ of the unseen the new test example. So, one very crude or naive algorithm would
+ be a Rotlerner which memorizes the entire training data and if a particular handwritten
+ like a particular check leaf for example is very similar to one other check leaf which
+ is there in the system or it may so happen that the same customer has come again who
+ has deposited another check leaf let us say one month prior. So, you can just match this
+ and can figure out that the person is again trying to withdraw let us say 5000 rupees.
+ So that will be a learner which is called a Rotlerner because it memorizes the entire
+ training data and performs classification only if the attributes of the record in this
+ case the pixel values of the record match one of the training data points completely.
+ Now nearest neighbor approach actually takes one step beyond this. So, it says that it
+ is impractical to assume that whenever I am looking at a check leaf though exactly same
+ check leaf is present in the system may be from a different record earlier. Now it can
+ happen but there is no guarantee that it will happen. So, instead of relying on that let
+ us actually look at the k closest points. So, given a new check leaf rather than finding
+ the exact match for this check leaf in our system let us try to take 5 closest check
+ leaves which were deposited in the system earlier and based on that we are going to
+ predict what is going to be the value of the new check leaf or what is the amount which
+ is written on the new check leaf. So, like in a funny way the basic idea of
+ nearest neighbor classifier is that if a particular text example works like a duck looks like
+ a duck coax like a duck then it is probably a duck. Now in reality it may not be a duck
+ for example here like you see this can simply be a toy mimicking a duck, but these are the
+ examples where they are like actual ducks. But anyway I mean since it looks like a duck
+ we will call it a duck. So, this is the whole idea of k nearest neighbor that we try to look
+ at the k nearest records and then depending on the k nearest records we are going to predict
+ the level of the test example. Here is one other example that let us say
+ these are all the stored records and these are the labels which are there in the stored
+ record. Now a new example comes I look at which other examples are similar to this example
+ now in this case let us say I am looking at a neighborhood of this and in this neighborhood
+ all other examples are plus. So, in that case we simply assign the class level plus to this
+ unknown record. Now for this two work you require three things first we need the set
+ of stored records then we talked about this nearest examples. So, to compute which point
+ is nearest to which other point we will have to have a distance metric and based on the
+ distance metric we are going to compute the neighbors.
+ And then we also need the value of k that is the number of nearest neighbors we need
+ to retrieve the value of a particular test example. Now when an unknown record comes
+ as soon as we compute as soon as an unknown record comes we compute the distance to other
+ training records we identify which are the k nearest neighbors and then we use the class
+ levels of the nearest neighbors to determine the class level of the unknown record. So,
+ depending on the value of k the neighborhood size kind of changes. So, for example in the
+ leftmost picture you see this is called the one nearest neighbor because here we are just
+ determining or trying to identify the closest data point to the unseen record.
+ And essentially here we are just going to look at one neighbor and look at the predicted
+ or look at the output of that one neighbor and then I predict the output of the new record
+ to be the same as the nearest neighbor which I have identified. Similarly, when we look
+ at the two nearest neighbor there are two values and we will have to pick one of the
+ values. Similarly, for three nearest neighbor, four nearest neighbor, five nearest neighbor
+ with increasing k two things are happening our neighborhood size is increasing and at
+ the same time we also need to deal with scenarios where all the neighbors may not have the same
+ level. So, often time we pick one the value of k such that it is an odd value. So, that
+ if you take a vote let us say you look at all the levels of its neighbors you pick the
+ one which has got the maximum level. So, since the number of neighbors you are considering
+ odd is odd. So, essentially we will have one winner. Now, here are several examples of
+ neighbor classification algorithm like the distance which are used to compute the neighbors.
+ One is Euclidean distance another is Manhattan distance and there is a generalized form
+ called q non distance and they all follow the same approach. So, let us say this is
+ a two dimensional space and what does two dimensional space means that you are essentially
+ dealing with two features like your data point actually has two features. So, let us say
+ features x 1 feature x 2 and this data point let us say you call as p and this data point
+ you call as q. So, essentially if you have just like two features your i is equal to
+ 1 to 2 in this case is x 1 and x 2. So, you look at the value of p for axis x 2 the value
+ of q over the axis x 2 take the difference make a square of it and then sum it with the
+ difference between the value of p on x 2 x 1 the value of q on x 1 take the difference
+ and then you square it and just add it up. In case of Manhattan distance instead of taking
+ the square and adding it up you just add up the absolute difference.
+ Again in case of q non you go beyond 2 and you can even take let us say a cubic distance
+ and then equivalently you will have to take 1 by q th root of or q th root of that particular
+ sum. And as I mentioned the determining the class level from the nearest neighbor list
+ is often very easy that if you select k a to be an odd number that essentially you can
+ take the majority vote and pick the class level which is present in the majority of
+ instances. Now you can have a little bit more complicated voting method where you can think
+ of this as an weighted voting that instead of so let us say if my test data point is
+ this and my neighborhood consist of let us say crosses and ticks.
+ So, in a in case of majority voting in this case you simply see that my neighborhood let
+ us just take k is equal to 5 let us say here there is another sorry so this is a cross.
+ So, let us say there is another cross here, but if you are looking at a simple majority
+ vote then you have 3 ticks and 2 crosses. So, in that case you will predict the output
+ to be output will be a tick right for this new data point. However, if you actually look
+ at the distance maybe this crosses are closer to it than the ticks. So, in case of weighted
+ voting you actually weigh the vote according to the distance. So, essentially your weighing
+ factor is 1 by distance square. So, if a particular point is much it is further away from the
+ test data then the corresponding class level has a lower impact compared to another data
+ point where it is much closer to the test data point. So, this is essentially the KNN
+ classification algorithm. If you know the K that is the number of nearest neighbors we
+ are considering and let us take D to be the set of training example for every test example
+ Z. We are going to compute the distance between the feature set X prime for the test example,
+ the feature set X for the training example and likewise you compute this for every pair
+ of point. So, essentially for every new test data point you compute the distance with all
+ the existing training data point and then you select the K closest neighbor once you
+ select that if your selection is based on a majority voting you just look at like which
+ particular output level is more prominent or more frequent in the neighborhood set and
+ you just simply assign that output to the to the I mean you just simply take that level
+ to be your output level. Again, here there is a real world example this
+ is for like loan. So, see that there are multiple data points let us say and here we are plotting
+ age as the X axis and the loan amount as the Y axis and as you see that with increasing
+ age and increasing loan amount there are a lot of default. So, and there are non-default
+ when the age is lower or the loan amount is lower. Now, a new data point comes so we actually
+ look at the neighbors the nearest neighbors and see what kind of labels they have. Now,
+ in this case if your algorithm is just majority voting it will lead to a deadlock because here
+ there is no solution, but if your result is based on weighted voting then you look at
+ whether this particular person has age or loan amount which is closer to the default
+ ones or the non-default ones. And depending on that the classifier will predict whether
+ this person is going to default or not. Now, again like as we said that if K is too small
+ then it will be like very noisy and it will be prone to a sensitive to noise points.
+ On the other hand if K is very large then you the neighborhood may actually cover almost
+ all the data points. So, in that case it will not be like very useful. So, how to choose
+ the value of K? Now, not only this particular scenario in a lot of other scenarios, often
+ time we have to pick some value of some parameters which we also call as hyper parameters. For
+ example, K is an hyper parameter in case of K nearest neighbor or for example, the kind
+ of distance function we are using the choice of the distance to use this is also another
+ choice which we will have to make. Now, in general whenever we have to choose hyper parameter
+ values, we choose the one which likely to give the best performance on the test data.
+ Now, in reality you do not know the test data, you are just given the training data. So,
+ you are just using the training data to train your model and test data will come only in
+ the real world like when you are having to deploy your model to work in the real world.
+ So, there is no way while you are developing the model you know the test. So, there is
+ a process by which we do this and this is called cross validation. So, let us just assume
+ that we are talking about binary classification just between like class 1 and class 2. In
+ this case let us say it is green or red. So, your test data is something like this like
+ where you have both values of class 1, both values of class 2. So, this is your training
+ data. Now, in test data these labels are something which you do not know like whether
+ a test data is actually green or actually red and there is no picking. So, that means
+ that you when you are building the model you cannot really look at the test data and then
+ decide oh this is working fine for the test data and we should try that.
+ So, to avoid that we actually do one thing, we take the training data, we divide the training
+ data into two parts. In one we actually take that as an actual training set, the other
+ data part we keep it separate we call them as validation set. So, this validation set
+ is very important because this actually helps us, this helps us determine what is the ideal
+ parameter value for a particular hyper parameter. So, what we do is we randomly split the original
+ data into actual training data set and validation set. We by using the actual training set we
+ train several times each time with a different value of the hyper parameter and then we pick
+ the hyper parameter value that gives the best accuracy on the validation set.
+ So, validation set in some sense kind of acts as a proxy of the test set where we do not
+ look at the final test set, but we look at the validation set to validate our choice
+ of hyper parameter. So, just to summarize, so to summarize essentially KNN classifiers
+ are also called lazy learners because they do not build a model upfront, but rather on
+ the test time they try to pick up or try to look at which are the data points which are
+ closer to the current test data point and based on that closer neighborhood selection
+ we tend to apply a particular level which is majority over the neighborhood set.
+ Now this is different from learners which we call as eager learners such as decision
+ tree or rule based system where the rules are built explicitly. So, in if you compare
+ a model which has already been trained and then based on that you are making a decision
+ versus a system like KN nearest neighbor where a test time a lot of compute needs to happen.
+ Oftentimes KNN is much more expensive to classify unknown records. So, with this let us take
+ a small break and then let us come back here with let us continue our discussion on supervised
+ learning, but we will take up a new classifier model which is called support vector machine
+ or SVM. So, see you soon.

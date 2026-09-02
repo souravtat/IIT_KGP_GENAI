@@ -1,0 +1,987 @@
+ Good morning sir. Good morning sir.
+ Can we start the session sir? Yes, please go ahead.
+ This meeting is being recorded.
+ Good morning everyone. We welcome you on behalf of TCS Ion on IIT Kharagpur.
+ It's a session six for our IIT Kharagpur Artificial Intelligence for ICAPay certificate program.
+ And we are delighted to have you join us.
+ So there are a few remedies in place before start of the session.
+ Since our first today's session is hands-on ML2, so classification and regression.
+ And second session is about unsupervised machine learning theory part.
+ So please join the live lectures only using your registered ID.
+ Certain days is stacked only with the registered ID, the login ID which you have purchased for the course.
+ If you join with the registered ID it will be captured.
+ Kindly check any spelling mistakes when you enter during the session.
+ Otherwise sign off from the Webex login and re-login with the exact login ID.
+ So all users, especially those who are unable to attend the live lectures, are encouraged to go through the recordings.
+ To set up the Webex layout option for learners, so go to layout option showing in your screen in the top right hand side.
+ Click on the stack mode again and click on the stack mode.
+ You can enable the full screen mode in below options which is showing.
+ This will show you it in the full screen mode of the presenter.
+ So please put your queries in question and answer.
+ So please be assured that if professors unable to attend your queries in Q&A session,
+ it will be answered and uploaded in our discussion group.
+ So assignment will be, the assignment week 6 assignment will be enabled at 2 p.m.
+ Week 6 assignment submission deadline on 30th March 2025 Sunday till 11 p.m.
+ That is T plus 8 days.
+ And the same solution for the assignment will be available on 31st March 2025 Monday at 11 a.m.
+ T plus 9 days.
+ So assignment evaluation done by IDKJP.
+ So far we have done the complete assignment evaluation for week 1 and week 2.
+ Yet other scores also will be displayed in our assignment screen.
+ You can refer it.
+ So kindly refer reference materials from course batch and other documents,
+ free rate materials, answers for Q&A, important supporting documents will be available in community.
+ It's a discussion room.
+ So all the important documents are tagged in the highlight section for easy access under the discussion room.
+ So in case of any queries or any concerns, please reach out to us through info.tcs.hub@tcs.com.
+ Once again, thank you all for joining today's session.
+ It's over to you.
+ Thank you very much.
+ Good morning to all of you.
+ All of you are quite familiar with my face as I have taken the last session.
+ My name is Subhash Mugopadha.
+ I am the PhD scholar from the Center for Computational and Data Sciences, IIT Kharagpur.
+ And also I am managing the course as a upscaling program manager.
+ So you will have a lot of interaction with me in upcoming days as well.
+ So last Saturday I have taken the supervised learning part 1 as a hands-on session.
+ And then Dr. Ovegan Chakravati took the theory part of the supervised learning part 2.
+ So we shall have the explorations of the hands-on part, which was remaining last week.
+ So I will make the continuation of the Dr. Ovegan Chakravati session.
+ So he took the theory part and I will continue with the programming part.
+ And after my session, there will be another session that is related to unsupervised learning.
+ So which is a completely different concept than the supervised learning.
+ Dr. Jihau Lockpike will take that theory session.
+ And his lab session will be taken by Nilanjoon Senababu in upcoming weeks.
+ So in this way the flow will continue.
+ So meanwhile I request all of you to kindly open Google collab.
+ So I believe that all of you remember how to open the Google collab.
+ But still if you are uncomfortable with it, nothing to worry about it.
+ So I will again show you how to open it up.
+ So in Google just simply search Google collab.
+ So I think the screen is visible clearly to all of you.
+ And then click on the welcome to collab.
+ And click on the new notebook section.
+ So all of you now quite accustomed with that.
+ If I am clicking on plus code, you will write the code.
+ If I am clicking on plus text, you can write up, make some write up on text.
+ Now I have requested moderator to share all the necessary links related to the today's session.
+ So that you can remain updated.
+ And those who have the GitHub account, they can also directly access my GitHub link from Google search as well.
+ Apart from the link posted in the comment section.
+ So suppose the GitHub if you type, it will directly come up with my GitHub account link.
+ And if I click on this and go to the repositories.
+ So you will go to the repository section and then open the repository named ML using Python.
+ So once you go there, basically you click on 1, 2, 3, 4, 5, 6, 7, 8.
+ Chronologically, 8 from the top.
+ You do not have to make so much effort because the link will be posted.
+ But I am just showing you in case if you are comfortable with this Google search options.
+ So anyway, so this is the code and relevant explanation for supervised learning part 2.
+ So today we are going to cover decision tree and random forest.
+ All those details are there.
+ And you may remember that Professor Shudasna Chakraborty also took your one class on 1st March that is related to the regression.
+ So we shall cover the hands-on part of the linear as well as the logistic regression.
+ So those explanations related to code is also available in this particular document.
+ So you will get the access from this particular link.
+ And if you want to download this document, you can download by clicking on this particular section, download section.
+ And also definitely these materials are provided as a class note to TCSI.
+ So they will also share, so nothing to worry about it.
+ But anyway, so let us start our session one by one.
+ However, I will encourage you to type because those who are especially those who are new to Python or Python platform,
+ I request like last week that you keep on typing with me and I will wait for you.
+ So as a first part of the decision tree, import numpy as NP, import pandas as PD.
+ So numpy all of you know it is a very good module in terms of the or the library in terms of the exploring the error related operations.
+ And then import pandas as PD, it helps you to execute the data frame related operations.
+ And then next line which you can observe, let me zoom a bit so that all of you can see.
+ I think it is now visible to all of you.
+ So import matplotlib.pyplot as PLT, so matplotlib like last week I mentioned that it is very much important.
+ To explore the plot related executions and pyplot, pyplot makes matplotlib works like a matlock related environment.
+ Then import seaborn as SNS, so seaborn what does it do?
+ It actually acts the or adds up the extra color palettes to in addition to the plotting opportunities given by the matplotlib.
+ And then from escalant.metric import accuracy underscore, confusion matrix classification report.
+ So in this way, so we make the loading of all the necessary Python packages like we have done in last week.
+ So just for you as a demonstration all of you know that how to run it but still I am showing it to you, just look at carefully.
+ I will put it in the code section and click on the run cell button section.
+ So it will execute and will give you the plot and there will be some green tick will appear along with the execution time.
+ That is how it works.
+ You see again three seconds and the green tick has appeared.
+ So in your case I recommend you to type it.
+ So just let me know once you are done, it is now 9.19 so I think waiting couple of minutes will be good enough.
+ And then we can move to the next part.
+ So it is 9.19, I shall wait till 9.21 and then we shall move to the next part of downloading the iris dataset from its web link.
+ Meanwhile, you are doing it, I am just telling a few things.
+ Last week I remember I told you you can make a table, comparative table.
+ So that all of you can easily understand that for a given dataset like here we are using the web link of the iris dataset.
+ So the given dataset how can you load it and make analysis with the support advisement learning techniques and you can compare among their performances.
+ So last week we have explored with the support vector machine with different kernels.
+ We also have explored the KNN and the NapeBase.
+ We made the comparisons.
+ Now today we can add two more techniques, supervised learning techniques.
+ One is the decision tree, another one is the random forest.
+ And then you can make comparisons and figure out that which one will be the best one.
+ So in this way you do it.
+ So for example if you are writing company white papers or if you are doing certain research works definitely you will use the certain more further advanced techniques.
+ So there is no doubt about it.
+ But it is all about to see that data wise which type of the techniques is performing well.
+ So that is how you can make the heuristic approach of finding the optimum result.
+ So I believe that all of you are doing it.
+ I shall wait for few more seconds and then move to the next part of downloading that is data set from its web link.
+ I am requesting moderator because next line is the link.
+ Like last week please post the link of the data set in the group in the comment box section so that all of they can easily access it.
+ So in next session we will access the data set from the web link.
+ So it is ics.uci.edu where you will get the iris data set link under the machine learning databases folder.
+ So in this particular case you just write path put the double code and just copy paste the link.
+ So I have requested the moderator to post it and you can also those who are using my GitHub they can directly copy it from the GitHub.
+ Just post it there.
+ And then in the next section we shall assign the column names but before that you should complete this particular step.
+ So it is now 9.23 I think waiting one more minute will be good enough for you because you do not have to type it you just will copy paste it.
+ So by 9.24 I am requesting all of you to complete this step so that we can assign the column names to the data set.
+ Those who have completed very good those who are still doing it kindly complete it soon so that we can proceed to the next step.
+ Well so it is now 9.24 so let us go ahead.
+ So now the next part in the initial part that like the step which we followed in the last week as well.
+ So we will put the column names to the data set.
+ So under the header name section we will keep it sepal length, sepal width, petal length, petal width and class.
+ So this is the common step so now let me execute the steps one by one in the demo portal just to make you accustomed with this particular trick.
+ So complete this step it is now 9.25 so we shall take one more minute till 9.26 and then we shall move ahead of reading the data set using python data frame.
+ That will be the next step of the execution.
+ So hope all of you are doing it so we shall wait for few more seconds and then move to the next step.
+ So the next step we shall we have to read the data set using the pandas data frame.
+ So as per the standard practice we have imported pandas as pd so that is why here it will be pd.fit_csv we shall define the path and we shall keep names equals to header names.
+ And we will store it under data and we will print it data.shape so there will be 150 rows and 5 columns that would be printed.
+ So hope all of you have been able to finish this step and then we shall move to the next part.
+ So it is now 9.26 so I believe all of you have been completed this step.
+ So in the next step please read the data set using pandas data frame.
+ So this is the another step and then as I told you that it is a good practice to see that what is the overall data shape how many rows how many columns that you have to check.
+ And the next step is also very straightforward that we will see first few observations like we have done last week.
+ So it is now 9.27 so complete this simple step by 9.28 and then we shall move ahead for checking out the first few observations because if you have a larger data set.
+ So what we do we basically instead of checking the entire data set we go for the first few observations to understand that what are the rows what are the columns how the data looks like within rows and columns to get some idea related to it.
+ So that is why we shall bring first few observations there.
+ So you just complete this step and then we shall move ahead.
+ So now let us go ahead so next step is pretty much easy so data.head we shall be able to observe first few observations in generally python or pythonic platforms we will be able to see first 5 observations from 0 to 4.
+ Because python is a 0 index language so that is why the first row has been marked as 0 and then 0, 1, 2, 3, 4.
+ Similar type of the facilities are available like last week I mentioned even the programming language is very popular in data science domain R for example.
+ Here also you can see this type of the similar type of the analogous facilities where you will be able to see first 6 rows or if you use the tail function you may see last 6 rows.
+ So in this way so here in python or pythonic platform with the data.head this particular comment you will be able to see the first 5 rows.
+ So from that you can easily get the idea that in in sepal, in sepal, in petal, in petal with how the structure of the data looks like and as you know in the last week which I mentioned about the data set description.
+ So if I go back so that all of you can see easily on the screen that which I highlighted I think it is visible let me zoom it so now it is visible to all of you.
+ So in iris data set 150 samples are available and each 50 each samples like a 50 in each category iris setosa is versical and iris virginica.
+ If you see it has certain index values for example 0 to 49 that is iris setosa then iris versical are 50 to 99 then iris virginica which has the index values 100 to 149.
+ So in 150 data samples 0 to 149 is all about the index values and definitely for example in first few observations first 5 rows we will be able to see iris setosa.
+ So which we have observed here in this execution.
+ So this is a very simple step so I am requesting all of you to do it is now 931 complete this step by 932.
+ And once you finish it we shall move ahead of the very basic step of data preprocessing.
+ So I believe all of you have been able to complete this step and I have seen how the data dot head with the help of the data dot head comments how the data set looks like.
+ So now with the very basic implementation x equals to data dot i log rho will remain same as usual but we shall omit the class column that is why colon minus 1.
+ So because this class column has the data annotation information all the class information which one is iris setosa which one is versical which is virginica so we will drop that class column from the predicted variable x.
+ And the target variable y we will put that thing so rho will remain same and 4 index wise 4 because there are 5 columns so iris from sepal length will be 0 sepal width will be 1 petal length 2 petal width 3 and this class will be the fourth column index.
+ So we have given it here 4 so you will with the help of the target variable you will predict the accurate class so x is your predicted variable and y is your target variable.
+ So in this way we shall implement this particular portion so now it is now 933 so finish this step by 935 I think 2 more minutes should be good enough for those who are typing.
+ Those who are very smart in python or pythonic platform consider this as a good practice but there are more people who are new to it so kind of cooperate with them so they need little bit time to type it so please go ahead and complete the step.
+ Well so let us go ahead to the next step now in the next part it is a very interesting part where we will do the train test lead option.
+ So 70% where we are considering for the training and 30% for the testing but in generally in machine learning you can it is a general practice 70 to 80% for the training and 30 to 20% for the testing purpose.
+ So like the same example which I mean similar type of the example which we have explored last week as we have taken 70% for the training and 30% for the testing so that is why we are considering the same combinations.
+ And from escalar.model_selection we can import the train_test_split and then what we will do we will put that particular function where the first two arguments will be the predictor variable and target variable then we shall assign that size that basically we put in a
+ we remove the percentage and we basically write it like 0.30 which is equivalent to 30% and we will put the random state equals to 0 like I mentioned last class also that whenever you are keeping random state with certain integer like 0.
+ So it will basically give you the opportunity of exploring or repeating the same test and training set during the multiple executions or different executions.
+ So we are doing or following the similar type of the steps so in the under the data preprocessing so please execute this and let me know once you are done with it. So it is now 937 so please finish it up by 939.
+ So once you finish that then we shall go ahead for the data scaling however I am telling you that in data scaling is optional in case of the decision tree and random forest.
+ So this particular step can be skipped it is not mandatory like the operations which you have done for the support vector machine or name base or the KNN it can be you can omit it but here we are just using it just to maintain the flow that is it. It is an optional step for random forest and decision tree.
+ So I repeat that data preprocessing steps are very important before applying the classifiers because if the preprocessing step is correct then definitely your classifier is going to give you the optimum result.
+ But if the preprocessing steps are going wrong then whichever classifier you may use you may land up with a bad result. That is why data preprocessing is very much important. Here we are doing it for the ARIS data set in upcoming sessions.
+ Gradually we will use images and more high dimensional data sets so you will see that what are the other factors which may affect data that can be background noise which you may have to do background through which you may have to remove through the background.
+ I mean you may have to do the noise you may apply different noise reduction techniques. For example if it is salt paper noise you may have to use median filtering to remove those type of the noises.
+ So it depends upon the different cases. There can be other steps like background extractions. So data wise approach varies. So it is an initial level hand holding for you all of you.
+ So the more you will proceed further the more you will learn about the new tricks and techniques of handling the different types of the data sets.
+ So I shall wait for few more seconds before we go ahead. So I believe all of you have been able to complete it. Still those who are doing it kindly finish it soon.
+ So now we shall proceed for the optional step like I told you in case of the decision to a random forest you can skip it.
+ But just for the sake of the continuation like we have implemented for the earlier algorithms where it was mandatory remember.
+ So basically from a scalar dot preprocessing import standard scalar. So here standard scalar like I mentioned that basically whenever you are using this type of the normalization operations you first have to initialize it as scalar
+ with the help of the standard scalar function and then you have to use the standard scalar dot fit and apply over the X train where basically you will calculate the mean and standard deviation value.
+ And then what you will do like X train and X test where we have done the scalar dot transform operation over the X train or the X test.
+ Here what we will do you will basically do the simply implement the normalization operation like we have done the last step.
+ So data minus mean of data divided by standard deviation of the data as simple as that where you will get the desired output.
+ So this is the step. So remember scalar dot fit we are calculating the mean and standard deviation value of the data and scalar dot transform using this particular function.
+ We are implementing the step data minus mean of data divided by standard deviation of the data.
+ So the standard formula which is used for the normalization purpose.
+ So it is now 942 I am requesting to complete this particular step by 944. So I am going back to the original load book so that it will be useful for you.
+ So once you finish this optional step of normalization in case of the decentry and random forest we shall move ahead for the executions of the decentry algorithm upon the data set and we will see how it performs.
+ So just to avoid the overfitting scenarios what we are doing I repeat you remember last week we have first executed the algorithm over training data set we have seen how it is performing.
+ And then we have explored it over the test data set and we have checked and tell it that whether the accuracy is coming same or it is varying little bit so that it should be in acceptable range.
+ It should not be like that they in training data set you are getting something like 90, 95% and in the test data set you are getting 50%, 60% or 65%.
+ So it will create overfitting scenarios. So we have to avoid that type of scenario but if you are for example in training data set you are getting 95% in test data set you are getting same or you are getting something little 90% or even better than the training data set like 97%.
+ Then it is a very good result which you can accept. So that is what we have done in the last session and here also we are basically making the continuations of the supervised learning techniques and we are going to execute the similar type of the steps.
+ So I shall wait for few more seconds and then we shall go ahead for the next step. So I believe all of you are doing it carefully.
+ So I shall wait for few more seconds and then go ahead. So please finish it up.
+ Well so let us move ahead and start the execution of the decision tree directly. So pre-forcing step has been completed. So from escalon.tree import decision tree, decision tree classifier and then but while you are typing let me tell you make sure that D of the decision will be in capital, T of the tree will be in capital and C of the classifier will be capital.
+ So because it is a sketch sensitive language if you make a mistake in proper ordering of those capital and small letters it may land up with error. So while typing you should be very careful.
+ And then classifier is equals to decision tree classifier function will be assigned and then classifier.fit it will be applied over X train and Y train. So once we do it then we shall go ahead in case of the accuracy calculations. So please finish this step.
+ So it is now 947 so I am requesting all of you to complete this step by next couple of minutes 949.
+ So those who have completed it fine those who are still doing it I am waiting for them. So please finish it. So we shall have few more seconds left from the assigned time. So kindly do it and then we shall go ahead for calculating the accuracy.
+ Our moderators are also working hard to reply back to all of you. So I hope that all of you are getting the required responses.
+ Today it is our pleasure Mr. Shumon Pumbar Berra also joined along with Devjit from his busy schedule and he is also helping to give you certain answers replies. So you are quite familiar with Mr. Shumon Berra who has taken your python classes.
+ So he is also there and apart from with us Mr. Shumon Berra and excellent supporting staff and also we have the support of the other staffs from the smart classroom who are also doing the great job to give you the smooth services.
+ Anyway so let us go ahead for the next step. Let us first test the accuracy of the dictionary classifier over the training dataset. So here what we will do we will apply the classifier.predict function. We will apply it over X train and we will store it under WIPRET and then in the next step we will make the accuracy score calculation where we will apply it over the Y train and WIPRET and we will store it under accuracy and then we will print the accuracy.
+ So accuracy will be in that case as per this particular notebook I have got 100%. So that is a good thing. We will see what we get for the test dataset.
+ Meanwhile you also try it out for your case what type of the percentage you are receiving.
+ So it is now 950. So 952 by 952 I am requesting all of you to complete this.
+ So that is it. Thank you.
+ So make sure you are doing it with proper sequence. Plus you will do the apply the classifier.predict
+ function over X train. You will store the result under WIPRET and then you will apply accuracy
+ classifier score, Y train and WIPRET. You will store the result under accuracy and we shall print the accuracy where you will see it is 100%.
+ I mean in your case you just check what percentage you are getting. Because after that we shall move ahead for executing that algorithm performance over the test data.
+ So I shall wait for few more seconds and then we shall move ahead of applying it over the test dataset.
+ So that is it. Thank you.
+ So let us go ahead for the next step and now what we will do? We have to make the prediction on test data which can be done in the following way.
+ So basically we shall apply the classifier.predict over X test and we will store it under WIPRET and then we shall go for calculating the confusion matrix.
+ So this particular step is a single line step. So I am just also going ahead of explaining the confusion matrix. Then you can implement these two steps all together.
+ So all of you are familiar with this step. That is why we have actually imported the C-borne actually C-borne SNS to give you the extra color palettes and generate these beautiful color plots in terms of the confusion matrix generation.
+ So from escalan.metric we can import the classification underscore report confusion underscore matrix and accuracy score.
+ So here we shall apply the confusion matrix function over Y test and WIPRET and it will store it under result and then what we will do?
+ We shall basically implement the SNS dot hit map where the first argument will be the result, second argument will be the anode equals to true because of the presence of the annotation as you see the each grid appeared which under the confusion matrix.
+ Here you can see the levelling are there that for example out of 16 setosa, 16 setosa has been correctly classified. So the number of the wrong classification is 0 in the first row.
+ So in this way the annotation is present. So to bring that annotation if annot equals to true then FMT equals to G. So what type of the format it will follow?
+ It is formatting the general format. So only the left hand digits of the decimal will be present there that means the integers. So that is why integers are present there.
+ So this particular explanation is also added for you. So nothing to worry about it already all those things like in last week which the document you have received from me I mean your class of 8th March.
+ The similar type of document is there. So all of you will be gradually accustomed to it. So you see head map and their detailed explanations are available data annotations or for example the general format suffix G is also there.
+ So all those things why we are using FMT. So this explanation like I have mentioned exactly those things are available. So nothing to worry about it.
+ So right from the beginning level like someone has done excellent hand holding for you. I am also there. Our other research scholars they will also you will be able to see in upcoming classes.
+ So they will give you also all type of the required supports. So nothing to worry about it. You just follow what we say.
+ So now in the xt level and yt level if you see the labeling setosa, versicolor, virginica and then what we will do plt.y level prediction along with the font size 13 and x level also actual as the font size is 13.
+ So in y and the x axis if you see the actual and the prediction font size is 13 and title confusion matrix at the font size is 17 and with the plt.show you can see the generation of the plot.
+ So in this interestingly which we have observed in the first row of the confusion matrix like I told you that it is not about generating the plot but also you need to interpret it properly.
+ So 16 out of 16 setosa has been correctly classified here. You see total out of 1817 has been correctly classified as versicolor one wrongly as virginica.
+ Here also if you see 11 out of 11 correctly classified as virginica in third row and the explanation is also added there which I have highlighted here you see it is also present there.
+ Sorry I have clicked it in the original text has appeared. So you can actually you can edit this notebooks if you require you want to add some further those things you can add it up.
+ So there is no problem. So anyway so the editing is also very simple I think all of you have seen that for example like if you click on the double if you make the double click on the text section.
+ So this type of the text appears raw file appears where you can make certain changes and then click on the again make the right click.
+ You will hit the original I mean original version which you are observing in the screen it will appear anyway which you can call the final process version anyway. So you can see out of 16 setosa 16 has been correctly classified out of 18 versicolor 17 correctly classified as versicolor one wrongly has virginica.
+ Out of 11 virginica 11 virginica has been correctly classified as virginica. So these explanations has been given there.
+ So in this way you can do it for your case. So let me go back to my demo window and execute one by one step for you.
+ So I am also requesting you to gradually implement with me.
+ So you see the confusion matrix has been generated and this part has been executed successfully. So all these are the executionable I mean properly executable code.
+ You just have to make sure that if you are typing or typing correctly or if you are copy pasting from our code make sure that you are following the sequence correctly.
+ But make sure you are understanding the concept because I told you last week also that we are giving you a skeleton template of the code with a certain example.
+ In your case your data set will be different and accordingly you have to make certain changes so that you can do it correctly.
+ So it is now 9.59 so I think 2 more minutes will be good enough. If you are typing let me give you 3 minutes. So by 10.2 I think you will be able to finish this up and then we shall move ahead for the execution of the next step.
+ So I am going to go back to the demo window and I will show you how to do this. So I am going to go back to the demo window and I will show you how to do this.
+ I am going to go back to the demo window and I will show you how to do this.
+ So I hope all of you are doing it.
+ I shall wait for a minute more and then proceed ahead.
+ So let me show you how to do this.
+ So let us move ahead for the next step. So all of you have been able to complete this generation of this confusion matrix.
+ So now let us go ahead and let me go back to the original window and we shall generate this classification report.
+ So result 1 equals to classification underscore report we shall apply it over the Y test and Y print and then we will print the classification report.
+ So as an outcome this classification report will be generated from this part up to print.
+ What we will do? We will generate the accuracy score with the help of the accuracy score function which will be applied over Y test and Y print and this is the accuracy score.
+ That is basically your 90.977 something that means approximately it is 97.78% which is very good.
+ In training dataset you are getting 100% accuracy on test dataset you are getting 97.78% accuracy.
+ So that means you are getting a very good result your result algorithmic result on test data is not deviating much in comparison to the training dataset.
+ So that is a very good result which you are getting that means there is no overfitting scenario which I have concluded here.
+ You can see using the decision tree classifier we have achieved an accuracy of approximately 97.78% on test dataset which is a very good accuracy and there is no overfitting and underfitting scenario which you can observe here.
+ So and also you can see this IRI set of IRIs vertical IRIs Virginia if you see the precision recall F1 score all those things have been calculated and formula is available in this text document as you can see.
+ Like last week I told you precision means true positive divided by true positive plus false positive or recall means true positive divided by true positive plus false negative or F1 score 2 into recall into precision divided by precision plus recall.
+ So these are the formula or this 30% of the 150 samples mean 45 samples right.
+ So 16 plus 18 plus 11 means 45 so these are the participating samples which you are which are participating as a test samples you can say these are the supports.
+ So these all explanations are available here which I highlighted last week you see the formula has been given that precision equals to true positive divided by true positive plus false positive which I mentioned just now.
+ Or for example recall or sensitivity to positive divided by true positive plus false negative or F1 score 2 into recall into precision divided by precision plus recall.
+ So in this way and last class also I explained what is true positive what is true negative what is false positive what is false negative.
+ I am just repeating it if your model is correctly predicting the positive class it will be true positive if your model is correctly predicts the negative class it will be true negative.
+ If your model is incorrectly predicting the positive class it will be false positive if your model is incorrectly predicts the negative class it will be false negative as simple as that.
+ Also there is the definition related to support which I mentioned all those things are available macro average you will calculate the state forward.
+ If you see for example add up this column like iris setosa, iris versicolor and iris virginica if you add up their positions and divide by 3 it will be 0.97.
+ So similarly you can calculate the macro average for the recall and F1 score as well.
+ And weighted average means individual precision into their corresponding support will make the summation and then add up by 45 which is the total support.
+ Similar thing you can do for recall and F1 score.
+ So in a simplistic manner I have written down it for you how to calculate the weighted average score.
+ So let me zoom a bit for you if in case if you are facing difficulty in visualizing it.
+ So this one for example I have given one example here weighted average of precision equals to sum of individual class precision into class support individual class divided by total support.
+ Similarly you can calculate for the recall F1 score as well.
+ So all those informations are available there.
+ Accuracy score how will you calculate it 2 positive plus 2 negative divided by 2 positive plus 2 negative plus false positive plus false negative.
+ In this way we will do it.
+ So using decision tree you will get 97.78 which is a very good accuracy in terms of percentage and you can avoid the overfitting scenario in that case.
+ So complete this last chunk of the code to finish up the decision tree part within next 2 minutes.
+ It is now 10.6 so let us finish this step by 10.8 am sorry.
+ So please finish this up and then we shall go ahead for the execution of random forest.
+ So we shall do another interesting algorithmic approach that will be the very popular super advanced learning approach that is random forest.
+ So it was invented in 2001 and since then it has ruled the machine learning domain.
+ However if you see from 2012 onwards we have seen that deep learning gradually got the attention and from 2015-16 it is all about deep learning because nowadays we are generating data in digital world in exponential manner.
+ But still if you have a data set in order of 10 to the power 3 or 4 still machine learning is very very effective and especially the illegal algorithms like the random forest which are very much welcome.
+ And I am not going about their advantages or shortcomings because already Dr. Ruygan Chakraborty beautifully explained those concepts in the class of 8th March.
+ So it is all about hands-on so I will restrict myself explaining the hands-on part.
+ So it is already 10.8 so there will be a few more seconds I shall wait for you and then we shall go ahead for executing the random forest part.
+ Ok.
+ So those who are new to it I am encouraging you to type the code.
+ It will be very much useful for you because in upcoming sessions also you will get lot of confidence.
+ So for example we have a very super talented research scholar pool who will take your upcoming hands-on session as well like Sumanbara.
+ So in upcoming unsupervised learning hands-on will be taken by Mr. Nilan Jhonsi an excellent research scholar from IIT Kharagpur extremely talented student.
+ And also you will see in upcoming sessions as a hands-on expert Mr. Atif Hassan.
+ He is another very talented student from IIT Kharagpur so we will also take your hands-on sessions.
+ So these smart fellows will show you that how to explore those tricky techniques in case of the deep learning or unsupervised machine learning.
+ So that is why I am telling that the more you will accustomed in the initial classes with these code structures it will be better for you in upcoming days to grab those essential concepts.
+ So let us go ahead for the next part in terms of the random forest.
+ So in the random forest so what we will do basically we shall try to improve the accuracy by training the model with the help of the random forest classifier.
+ So here what we will do we will basically try to clubbing up with the different combinations ensemble approach by taking the ensemble approach of the decision trees and we will see that whether we can improve the performances of the random forest.
+ So here for example in random forest classifier we are assigning in estimator equals to 10.
+ That means we are taking that 10 decision trees altogether and we are trying to figure out how they are performing.
+ So from a scalar ensemble we shall import the random forest classifier and random forest classifier we are applying over the n estimator where we are putting the value n estimator equals to 10.
+ And then we shall apply the classifier dot fit over x train and y train.
+ So because pre-processing steps are same.
+ So for example as we are continuing in the same notebook I am not again repeating those pre-processing steps remember.
+ So like in the last week depending on the pre-processing steps we have executed the three algorithms on the same notebook.
+ KNN, Nape Base and the SVM with different kernels.
+ Here also we are doing the same thing decision tree random forest gradually.
+ So here you just implement this particular step and then we shall go ahead.
+ So it is now 10, 11 so please I am requesting all of you to complete it in next two minutes by 10, 13.
+ So it is now 10, 12.
+ So please finish this step by 10, 13.
+ So let us go ahead and now what we will do? We will basically test the accuracy of the random forest classifier over the training dataset first like we are doing.
+ Because always we are checking the performance over training dataset before going to test dataset.
+ Just to check that there should not be much deviation from the result which we are achieving in the training dataset.
+ So that there should not be any kind of the over footing scenario I repeat.
+ So classifier.predict, we shall apply it over the X train and we are storing it under Y print and then we shall basically apply the accuracy underscore function over Y train and Y print.
+ And we will generate the accuracy which you are getting here like for example approximately 99.05% where the result where the result of the detain decision trees are combined.
+ So in this way we will gradually see that if we are increasing the number of the decision trees whether we are seeing getting the better result.
+ In sometimes you may get it, sometimes you may not.
+ But it is all about that whether we are achieving a satisfactory result or not that we are going to check.
+ So first let us implement this Y print calculation and then we will do the accuracy calculations.
+ So here for example in demo window I am getting 100% accuracy and in my original window it is 99.05%.
+ So whatever may be the case we are getting very good accuracy in training dataset.
+ We shall now check it for the test dataset.
+ But before going to that I am requesting all of you to just try it out yourself.
+ So it is now 10, 15 M so I think couple of minutes more will be good enough for you to complete the step.
+ So by 10, 17 I am requesting all of you to finish that particular steps so that we can proceed ahead and check the algorithm efficacy for the training dataset purpose.
+ Well so let us go ahead.
+ Now we will make the prediction on the test dataset.
+ So classifier.pretake we shall apply it over the X test and we shall store it under Y print and then what we will do?
+ We will basically generate the confusion matrix.
+ So from a scalar.metric we shall import the classification report confusion matrix accuracy score
+ and then we shall apply the confusion matrix function over the Y test and Y print we shall store it under result
+ and then we shall generate the hit map SNS dot hit map where the first argument will be result.
+ Second argument will be annotation equals to true.
+ Third argument will be FMT equals to Geo.
+ Already I have explained all those things thrice I mean including the consecutive sessions.
+ So that is why I am not again repeating those steps.
+ So you can see those font sizes for X level Y level we have kept same
+ and also for the confusion matrix title we have given the font size 17.
+ So these are the overall virginica versicolor setosa as well as the setosa versicolor virginica
+ for the actual labeling Y which is given in the X axis and prediction for the Y axis.
+ And if you get the output if you check the output 16 out of 16 setosa has been correctly classified as setosa out of 1817 has been correctly
+ classified as versicolor and out of 1110 has been correctly classified as virginica one wrongly as versicolor.
+ So this is the overall scenario I am requesting all of you to incorporate this one.
+ So it is now 1019 try to complete this step by 1021.
+ If you are typing in that case I should give one more minute 1022.
+ Those who are directly copy pasting it will not take more than a few seconds
+ but those who are typing for them I should give some time.
+ And I am encouraging you to type those who are especially new to this platform.
+ So this type of the excellent confusion matrix has been generated here.
+ And the explanation like I told you it is not about generating the result
+ but how to interpret that is very important and for you I have given a sample right up here also.
+ So in each confusion matrix the notebook which I have given to you
+ I have given you a direction that how you should represent the interpretation of the confusion matrix.
+ In case you are doing certain research work or writing company white papers
+ or you are writing some college projects.
+ So everywhere you will get this type of the reference I mean it will be useful.
+ This type of the reference write up will be useful for you.
+ In your result will make certain changes and you can demonstrate it.
+ So hopefully all of you will be able to do it soon.
+ So it is now 1020 I am requesting all of you to finish this soon
+ so that we can move ahead for the next step.
+ But those who are typing type it carefully like the way I have given it.
+ So please align it properly.
+ In Python or Pythonic platform in the last class I also mentioned that
+ if you give some certain unnecessary spaces which may land up with indentation error.
+ So make sure that give the space where it is required
+ unnecessary spacing may land up with indentation error.
+ And during the Python classes I think Mr. Mera also has mentioned that to you.
+ So that is why I am telling that be careful while typing.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So I am going to show you how to do it.
+ So please complete these steps.
+ It is now 1024.
+ So within next couple of minutes,
+ please finish the step.
+ By 1026 I am expecting that all of you will be able to finish it.
+ So then we shall go ahead for the next part of the execution.
+ So I shall wait for another more minute and then go ahead.
+ So kindly complete the step.
+ Thank you.
+ So let us move ahead for the next step.
+ Now what we will do, we will try to figure out that if we are enhancing
+ the number of the decision trees in terms of the assembling,
+ with that we can get some improvement in the result.
+ So that we will see.
+ So already we are getting a very good result, acceptable result.
+ But just for the sake of learning,
+ we shall play around with the number of the estimators.
+ So here the first line will remain same from the scalar dot and symbol.
+ We shall import the random forest classifier.
+ If you are typing, make sure that uppercase and lowercase letters
+ you are writing correctly.
+ So for example in random forest, r of the random will be capital.
+ f of the forest will be capital and c of the classifier will be capital.
+ So the uppercase and lowercase combination you should write very carefully.
+ And then what you will do,
+ you will put the random forest classifier function over the estimator.
+ So in the section of the estimator, you keep it 20 and assign it as the classifier.
+ And then you apply the classifier dot fit over x train and the y train.
+ So this is the very basic step which we should do at the beginning.
+ So it is now 1027.
+ So this step by 1029.
+ So there is only one change in estimator value, we have just make it 20 from 10.
+ That is it, rest of the things will remain same.
+ So just a small change.
+ So finish this up, so it is now 1028 complete by 1030.
+ Then we shall move ahead up executing on the test dataset
+ with the help of this ensemble of 20 addition trees.
+ So we are going to do this.
+ So we shall wait for another more minute and then go ahead.
+ So please finish this step soon.
+ Thank you.
+ Okay, so I believe all of you have been able to finish it up.
+ Now apply it classifier dot predict over x test and store it under y pred.
+ And the same code chunk of the code which is being used for the general the confusion matrix.
+ So here you see, so I am not further repeating this part in explaining.
+ I am just showing you the result.
+ 16 out of 16 setosa has been correctly classified as setosa.
+ 17 out of 18 has been correctly classified as vassica and 1 wrongly as virginica.
+ And 11 out of 11 virginica has been correctly classified as virginica.
+ So this is the interpretation which I have added there.
+ Okay, so let us implement these two part one by one in the dummy window.
+ Okay, so this type of the confusion matrix will be generated.
+ So it is now 1032. So please finish this step by 1034. Okay, then we shall move ahead for explaining the next part.
+ Okay, so I am just going to do it.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, so it is now 1032.
+ Okay, well, so let us go ahead for the next part.
+ Now the generation of the classification report will be done where we shall apply the classification
+ report function over the Y-test and Y-print and then we shall print the classification
+ report and then we shall print the result one and then also we shall apply the accuracy
+ underscore function over Y-test and Y-print, store it under the result two and we generate
+ the accuracy.
+ Okay, so already what is precision we call F1 score support I have explained there.
+ Okay, so here if you see it is already 97.978 percent accuracy.
+ Okay, in the random forest where you can see the result of the 20 decision trees are combined.
+ Okay, so in this way you can get and check that whether you are getting any improvement
+ or not.
+ So let us go back and check what was the performance when we have applied the 10 decision trees
+ on the test data.
+ It was 95.56 approximately.
+ So with the 20 decision trees you see the result has further improved it is 97.78 percent.
+ Okay, so we can see the improvement in terms of the accuracy.
+ And we are assembling more number of decision trees.
+ Okay, so you can consider it as a homework or it is your own learning purpose better
+ to say try out with 50 100 decision trees and check that what type of the accuracy you
+ are achieving whether you are able to see any further improvement or not.
+ Okay, you can try it out.
+ Okay, that would be an interesting to observe.
+ Okay, so in this way you will learn whenever you are learning right from the this type
+ of the basics of the machine learning it is all about exploring it out on the different
+ datasets and check it out that how it is giving you the optimum result.
+ Okay, because data wise you will get a new set of learning while exploring all those
+ effective algorithms.
+ Okay, so that is why I am telling you that make sure that you are also experimenting
+ at your home with this template of the code.
+ Okay, then you will be able to learn it much better.
+ Okay, so let us implement this remaining part of the code and let us conclude the random
+ forest part.
+ Okay, so it is now 1036, so finish this steps by 1038.
+ Make sure that you have a very good understanding because what is the precision recall a funds
+ code support.
+ Okay, for example if you have a plan to go for the higher studies just for example I
+ am saying and you are you may join any department related to department of AI or department of
+ or center of data science this kind of the area you are if you are applying then what
+ will happen that people will ask you very simple questions at first they will test your
+ basics.
+ Okay, so if you make mistake on those things even if you know very advanced tools or techniques
+ they will not entertain you, even in case of the industry also even if you are going
+ for the job applications related to the post like data scientist or similar type of the
+ post like business analyst, data analyst.
+ So people always test your basics first.
+ Okay, so make sure that basics are very clear, okay understand them properly it is not only
+ about mugging without understanding make sure that you are understanding the concept and
+ you are remembering it, okay that is very much important, okay so that is why I am requesting
+ all of you that make sure that you are in touch with it, okay you are studying those
+ things properly and you are grabbing those concept carefully, okay slowly slowly first
+ start with reproducing the results, okay it will give you a confidence like for example
+ in my case whatever the examples I am giving the more you are representing or getting confidence
+ and then gradually you yourself try out with different set of data sets and use this template
+ of the code make necessary changes, it will give you lot of insight and confidence, okay
+ so in this way build up your confidence, okay so you have to put a little bit of effort
+ by yourself also, okay then it will be fine because you need to make yourself confident
+ for handling the unknown data sets, I mean unknown means you have not explored those
+ data set at all earlier, okay when you are getting full confidence, okay whatever the
+ x y is a data set will be given to me, okay I will somehow handle it this type of the concept
+ if you grow, okay then you will be ready for you can consider yourself for the industry
+ okay provided that you know the basics very well that is very important.
+ So it is now 10.39 another more minute I within another moment I believe that all of you have
+ been able to finish this part, okay so once we finish the random forest part I think you
+ are also exploring continuously for one and half hour so we should have a 5 minutes break
+ and then we shall proceed for the next part regression part, linear logistic regression
+ we shall explore, okay so moderator at 10.40 please give a break of 5 minutes, okay at
+ 10.40 give a break of 5 minutes, okay participants should get some scope I mean to digest all
+ those things and then we shall start from the regression part, okay so here we are ending
+ the classifier part supervised learning part, okay.
+ So remember we have explored KNN Nape base, okay SVM with different kernels decision to
+ random forest exactly the topics which were covered your theory session by Dr. Abhigyan
+ Chakraborty and now after the break of 5 minutes we shall move towards the regression part
+ linear regression or logistic regression which were covered by Professor Sudesh Nasaukar
+ beautifully on March 1, okay so it is now 10.40 I believe all of you have got the results
+ of the random forest we shall take a small break of 5 minutes and come back for the regression
+ part, okay so moderator please display a break of 5 minutes.
+ So welcome back from the break, okay so now it is time to explore some of the executions
+ related to the regression so we are basically going to cover some of the interesting topics
+ or addressed examples related to linear and logistic regression.
+ So first part which we are going to explore here that is the linear regression a very
+ simplest one, okay so earlier in classifier examples I have shown you that how to execute
+ the dataset from web link but you may remember I told you that I will also show you that
+ if the dataset is available for example in some excel file, okay so how to load them?
+ Similar process you can follow for loading the image also, okay so that is why I have
+ deliberately given some examples where you can load the dataset externally in colab,
+ okay how to load it and how to analyze them, okay so if you see in the screen, okay so
+ I have written down that like let us explore an interesting example based on dataset and
+ let us explore and upload the data named data.csv, okay so let us show you, let me show you
+ that how to do it in the demo window, okay so demo window it is already executed there
+ I am just reshowing, okay so choose files one file data.csv sorry data.csv you select
+ data.csv and you load it, so data I am requesting moderator, moderator can you hear me just
+ show the post them the link of data.csv, GitHub link which I have shared with you so
+ that they can download it, okay so data.csv is also available in my GitHub so moderator
+ will show you that which particulars dataset I am talking about they will post the link
+ I am also showing him for your so that it becomes easy for you how to download it it
+ is the second one from last, go to my ml using python repository it is the second one from
+ last, okay last one is the diabetics.csv go to the second one data.csv, okay click on
+ it once you click on it even if you are logged if you are not logged in in your GitHub still
+ you can download just click on the download section, okay that particular file will be
+ downloaded, okay so you see data.csv it is a csv file that like see like the way I have
+ loaded it in the colab exactly follow the same step put it there I am just again showing
+ you, okay show it very see it very carefully, okay so I am again running when the choose
+ cell will come up when the sorry choose file will come up click on it wherever you have
+ saved the data go to that particular folder click on it it will gradually show you the
+ execution and once it appears at 100 percent along with the time data and time it will
+ show that 100 percent done and it will pop up as saving data.csv what are the file name
+ is there it will appear like this, okay so make sure that you are doing those things
+ properly, okay and then what we will do we will move to the next part that importing
+ all the necessary modules, okay so I am waiting for you another more minute so that all of
+ you can complete the data loading part data.csv or our moderator Debjit beautifully posted
+ those links in the comment box section just check it out, okay and also I have shown you
+ if in case if you are if you need any guidance that go to my GitHub, okay I am again showing
+ you go to my GitHub, okay it will be the ml using python repository and go to the end
+ and second one from the last data.csv, okay you click on it and after clicking on it click
+ on this download section and download it, okay and how to load it already I have shown that
+ to you in my demo window, okay this is the code you click on the run cell button, okay
+ after putting it it will give you the option that select it, okay choose the file so go
+ to go there choose the file from your appropriate folder load it once it will be loaded hundred
+ percent done that pop up will come up, okay so I shall wait for few more second and then
+ we shall move to the next part of executing linear regression.
+ So you have very new learning new set of learning that how to load the data externally, okay
+ in colab definitely in colab those who already know it like I always mention consider this
+ as a good practice and most of you are new to it so it is a good learning for you.
+ Well, so let us import the all the necessary modules so import matplotlib.pyplot as PLT
+ so matplotlib already all of you know it is a very good module in terms of the executing
+ the plots related to the python or python platforms, pyplotlib makes matplotlib as to act as a
+ matplotlib like environment so we are loading it as the PLT then numpy as np give you the
+ opportunity to explore it with the arrays and related operations and manipulations pandas
+ gives you the opportunity to deal with the data manipulation and data frames, okay so
+ make sure that all of you are executing it properly, okay so it is 1054 very simple three
+ lines of the code complete this byte in 1055.
+ Okay, so we are going to do the same thing for the other one.
+ Well, so let us move to the next step now what we will do we have to read the data set
+ using data frame as follows so pd.wit_csv data.csv file we shall load it as df and then we shall
+ check the same like I always tell you that wherever you are dealing with certain new
+ data set make sure that you should have you have to understand the data structure properly
+ of that particular data set before applying any algorithms so we are also shaping so there
+ are 36 rows 5 columns, okay with the help of the data set command we have checked that.
+ So let us explore in my demo window
+ and then also check first two observations, okay how the rows and columns look like with
+ the data.head column, okay so these three are the very simple chunk of code I am doing
+ it all together, okay then I will give you the time to execute them properly nothing
+ to worry about it, okay so let us see what appears if we are giving data.head or a df.head
+ because we have set the data set as the name of df so after applying the head function upon
+ it so 5 columns as you can see car model volume weight and CO2, okay so different car names
+ different model names what is the volume what is weight and what is the emission of carbon
+ dioxide all those things you have got the idea, okay so there are 5 rows as I told you
+ that if you want to apply this type of the head function along with the file name like
+ here it is df.head command we have utilized so it will give you 5 observations so those
+ things we have got, okay so now it is 1057 there are very 3 simple line of the code please
+ complete it by 1059 then we shall move towards the next part.
+ (soft music)
+, you're welcome. (soft music)
+ Well, so move ahead. Let us move ahead and try it out the next step. Now, what we will
+ do? We will create an independent values, which we shall refer the x, which is the predicted
+ variable and the target variable will be your basically the y, which has the dependent
+ values. So, depending on the values of the weight and volume, we shall try to predict
+ the emission of the carbon dioxide. So, that is why DF within that we are taking the columns
+ of the weight and volume, storing it as x and under y, we are taking the column CO2.
+ So, it is a very simple line of the code. It is now 11 am completed by next, next one
+ minute and then we shall move towards the next step, where we shall take the help of
+ the scikit-learn module to execute this machine learning classification or the regression
+ related operations. Already, I told you during my first session also. So, here we are basically,
+ we have we are importing in Python or Pytholic platform scikit-learn as a skellarn. And from
+ that we are a skellarn, we are accessing the linear model. So, that we will do in the next
+ step to execute linear underscore model. This particular module will be very much useful
+ in terms of the executing the different very submodule better to say from the skellarn
+ module, we are basically loading this type of the methods of submodule like linear underscore
+ model, which will be very useful for exploring linear and logistic regression later steps.
+ So, finish this step by next, next one more minute and then we shall move ahead of exploring
+ the next part.
+ Thank you. So, this is the end of this session. Thank you. Thank you. Thank you. Thank you.
+ So, let us move ahead. So, from a skellarn we shall import the linear underscore model
+ and linear underscore model, we shall basically access the linear regression method for creating
+ linear regression object, which we are assigning as regr and the short form of the regression.
+ And then we shall fit it over the these two variables independent and the independent
+ variable x, which is the predicted variable and the target variable y. So, let us implement
+ these two steps now. So, it is now 11, 3, please complete these two steps by 11, 5.
+ Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.
+ So, I shall wait for few more seconds and move to the next step. So, those who have completed
+ it fine those who are doing it please finish it up.
+ So, let us move to the next step. Now, in the next step what we are going to do we will
+ have a regression object actually in terms of the predicting CO2 based on certain values
+ like for example, here it is carts weight and volume. So, now our task will be to predict
+ the CO2 emission of a car where weight is 2300 kg and the volume is 1300 centimeter cube.
+ So, here I just want to mention that for your understanding purpose I have added it remember
+ that 1 liter equals to 1000 cubic centimeter. So, 1300 centimeter cube means or the cubic
+ centimeter means 1.3 liter car engine. That means a car 1.3 liter car engine has the capacity
+ of around 1300 cc or 1.3 liters of fuel and air which is burnt during every revolution
+ of the engine turns. This is just for your knowledge purpose. So, here our target is
+ to predict the CO2 emission of a car where weight is 2300 kg and the volume is 1300 centimeter
+ cube. So, here we are applying regression dot predict over these two values and we are
+ storing it under predicted CO2 and we are printing the results. So, here you see it
+ is 107.208 something that means here we have predicted a car with 1.3 liter engine and
+ the weight of 2300 kg will release approximately 107.209 grams of carbon dioxide per kilometer
+ it drives as simple as that. So, I am putting this thing in the demo window and giving you
+ the demonstration. I am requesting all of you if possible please type as much as you
+ can and get the results. So, it is now 1166 am complete this step by next one more minute
+ 777. So, this is how you can make the prediction with
+ the linear regression braided techniques.
+ This is the general format of the linear regression which was taught by professor Sudesh Narsh.
+ So, beta 0 is your constant term or the bias term which you may say and beta 1 is basically
+ the coefficient term x is the independent variable y is the dependent variable so as
+ simple as that. So, it is like y equals to mx plus c which you have learned during your
+ class 8, 9 standard in school. So, it is the analogous formula like this. So, beta 0 is
+ nothing but bias of the constant and beta 1 is the coefficient term. So, this is the
+ simplest mathematical format of the linear regression. So, let us move ahead for the
+ next portion of the execution here. So, here what we will do we will basically move towards
+ and discuss the next portion already I told you what does it imply also you can calculate
+ the different coefficient values. So, we can how can you calculate the coefficient values
+ of the weight and volume? So, here you can do print we shall apply over the regression.cof
+ and you can calculate the weight and volume coefficient value because depending on the
+ weight and volume here we are predicting the emission of the carbon dioxide which is nothing
+ but the fuel and air bond in terms of the evolution with the engine terms.
+ So, let us calculate the coefficient values in that case reproduce the result. So, this
+ is the amount required amount. So, it is now 11.10. So, please this step by 11.11 then
+ we shall move to the execution of next step. So, I have also shown you apart from the prediction
+ how to get the coefficient values in linear regression.
+ So, let us move ahead now what we are doing just for fun programming fun we are doing
+ it that we shall execute the same example by changing the weight value just to check
+ that whether how much it is affecting on the emission of the carbon dioxide. So, here for
+ example we got earlier we have the value if we check that is 107.209 approximately which
+ was the emission value here we will see that if we change the value from 2000 to 3300. So,
+ then what will be the overall effect. So, import pandas from a scale on import linear
+ model all those steps remain same then data dot read underscore csv data csv then what
+ you can do you can put the weight and volume and you can give value you can keep a CO2 then
+ regression model all those steps remain same now just change the I mean only a single change
+ is happening that is the weight value it is becoming 3300 from 2300 as simple as that
+ then we shall predict it and we are getting 114.7596 something that means in the increment
+ of the weight emission of the carbon dioxide is also increasing. So, here it is we can
+ conclude here like this that finally we predicted a car with 1.3 liter engine and the weight
+ of 3300 kg will really is approximately 114.76 grams of carbon dioxide for car per kilometer
+ it drives as simple as that. So, this is how you can actually check because
+ they are linearly related now. So, if you are increasing this the other predicted value
+ will also increasing. So, that is how you can understand the concepts with play around
+ with certain values. So, that is why I have given one simple case also that how to play
+ around while you are exploring with the linear regression these are important concept remember
+ what is regression, what is linear regression, what is logistic regression these are also
+ very vital like if you are applying for living domain in higher studies or if you are applying
+ for the job in industry or any startup these are the very basic questions people ask to
+ test your basics. Even if you know a very advanced stuff of things but you do not know
+ these basic things it will affect in your recruitment or selection. So, that is why I
+ am telling that make sure that you know the basics carefully.
+ So, this is the execution how it is going now. So, it is now 1114. So, please complete
+ this step by 1116 then we shall move towards the execution of the logistic regression the
+ last part of our session.
+ Thank you. So, this is the end of the session. Thank you. So, I will see you in the next session.
+ Thank you. So, this is the end of the session. Thank you. So, I will see you in the next session.
+ So, I shall wait for few more seconds hope all of you are doing it those who have already
+ completed fine get ready for logistic regression you may open up a new notebook that would
+ be better and those who are still doing it please finish it up.
+ So, let us start the next part. So, I repeat we are we have concluded that if we are changing
+ the weight from 2300 to 3300 approximately we are moving actually if I only consider
+ the integer values. So, 107 to 115 actually there will be 8 gram more increment in the
+ emission of the carbon dioxide. So, anyway so let us move towards the logistic regression
+ part. So, there are some theoretical part has been added just for the sake of continuation
+ to give you the idea already professor Sarkas has explained all those topics beautifully.
+ So, I am not again going into this I will only cover up the hands on part I just added
+ few of the text which you may just go through because this notebooks will be provided to
+ an already from my Github you are already accessing it as the moderator already posted
+ the links. So, nothing to worry about it I am just directly going for the implementation
+ part.
+ So, I am opening a fresh notebook there I am giving I shall give the name demo 3 you
+ can put some analogous name. So, already you have learnt how to put the name in the notebook
+ apart from execution of the course. So, go to this section untitled just edit it give
+ some name like for example demo 3. And then in this section we shall basically start execution
+ of the code. So, as a first step of the required module import numpy already you know why we
+ use numpy. So, just execute this particular portion.
+ So, it is now 11.17. So, by 11.18 please finish this step and then what you will do you will
+ basically store the independent variables x and dependent variable y. So, while you
+ are typing make sure that you are putting the numbers correctly or you can put for this
+ particular part you can directly copy just to avoid any error in typing. So, x represents
+ the size of a tumor in centimeter. So, x equals to numpy dot array very just count the values
+ in centimeter. Tumor values tumor sizes are given in centimeter remember 3.78, 2.44,
+ 2.09, 0.14, 1.7, 2, 1.7 in this way. So, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, there
+ will be 12 entries remember there will be 12 entries dot reshape minus 1, 1.
+ That means it will form a column vector this right hand one under the reshape function
+ it assigns the column vector and minus 1 in left hand side means row will be adjusted
+ accordingly as per the entries. So, it will form a column vector similar way remember
+ that numpy dot array we are putting some labeling along with these 12 values. So, 0 means no
+ there is no tumor that means a benign case it is a benign case ever is a tumor is cancer
+ as then output will be 1 which is s case. So, accordingly we have labeled it x and y
+ according to the tumor size in centimeter their corresponding labeling is also given
+ to you. So, I am just putting it for the demonstration while you are typing make sure that you have
+ balanced it here also 12 entries in y. Obviously, their corresponding labeling of the size will
+ be there if x will have the 12 entries y will also have the corresponding 12 entries and
+ remember that dot reshape minus 1, 1 this is a tweak sometimes while giving you the
+ in your coding round or the related interview related to the coding this type of the questions
+ people ask that how to form a column vector for example, I am giving you a array x how
+ to form a column vector. So, these are the tricks you should run in python or python
+ platform for example, you are writing Rampai array and then dot reshape minus 1, 1. So,
+ you will form a column vector and they may also ask you that what does it imply by right
+ hand side of the 1 comma and left hand side minus 1 right hand side of the comma 1 means
+ it will form a column vector where minus 1 implies that the row number of the rows will
+ be adjusted as per the entry you have made. Now let us implement it and reproduce the
+ result you just type the code do not need to type the this type of the instruction which
+ is given under hash this is this as I have deliberately given it for your understanding
+ purpose. So, that you can understand it clearly only just type do not you need to read the
+ comment section I mean write the comment section as of now.
+ So, it is now 1120 finish this step by 1122 then we shall import from a scale on import
+ linear underscore model like we have done it for the as a simple step for linear regression
+ part. So, let us see what happens. So, let us see what happens. So, what happens is that,
+ so I shall wait for few more seconds. So, those who are typing make sure, but make sure
+ that you are typing correctly do not make mistake while hurrying because apart from
+ my screen you also have the access of my github. So, you can cross check always ok.
+ So, now we shall import the scalar module ok. So, as the linear model ok. So, from a
+ scalar import linear model this is the very simple chunk of the code which you can import
+ here and execute it. So, I think next another more minute you will be able to execute these
+ steps clearly it is now 1122 please finish this step by 1123.
+ So, let us move to the next step. Now, our target will be to basically linear underscore
+ model dot logistic regression what we will do we will load that method to create the
+ logistic regression object from a scalar module ok. So, we will assign it as the name as the
+ logistic regression ok. So, logr we are giving the name and then we will fit it over the
+ x and y ok. Like I have mentioned earlier and we have done it for the linear regression
+ part. So, in this logistic regression we shall execute this particular step ok. So, it is
+ now 1124. So, please finish this step by 1125. So, this method called fit basically takes
+ the independent and dependent values as parameter by filling the logistic regression object
+ with data for describing the required relationship ok.
+ So, make sure that you are typing it correctly ok. Here you see you can observe if you are
+ exactly following my notation I have given x as capital ok the upper case, but y is in
+ lower case ok. So, if you are exactly following my notation make sure that you are typing
+ correctly ok. So, once you complete this step then the next step what we will do we will
+ basically apply this logistic regression method for checking that whether that tumor is cancerous
+ or benign depending on the tumor size ok.
+. So, I shall wait for few more seconds and move to the next step of prediction. So,
+ in the next step we shall take and check that if a given size is 3.46 centimeter for the
+ tumor whether it is cancerous or not ok ok. So, let us go ahead. So, now let us let us
+ try it out ok. So, we are applying the logistic regression dot predict over the NumPy array
+ where we have given the size 3.46 and we are resaping minus 1 comma 1 remember we are making
+ it as a column vector. So, under reshape minus 1 will automatically adjust the number of
+ the rows as per the entry we are making comma 1 this right hand side of the comma 1 is actually
+ forming the column vector ok. So, these are the very common interview questions
+ related to the coding round while you are applying for the data scientist related jobs ok. So,
+ make sure that you are understanding the concept apart from reproducing the results ok.
+ So, here you see 0 output is 0 that means this is benign not a cancerous case ok this
+ is benign case not a cancerous case ok fine. So, now let us move to the execution of the
+ next part. So, please finish this one it is 1126. So, finish this step by 1127 ok. So,
+ here we are concluding that we predicted with a tumor of size 3.46 centimeter is not cancerous
+ ok. So, finish this up then we shall go for calculating if we are changing certain shape
+ then what will be the effect of having chances of or they having odds of being cancerous ok.
+ So, I shall wait for few more seconds and then we shall move to the next part. So,
+ logistic regression I repeat the coefficient is expected to change in log odds depending
+ on the outcome per change in x per unit change in x better to say ok. So, in the next step
+ log odds equals to log or dot quave and then we shall apply the numpy dot exp over the
+ log odds and we will print the output ok it will around 4.03 that means 4 times. So,
+ that means that it implies that the if you are increasing the tumor size by 1 centimeter
+ the chance of being cancerous will be 4 times ok odd means chances those who are having
+ difficulties in this part understand the terminology odd means chances ok.
+ So, anyway so it is now 1128. So, let us put it there ok. So, finish this step by 1129
+ then we shall move towards executing the next step ok. So, this is how we can make the conclusion.
+ So, once you finish this step then only we will also check that if we have the coefficient
+ and the intercept values then what will be the likelihood of each tumor is malignant that
+ likelihood now we are going to check in the next step ok. So, we are almost end of our
+ session. So, please finish it up. So, it is now 1129. So, I am just moving the next part
+ ok. So, in this case what will you do we will just create a function that can utilize models
+ coefficient and the intercept values for returning a new value ok. So, simply logistic regression
+ formula ok. So, like we have seen in case of the linear regression part like I have
+ in the logistic regression case if the formula will go like 1 divided by
+ 1 plus e to the power minus beta 0 plus beta 1 x analogous to sigmoid like formula ok.
+ So, here exponential term is playing a pivotal role which has been explained to you by professor
+ Shudeshna Shorkar during her class on first March beautifully. So, let me go back to the
+ original desktop option or fine. So, that is the same thing which we are implementing
+ in terms of the code. So, depth logit to probe logr comma x. So, logr dot cof into x plus
+ logr intercept exactly the same thing we are doing in coding. Then what we have done we
+ have converted the logots to applying the exponential function. So, numpy dot exp ok
+ to exponentiate the logots and then we are calculating the probability. So, from your
+ basic knowledge of 10 plus 2 standard you know that probability equals to odds divided
+ by 1 plus odds ok as simple as that ok. I have made the things simple for you are just
+ applying the knowledge of from 9 standard to 12 standard that is it ok and probe and
+ now we are printing the results. So, logit probe logr comma x. So, it will give you the
+ chances now how you interpret that is very much important. So, it will give you the chances
+ of predicting the tumor with a certain size and their likelihood of being cancerous ok.
+ So, now you are getting this type of the results. So, you will say that how will you understand.
+ So, remember that at the entry level when you form the data set we have given this type
+ of the values. So, first entry was 3.78 centimeter. So, for 3.78 centimeter if the tumor with
+ size 3.78 centimeter then it will be cancerous the chances of being cancerous is 60.75 percent
+ approximately because first result you got 60.749 approximately 60.75. Your second entry
+ is 2.77 centimeter. So, it will have the chances of being cancerous as 19.268 percent you see
+ the second result as simple as that. So, similarly because there are 12 entries we have made as
+ per the tumor size. So, there are 12 outcomes as simple as that ok. Similarly, you can write
+ it when you are writing company white papers make sure that you are interpreting it properly.
+ This is my request to all of you that you do it carefully ok. So, just implement this
+ code portion of the code and we are done with our session. So, it is 11.33. So, by 11.35
+ we finish this and then we shall have the next session on the unsupervised machine learning.
+ Our respected faculty has already arrived. So, Professor Jowl Hawkpike will take the session
+ on the unsupervised learning ok. So, he is very much talented faculty and researcher.
+ So, please listen to him carefully what he is instructing kindly follow it. So, he kindly
+ agreed to take 2 sessions in high cohort 3. Thank you very much to him we are thankful
+ to him actually for sharing his precious time with us. So, and your session will end up
+ at 11.30 p.m. and before I end up I am thankful to all the moderators Devji Bishas a very
+ young talented BTX student. Our Mr. Suman Kumar Beraw is the PhD research scholar of
+ professor Souram Subhathacharya. So, thankful to them Subhathoda for his excellent support
+ and all our support staff of smart classroom I am thankful to them. So, please finish this
+ particular step within few more seconds and I shall conclude my part.
+ So, what will be the break duration 10 minutes ok. So, after this session there will be a
+ break of 10 minutes ok. So, I believe that all of you have got the result I am just repeating
+ again what you have got in output. So, first entry was as per the tumor size 3.78. So,
+ that is why there are chances of being tumor is 60.75 as per the output you got after executing
+ the formula ok. And the second one if you see 2.44 centimeters if you see the chances
+ of being cancer is 19.27 percent and the third one entry was 2.09. So, the chances of being
+ cancer is 12.775 approximately ok. So, that is it please practice at home let us know
+ that if you have any doubt or queries most of the queries has been answered by our moderators
+ and I am joining the moderation duty. So, if there are some remaining questions I will
+ answer there ok. So, thank you again for joining my session and there is a 10 minutes break
+ and after that kindly attend the session of our respected faculty Dr. Jaul Hockpile on
+ unsupervised machine learning. Thank you very much.

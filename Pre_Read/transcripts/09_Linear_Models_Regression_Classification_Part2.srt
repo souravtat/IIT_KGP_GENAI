@@ -1,0 +1,1112 @@
+1
+00:00:00,000 --> 00:00:28,720
+ And in a classification problem suppose let us say that there is two class classification
+
+2
+00:00:28,720 --> 00:00:37,400
+ problem and suppose there are two classes red right you know for this, this is the value
+
+3
+00:00:37,400 --> 00:00:43,280
+ of x 1, this is the value of x 2 and this is an object and suppose there is the blue
+
+4
+00:00:43,280 --> 00:00:51,560
+ class. Now, if we have a linear function the linear
+
+5
+00:00:51,560 --> 00:00:56,960
+ function cannot give us whether it is red or blue. So, the way we use a linear function
+
+6
+00:00:56,960 --> 00:01:08,120
+ is we are going to find an equation a line you want to going to find a line and we are
+
+7
+00:01:08,120 --> 00:01:14,520
+ going to say that this line distinguishes the red objects from the blue objects. So,
+
+8
+00:01:14,520 --> 00:01:23,600
+ we want this line to separate the two classes. So, of course, this will only work if these
+
+9
+00:01:23,600 --> 00:01:30,960
+ points are linearly separable otherwise also we may be able to separate the points, but
+
+10
+00:01:30,960 --> 00:01:38,120
+ we have to find the error of the classification and we need to minimize the error ok.
+
+11
+00:01:38,120 --> 00:01:46,280
+ So, what we will look at is a way of using a linear function for classification we call
+
+12
+00:01:46,280 --> 00:01:53,360
+ this logistic regression, but logistic regression is basically not a regression problem, but
+
+13
+00:01:53,360 --> 00:02:02,440
+ classification problem. And what it means is basically linear models for classification
+
+14
+00:02:02,440 --> 00:02:09,740
+ the name is a misnomer. So, we are going to have linear models for classification.
+
+15
+00:02:09,740 --> 00:02:20,280
+ Now, if we take a linear function y equal to theta 0 plus theta 1 x 1 suppose this is
+
+16
+00:02:20,280 --> 00:02:27,480
+ the linear function this is going to give us a numerical value right. So, but the classification
+
+17
+00:02:27,480 --> 00:02:33,560
+ is discrete value. So, what we are going to do is one way of looking at it is to take
+
+18
+00:02:33,560 --> 00:02:42,480
+ a threshold we can say if suppose we have a threshold t. So, if we say if y is greater
+
+19
+00:02:42,480 --> 00:02:54,560
+ than t, then we say class 1 or less than equal to t class 2. This is one way of using linear
+
+20
+00:02:54,560 --> 00:03:01,920
+ functions for classification. Another way of using a linear function for classification
+
+21
+00:03:01,920 --> 00:03:09,000
+ is to interpret this numerical value as a probability value. For this what we will want
+
+22
+00:03:09,000 --> 00:03:20,880
+ to do is that if we have this linear function, we want to first make sure that with the output
+
+23
+00:03:20,880 --> 00:03:27,320
+ of this linear function or the output of the model is a value between 0 and 1.
+
+24
+00:03:27,320 --> 00:03:34,680
+ Because we are going to interpret the output of our model as a probability value and you
+
+25
+00:03:34,680 --> 00:03:40,040
+ know that a probability is value between is between 0 and 1, but if you take a general
+
+26
+00:03:40,040 --> 00:03:46,680
+ linear function it can have any value including negative value large values etcetera. So,
+
+27
+00:03:46,680 --> 00:03:53,600
+ we want to impose a transformation we will talk about this particular transformation
+
+28
+00:03:53,600 --> 00:04:00,680
+ later. So, we want to impose a transformation by applying the sigmoid function on this linear
+
+29
+00:04:00,680 --> 00:04:08,040
+ function and the output of this transform function is between 0 and 1. So, sigmoid function
+
+30
+00:04:08,040 --> 00:04:15,800
+ is one specific function whose output is between 0 and 1 and then after we apply this sigmoid
+
+31
+00:04:15,800 --> 00:04:25,360
+ function we can say if this value is greater than 0.5 we treat it as class 1 and otherwise
+
+32
+00:04:25,360 --> 00:04:34,600
+ is class 2 ok. So, if you have a linear function we can either use a threshold or we can convert
+
+33
+00:04:34,600 --> 00:04:40,600
+ it into a probability value treat it as a probability and a probability more than half
+
+34
+00:04:40,600 --> 00:04:45,960
+ and less than half based on this we can distinguish these two classes.
+
+35
+00:04:45,960 --> 00:04:56,720
+ So, these are somewhat equivalent, but we will use this formulation ok let me rub this
+
+36
+00:04:56,720 --> 00:05:23,520
+ up. Now, let us see what type of transformation we can do suppose we have you know there is
+
+37
+00:05:23,520 --> 00:05:32,560
+ a function of Z right and this function we want to any value Z we want to map it between
+
+38
+00:05:32,560 --> 00:05:41,440
+ 0 and 1. So, this red function that you are showing is a function which takes any value
+
+39
+00:05:41,440 --> 00:05:50,240
+ of Z and squashes it between 0 and 1 ok. If you look at G at negative infinity it approaches
+
+40
+00:05:50,240 --> 00:06:01,960
+ 0 at positive infinity it approaches 1 at 0 GZ is 0.5 ok. So, what I am showing is a
+
+41
+00:06:01,960 --> 00:06:10,880
+ depiction of the sigmoid function which is given by this equation sigma Z equal to 1
+
+42
+00:06:10,880 --> 00:06:17,800
+ by 1 plus e to the power minus Z it is such a function that if you apply this function
+
+43
+00:06:17,800 --> 00:06:26,320
+ on any Z, any Z negative positive any value the output will be between 0 and 1 ok this
+
+44
+00:06:26,320 --> 00:06:33,520
+ is the sigmoid function ok Z is any value in real and the output is between 0 and 1.
+
+45
+00:06:33,520 --> 00:06:41,080
+ Now we will use this sigmoid function to our benefit ok. So, what we are going to do this
+
+46
+00:06:41,080 --> 00:06:48,280
+ is my linear function what we have been talking about so far. So, we will take input as X
+
+47
+00:06:48,280 --> 00:06:55,760
+ compute the linear function theta dot X or theta transpose X as we discussed and apply
+
+48
+00:06:55,760 --> 00:07:02,240
+ the sigmoid on that and what we will get the output is a value between 0 and 1 and we will
+
+49
+00:07:02,240 --> 00:07:07,160
+ interpret this as a probability of belonging to a particular class.
+
+50
+00:07:07,160 --> 00:07:12,640
+ So, now because we have two classes this is binary classification problem we have two
+
+51
+00:07:12,640 --> 00:07:23,640
+ classes we say 0 class and 1 class we have two classes we name them 0 and 1 and we say
+
+52
+00:07:23,640 --> 00:07:32,200
+ output of this that is sigmoid of theta dot X is the probability of belonging to class
+
+53
+00:07:32,200 --> 00:07:42,640
+ 1 and 1 minus H theta X is the probability of belonging to the class 0 ok. So, if we
+
+54
+00:07:42,640 --> 00:07:49,560
+ want a classification not just a probabilistic value we can say if H theta X is greater than
+
+55
+00:07:49,560 --> 00:07:59,320
+ equal to 0.5 then we say class 1 which is equivalent to saying Z equal to theta 2 X
+
+56
+00:07:59,320 --> 00:08:05,520
+ greater than 0 because for the sigmoid function you know you can see you can just work it
+
+57
+00:08:05,520 --> 00:08:13,920
+ out it is very easy simple function you can find at the point 0 the sigmoid function gives
+
+58
+00:08:13,920 --> 00:08:26,360
+ sigmoid of 0 gives you 0.5 and if Z is positive sigmoid of Z is greater than 0.5 if Z is negative
+
+59
+00:08:26,360 --> 00:08:35,100
+ sigmoid of Z is less than 0.5. So, Z equal to theta dot X greater than equal to 0 means
+
+60
+00:08:35,100 --> 00:08:43,260
+ that H theta X is greater than 0.5 Z equal to theta dot X less than 0 means H theta X
+
+61
+00:08:43,260 --> 00:08:53,080
+ is less than 0.5 ok. So, you can use thisyou know. So, you could actually use this threshold
+
+62
+00:08:53,080 --> 00:09:01,420
+ function which greater than 0 means positive less than 0 means negative, but this threshold
+
+63
+00:09:01,420 --> 00:09:08,040
+ function is not differentiable sigmoid function is a smooth version of the threshold function
+
+64
+00:09:08,040 --> 00:09:12,760
+ and we will use it because we want to use gradient descent.
+
+65
+00:09:12,760 --> 00:09:28,240
+ Any questions on this? Can you show the questions? Is there any way to select the optimal starting
+
+66
+00:09:28,240 --> 00:09:35,000
+ value of theta you know when we do linear regression it does not matter what value of
+
+67
+00:09:35,000 --> 00:09:42,200
+ theta you choose you will always get to the global minima. If you are doing more complex
+
+68
+00:09:42,200 --> 00:09:50,800
+ functions then there are some tips and tricks which will be talked to in other classes ok.
+
+69
+00:09:50,800 --> 00:10:03,040
+ Alpha part ok. So, alpha is you know. So, you have this function you find that there
+
+70
+00:10:03,040 --> 00:10:10,360
+ is a gradient you take a small step alpha is the step size. If alpha is small you will
+
+71
+00:10:10,360 --> 00:10:15,720
+ move from here to here, if alpha is large you will move from here to here, if alpha
+
+72
+00:10:15,720 --> 00:10:24,640
+ is very large you will move from here to here. Does that answer your question? Ok thank you
+
+73
+00:10:24,640 --> 00:10:31,800
+ let us resume. So, these questions you please take tell me whenever they are there ok.
+
+74
+00:10:31,800 --> 00:10:41,720
+ So, what we said is that we want to use a linear function. So, we use a transformation
+
+75
+00:10:41,720 --> 00:10:46,880
+ using the sigmoid function. So, that the output of the linear function takes me to a value
+
+76
+00:10:46,880 --> 00:10:58,000
+ between 0 and 1 ok. Now so, what it means is that when sigma of z sigma of the linear
+
+77
+00:10:58,000 --> 00:11:04,160
+ function is equal to 0 sorry equal to 0.5 that corresponds to the decision surface.
+
+78
+00:11:04,160 --> 00:11:09,560
+ So, on one side we have class 1, the other side we have class 0. So, this is my class
+
+79
+00:11:09,560 --> 00:11:23,760
+ 1 and these are my class 0 ok. Now, in order to learn this decision surface we want to
+
+80
+00:11:23,760 --> 00:11:32,860
+ devise an optimization algorithm ok. Now, so for that we will come up with a specific
+
+81
+00:11:32,860 --> 00:11:37,600
+ loss function, other loss functions are possible, but we will talk about this specific loss
+
+82
+00:11:37,600 --> 00:11:47,360
+ function. So, for that let us fall back to the probabilistic interpretation. So, we want
+
+83
+00:11:47,360 --> 00:11:59,080
+ that the decision surface is sigmoid of theta dot x is equal to 0.5 and we interpret probability.
+
+84
+00:11:59,080 --> 00:12:08,160
+ So, we are saying that this sigmoid of theta dot x this is my model, my f theta x is equal
+
+85
+00:12:08,160 --> 00:12:17,600
+ to sigmoid of theta dot x ok this is my model and we are interpreting f theta x as the probability
+
+86
+00:12:17,600 --> 00:12:37,020
+ of belonging to class 1 ok. So, f sorry f theta x is probability of class 1 that is
+
+87
+00:12:37,020 --> 00:12:56,200
+ probability y equal to 1 given x ok and 1 minus f theta x is probability of y equal
+
+88
+00:12:56,200 --> 00:13:07,860
+ to 0 given x. So, this is the way we are interpreting the output of our model f theta. Now, given
+
+89
+00:13:07,860 --> 00:13:15,940
+ this interpretation let us you know come up with a loss function. So, what do you want
+
+90
+00:13:15,940 --> 00:13:27,620
+ if it is class 1 you want probability of y by x to be very close to 1, if it is class
+
+91
+00:13:27,620 --> 00:13:32,540
+ 0 you want this probability to be very close to 0 ok.
+
+92
+00:13:32,540 --> 00:13:41,760
+ Now, we want to measure whether it is how much it is close to 1, if the actual y is
+
+93
+00:13:41,760 --> 00:14:02,880
+ 1 we want sigmoid of theta dot to be close to 1 this is the what we want, but we want
+
+94
+00:14:02,880 --> 00:14:11,440
+ to be close you know close to 1 ok. So, how close to 1? So, if it is close to 1 our loss
+
+95
+00:14:11,440 --> 00:14:19,160
+ is 0, if it is you know not so close to 1 we will have a loss and what is the loss we
+
+96
+00:14:19,160 --> 00:14:32,600
+ define it as the negative log probability. So, y hat equal to sigmoid of theta dot x
+
+97
+00:14:32,600 --> 00:14:43,560
+ and we say minus log y hat is my loss function. So, if y hat is 1 what is log of y hat it
+
+98
+00:14:43,560 --> 00:14:53,240
+ is 0 just let me finish I will take the question. If y hat is 1 the loss is 0 ok. So, if you
+
+99
+00:14:53,240 --> 00:15:01,840
+ plot minus log y hat this is the plot we are showing here, if you plot this when y hat
+
+100
+00:15:01,840 --> 00:15:09,000
+ is 1 the loss is 0 and for other values of y hat y hat is between 0 and 1 this shows
+
+101
+00:15:09,000 --> 00:15:18,360
+ the loss function ok. So, negative log y hat is taken as a measure of the loss.
+
+102
+00:15:18,360 --> 00:15:27,600
+ Now, if the actual class is 0 the probability is given by 1 minus y hat and that should
+
+103
+00:15:27,600 --> 00:15:35,040
+ be close to 0 again we take. So, 1 minus y hat that should be close to 1 y hat should
+
+104
+00:15:35,040 --> 00:15:40,820
+ be close to 0 1 minus y hat should be close to 1. So, negative log of 1 minus y hat gives
+
+105
+00:15:40,820 --> 00:15:57,820
+ me the loss ok. Now, if you take one particular example it can be y is 1 or y equal to 0 for
+
+106
+00:15:57,820 --> 00:16:10,040
+ one example. Now, if y is 1 the loss is minus log y hat if y is 1 1 minus y is 0. So, the
+
+107
+00:16:10,040 --> 00:16:24,440
+ second term can be ignored ok. And if y is 0 then the first term is 0 the second term
+
+108
+00:16:24,440 --> 00:16:31,660
+ is 1. So, if y is 0 the first term is ignored the second term gives me minus log of 1 minus
+
+109
+00:16:31,660 --> 00:16:39,620
+ y hat. So, I have a single equation which considers both the cases for y equal to 1 or y equal
+
+110
+00:16:39,620 --> 00:16:45,460
+ to 0. If y equal to 1 only the first term is there second term becomes 0 if y equal
+
+111
+00:16:45,460 --> 00:16:50,900
+ to 0 only the second term is there. So, this is an expression of my loss function for a
+
+112
+00:16:50,900 --> 00:17:01,700
+ single example. Now, what is y hat? It is h theta x and what is h theta x? h theta x
+
+113
+00:17:01,700 --> 00:17:12,400
+ is sigmoid of theta dot x ok. So, we write the loss function as minus y log h theta x
+
+114
+00:17:12,400 --> 00:17:17,500
+ minus 1 minus y log 1 minus h theta x this is my loss function.
+
+115
+00:17:17,500 --> 00:17:28,100
+ Now, I will take the question. Now, let us just we can put the question. How does gradient
+
+116
+00:17:28,100 --> 00:17:34,020
+ descent minimize loss? I will come back to it after I finish you know otherwise I will
+
+117
+00:17:34,020 --> 00:17:38,740
+ miss the flow. I think we will take this question if there are any particular question for this
+
+118
+00:17:38,740 --> 00:17:43,700
+ thing that we are teaching now we can have the questions now. These questions refer to
+
+119
+00:17:43,700 --> 00:17:51,100
+ what I taught earlier I will take this questions after I finish this part ok.
+
+120
+00:17:51,100 --> 00:17:56,540
+ Any question for this part? Multiple class will coming to this we are only talking about
+
+121
+00:17:56,540 --> 00:18:03,340
+ binary I told you very clearly. Now, we are talking about binary classification ok let
+
+122
+00:18:03,340 --> 00:18:12,340
+ us resume. Questions on the first part we will take later ok. Now, let us come back
+
+123
+00:18:12,340 --> 00:18:40,420
+ to what we were doing? Is there a way to clean everything? So, we use the negative
+
+124
+00:18:40,420 --> 00:18:54,500
+ you know negative log loss. This is also called the cross entropy loss. This is a very popular
+
+125
+00:18:54,500 --> 00:19:01,700
+ loss function for classification and what is this loss? It says you look at you know
+
+126
+00:19:01,700 --> 00:19:10,380
+ suppose a particular class suppose the actual class is y equal to 1 or in a multiclass class
+
+127
+00:19:10,380 --> 00:19:17,140
+ classification problem suppose the actual class is y equal to red. So, you look at what is
+
+128
+00:19:17,140 --> 00:19:23,420
+ your model outputting as the probability? Ideally the model should output probability
+
+129
+00:19:23,420 --> 00:19:29,540
+ equal to 1 whatever the model outputs you take the negative log probability of that
+
+130
+00:19:29,540 --> 00:19:37,940
+ class ok. So, that is the loss for a single example and you sum it up and take the average
+
+131
+00:19:37,940 --> 00:19:45,860
+ for m examples. This is your negative log loss. This is the negative log loss or cross
+
+132
+00:19:45,860 --> 00:19:52,540
+ entropy loss for one example this is the average loss for m examples. So, this is the loss
+
+133
+00:19:52,540 --> 00:20:01,180
+ function that we are going to consider and then now let us use our friend the gradient
+
+134
+00:20:01,180 --> 00:20:06,020
+ descent algorithm. We said that for linear regression gradient descent algorithm is not
+
+135
+00:20:06,020 --> 00:20:17,100
+ required because we have an analytical solution, but for logistic regression you know we do
+
+136
+00:20:17,100 --> 00:20:23,940
+ not easily get an analytical solution for this where we have the minimum value of this
+
+137
+00:20:23,940 --> 00:20:31,020
+ function, but we can still use gradient descent and the good news is that this function is
+
+138
+00:20:31,020 --> 00:20:38,020
+ also a convex function. This is a convex function this has a single minima, so we can use gradient
+
+139
+00:20:38,020 --> 00:20:44,060
+ descent. There is no analytical solution, but we can use gradient descent. So, the same
+
+140
+00:20:44,060 --> 00:20:53,780
+ algorithm that we used earlier we can use here only because the equation is different its
+
+141
+00:20:53,780 --> 00:21:00,660
+ gradient will be different ok. So, we have to now differentiate this function
+
+142
+00:21:00,660 --> 00:21:07,260
+ with respect to theta 0 and theta 1 and we if we differentiate it right if we differentiate
+
+143
+00:21:07,260 --> 00:21:16,980
+ it we find the solution that solution is this ok and we can use this in a same function
+
+144
+00:21:16,980 --> 00:21:22,340
+ as we did earlier. Does the solution look similar to linear regression? Well it looks
+
+145
+00:21:22,340 --> 00:21:27,380
+ similar, but it is not the same because h theta is different. What is h theta? It is
+
+146
+00:21:27,380 --> 00:21:37,820
+ now sigmoid of theta dot x ok. So, this is my loss function for classification, this
+
+147
+00:21:37,820 --> 00:21:43,860
+ is the partial derivative and we can use the gradient descent algorithm.
+
+148
+00:21:43,860 --> 00:21:51,340
+ So, we repeat for each parameter that we have we do theta j equal to theta j minus alpha
+
+149
+00:21:51,340 --> 00:22:00,020
+ times this ok and if there n plus 1 parameters we will simultaneously update these parameters
+
+150
+00:22:00,020 --> 00:22:12,060
+ in one iteration and then we can do multiple iterations ok. Now, I did not show you how
+
+151
+00:22:12,060 --> 00:22:19,580
+ to go from this expression to this expression. I can give it as an exercise you can work
+
+152
+00:22:19,580 --> 00:22:24,900
+ it out or you know I can incorporate it in the slide. It is not a difficult thing, but
+
+153
+00:22:24,900 --> 00:22:30,460
+ I did not want to do it you know that log z if you differentiate you get 1 by z and
+
+154
+00:22:30,460 --> 00:22:34,420
+ if you do this you can easily come up with this.
+
+155
+00:22:34,420 --> 00:22:41,260
+ Now, let us compare the solutions for linear regression and logistic regression. The forms
+
+156
+00:22:41,260 --> 00:22:51,180
+ are the same, but here h theta x i is just theta dot x here h theta x i is sigmoid of
+
+157
+00:22:51,180 --> 00:23:01,740
+ theta dot x ok. This is the solution that we get, but by using the gradient descent
+
+158
+00:23:01,740 --> 00:23:08,820
+ and sigmoid is this function that we have shown. So, this h theta x and here h theta
+
+159
+00:23:08,820 --> 00:23:19,060
+ x. Now, I come to your question the what we have shown is for two class classification,
+
+160
+00:23:19,060 --> 00:23:24,580
+ but what we have three classes, four classes, ten classes right. This is an example of multi
+
+161
+00:23:24,580 --> 00:23:30,500
+ class classification. Now, we want to still use linear models, but now if we have three
+
+162
+00:23:30,500 --> 00:23:36,660
+ classes, five classes, ten classes one model will not be sufficient. So, what we are going
+
+163
+00:23:36,660 --> 00:23:43,140
+ to do is that we are going to look at suppose there are three classes, we are going to look
+
+164
+00:23:43,140 --> 00:23:51,220
+ at three linear functions or three sigmoid applied to linear functions, three logistic
+
+165
+00:23:51,220 --> 00:23:55,460
+ functions you know sigmoid function is also called the logistic function that is why we
+
+166
+00:23:55,460 --> 00:24:00,980
+ are called it logistic regression. So, we have one function to separate glue from
+
+167
+00:24:00,980 --> 00:24:08,820
+ non-glue, another function to separate yellow from non-yellow, a third function to separate
+
+168
+00:24:08,820 --> 00:24:18,420
+ red from non-red. So, we will now have three linear models. One for each class if you have
+
+169
+00:24:18,420 --> 00:24:25,220
+ k classes for each class we have a linear and a linear model to separate that class from
+
+170
+00:24:25,220 --> 00:24:36,060
+ the rest right. So, now we will have many parameters, we will have theta 1 vector and
+
+171
+00:24:36,060 --> 00:24:45,420
+ the parameters for the first linear function, theta 2 vector for the second class and if
+
+172
+00:24:45,420 --> 00:24:52,100
+ there are k classes we will have dot dot dot theta k for the kth classes. So, we will have
+
+173
+00:24:52,100 --> 00:25:01,740
+ k linear functions, each one will have a number of parameters.
+
+174
+00:25:01,740 --> 00:25:14,660
+ Now what we are going to do? We are going to say that sigmoid of theta 1 dot x is the
+
+175
+00:25:14,660 --> 00:25:31,600
+ probability of class 1 given x, sigmoid of theta k dot x is probability of class k given
+
+176
+00:25:31,600 --> 00:25:41,480
+ x. And we use the same loss function that we discussed earlier, we will have if a particular
+
+177
+00:25:41,480 --> 00:25:49,420
+ object belongs to class i we will look at sigma of theta i dot x and we will take the negative
+
+178
+00:25:49,420 --> 00:25:58,860
+ log of this as the loss of that ok. But before that wait before we come to that,
+
+179
+00:25:58,860 --> 00:26:08,540
+ now for a particular input object x suppose there are three classes. So, we have found
+
+180
+00:26:08,540 --> 00:26:17,180
+ theta 2 theta 3. So, we have found sigma of theta 2 dot x equal to probability plus 2
+
+181
+00:26:17,180 --> 00:26:33,540
+ given x. Suppose this is class 3 given x. So, this is my P 1, this is P 2, this is P
+
+182
+00:26:33,540 --> 00:26:44,180
+ 2. Now, so we could interpret these probabilities they do not sum up to 1. So, what we really
+
+183
+00:26:44,180 --> 00:26:51,500
+ want is that we want to compute this expression so that they sum to 1 and for this what we
+
+184
+00:26:51,500 --> 00:26:57,140
+ are going to do instead of separately finding out the probabilities. Now what we are going
+
+185
+00:26:57,140 --> 00:27:08,340
+ to do is let me erase this. We are first instead of finding the probabilities first we could
+
+186
+00:27:08,340 --> 00:27:19,260
+ find the probabilities first, but what is usually done is that you have this three linear functions
+
+187
+00:27:19,260 --> 00:27:27,340
+ let us say theta 1 dot x 1 you know you do not apply any sigmoid do not apply the sigmoid.
+
+188
+00:27:27,340 --> 00:27:44,440
+ We say that S 1 equal to theta 1 dot x 1 sorry x S 2 equal to theta 2 dot x S 3 equal to
+
+189
+00:27:44,440 --> 00:28:00,460
+ theta 3 dot x. Now, we have not used any sigmoid function please note sorry I have S 1 S 2
+
+190
+00:28:00,460 --> 00:28:16,360
+ S 3. Now, I want to transform from S 1 S 2 S 3 to P 1 P 2 P 3 such that each of P 1 P
+
+191
+00:28:16,360 --> 00:28:26,800
+ 2 P 3 is between 0 and 1 and their sum equal to 1. So, sigma P i we want to be 1 this is
+
+192
+00:28:26,800 --> 00:28:38,540
+ what we want. So, for that the transformation that is used is for probability y equal to
+
+193
+00:28:38,540 --> 00:28:57,480
+ k given theta we say that you do exponential exponential of theta k x divided by summation
+
+194
+00:28:57,480 --> 00:29:04,360
+ of exponential of theta j x. In this case let us simplify this. So, we will say e to
+
+195
+00:29:04,360 --> 00:29:12,400
+ the power S 1 divided by e to the power S 1 plus e to the power S 2 plus e to the power
+
+196
+00:29:12,400 --> 00:29:27,200
+ S 3 this is the this is equal to P 1. So, for P 2 we will have e to the power S 2 divided
+
+197
+00:29:27,200 --> 00:29:45,880
+ by e to the power S 1 plus e to the power S 2 sorry and for P 3 we will have e to the
+
+198
+00:29:45,880 --> 00:29:54,240
+ power S 3 divided by e to the power S 1 plus e to the power S 2 plus e to the power S.
+
+199
+00:29:54,240 --> 00:30:03,520
+ So, given this linear functions three linear functions or in general k linear functions
+
+200
+00:30:03,520 --> 00:30:09,560
+ we have a transformation which takes the outputs of this linear functions let us say S 1 is
+
+201
+00:30:09,560 --> 00:30:17,240
+ through S 3 and converts them to values P 1 P 2 P 3 with sum 2 equal to 1 and each of
+
+202
+00:30:17,240 --> 00:30:29,160
+ them is between 0 and 1. Now, that is my j theta that gives me my loss and we use the
+
+203
+00:30:29,160 --> 00:30:38,280
+ negative log loss in order to find the loss. So, if you want to find the summation of the
+
+204
+00:30:38,280 --> 00:30:47,160
+ loss we sum for the m examples and if you want to find average we will divide by m.
+
+205
+00:30:47,160 --> 00:30:56,360
+ But for each example for each of the k classes I will only consider suppose this particular
+
+206
+00:30:56,360 --> 00:31:09,000
+ example belongs to class 2. So, for class 2 I will consider the negative log of P 2. So,
+
+207
+00:31:09,000 --> 00:31:16,760
+ only the term corresponding to class 2 we will take. So, we will take the term for class
+
+208
+00:31:16,760 --> 00:31:24,000
+ 2 for all other term we will ignore this those terms right. Suppose example 1 belongs to
+
+209
+00:31:24,000 --> 00:31:33,040
+ class 2 we will use P 2 example 2 belongs to class 1 we will use P 1 and take negative
+
+210
+00:31:33,040 --> 00:31:42,320
+ log of P 1 and we will add them up for these m examples to get the total loss ok. This
+
+211
+00:31:42,320 --> 00:31:52,120
+ is for multiclass classification. So, basically the outputs of the linear functions we use
+
+212
+00:31:52,120 --> 00:31:59,400
+ this transformation to convert them to values which can be interpreted as probabilities and
+
+213
+00:31:59,400 --> 00:32:07,520
+ this transformation is called the soft max transformation which has this form exponential
+
+214
+00:32:07,520 --> 00:32:15,440
+ of you know sk divided by summation of exponential of Si ok.
+
+215
+00:32:15,440 --> 00:32:22,040
+ So, with this I stop I will take questions first I will take questions on this topic
+
+216
+00:32:22,040 --> 00:32:27,160
+ then we will take questions on the previous topic that we taught before the break. So,
+
+217
+00:32:27,160 --> 00:32:35,040
+ first we will take questions on logistic regression. Why are we taking negative of log for the
+
+218
+00:32:35,040 --> 00:32:44,600
+ loss function? So, as I explained right I want the probability to be 1. So, negative
+
+219
+00:32:44,600 --> 00:32:53,000
+ log is one possible loss function where if y is 1 the loss is 0 for other values the
+
+220
+00:32:53,000 --> 00:33:01,320
+ loss is more and this is the shape of the curve of the negative log. This is the shape
+
+221
+00:33:01,320 --> 00:33:08,920
+ of the curve of the negative log. Does that answer your question? You could use other
+
+222
+00:33:08,920 --> 00:33:16,440
+ loss function this is one of the popular loss function ok. The negative log function has
+
+223
+00:33:16,440 --> 00:33:27,720
+ this particular form. How to determine which algorithm to apply? Which algorithm you know
+
+224
+00:33:27,720 --> 00:33:34,480
+ it depends on the dataset for if the dataset is such that a simple linear model is sufficient
+
+225
+00:33:34,480 --> 00:33:42,080
+ you can use a linear model if it is not you use other models there is no formula.
+
+226
+00:33:42,080 --> 00:33:47,840
+ Why exponential function is chosen? You know basically an exponential function is just
+
+227
+00:33:47,840 --> 00:33:52,460
+ one possible function you could use other functions this is the popular function. This
+
+228
+00:33:52,460 --> 00:34:00,440
+ exponential function amplifies you know if you look at S 1, S 2, S 3 one of them is larger
+
+229
+00:34:00,440 --> 00:34:06,120
+ it amplifies the value of the larger number ok. Instead of exponential you could have
+
+230
+00:34:06,120 --> 00:34:12,280
+ taken S 1 square divided by sigmoid of S i square it is possible. This is the more popular
+
+231
+00:34:12,280 --> 00:34:18,560
+ function this amplifies the larger value and this is one of the popular loss functions
+
+232
+00:34:18,560 --> 00:34:25,280
+ that people use. Again you know there is nothing to say that this is the function you cannot
+
+233
+00:34:25,280 --> 00:34:31,040
+ take other functions this is the popular functions that people use this has a nice solution and
+
+234
+00:34:31,040 --> 00:34:37,160
+ you know in terms of the derivative and all that. Anything else we can now go back to
+
+235
+00:34:37,160 --> 00:34:45,520
+ the previous questions.
+
+236
+00:34:45,520 --> 00:34:56,040
+ How does gradient descent minimize loss? So, suppose this is your curve and you have chosen
+
+237
+00:34:56,040 --> 00:35:04,080
+ a particular value of your parameter theta at step 0. Now you want to reduce the loss
+
+238
+00:35:04,080 --> 00:35:15,160
+ to reduce the loss you see that if the gradient is in this direction the best value is in
+
+239
+00:35:15,160 --> 00:35:24,520
+ the opposite direction. If gradient is in the in this direction upwards the best value
+
+240
+00:35:24,520 --> 00:35:34,760
+ is in the opposite direction ok. If you take any particular value on a curve forget about
+
+241
+00:35:34,760 --> 00:35:40,720
+ machine learning gradient descent machine learning etcetera. If you have any function
+
+242
+00:35:40,720 --> 00:35:48,920
+ you want to find the minima of the function ok local minima of the function at this point
+
+243
+00:35:48,920 --> 00:35:56,240
+ you find the derivative. If the derivative is positive that means the local minima is
+
+244
+00:35:56,240 --> 00:36:03,480
+ in the negative direction. If the derivative is negative it means the local minima is in
+
+245
+00:36:03,480 --> 00:36:09,960
+ the positive direction. So, if the derivative whatever is the derivative if you want to
+
+246
+00:36:09,960 --> 00:36:14,960
+ go to a local minima you have to move in the opposite direction and that is what gradient
+
+247
+00:36:14,960 --> 00:36:27,320
+ descent is doing ok. I hope you understand now. All these estimators satisfy unbiasedness
+
+248
+00:36:27,320 --> 00:36:32,840
+ or that is not a requirement. What are the bare minimum criteria these estimators need
+
+249
+00:36:32,840 --> 00:36:42,440
+ to follow? You see that these estimators that we are looking at you know first of all where
+
+250
+00:36:42,440 --> 00:36:47,800
+ is the estimator? Estimator is when we are taking the average when we are taking the
+
+251
+00:36:47,800 --> 00:36:56,760
+ average loss that is where the estimator lies. In the gradient descent algorithm we are estimating
+
+252
+00:36:56,760 --> 00:37:03,000
+ the gradient based on m examples that is where the estimator is and we are using an unbiased
+
+253
+00:37:03,000 --> 00:37:08,600
+ estimator mean is an unbiased estimator. After that we are using this optimization
+
+254
+00:37:08,600 --> 00:37:16,560
+ algorithm the gradient descent which I just explained ok. The estimator the average is
+
+255
+00:37:16,560 --> 00:37:22,560
+ the only estimator that we are using which is the mean and whose properties you have
+
+256
+00:37:22,560 --> 00:37:33,600
+ already discussed it is unbiased inconsistent etc. Next question I understand that in both
+
+257
+00:37:33,600 --> 00:37:39,960
+ cases we are updating theta by subtracting alpha multiplied by the slope. When the slope
+
+258
+00:37:39,960 --> 00:37:49,560
+ is positive we subtract no no we are doing minus alpha slope. If slope is positive we
+
+259
+00:37:49,560 --> 00:37:54,000
+ are going in the negative direction if the slope is negative we are going in the positive
+
+260
+00:37:54,000 --> 00:38:03,280
+ direction. Alpha is always positive alpha is between 0 and 1 alpha is positive if slope
+
+261
+00:38:03,280 --> 00:38:08,280
+ is negative we are taking a positive step if slope is positive we are taking a negative
+
+262
+00:38:08,280 --> 00:38:20,880
+ step alpha is always positive any other question? At theta 0 theta 1 are all loss parameters
+
+263
+00:38:20,880 --> 00:38:31,320
+ of each x theta 0 theta 1 are parameters. So, y equal to theta 0 plus theta 1 x right
+
+264
+00:38:31,320 --> 00:38:38,960
+ theta 0 and theta 1 are parameters of the function or inlogistic regression we have
+
+265
+00:38:38,960 --> 00:38:48,120
+ y equal to sigmoid of theta 0 plus theta 1 x that theta 0 and theta 1 are the parameters.
+
+266
+00:38:48,120 --> 00:38:58,400
+ The loss function is with respect to the output and the desired output ok. So, we are trying
+
+267
+00:38:58,400 --> 00:39:05,720
+ to by trying to minimize loss we are trying to find the optimum values of theta 0 and
+
+268
+00:39:05,720 --> 00:39:15,760
+ theta 1 ok. Theta 0 theta 1 are the parameters suppose theta 0 and theta 1 are you know some
+
+269
+00:39:15,760 --> 00:39:25,000
+ values 0.1 0.2 there will be some loss you will get loss l 1. If theta 0 theta 1 are
+
+270
+00:39:25,000 --> 00:39:32,740
+ some other values let us say 0.3 0.1 you will get a different loss. Our objective is to
+
+271
+00:39:32,740 --> 00:39:40,080
+ find that theta 0 theta 1 for which the loss is the smallest. So, loss is a function of
+
+272
+00:39:40,080 --> 00:39:46,960
+ the parameters right when we have mean square loss the loss is function of the parameters
+
+273
+00:39:46,960 --> 00:39:53,640
+ or we have negative log loss loss is a function of the parameters we want to find those values
+
+274
+00:39:53,640 --> 00:39:59,920
+ of the parameters which minimize the loss. Can you go back to the question again I am
+
+275
+00:39:59,920 --> 00:40:11,200
+ not sure I answer the question. This I have already answered theta 0 theta 1 are parameters
+
+276
+00:40:11,200 --> 00:40:23,200
+ we modify the parameters. So, as to minimize loss any question after this good books offline
+
+277
+00:40:23,200 --> 00:40:37,840
+ I will tell you some standard books on machine learning ok. Thank you ok sorry I kept you
+
+278
+00:40:37,840 --> 00:40:44,720
+ waiting. Thank you ma'am.
+

@@ -1,0 +1,250 @@
+ Welcome back. So, let us continue our discussion where we stopped. So, we understand that we
+ need to look at the purity, we need to look at several other factors to decide when to
+ stop growing the tree. In general, one of the things as I was mentioning that we always
+ aim to avoid overfitting in decision trees and I mean what is desired is that we want
+ a decision tree that is not very big in size yet that fits the training data reasonably
+ well. So, this is an ideal compromise or ideal kind of tradeoff we want that we do not want
+ a decision tree which is like very large, very deep, but we also want it to fit the
+ training data properly. One extreme example of a simple decision tree is called decision
+ stump where we only test the value of a single feature.
+ So, just think that it just have like just one root node and the corresponding rule
+ and the leaf nodes. So, that is the simplest version of decision tree. It is also called
+ decision stump because this is not necessarily a tree, but this is not very powerful because
+ it cannot generalize. Just think that you have 4 features, but you are just using only
+ one feature to construct the decision stump. But what happens is that like we are going
+ to discuss the ensemble of trees later in case of large ensemble where we are kind of
+ combining a lot of decision stumps together. So, that can make a difference, but a single
+ decision stump is not very powerful. On the other hand, let us say you have started
+ building a tree, the tree have become very large and you are growing it, growing it,
+ growing it. Now, at certain point you may also want to prune the tree. So, that means
+ that you may want to cut the tree so that the resultant tree becomes a little less complex
+ and more general. Now, one option is that while you are building the tree you stop,
+ you do not build it to become very complex. So, that is like pruning while you are building
+ the tree. The other option is that you prune after you have built the tree. So, this is
+ kind of like a post pruning routine that. So, this is also called a post pruning because
+ then already the tree has been built and you are trying to cut down the tree. So, then
+ the question is like similar to the question like which node we should select, which feature
+ we should select to grow the tree. Similarly, we have to judge which nodes to select when
+ we are pruning the tree. So, for this again cross validation can be used like where we
+ use our validation set which is separate from the training set and we prune every possible
+ node that does not hurt the accuracy on the validation set. So, it is kind of like we
+ prune one particular node, we see whether what is the accuracy and with every pruning
+ we go ahead if the accuracy is not hurt. The other option is to greedily remove the node
+ that improves the validation accuracy the most. So, suppose one option is that you are getting
+ certain accuracy. Let us say you are getting 80 percent accuracy and you prune if the accuracy
+ do not go less than 80 percent. The other thing is that you prune when you see that
+ the accuracy has improved from 80 percent to 85 percent or 82 percent to 83 percent.
+ So, to summarize all the discussions which we had around decision tree, decision tree
+ is generally very simple and easy to interpret. They can easily handle different types of
+ features like we looked at categorical features, it can take real numerical features, decision
+ trees are very fast at times of testing because you only need to compare like you compare
+ the rule at the root node, you compare the rule at the internal node, essentially if
+ h is the height of the tree you just make h comparisons which is much better compared
+ to let us say k nearest neighbor where to just find the k nearest neighbors you will have
+ to compare with all possible like you have to make an all possible all pair comparison.
+ The fourth point is that multiple decision trees can be combined via ensemble methods
+ to make a very more or make more powerful model for example, random forest. So, we are
+ again going to see this just in like couple of slides how multiple decision trees can
+ be merged together can be combined together to make up a addition.
+ So, these are all good things about decision trees, but there are also certain weaknesses
+ of decision trees. For example, learning the best possible decision tree is a computationally
+ hard problem. So, there you cannot guarantee that given a training data I have built the
+ best possible tree because all the algorithms which we have discussed they all are some
+ kind of greedy heuristic based algorithm. Sometimes the decision trees can grow large
+ and can become very complex tend to overfit unless we early stop or we apply some pruning
+ post post the tree is built. So, now let us look at ensemble classifier.
+ So, so far knife base k nearest neighbor support vector machine decision tree they all were
+ a single classifier. So, when I say single classifier you are building a single model
+ which can classify a particular trace input. Now, we are going to talk about classific
+ classifier models where essentially a decision is being made by multiple classifiers together
+ not a single classifier. So, what are the benefits of this? So, essentially we can have
+ multiple classifiers at work where every classifier conduct classification on the same set of class
+ level, but they may use different input or may have different parameters. They may even
+ produce different output for a certain example. So, just think of a scenario that let us say
+ often time like in industry or even in academia where we will have to take a very important
+ decision we form a committee rather than relying on one individual to apply their knowledge
+ and decide on the behalf of a large organization. Because one individual may have may be very
+ smart very intelligent, but they may have certain limitation they may not be able to
+ see all possible combinations of facts. They may not be able to foresee what can be the
+ impact of the decision they are taking now. Instead of that if you form a committee with
+ let us say 5 people each 5 people can look at a problem from 5 different different viewpoints.
+ At the same time they may have very complementary skill set like some committee some member
+ of the committee may look at it from a financial viewpoint that what is going to be the financial
+ implication of this particular decision some person may actually be looking at it from
+ a personal or personal kind of point of view that what is going to be the impact of the
+ current manpower which is there in the organization.
+ So, different people may come with like different background and they can look at the same problem
+ with different set of eyes. So, often time if you take a collective decision after discussing
+ within the committee which have considered all these different aspects the decision turns
+ out to be much better than if it was taken by one single individual. The same thing is
+ true for ensembles that when you are looking at a single classification algorithm like
+ decision tree it is just a single model which is making the decision. On the other hand
+ if you can merge multiple classifiers each of them are looking at different aspects of
+ the data and accordingly they are taking some decision and then the goal is to make sure
+ that you combine the decision in a good way.
+ Now, to achieve very good output from this ensembling ideally what we want is we want
+ to learn different classifiers which look at different training examples so that they do
+ not get biased by looking at the same data point. Similarly, another option is that you
+ allow the one classifier to look at only a subset of features not all features and different
+ classifiers look at some separate subset. So, this way you can ensure that you have
+ a wide variety or diversity in the amount of data or the type of data different classifiers
+ are seeing and typically this method tends to yield very good output.
+ Now, in terms of performance it may happen that each of the classifiers the individual
+ classifiers are not perfect in fact they may not be like very suitable compared to some
+ other classifiers. But if they are complementary if they have some complementary skill set
+ for example like where the training data points which are correctly classified by one classifier
+ is not correctly classified by other classifier then you get the complementary inbuilt in
+ the ensembling process. So, that way it can actually lead to much improvement so it can
+ utilize this complementary property to offer potential improvement.
+ Now, the whole problem boils down to ensemble learning. Learning this ensembling method
+ one how to create classifiers with complementary performances and how to conduct voting or
+ how to conduct the aggregation when different classifiers are giving different prediction
+ for the same test input. In fact, in this context one particular term is often used
+ is called strong learner versus weak learner. A strong learner is a model which look at
+ level training data and they produce a classifier which can be arbitrarily accurate. So, that
+ means which you can make it like very very very complex which can become very accurate
+ but in turn it can be a very complex model. On the other hand weak learners look at the
+ same level data for training but they may produce a classifier which is not very complex
+ which is not very powerful but which is of course more accurate than random guessing.
+ Ensembling is often to combine or boost weak learners to create a very strong learner alright.
+ So, the idea we have an ensemble often is to derive a strong learner from a collection
+ of weak learners. So, in this lecture we are going to talk about three different process
+ of ensembles or approaches of ensembles one is called bagging. Bagging is the short form
+ of bootstrap aggregating, boosting and finally random forest.
+ So, for bagging algorithm let us say we have training data from X1, Y1, X2, Y2, X3, Y3
+ all the way up to XNYN. Now we are creating a bootstrap sample. The bootstrap sample means
+ this is a small sample of the training data and we build a model which is maybe a weak
+ learner based on this small sample data. So, if you look at this particular equation
+ let us say we are trying to create M models or M weak learners. So, for that we are creating
+ M bootstrap samples from the training data. Each sample is let us say we call us like
+ dm and we build a model gmx from the bootstrap data dm.
+ So, let us say one, so if we look at an example like let us say X1, Y1, X2, Y2, X3, Y3, X4,
+ Y4, X5, Y5 and let us say we are going to create 3, so M is equal to 3. So, we are going
+ to create 3 bootstrap samples and train 3 different classifier. The first bootstrap
+ sample may be X1, Y1, X2, Y2. The second bootstrap example may be X2, Y2, X3, Y3, X4, Y4 and
+ the third may be X4, Y4 and X5, Y5. So, you see that in this case it is not guaranteed
+ that every bootstrap sample will have exactly the same size. Similarly, they can have overlap.
+ So, it is not that if you take one particular it is not like a partitioning like where
+ you can only take one example or one data point part of one bootstrap sample. So, multiple
+ bootstrap samples can have the same data point as it is in its collection. But then using
+ this bootstrap sample, so let us say this is D1, this is D2, this is D3, you train 3
+ different models G1, G2, G3 using this bootstrap data.
+ Now, once this models are trained then we can either just take a simple average of the
+ model output for regression problems and for classification problem we can compute a voting
+ either let us say majority voting that depending on what the majority of the models are telling
+ you pick the output from I mean the majority output from that or you can even have weighted
+ voting which we will talk later. Now, one important thing about bagging or bootstrap
+ aggregating is that the bootstrap sample of any instances are obtained by drawing in
+ examples at random with replacement. So, as I mentioned this ensures that there can be
+ also overlap between two bootstrap samples. Now, on average every bootstrap sample has
+ 63 percent of the instances. So, this actually encourage predictors to have uncorrelated
+ error. So, that means every predictor will have some examples which are new and which
+ are not seen by other predictors. So, this is bagging. Now, let us come to the next
+ ensemble method called boosting. So, in case of boosting we want to construct weak classifiers
+ or weak learners using different data distribution. So, we first start with uniform waiting. So,
+ we put every sample in the distribution uniform weight and it can be selected from like uniform
+ weight then every step of learning we increase the weights of the examples which are not
+ correctly learned by the weak learner. So, how to increase the weight essentially you
+ can think of kind of repeating this example in the sample data set.
+ So, for instance let us say you have x 1 y 1 x 2 y 2 x 3 y 3 initially all the examples
+ are treated equally, but let us say in the first phase you see that you are making error
+ on x 2 y 2. So, in that case in the training example you repeat x 2 y 2 multiple times.
+ So, that way you are giving more weight to x 2 y 2. On the other hand if let us say some
+ examples after you have given higher weight it is starting to perform better. So, in that
+ case you can decrease the weight for those examples which are correctly learned by the
+ weak learner. So, here the idea is that you want to focus
+ on difficult examples which are not correctly classified in the previous step and increasingly
+ you want to build the classifiers in increasing steps. So, this is something like this that
+ initially you started with all training samples you build the first classifier then for the
+ second classifier you change the weight depending on where you perform poorly then again in
+ the next step you change the weight again and so on and finally you get the final classifier
+ using a weighted combination of all the classifier decisions.
+ So, how to combine this weak classifier decisions? So, as I mentioned like you can either have
+ a simple straight majority voting or you can have weighted voting where you can construct
+ the strong classifier by weighted voting of weak classifiers and the idea is that if you
+ have a better weak classifier that should get a larger weight and you iteratively add
+ weak classifier and you increase the accuracy of the combined classifier.
+ So, let us just look at one example that if you have a single learner which is trying
+ to differentiate between let us say blue sample and green sample you can have a single learner
+ which classify like this and the combined classifier let us say initially it also follows the single
+ learner. So, it is the same classification then we figured out that some cases it is
+ not doing correct. So, if you look at this here for this example it was it made a mistake.
+ So, all these green examples were correctly classified this blue ones were correctly classified
+ but this green one was not classified properly. So, then I increase the weight of this and
+ I try learning another classifier. Let us say the new classifier is like this now. So,
+ in this case the combined classifier will look something like this, but again we are
+ making further mistake. So, some cases we made more mistakes some cases we did not make
+ mistake. So, accordingly we change the weight. So, if you can look at the the animation like
+ each individual points now the weight is kind of changing and that is giving us another
+ classifier. So, in result like the combined classifier is becoming something like this
+ like which now correctly classifies all the blue points and all the green points. Now,
+ let us come to the last type of ensembling method which is called random forest.
+ Now, we have a single data set right like we have a single training data set. Now, how
+ do we obtain all these week learners? Let us say if our week learners are decision trees.
+ So, how do we create slightly different trees from the same data set? So, one option is
+ bagging where we pick the random subsets of data points from the training set to create
+ n smaller data sets and we fit a decision tree on every subset. So, this is called bagging.
+ The other option is instead of taking a random subset of data points we take a random subset
+ of the features and then fit different decision trees by constraining every decision tree
+ to operate only on a random subset of features. So, let us just look at this example to make
+ this point more clear. So, let us say these are our training set where we have apples
+ and oranges. Now, in the in bagging we create n subsets with examples. So, these examples
+ like we have some apples and some orange. Now, see you actually now build run a decision
+ tree learning algorithm and you come up with a decision tree which divides the whole space
+ into these two types. Similarly, now you have another subset of
+ examples and that can lead to another division of the space. So, actually although you started
+ with the same training set you see just because you picked like different training set or
+ different like bootstrap sample for individual dynamic decision tree learning algorithm.
+ You ended up having different ways to kind of separate out the whole space or the decision
+ boundaries were taking different shapes. So, this is the beauty of bagging that we started
+ with the same data, but in this process we ended up having a very like instantly generalizable
+ classification algorithm because we got so many different diverse types of decision boundaries
+ at the end. Now, when we are trying to test a sample.
+ So, this is a test example we immediately depending on the boundary which each decision
+ tree has created it fills I mean it kind of falls under like some area. So, let us say
+ this test example here this is falling mostly in the green zone and a little bit part in
+ the yellow zone. So, this is falling fully in the green zone, this is falling mostly
+ in the yellow zone and this is falling mostly in the green zone. Now, if you take a majority
+ vote in this case where 3 out of 4 weak learners are going to predict apple and 1 is going
+ to predict orange you are going to pick the final output as apple with 75 percent confidence.
+ So, this is how bagging works at inference time and in case of the random subspace method
+ or feature bagging. So, here everyone is using the same number of test example training example.
+ So, we are not taking any sample from the training example, but we are now looking at
+ different features. So, here we are looking at the mass and color, here we are looking
+ at the pH value and the texture, here we are looking at the pH value and the mass and based
+ on these different features we are creating different decision tree, we are applying different
+ decision tree learning algorithm to create like different decision boundaries and again
+ at a time when a test sample comes you again see where it falls on and depending on that
+ you predict like different outcome and after taking a voting you predict the final outcome
+ with certain confidence.
+ So, the difference between bagging and this random subspace method is in case of bagging
+ the training data was getting split into multiple small samples while in case of random subspace
+ method. So, the training data remains the same across different classifiers, but the features
+ are different. So, the features which each individual classifiers are taking are different.
+ So, it is resulting in a little different decision boundaries.
+ Now, in case of random forest it actually combines all this. So, it first it looks at
+ bagging like it kind of also apply this sampling or sampling of the training data set to create
+ like bootstrap samples to train a decision tree algorithm. It also look at the random
+ subspace method by taking random features it is kind of a best of both. So, where you
+ both do a feature bagging as well as you do a sample bagging and then you build different
+ decision trees based on different training data example different test data example sorry
+ different training data example different feature set and then finally, out of all the
+ weak learners which are out there you run a voting method and then you pick the final
+ decision based on the individual weak learner decisions and running voting on top of that.
+ So, to summarize bagging trains multiple instances of the same model on different data subset
+ and combine their prediction. Random forest extends bagging by introducing additional
+ randomness in feature selection for every tree enhancing the model diversity and reducing
+ overfitting boosting iteratively trains models by focusing on error and adjusting ways to
+ correct misclassified instances and enhance overall accuracy. Ensemble methods significantly
+ enhance performance compared to single methods like decision tree.
+ So, with this let me end this particular session and I would be happy to answer if there are
+ any questions. Yeah, so in that example yes as I mentioned like I created a little confusion.
+ So, in fact the same rule x1 greater than 3.5 works the left side it takes no the right
+ side takes ES I was just reading it the opposite. So, that is why the confusion came, but you
+ are right if the left side is no it works. So, thanks a lot for joining today. I hope
+ you got to learn different supervised learning algorithms we have covered multiple algorithms
+ including like single classification models like SVM, nearest neighbors, knife base and
+ decision tree. We have also covered algorithms which talk about ensembling of different classifiers
+ like bagging, boosting and decision random forest. I hope this two sessions were useful.
+ If you have any further questions feel free to post and we will be happy the team will
+ be happy to get back to you with the answers. Thanks a lot.

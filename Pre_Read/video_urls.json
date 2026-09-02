@@ -1,0 +1,217 @@
+{
+  "01_Introduction_to_AI": {
+    "id": 399,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Introduction to AI.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Introduction%20to%20AI.mp4"
+  },
+  "02_Math_Foundations_AI_ML_I_Part1": {
+    "id": 403,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Mathematical Foundations for AI and ML - I (Theory) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Mathematical%20Foundations%20for%20AI%20and%20ML%20-%20I%20%28Theory%29%20Part%20-%201.mp4"
+  },
+  "03_Math_Foundations_AI_ML_I_Part2": {
+    "id": 404,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Mathematical Foundations for AI and ML - I (Theory) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Mathematical%20Foundations%20for%20AI%20and%20ML%20-%20I%20%28Theory%29%20Part%20-%202.mp4"
+  },
+  "04_Math_Foundations_AI_ML_II": {
+    "id": 406,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Mathematical Foundations for AI and ML - II (Theory).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Mathematical%20Foundations%20for%20AI%20and%20ML%20-%20II%20%28Theory%29.mp4"
+  },
+  "05_Hands_on_Python_I_Notebooks": {
+    "id": 408,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on Python - I Notebooks (Colab, Jupyter) (Lab).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20Python%20-%20I%20Notebooks%20%28Colab%2C%20Jupyter%29%20%28Lab%29.mp4"
+  },
+  "06_Hands_on_Python_I_Part1": {
+    "id": 411,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on Python - I Notebooks (Colab, Jupyter) (Lab) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20Python%20-%20I%20Notebooks%20%28Colab%2C%20Jupyter%29%20%28Lab%29%20Part%20-%201.mp4"
+  },
+  "07_Hands_on_Python_I_Part2": {
+    "id": 412,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on Python - I Notebooks (Colab, Jupyter) (Lab) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20Python%20-%20I%20Notebooks%20%28Colab%2C%20Jupyter%29%20%28Lab%29%20Part%20-%202.mp4"
+  },
+  "08_Linear_Models_Regression_Classification_Part1": {
+    "id": 415,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Linear Models for Regression and Classification (Theory) Part -1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Linear%20Models%20for%20Regression%20and%20Classification%20%28Theory%29%20Part%20-1.mp4"
+  },
+  "09_Linear_Models_Regression_Classification_Part2": {
+    "id": 416,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Linear Models for Regression and Classification (Theory) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Linear%20Models%20for%20Regression%20and%20Classification%20%28Theory%29%20Part%20-%202.mp4"
+  },
+  "10_Supervised_ML_I_Bayes_KNN_SVM_Part1": {
+    "id": 418,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised Machine Learning - I (Theory) (Classification Bayes classifier, KNN, SVM) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised%20Machine%20Learning%20-%20I%20%28Theory%29%20%28Classification%20Bayes%20classifier%2C%20KNN%2C%20SVM%29%20Part%20-%201.mp4"
+  },
+  "11_Supervised_ML_I_Bayes_KNN_SVM_Part2": {
+    "id": 419,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised Machine Learning - I (Theory) (Classification Bayes classifier, KNN, SVM) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised%20Machine%20Learning%20-%20I%20%28Theory%29%20%28Classification%20Bayes%20classifier%2C%20KNN%2C%20SVM%29%20Part%20-%202.mp4"
+  },
+  "12_Hands_on_ML_I_Supervised_ScikitLearn": {
+    "id": 421,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on ML - I Supervised Machine Learning (Lab) (Bayes classifier, KNN,SVM) (Scikit Learn).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20ML%20-%20I%20Supervised%20Machine%20Learning%20%28Lab%29%20%28Bayes%20classifier%2C%20KNN%2CSVM%29%20%28Scikit%20Learn%29.mp4"
+  },
+  "13_Supervised_ML_II_DecisionTree_RandomForest_Part1": {
+    "id": 424,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised Machine Learning - II (Theory) (Classification Decision Tree, Random Forest) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised%20Machine%20Learning%20-%20II%20%28Theory%29%20%28Classification%20Decision%20Tree%2C%20Random%20Forest%29%20Part%20-%201.mp4"
+  },
+  "14_Supervised_ML_II_DecisionTree_RandomForest_Part2": {
+    "id": 425,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised Machine Learning - II (Theory) (Classification Decision Tree, Random Forest) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Supervised%20Machine%20Learning%20-%20II%20%28Theory%29%20%28Classification%20Decision%20Tree%2C%20Random%20Forest%29%20Part%20-%202.mp4"
+  },
+  "15_Hands_on_ML_II_Classification_Regression_ScikitLearn": {
+    "id": 427,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on ML - II Classification Regression.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20ML%20-%20II%20Classification%20Regression.mp4"
+  },
+  "16_Unsupervised_ML_Clustering_KMeans_PCA": {
+    "id": 430,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Unsupervised Machine Learning (Theory) (Clustering, K-Means, Hierarchical, PCA).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Unsupervised%20Machine%20Learning%20%28Theory%29%20%28Clustering%2C%20K-Means%2C%20Hierarchical%2C%20PCA%29.mp4"
+  },
+  "17_Hands_on_ML_III_Unsupervised_ScikitLearn": {
+    "id": 432,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on ML - III Unsupervised Machine Learning (Lab) (Scikit Learn).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20ML%20-%20III%20Unsupervised%20Machine%20Learning%20%28Lab%29%20%28Scikit%20Learn%29.mp4"
+  },
+  "18_Neural_Networks_DL_FeedForward_CNN_RNN_Part1": {
+    "id": 435,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Foundations of Neural Networks and Deep Learning Feed Forward, CNN, RNN (Theory) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Foundations%20of%20Neural%20Networks%20and%20Deep%20Learning%20Feed%20Forward%2C%20CNN%2C%20RNN%20%28Theory%29%20Part%20-%201.mp4"
+  },
+  "19_Neural_Networks_DL_FeedForward_CNN_RNN_Part2": {
+    "id": 436,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Foundations of Neural Networks and Deep Learning Feed Forward, CNN, RNN (Theory) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Foundations%20of%20Neural%20Networks%20and%20Deep%20Learning%20Feed%20Forward%2C%20CNN%2C%20RNN%20%28Theory%29%20Part%20-%202.mp4"
+  },
+  "20_DL_Models_Inference_Pretrained_Pytorch_Part1": {
+    "id": 438,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL Models - Inference with pre trained models Training Models from scratch Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL%20Models%20-%20Inference%20with%20pre%20trained%20models%20Training%20Models%20from%20scratch%20Part%20-%201.mp4"
+  },
+  "21_DL_Models_Inference_Pretrained_Pytorch_Part2": {
+    "id": 439,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL Models - Inference with pre trained models, Training Models from scratch Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL%20Models%20-%20Inference%20with%20pre%20trained%20models%2C%20Training%20Models%20from%20scratch%20Part%20-%202.mp4"
+  },
+  "22_DL_Models_Inference_Pretrained_Pytorch_Part3": {
+    "id": 440,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL Models - Inference with pre trained model, Training Models from scratch Part - 3.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL%20Models%20-%20Inference%20with%20pre%20trained%20model%2C%20Training%20Models%20from%20scratch%20Part%20-%203.mp4"
+  },
+  "23_DL_Transfer_Learning_Pretrained_Part1": {
+    "id": 443,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL Models - Transfer Learning from Pre-trained models (Theory) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL%20Models%20-%20Transfer%20Learning%20from%20Pre-trained%20models%20%28Theory%29%20Part%20-%201.mp4"
+  },
+  "24_DL_Transfer_Learning_Pretrained_Part2": {
+    "id": 444,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL Models - Transfer Learning from Pre-trained models (Theory) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL%20Models%20-%20Transfer%20Learning%20from%20Pre-trained%20models%20%28Theory%29%20Part%20-%202.mp4"
+  },
+  "25_DL_Applications_Computer_Vision_Part1": {
+    "id": 446,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL Applications in Computer Vision (Theory) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL%20Applications%20in%20Computer%20Vision%20%28Theory%29%20Part%20-%201.mp4"
+  },
+  "26_DL_Applications_Computer_Vision_Part2": {
+    "id": 447,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL Applications in Computer Vision (Theory) Part -2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/DL%20Applications%20in%20Computer%20Vision%20%28Theory%29%20Part%20-2.mp4"
+  },
+  "27_Hands_on_DL_Computer_Vision_Part1": {
+    "id": 449,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on DL Applications in Computer Vision (Lab) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20DL%20Applications%20in%20Computer%20Vision%20%28Lab%29%20Part%20-%201.mp4"
+  },
+  "28_Hands_on_DL_Computer_Vision_Part2": {
+    "id": 450,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on DL Applications in Computer Vision (Lab) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20DL%20Applications%20in%20Computer%20Vision%20%28Lab%29%20Part%20-%202.mp4"
+  },
+  "29_Introduction_to_NLP_Part1": {
+    "id": 453,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Introduction to NLP (Theory) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Introduction%20to%20NLP%20%28Theory%29%20Part%20-%201.mp4"
+  },
+  "30_Introduction_to_NLP_Part2": {
+    "id": 454,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Introduction to NLP (Theory) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Introduction%20to%20NLP%20%28Theory%29%20Part%20-%202.mp4"
+  },
+  "31_Hands_on_NLP_Part1": {
+    "id": 456,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on NLP (Lab) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20NLP%20%28Lab%29%20Part%20-%201.mp4"
+  },
+  "32_Hands_on_NLP_Part2": {
+    "id": 457,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on NLP (Lab) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20NLP%20%28Lab%29%20Part%20-%202.mp4"
+  },
+  "33_Hands_on_NLP_Part3": {
+    "id": 458,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on NLP (Lab) Part - 3.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20NLP%20%28Lab%29%20Part%20-%203.mp4"
+  },
+  "34_Advanced_DL_Transformers_BERT": {
+    "id": 461,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Advanced Deep Learning (Theory) (Transformers, BERT).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Advanced%20Deep%20Learning%20%28Theory%29%20%28Transformers%2C%20BERT%29.mp4"
+  },
+  "35_Advanced_DL_Lab_Transformers_BERT": {
+    "id": 463,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Advanced Deep Learning (Lab) (Transformers, BERT).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Advanced%20Deep%20Learning%20%28Lab%29%20%28Transformers%2C%20BERT%29.mp4"
+  },
+  "36_Prompting_OpenSource_LLMs_Llama2_Mistral_Part1": {
+    "id": 466,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Prompting with open-source LLMs Part -1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Prompting%20with%20open-source%20LLMs%20Part%20-1.mp4"
+  },
+  "37_Prompting_OpenSource_LLMs_Llama2_Mistral_Part2": {
+    "id": 467,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Prompting with open-source LLMs Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Prompting%20with%20open-source%20LLMs%20Part%20-%202.mp4"
+  },
+  "38_Prompting_OpenSource_LLMs_Llama2_Mistral_Part3": {
+    "id": 468,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Prompting with open-source LLMs Part - 3.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Prompting%20with%20open-source%20LLMs%20Part%20-%203.mp4"
+  },
+  "39_Foundations_of_Generative_AI": {
+    "id": 471,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Foundations of Generative AI (Theory).mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Foundations%20of%20Generative%20AI%20%28Theory%29.mp4"
+  },
+  "40_LLM_Finetuning_Agentic_Workflows_Part1": {
+    "id": 473,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on session on LLM Finetuning and Agentic Workflows (Lab) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20session%20on%20LLM%20Finetuning%20and%20Agentic%20Workflows%20%28Lab%29%20Part%20-%201.mp4"
+  },
+  "41_LLM_Finetuning_Agentic_Workflows_Part2": {
+    "id": 474,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on session on LLM Finetuning and Agentic Workflows (Lab) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Hands-on%20session%20on%20LLM%20Finetuning%20and%20Agentic%20Workflows%20%28Lab%29%20Part%20-%202.mp4"
+  },
+  "42_Application_Lab_CV_GANs_VAEs_Part1": {
+    "id": 477,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Application Lab (Computer Vision GANs, VAEs) Part - 1.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Application%20Lab%20%28Computer%20Vision%20GANs%2C%20VAEs%29%20Part%20-%201.mp4"
+  },
+  "43_Application_Lab_CV_GANs_VAEs_Part2": {
+    "id": 478,
+    "video_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Application Lab (Computer Vision GANs, VAEs) Part - 2.mp4",
+    "download_url": "https://d3a083o6c2n047.cloudfront.net/walmart/Application%20Lab%20%28Computer%20Vision%20GANs%2C%20VAEs%29%20Part%20-%202.mp4"
+  }
+}

@@ -1,0 +1,200 @@
+1
+00:00:00,000 --> 00:00:07,080
+ Go back to this now, why processing is not converted as process clean text after lemmatization?
+
+2
+00:00:07,080 --> 00:00:09,760
+ So you see that there are certain process we follow.
+
+3
+00:00:09,760 --> 00:00:12,180
+ So it is itself a part of the text cleaning.
+
+4
+00:00:12,180 --> 00:00:16,600
+ So first of all lower casing, then we remove the punctuations and the special characters,
+
+5
+00:00:16,600 --> 00:00:19,080
+ then we do the tokenization.
+
+6
+00:00:19,080 --> 00:00:23,120
+ In tokenization what we do, like if it is a sentence like I love programming, I love
+
+7
+00:00:23,120 --> 00:00:27,960
+ programming these three parts, we just separate it out and then we for example, we remove
+
+8
+00:00:27,960 --> 00:00:32,200
+ the stop what if something stop what is present and then finally we go for the lemmatization
+
+9
+00:00:32,200 --> 00:00:36,880
+ as a text cleaning part because if those what already you have refined tokens which are
+
+10
+00:00:36,880 --> 00:00:37,880
+ present there.
+
+11
+00:00:37,880 --> 00:00:42,400
+ So we just make them go back to their root words, like if something is present like running,
+
+12
+00:00:42,400 --> 00:00:47,600
+ so go back to their root word run or if it is skipping, we go back to their root word
+
+13
+00:00:47,600 --> 00:00:48,600
+ skip.
+
+14
+00:00:48,600 --> 00:00:54,960
+ So this is why we follow this type of the sequential steps in the text cleaning purpose.
+
+15
+00:00:54,960 --> 00:00:59,840
+ So can you go to the next question, so these two questions are quite analogous to each
+
+16
+00:00:59,840 --> 00:01:04,920
+ other question one and question two, I think the queue we have not marked as two, so both
+
+17
+00:01:04,920 --> 00:01:10,760
+ are the same similar meaning that in analyze sentiments, why are we considering only the
+
+18
+00:01:10,760 --> 00:01:16,320
+ first sentiment result, result equals to sentiment analysis feedback 0 or the result equals to
+
+19
+00:01:16,320 --> 00:01:17,320
+ sentiment analysis.
+
+20
+00:01:17,320 --> 00:01:22,400
+ A second question is also same, result of feedback 0 like I mentioned during the AI leadership
+
+21
+00:01:22,400 --> 00:01:24,200
+ part.
+
+22
+00:01:24,200 --> 00:01:30,240
+ So this particular part 0, which is which is the index value that is present there.
+
+23
+00:01:30,240 --> 00:01:36,040
+ So this particular index has the highest, I mean most important part of the sentiment
+
+24
+00:01:36,040 --> 00:01:37,040
+ outcomes.
+
+25
+00:01:37,040 --> 00:01:42,800
+ If this is the index part is 0, which is the it containing the most significant part of
+
+26
+00:01:42,800 --> 00:01:44,120
+ the sentiment outcome.
+
+27
+00:01:44,120 --> 00:01:50,040
+ So that is why we have taken this particular particular implementation with the help of
+
+28
+00:01:50,040 --> 00:01:54,800
+ the index 0 after sentiment analysis feedback.
+
+29
+00:01:54,800 --> 00:01:58,000
+ So you can check out in the notebook, even in the notebook it is present.
+
+30
+00:01:58,000 --> 00:02:02,800
+ If you see the hash sign after if you go to that particular explanation, I also have written
+
+31
+00:02:02,800 --> 00:02:05,200
+ each and everything is written in the code.
+
+32
+00:02:05,200 --> 00:02:08,240
+ So those of which we are asking me, it is written in the code already.
+
+33
+00:02:08,240 --> 00:02:12,440
+ I have explained them and I know that those who are new to it, for you it is required.
+
+34
+00:02:12,440 --> 00:02:16,400
+ So each of the line, if you check each line of the code, if you go to my notebook, not
+
+35
+00:02:16,400 --> 00:02:20,800
+ only this one, today's NLP class, I mean supervised machine learning also, everywhere
+
+36
+00:02:20,800 --> 00:02:25,440
+ each clarification is given there, because I know all of you are new to it, so it will
+
+37
+00:02:25,440 --> 00:02:26,440
+ be required.
+
+38
+00:02:26,440 --> 00:02:27,440
+ Is there any more question?
+
+39
+00:02:27,440 --> 00:02:30,560
+ Thank you very much for joining today's session.
+
+40
+00:02:30,560 --> 00:02:34,560
+ So I am thankful to the TCSIAM team for their wonderful moderation.
+
+41
+00:02:34,560 --> 00:02:40,720
+ Here also from our side, Mr. Devjit, Subrata Naik and also our excellent CET team is there
+
+42
+00:02:40,720 --> 00:02:41,720
+ in the back end.
+
+43
+00:02:41,720 --> 00:02:42,720
+ So they are working hard.
+
+44
+00:02:42,720 --> 00:02:48,520
+ Day and night to make this high cohort successful and I am Subrata Chimukopadhyay who actually
+
+45
+00:02:48,520 --> 00:02:52,040
+ have taken your NLP session, signing off today.
+
+46
+00:02:52,040 --> 00:02:53,040
+ Thank you very much.
+
+47
+00:02:53,040 --> 00:02:55,880
+ Have a great weekend ahead and we will meet sometime soon.
+
+48
+00:02:55,880 --> 00:02:56,880
+ I am hoping so actually.
+
+49
+00:02:56,880 --> 00:03:00,680
+ If I get the opportunity, I will definitely meet you in upcoming session.
+
+50
+00:03:00,680 --> 00:03:01,400
+ So thank you very much.
+

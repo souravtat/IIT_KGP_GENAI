@@ -1,0 +1,4688 @@
+1
+00:00:00,000 --> 00:00:25,080
+ Hello, good morning to all of you, am I audible clearly?
+
+2
+00:00:25,080 --> 00:00:36,720
+ So, today we are going to start about the supervised learning, so basically last class
+
+3
+00:00:36,720 --> 00:00:41,960
+ already we have got the very good exposure in terms of the theoretical development.
+
+4
+00:00:41,960 --> 00:00:52,080
+ So, Dr. Avigran Chakravarti has spoken about the different techniques, tools and techniques
+
+5
+00:00:52,080 --> 00:00:57,400
+ related to supervised learning for example, he has already spoken about the support vector
+
+6
+00:00:57,400 --> 00:01:03,040
+ machine KNN and Nape-based classifier, so already you got those idea that how to implement
+
+7
+00:01:03,040 --> 00:01:09,040
+ them and how to explore them on those angles, now this particular session will be basically
+
+8
+00:01:09,040 --> 00:01:15,880
+ based on the hands-on experience, so already Mr. Shumon Kumar Berra beautifully has taken
+
+9
+00:01:15,880 --> 00:01:22,400
+ your python session, so myself I have a PhD research scholar from Center for Computational
+
+10
+00:01:22,400 --> 00:01:28,960
+ Data Sciences of IIT Kharagpur, so I will also cover up the basic aspects of this supervised
+
+11
+00:01:28,960 --> 00:01:35,520
+ machine learning, so there you will learn how to explore the python or pythonic platforms
+
+12
+00:01:35,520 --> 00:01:40,840
+ in Google Colab to execute certain problems related to machine learning using the tools
+
+13
+00:01:40,840 --> 00:01:48,440
+ like support vector machine, KNN as well as Nape-based classifier, so all of you are quite
+
+14
+00:01:48,440 --> 00:01:54,240
+ accustomed with the IIT data set I believe, I will also give you some idea, so we will
+
+15
+00:01:54,240 --> 00:01:59,560
+ continue with the same type of the data set, so that all of you can align yourself where
+
+16
+00:01:59,560 --> 00:02:07,340
+ Shumon has left during his last hands-on session, so let us start, so those who are new to Google
+
+17
+00:02:07,340 --> 00:02:16,240
+ Colab, I believe that all of you got some exposure for the classes of the March, February 15
+
+18
+00:02:16,240 --> 00:02:21,840
+ and February 22 about the Google Colab during the hands-on session of Shumon, but I am also
+
+19
+00:02:21,840 --> 00:02:26,680
+ giving you some idea that how to explore, use it, so those who remember it fine directly
+
+20
+00:02:26,680 --> 00:02:33,840
+ open it, those who still feeling some confusion just follow my instruction, so in Google simply
+
+21
+00:02:33,840 --> 00:02:41,200
+ type Google Colab and then you open it up, so for example if I open up like the Colab
+
+22
+00:02:41,200 --> 00:02:47,000
+ notebook, so you can just click on it, so basically what you can do, you can go to the
+
+23
+00:02:47,000 --> 00:02:59,840
+ file section and then click on the new notebook in drive, so it will open up in new window,
+
+24
+00:02:59,840 --> 00:03:08,080
+ so this is my original notebook and from this particular notebook, I will use it and will
+
+25
+00:03:08,080 --> 00:03:13,400
+ show you that how to run certain chunk of code in Colab cells, so this is for example
+
+26
+00:03:13,400 --> 00:03:23,600
+ I can put some name, this is a new notebook, I can put some name like for example demo1,
+
+27
+00:03:23,600 --> 00:03:30,480
+ you can give something like that, like demo1 or demo ml, something like that you can put
+
+28
+00:03:30,480 --> 00:03:34,960
+ some name there, so this particular segment as you can see plus code plus text, these
+
+29
+00:03:34,960 --> 00:03:43,600
+ two options are given, so plus text option you can use if you want to put some text there,
+
+30
+00:03:43,600 --> 00:03:51,320
+ like for example if I want to write SVM just for example, so I can keep it there, for example
+
+31
+00:03:51,320 --> 00:03:57,200
+ as you can see it is appearing here, so this is how text can be written or like for example
+
+32
+00:03:57,200 --> 00:04:02,220
+ you want to bold it, so that is also doable, so you can select it, you can click on plus
+
+33
+00:04:02,220 --> 00:04:08,000
+ b that stands for bold and you can make it bold, so as you can see it has appeared in
+
+34
+00:04:08,000 --> 00:04:14,360
+ bold, so in this way whenever you are coming again you see a plus code plus text buttons
+
+35
+00:04:14,360 --> 00:04:18,880
+ are given there, so you can click on plus code and you can run your portion, you can
+
+36
+00:04:18,880 --> 00:04:22,640
+ write the code and then run this particular portion with the help of clicking on this
+
+37
+00:04:22,640 --> 00:04:27,800
+ run cell button, this portion is called the run cell, so it will show you the execution
+
+38
+00:04:27,800 --> 00:04:34,880
+ time, while running it not only it will, if you can run successfully the green tick button
+
+39
+00:04:34,880 --> 00:04:43,120
+ will appear and it will show some time like 2 second, 1 second in this way, so this is
+
+40
+00:04:43,120 --> 00:04:49,840
+ the original notebook, so those who are new to it I will always request all of you to
+
+41
+00:04:49,840 --> 00:04:54,120
+ type it, I will wait for all of you, nothing to worry about it, so I will give you some
+
+42
+00:04:54,120 --> 00:05:01,680
+ time to execute the code and you just try to type it or those who have access, those
+
+43
+00:05:01,680 --> 00:05:06,840
+ who got the link of my GitHub account, they can directly access the code from my GitHub.
+
+44
+00:05:06,840 --> 00:05:13,120
+ So this is basically a repository for those who are new to it for them I am showing, this
+
+45
+00:05:13,120 --> 00:05:18,160
+ is the basically the repository as you can see, so those who directly got it fine, those
+
+46
+00:05:18,160 --> 00:05:23,440
+ who do not got it just I am just showing you, you can directly even access to the Google
+
+47
+00:05:23,440 --> 00:05:27,840
+ by Google search, so suppose I am over the GitHub if you type, you can directly get it
+
+48
+00:05:27,840 --> 00:05:32,920
+ from here also, so I am just showing those who got the link fine, those who are still
+
+49
+00:05:32,920 --> 00:05:37,880
+ in confusion for them I am just showing it, so if you go to the repository, so repository
+
+50
+00:05:37,880 --> 00:05:48,680
+ ml using python is at the top, so you go to that repository and then this one, SVM different
+
+51
+00:05:48,680 --> 00:05:54,880
+ kernels just above the simple linear regression and below the random search, just click on
+
+52
+00:05:54,880 --> 00:06:00,600
+ it and directly you can open and you can also access the code from there, so this is the
+
+53
+00:06:00,600 --> 00:06:08,560
+ code you can download also by clicking this particular button download raw file, you can
+
+54
+00:06:08,560 --> 00:06:10,120
+ download the notebook.
+
+55
+00:06:10,120 --> 00:06:16,240
+ So these are the way you can directly download the codes from my GitHub fine and then let
+
+56
+00:06:16,240 --> 00:06:22,560
+ us start executing one by one and another interesting file you can open up if you wish,
+
+57
+00:06:22,560 --> 00:06:28,360
+ so this particular file is basically the explanation of the code which I am going to use now.
+
+58
+00:06:28,360 --> 00:06:34,560
+ So I have shared this notebook and this particular PDF file to all of you, so it is available
+
+59
+00:06:34,560 --> 00:06:38,840
+ in the TCS and portal, so you can access it and you can also download apart from that
+
+60
+00:06:38,840 --> 00:06:42,280
+ you can also download by clicking on this download raw file.
+
+61
+00:06:42,280 --> 00:06:47,160
+ So here I have added the codes and relevant other relevant explanations for supervised
+
+62
+00:06:47,160 --> 00:06:52,280
+ learning part one, so those who are new to it nothing to worry about it, I have given
+
+63
+00:06:52,280 --> 00:06:58,400
+ all the relevant information and during the hands on session I request all of you kindly
+
+64
+00:06:58,400 --> 00:07:04,960
+ type it and those who already know this particular portion please consider this as a good practice
+
+65
+00:07:04,960 --> 00:07:10,880
+ or good revision, so that those who are new they can get some chances to explore it because
+
+66
+00:07:10,880 --> 00:07:16,600
+ those who are new for them they need some time to type, they need some time to grab the concept.
+
+67
+00:07:16,600 --> 00:07:22,400
+ So because of that I request those who are already well known to this or familiar to
+
+68
+00:07:22,400 --> 00:07:27,280
+ this kindly have their patience and consider this as a good practice so that others can
+
+69
+00:07:27,280 --> 00:07:30,520
+ also get some scope to learn it.
+
+70
+00:07:30,520 --> 00:07:36,280
+ So let us make the session ubiquitous for all, so let us start.
+
+71
+00:07:36,280 --> 00:07:40,680
+ So now for example at first we are importing the necessary Python packages, so from your
+
+72
+00:07:40,680 --> 00:07:47,560
+ basics from your basic knowledge of Python already you have got idea that we need to
+
+73
+00:07:47,560 --> 00:07:51,040
+ import certain packages whenever we start exploring.
+
+74
+00:07:51,040 --> 00:07:57,280
+ So for example import numpy as NP, so what it will do it will give you some opportunity
+
+75
+00:07:57,280 --> 00:08:02,560
+ to explore the array related operations in Python or Python platforms.
+
+76
+00:08:02,560 --> 00:08:06,640
+ So for example in Colab you can run the course related to Python and Python platforms like
+
+77
+00:08:06,640 --> 00:08:13,600
+ TensorFlow, Keras, PyTorch etc. then for example we can import pandas spd.
+
+78
+00:08:13,600 --> 00:08:19,360
+ So it will give you all data frame related operations, manipulations you can do here.
+
+79
+00:08:19,360 --> 00:08:23,640
+ Then import matplotlib.pyplotsplt, so what does it do?
+
+80
+00:08:23,640 --> 00:08:30,120
+ It will basically help the Python platforms to act like matlab like environment, so that
+
+81
+00:08:30,120 --> 00:08:33,960
+ you can easily draw the plots and all those things.
+
+82
+00:08:33,960 --> 00:08:38,800
+ For Seaborn as SNS, so during the confusion matrix when you will form the confusion matrix
+
+83
+00:08:38,800 --> 00:08:43,680
+ you will see the use of Seaborn, if you do not use you will not get the extra opportunity
+
+84
+00:08:43,680 --> 00:08:49,680
+ of exploring the color collects, matplotlib will give you the idea of the opportunity
+
+85
+00:08:49,680 --> 00:08:54,400
+ to plots the figures, but Seaborn gives you the additional color pledges by operating
+
+86
+00:08:54,400 --> 00:08:59,440
+ over matplotlib to generate the very beautiful colorful plots.
+
+87
+00:08:59,440 --> 00:09:04,880
+ For example in today's session during drawing the confusion matrix you will learn about it
+
+88
+00:09:04,880 --> 00:09:11,380
+ and then from sklearn.metric will import accuracy score, confusion matrix as well as the classification
+
+89
+00:09:11,380 --> 00:09:12,880
+ report.
+
+90
+00:09:12,880 --> 00:09:17,920
+ So this particular segment those who are new to it nothing to worry about it, you will
+
+91
+00:09:17,920 --> 00:09:23,720
+ get the, when you will study you will get the recorded version of this particular session
+
+92
+00:09:23,720 --> 00:09:29,040
+ and not only that for learning purpose I have added this portion.
+
+93
+00:09:29,040 --> 00:09:35,680
+ So here you see the explanation of NumPy which I have explained now, pandas, scikit-learn,
+
+94
+00:09:35,680 --> 00:09:41,600
+ matplotlib as well as pyplot and then the Seaborn till now whatever I have explained
+
+95
+00:09:41,600 --> 00:09:43,980
+ everything is present there.
+
+96
+00:09:43,980 --> 00:09:48,920
+ So for your assistance purpose sometime I will switch to this particular window as well
+
+97
+00:09:48,920 --> 00:09:53,560
+ so that I can show you that all the relevant information is present in this particular
+
+98
+00:09:53,560 --> 00:09:56,360
+ PDF file which is loaded in my Github.
+
+99
+00:09:56,360 --> 00:10:00,660
+ So that you can easily get the access and understand the concept.
+
+100
+00:10:00,660 --> 00:10:07,800
+ So now let us let me show you the execution.
+
+101
+00:10:07,800 --> 00:10:14,080
+ So let me go back to the demo window and let us click on the run cell button.
+
+102
+00:10:14,080 --> 00:10:20,360
+ So it will execute and when the execution is done successfully a green thing will appear
+
+103
+00:10:20,360 --> 00:10:23,640
+ along with the execution time.
+
+104
+00:10:23,640 --> 00:10:29,040
+ So it is now what is the time, it is now 9.11.
+
+105
+00:10:29,040 --> 00:10:32,560
+ So please finish this simple step by 9.13.
+
+106
+00:10:32,560 --> 00:10:44,840
+ So two more minutes will be good enough to finish it up.
+
+107
+00:10:44,840 --> 00:10:46,200
+ So let us go back to the demo window.
+
+108
+00:10:46,200 --> 00:10:49,880
+ So already you can see this green tick has appeared and two second execution time has
+
+109
+00:10:49,880 --> 00:10:51,280
+ been shown as two seconds.
+
+110
+00:10:51,280 --> 00:10:55,600
+ It may shown as zero second, one second so in this way you will see it.
+
+111
+00:10:55,600 --> 00:11:02,000
+ So please explore this and once you are done then we shall proceed to the next step.
+
+112
+00:11:02,000 --> 00:11:05,640
+ So I encourage all of you please type it.
+
+113
+00:11:05,640 --> 00:11:10,320
+ You will already have the access of the codes and all those things but however I will suggest
+
+114
+00:11:10,320 --> 00:11:15,160
+ that those who are new to it will get lot of confidence when you type it.
+
+115
+00:11:15,160 --> 00:11:31,600
+ So please type it.
+
+116
+00:11:31,600 --> 00:12:00,160
+ So I shall wait for another more minute and then we shall move to the next step of downloading
+
+117
+00:12:00,160 --> 00:12:01,880
+ the iris data set.
+
+118
+00:12:01,880 --> 00:12:09,160
+ So through this particular step in the next step you will learn about how to access the
+
+119
+00:12:09,160 --> 00:12:12,040
+ online data set directly from the web link.
+
+120
+00:12:12,040 --> 00:12:13,280
+ This is an art.
+
+121
+00:12:13,280 --> 00:12:16,960
+ So there are many options like you can load the external data set, you can directly access
+
+122
+00:12:16,960 --> 00:12:18,800
+ the data set from the web link.
+
+123
+00:12:18,800 --> 00:12:24,280
+ So this particular case or today's session you will learn how to access the web link
+
+124
+00:12:24,280 --> 00:12:36,000
+ and then explore and process the data.
+
+125
+00:12:36,000 --> 00:12:41,120
+ So as you can see in this notebook also like for the first step at first we are importing
+
+126
+00:12:41,120 --> 00:12:45,000
+ the necessary Python packages or for example in the next step when we are going to explore
+
+127
+00:12:45,000 --> 00:12:49,720
+ the let us download the iris data set from its web link as follows.
+
+128
+00:12:49,720 --> 00:13:08,760
+ So all the necessary text has been added there so that you can easily smoothly learn about
+
+129
+00:13:08,760 --> 00:13:10,260
+ the steps.
+
+130
+00:13:10,260 --> 00:13:15,000
+ In the next step there is one online link is available so I request you to post the link
+
+131
+00:13:15,000 --> 00:13:20,600
+ in the comment box section because it will be difficult for them to type especially those
+
+132
+00:13:20,600 --> 00:13:22,620
+ who are new they may make mistake.
+
+133
+00:13:22,620 --> 00:13:27,200
+ So that is why to avoid the mistake it will be better if we can put the link only put
+
+134
+00:13:27,200 --> 00:13:28,960
+ the link there.
+
+135
+00:13:28,960 --> 00:13:34,120
+ So once you type in the next step whenever you are typing just keep path equals to and
+
+136
+00:13:34,120 --> 00:13:39,120
+ then copy the link given in the comment section.
+
+137
+00:13:39,120 --> 00:13:47,400
+ So do not forget to keep the double code and then put it put the link there.
+
+138
+00:13:47,400 --> 00:13:52,080
+ So has it been given fine so already moderator has given it there.
+
+139
+00:13:52,080 --> 00:14:02,280
+ So from our side moderator is Mr. Devjit Bishas so he will try to give you all kind of support.
+
+140
+00:14:02,280 --> 00:14:06,560
+ So let us download the iris data set from its web link this is our next step.
+
+141
+00:14:06,560 --> 00:14:09,940
+ So already all of you got the link in the comment box section please look into the comment
+
+142
+00:14:09,940 --> 00:14:11,960
+ box section.
+
+143
+00:14:11,960 --> 00:14:19,120
+ So path equals to you just type it path equals to and then you can put it there and those
+
+144
+00:14:19,120 --> 00:14:25,800
+ who are directly accessing from GitHub they can directly get it.
+
+145
+00:14:25,800 --> 00:14:31,000
+ So then just run this particular portion so as you can see if I go to the demo window
+
+146
+00:14:31,000 --> 00:14:36,800
+ it has run smoothly and you can see this printing has appeared and the time is also given the
+
+147
+00:14:36,800 --> 00:14:37,800
+ 0 second.
+
+148
+00:14:37,800 --> 00:14:41,440
+ So I shall wait for 1 minute and then we shall move ahead.
+
+149
+00:14:41,440 --> 00:14:48,520
+ So it is now 9.16 so I will wait for 9.17 so that everyone get the opportunity to explore
+
+150
+00:14:48,520 --> 00:14:54,240
+ this particular code and then what we will do we shall start the next portion to assign
+
+151
+00:14:54,240 --> 00:14:56,560
+ the column names to the data set.
+
+152
+00:14:56,560 --> 00:15:02,480
+ In the next portion we shall assign the column names to the data set.
+
+153
+00:15:02,480 --> 00:15:31,400
+ So please complete this step and then we shall move to the next portion.
+
+154
+00:15:31,400 --> 00:15:48,800
+ Well I shall wait for few more seconds before we go to the next step I hope that most of
+
+155
+00:15:48,800 --> 00:16:18,360
+ you already have completed it and those who are doing it please finish it.
+
+156
+00:16:18,360 --> 00:16:23,680
+ Well so let us go to the next step now it is time to move forward and let us see the
+
+157
+00:16:23,680 --> 00:16:24,680
+ next step.
+
+158
+00:16:24,680 --> 00:16:28,480
+ Now what we will do we will assign the column names to the data set as follows.
+
+159
+00:16:28,480 --> 00:16:33,480
+ So already path is given there web link has been assigned to the path and then what we
+
+160
+00:16:33,480 --> 00:16:39,320
+ will do in the next section header names equals to sepal length sepal width petal length petal
+
+161
+00:16:39,320 --> 00:16:40,320
+ width and class.
+
+162
+00:16:40,320 --> 00:16:48,320
+ So there are 5 columns in the iris data set 150 rows and 5 columns that we will see whenever
+
+163
+00:16:48,320 --> 00:16:52,760
+ we are going to process a new data set we will see the overall structure of the data
+
+164
+00:16:52,760 --> 00:16:57,040
+ to understand number of rows columns present in the data, what are the features present
+
+165
+00:16:57,040 --> 00:16:58,040
+ in the data.
+
+166
+00:16:58,040 --> 00:17:03,280
+ So here sepal length sepal width petal length petal width these are basically the features
+
+167
+00:17:03,280 --> 00:17:07,920
+ which are present in the data and class is basically the labeling whether it is iris
+
+168
+00:17:07,920 --> 00:17:10,880
+ setosa iris virginica or iris versicolor.
+
+169
+00:17:10,880 --> 00:17:17,640
+ So if you check this particular description present in the data set so you can see for
+
+170
+00:17:17,640 --> 00:17:22,880
+ your assistant purpose also added the GitHub link to go to that particular notebook and
+
+171
+00:17:22,880 --> 00:17:27,200
+ the data set description if you see what I have written there that this particular data
+
+172
+00:17:27,200 --> 00:17:34,840
+ set was used in a classic paper by R.A. Fisher in 1936.
+
+173
+00:17:34,840 --> 00:17:39,400
+ And this is also available in the UCI machine learning repository actually from that particular
+
+174
+00:17:39,400 --> 00:17:44,160
+ web link you have access the data in the present session.
+
+175
+00:17:44,160 --> 00:17:50,760
+ And then like I mentioned that there will be total 150 samples and within this 150 samples
+
+176
+00:17:50,760 --> 00:17:57,320
+ each category is present as 50 samples like for example iris setosa or iris versicolor
+
+177
+00:17:57,320 --> 00:18:01,480
+ or iris virginica and python is a zero indexing language.
+
+178
+00:18:01,480 --> 00:18:08,360
+ So that is why the index value will range from 0 to 149 simple calculation.
+
+179
+00:18:08,360 --> 00:18:12,000
+ So 0 to 149 will be for values for the iris setosa sequentially it will go.
+
+180
+00:18:12,000 --> 00:18:17,800
+ So what will happen if we go by sequentially so 0 to 149 will be iris setosa 50 to 99 index
+
+181
+00:18:17,800 --> 00:18:23,080
+ values will be iris versicolor and 100 to 149 will be iris virginica.
+
+182
+00:18:23,080 --> 00:18:27,400
+ But still I have mentioned those things very clearly so that those who are new they can
+
+183
+00:18:27,400 --> 00:18:30,280
+ easily learn from it.
+
+184
+00:18:30,280 --> 00:18:36,960
+ It will be easier to follow if certain reference text is there in front of you.
+
+185
+00:18:36,960 --> 00:18:42,040
+ So in this way you can do it.
+
+186
+00:18:42,040 --> 00:18:45,920
+ So let us now explore the header names.
+
+187
+00:18:45,920 --> 00:18:50,560
+ So now let us proceed.
+
+188
+00:18:50,560 --> 00:18:58,440
+ So as we see as we are proceeding to the demo window so again two options will appear plus
+
+189
+00:18:58,440 --> 00:18:59,440
+ text plus code.
+
+190
+00:18:59,440 --> 00:19:04,880
+ So all of you know what you have to do you have to click on the plus code button and
+
+191
+00:19:04,880 --> 00:19:10,240
+ then you can put it there and run by clicking on the run button.
+
+192
+00:19:10,240 --> 00:19:16,200
+ So you can see easily it has run and the execution time is 0 second.
+
+193
+00:19:16,200 --> 00:19:22,840
+ So I request all of you it is now 920 by 922 complete this step.
+
+194
+00:19:22,840 --> 00:19:27,880
+ So I am giving you some time and do it very carefully because those who are new they will
+
+195
+00:19:27,880 --> 00:19:35,280
+ take some time for them to type so please do not get fear.
+
+196
+00:19:35,280 --> 00:19:40,240
+ The more you will type the more you will practice you will gain the confidence.
+
+197
+00:19:40,240 --> 00:19:41,560
+ So this is the policy.
+
+198
+00:19:41,560 --> 00:19:48,560
+ In programming there is no shortcut you have to practice to master on it.
+
+199
+00:19:48,560 --> 00:19:53,960
+ So nowadays you have lot of options in your hand to get the reference code from GitHub
+
+200
+00:19:53,960 --> 00:19:59,840
+ source code from GitHub also you have the options like chat GPT to correct your codes
+
+201
+00:19:59,840 --> 00:20:03,320
+ but you should have the coding intuition within you.
+
+202
+00:20:03,320 --> 00:20:07,160
+ So that you can understand whatever the code you are accessing whether it will work for
+
+203
+00:20:07,160 --> 00:20:12,000
+ it or not or what are the changes you need to do to run the code smoothly.
+
+204
+00:20:12,000 --> 00:20:17,840
+ So that type of the insight will only grow when you practice it understand the logic
+
+205
+00:20:17,840 --> 00:20:20,920
+ of the code and you are practicing it.
+
+206
+00:20:20,920 --> 00:20:22,760
+ So there is no shortcut in it.
+
+207
+00:20:22,760 --> 00:20:29,340
+ So hard work practice and applying your common sense your intuition that will help you to
+
+208
+00:20:29,340 --> 00:20:30,340
+ gain the success.
+
+209
+00:20:30,340 --> 00:20:57,520
+ So I am requesting all of you kindly type it.
+
+210
+00:20:57,520 --> 00:21:17,000
+ I hope most of you already have completed it and those who are doing it please finish
+
+211
+00:21:17,000 --> 00:21:28,600
+ it but while typing type carefully see the screen carefully and do it or already those
+
+212
+00:21:28,600 --> 00:21:32,300
+ who are accessing directly my GitHub so they can easily see the reference code.
+
+213
+00:21:32,300 --> 00:21:37,360
+ So please do it carefully while typing.
+
+214
+00:21:37,360 --> 00:21:41,480
+ So it is already 9.23 so I shall wait for few more seconds and then move to the next
+
+215
+00:21:41,480 --> 00:21:54,840
+ step.
+
+216
+00:21:54,840 --> 00:21:58,320
+ So let us move to the next step.
+
+217
+00:21:58,320 --> 00:22:03,680
+ So now what we will do this is another interesting way like I told you that in pandas basically
+
+218
+00:22:03,680 --> 00:22:10,000
+ what we will do it helps us to access the data frame and other manipulating operations.
+
+219
+00:22:10,000 --> 00:22:15,520
+ So what you can do you can type already we have load the pandas as PD if you remember
+
+220
+00:22:15,520 --> 00:22:18,480
+ to go to the top you see import pandas as PD.
+
+221
+00:22:18,480 --> 00:22:20,800
+ So that is why we are using PD.
+
+222
+00:22:20,800 --> 00:22:24,720
+ So data equals to PD dot read underscore CSV.
+
+223
+00:22:24,720 --> 00:22:28,400
+ So first argument section what will be within the function path because you have to show
+
+224
+00:22:28,400 --> 00:22:34,160
+ the data path it is given there and names equals to header names and then you click
+
+225
+00:22:34,160 --> 00:22:36,200
+ on data write data dot shape.
+
+226
+00:22:36,200 --> 00:22:39,520
+ So what you will get you will get the entire data shape what are the number of rows what
+
+227
+00:22:39,520 --> 00:22:43,800
+ are the number of columns will be there it will be there.
+
+228
+00:22:43,800 --> 00:22:52,920
+ So this is the very simple step which you can explore.
+
+229
+00:22:52,920 --> 00:22:56,880
+ So again all of you know what you have to do you have to click on plus code button and
+
+230
+00:22:56,880 --> 00:23:02,840
+ then you just put the code there or type it and then you get the result.
+
+231
+00:23:02,840 --> 00:23:07,240
+ As you can see again the green tick has appeared and execution time is 0 second and as you
+
+232
+00:23:07,240 --> 00:23:13,100
+ can see there are 150 rows and 5 columns like I mentioned during the data set description.
+
+233
+00:23:13,100 --> 00:23:19,440
+ Whenever you do any analysis with a new data set always try to see the data what is the
+
+234
+00:23:19,440 --> 00:23:24,240
+ data structure look like what is the data set description how it has been captured.
+
+235
+00:23:24,240 --> 00:23:29,440
+ So for example whenever we are downloading data set from some web link or loading the
+
+236
+00:23:29,440 --> 00:23:35,760
+ excel file to analyze the data these all data sets are the secondary data set because you
+
+237
+00:23:35,760 --> 00:23:42,640
+ have not yourself have not got the data set through certain experiments or through survey
+
+238
+00:23:42,640 --> 00:23:47,720
+ it is already present there you are accessing it sometimes people also buy data set from
+
+239
+00:23:47,720 --> 00:23:48,720
+ others.
+
+240
+00:23:48,720 --> 00:23:53,160
+ So these all are the secondary data set so then what is primary data set primary data
+
+241
+00:23:53,160 --> 00:23:58,680
+ set is basically when through certain experiment you are collecting data in your lab you are
+
+242
+00:23:58,680 --> 00:24:02,640
+ doing some experiments and you are collecting data or through some IOT setup or internet
+
+243
+00:24:02,640 --> 00:24:07,720
+ of thing setup you are collecting some real time data or it can be some survey data as
+
+244
+00:24:07,720 --> 00:24:11,340
+ well in certain area you are doing survey and collecting data.
+
+245
+00:24:11,340 --> 00:24:15,520
+ So these are the good examples of the primary data.
+
+246
+00:24:15,520 --> 00:24:21,520
+ So that is why when you do the analysis you always have to remember that how the data
+
+247
+00:24:21,520 --> 00:24:28,120
+ has been collected so that during the preprocessing step you can understand that if there are certain
+
+248
+00:24:28,120 --> 00:24:33,400
+ lacuna's present within the data which you can overcome during the preprocessing.
+
+249
+00:24:33,400 --> 00:24:37,240
+ So there can be some sort of the noise may present in the data or there are some sort
+
+250
+00:24:37,240 --> 00:24:41,180
+ of the you may have to do the background extraction in the data.
+
+251
+00:24:41,180 --> 00:24:46,520
+ So those things are possible when you understand entirely about the data especially for the
+
+252
+00:24:46,520 --> 00:24:49,640
+ secondary data in primary data yourself is collecting it.
+
+253
+00:24:49,640 --> 00:24:55,120
+ So you have certain idea that what are the instruments or the tools techniques you have
+
+254
+00:24:55,120 --> 00:24:59,480
+ used to collect the data but for the secondary data set data set description is very important
+
+255
+00:24:59,480 --> 00:25:06,600
+ and that is why you may see in during accessing the data from Kaggle or GitHub the scholar
+
+256
+00:25:06,600 --> 00:25:09,880
+ person always put some data set description.
+
+257
+00:25:09,880 --> 00:25:13,400
+ So that is why I am telling that to follow the data set description is very important.
+
+258
+00:25:13,400 --> 00:25:17,840
+ So today's class is for the new learners for the beginners who are starting their journey
+
+259
+00:25:17,840 --> 00:25:19,160
+ in machine learning.
+
+260
+00:25:19,160 --> 00:25:23,600
+ So we are going through this type of the example but whenever you will gradually whenever you
+
+261
+00:25:23,600 --> 00:25:27,820
+ will get some experiences yourself will be able to understand why I am mentioning that
+
+262
+00:25:27,820 --> 00:25:31,760
+ and why understanding the data set is important.
+
+263
+00:25:31,760 --> 00:25:48,880
+ So it is now 9.27 so please complete this step within next 2 minutes 9.29.
+
+264
+00:25:48,880 --> 00:25:55,880
+ Thank you.
+
+265
+00:26:18,880 --> 00:26:32,540
+.
+
+266
+00:26:32,540 --> 00:26:38,980
+ So while typing be careful so that there should not be any error so make sure you are doing
+
+267
+00:26:38,980 --> 00:26:39,980
+ it carefully.
+
+268
+00:26:39,980 --> 00:26:46,740
+ So I shall wait for few more seconds and then move to the next step.
+
+269
+00:26:46,740 --> 00:26:52,120
+ So I believe most of you already have completed it and those who are doing it please finish
+
+270
+00:27:16,740 --> 00:27:26,160
+.
+
+271
+00:27:26,160 --> 00:27:29,880
+ So let us move to the next step.
+
+272
+00:27:29,880 --> 00:27:32,440
+ Now let us observe the data.
+
+273
+00:27:32,440 --> 00:27:38,880
+ So in Python or any programming languages you always have certain option because you see
+
+274
+00:27:38,880 --> 00:27:44,200
+ to observe lengthy data is very difficult as if it is data set is long.
+
+275
+00:27:44,200 --> 00:27:50,120
+ So better to follow first few observations or last few observations while observing the
+
+276
+00:27:50,120 --> 00:27:57,600
+ data in data science domain there are two popular programming languages.
+
+277
+00:27:57,600 --> 00:27:59,800
+ One is R another one is Python.
+
+278
+00:27:59,800 --> 00:28:05,840
+ In R and Python in both the cases you have that type of the opportunity to observe first
+
+279
+00:28:05,840 --> 00:28:12,640
+ few rows of the data set or last few rows of the data set in R programming head tell function
+
+280
+00:28:12,640 --> 00:28:15,240
+ options are there along with the data.
+
+281
+00:28:15,240 --> 00:28:18,200
+ In Python also analogously you have that option.
+
+282
+00:28:18,200 --> 00:28:23,960
+ In Python the interestingly if we put data dot head operation so you will be able to
+
+283
+00:28:23,960 --> 00:28:27,680
+ see first few first five rows.
+
+284
+00:28:27,680 --> 00:28:31,200
+ As I mentioned that Python is a zero indexing language so it will always start from zero.
+
+285
+00:28:31,200 --> 00:28:33,960
+ So already you know that there are 150 rows.
+
+286
+00:28:33,960 --> 00:28:40,360
+ So when you do the data dot head operation it will give so you first five rows so that
+
+287
+00:28:40,360 --> 00:28:45,960
+ means the index value will be 0 to 4 what you can observe in the left hand side 0, 1,
+
+288
+00:28:45,960 --> 00:28:47,720
+ 2, 3, 4.
+
+289
+00:28:47,720 --> 00:28:50,520
+ Already I told you that there are features like sepal length, sepal width, petal length,
+
+290
+00:28:50,520 --> 00:28:57,360
+ petal width and the class column you have the levellings of the three species.
+
+291
+00:28:57,360 --> 00:29:04,120
+ So from 0 to 49 it is iris setosa, sequentially it is there, then 52, 99 iris virginica,
+
+292
+00:29:04,120 --> 00:29:10,480
+ 100 to 149 iris versicolor so those who forget for them I am just showing this line you see.
+
+293
+00:29:10,480 --> 00:29:18,920
+ I already have mentioned it there 0 to 49 for the iris setosa, 0 iris versicolor 52,
+
+294
+00:29:18,920 --> 00:29:22,320
+ 99 iris virginica, 100 to 149.
+
+295
+00:29:22,320 --> 00:29:26,360
+ So obviously if you are seeing first five observations so definitely all of them will
+
+296
+00:29:26,360 --> 00:29:27,360
+ be iris setosa.
+
+297
+00:29:27,360 --> 00:29:30,520
+ It is quite apparent from our common sense.
+
+298
+00:29:30,520 --> 00:29:32,560
+ So let us implement this portion.
+
+299
+00:29:32,560 --> 00:29:38,600
+ So it is a very small chunk of code, you will require only a few seconds to run it but still
+
+300
+00:29:38,600 --> 00:29:41,760
+ that is the beginner session so I will wait for a minute.
+
+301
+00:29:41,760 --> 00:29:51,800
+ So it is now 931 please finish this by 932.
+
+302
+00:29:51,800 --> 00:29:59,080
+ So I believe all of you can complete it by 932 so it is just a small chunk of code just
+
+303
+00:29:59,080 --> 00:30:16,760
+ execute it and check the data overall data how the data look like.
+
+304
+00:30:16,760 --> 00:30:34,480
+ So let us move to the next step.
+
+305
+00:30:34,480 --> 00:30:41,680
+ Now we will see the very basic step of data preprocessing, how to do the data preprocessing.
+
+306
+00:30:41,680 --> 00:30:47,120
+ Let us see like I told you in any data say data preprocessing is the utmost important
+
+307
+00:30:47,120 --> 00:30:48,120
+ step.
+
+308
+00:30:48,120 --> 00:30:54,000
+ So this purpose what we will do we will take data dot iloc, iloc stands for the integer
+
+309
+00:30:54,000 --> 00:30:57,880
+ location to accessing the index values.
+
+310
+00:30:57,880 --> 00:31:00,600
+ So this particular explanation is also added there.
+
+311
+00:31:00,600 --> 00:31:04,800
+ If you want to check for them I am just showing what I mentioned now you see I have highlighted
+
+312
+00:31:04,800 --> 00:31:07,040
+ what is iloc function.
+
+313
+00:31:07,040 --> 00:31:10,720
+ So this is already mentioned.
+
+314
+00:31:10,720 --> 00:31:17,520
+ Now what we will do data dot iloc colon comma so left hand side of the comma while accessing
+
+315
+00:31:17,520 --> 00:31:21,860
+ the index colon means you are taking all the rows in consideration but in column section
+
+316
+00:31:21,860 --> 00:31:28,360
+ colon minus one dot values because whenever you are forming the predictor variables to
+
+317
+00:31:28,360 --> 00:31:34,200
+ avoid the class column because this is the target variable class column is the target
+
+318
+00:31:34,200 --> 00:31:35,880
+ variable we will not consider it.
+
+319
+00:31:35,880 --> 00:31:42,960
+ So for that purpose colon minus one and then to define the target variable why data dot
+
+320
+00:31:42,960 --> 00:31:49,280
+ iloc colon four dot values why colon in the left hand side of the comma I already told
+
+321
+00:31:49,280 --> 00:31:53,840
+ you are taking all the rows but in right hand side four means this is the fourth index value
+
+322
+00:31:53,840 --> 00:31:57,360
+ because column wise it is a zero indexing language Python I already told you.
+
+323
+00:31:57,360 --> 00:32:02,800
+ So it will start from zero zero one two three four so class is basically the fourth index
+
+324
+00:32:02,800 --> 00:32:08,660
+ so because of that it is already four.
+
+325
+00:32:08,660 --> 00:32:14,160
+ So data y equals to data dot iloc colon comma four dot values that is why it is the y is
+
+326
+00:32:14,160 --> 00:32:18,000
+ the target variable and x is your predictor variable.
+
+327
+00:32:18,000 --> 00:32:22,160
+ So that you have to define what is your predictor variable what is your target variable then
+
+328
+00:32:22,160 --> 00:32:31,560
+ only you can proceed so that is how you define x and y.
+
+329
+00:32:31,560 --> 00:32:39,520
+ So now it is nine thirty four so finish this simple step by nine thirty six.
+
+330
+00:32:39,520 --> 00:32:44,720
+ So it has run successfully and you can see the execution time zero second.
+
+331
+00:32:44,720 --> 00:32:49,520
+ So finish this step and then we shall move to the next part.
+
+332
+00:32:49,520 --> 00:32:53,240
+ Let me go to the original notebook and do it.
+
+333
+00:32:53,240 --> 00:32:56,840
+ In the next step we will do the ten test split.
+
+334
+00:32:56,840 --> 00:33:00,560
+ So for example in this data set we will take the seventy percent for the training thirty
+
+335
+00:33:00,560 --> 00:33:02,960
+ percent for the testing.
+
+336
+00:33:02,960 --> 00:33:07,560
+ In your case in generally the machine learning conventions as per the machine learning operations
+
+337
+00:33:07,560 --> 00:33:12,200
+ those who are the practitioner as per their recommendations seventy percent in general
+
+338
+00:33:12,200 --> 00:33:17,160
+ we keep for the training thirty percent for the testing or for example you may also keep
+
+339
+00:33:17,160 --> 00:33:20,040
+ eighty percent for the training and twenty percent for the testing.
+
+340
+00:33:20,040 --> 00:33:24,960
+ So whatever you may do you have to mention in the code that we will see very soon first
+
+341
+00:33:24,960 --> 00:33:29,520
+ you finish the step and then we will see that operations.
+
+342
+00:33:29,520 --> 00:33:36,020
+ How we are defining whether to take twenty percent or thirty percent of the test data.
+
+343
+00:33:36,020 --> 00:33:46,040
+ So that we will see.
+
+344
+00:33:46,040 --> 00:33:48,720
+ So I shall wait for another more minute and then move to the next step.
+
+345
+00:33:48,720 --> 00:33:53,120
+ So I request all of you to finish it those who already have done it fine those who are
+
+346
+00:33:53,120 --> 00:34:09,660
+ still doing it I will finish it.
+
+347
+00:34:09,660 --> 00:34:27,560
+ Thank you.
+
+348
+00:34:27,560 --> 00:34:49,060
+ Well so let us move to the next step I believe all of you have been able to finish the step.
+
+349
+00:34:49,060 --> 00:34:56,620
+ Now like I mentioned that in this step I also added the explanation there if you can see
+
+350
+00:34:56,620 --> 00:35:02,400
+ that we are dividing the data into train and test split where seventy percent we are considering
+
+351
+00:35:02,400 --> 00:35:06,160
+ of the entire data set for the training and thirty percent for the testing.
+
+352
+00:35:06,160 --> 00:35:11,280
+ So as this is there are data size is 150 150 rows.
+
+353
+00:35:11,280 --> 00:35:18,280
+ So by our mental calculation if you calculate in mind thirty percent of 150 will be 45.
+
+354
+00:35:18,280 --> 00:35:24,420
+ So 45 samples will be for test data size and 105 remaining 105 will be for your training.
+
+355
+00:35:24,420 --> 00:35:30,420
+ So from a scale on okay this is I already mentioned that cycle learn is used for the
+
+356
+00:35:30,420 --> 00:35:34,300
+ machine learning related operations to provide the support related to machine learning okay.
+
+357
+00:35:34,300 --> 00:35:39,680
+ So from a scale on dot model underscore selection we shall import the train test split.
+
+358
+00:35:39,680 --> 00:35:45,760
+ So that we can do this ten test split operation and then we will assign the ten test split
+
+359
+00:35:45,760 --> 00:35:47,600
+ function over x and y.
+
+360
+00:35:47,600 --> 00:35:50,680
+ X is your target variable y is your predicted variable and then test size.
+
+361
+00:35:50,680 --> 00:35:53,380
+ So as we are taking thirty percent.
+
+362
+00:35:53,380 --> 00:35:56,860
+ So that is why we have mentioned that test size is 0.30.
+
+363
+00:35:56,860 --> 00:36:01,300
+ If you have taken that twenty percent or twenty five percent it would have been 0.20 or 0.25
+
+364
+00:36:01,300 --> 00:36:02,800
+ respectively.
+
+365
+00:36:02,800 --> 00:36:09,120
+ So accordingly the size you are choosing you define it there okay and then it will be stored
+
+366
+00:36:09,120 --> 00:36:15,000
+ under the X test X train X test Y train Y test okay and their explanations also added
+
+367
+00:36:15,000 --> 00:36:18,440
+ in the it is already present in the data set okay.
+
+368
+00:36:18,440 --> 00:36:25,440
+ So that you can check in this particular file okay so just a second.
+
+369
+00:36:25,440 --> 00:36:29,280
+ Let me just put this execution here.
+
+370
+00:36:29,280 --> 00:36:37,240
+ So all of you know what will be the next step it will be the plus code button you just put
+
+371
+00:36:37,240 --> 00:36:44,320
+ it there and then you click on the run cell button and it has done successfully.
+
+372
+00:36:44,320 --> 00:36:50,040
+ So you can see the green tick has appeared and it is showing the execution time at 0
+
+373
+00:36:50,040 --> 00:36:51,040
+ second okay.
+
+374
+00:36:51,040 --> 00:36:55,360
+ So it is now nine thirty eight so finish this step within next two minutes by nine forty
+
+375
+00:36:55,360 --> 00:36:58,600
+ so that we can move to the next execution okay.
+
+376
+00:36:58,600 --> 00:37:03,520
+ So I believe all of you are doing it carefully okay.
+
+377
+00:37:03,520 --> 00:37:16,080
+ So those who are new to this I am I again repeat that please type it I am giving you
+
+378
+00:37:16,080 --> 00:37:36,360
+ adequate time to execute it so please type it.
+
+379
+00:37:36,360 --> 00:37:58,640
+ So I shall wait for few more seconds and then move to the next step those who are new to
+
+380
+00:37:58,640 --> 00:38:04,600
+ it please finish it up I am going back to the original notebook window.
+
+381
+00:38:04,600 --> 00:38:22,040
+ So in the next step we shall do the data scaling okay.
+
+382
+00:38:22,040 --> 00:38:39,080
+ So I am going to do the data scaling okay.
+
+383
+00:38:39,080 --> 00:39:02,640
+ So let us move to the next step.
+
+384
+00:39:02,640 --> 00:39:03,640
+ So now what we will do?
+
+385
+00:39:03,640 --> 00:39:07,040
+ We will do the data scaling so that means the normalization operation okay.
+
+386
+00:39:07,040 --> 00:39:12,800
+ So you may have one data set of size for example 0 to 750 or another one has the for example
+
+387
+00:39:12,800 --> 00:39:14,800
+ 250.
+
+388
+00:39:14,800 --> 00:39:23,160
+ So how to make them comparable while executing the data analysis operation over there.
+
+389
+00:39:23,160 --> 00:39:28,600
+ So the simple step is to put them either minus 1 to 1 range or 0 to 1 range and how to do
+
+390
+00:39:28,600 --> 00:39:34,520
+ that the basic operation is the data normalization on data scaling okay.
+
+391
+00:39:34,520 --> 00:39:39,640
+ So data minus min divided by standard deviation of the data is your this is how you can do
+
+392
+00:39:39,640 --> 00:39:41,800
+ the normalization okay.
+
+393
+00:39:41,800 --> 00:39:47,360
+ So this type of the steps has been discussed during your math classes, Maths for the IML
+
+394
+00:39:47,360 --> 00:39:51,600
+ Dr. Budhalan Banaji has mentioned that how to do the normalization okay.
+
+395
+00:39:51,600 --> 00:39:55,360
+ So data minus min of data divided by standard deviation of data okay.
+
+396
+00:39:55,360 --> 00:40:00,680
+ So here how we are doing it through code that we are going to discuss now.
+
+397
+00:40:00,680 --> 00:40:04,760
+ So from a scalar and dot prepositing import standard scalar, so standard scalar giving
+
+398
+00:40:04,760 --> 00:40:05,760
+ you the accessibility.
+
+399
+00:40:05,760 --> 00:40:12,240
+ This particular model is giving you the accessibility to execute the data scaling operation okay.
+
+400
+00:40:12,240 --> 00:40:18,560
+ And then scalar equals to standard scalar and then after assigning it, scalar dot fit we
+
+401
+00:40:18,560 --> 00:40:21,140
+ are applying over X train.
+
+402
+00:40:21,140 --> 00:40:22,720
+ So how does it do?
+
+403
+00:40:22,720 --> 00:40:23,880
+ What is scalar dot fit?
+
+404
+00:40:23,880 --> 00:40:26,040
+ What is the functionality of the scalar dot fit?
+
+405
+00:40:26,040 --> 00:40:30,520
+ Actually calculates the min and standard deviation value of the data okay.
+
+406
+00:40:30,520 --> 00:40:35,080
+ And then whenever you are applying it over the X train and X test with the help of the
+
+407
+00:40:35,080 --> 00:40:40,280
+ scalar dot transform that means you are doing the data minus min of data divided by standard
+
+408
+00:40:40,280 --> 00:40:42,280
+ deviation of the data okay.
+
+409
+00:40:42,280 --> 00:40:46,880
+ So for the train X train you can from your commonsense you can understand that train
+
+410
+00:40:46,880 --> 00:40:52,280
+ data set minus min of train data set divided by standard deviation of the string data set.
+
+411
+00:40:52,280 --> 00:40:55,880
+ Similarly for the scalar dot transfer X test what it will happen?
+
+412
+00:40:55,880 --> 00:41:00,720
+ X test data set minus min of X test divided by standard deviation of X train data set.
+
+413
+00:41:00,720 --> 00:41:07,160
+ So this is how it happens for data scaling in python or pythonic platforms okay.
+
+414
+00:41:07,160 --> 00:41:14,400
+ So let us implement it now.
+
+415
+00:41:14,400 --> 00:41:18,800
+ So here you see plus code plus text pattern is there, so click on the plus code and let
+
+416
+00:41:18,800 --> 00:41:23,600
+ us put it there and click on the run cell button to execute the entire operation.
+
+417
+00:41:23,600 --> 00:41:28,720
+ So you see the green tick has appeared and the execution time is shown as 0 second okay.
+
+418
+00:41:28,720 --> 00:41:34,240
+ So it is 9.43, so please finish this step by 9.45, so that we can move to the next step.
+
+419
+00:41:34,240 --> 00:41:38,880
+ Couple of minutes will be good enough to explore this one, so please do it.
+
+420
+00:41:38,880 --> 00:41:43,160
+ Then we shall start discussing as the prepositioning will be finished.
+
+421
+00:41:43,160 --> 00:41:49,360
+ We shall start with the first supervised learning classifier and that would be Nape based classifier
+
+422
+00:41:49,360 --> 00:41:52,600
+ okay.
+
+423
+00:41:52,600 --> 00:41:59,600
+ So please finish this up.
+
+424
+00:42:22,600 --> 00:42:37,720
+ Okay, so I shall wait for another more minute before we can proceed to the next step.
+
+425
+00:42:37,720 --> 00:42:41,520
+ So please finish this up.
+
+426
+00:42:41,520 --> 00:42:46,480
+ I believe those who are typing they are gradually getting confidence.
+
+427
+00:42:46,480 --> 00:42:49,680
+ The more the hands-on session will proceed you will gain the confidence gradually on
+
+428
+00:42:49,680 --> 00:42:52,000
+ the subject okay.
+
+429
+00:42:52,000 --> 00:42:59,040
+ So in the beginning we have given some theory classes just to build your foundations that
+
+430
+00:42:59,040 --> 00:43:00,040
+ is it.
+
+431
+00:43:00,040 --> 00:43:05,200
+ So from today's class onwards you will have the hands-on session regularly okay.
+
+432
+00:43:05,200 --> 00:43:10,240
+ Already Sumonbeta has set up may give you some idea or the set up the background for
+
+433
+00:43:10,240 --> 00:43:18,720
+ using pythons and now for example the other PhD research scholar like me and the other
+
+434
+00:43:18,720 --> 00:43:25,160
+ scholars will give you the idea on the journey of the machine learning to how to explore
+
+435
+00:43:25,160 --> 00:43:29,240
+ the course in the machine learning domain deep learning as well as NLP.
+
+436
+00:43:29,240 --> 00:43:34,040
+ So there are many interesting sessions you will also learn large language model or LLMs
+
+437
+00:43:34,040 --> 00:43:35,040
+ okay.
+
+438
+00:43:35,040 --> 00:43:38,480
+ So you will see a lot of interesting examples in upcoming sessions.
+
+439
+00:43:38,480 --> 00:43:42,120
+ So stay tuned with us okay.
+
+440
+00:43:42,120 --> 00:43:44,840
+ So let us start this particular portion.
+
+441
+00:43:44,840 --> 00:43:49,880
+ Now here we will use the nav best so in the last session in the last theory class of past
+
+442
+00:43:49,880 --> 00:43:56,280
+ March Dr. Obigay and Chakraborty already has given you the idea what is nav best algorithm
+
+443
+00:43:56,280 --> 00:44:00,040
+ and this is completely based on the best theorem all of you know okay.
+
+444
+00:44:00,040 --> 00:44:05,160
+ So best theorem is also relying on the conditional probability okay there will be certain conditions
+
+445
+00:44:05,160 --> 00:44:09,800
+ and accordingly you have to proceed prior probability information will be there and
+
+446
+00:44:09,800 --> 00:44:12,000
+ you have to calculate the posterior probability.
+
+447
+00:44:12,000 --> 00:44:18,200
+ So anyway so basically here in terms of the coding when we will explore we are going to
+
+448
+00:44:18,200 --> 00:44:24,080
+ explore a particular type of the nav best that is the Gaussian nav best which is the
+
+449
+00:44:24,080 --> 00:44:27,400
+ simplest and the very effective for the small data set.
+
+450
+00:44:27,400 --> 00:44:32,680
+ So as you see the data there are one two rows so it is a small data size okay.
+
+451
+00:44:32,680 --> 00:44:37,480
+ So that is why Gaussian nav best is the optimal option to go ahead with it because it will
+
+452
+00:44:37,480 --> 00:44:43,440
+ consider it will execute the nav best operation by considering the entire data set as a Gaussian
+
+453
+00:44:43,440 --> 00:44:45,380
+ distribution or normal distribution okay.
+
+454
+00:44:45,380 --> 00:44:50,880
+ So from a scalar dot nav best we shall import the Gaussian NB and classifier will be assigned
+
+455
+00:44:50,880 --> 00:44:55,240
+ as the Gaussian NB and then what we will do we will use the classifier dot fit function
+
+456
+00:44:55,240 --> 00:45:01,200
+ over X train and Y train okay and we will see what happens.
+
+457
+00:45:01,200 --> 00:45:07,640
+ So let me put it in the demo window as well okay and although I request all of you to
+
+458
+00:45:07,640 --> 00:45:13,720
+ complete this step it is now 946 so finish this step by 948 okay 2 more minutes will
+
+459
+00:45:13,720 --> 00:45:15,560
+ be good enough to finish this up.
+
+460
+00:45:15,560 --> 00:45:21,000
+ So as you can see this green tick has appeared and the execution time is 0 second okay.
+
+461
+00:45:21,000 --> 00:45:24,640
+ So how fast it is executing all of you can understand okay.
+
+462
+00:45:24,640 --> 00:45:28,560
+ So let me go back to the original notebook and wait for all of you.
+
+463
+00:45:28,560 --> 00:45:35,160
+ So before we go to the calculations of the accuracy okay on the training and test data
+
+464
+00:45:35,160 --> 00:46:02,360
+ test so first of all let us finish this up okay.
+
+465
+00:46:02,360 --> 00:46:32,200
+ So let us go back to the original notebook and see how it is going to be done okay.
+
+466
+00:46:32,200 --> 00:46:43,400
+ I will wait for few more seconds before going to the next step so I believe all of you are
+
+467
+00:46:43,400 --> 00:47:09,680
+ doing it those who have completed it fine those who are still doing it please finish
+
+468
+00:47:09,680 --> 00:47:38,640
+ it. the next step is to complete the test okay.
+
+469
+00:47:39,680 --> 00:47:44,680
+ So let us proceed.
+
+470
+00:47:44,680 --> 00:47:48,520
+ So now let us first test the accuracy of the next best classifier over the training data
+
+471
+00:47:48,520 --> 00:47:53,400
+ set why it is important before exploring the algorithm over the test data set to have the
+
+472
+00:47:53,400 --> 00:47:57,720
+ idea how it is performing over the training data set just to avoid the scenarios like overfitting
+
+473
+00:47:57,720 --> 00:47:58,880
+ okay.
+
+474
+00:47:58,880 --> 00:48:04,120
+ So if your algorithm is working properly there should not be much difference between the
+
+475
+00:48:04,120 --> 00:48:08,480
+ whatever that you accuracy you are getting in the training data set and then in the test
+
+476
+00:48:08,480 --> 00:48:14,000
+ data set okay either they can be same or they can be nearby okay for example if you are
+
+477
+00:48:14,000 --> 00:48:19,320
+ getting accuracy over the training data set 93% in this in the test data set if you are
+
+478
+00:48:19,320 --> 00:48:25,480
+ getting 89 or 90% or better than the training data set for example 96 or 97% is absolutely
+
+479
+00:48:25,480 --> 00:48:32,200
+ fine there is no cases of the overfitting okay but if it deviates too much like in training
+
+480
+00:48:32,200 --> 00:48:36,280
+ data set you are getting 93 for example and the test data set you are getting something
+
+481
+00:48:36,280 --> 00:48:43,280
+ like 50 or 60% then you have to think about okay for the effectiveness of the algorithm
+
+482
+00:48:43,280 --> 00:48:48,400
+ and you need to do certain changes in the during the execution of the code okay.
+
+483
+00:48:48,400 --> 00:48:54,920
+ So that it is the separate scenario but in this case let us see that how it is working
+
+484
+00:48:54,920 --> 00:48:58,320
+ over the training data set first and then we shall move towards the test data set okay.
+
+485
+00:48:58,320 --> 00:49:02,400
+ So now it is called classifier.predict we shall apply this particular function over
+
+486
+00:49:02,400 --> 00:49:07,240
+ x train okay and we will assign it under vibrate and then what we will do we will calculate
+
+487
+00:49:07,240 --> 00:49:12,880
+ the accuracy okay by applying accuracy underscore function over y train and vibrate and then
+
+488
+00:49:12,880 --> 00:49:16,720
+ we will print it okay accordingly the way we are printing it like for example in print
+
+489
+00:49:16,720 --> 00:49:22,160
+ function we are keeping accuracy under code and then we are printing the accuracy value.
+
+490
+00:49:22,160 --> 00:49:26,560
+ So accuracy value is already calculated using the accuracy underscore function and then y
+
+491
+00:49:26,560 --> 00:49:28,080
+ train vibrate.
+
+492
+00:49:28,080 --> 00:49:34,000
+ So if you are getting something like for example here we are getting 95.24% approximately okay
+
+493
+00:49:34,000 --> 00:49:40,380
+ as the value is 0.595238 in approximately we are taking if we are taking the 2 digit
+
+494
+00:49:40,380 --> 00:49:41,880
+ after the decimal.
+
+495
+00:49:41,880 --> 00:49:47,280
+ So approximately it is 95.24% approximately which is the very good accuracy for the training
+
+496
+00:49:47,280 --> 00:49:49,000
+ data set okay.
+
+497
+00:49:49,000 --> 00:49:53,440
+ So let us execute it in the demo window.
+
+498
+00:49:53,440 --> 00:49:55,680
+ So like the way we are printing it will be printed okay.
+
+499
+00:49:55,680 --> 00:50:01,160
+ So for example print accuracy colon that is why the accuracy colon has appeared and as
+
+500
+00:50:01,160 --> 00:50:05,080
+ the accuracy value is stored under this particular variable named accuracy.
+
+501
+00:50:05,080 --> 00:50:10,400
+ So exactly the value has been printed like the way we are printing okay.
+
+502
+00:50:10,400 --> 00:50:14,200
+ So this is that is why I am showing this last line is very important.
+
+503
+00:50:14,200 --> 00:50:18,680
+ Those who are new to coding for them I am saying the way you want to print it you will
+
+504
+00:50:18,680 --> 00:50:27,360
+ type it here and accordingly it will be printed okay.
+
+505
+00:50:27,360 --> 00:50:46,760
+ Let me check oh sorry I have missed out this line I have missed out just a second I have
+
+506
+00:50:46,760 --> 00:50:50,300
+ missed out this line sorry for the mistake I have to first put it vibrate then we have
+
+507
+00:50:50,300 --> 00:50:56,640
+ to go to the next step that is why it is showing that vibrate is not present.
+
+508
+00:50:56,640 --> 00:51:00,360
+ So first we have to print the vibrate and then you run it it will run okay.
+
+509
+00:51:00,360 --> 00:51:06,600
+ Now you are getting 0.95238 that means 95.24% okay.
+
+510
+00:51:06,600 --> 00:51:11,400
+ So whenever you are doing it first execute the vibrate okay in this section there are
+
+511
+00:51:11,400 --> 00:51:15,400
+ 2 cells are present okay not the unicell like earlier.
+
+512
+00:51:15,400 --> 00:51:21,160
+ So in the first cell you are getting the value of the vibrate and then you are keeping it
+
+513
+00:51:21,160 --> 00:51:25,400
+ under the accuracy score function okay in the second argument section and then you run
+
+514
+00:51:25,400 --> 00:51:30,680
+ it you will get okay 95.24% approximately okay.
+
+515
+00:51:30,680 --> 00:51:34,320
+ So these 2 portion you just implement and then we shall move ahead okay.
+
+516
+00:51:34,320 --> 00:51:42,160
+ So it is now 953 so finish this step by 955 okay then we shall move ahead for the next
+
+517
+00:51:42,160 --> 00:51:49,160
+ portion of the execution.
+
+518
+00:52:12,160 --> 00:52:33,760
+ So remember in this step first we are calculating vibrate and then we are calculating accuracy
+
+519
+00:52:33,760 --> 00:52:40,920
+ score and storing it under accuracy and then we are printing the accuracy value okay.
+
+520
+00:52:40,920 --> 00:52:46,520
+ So I repeat with the help of the classifier.predict function we are applying it over X train we
+
+521
+00:52:46,520 --> 00:52:51,060
+ are storing it under vibrate and then what we are doing we are applying accuracy underscore
+
+522
+00:52:51,060 --> 00:52:55,120
+ function over Y train vibrate storing it under accuracy and then we are printing the
+
+523
+00:52:55,120 --> 00:52:57,480
+ accuracy value okay.
+
+524
+00:52:57,480 --> 00:53:01,360
+ So I believe most of you have been able to complete it those who are doing it please finish
+
+525
+00:53:01,360 --> 00:53:03,880
+ it soon.
+
+526
+00:53:03,880 --> 00:53:10,480
+ So it is now 954 I shall wait for another more minute before I can proceed to the next
+
+527
+00:53:10,480 --> 00:53:40,200
+ step so let me go with to the let me go back to the original notebook.
+
+528
+00:53:40,200 --> 00:53:47,220
+ So like I have concluded here as you can see that for the native base classifier we are
+
+529
+00:53:47,220 --> 00:53:55,320
+ achieving an accuracy of 95.24% approximately for training data set therefore accuracy is
+
+530
+00:53:55,320 --> 00:53:58,320
+ good really good on the training data set.
+
+531
+00:53:58,320 --> 00:54:02,280
+ Now we have to make the prediction which can be done in the following way.
+
+532
+00:54:02,280 --> 00:54:05,200
+ So each step has been explained there just to guide you okay.
+
+533
+00:54:05,200 --> 00:54:11,800
+ So in the next case what we will do we will now it is time to explore on the test data
+
+534
+00:54:11,800 --> 00:54:13,360
+ set so we will do that.
+
+535
+00:54:13,360 --> 00:54:17,640
+ So what we will do classifier.predict function will apply over X test and we will store it
+
+536
+00:54:17,640 --> 00:54:19,820
+ under vibrate okay.
+
+537
+00:54:19,820 --> 00:54:25,200
+ So I believe all of you have been able to complete the earlier steps so let us move ahead.
+
+538
+00:54:25,200 --> 00:54:29,680
+ So first execute this and then we will print the result okay.
+
+539
+00:54:29,680 --> 00:54:33,320
+ So while doing the printing the result in the next step we will see the use of this
+
+540
+00:54:33,320 --> 00:54:37,600
+ C bond which I was mentioning through the head map SNS dot head map and you will see
+
+541
+00:54:37,600 --> 00:54:41,040
+ this colorful confusion matrix plot okay.
+
+542
+00:54:41,040 --> 00:54:54,000
+ So past finish this part and then we shall move ahead.
+
+543
+00:54:54,000 --> 00:55:00,920
+ So click on the plus code button keep it there and then you run click on the run cell button
+
+544
+00:55:00,920 --> 00:55:03,880
+ to run it okay.
+
+545
+00:55:03,880 --> 00:55:06,120
+ So it is a very simple chunk of the code okay.
+
+546
+00:55:06,120 --> 00:55:11,920
+ So it is now 9.56 so I believe one minute will be more than good enough to finish this
+
+547
+00:55:11,920 --> 00:55:13,420
+ one okay.
+
+548
+00:55:13,420 --> 00:55:18,960
+ So finish this up then we shall draw the confusion matrix with the help of the SNS dot head map
+
+549
+00:55:18,960 --> 00:55:20,800
+ function.
+
+550
+00:55:20,800 --> 00:55:27,600
+ So we have stored see we have loaded C bond as see SNS which is the abbreviated form okay.
+
+551
+00:55:27,600 --> 00:55:34,480
+ So we will see the beauty of SNS by adding the extra color pilots to see that particular
+
+552
+00:55:34,480 --> 00:55:37,720
+ colorful confusion matrix.
+
+553
+00:55:37,720 --> 00:55:42,760
+ It is not only about executing the code properly or drawing the confusion matrix but to understand
+
+554
+00:55:42,760 --> 00:55:43,760
+ them is very important.
+
+555
+00:55:43,760 --> 00:55:47,760
+ For example if you are writing company white papers or those who are researchers writing
+
+556
+00:55:47,760 --> 00:55:51,600
+ research papers or even if you are preparing report for your company.
+
+557
+00:55:51,600 --> 00:55:54,960
+ So it is always important to interpret the analysis.
+
+558
+00:55:54,960 --> 00:55:59,960
+ You may get some result through executing the code but how to represent the analysis
+
+559
+00:55:59,960 --> 00:56:03,800
+ or to interpret it is very important.
+
+560
+00:56:03,800 --> 00:56:10,640
+ So that is why I have tried to give you some standard reference write up so that you can
+
+561
+00:56:10,640 --> 00:56:17,760
+ follow that write up while preparing your report through the it may be white paper company
+
+562
+00:56:17,760 --> 00:56:23,080
+ white papers it may be research paper those who are researchers or it may be in general
+
+563
+00:56:23,080 --> 00:56:25,320
+ report while doing analysis.
+
+564
+00:56:25,320 --> 00:56:31,360
+ So you can easily interpret them because interpreting them properly in an understandable manner
+
+565
+00:56:31,360 --> 00:56:33,660
+ is very much important okay.
+
+566
+00:56:33,660 --> 00:56:38,160
+ So that is why I always mention that it is not only about executing the codes or those
+
+567
+00:56:38,160 --> 00:56:43,600
+ things but you need to represent them in an understandable format you need to interpret
+
+568
+00:56:43,600 --> 00:56:49,520
+ them properly so that everybody can understand it okay.
+
+569
+00:56:49,520 --> 00:56:52,360
+ So let us move to the next part.
+
+570
+00:56:52,360 --> 00:57:00,160
+ Now in the next step so from escalar.metric we shall import the classification report confusion
+
+571
+00:57:00,160 --> 00:57:02,040
+ matrix and accuracy score.
+
+572
+00:57:02,040 --> 00:57:06,200
+ We shall apply the confusion matrix over Y test and Y print and store it and result.
+
+573
+00:57:06,200 --> 00:57:10,600
+ So sns.hitmap function under that the first argument will be the result second will be
+
+574
+00:57:10,600 --> 00:57:12,360
+ anode equals to true.
+
+575
+00:57:12,360 --> 00:57:16,680
+ Why it is important because you see the participating test samples will be shown in the confusion
+
+576
+00:57:16,680 --> 00:57:22,840
+ matrix like you see 18, 11, 1 okay whether it is a correct prediction or wrong prediction
+
+577
+00:57:22,840 --> 00:57:28,720
+ everything will be highlighted here through certain numbers as you can see in each grid
+
+578
+00:57:28,720 --> 00:57:30,720
+ of the confusion matrix okay.
+
+579
+00:57:30,720 --> 00:57:36,640
+ So that is why anode equals to true and then fmt equals to g is a general format okay.
+
+580
+00:57:36,640 --> 00:57:42,600
+ So left hand side of the decimal point will be displaced okay so sorry will be displayed.
+
+581
+00:57:42,600 --> 00:57:47,920
+ So as you can see 18, 0, 11 okay so in this way the display is done so fmt equals to
+
+582
+00:57:47,920 --> 00:57:50,480
+ g is a general format this is this one.
+
+583
+00:57:50,480 --> 00:57:55,600
+ X tick and Y tick level if you see setosa versicolor virginica so as you can see all
+
+584
+00:57:55,600 --> 00:58:00,040
+ those tick levels setosa versicolor virginica has present there setosa versicolor virginica
+
+585
+00:58:00,040 --> 00:58:01,040
+ is present there.
+
+586
+00:58:01,040 --> 00:58:04,960
+ So anything you are mentioning in the code that should follow a certain logic okay.
+
+587
+00:58:04,960 --> 00:58:08,840
+ So that is why I am just giving you the idea that whatever is mentioned under the sns.hitmap
+
+588
+00:58:08,840 --> 00:58:15,920
+ function it has the meaning and the applications while drawing the figure okay.
+
+589
+00:58:15,920 --> 00:58:20,960
+ And then plt.y level it is the prediction and you are keeping font size 13 okay.
+
+590
+00:58:20,960 --> 00:58:25,680
+ So it is standard policy keeping font size 12 or 13 so that it can be visible to all
+
+591
+00:58:25,680 --> 00:58:31,240
+ of you and while presenting for example you are putting this particular plot in the in
+
+592
+00:58:31,240 --> 00:58:38,840
+ certain document it can be doc file or it can be overly poetic file it can be easily
+
+593
+00:58:38,840 --> 00:58:45,760
+ visible while generating the pdf okay or other documents so it can be clearly visible to
+
+594
+00:58:45,760 --> 00:58:47,120
+ the readers.
+
+595
+00:58:47,120 --> 00:58:51,520
+ So that is why we follow certain standard font size policies okay.
+
+596
+00:58:51,520 --> 00:58:58,920
+ Then you see for example plt.x level actual font size equals 13 so you see in the x axis
+
+597
+00:58:58,920 --> 00:59:01,600
+ they actually is present there okay.
+
+598
+00:59:01,600 --> 00:59:06,600
+ And then what you do you put some title so plt.title confusion matrix font size equals
+
+599
+00:59:06,600 --> 00:59:11,680
+ to 17 so this is the confusion matrix and through plt.show it will be plot okay.
+
+600
+00:59:11,680 --> 00:59:19,400
+ So I hope all of you got the idea and you see this is also explained here.
+
+601
+00:59:19,400 --> 00:59:25,240
+ This particular segment if you look you will get all the idea that how the what is sns.hitmap,
+
+602
+00:59:25,240 --> 00:59:30,000
+ what is confusion matrix, what is classifier.predict okay.
+
+603
+00:59:30,000 --> 00:59:35,560
+ So all those concepts has been highlighted there okay under the parameters data and not
+
+604
+00:59:35,560 --> 00:59:41,360
+ okay what I have mentioned it is exactly present there okay fmt what does g actually represents
+
+605
+00:59:41,360 --> 00:59:45,320
+ general format which I highlighted x tick level y tick level okay.
+
+606
+00:59:45,320 --> 00:59:50,560
+ So all those things is added in this particular reference text format which is basically through
+
+607
+00:59:50,560 --> 00:59:55,000
+ which you can access the interpretation of the code okay.
+
+608
+00:59:55,000 --> 01:00:08,680
+ So let us now explore it in the demo window okay so as you see the successful execution
+
+609
+01:00:08,680 --> 01:00:13,160
+ has been done 0 second is the time and this is the confusion matrix.
+
+610
+01:00:13,160 --> 01:00:18,840
+ Now it is time to interpret the confusion matrix so if you see this particular case
+
+611
+01:00:18,840 --> 01:00:26,960
+ that already I told you that 30% of 152 will be 45 samples so this 45 samples will participate.
+
+612
+01:00:26,960 --> 01:00:34,200
+ So if you see in first row it is 18 okay so as the x axis is denoting you the actual value
+
+613
+01:00:34,200 --> 01:00:40,120
+ that means 18 has been correctly classified as satosa 18 out of 18 has been correctly
+
+614
+01:00:40,120 --> 01:00:43,720
+ classified as satosa there is no miscalculation in first row.
+
+615
+01:00:43,720 --> 01:00:49,600
+ In second row out of 12 versicolors 11 has been correctly classified as versicolor but
+
+616
+01:00:49,600 --> 01:00:54,240
+ one wrongly has been classified as virginica from x axis you can check from x tick level
+
+617
+01:00:54,240 --> 01:01:01,080
+ you can check one wrong prediction is there but in the third row 15 out of 15 virginica
+
+618
+01:01:01,080 --> 01:01:04,200
+ has been correctly classified as virginica okay.
+
+619
+01:01:04,200 --> 01:01:11,480
+ So I repeat 18 out of 18 satosa has been correctly classified in first row there is no wrong classification
+
+620
+01:01:11,480 --> 01:01:19,080
+ in second row 11 out of 12 versicolor has been correctly classified as versicolor one
+
+621
+01:01:19,080 --> 01:01:23,720
+ wrongly has been classified as virginica in third row 15 virginica has been correctly
+
+622
+01:01:23,720 --> 01:01:29,760
+ classified as virginica there is no wrong classification okay so in all together it is 45 because
+
+623
+01:01:29,760 --> 01:01:35,680
+ in first row 18 samples second row 11 plus 12 samples in third row 15 so it will be 45
+
+624
+01:01:35,680 --> 01:01:43,040
+ overall okay so this is how do it so for your understanding purpose I have given I already
+
+625
+01:01:43,040 --> 01:01:48,680
+ added the text on the story about it this all things will be accessible to all of you.
+
+626
+01:01:48,680 --> 01:01:52,840
+ So you easily can check it out and you can understand the concept easily.
+
+627
+01:01:52,840 --> 01:01:58,160
+ So out of 18 satosa 18 has been correctly classified as satosa out of 12 versicolor 11 has been
+
+628
+01:01:58,160 --> 01:02:03,000
+ correctly classified as versicolor one wrongly classified as virginica out of 15 virginica
+
+629
+01:02:03,000 --> 01:02:07,640
+ as 15 has been classified as virginica as simple as that okay.
+
+630
+01:02:07,640 --> 01:02:12,000
+ So nothing to worry about it all those things have been given to you you just executed smoothly
+
+631
+01:02:12,000 --> 01:02:18,880
+ okay it is now 10 3 p.m. so sorry 10 3 a.m. so please finish this step by 10 5 I think
+
+632
+01:02:18,880 --> 01:02:44,200
+ 2 minutes will be good enough to finish it okay then we shall move to the next step.
+
+633
+01:02:44,200 --> 01:02:55,560
+ So I shall wait for another more minute I hope that all of you have been will be able
+
+634
+01:02:55,560 --> 01:03:19,160
+ to finish this up.
+
+635
+01:03:19,160 --> 01:03:38,520
+ Okay so let us move to the next part so now we will see the classification report okay
+
+636
+01:03:38,520 --> 01:03:42,880
+ so in classification report how to generate it so classification underscore report we
+
+637
+01:03:42,880 --> 01:03:47,760
+ shall apply it over the y-test y-pad and we will print the classification report okay
+
+638
+01:03:47,760 --> 01:03:52,960
+ so followed by printing the result one as we have stored it under result one and then
+
+639
+01:03:52,960 --> 01:03:57,640
+ you will get this type of the report this is the classification report part okay so
+
+640
+01:03:57,640 --> 01:04:02,280
+ under that you will get precision recall if one score support higher satosa precision
+
+641
+01:04:02,280 --> 01:04:07,600
+ means true positive divided by true positive plus false positive recalls means true positive
+
+642
+01:04:07,600 --> 01:04:12,320
+ divided by true positive plus false negative you can also calculate if one score the formula
+
+643
+01:04:12,320 --> 01:04:17,800
+ is 2 into recall into precision divided by precision plus recall and support means the
+
+644
+01:04:17,800 --> 01:04:20,840
+ number of the test samples which are participating here.
+
+645
+01:04:20,840 --> 01:04:25,680
+ So for example if you if you see iris satosa we already have seen 18 from the confusion
+
+646
+01:04:25,680 --> 01:04:30,760
+ matrix right in the first row it was 18 second row it is 11 plus 12 so that is why the support
+
+647
+01:04:30,760 --> 01:04:36,480
+ is 12 or for example if we see in the third row it is 15 participating sample 15 for
+
+648
+01:04:36,480 --> 01:04:42,920
+ the Virginia that is why it is 15 here okay and you can see they are corresponding values
+
+649
+01:04:42,920 --> 01:04:47,560
+ in terms of the precision recall if one score you can also calculate the accuracy as well
+
+650
+01:04:47,560 --> 01:04:54,520
+ okay so also the macro average and micro average so if you sum them up okay 1 plus 1 plus 0.94
+
+651
+01:04:54,520 --> 01:05:01,120
+ divided by 3 it will be 0.98 so macro average is nothing but the average column wise average
+
+652
+01:05:01,120 --> 01:05:06,240
+ if it is precision at these 3 values divided by 3 simple average calculation similar for
+
+653
+01:05:06,240 --> 01:05:13,360
+ the recall F1 score you will get this macro average values which is present here and similarly
+
+654
+01:05:13,360 --> 01:05:17,920
+ for the weighted average you can do the same thing weighted average what will happen individual
+
+655
+01:05:17,920 --> 01:05:23,640
+ precision into the corresponding support value divided by total support okay.
+
+656
+01:05:23,640 --> 01:05:30,200
+ So you will do the sum and then you will basically again in the next case individual precision
+
+657
+01:05:30,200 --> 01:05:36,520
+ value into support value plus again individual precision value like Iris Virginia 0.94 into
+
+658
+01:05:36,520 --> 01:05:41,880
+ support divided by total yes okay so total weight 45 so it will give you the weighted
+
+659
+01:05:41,880 --> 01:05:43,400
+ average okay.
+
+660
+01:05:43,400 --> 01:05:47,640
+ So for your assistant purpose I already have mentioned the explanations here okay so if
+
+661
+01:05:47,640 --> 01:05:53,720
+ you see precision 2 positive divided by 2 positive plus false positive recall 2 positive divided
+
+662
+01:05:53,720 --> 01:05:58,520
+ by 2 positive plus false negative F1 score like I mentioned 2 into precision into recall
+
+663
+01:05:58,520 --> 01:06:03,440
+ divided by precision plus recall okay they are the standard mathematical formula 2 positive
+
+664
+01:06:03,440 --> 01:06:08,480
+ what is 2 positive from your commonsense you can understand it if model correctly predicts
+
+665
+01:06:08,480 --> 01:06:13,560
+ the positive class 2 positive model correctly similarly model correctly predicts the negative
+
+666
+01:06:13,560 --> 01:06:18,720
+ class then it will be 2 negative if the model what will be the false positive if the model
+
+667
+01:06:18,720 --> 01:06:23,680
+ incorrectly predicts the positive plus it will be false positive if the model incorrectly
+
+668
+01:06:23,680 --> 01:06:25,880
+ predicts the negative plus it will be false negative.
+
+669
+01:06:25,880 --> 01:06:32,200
+ So in short for the 2 positive it is tp for 2 negative it is tn for the false positive
+
+670
+01:06:32,200 --> 01:06:37,440
+ it is fp for the false negative it is fn and like I mentioned that support means the number
+
+671
+01:06:37,440 --> 01:06:44,720
+ of the times the test samples which are appearing okay so that is the support okay macro average
+
+672
+01:06:44,720 --> 01:06:51,960
+ I already told you simple calculate all the values for the precision and then average
+
+673
+01:06:51,960 --> 01:06:57,760
+ then if it is the 3 value then add them and divide by 3 if it is 4 value then you add
+
+674
+01:06:57,760 --> 01:07:02,680
+ those 4 values divide by 4 like the way we calculate the average okay and weighted average
+
+675
+01:07:02,680 --> 01:07:08,080
+ it will be similarly the individual class precision into the individual class support
+
+676
+01:07:08,080 --> 01:07:13,840
+ okay you take the sum of them and divide by total support similarly if it is recall then
+
+677
+01:07:13,840 --> 01:07:18,480
+ what will happen individual class recall into individual class support take the sum of them
+
+678
+01:07:18,480 --> 01:07:23,800
+ and divide by total support so in this way you will calculate the weighted average okay
+
+679
+01:07:23,800 --> 01:07:29,440
+ so all those calculations have been given there and for the accuracy it is 2 positive
+
+680
+01:07:29,440 --> 01:07:33,920
+ plus 2 negative divided by 2 positive plus 2 negative plus false positive plus false
+
+681
+01:07:33,920 --> 01:07:40,760
+ negative okay so in this way you basically do the entire operations so mathematical formulas
+
+682
+01:07:40,760 --> 01:07:45,920
+ I have added there so for example in case you want to test them manually you can do it
+
+683
+01:07:45,920 --> 01:07:50,640
+ and try it you will get this type of the results which has been shown in the original notebook
+
+684
+01:07:50,640 --> 01:07:56,200
+ okay so please finish this up so result 1 how the classification report has been calculated
+
+685
+01:07:56,200 --> 01:08:01,680
+ how the accuracy score calculated and stood under result 2 I have mentioned okay so please
+
+686
+01:08:01,680 --> 01:08:07,080
+ finish this up and let me know okay so remember accuracy score here we calculated over y test
+
+687
+01:08:07,080 --> 01:08:13,000
+ and y print and we have printed the result and we got it 0.977 something that means approximately
+
+688
+01:08:13,000 --> 01:08:20,800
+ 97.78% so remember in test in training data set we got 95. something 95.24 and the test
+
+689
+01:08:20,800 --> 01:08:26,920
+ data set we got 97.78% that means even we are getting the better result than the training
+
+690
+01:08:26,920 --> 01:08:33,920
+ data set okay so that means that you do not there is no scenarios like overfitting okay
+
+691
+01:08:33,920 --> 01:08:39,880
+ so it is absolutely doing well our net base classifier is absolutely performing well okay
+
+692
+01:08:39,880 --> 01:08:45,800
+ and the result is trust of the okay so before going to support vector machine please finish
+
+693
+01:08:45,800 --> 01:08:53,440
+ this small chunk of the code and let us complete a net base and move towards the support vector
+
+694
+01:08:53,440 --> 01:09:01,440
+ machine portion so all of you now know what you have to do you simply click on the plus
+
+695
+01:09:01,440 --> 01:09:08,440
+ code button back to put it there and execute this step okay and you see this is the result
+
+696
+01:09:08,440 --> 01:09:12,120
+ so I am not re-explaining again I already told you twice or thrice what are the meaning
+
+697
+01:09:12,120 --> 01:09:19,080
+ of all those outcomes okay so just finish this up before we can proceed to the next
+
+698
+01:09:19,080 --> 01:09:25,720
+ part which is support vector machine so it is 10, 10, 10pm and then we shall move ahead
+
+699
+01:09:25,720 --> 01:09:41,720
+ so by 10, 12 we will finish it and then we shall start the support vector machine portion.
+
+700
+01:09:55,720 --> 01:10:22,360
+ so I shall wait for few more seconds before we can move to the next step so please
+
+701
+01:10:22,360 --> 01:10:45,840
+ finish this up
+
+702
+01:10:45,840 --> 01:10:50,320
+ okay so let us move to the next portion that is support vector machine so in support vector
+
+703
+01:10:50,320 --> 01:10:55,720
+ machine basically we will see the explorations of the different kernels so already you are
+
+704
+01:10:55,720 --> 01:11:02,480
+ aware of the linear polynomial RBF sigmoid type of the kernel so in the linear kernel
+
+705
+01:11:02,480 --> 01:11:08,200
+ is very much good for exploring the linearly separable values but for the non-linearly separable
+
+706
+01:11:08,200 --> 01:11:14,880
+ cases RBF and the RBF or Gaussian and sigmoid kernel are better okay these kernels are
+
+707
+01:11:14,880 --> 01:11:20,160
+ computationally very much smart to separate the non-linearly separable values so all of
+
+708
+01:11:20,160 --> 01:11:24,920
+ you know what is kernel already in last class Dr. Vikant Chakraborty has mentioned that
+
+709
+01:11:24,920 --> 01:11:28,600
+ how to separate the non-linearly separable values in higher dimension taking them to
+
+710
+01:11:28,600 --> 01:11:34,200
+ the higher dimensions and in those cases RBF sigmoid kernel those who played the important
+
+711
+01:11:34,200 --> 01:11:39,760
+ role okay so RBF kernel is nothing but the Gaussian kernel which can separate the non-linearly
+
+712
+01:11:39,760 --> 01:11:46,080
+ separable values smartly whereas sigmoid kernel is basically act as a like the sigmoid activation
+
+713
+01:11:46,080 --> 01:11:52,680
+ function which actually can separate the non-linearly separable values okay okay so these are the
+
+714
+01:11:52,680 --> 01:11:57,160
+ few important concept which you already have learned it so here we will just deploy those
+
+715
+01:11:57,160 --> 01:12:03,520
+ concepts in exploring in the this type of the python or pythonic platforms okay so basically
+
+716
+01:12:03,520 --> 01:12:10,800
+ from sklearn.svm you can import the support vector classifier svc and then you are creating
+
+717
+01:12:10,800 --> 01:12:17,000
+ an empty list accuracy underscore list under the square bracket and then for i in we are
+
+718
+01:12:17,000 --> 01:12:22,520
+ basically we will explore one by one kernel okay so we are basically putting within the
+
+719
+01:12:22,520 --> 01:12:28,160
+ list a linear poly which stands for the polynomial kernel which is also a very effective kernel
+
+720
+01:12:28,160 --> 01:12:34,880
+ like the linear RBF and sigmoid kernel okay then RBF and then sigmoid okay and we are keeping
+
+721
+01:12:34,880 --> 01:12:41,480
+ them under the each item will be under the single coded okay and then we will basically
+
+722
+01:12:41,480 --> 01:12:47,760
+ assign svc classifier and store it under clf so kernel equals to i so it will keep on accessing
+
+723
+01:12:47,760 --> 01:12:54,360
+ one by one kernel sequentially and will print the result then y-print equals to wide sorry
+
+724
+01:12:54,360 --> 01:13:02,640
+ clf.fit it will be applied over the extrane of y-print and then y-print equals to clf.predict
+
+725
+01:13:02,640 --> 01:13:06,640
+ we will apply it over the extrane and then we will calculate the accuracy score like
+
+726
+01:13:06,640 --> 01:13:11,440
+ we did earlier okay so first we will do it for the training data set as I told you because
+
+727
+01:13:11,440 --> 01:13:16,120
+ knowing the effectiveness of the algorithm over training is very important so that while
+
+728
+01:13:16,120 --> 01:13:23,760
+ executing the test data set you can easily learn that how it is performing whether any
+
+729
+01:13:23,760 --> 01:13:28,360
+ overfitting is happening or not that you will be able to learn okay then what will happen
+
+730
+01:13:28,360 --> 01:13:33,400
+ that you will apply it over the extrane and y-print you will apply accuracy function over
+
+731
+01:13:33,400 --> 01:13:38,280
+ them and store it under accuracy and simply then accuracy underscore list dot append accuracy
+
+732
+01:13:38,280 --> 01:13:42,600
+ will deploy and then you will print it like the way I told you because the way you want
+
+733
+01:13:42,600 --> 01:13:47,040
+ to show the output it will be printed so like for example we are keeping the string under
+
+734
+01:13:47,040 --> 01:13:54,920
+ accuracy of then plus i so under i those values are present linear poly RBF sigma so sequentially
+
+735
+01:13:54,920 --> 01:14:00,360
+ if you see the output it is showing accuracy of in this case as i is present plus i that
+
+736
+01:14:00,360 --> 01:14:04,540
+ means it will be linear here in the second line it will be poly in the third line it
+
+737
+01:14:04,540 --> 01:14:10,160
+ will be RBF I am showing you the output how it is coming out and fourth line this sigmoid
+
+738
+01:14:10,160 --> 01:14:16,160
+ then again you see we have given the E string okay and then float accuracy so it will the
+
+739
+01:14:16,160 --> 01:14:21,880
+ floating point value which is coming up for example in linear 0.96 upper is 0.9619 something
+
+740
+01:14:21,880 --> 01:14:28,200
+ or for example here 0.8857 something or for example in this case third row if you check
+
+741
+01:14:28,200 --> 01:14:35,800
+ 0.971428 something or in the fourth row 0.8952 something so in this way the accuracy will
+
+742
+01:14:35,800 --> 01:14:40,400
+ be printed for all those kernel like it is whether it can be linear polynomial RBF or
+
+743
+01:14:40,400 --> 01:14:47,320
+ sigmoid okay so in this way you can do it okay so let us explore this one and then after
+
+744
+01:14:47,320 --> 01:14:51,280
+ testing the efficacy of the algorithm over the training dataset we shall move them move
+
+745
+01:14:51,280 --> 01:14:59,360
+ ahead for the testing them in test dataset okay so let us first complete the step so
+
+746
+01:14:59,360 --> 01:15:04,600
+ all of you know we have to click on the plus code and then we can put it right here and
+
+747
+01:15:04,600 --> 01:15:12,920
+ then run okay so it has run smoothly and you can check the corresponding accuracy for the
+
+748
+01:15:12,920 --> 01:15:21,080
+ linear polynomial RBF as the sigmoid kernel performance okay so it is now 1016 please finish
+
+749
+01:15:21,080 --> 01:15:26,000
+ this step by 1018 you may get different values or you may get the same values for certain
+
+750
+01:15:26,000 --> 01:15:32,640
+ kernels but you have to check that which one is giving you the better result and depending
+
+751
+01:15:32,640 --> 01:15:39,200
+ on the different datasets and the alignment of the data points certain kernels will give
+
+752
+01:15:39,200 --> 01:16:08,440
+ you the better result in certain cases okay
+
+753
+01:16:08,440 --> 01:16:14,000
+ so I repeat linear kernel helps you to separate the linearly separable values in an effective
+
+754
+01:16:14,000 --> 01:16:19,640
+ way polynomial kernel helps you to do the complex polynomial modeling okay so that
+
+755
+01:16:19,640 --> 01:16:24,120
+ you can get the optimum result through the explore through by exploring this polynomial
+
+756
+01:16:24,120 --> 01:16:29,840
+ function I told you that RBF kernel or Gaussian kernel is very much effective for computing
+
+757
+01:16:29,840 --> 01:16:34,760
+ the non-linearly separable values okay for by classifying this non-linearly separable
+
+758
+01:16:34,760 --> 01:16:41,860
+ values sigmoid is another effective function kernel function of classifying non-linearly
+
+759
+01:16:41,860 --> 01:16:45,320
+ separable values under support vector machine okay.
+
+760
+01:16:45,320 --> 01:16:48,840
+ So please finish this step I shall wait for another more minute and then move to the next
+
+761
+01:16:48,840 --> 01:17:10,000
+ part so please finish this up.
+
+762
+01:17:10,000 --> 01:17:37,200
+ So let us move to the next part so under accuracy let us put because we want to plot them okay
+
+763
+01:17:37,200 --> 01:17:42,720
+ so we want to generate a comparison plot like this so because of that as a initiation of
+
+764
+01:17:42,720 --> 01:17:49,400
+ the step we are what we are doing we are assigning the index value under the accuracy list.
+
+765
+01:17:49,400 --> 01:17:54,440
+ So accuracy list basically it is a dictionary format okay key value pairs okay this is called
+
+766
+01:17:54,440 --> 01:17:59,400
+ the key value pairs I think Suman bear has mentioned during the Python session so accuracy
+
+767
+01:17:59,400 --> 01:18:04,800
+ equals to linear accuracy list so this is a zero that means linear activation function
+
+768
+01:18:04,800 --> 01:18:09,520
+ value will be stored under it then polynomial accuracy underscore least one so it will be
+
+769
+01:18:09,520 --> 01:18:15,080
+ polynomial kernel value will be stored under it then RBF okay so accuracy underscore least
+
+770
+01:18:15,080 --> 01:18:20,080
+ two that means RBF kernel will be stored under it then sigmoid as a Python is a zero indexing
+
+771
+01:18:20,080 --> 01:18:25,360
+ language so if there are four values so index value will line from 0 1 2 3 so in this way
+
+772
+01:18:25,360 --> 01:18:30,040
+ this dictionary format is forming the key value pairs and we are storing it under accuracy
+
+773
+01:18:30,040 --> 01:18:36,080
+ list okay so then what you will do you have to generate PLT dot figure okay figure size
+
+774
+01:18:36,080 --> 01:18:43,600
+ we are giving for example standard 8 by 6 okay and then we SNS dot bar plot okay X list
+
+775
+01:18:43,600 --> 01:18:49,200
+ accuracy keys and Y equals to list accuracy values as we have formed the key value pairs
+
+776
+01:18:49,200 --> 01:18:55,640
+ KB pairs okay because of that we had defining them in the SNS dot bar plot then we are keeping
+
+777
+01:18:55,640 --> 01:19:00,920
+ X level under the kernel these are the kernel values because linear polynomial RBF sigmoid
+
+778
+01:19:00,920 --> 01:19:05,920
+ the way we have defined in this sequence it will be printed and then Y level it will be
+
+779
+01:19:05,920 --> 01:19:12,840
+ the accuracy as you can see the accuracy calculations has been given there because all the values
+
+780
+01:19:12,840 --> 01:19:19,680
+ is more than basically 80 percent lowest one is 88 percent as we can see as per my original
+
+781
+01:19:19,680 --> 01:19:29,680
+ notebook it is 88.57 right so better to keep the values between 0.80 to 100 0.80 to 1
+
+782
+01:19:29,680 --> 01:19:34,880
+ that means 80 percent to 100 if it is 80 percent to 100 if you want to keep the Y axis limits
+
+783
+01:19:34,880 --> 01:19:41,800
+ then to show the difference better in a better way so we will keep 0.80 to 1 so that is why
+
+784
+01:19:41,800 --> 01:19:49,600
+ we have given the Y axis it 0.80 to 1 okay you can clearly see the differences between
+
+785
+01:19:49,600 --> 01:19:54,600
+ these bar plots in that case so that is why Y limit has been set up there in this way
+
+786
+01:19:54,600 --> 01:19:58,840
+ and PLT dot show you will get the following plots and the title as we need accuracy of
+
+787
+01:19:58,840 --> 01:20:05,760
+ different SVM kernels on Irish dataset okay so I believe that all of you got the purpose
+
+788
+01:20:05,760 --> 01:20:13,080
+ of assigning the X level Y level title even the limit of the Y limit okay so let us do
+
+789
+01:20:13,080 --> 01:20:18,400
+ one by one so first assign the key value pairs under accuracy with this dictionary format
+
+790
+01:20:18,400 --> 01:20:26,400
+ of the python or pythonic file and then we shall move ahead for the next step generating
+
+791
+01:20:26,400 --> 01:20:31,160
+ the comparative bar plots for the different kernel performances so you see this portion
+
+792
+01:20:31,160 --> 01:20:36,640
+ has been executed successfully then now we shall go ahead for executing this one generating
+
+793
+01:20:36,640 --> 01:20:49,520
+ the plots comparable plots here so you see this is the comparative plots here for example
+
+794
+01:20:49,520 --> 01:20:54,360
+ why it is three values are same because already you got see interestingly linear polynomial
+
+795
+01:20:54,360 --> 01:21:01,360
+ RBF kernel is giving you 97.14 percent okay these three values are same but you get sigmoid
+
+796
+01:21:01,360 --> 01:21:08,760
+ it is 89.52 percent so that is why the value has dropped here okay so first finish these
+
+797
+01:21:08,760 --> 01:21:14,480
+ two steps and then we shall go ahead so these two first execute this particular run cell
+
+798
+01:21:14,480 --> 01:21:19,120
+ I mean this particular cell with by clicking on the run cell button and then you execute
+
+799
+01:21:19,120 --> 01:21:26,560
+ this particular plots okay so it is now 1022 please finish this step by 1024 couple of
+
+800
+01:21:26,560 --> 01:21:31,600
+ minutes more will be good enough to execute this one and then we shall move ahead for
+
+801
+01:21:31,600 --> 01:21:56,880
+ the next portion of discussions.
+
+802
+01:21:56,880 --> 01:22:21,880
+ So, we shall move ahead for the next section of discussion.
+
+803
+01:22:21,880 --> 01:22:46,440
+ So, I shall wait for few more seconds so please finish this up then we shall move ahead.
+
+804
+01:22:46,440 --> 01:23:13,880
+ Okay., so we shall move ahead for the next section of discussion.
+
+805
+01:23:13,880 --> 01:23:41,840
+ So, we shall move ahead for the next section of discussion.
+
+806
+01:23:41,840 --> 01:23:53,480
+ Okay, so let us move to the next portion now so already we have seen and as you can see
+
+807
+01:23:53,480 --> 01:23:59,600
+ I have jotted down the explanation of the result so in this way we have achieved the
+
+808
+01:23:59,600 --> 01:24:04,880
+ highest accuracy with the RBF kernel in this case for example in this notebook we got the
+
+809
+01:24:04,880 --> 01:24:11,480
+ highest accuracy of the RBF kernel as simple as that if you look at the diagram original
+
+810
+01:24:11,480 --> 01:24:19,200
+ notebook I am talking about so it is 97.14 percent in the linear kernel we have achieved
+
+811
+01:24:19,200 --> 01:24:26,800
+ the second highest accuracy it is 96.19 percent okay third one we have got for the sigmoid
+
+812
+01:24:26,800 --> 01:24:32,800
+ kernel that is 89.52 percent and the lowest one is 88.57 percent respectively and which
+
+813
+01:24:32,800 --> 01:24:38,920
+ we got for the polynomial card okay so all these accuracies over the training dataset
+
+814
+01:24:38,920 --> 01:24:44,840
+ is very good now we have to check it for the test dataset okay so similar way what we will
+
+815
+01:24:44,840 --> 01:24:51,920
+ do we will we will create the empty list accuracy list then for I will keep one by one kalenek
+
+816
+01:24:51,920 --> 01:24:59,120
+ linear polynomial RBF sigmoid all those kernels we will put up there and then CLF equals to
+
+817
+01:24:59,120 --> 01:25:03,960
+ SVC support vector classifier kernel equals to I and then what we will do we will apply
+
+818
+01:25:03,960 --> 01:25:09,080
+ the CLF dot feed function over the X train and Y train and then Y pred equals to CLF
+
+819
+01:25:09,080 --> 01:25:14,240
+ dot predict we will apply that particular function over X test and then we will calculate the
+
+820
+01:25:14,240 --> 01:25:18,240
+ accuracy score we will apply the accuracy score function over Y test and Y pred and
+
+821
+01:25:18,240 --> 01:25:22,760
+ then accuracy underscore list dot append over accuracy we will apply it and then we will
+
+822
+01:25:22,760 --> 01:25:27,600
+ print the result one by one like the way same which we have done or the similar which we
+
+823
+01:25:27,600 --> 01:25:32,240
+ have done earlier so I am not re explaining the steps again so this is you can see this
+
+824
+01:25:32,240 --> 01:25:36,880
+ is the analog step only we are doing it over the test dataset earlier what we have done
+
+825
+01:25:36,880 --> 01:25:43,200
+ it over the training dataset okay so the steps are same I am not repeating it again here
+
+826
+01:25:43,200 --> 01:25:48,560
+ we have got if you see the accuracy values okay over the test dataset during applying
+
+827
+01:25:48,560 --> 01:25:54,840
+ them okay the accuracy of the linear kernel 0.9777 polynomial as well as the RBF kernel
+
+828
+01:25:54,840 --> 01:26:04,640
+ same value that means 97.78 percent for the sigma we have got 93.33 percent okay so this
+
+829
+01:26:04,640 --> 01:26:09,720
+ particular portion you just first finish it up over the test dataset and then we will
+
+830
+01:26:09,720 --> 01:26:22,400
+ try to generate the plot here and then they are going to okay so this is the these are
+
+831
+01:26:22,400 --> 01:26:27,320
+ the values now one question often comes up in your mind those who are new to it that
+
+832
+01:26:27,320 --> 01:26:35,400
+ why the values are varying okay during the time of the execution because you see during
+
+833
+01:26:35,400 --> 01:26:41,400
+ the test and training and test split okay the samples are not same which you are taking
+
+834
+01:26:41,400 --> 01:26:48,600
+ earlier okay it may vary so for example what may happen that 0 to 104 index value can go
+
+835
+01:26:48,600 --> 01:26:55,360
+ for the training and 0105 to 149th for the testing purpose because 70 percent of the
+
+836
+01:27:18,600 --> 01:27:42,720
+ samples okay and this is for example 105 70 percent of 150 values means it will be 105
+
+837
+01:27:42,720 --> 01:27:54,920
+ simple as that 30 percent of 150 is your equal equals to 45 so during the trend test split
+
+838
+01:27:54,920 --> 01:28:01,000
+ this can be the one of the splitting so for this split you will get one result if if you
+
+839
+01:28:01,000 --> 01:28:14,520
+ get the for example if you get some some sort of this kind of the combinations like for
+
+840
+01:28:14,520 --> 01:28:32,600
+ example 45 to 149 for the training
+
+841
+01:28:32,600 --> 01:28:41,100
+ and this combination is for testing because randomly if these things are happening then
+
+842
+01:28:41,100 --> 01:28:55,880
+ automatically because of this different participating samples your output will vary right for the
+
+843
+01:28:55,880 --> 01:29:00,000
+ different combinations you are getting different type of the result because random selections
+
+844
+01:29:00,000 --> 01:29:06,360
+ of during the trend test split is happening differently that is why for the name base
+
+845
+01:29:06,360 --> 01:29:14,120
+ or during the SVM or for the KNN you will get the different result trend test split
+
+846
+01:29:14,120 --> 01:29:18,800
+ so these two examples of the trend test split I have given to you okay for the different
+
+847
+01:29:18,800 --> 01:29:38,360
+ combo okay so I hope the picture is clear to all of you now fine okay so please finish
+
+848
+01:29:38,360 --> 01:29:45,500
+ this step this is 1031 so finish this step by 1032 then we shall move to the next step
+
+849
+01:29:45,500 --> 01:30:10,400
+ of generating this type of the plots okay.
+
+850
+01:30:10,400 --> 01:30:32,100
+ Well I believe all of you have been able to finish this now a similar step I am not re-explaining
+
+851
+01:30:32,100 --> 01:30:38,100
+ again for generating this type of the bar diagram okay so as you can see in my result
+
+852
+01:30:38,100 --> 01:30:43,140
+ in original notebook as these three values are same linear poly and RBF so with the same
+
+853
+01:30:43,140 --> 01:30:48,780
+ logic of generating the plot we got this three values same as per the bar diagram sigma value
+
+854
+01:30:48,780 --> 01:30:55,260
+ was the lower one so that is why we got this 93. something percentage okay so let us first
+
+855
+01:30:55,260 --> 01:31:06,460
+ explore this one this accuracy portion in the demo window notebook and then generating
+
+856
+01:31:06,460 --> 01:31:15,580
+ the bar diagram by differing the fixed size X level Y level and the title of the plot along
+
+857
+01:31:15,580 --> 01:31:24,980
+ with the Y limit so here we see this type of the plots we are getting in the demo window
+
+858
+01:31:24,980 --> 01:31:30,260
+ because we got the different result okay like for example in linear kernel we got the linear
+
+859
+01:31:30,260 --> 01:31:35,600
+ and RBF kernel in demo window we got the highest accuracy 97.78 percent approximately so these
+
+860
+01:31:35,600 --> 01:31:41,340
+ two bar diagrams are giving us the highest result for the linear and RBF whether as for
+
+861
+01:31:41,340 --> 01:31:48,140
+ the polynomial we got 0.88 something and the sigmoid is the lowest 1.86 something so that
+
+862
+01:31:48,140 --> 01:31:54,060
+ is why it is 88.88 percent approximately for polynomial and 86.66 percent for the sigmoid
+
+863
+01:31:54,060 --> 01:31:57,900
+ this one the lowest one okay so in your case accordingly the way we will learn you will
+
+864
+01:31:57,900 --> 01:32:04,620
+ get the way we are getting the output similarly we will get the bar diagram okay.
+
+865
+01:32:04,620 --> 01:32:11,940
+ So it is 1033 so finish this two step by 1035 okay so that we can move ahead after seeing
+
+866
+01:32:11,940 --> 01:32:16,180
+ the accuracy of different SVM kernels on iris data set test data set.
+
+867
+01:32:16,180 --> 01:32:22,060
+ So whatever the result you have got you actually have seen that result are not much deviating
+
+868
+01:32:22,060 --> 01:32:26,660
+ if we see individual kernel wise in comparison to the data result you got in the training
+
+869
+01:32:26,660 --> 01:32:33,940
+ data set okay either same or nearby it sometimes better sometime lower okay.
+
+870
+01:32:33,940 --> 01:32:40,140
+ So from this we can easily conclude one thing that we are not over fitting or the algorithm
+
+871
+01:32:40,140 --> 01:32:45,900
+ is not over fitting okay whatever the result we are getting it is fine it is acceptable
+
+872
+01:32:45,900 --> 01:32:52,620
+ as the training data set and test data results are closer to each other okay or the same
+
+873
+01:32:52,620 --> 01:33:07,980
+ that means it is acceptable performance okay.
+
+874
+01:33:07,980 --> 01:33:25,380
+ So, let us see how we can do this.
+
+875
+01:33:25,380 --> 01:33:54,980
+ Okay, so I believe we can move to the next step now all of you have been able to complete
+
+876
+01:33:54,980 --> 01:33:56,980
+ it okay.
+
+877
+01:33:56,980 --> 01:34:03,060
+ So what we will do we will generate now this type of the conclusion matrix thank you okay.
+
+878
+01:34:03,060 --> 01:34:07,540
+ So for this conclusion matrix already we have learned how to do it for example sklearn.metrics
+
+879
+01:34:07,540 --> 01:34:12,660
+ import classification report conclusion matrix accuracy score and then we shall apply the
+
+880
+01:34:12,660 --> 01:34:18,420
+ conclusion matrix over the Y test and Y freedom we are storing at the result and the basically
+
+881
+01:34:18,420 --> 01:34:23,780
+ the result section and then sns.heatmap the first argument will be the result, second
+
+882
+01:34:23,780 --> 01:34:25,460
+ argument will be the annotation true.
+
+883
+01:34:25,460 --> 01:34:30,380
+ So that is why the participating samples are appearing in each grid of the conclusion
+
+884
+01:34:30,380 --> 01:34:35,340
+ matrix and then fmt equals to g which is the general format okay.
+
+885
+01:34:35,340 --> 01:34:40,680
+ So basically the left hand side of the decimal value the entire integer value which will
+
+886
+01:34:40,680 --> 01:34:46,180
+ appear like 18, 0 or 9 because this is the general format we are using then x t level
+
+887
+01:34:46,180 --> 01:34:52,380
+ y t level for the setosa versicolor virginica setosa versicolor virginica will be there
+
+888
+01:34:52,380 --> 01:34:59,380
+ x level actual y level prediction font size we are keeping 13, conclusion matrix the title
+
+889
+01:34:59,380 --> 01:35:04,100
+ which is the highest font size we are giving 17, we will show you the following result.
+
+890
+01:35:04,100 --> 01:35:09,060
+ So as per the result you can see the similar we have defined during nape base that 18 setosa
+
+891
+01:35:09,060 --> 01:35:14,700
+ samples has been correctly classified as setosa out of 12, 9 has been correctly classified
+
+892
+01:35:14,700 --> 01:35:20,660
+ as versicolor 3 wrongly as virginica, 15 out of 15 correctly classified as virginica okay.
+
+893
+01:35:20,660 --> 01:35:23,940
+ So this is how the interpretation has been added for your assistant purpose you see I
+
+894
+01:35:23,940 --> 01:35:28,380
+ have added the interpretation here so things are clearly visible to all of you.
+
+895
+01:35:28,380 --> 01:35:35,980
+ So please finish this part before we can move to the KNN classifier okay.
+
+896
+01:35:35,980 --> 01:35:43,460
+ So generate the conclusion matrix and see the results.
+
+897
+01:35:43,460 --> 01:35:49,180
+ So in our case in demo window we are getting this 11 setosa out of 11 correctly classified
+
+898
+01:35:49,180 --> 01:35:57,020
+ as setosa out of 12 correctly classified as versicolor 5 wrongly as virginica, out of
+
+899
+01:35:57,020 --> 01:36:02,260
+ 17 16 has been correctly classified as virginica and 1 wrongly as versicolor.
+
+900
+01:36:02,260 --> 01:36:06,580
+ So in this way you can generate the interpretation okay whatever the results you are getting
+
+901
+01:36:06,580 --> 01:36:11,140
+ because I already have shown you why that during the test train test split the participant
+
+902
+01:36:11,140 --> 01:36:17,060
+ testing samples are varying between the training and testing cases during the use.
+
+903
+01:36:17,060 --> 01:36:22,900
+ So because of that reason okay your overall result is actually varying it is keeping the
+
+904
+01:36:22,900 --> 01:36:28,660
+ impact over the results okay.
+
+905
+01:36:28,660 --> 01:36:33,060
+ So generate the outcome and let us go to the KNN execution.
+
+906
+01:36:33,060 --> 01:36:37,740
+ So it is now 1038 please finish this step by 1040 so that we can move towards the implementation
+
+907
+01:36:37,740 --> 01:36:45,300
+ of the KNN classifier which is the last portion of our class okay hands on class actually
+
+908
+01:36:45,300 --> 01:36:51,100
+ there will be a theory session after that but for the hands on part we will execute
+
+909
+01:37:15,300 --> 01:37:22,100
+.
+
+910
+01:37:45,300 --> 01:37:57,060
+, I shall wait for few more seconds before we can move to the next step those who have
+
+911
+01:37:57,060 --> 01:38:23,860
+ already read find those who are doing it please finish it.
+
+912
+01:38:23,860 --> 01:38:49,140
+ Thank you.
+
+913
+01:38:53,860 --> 01:39:03,820
+ Well so let us move to the next part KNN classifier.
+
+914
+01:39:03,820 --> 01:39:09,940
+ So in KNN KNRS neighborhood already we have learnt the concept of the KNRS neighborhood.
+
+915
+01:39:09,940 --> 01:39:14,820
+ So here what we will do before as a part of the hands on session.
+
+916
+01:39:14,820 --> 01:39:19,660
+ So we will take from escalant.neighbors we will import the KN neighbors classifier and
+
+917
+01:39:19,660 --> 01:39:27,300
+ KN neighbors classifier will take the 8 neighborhood points to classify the correct sample okay.
+
+918
+01:39:27,300 --> 01:39:33,500
+ So now KN neighbors classifier AN_neighbors will keep as 8 and we store it under classifier
+
+919
+01:39:33,500 --> 01:39:39,220
+ and then we will execute the classifier.fit over the X train and Y train okay.
+
+920
+01:39:39,220 --> 01:39:45,140
+ So this is the very basic steps which we will do before calculating the accuracy over the
+
+921
+01:39:45,140 --> 01:39:48,980
+ KNN for the KNN classifier for different KN values.
+
+922
+01:39:48,980 --> 01:39:53,700
+ Our objective will be to get the highest accuracy and figure out for which K value we are getting
+
+923
+01:39:53,700 --> 01:39:54,700
+ it okay.
+
+924
+01:39:54,700 --> 01:39:59,380
+ Or there can be multiple K values which we may get for the highest accuracy that means
+
+925
+01:39:59,380 --> 01:40:02,580
+ that will be the lowest error point okay.
+
+926
+01:40:02,580 --> 01:40:13,020
+ So that means we should have to first execute the basics setup for let us start with the
+
+927
+01:40:13,020 --> 01:40:17,940
+ KN neighbor classifier for KN neighbor values of the 8 okay.
+
+928
+01:40:17,940 --> 01:40:24,140
+ First to avoid any kind of the overfitting scenario or the underfitting scenario for
+
+929
+01:40:24,140 --> 01:40:29,820
+ example if we take the K equals to 1, K equals to 2 or 3 that can be two simple, simplistic
+
+930
+01:40:29,820 --> 01:40:33,260
+ cases and that may create the underfitting cases.
+
+931
+01:40:33,260 --> 01:40:35,300
+ So that is why we are avoiding it.
+
+932
+01:40:35,300 --> 01:40:40,620
+ We are starting from I advise you to start from the 6, 7 or 8 values like this value to
+
+933
+01:40:40,620 --> 01:40:44,100
+ try out figure out for which K value you are getting the highest accuracy.
+
+934
+01:40:44,100 --> 01:40:48,740
+ So here we are starting with the neighbor K neighbor values as the N neighbor values
+
+935
+01:40:48,740 --> 01:40:52,140
+ as 8 okay and we will see how it performs.
+
+936
+01:40:52,140 --> 01:40:53,700
+ So it is now 1042.
+
+937
+01:40:53,700 --> 01:41:00,700
+ So please finish this step by 1043 there are basic three lines of the codes okay.
+
+938
+01:41:00,700 --> 01:41:13,820
+ So just finish it then we shall move to the next step.
+
+939
+01:41:13,820 --> 01:41:18,780
+ So in the next step we will implement the classifier.predict over X train okay and we
+
+940
+01:41:18,780 --> 01:41:20,920
+ will calculate it okay.
+
+941
+01:41:20,920 --> 01:41:25,420
+ So we will apply accuracy underscore values over Y train and Y parade and then we will
+
+942
+01:41:25,420 --> 01:41:27,500
+ calculate the accuracy values.
+
+943
+01:41:27,500 --> 01:41:33,820
+ So like I told you thus to compare and avoid the overfitting scenarios and compare the
+
+944
+01:41:33,820 --> 01:41:38,180
+ performances of the algorithm over training and test data is very important.
+
+945
+01:41:38,180 --> 01:41:42,740
+ So that is why we shall explore this one for the training dataset for N neighbors equals
+
+946
+01:41:42,740 --> 01:42:05,100
+ to 8 okay and we will see that in which K value we are getting the optimum result.
+
+947
+01:42:05,100 --> 01:42:11,140
+ Let us move to the next step so like I told you now we are going to check for K equals
+
+948
+01:42:11,140 --> 01:42:17,860
+ to 8 what we will get the accuracy.
+
+949
+01:42:17,860 --> 01:42:25,380
+ So in the demo window we are getting the accuracy it is 95.238 that means 95.24 percent okay
+
+950
+01:42:25,380 --> 01:42:33,300
+ and whereas my original window original notebook it is 96.19 percent okay that means 0.9619
+
+951
+01:42:33,300 --> 01:42:40,420
+ 96.19 percent okay this we are getting for the 8 neighbor value 8 okay.
+
+952
+01:42:40,420 --> 01:42:47,020
+ So it is now 1044 please finish this step to generate the accuracy for the first case
+
+953
+01:42:47,020 --> 01:43:10,420
+ by 1045 then we shall check out for the N neighbors value 9 what we are getting.
+
+954
+01:43:10,420 --> 01:43:19,340
+ So I repeat this particular value 8 is actually defining the particular class for a new point
+
+955
+01:43:19,340 --> 01:43:26,940
+ data point in terms of the majority of the voting for which class it belongs to okay.
+
+956
+01:43:26,940 --> 01:43:35,420
+ So for example in first case we got the accuracy as per my demo into it is 95.24 percent approximately
+
+957
+01:43:35,420 --> 01:43:39,820
+ and original window it has 96. Something so it is a very good result but we are trying
+
+958
+01:43:39,820 --> 01:43:46,860
+ to figure out for which K value or more than one there can be multiple K values actually
+
+959
+01:43:46,860 --> 01:43:53,020
+ we are getting the highest result we are trying to tap that particular point okay.
+
+960
+01:43:53,020 --> 01:43:59,940
+ So now let us see so it is already 1045 so I believe that you have been able to incorporate
+
+961
+01:43:59,940 --> 01:44:06,540
+ this particular portion. So let us move to the next value that is 9 let us try out with
+
+962
+01:44:06,540 --> 01:44:12,700
+ 9 okay. So steps will be same only what you will do you will replace the N neighbors value
+
+963
+01:44:12,700 --> 01:44:16,500
+ will update the N neighbors value okay. So that is why I am not again re-explaining the
+
+964
+01:44:16,500 --> 01:44:21,420
+ steps we will only update the N neighbors value and keep on testing that for which case
+
+965
+01:44:21,420 --> 01:44:24,340
+ we are getting the highest result okay.
+
+966
+01:44:24,340 --> 01:44:30,540
+ So first execute this one and then go for executing the classification accuracy portion
+
+967
+01:44:30,540 --> 01:44:35,700
+ as we are doing it over the training dataset so there will be no change here also okay.
+
+968
+01:44:35,700 --> 01:44:43,860
+ So in here for K equals 9 I got the same earlier it is 0.9619 that means 96.19 percent K equals
+
+969
+01:44:43,860 --> 01:44:49,660
+ to 8 and K equals 9 you also got the same accuracy okay. So let us see in my demo into
+
+970
+01:44:49,660 --> 01:44:55,740
+ what I am achieving in your case also keep on watching that in which K value got the
+
+971
+01:44:55,740 --> 01:45:02,980
+ highest accuracy here I can see in my case it is dropping 9.9485 it might happen that
+
+972
+01:45:02,980 --> 01:45:08,300
+ at K equals to 8 I got already got the highest accuracy as it is dropping. Let me cross check
+
+973
+01:45:08,300 --> 01:45:12,420
+ with one or two values more whether I get the better result or not in your case you
+
+974
+01:45:12,420 --> 01:45:15,740
+ see whether the result is same whether you are getting the better result or whether it
+
+975
+01:45:15,740 --> 01:45:20,620
+ is dropping okay. Just for the confirmation purpose if it is dropping check out another
+
+976
+01:45:20,620 --> 01:45:25,380
+ one or two point okay then you conclude that in which point you got the result highest
+
+977
+01:45:25,380 --> 01:45:28,620
+ result okay.
+
+978
+01:45:28,620 --> 01:45:33,980
+ So repeat that N neighbors value taking 1, 2, 3 this type of the values will make the
+
+979
+01:45:33,980 --> 01:45:39,500
+ model too simple and too biased so that will be under footing scenario it will be a bias
+
+980
+01:45:39,500 --> 01:45:44,780
+ model. So because of that it is better to start from 6, 7 or 8 that kind of the values.
+
+981
+01:45:44,780 --> 01:45:50,300
+ So with certain efforts you will be able to figure out the highest accuracy maybe at K
+
+982
+01:45:50,300 --> 01:46:03,020
+ equals to 11, 12 or 10 or even 8 okay fine.
+
+983
+01:46:03,020 --> 01:46:09,380
+ So it is now 1047 so finish this step by 1048 this two step for N neighbors 9 there is no
+
+984
+01:46:09,380 --> 01:46:14,460
+ change in the code remember from now onwards what we will do we will only replace the value
+
+985
+01:46:14,460 --> 01:46:21,420
+ of the N neighbors that is it okay and make some try to make some conclusion then we will
+
+986
+01:46:21,420 --> 01:46:27,540
+ move the same repeat the same steps for the stage dataset and make some conclusions which
+
+987
+01:46:27,540 --> 01:46:31,820
+ one is the better okay.
+
+988
+01:46:31,820 --> 01:46:36,300
+ So let me go back to the original notebook and try out to the next value that is the
+
+989
+01:46:36,300 --> 01:46:44,300
+ N neighbors 10 okay. So those who are doing it I hope all of you got the steps so I do
+
+990
+01:46:44,300 --> 01:46:47,560
+ not need to wait for you because already you have understood only you have to change the
+
+991
+01:46:47,560 --> 01:46:55,140
+ N neighbor values and with the execution of these subsequent two cells you can easily
+
+992
+01:46:55,140 --> 01:46:58,940
+ deal with the calculation of the accuracies.
+
+993
+01:46:58,940 --> 01:47:04,940
+ So here we are doing it for the N neighbors 10 okay and similar way only you can see only
+
+994
+01:47:04,940 --> 01:47:09,740
+ the N neighbor value has been updated and now we are trying to figure out for the accuracy
+
+995
+01:47:09,740 --> 01:47:15,300
+ calculation same code okay. For example in my case in original window I got the same accuracy
+
+996
+01:47:15,300 --> 01:47:21,820
+ even at K equals to 10 okay. It may be possible that this is forming a play to where the all
+
+997
+01:47:21,820 --> 01:47:28,220
+ highest accuracies are lying with certain K values 8, 9, 10 okay you never know.
+
+998
+01:47:28,220 --> 01:47:33,620
+ So that is why you need to keep on testing here let me check this one will be the interesting
+
+999
+01:47:33,620 --> 01:47:38,400
+ my demo window result will be the interesting okay. Let me check whether it is dropping
+
+1000
+01:47:38,400 --> 01:47:45,080
+ or is there any increase no it has dropped 94.9485. So already I got the highest accuracy
+
+1001
+01:47:45,080 --> 01:47:49,940
+ at K equals to 8 with my first attempt in 19 it is again dropping okay. So here I can
+
+1002
+01:47:49,940 --> 01:47:56,460
+ conclude that at K equals to 8 neighborhood point is giving us the better result okay
+
+1003
+01:47:56,460 --> 01:48:03,780
+ best result that is 95.23 okay. So for you you keep on trying to figure out for example
+
+1004
+01:48:03,780 --> 01:48:08,180
+ those who got the 10 you can again replace the value for 11. If you already got the highest
+
+1005
+01:48:08,180 --> 01:48:12,300
+ accuracy value and seeing the drop like me which I observe in the demo window you must
+
+1006
+01:48:12,300 --> 01:48:18,540
+ keep it and those who are seeing the same accuracy like my original window or seeing
+
+1007
+01:48:18,540 --> 01:48:24,220
+ any improvement they try to figure out the point in which point it is dropping. So if
+
+1008
+01:48:24,220 --> 01:48:29,060
+ it is dropping at K equals to 13 then you can say that at K equals to 12 or 10 to 12
+
+1009
+01:48:29,060 --> 01:48:30,980
+ you are getting the highest accuracy.
+
+1010
+01:48:30,980 --> 01:48:37,460
+ You are getting the highest accuracy like for example at 11 okay if you can check my accuracy
+
+1011
+01:48:37,460 --> 01:48:44,700
+ is dropping here. That means I got the highest result that is why I have concluded here here
+
+1012
+01:48:44,700 --> 01:48:50,020
+ we have observed that the KNN algorithm is doing well for the values K equals to 8, 9,
+
+1013
+01:48:50,020 --> 01:48:59,740
+ 10 and 11 where it has achieved the highest accuracy for 96.19% at K equals to 8, 9, 10
+
+1014
+01:48:59,740 --> 01:49:04,900
+ on the training dataset. We have tried out for the different values of K, 8, 9, 10 and
+
+1015
+01:49:04,900 --> 01:49:11,460
+ 11 where it has achieved the highest accuracy of 96.19% at K equals to 8, 9, 10 on the training
+
+1016
+01:49:11,460 --> 01:49:15,100
+ dataset because at 11 we have seen the drop of the accuracy.
+
+1017
+01:49:15,100 --> 01:49:19,820
+ So that is why we concluded that our highest accuracy range is 8, 9, 10. Like I told you
+
+1018
+01:49:19,820 --> 01:49:27,020
+ may get the single point you may get the multiple point while predicting the accuracy for a
+
+1019
+01:49:27,020 --> 01:49:34,500
+ new data point depending on the other neighborhood points. So how you got the concept. So this
+
+1020
+01:49:34,500 --> 01:49:38,880
+ is what the training dataset result okay. Now we can do it for the testing data. Let
+
+1021
+01:49:38,880 --> 01:49:43,060
+ us see training result we got 96.1 and which is a very good result. Now we have to see
+
+1022
+01:49:43,060 --> 01:49:48,380
+ that for what will happen for the test scenario. So like a form of standard practice we shall
+
+1023
+01:49:48,380 --> 01:49:54,860
+ apply classifier.predict function over X test and we will store it under Y print okay. Let
+
+1024
+01:49:54,860 --> 01:50:05,220
+ us go back to the demo window and try it out for the test samples done.
+
+1025
+01:50:05,220 --> 01:50:13,100
+ And then from a scalar dot metric we shall import the classification report okay. Confusion
+
+1026
+01:50:13,100 --> 01:50:18,140
+ matrix accuracy score and the result will be stored under by applying the confusion
+
+1027
+01:50:18,140 --> 01:50:24,300
+ matrix over Y test and Y print and it will be stored under result variable okay. So let
+
+1028
+01:50:24,300 --> 01:50:32,340
+ us do it. So please complete these two steps it is now 1052 please complete these two steps
+
+1029
+01:50:32,340 --> 01:50:43,460
+ by 1054 okay. Now we are at the end of our session where we are basically exploring the
+
+1030
+01:50:43,460 --> 01:50:48,060
+ KNN algorithm over the test samples. Already we have seen during the training sample we
+
+1031
+01:50:48,060 --> 01:50:54,500
+ got for 8, 9, 10 from as per my demo window original window we got the highest accuracy
+
+1032
+01:50:54,500 --> 01:51:00,620
+ 96.19 and as per my demo window I got 95. something at k equals to 8 which is the highest okay.
+
+1033
+01:51:00,620 --> 01:51:05,660
+ In your case I hope you have noted down that in which particular case you got the highest
+
+1034
+01:51:05,660 --> 01:51:10,140
+ result okay. And similar way I am telling you because of today morning we have started
+
+1035
+01:51:10,140 --> 01:51:14,740
+ with Naive base we explore SVM for different kernels now you are doing KNN as we are doing
+
+1036
+01:51:14,740 --> 01:51:19,780
+ it over the same data set okay. Please add also training stage sample training stage
+
+1037
+01:51:19,780 --> 01:51:26,100
+ sample split also the same 70 percent 30 percent what you have done in terms of the quantity.
+
+1038
+01:51:26,100 --> 01:51:32,580
+ So make a comparative table for your learning purpose okay. So that you can get some idea
+
+1039
+01:51:32,580 --> 01:51:37,580
+ that for which algorithm you are getting the better result for your case okay. It will
+
+1040
+01:51:37,580 --> 01:51:43,340
+ be a good learning because you can compare whenever you are doing some project it will
+
+1041
+01:51:43,340 --> 01:51:46,940
+ help you to compare the performances of the different algorithms.
+
+1042
+01:51:46,940 --> 01:51:52,060
+ In the next class for example during this supervised learning 2 hands on session we
+
+1043
+01:51:52,060 --> 01:51:57,680
+ shall have another more experiences over the d addition exploring trees random forest you
+
+1044
+01:51:57,680 --> 01:52:01,940
+ can that will be done on the same data set. So you can compare them at the end of the
+
+1045
+01:52:01,940 --> 01:52:07,700
+ day for supervised learning which one is giving you the best result okay. So it is now 1053
+
+1046
+01:52:07,700 --> 01:52:11,660
+ I believe all of you have been able to finish this part. So now we will generate the hit
+
+1047
+01:52:11,660 --> 01:52:16,100
+ map this type of the with sns.itmap we shall generate this type of the confusion matrix
+
+1048
+01:52:16,100 --> 01:52:21,460
+ okay. So as the all of you already got the idea since morning I am explaining this step
+
+1049
+01:52:21,460 --> 01:52:27,400
+ so I am not repeating it again. So just check that in your case what type of the confusion
+
+1050
+01:52:27,400 --> 01:52:37,380
+ matrix you are getting. So as per my original notebook you see 18 setosa has been correctly
+
+1051
+01:52:37,380 --> 01:52:43,260
+ classified as setosa 12 versicolor has been correctly classified as versicolor and 15
+
+1052
+01:52:43,260 --> 01:52:48,140
+ virginica has been correctly classified as virginica so you got the 100% accuracy okay.
+
+1053
+01:52:48,140 --> 01:52:55,540
+ All the case you are getting the correct results like 80 out of 18 has been correctly classified
+
+1054
+01:52:55,540 --> 01:53:00,380
+ as setosa out of 12 versicolor 12 has been correctly classified as versicolor out of 15
+
+1055
+01:53:00,380 --> 01:53:04,620
+ virginica has been correctly classified as virginica. So you see the explanation also
+
+1056
+01:53:04,620 --> 01:53:10,900
+ added there okay and I will also calculate the accuracy here also okay.
+
+1057
+01:53:10,900 --> 01:53:16,460
+ So if we see the similar type of the results whether we have got the same result or different
+
+1058
+01:53:16,460 --> 01:53:21,940
+ let us see in the demo notebook. In the demo notebook as we can see 11 has been out of
+
+1059
+01:53:21,940 --> 01:53:27,220
+ 11 setosa has been correctly classified as setosa out of 17 17 has been correctly classified
+
+1060
+01:53:27,220 --> 01:53:32,700
+ as versicolor out of 17 15 has been correctly classified as virginica too wrongly as versicolor.
+
+1061
+01:53:32,700 --> 01:53:39,660
+ This is what we have observed in the demo window there are few wrong classifications okay.
+
+1062
+01:53:39,660 --> 01:53:45,260
+ So all as this is the same code I am not waiting for you you can do it now because you already
+
+1063
+01:53:45,260 --> 01:53:50,060
+ have this one is the same thing for generating the confusion matrix now what we will do this
+
+1064
+01:53:50,060 --> 01:53:54,580
+ portion is also you have with you because this is same code for generating the classification
+
+1065
+01:53:54,580 --> 01:53:59,700
+ report as well as the accuracy. As per the confusion matrix you do not have to explain
+
+1066
+01:53:59,700 --> 01:54:03,460
+ that the accuracy will be 100 percent because there is no wrong classification okay.
+
+1067
+01:54:03,460 --> 01:54:11,140
+ So as you can see this is the highest accuracy which we have achieved for K equals to 9 the
+
+1068
+01:54:11,140 --> 01:54:17,060
+ case data set K equals to 9 sorry because I am talking about it is 100 percent now we
+
+1069
+01:54:17,060 --> 01:54:22,020
+ will see that is for the let us we will check out for the K equals to 9 what we will achieve.
+
+1070
+01:54:22,020 --> 01:54:27,580
+ So this particular portion of the code let me run for the demo window okay for the demo
+
+1071
+01:54:27,580 --> 01:54:32,040
+ window let me let me put it there and let us check.
+
+1072
+01:54:32,040 --> 01:54:37,340
+ So in the demo window it is 95.56 percent because in the last row you see there were
+
+1073
+01:54:37,340 --> 01:54:42,540
+ two wrong classifications right out of 1715 has been kindly classified as virginica and
+
+1074
+01:54:42,540 --> 01:54:47,820
+ too wrongly as versicolor in your in our case original notebook it is 100 percent now we
+
+1075
+01:54:47,820 --> 01:54:52,460
+ shall go and test the accuracy for the K equals to 9 okay.
+
+1076
+01:54:52,460 --> 01:54:57,220
+ So that we will explore here so this particular portion already we have the code with you okay.
+
+1077
+01:54:57,220 --> 01:55:03,100
+ So we will put just replace in neighbors equals to 9 okay and check it out then we will what
+
+1078
+01:55:03,100 --> 01:55:07,700
+ we will do we will do the classifier dot predict we shall apply over the X test okay and then
+
+1079
+01:55:07,700 --> 01:55:10,740
+ we will generate the confusion matrix okay.
+
+1080
+01:55:10,740 --> 01:55:25,140
+ So these steps let us do it in my demo window you also explore it for you for the test result.
+
+1081
+01:55:25,140 --> 01:55:39,380
+ So once you do it then you go for the classifier dot predict we apply it over the X test
+
+1082
+01:55:39,380 --> 01:55:43,340
+ and then what will be the next step next step we will be calculating the confusion matrix
+
+1083
+01:55:43,340 --> 01:55:55,580
+ okay and you will store it under the result just to check whether you are getting the
+
+1084
+01:55:55,580 --> 01:56:01,500
+ better result or not and then you generate the confusion matrix in my case it is again
+
+1085
+01:56:01,500 --> 01:56:07,700
+ same even at K equals to 9 I am getting the accuracy 100 percent okay.
+
+1086
+01:56:07,700 --> 01:56:11,940
+ So there is no point of checking more because already I am at the highest point so I can
+
+1087
+01:56:11,940 --> 01:56:18,920
+ conclude that K equals to 9 is my optimum point for the test result okay and it is not
+
+1088
+01:56:18,920 --> 01:56:23,540
+ debating much because in the as per the original notebook I got the highest accuracy in case
+
+1089
+01:56:23,540 --> 01:56:28,900
+ of KNN it was something like if I check from my original notebook I got the highest accuracy
+
+1090
+01:56:28,900 --> 01:56:37,780
+ for K equals to 8, 9, 10 that is basically your 96.19 percent okay and from the test
+
+1091
+01:56:37,780 --> 01:56:42,300
+ data set I am getting even better result 100 percent okay at K equals to 9.
+
+1092
+01:56:42,300 --> 01:56:46,140
+ So there is no point of checking because it is already I got the highest point there might
+
+1093
+01:56:46,140 --> 01:56:51,900
+ be some multiple values or single point value I am getting it okay that for verifying that
+
+1094
+01:56:51,900 --> 01:56:57,060
+ you can check it out further okay but I think in demo window let me try out because there
+
+1095
+01:56:57,060 --> 01:57:02,380
+ are some errors okay for the demo window cases it will be interesting scenario to check whether
+
+1096
+01:57:02,380 --> 01:57:06,180
+ I am getting the better result or not okay so those who have drawn the confusion matrix
+
+1097
+01:57:06,180 --> 01:57:12,300
+ check it out again by doing it out for classification report and accuracy score whether you are
+
+1098
+01:57:12,300 --> 01:57:16,580
+ getting the better result or not or for which point you are getting the best result that
+
+1099
+01:57:16,580 --> 01:57:18,660
+ you may check out.
+
+1100
+01:57:18,660 --> 01:57:27,300
+ For here I can see again 95.55 for K equals to 9 and the K equals to 8 both the cases
+
+1101
+01:57:27,300 --> 01:57:33,380
+ I am getting the same result for the test data set 95.56 okay so let me check that whether
+
+1102
+01:57:33,380 --> 01:57:39,780
+ it is dropping or not for another point like K equals to 10 in that case let me figure
+
+1103
+01:57:39,780 --> 01:57:41,700
+ out okay.
+
+1104
+01:57:41,700 --> 01:57:47,140
+ So for example I can try it out for the K equals to 10 and again check okay like in
+
+1105
+01:57:47,140 --> 01:57:52,900
+ my notebook okay I got I am getting the 100 percent accuracy but in demo notebook I can
+
+1106
+01:57:52,900 --> 01:57:54,220
+ see some errors.
+
+1107
+01:57:54,220 --> 01:58:02,900
+ So that is why it will be much more we have to be much more watchful that for which point
+
+1108
+01:58:02,900 --> 01:58:11,380
+ I am getting the better accuracy so I am trying it for the K equals to 10 okay.
+
+1109
+01:58:11,380 --> 01:58:17,300
+ So for example only the values will be changed rest of the code will remain same okay just
+
+1110
+01:58:17,300 --> 01:58:37,620
+ you have to follow the sequence of the execution okay so confusion matrix portion is done.
+
+1111
+01:58:37,620 --> 01:58:50,380
+ Now let us generate the heat map in the demo window okay so here you can see it will again
+
+1112
+01:58:50,380 --> 01:58:56,980
+ the same scenario 11 out of 11 has been correctly classified as 17 has been correctly classified
+
+1113
+01:58:56,980 --> 01:59:02,900
+ as Virginia out of 17 15 has been correctly classified as Virginia and 2 wrongly as versi
+
+1114
+01:59:02,900 --> 01:59:04,780
+ color okay.
+
+1115
+01:59:04,780 --> 01:59:13,900
+ So now let me just generate the classification report it will be same I mean 95.56.
+
+1116
+01:59:13,900 --> 01:59:21,020
+ So what I can do I can skip the value already we have seen that 8 9 10 95.56 percent okay
+
+1117
+01:59:21,020 --> 01:59:26,020
+ the demo window as per the demo window 8 9 10 all these three values in demo window we
+
+1118
+01:59:26,020 --> 01:59:28,820
+ got the 95.56 percent okay.
+
+1119
+01:59:28,820 --> 01:59:32,660
+ So continuously I am getting it so we have to figure out that whether this is the highest
+
+1120
+01:59:32,660 --> 01:59:38,940
+ accuracy or whether it is dropping okay so for that what we can do we can simply just
+
+1121
+01:59:38,940 --> 01:59:43,860
+ change the value I am just skipping going to the 13 or 14 for example I am taking n
+
+1122
+01:59:43,860 --> 01:59:49,620
+ neighbors equals to 13 in my demo window because original notebook I got 100 percent
+
+1123
+01:59:49,620 --> 01:59:54,780
+ at 8 9 10 so I am not again checking it because that is already we got the highest accuracy
+
+1124
+01:59:54,780 --> 01:59:59,500
+ okay because over 100 percent nothing is possible it will drop at certain point okay.
+
+1125
+01:59:59,500 --> 02:00:02,900
+ So no point of checking it so we can conclude that we are getting the highest accuracy at
+
+1126
+02:00:02,900 --> 02:00:07,820
+ 8 9 10 and there is no over fitting okay 96 point something over the training data set
+
+1127
+02:00:07,820 --> 02:00:12,540
+ and for the test data set 100 for the demo window I am checking it those who are getting
+
+1128
+02:00:12,540 --> 02:00:15,260
+ the same result like my demo window okay.
+
+1129
+02:00:15,260 --> 02:00:18,780
+ So they can figure it out because 8 9 10 we got the same result.
+
+1130
+02:00:18,780 --> 02:00:22,660
+ So I want to check that in which point it is dropping okay.
+
+1131
+02:00:22,660 --> 02:00:28,620
+ So like if I keep n neighbors equals to 14 let me check that is there any changes whether
+
+1132
+02:00:28,620 --> 02:00:50,620
+ we are observing any changes or not.
+
+1133
+02:00:50,620 --> 02:01:08,940
+ Okay so in conclusion matrix it is changing 11 out of 11 setosa has been correctly classified
+
+1134
+02:01:08,940 --> 02:01:14,820
+ 17 out of 17 varsity color has been correctly classified out of 17 14 Virginia has been correctly
+
+1135
+02:01:14,820 --> 02:01:18,660
+ classified 3 Romley has been classified as varsity color okay.
+
+1136
+02:01:18,660 --> 02:01:33,500
+ Now we can see the changes okay let us generate the classification report here.
+
+1137
+02:01:33,500 --> 02:01:35,740
+ So here you can see the drop in accuracy.
+
+1138
+02:01:35,740 --> 02:01:41,460
+ So already we got the peak at K equals to 8 9 10 but here in 13 we can see the drop in
+
+1139
+02:01:41,460 --> 02:01:45,740
+ accuracy that is 93.33 percent in the demo window okay.
+
+1140
+02:01:45,740 --> 02:01:50,480
+ So in this way you can check it out okay in which point you are getting the highest accuracy
+
+1141
+02:01:50,480 --> 02:01:54,820
+ and for example if at K equals to 10 you are getting the highest accuracy at 11 you may
+
+1142
+02:01:54,820 --> 02:01:57,820
+ check the check out it is dropping okay.
+
+1143
+02:01:57,820 --> 02:02:01,980
+ So you have to figure out that particular case that whether a single point of the K value
+
+1144
+02:02:01,980 --> 02:02:06,300
+ or the multiple point of the K value you may get the highest accuracy okay.
+
+1145
+02:02:06,300 --> 02:02:09,940
+ But after certain point of time you may see the drop okay so you have to figure out that
+
+1146
+02:02:09,940 --> 02:02:15,980
+ particular point to get the confirmation of your highest accuracy value for a certain
+
+1147
+02:02:15,980 --> 02:02:17,700
+ K value okay.
+
+1148
+02:02:17,700 --> 02:02:22,900
+ And like I mentioned that do not make your model too simplistic to avoid any biasness
+
+1149
+02:02:22,900 --> 02:02:23,900
+ in the result.
+
+1150
+02:02:23,900 --> 02:02:29,340
+ So that is why K it is always better to avoid the lower values of the K like 2 or 3 better
+
+1151
+02:02:29,340 --> 02:02:32,780
+ to check it out from 6 7 that type of the things okay.
+
+1152
+02:02:32,780 --> 02:02:38,620
+ To avoid the biasness or the under floating scenarios in your system okay and also compare
+
+1153
+02:02:38,620 --> 02:02:42,580
+ your result over the test data set what you are achieving in case of the training data
+
+1154
+02:02:42,580 --> 02:02:47,000
+ set just to make confirmation that whether any overfitting is happening or not.
+
+1155
+02:02:47,000 --> 02:02:52,620
+ So today we have completed the demonstrations handguns demonstration on all of you have
+
+1156
+02:02:52,620 --> 02:03:01,420
+ successfully done it with me for the SVM support vector machine along with different kernel
+
+1157
+02:03:01,420 --> 02:03:06,860
+ comparisons and we have considered the kernels like linear, polynomial, RBF kernel as well
+
+1158
+02:03:06,860 --> 02:03:09,380
+ as the sigmoid kernel.
+
+1159
+02:03:09,380 --> 02:03:13,140
+ We also have explored the handguns session over nape base and finally we have done it
+
+1160
+02:03:13,140 --> 02:03:15,100
+ for the KNN algorithm.
+
+1161
+02:03:15,100 --> 02:03:23,140
+ So Dr. Ovegan Chakraborty will start the session on the support vector machine part 2 here
+
+1162
+02:03:23,140 --> 02:03:26,500
+ you will see the exploration over the decision trees at random forest.
+
+1163
+02:03:26,500 --> 02:03:34,700
+ So let me ask professor so I am concluding it here so there should be a break of 5 minutes.
+
+1164
+02:03:34,700 --> 02:03:39,980
+ So if you have any queries I am joining the moderation section so I will reply there okay.
+
+1165
+02:03:39,980 --> 02:03:44,140
+ So I am not answering it live because already professor has arrived so I am replying them
+
+1166
+02:03:44,140 --> 02:03:48,780
+ in the offline mode during my moderation duty okay.
+
+1167
+02:03:48,780 --> 02:03:52,740
+ So thank you very much for joining my session there is a break of 5 minutes I am thankful
+
+1168
+02:03:52,740 --> 02:03:56,740
+ to all the back end support from the support staff of this smart class room.
+
+1169
+02:03:56,740 --> 02:04:02,540
+ Subradhoda great job by Devjit and let us start the session of Dr. Ovegan Chakraborty
+
+1170
+02:04:02,540 --> 02:04:07,340
+ for supervised learning part 2 it will start within 5 minutes so please put the 5 minute
+
+1171
+02:04:07,340 --> 02:04:08,340
+ break there.
+
+1172
+02:04:08,340 --> 02:04:12,260
+ Thank you very much for joining my session thank you sir.
+

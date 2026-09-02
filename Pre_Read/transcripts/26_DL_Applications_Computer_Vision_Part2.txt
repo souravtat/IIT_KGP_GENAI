@@ -1,0 +1,226 @@
+ So, welcome back. So, let us start. So, we were discussing. So, the next. So, up till
+ now we have discussed one neural network architecture where you have the input image. So, let me
+ just make it here. So, let me go back. So, we have an input image here. So, we have the
+ input image and then we have the convolutional neural network and then output comes a class
+ level. So, there can be multiple class level. So, if there are let us say 1000 classes there
+ will be 1000 many outputs. So, this is called the image classification task. So, this is
+ the image classification task and this task you can say this is one of the basic tasks
+ and it can be useful for many, many obvious things you can say like what is this image
+ about like is it does it have a cat, does it have you know what kind of things does it
+ have and the image net challenge basically is all about that ok.
+ But these are not the only applications that you have with images ok. So, let me show some
+ more applications ok. So, the image classification application is what we have already discussed
+ ok. Now, the second application is what is called semantic segmentation ok. So, what
+ is semantic segmentation? So, suppose you have this left image as the input ok. What
+ do you want to do? You want to have suppose this is let us say some let us say 250 cross
+ 250 images image ok this input image. Your output should be also a 250 cross 250 image
+ ok same size as the input image and each pixel should have a class level. So, earlier there
+ was only one class level for the entire image for semantic segmentation you have one class
+ level for every pixel ok. So, what can be the class level? So, for example, this can
+ be sky ok, this can be let us say grass ok, this can be cat ok and this can be let us
+ say trees or forest trees or forest something like this ok.
+ So, these are the class levels ok. So, class level remember is for every pixel ok. What
+ is the utility? You have seen for example, the biggest utility you may have seen already
+ is what is called a your autonomous driving task or different kind of tracking tasks etcetera
+ ok. There you will see that the entire image you want to know in general what are the things
+ that are present in different portions of the image. So, if you can 0 in on a particular.
+ So, once you have this particular level you can 0 in on a portion and then you have a
+ description of what is there in that part of image rather than the whole image ok. So,
+ this is the first thing ok. Now, second thing second task is what is called
+ the object detection task ok. So, what is this object detection task? Object detection task
+ is suppose now your image has more than one maybe in this particular case let us say three
+ ok different objects of interest ok. Two of them are dogs one of them is cat ok. What
+ do you want? You want two things. First you want to identify that there are two dogs and
+ one cat ok. Secondly you want what is called a bounding box ok bounding box like this.
+ You want a bounding box around each of these dogs and cats ok. So, then what is the output?
+ So, whatever input image you have you will have a list of objects ok list of objects
+ get the corresponding bounding box. So, this is going to be the output for object detection
+ ok. And finally, there is the problem of instance segmentation. So, what is the problem of instance
+ segmentation? It is same as object detection ok. So, you will have a list of objects, but
+ now instead of bounding boxes around the object you will actually have the pixels ok. So,
+ you can see here the actual pixels which will describe that object. So, you can in a sense
+ say that if you do the instance segmentation problem the object detection problem is basically
+ solved ok. So, this instance segmentation problem is a slightly more you can say like
+ a more nuanced version of the object detection problem ok. So, the question is can you use
+ convolutional neural networks to do these tasks also ok. So, these tasks as you can
+ see they are very important tasks right. So, how can you use convolutional neural networks
+ to actually do this task? So, first let us look at the semantic segmentation task ok.
+ Now what will you do? So, the first thing is that what you can say that you use a small
+ patch. So, for every pixel you have to classify a label ok. So, you take a pixel like this
+ ok and you take a image around this particular pixel ok. And then you design a convolutional
+ neural network which will predict a label ok. Now the question is what should be the
+ size? So, these are sometimes also called patches ok. So, you can see. So, the receptive
+ field or the patch. So, it is basically a portion of the image ok.
+ So, the first question that will come is what should be the size of this patch ok. Nobody
+ knows how much context do you need. So, clearly from this particular example you can see suppose
+ your patch size is very small there is no way for you to tell that this is part of a
+ cow ok, but this is actually part of a cow ok. So, you need the bigger context ok. So,
+ first of all you need the bigger context and you do not know what should be your patch
+ size. So, what should be the solution? The solution is that you have a CNN ok, you have
+ a CNN and then. So, here first of all. So, this particular slide it is proposing a solution
+ where you extract a very big patch and then you sort of classify ok. So, maybe in this
+ particular case this center pixel will be classified as cow. In this patch also center
+ pixel will be classified as cow, but in this patch the center pixel will be classified as
+ grass. Now what is the problem with this two problems?
+ One is you do not know what is the appropriate size of patch. Here you can see, but in a general
+ image how will you know what is the appropriate size of patch. So, that is the first problem.
+ The second problem is you see these patches have to be overlapping. So, for every patch
+ you have to run a CNN ok. So, that is wasteful because most of the patches are overlapping
+ with each other ok. So, what is a good solution? A good solution is that you pass the entire
+ image through a convolutional neural network. Get the output of the convolutional neural
+ network and then use this output. So, do not use the fully connected layer at the end.
+ Just use the convolutional neural network get the output and then after that you use
+ the fully connected neural network for each patch separately ok. So, that way your entire
+ CNN computation does not have to be repeated. Only the final layer computation has to be
+ repeated for every patch right. So, this is a much better architecture ok.
+ Now the question is can you use the existing CNN architecture? The answer is no, why not?
+ Because if you see the CNN architecture that we just designed for image classification those
+ architectures they reduce the size of the image a lot. So, maybe a 250 cross 250 image
+ comes to a 10 cross 10 images something like that right. Now then there is not enough information
+ to classify every pixel in the original neural network ok. So, what is the solution? Use
+ another CNN in which you do not use any stride or you do not use any pooling layer. So, then
+ the size will remain the same you use the appropriate padding then the size will remain
+ the same as the input size ok. What is the problem with that? The problem is that the
+ computational overhead will be a lot see 1 or 2 layers you can do computation at the
+ highest resolution, but if you have to do many many different layers let us say 10 layers
+ of computation at the highest resolution it will be a lot of overhead ok. So, what is
+ the solution? The solution is yeah. So, this is what I was saying. So, the solution is
+ that you do down sampling and then you do up sampling ok. So, what is this up sampling
+ idea? The up sampling idea is that instead. So, so first of all down sampling you can
+ use two techniques as I have mentioned either you can use a strided convolution or you can
+ use a pooling ok. Generally people use a normal convolution and then a pooling ok. Now the
+ question is what is this up sampling right. So, up sampling is simple it is the opposite
+ of pooling ok. So, it is the opposite of pooling that is every pixel you blow up let us say
+ into 4 more pixels ok and then you apply a convolution on these blown up image ok. So,
+ this architecture also there are some more things, but you may have heard about something
+ called the unit architecture ok. So, this is the architecture that is used this is somewhere
+ here that you have a down sampling and then you have a up sampling and there are some
+ more tricks like in unit which is that basically there are some training tricks which we are
+ not going into which is that basically every layer is you basically train a auto encoder
+ kind of network with the input layer and the output layer. So, the intermediate weights
+ they get trained ok, but the important thing is that you use this kind of a down sampling
+ and then up sampling architecture if you want to generate convolutional feature map at the
+ original image scale ok. So, this is the first thing that you do ok. So, and then after this
+ you use like prediction layer to predict the pixel width ok. So, this is the first thing
+ and you can get a semantic segmentation ok.
+ Now, the next problem that we discussed is the object detection problem right. So, object
+ detection problem is what that you have to predict two things ok. First is you have to
+ predict. So, you have to first of all predict multiple objects ok. Now, what are these multiple
+ objects? These multiple objects are localized in different parts of the image. There may
+ be overlap between these objects, the bounding boxes between the objects may overlap, but
+ largely they will be separated. Otherwise it does not make it is not possible for you
+ to detect two objects right, maybe one object can be inside another object that is possible
+ ok ok. So, now how do you do the how do you do this kind of object detection? Again, so
+ suppose you now have a convolutional backbone it is called a convolutional backbone which
+ is that you have done the down sampling and up sampling in the and you have generated
+ features for the original image at the scale that you have the at the scale of the original
+ image ok. Now, how can you do this object detection?
+ So, a simple solution is again you have a patch. So, you start with this x y ok, x y
+ is the upper left corner ok and you have height and width. So, you have x y height and width
+ that will give you a particular bounding box ok. So, you have x and y and height and width
+ and you have this bounding box ok. And now this particular bounding box defines
+ a patch ok, you take this patch and you classify like you you predict some classification ok
+ and most of these will not be classifying anything. So, if you take for the example in
+ this image just this particular bounding box it will say no object. So, in the classification
+ you have one option which is no object ok. So, it will not predict, but if it predict
+ some object ok then basically for example, in this particular case this bounding box
+ it will predict the cat ok. So, this way you can do object detection,
+ but what is the problem? There is a problem with this. What is the problem? The problem
+ is that the number of such bounding boxes is very very large ok. So, if you have to
+ do this the number of such bounding boxes becomes very very large ok. So, the question
+ come can we speed up this and how to speed it up? So, so basically so here another thing
+ I forgot to mention is that you see this now uses what is called a multitask loss which
+ is that how correctly are you able to predict the bounding box and once you are able to
+ predict the bounding box ok, how correctly are you able to predict the label. So, the
+ two are related. So, suppose you start with an initial bounding
+ box of something like this ok, you may want to change or predict a correction over the
+ bounding box ok. So, this is what is called the correction over the bounding box ok. So,
+ this is the first thing ok ok. Now, so now there are all these problems that are coming
+ ok. So, so so the problem is you will have many many different bounding boxes, you also
+ do not know what kind of bounding boxes to consider. So, for example, consider this particular
+ image for predicting the big duct you need a very big size bounding box ok. For detecting
+ each of this small ducts you need very very small size bounding box ok. So, this is also
+ another problem ok. So, what size bounding box do you use ok.
+ What is the solution to all these problems? So, many many different bounding boxes and
+ also many many different sizes of bounding boxes. The solution is what is called a region
+ proposal network ok. So, what happens? So, this particular network you simply train the
+ network using some bounding boxes of objects and non-objects ok. So, you just take some
+ objects. So, these 2 for example, are objects and these 2 are non-objects ok and your network
+ should simply be able to say whether a particular bounding box has an object or not ok and this
+ should be done very very fast ok. So, the region proposal network runs very very fast
+ and it does not consider all the bounding boxes. It takes the entire image feature as
+ input and predicts something like let us say top 200 2000 region proposals ok. So, there
+ are both deep learning based solutions and shallow solutions to that, but this. So, this
+ is the approach that instead of considering all bounding boxes you consider let us say
+ about 2000 different bounding boxes which have a high charge of getting a object ok ok.
+ So, now how does your architecture come then here? So, first of all you have the backbone
+ the CNN backbone which gives you this. So, this was so by the way these kind of architectures
+ are called RCNN or region CNN ok ok. So, there are basically different versions of it. So,
+ the first is that you take these region proposals ok and for each region proposal you run it
+ through a CNN and then predict the class label and the bounding box ok. So, this is called
+ the slow RCNN. So, this is one of the earlier RCNN architecture.
+ A better architecture is what is called a fast RCNN architecture which is that you have
+ a common convolutional bottleneck ok. Then you have a separate region proposal network
+ which proposes the regions ok regions of interest ok and then for each of these regions of interest
+ you again have another CNN through which you predict either you predict like something
+ like the object category and the bounding box ok. Note that the object category prediction
+ is a classification problem ok whereas, the bounding box prediction it is a regression
+ problem ok. So, it is not a classification problem because you have to predict some numbers
+ ok. So, you have to predict basically x y height and width ok you have to predict these
+ numbers ok. So, this is the other thing ok. There is an even faster network which what
+ it does is instead of having a separate you know region proposal it uses the output of
+ the same CNN backbone to actually first compute the region proposal and then compute the bounding
+ boxes ok. So, classification loss and bounding boxes and in between it is also it also does
+ what is called a region. So, the region proposal gives what is called
+ region of interest ok region of interest. So, these are as you can see these are some
+ of the regions of interest ok. The further classification and bounding box prediction
+ happens only on the regions of interest ok. So, yeah. So, and these also do what is called
+ the region of interest alignment ok or ROI pooling. These are the basically something
+ similar things ok and then what you can what you can get is the prediction ok.
+ And of course, if you use this kind of an architecture ok you can just add another neural
+ network on top of this. So, earlier you had only this portion of the neural network ok.
+ Now, you can add another this additional mask prediction neural network on top of the ROI
+ pooling layer which can basically predict these masks and perform the instant segmentation
+ task also ok. So, these are some of the some of the important applications of CNN. So,
+ you can do object detection and instant segmentation with mask RCNN which is. So, it gives very
+ good results and it is one of the state of the arts network.
+ The only problem with this mask RCNN network is that it is a bit slow. So, there are another
+ class of neural networks called YOLO neural networks which are also very popular. They
+ are slightly less accurate than this mask RCNN network, but they are much faster ok.
+ So, as you can see we can do a lot of different computer vision tasks using these different
+ kinds of CNN architecture ok. So, these are some of the references and I will stop and
+ take some questions.
+ How would we identify what should the kernel matrix for a given input is there any recommended
+ approach to proper kernel. So, the answer to this question is we do not need to right
+ you just need to identify the size of the kernel. So, what do you need to specify you
+ need to specify the size of the kernel, how many what is the width and the height and
+ that too for most applications if you simply use as a starting point the VGG network or
+ something like UNET if you are doing image scale prediction or if you are using even
+ something like ResNet one of the ResNet architecture this is very good ok.
+ So, what you can do is you can use that particular architecture and then you can simply fine
+ tune for your application ok. If you have to identify the kernel size I would say you
+ follow something like the VGG thing which is that you use 3 cross 3 convolution and
+ then you use two layers or three layers or four layers of 3 cross 3 convolution as you
+ want your receptive field size to change and you also have to specify the number of number
+ of output channels right every time input channels will be same as the number of input
+ channels, but the number of output channels you have to specify. So, that is basically
+ something like you can specify like a few 10s like maybe 20 30 how many ever features
+ you want to detect hope that answers the question, did not understand center pixel in manually
+ designed kernel ok. So, can I go back to my slide, can I show my slide.
+ Yeah. So, see so this image will make it clear right. So, whenever you are yeah maybe the
+ slide should come. So, whenever you are whenever you are overlaying so this is the kernel ok
+ this is the kernel whenever you are overlaying this kernel on top of a receptive field. So,
+ this is the receptive field now the center pixel of this receptive field is this pixel
+ the output will be predicted. So, every time you do a overlay only one output value is
+ produced by the convolution kernel right only one output value ok this particular output
+ value in this particular case is 2 you can do the computation. So, you multiply this
+ times minus 1 this times 1 this times 2 and so on and so forth ok.
+ Center pixel determines where in the output grid this particular pixel will be placed
+ ok. So, that is the center pixel. So, it is the center of the receptive field where the
+ output will be placed I hope this is clear. How is output calculated with the help of
+ the kernel I mean the mathematical matrix calculation is used yes. So, this particular
+ calculation we have already shown if you just this is very important to understand this
+ this is the convolution operation ok. It is very important to understand this computation
+ which is given I if there was one slide yeah in this slide it is given. So, you can just
+ do the computation and you will understand how. So, this is the convolution operation
+ ok ok. So, thank you very much yeah bye.

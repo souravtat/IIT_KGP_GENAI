@@ -1,0 +1,3536 @@
+1
+00:00:00,000 --> 00:00:02,000
+ Okay, let me share my screen again.
+
+2
+00:00:12,000 --> 00:00:15,000
+ Let me know once we can see my screen.
+
+3
+00:00:16,000 --> 00:00:18,000
+ Yes, sir, your screen is visible.
+
+4
+00:00:19,000 --> 00:00:20,000
+ Should I start?
+
+5
+00:00:20,000 --> 00:00:22,000
+ Yeah, sir, we're good to start.
+
+6
+00:00:22,000 --> 00:00:29,000
+ Okay, can you please remind me how long I have for the lecture itself and then how long is there for the Q&A?
+
+7
+00:00:30,000 --> 00:00:36,000
+ So the section is 11 to 1, right?
+
+8
+00:00:36,000 --> 00:00:41,000
+ So how long can I continue with the lecture and how long should I keep for the Q&A?
+
+9
+00:00:41,000 --> 00:00:45,000
+ Can I make Q&A 5 to 10 minutes, sir?
+
+10
+00:00:45,000 --> 00:00:47,000
+ Okay, okay.
+
+11
+00:00:47,000 --> 00:00:49,000
+ Sure, sure, sure.
+
+12
+00:00:49,000 --> 00:00:55,000
+ So I could I could most of the time from now and now and one o'clock for the lecture and 15 to 15 minutes for the Q&A.
+
+13
+00:00:55,000 --> 00:00:56,000
+ Would that be fine?
+
+14
+00:00:56,000 --> 00:00:57,000
+ Yes, sir.
+
+15
+00:00:57,000 --> 00:00:58,000
+ Okay, that sounds good.
+
+16
+00:00:58,000 --> 00:00:59,000
+ Thank you.
+
+17
+00:00:59,000 --> 00:01:01,000
+ Okay.
+
+18
+00:01:01,000 --> 00:01:13,000
+ So first of all, a big thanks to ICPS, IDC4, and ECSION for inviting me for this lecture.
+
+19
+00:01:13,000 --> 00:01:22,000
+ And it's a pleasure to be here and talk to you about something that I'm quite passionate about.
+
+20
+00:01:22,000 --> 00:01:26,000
+ So just to briefly tell you who I am.
+
+21
+00:01:26,000 --> 00:01:32,000
+ So this is my background, but you don't have to worry too much about the left hand side for now.
+
+22
+00:01:32,000 --> 00:01:36,000
+ It's the right hand side that matters more.
+
+23
+00:01:36,000 --> 00:01:44,000
+ So I enjoy reading, learning, teaching, and mentoring, and which is why I'm here.
+
+24
+00:01:44,000 --> 00:01:55,000
+ And you should not take the left hand side to imply that you should believe whatever I'm going to tell you as part of this lecture.
+
+25
+00:01:55,000 --> 00:01:57,000
+ You should never do that, right?
+
+26
+00:01:57,000 --> 00:02:03,000
+ So take everything with a pinch of salt because, you know, I may be wrong too.
+
+27
+00:02:03,000 --> 00:02:05,000
+ Yeah, everybody can make mistakes.
+
+28
+00:02:05,000 --> 00:02:07,000
+ Some of these can be general mistakes.
+
+29
+00:02:07,000 --> 00:02:09,000
+ I have some 80-85 slides.
+
+30
+00:02:09,000 --> 00:02:14,000
+ I don't think I'm going to go over all of them, but those slides could have errors.
+
+31
+00:02:14,000 --> 00:02:18,000
+ So you should not believe anything just because I have it in my slides.
+
+32
+00:02:18,000 --> 00:02:20,000
+ You should just verify it for yourself.
+
+33
+00:02:20,000 --> 00:02:21,000
+ Okay.
+
+34
+00:02:21,000 --> 00:02:31,000
+ So these are some sources from where I have taken some of my material and if you, well, not if.
+
+35
+00:02:31,000 --> 00:02:44,000
+ So this is where you should go back to if you want to know more about the topics that I'm going to cover very briefly in this 1.5 hours or 1 hour 45.
+
+36
+00:02:44,000 --> 00:02:54,000
+ And when it comes to individual parts of my lecture, I will also give you pointers to which of these different chapters you should focus on for that specific part.
+
+37
+00:02:54,000 --> 00:02:55,000
+ Yeah.
+
+38
+00:02:55,000 --> 00:03:00,000
+ So you don't have to remember all of it right at this point.
+
+39
+00:03:00,000 --> 00:03:08,000
+ All right, so I am being provocative here, I know, but I think it's important to be provocative.
+
+40
+00:03:08,000 --> 00:03:18,000
+ Why, so there's a foundation in the title of this lecture, and there is foundation in the title of many lectures as part of this course.
+
+41
+00:03:18,000 --> 00:03:19,000
+ Right.
+
+42
+00:03:19,000 --> 00:03:22,000
+ So why should we learn foundations.
+
+43
+00:03:22,000 --> 00:03:24,000
+ So I'm asking some questions here.
+
+44
+00:03:24,000 --> 00:03:28,000
+ So for the first four questions, I will say no more.
+
+45
+00:03:28,000 --> 00:03:34,000
+ And you can form your opinion about what the answers for those questions should be.
+
+46
+00:03:34,000 --> 00:03:47,000
+ As for the last and the fifth question, I will not ask you to form an opinion now, I will ask you to form an opinion at the end of my lecture.
+
+47
+00:03:47,000 --> 00:03:51,000
+ Okay.
+
+48
+00:03:51,000 --> 00:04:04,000
+ So, this course is actually pretty, not this course this particular lecture, and of course the course as well. It's a very, very difficult endeavor.
+
+49
+00:04:04,000 --> 00:04:09,000
+ And I will try to explain to you very briefly why that is.
+
+50
+00:04:09,000 --> 00:04:23,000
+ So, you know, some of you will immediately jump up and say, you know, I know it's a perceptron, right, Rosenblatt, you know, came up with the person strong in 1957 and that was the earliest.
+
+51
+00:04:23,000 --> 00:04:27,000
+ Actually, that answer is wrong. Okay.
+
+52
+00:04:27,000 --> 00:04:44,000
+ And that is not the simplest neural network. And I will, you have already gone through some neural network lectures as part of this course. So I will meet towards a solution not give you give you the solution.
+
+53
+00:04:44,000 --> 00:04:48,000
+ Right. So the perceptron has an activation unit.
+
+54
+00:04:48,000 --> 00:05:02,000
+ And it is not absolute necessity for a neural network to have an activation unit as, as a unit at all. So, if you take away an activation unit from a neural network, it still remains a neural network.
+
+55
+00:05:02,000 --> 00:05:08,000
+ So what will the perceptron become. If you take away its activation.
+
+56
+00:05:08,000 --> 00:05:21,000
+ I will not tell you what it becomes. I will tell you that you know the answer to just think about it. It is something that you know. And that is, in fact, the simplest artificial neural network.
+
+57
+00:05:21,000 --> 00:05:23,000
+ Okay.
+
+58
+00:05:23,000 --> 00:05:33,000
+ Okay, so you will, from time to time I will show you these slides with, you know, something written in big forms in orange colors.
+
+59
+00:05:33,000 --> 00:05:45,000
+ I will, so take note. So it's actually I'm trying to be provocative here as well, but it's also supposed to be funny. So, so hang on, I will tell you in a couple of minutes where I'm going with these questions.
+
+60
+00:05:45,000 --> 00:05:54,000
+ Okay, but to come back to my original point. Why is it very difficult to teach the foundations of generative AI.
+
+61
+00:05:54,000 --> 00:06:05,000
+ And the reason is this, you know, AI did not start in 2012, or in 2006.
+
+62
+00:06:05,000 --> 00:06:18,000
+ AI started way way way before that. In fact, early neural network was actually designed in the 19th century. Right. It is something called linear regression.
+
+63
+00:06:18,000 --> 00:06:32,000
+ And there's a method called the squares that was Gauss and the gender who came up with this in 1805 1806 somewhere on that. Okay, so, so you understand how long this goes back.
+
+64
+00:06:32,000 --> 00:06:40,000
+ Right. And is there any way I can I can teach you all of this in 1.5 hours.
+
+65
+00:06:40,000 --> 00:06:52,000
+ That doesn't work, you know, because I have been studying AI for close to 25 years now. Right. And I still think that I don't understand AI very well.
+
+66
+00:06:52,000 --> 00:07:00,000
+ I understand it better than some other, but I still there's so much that I still don't understand, and I would like to understand better.
+
+67
+00:07:00,000 --> 00:07:13,000
+ So please don't think that, you know, I can teach you the foundations of generative AI in 1.5 hours. This course cannot teach you AI in whatever number of hours you attend lectures.
+
+68
+00:07:13,000 --> 00:07:33,000
+ You know what this lecture and this course is really about. Right. In this course, we will only able to point to you, what are the different things that we need to know to be an engineer, a practitioner, or, you know, finally an AI
+
+69
+00:07:33,000 --> 00:07:48,000
+ researcher, and we will try to motivate you to pursue their study. There's no way that we can teach you AI within the course of this, within, you know, this is one board for one lecture, that should not be your expectation.
+
+70
+00:07:48,000 --> 00:08:00,000
+ Your, your expectation should be that when I go away from this course when I go away from this lecture, I will know what are the different things that I need to study, and you will possibly have to study this for the rest of your life.
+
+71
+00:08:00,000 --> 00:08:04,000
+ And you will have to become an expert. Okay.
+
+72
+00:08:04,000 --> 00:08:15,000
+ Great motivation right from a few hours to the rest of your life, but if you're still motivated. Let's let's go on to the next slide. Right. So what is generative AI.
+
+73
+00:08:15,000 --> 00:08:30,000
+ Let's say we should, by the way, PML is the mercy book, right, problems to machine learning. So this is PML book to chapter 20, referring to my first reading this slide. Okay.
+
+74
+00:08:30,000 --> 00:08:40,000
+ Now, when somebody says what is generative AI, I will immediately go back to that person and say, hang on, do you know what is non generative AI.
+
+75
+00:08:40,000 --> 00:08:51,000
+ He talks about DNA AI. Right. And whenever I come across such a person, I asked them, okay, can you tell me what kind of AI is not gen AI.
+
+76
+00:08:51,000 --> 00:09:01,000
+ And the answer that I typically get from the so called experts. Oh, it's traditional AI. And I tell them no, you are completely wrong. Okay.
+
+77
+00:09:01,000 --> 00:09:21,000
+ People who think that non generative AI is traditional AI, don't know the first thing about AI. And unfortunately, the world is just filled with people right now, who want to tell the world that they know about AI, just because it will help them get a job, or they can draw eyeballs, or for all sorts of people.
+
+78
+00:09:21,000 --> 00:09:37,000
+ Okay. So these lights in orange is something I wanted to teach you. So these are my AI googly questions, right, for all those people who just suddenly claim to know all about AI.
+
+79
+00:09:37,000 --> 00:09:48,000
+ So whenever you come across such people, you should ask them these questions. And from the reaction on their faces, you will be able to know whether, you know, the googly has shattered all three stops.
+
+80
+00:09:48,000 --> 00:09:58,000
+ Okay, so the answer is not that it is traditional AI. Okay, so what are the types of AI tasks.
+
+81
+00:09:58,000 --> 00:10:18,000
+ Any AI tasks involves two kinds of things. There are data, and there are labels. Okay, so data can be a feature vector, it can be an image, it can be a video text graph. These are examples of data. Right.
+
+82
+00:10:18,000 --> 00:10:35,000
+ The labels are, you know, when you're doing classification, the binary cat versus dog, spam, not spam. Those are binary labels. Categorical labels is when you're trying to classify something into, you know, a larger number of categories, more than two.
+
+83
+00:10:35,000 --> 00:10:55,000
+ That is for categorical, it can be an integer, you know, do you want to give a rating 12345, the output can be a real value when you want to predict the amount of rainfall on a particular day, it can be a vector, it can be the output can also be a text for a limit.
+
+84
+00:10:55,000 --> 00:11:05,000
+ So now you see that, you know, things are starting to get blurry, I'm saying that the data can also be a text, the label can also be a text. So what is really the difference.
+
+85
+00:11:05,000 --> 00:11:25,000
+ So you see, a difference is really, is that the data is supposed to have a way more complex structure in general, than what is considered to be a label. So most examples of labels are simple things.
+
+86
+00:11:25,000 --> 00:11:44,000
+ I mean, mathematical objects, whereas what we call data are complex mathematical objects. Right. So, the answer to what is not generally AI is, where there is no one term for it, it is often called discriminative AI or prescriptive AI.
+
+87
+00:11:44,000 --> 00:11:53,000
+ Right. So in prescriptive AI, the input is data, and the output is a label.
+
+88
+00:11:53,000 --> 00:12:13,000
+ Now, in generative AI, generative AI could even be unconditional, but for conditional AI, you could imagine that the input is a label or a simple mathematical object, and the output is data or a complex mathematical object.
+
+89
+00:12:13,000 --> 00:12:26,000
+ And generative AI could even be unconditional, when you try to output data conditioned or nothing. Right. But that is typically not the case, you will typically give some instructions, some prompt, some label.
+
+90
+00:12:26,000 --> 00:12:42,000
+ So it's typically conditional. So this is really the difference between generative AI and what is not generative AI. Right. So in some sense, the name is silly, because even non generative AI generates something, it generates a label.
+
+91
+00:12:42,000 --> 00:12:51,000
+ Right. But it just happens to be that the label is a much simpler mathematical object than the data. Right.
+
+92
+00:12:51,000 --> 00:13:00,000
+ So, so that is really the difference when you are generating a complex mathematical object. Right. That is called generative AI.
+
+93
+00:13:00,000 --> 00:13:17,000
+ And when you are generating a very simple mathematical object, like a binary or a categorical variable and integer or real number, or even vector, that is called non generative AI. Right. And so classification regression, you know, clustering,
+
+94
+00:13:17,000 --> 00:13:35,000
+ anomaly detection, all of these are examples of non generative AI. And as you can imagine, there's nothing, you know, traditional or modern about this distinction. Okay, so since eternity, there has been generated and non generated.
+
+95
+00:13:35,000 --> 00:13:55,000
+ Okay. So, formally, what is what is generative AI. So it is framed firmly in the terms of probability. So the data is modeled as a random variable. Let's say I use a simple x, and this data x is associated with an unknown distribution.
+
+96
+00:13:55,000 --> 00:14:12,000
+ Let the distribution be denoted as P and theta denotes the parameter of the distribution. Then when you sample from this distribution, you get a particular value of this capital variable x.
+
+97
+00:14:12,000 --> 00:14:15,000
+ Right. And this is supposed to be a sample.
+
+98
+00:14:15,000 --> 00:14:30,000
+ And when you draw multiples of samples from this distribution, right, you get multiple values of x, and these are, you know, called the different instances of the data that you have generated.
+
+99
+00:14:30,000 --> 00:14:41,000
+ Right. So often, these are independently and identically distributed, which is called I ID, but I'll come to that, come to more about that in a minute. Right.
+
+100
+00:14:41,000 --> 00:14:53,000
+ So, so, if there is such a distribution, then how can I use this distribution to generate more data because, of course, I do not know what this distribution is difficult.
+
+101
+00:14:53,000 --> 00:15:14,000
+ So the first task in generative AI is typically to estimate or know the parameters of this distribution. Right. So because this perfect theta I will never be able to know what I estimate from the samples regarding this distribution is denoted with a hat.
+
+102
+00:15:14,000 --> 00:15:30,000
+ This is called the hat. So, the hat is my estimate of this distribution of the parameter of this. For example, if the parameter, if this distribution is a Gaussian distribution, then it has, you know, a mean and a variance.
+
+103
+00:15:30,000 --> 00:15:44,000
+ So, if you are given some samples from this Gaussian distribution from the data, you can order sample data, you can estimate the sample mean or the sample variance, those will be your estimates of this Gaussian.
+
+104
+00:15:44,000 --> 00:15:53,000
+ And then you can generate this estimated values to generate more data from this Gaussian. So that would be generative AI. Okay.
+
+105
+00:15:53,000 --> 00:16:01,000
+ Now, okay, never mind.
+
+106
+00:16:01,000 --> 00:16:05,000
+ So, so what are the implications of generative AI.
+
+107
+00:16:05,000 --> 00:16:17,000
+ So, you see, you know, since eternity, right, we have been trying to augment our, our different abilities with tools, right.
+
+108
+00:16:17,000 --> 00:16:28,000
+ So humans were not the strongest of all animals. So we invented various tools to augment our strength.
+
+109
+00:16:28,000 --> 00:16:36,000
+ We did not have the best eyesight. So we invested invented various tools to improve our vision.
+
+110
+00:16:36,000 --> 00:16:48,000
+ We did not have the best sense of hearing among all animals. So invented tools to, you know, augment our hearing and so on.
+
+111
+00:16:48,000 --> 00:17:02,000
+ But we always thought that we are what distinguishes us as species is our ability to think, reason, imagine and create.
+
+112
+00:17:02,000 --> 00:17:06,000
+ That is the essence of our humanity in some sense.
+
+113
+00:17:06,000 --> 00:17:20,000
+ Now, if machines are able to create content, right, as well as humans, then, you know, there are good sides and bad sides, right.
+
+114
+00:17:20,000 --> 00:17:30,000
+ Of course, earlier only, you know, some writers, some painters, some scientists could create new things, right, and great things.
+
+115
+00:17:30,000 --> 00:17:42,000
+ So now if you have, you know, AI agents who are able to do the same, right, of course, our productivity as, as a race would go up immensely.
+
+116
+00:17:42,000 --> 00:17:50,000
+ But there are, what about the flip side of it, right, so we always thought, you know, what makes us smart is what makes us special, right.
+
+117
+00:17:50,000 --> 00:18:01,000
+ And now if there is this sort of alien entity, which is smarter than us, then what happens to our self esteem, what happens to our jobs.
+
+118
+00:18:01,000 --> 00:18:11,000
+ So you see, I mean, there are, there are two sides to this coin. So there are immense benefits that are possible, and there are catastrophic dangers that are possible.
+
+119
+00:18:11,000 --> 00:18:23,000
+ But to lay some of these fears to rest, despite what the hype will tell you, artificial intelligence or AGI, as it's often called, has not been achieved yet.
+
+120
+00:18:23,000 --> 00:18:29,000
+ LLMs are not yet conscious. And you don't have to believe me when I say this, right.
+
+121
+00:18:29,000 --> 00:18:38,000
+ But please don't believe, you know, Sam Altman or Elon Musk, when they talk about AI, listen to them when they talk about business.
+
+122
+00:18:38,000 --> 00:18:46,000
+ But when you have to learn about AI, I would rather that you listen to Young LeCune, Jesho Benjo, Jeff Hinton, and people like that.
+
+123
+00:18:46,000 --> 00:18:51,000
+ So I would suggest that you listen to this very recent lecture.
+
+124
+00:18:51,000 --> 00:18:57,000
+ It's not a lecture, it's actually an interview by Young LeCune from March of this year, just about a month ago.
+
+125
+00:18:57,000 --> 00:19:06,000
+ So just listen to this, this YouTube conversation with Young LeCune and see what he has to say about where AI stands now.
+
+126
+00:19:06,000 --> 00:19:11,000
+ And what its deficiencies are, and what remains to be done.
+
+127
+00:19:11,000 --> 00:19:17,000
+ And just as an example, you can see the image on the light, it looks beautiful, right.
+
+128
+00:19:17,000 --> 00:19:23,000
+ But if you look at the prompt, it is completely wrong, given what intent was.
+
+129
+00:19:23,000 --> 00:19:30,000
+ And this is an image, by the way, I did not discover this, this is actually an image from the Dali Tree paper.
+
+130
+00:19:30,000 --> 00:19:37,000
+ So the authors know that Dali Tree still has these kind of issues.
+
+131
+00:19:37,000 --> 00:19:40,000
+ Alright, so here is the lecture outline.
+
+132
+00:19:40,000 --> 00:19:45,000
+ We are going to talk about some probabilistic foundations of generative models.
+
+133
+00:19:45,000 --> 00:19:48,000
+ We are briefly going to look at auto regressive models.
+
+134
+00:19:48,000 --> 00:19:52,000
+ Then we are going to look at variational auto encoders.
+
+135
+00:19:52,000 --> 00:19:59,000
+ And if we have to do that, then we have to look at the probabilistic foundations or what are called latent variable models.
+
+136
+00:19:59,000 --> 00:20:05,000
+ Then if time permits, we will briefly look at generative adversarial networks or GANs.
+
+137
+00:20:05,000 --> 00:20:12,000
+ And then, you know, things that I will just have one slide about right at the end, we are definitely not going to be able to go there.
+
+138
+00:20:12,000 --> 00:20:16,000
+ These are normalizing flow and diffusion models, energy based models.
+
+139
+00:20:16,000 --> 00:20:24,000
+ I don't think we'll be able to go there, but I will certainly give you pointers to what we need to read, if you want to know more about these topics.
+
+140
+00:20:24,000 --> 00:20:34,000
+ Anyway, even for what I have listed here, the first three, I don't think we'll be able to cover all of this because it requires very, very rigorous mathematics.
+
+141
+00:20:34,000 --> 00:20:38,000
+ And I don't think it can be done in 1.5 hours.
+
+142
+00:20:38,000 --> 00:20:39,000
+ There's no hope.
+
+143
+00:20:39,000 --> 00:20:47,000
+ So I will just give you pointers to where you need to go and read if you want to understand this in detail.
+
+144
+00:20:47,000 --> 00:20:52,000
+ If you are not able to understand this just from this lecture, that is absolutely fine.
+
+145
+00:20:52,000 --> 00:21:02,000
+ Even I, well, I shouldn't even I am not the smartest person around, but if somebody gave me this lecture, I would also have struggled just like you to understand what is going on.
+
+146
+00:21:02,000 --> 00:21:08,000
+ This is something I have understood over many years, okay.
+
+147
+00:21:08,000 --> 00:21:21,000
+ Alright, so now coming to probabilistic modeling one, and you should look at the initial chapters of PML book one and PML book two chapters to three from book one and chapters two and four from book two.
+
+148
+00:21:21,000 --> 00:21:22,000
+ Okay.
+
+149
+00:21:22,000 --> 00:21:26,000
+ So what are the simplest generative models?
+
+150
+00:21:26,000 --> 00:21:33,000
+ Let's say I want to be able to generate the heights of a people in a population, right?
+
+151
+00:21:33,000 --> 00:21:35,000
+ Then what would I need to do?
+
+152
+00:21:35,000 --> 00:21:41,000
+ I would have to assume some form of underlying distributed.
+
+153
+00:21:41,000 --> 00:21:54,000
+ Now since heights are real value, I could model this as a Gaussian, but you see this has a problem because a Gaussian can generate negative real numbers as well.
+
+154
+00:21:54,000 --> 00:21:56,000
+ And we know that heights cannot be negative.
+
+155
+00:21:56,000 --> 00:22:07,000
+ So Gaussian is not really the ideal distribution, but you know, we can model it as a Gaussian such that it has very low probability of being being negative.
+
+156
+00:22:07,000 --> 00:22:18,000
+ So we will go with a Gaussian and then we will say that the heights are drawn from a Gaussian distribution with some mean mu and standard deviation sigma.
+
+157
+00:22:18,000 --> 00:22:23,000
+ And then, of course, we don't know what the mean and the standard deviation are.
+
+158
+00:22:23,000 --> 00:22:41,000
+ So if we are given some examples of heights of actual people in the population, then we can estimate the values of mu, which I note as mu hat and the value of sigma, which I denote as sigma hat from these samples.
+
+159
+00:22:41,000 --> 00:22:48,000
+ And now when I have mu hat and sigma hat, now I can draw samples from the Gaussian, right?
+
+160
+00:22:48,000 --> 00:23:01,000
+ And these values, when I keep on drawing them, will actually look like values coming from or values of, which are denote heights of people from that population.
+
+161
+00:23:01,000 --> 00:23:15,000
+ So if the data that was given to me was for, you know, a very tall race like some people from Denmark or Netherlands or like that, then the samples that I will draw from here are probably going to be six feet, etc.
+
+162
+00:23:15,000 --> 00:23:24,000
+ Whereas if you, you know, these heights were for some populations who are maybe not very tall, you know, around five feet, there are such populations.
+
+163
+00:23:24,000 --> 00:23:29,000
+ So when I sample from that, you can see that the samples are closer to five feet than six feet.
+
+164
+00:23:29,000 --> 00:23:34,000
+ But it will sometimes get samples which are six feet because there is a radius, okay?
+
+165
+00:23:34,000 --> 00:23:35,000
+ All right.
+
+166
+00:23:35,000 --> 00:23:40,000
+ So this is an example of a generative model using real values.
+
+167
+00:23:40,000 --> 00:23:47,000
+ Now, here is another example of a generative model using discrete values, okay?
+
+168
+00:23:47,000 --> 00:23:50,000
+ Now, why are discrete values important?
+
+169
+00:23:50,000 --> 00:23:58,000
+ Because there are, you know, many scenarios that we wish to model, right, which are discrete.
+
+170
+00:23:58,000 --> 00:24:09,000
+ For example, for a particular second in time, right, we could decide whether a particular event is going to happen in that second or not, right?
+
+171
+00:24:09,000 --> 00:24:16,000
+ For example, we are trying to model whether a person is going to be there at a counter in every second or not, right?
+
+172
+00:24:16,000 --> 00:24:21,000
+ So we can model that as a binary value, zero or one.
+
+173
+00:24:21,000 --> 00:24:28,000
+ And, you know, one natural distribution to use our binary variable is the Bernoulli distribution.
+
+174
+00:24:28,000 --> 00:24:33,000
+ So when you draw samples from the Bernoulli distribution, it gives you a head or a tail, right?
+
+175
+00:24:33,000 --> 00:24:38,000
+ And the parameter is rho, so which is really the probability of head, right?
+
+176
+00:24:38,000 --> 00:24:54,000
+ Now, the way to sample values and sort of see whether a person is going to be there at the counter on the particular second or not, is to draw a value from this Bernoulli distribution and see whether heads comes out or tails comes out.
+
+177
+00:24:54,000 --> 00:25:07,000
+ Now, if I, somebody gives me training data, right, about whether a person came to this counter in some second or not, right, then I could estimate the probability of head from the value that was given to me.
+
+178
+00:25:07,000 --> 00:25:26,000
+ And then, once I have estimated this probability of head, now I can sample values from this Bernoulli distribution with the probability of head rho hat, right, and simulate the situation about whether somebody is going to come to a counter or not, right?
+
+179
+00:25:26,000 --> 00:25:41,000
+ So, for example, if you, if the sample data gave you a scenario where people come to the counter very infrequently, then the probability of head that you will probably estimate from that is going to be close, closer to 0 than to 1.
+
+180
+00:25:41,000 --> 00:25:51,000
+ On the other hand, if there is somebody who is always there at the counter during a busy period, the probability of head that you will estimate is probably going to be very close to 1, right?
+
+181
+00:25:51,000 --> 00:26:01,000
+ So, that is how we can learn to simulate the arrival of people at a counter, for example, okay.
+
+182
+00:26:01,000 --> 00:26:11,000
+ Now, I have been talking about sampling from a distribution, right, but how do you actually sample from a distribution?
+
+183
+00:26:11,000 --> 00:26:21,000
+ Okay, so I would want to want you to think about this. Of course, there are things that you can read up, right?
+
+184
+00:26:21,000 --> 00:26:47,000
+ For example, there is this famous method called the Box Muller method for how to draw samples from a Gaussian, right? But if I ask you that, you know, I am giving you a Bernoulli distribution whose probability of head is 0.75 and I want you to simulate draws from this distribution, okay?
+
+185
+00:26:47,000 --> 00:26:54,000
+ How would you go about doing that? Okay, I would want you to think about this problem.
+
+186
+00:26:54,000 --> 00:27:07,000
+ The answer in short is you have to form something called the cumulative density function and sample using that, but these are not things to memorize, these are things to understand, right?
+
+187
+00:27:07,000 --> 00:27:16,000
+ So, I am sure you will be able to figure it out if you think about yourself or sometime, okay?
+
+188
+00:27:16,000 --> 00:27:26,000
+ Now, here is another, my next googly question, right? So, this is to impress on you the power of sampling, okay?
+
+189
+00:27:26,000 --> 00:27:35,000
+ So, what is sampling here? I am going to throw dots onto a wall. So, where it is going to land on the wall is of course random.
+
+190
+00:27:35,000 --> 00:27:44,000
+ Why is that random? Because, you know, I do not have sufficient control so that whenever I throw a dot in a wall, I can land it exactly where I want.
+
+191
+00:27:44,000 --> 00:27:51,000
+ I do not have that kind of control. So, I can think of it as a random variable where it lands on the wall, right?
+
+192
+00:27:51,000 --> 00:28:01,000
+ So, if somebody gave you a dot, right? And said you are allowed to throw dots and, okay, if some damage is done to my wall, that is fine.
+
+193
+00:28:01,000 --> 00:28:08,000
+ Can you estimate the value of pi just by doing that, okay?
+
+194
+00:28:08,000 --> 00:28:20,000
+ And the answer is yes. And I will leave you to find out how you get to that, but this is just so that you understand the power of drawing samples, okay?
+
+195
+00:28:20,000 --> 00:28:31,000
+ You can actually estimate the value of pi to as much accuracy as you want just by throwing dots onto a wall, all right?
+
+196
+00:28:31,000 --> 00:28:38,000
+ Okay, so now let us come to the formal definition of what is a generative model.
+
+197
+00:28:38,000 --> 00:28:46,000
+ So, one simple way to think of a generative model is that it is a program. It is nothing but a program, the way you all write programs.
+
+198
+00:28:46,000 --> 00:29:04,000
+ But it is a program that has a probability distribution somewhere without inside it, such that every time you run the program, even with the same quote, you get a different output, right?
+
+199
+00:29:04,000 --> 00:29:14,000
+ So, the output is random, okay? And it is not arbitrarily random. The output follows a particular distribution.
+
+200
+00:29:14,000 --> 00:29:22,000
+ So, then that kind of a program or a probabilistic program is one way to define a generative model.
+
+201
+00:29:22,000 --> 00:29:29,000
+ So, it is a programming language equipped with a sampling operator, right? And this is often called a simulation.
+
+202
+00:29:29,000 --> 00:29:34,000
+ So, you hear about people simulating the weather, simulating the traffic and things like that.
+
+203
+00:29:34,000 --> 00:29:42,000
+ So, all of these are done using probabilistic programs, okay? So, these are examples of generative models, okay?
+
+204
+00:29:42,000 --> 00:29:52,000
+ Now, I mentioned IID before. So, what IID means is independently and identically distributed.
+
+205
+00:29:52,000 --> 00:30:05,000
+ So, identically distributed in this, in this slide means that every xi or all i is actually drawn from exactly the same distribution.
+
+206
+00:30:05,000 --> 00:30:14,000
+ Let us say the same Gaussian distribution with the same mean and radius, okay? They are identically distributed.
+
+207
+00:30:14,000 --> 00:30:30,000
+ But what does this other part mean independently? What this means is that every xi is drawn without looking at what other xi's have previously been drawn, okay?
+
+208
+00:30:30,000 --> 00:30:37,000
+ And what independently? Every draw is independent of all the previous draws.
+
+209
+00:30:37,000 --> 00:30:43,000
+ And, you know, the example that I showed you will of course give you IID samples.
+
+210
+00:30:43,000 --> 00:30:51,000
+ But you can imagine that for many real scenarios, the IID assumption clearly does not hold it, right?
+
+211
+00:30:51,000 --> 00:30:57,000
+ What is an example of this? So, if you are trying to model the temperature of a day.
+
+212
+00:30:57,000 --> 00:31:05,000
+ The temperature of a day very clearly is dependent on the temperatures of a few previous days, right?
+
+213
+00:31:05,000 --> 00:31:15,000
+ So, you will have a much better ability to predict today's temperature if you had information about the temperatures of the past previous days, right?
+
+214
+00:31:15,000 --> 00:31:27,000
+ So, x t plus 1 in this case is clearly not independent of x 1, x 2, sorry, that should have been x 1, x 1, x 2, dot, dot, dot, dot, x t, right?
+
+215
+00:31:27,000 --> 00:31:37,000
+ And in fact, it may not even follow exactly the same distribution as x t plus x t or x t minus 1 or x 2, right?
+
+216
+00:31:37,000 --> 00:31:44,000
+ So, these are examples of a situation where an IID model is not going to work, okay?
+
+217
+00:31:44,000 --> 00:31:49,000
+ So, what are examples of non-IID models, okay?
+
+218
+00:31:49,000 --> 00:32:02,000
+ So, now here let's say I want to model the temperature of 10 days or n days and that is denoted as x 1, x 2, x 3, x 4 up to x n, right?
+
+219
+00:32:02,000 --> 00:32:09,000
+ So, I want to model a joint distribution over p x 1, x 2, x 3, x 4 up to x n.
+
+220
+00:32:09,000 --> 00:32:28,000
+ What does the chain rule of probability tell me that I can always write this as p of x 1 into p of x 2 given x 1, p of x 3 given x 1, x 2, dot, dot, dot, p of x n given x 1, x 2, x 3, x 4 up to x n minus 1.
+
+221
+00:32:28,000 --> 00:32:34,000
+ There are no assumptions here. This is always true. This is the chain rule of probability.
+
+222
+00:32:34,000 --> 00:32:43,000
+ But what is the problem with this, right? So, just look at the last term here, right?
+
+223
+00:32:43,000 --> 00:32:51,000
+ So, p of x n condition on x 1, x 2, x 3, x 4, x n minus 1.
+
+224
+00:32:51,000 --> 00:33:02,000
+ So, what this means is that for different combinations of values of x 1 to x n minus 1, the distribution is going to be different.
+
+225
+00:33:02,000 --> 00:33:09,000
+ And how many different combinations of values can you have for x 1 up to x n minus 1?
+
+226
+00:33:09,000 --> 00:33:15,000
+ Even these, each of these can take one of two values, 0 or 1, right?
+
+227
+00:33:15,000 --> 00:33:18,000
+ You could have 2 to the power n minus 1 possibilities, right?
+
+228
+00:33:18,000 --> 00:33:26,000
+ So, you would actually have to learn or store those many distributions, which is exponential in number, right?
+
+229
+00:33:26,000 --> 00:33:34,000
+ If you have to model this just using the chain rule of probability, okay? So, that is typically not done in practice.
+
+230
+00:33:34,000 --> 00:33:40,000
+ I will come to how it can be done. So, that is where neural networks are helpful, okay? I will come to that.
+
+231
+00:33:40,000 --> 00:33:44,000
+ But before neural networks became the fashion, right?
+
+232
+00:33:44,000 --> 00:33:51,000
+ This was often done by one approximation is called the IID modeling assumption, right?
+
+233
+00:33:51,000 --> 00:34:03,000
+ Where you say, okay, I simply do not care about the conditioning. I will simply like x of i given x i x 1 to x minus 1 as p of x i for all i.
+
+234
+00:34:03,000 --> 00:34:09,000
+ I do not care about the conditioning at all. This is an assumption, right?
+
+235
+00:34:09,000 --> 00:34:12,000
+ And this is the IID modeling assumption.
+
+236
+00:34:12,000 --> 00:34:21,000
+ So, now you can see the IID modeling assumption as some kind of an approximation of the truth to join this, right?
+
+237
+00:34:21,000 --> 00:34:26,000
+ Now, there can be compromises somewhere in the middle.
+
+238
+00:34:26,000 --> 00:34:31,000
+ And one kind of compromise is called a Markov modeling assumption, right?
+
+239
+00:34:31,000 --> 00:34:40,000
+ So, here I will say that x i, you know, it really does not depend on everything from x 1 to x i minus 1.
+
+240
+00:34:40,000 --> 00:34:46,000
+ x i only depends on the previously seen value, which is x i minus 1.
+
+241
+00:34:46,000 --> 00:34:53,000
+ Once I know x i minus 1, I do not really care about all the preceding values, okay?
+
+242
+00:34:53,000 --> 00:35:02,000
+ Now you see, just compare the x i given x i minus 1 term here and the last term of the previous change.
+
+243
+00:35:02,000 --> 00:35:14,000
+ Now you should be able to see why this significantly reduces the number of possible distributions that I have to store, the number of parameters that I need, and the number of time it will take to go, right?
+
+244
+00:35:14,000 --> 00:35:19,000
+ But remember that this is still an assumption, right?
+
+245
+00:35:19,000 --> 00:35:21,000
+ And this is called a Markov assumption.
+
+246
+00:35:21,000 --> 00:35:27,000
+ Now, if I condition on just the previous value, it is called a first order Markov assumption.
+
+247
+00:35:27,000 --> 00:35:36,000
+ If I choose to condition on the previous two values, it's called the second order Markov assumption, and so on, all right?
+
+248
+00:35:36,000 --> 00:35:39,000
+ Okay, now here is my next group.
+
+249
+00:35:39,000 --> 00:35:47,000
+ You should ask somebody who claims to be an expert on AI, is conditional independence the same as independence?
+
+250
+00:35:47,000 --> 00:35:56,000
+ And, you know, the short answer is that the extra word suggests that it should not be conditional independence were the same as independence.
+
+251
+00:35:56,000 --> 00:36:00,000
+ Why would I unnecessarily introduce the additional word conditional?
+
+252
+00:36:00,000 --> 00:36:02,000
+ So, it does mean something, okay?
+
+253
+00:36:02,000 --> 00:36:06,000
+ Now let's see what that something is, okay?
+
+254
+00:36:06,000 --> 00:36:14,000
+ So, you see the Markov assumption makes a conditional independence function.
+
+255
+00:36:14,000 --> 00:36:21,000
+ It does not say all the different values of x i are independent of each other.
+
+256
+00:36:21,000 --> 00:36:29,000
+ It says x i is independent condition on the value of x i minus one, right?
+
+257
+00:36:29,000 --> 00:36:32,000
+ That is a conditional independent assumption.
+
+258
+00:36:32,000 --> 00:36:34,000
+ It's not an independent assumption.
+
+259
+00:36:34,000 --> 00:36:43,000
+ Whereas if I make the IID assumption, that says every x i is independent of all the other x things, right?
+
+260
+00:36:43,000 --> 00:36:49,000
+ So, this is an independent assumption, but the Markov assumption is a conditional independent assumption.
+
+261
+00:36:49,000 --> 00:36:57,000
+ It says that x i becomes independent of all the other x j's once I know x i minus one, okay?
+
+262
+00:36:57,000 --> 00:37:05,000
+ So, this is the difference between conditional independence and absolute or unconditional independence, okay?
+
+263
+00:37:05,000 --> 00:37:13,000
+ So, this was our first definition of a generative model that it is a probabilistic program.
+
+264
+00:37:13,000 --> 00:37:21,000
+ So, the second definition is hinted at by this, so you see the product over i.
+
+265
+00:37:21,000 --> 00:37:30,000
+ So, what this means is that I am breaking up this big distribution into a product of simpler terms, right?
+
+266
+00:37:30,000 --> 00:37:37,000
+ And the simpler terms in the first case are p x 1 into p x 2 into p x 3 and so on.
+
+267
+00:37:37,000 --> 00:37:46,000
+ In the Markov case, it is p x 1, p x 2 given x 1, p x 3 given x 2, p x 4 given x 3 and so on.
+
+268
+00:37:46,000 --> 00:37:51,000
+ So, each of these are called terms or factors, right?
+
+269
+00:37:51,000 --> 00:38:01,000
+ So, what a generative model means is that it is a factorization of the entire joint distribution p x 1, x 2, x 3, x 4 up to x n
+
+270
+00:38:01,000 --> 00:38:09,000
+ into a smaller, a product of a smaller set of terms such that it can be easily sampled from, okay?
+
+271
+00:38:09,000 --> 00:38:14,000
+ And this is often done using a mechanism that is called a graphical model.
+
+272
+00:38:14,000 --> 00:38:16,000
+ Why is it called a graphical model?
+
+273
+00:38:16,000 --> 00:38:21,000
+ Because it is sort of represented pictorially using graphs, right?
+
+274
+00:38:21,000 --> 00:38:33,000
+ So, here I have these n variables x 1 to x n, I am representing each of those using one node graph and so these nodes represent the random variables.
+
+275
+00:38:33,000 --> 00:38:42,000
+ And the absence of edges between the nodes is an indication of conditional independence, right?
+
+276
+00:38:42,000 --> 00:38:49,000
+ So, here for the iid case, you see that there are no edges at all between the different excites, right?
+
+277
+00:38:49,000 --> 00:38:54,000
+ Which means that x 1 is independent of x 2, is independent of x 3 and so on.
+
+278
+00:38:54,000 --> 00:38:57,000
+ Everything is independent of everything else, okay?
+
+279
+00:38:57,000 --> 00:38:59,000
+ And why, what is that theta doing?
+
+280
+00:38:59,000 --> 00:39:07,000
+ Well, all of them depend on the same value of theta, but theta is not really a random variable, it is a parameter of this.
+
+281
+00:39:07,000 --> 00:39:11,000
+ Now, here is the first order Markov assumption.
+
+282
+00:39:11,000 --> 00:39:13,000
+ Now, see what the edges are doing now.
+
+283
+00:39:13,000 --> 00:39:18,000
+ So, x i, x 1 depends on nothing, right?
+
+284
+00:39:18,000 --> 00:39:24,000
+ x 2 depends on that from which it has an income edge.
+
+285
+00:39:24,000 --> 00:39:34,000
+ So, x 2 depends only on x 1, x 3 depends only on x 2, x n depends only on x n minus 1.
+
+286
+00:39:34,000 --> 00:39:40,000
+ So, this pictorially represents the conditional independence or the conditional dependency.
+
+287
+00:39:40,000 --> 00:39:43,000
+ So, this is the first order Markov assumption.
+
+288
+00:39:43,000 --> 00:39:53,000
+ Before I go on to the next slide, I will want you to imagine in your heads, what would no assumption look like?
+
+289
+00:39:53,000 --> 00:40:00,000
+ If I just try to represent the chain rule that makes no assumptions, what would the graph for that look like?
+
+290
+00:40:00,000 --> 00:40:08,000
+ Take a second to think about it and then I will go to the next slide to show you the answer.
+
+291
+00:40:08,000 --> 00:40:12,000
+ Okay, let us go to the next slide and see if you guessed it right.
+
+292
+00:40:12,000 --> 00:40:16,000
+ So, x 1 has an edge to x 2, right?
+
+293
+00:40:16,000 --> 00:40:29,000
+ x 2 has an incoming edge only from x 1, x 3 has an incoming edge from x 1 and x 2 and x n, x n has an incoming edge from everything before, right?
+
+294
+00:40:29,000 --> 00:40:34,000
+ So, this says there is no conditional independence assumption, this is chain rule.
+
+295
+00:40:34,000 --> 00:40:41,000
+ So, every variable depends on every other variable that came before it in the sequence, right?
+
+296
+00:40:41,000 --> 00:40:54,000
+ So, this is another representation of a generative model because it breaks up the conditional distribution into smaller terms, one for each node, okay?
+
+297
+00:40:54,000 --> 00:41:05,000
+ Now, if you look at these models, papers talking about VAE and things like that, you will all often seen these graphical representations.
+
+298
+00:41:05,000 --> 00:41:14,000
+ So, again, the entire purpose of this lecture is when you see these things in the papers, you should have some idea what this means, right?
+
+299
+00:41:14,000 --> 00:41:20,000
+ But you will not have a complete idea, but you should be able to go back to these slides here to understand what it would have meant.
+
+300
+00:41:20,000 --> 00:41:32,000
+ So, often you will see this circle with this variable written in it with a box around it that says n, you know, what this really means is that this is a shorthand.
+
+301
+00:41:32,000 --> 00:41:36,000
+ The picture on the left is equivalent to the picture on the right.
+
+302
+00:41:36,000 --> 00:41:45,000
+ What it means is that whatever is inside that box, mark n, you should unfold that box n times.
+
+303
+00:41:45,000 --> 00:41:49,000
+ So, it's like a for loop represented in these pictures, okay?
+
+304
+00:41:49,000 --> 00:41:55,000
+ So, if you unfold that for loop n times, you will get the thing on the right, okay?
+
+305
+00:41:55,000 --> 00:41:59,000
+ So, the left hand side in some sense is a shorthand for the right hand side.
+
+306
+00:41:59,000 --> 00:42:09,000
+ And why do you need a shorthand? Well, it takes less time to draw it, less time and less space, so that's why it means shorthand, but it means the same thing, okay?
+
+307
+00:42:09,000 --> 00:42:21,000
+ So, we have actually seen three different representations or definitions of a generative model and all of these three mean exactly the same thing.
+
+308
+00:42:21,000 --> 00:42:36,000
+ The term on the left is the factorization representation where I have broken up a big distribution dx1.xn into a product of a small set of terms, right?
+
+309
+00:42:36,000 --> 00:42:43,000
+ Or not a small set of terms into a product of terms, each of which is smaller than the original one, right?
+
+310
+00:42:43,000 --> 00:42:57,000
+ In the middle, this is the graphical notation, right? And in the right, that is the probabilistic program notation, but all of these three things mean exactly the same thing, okay?
+
+311
+00:42:57,000 --> 00:43:10,000
+ So, in some papers, you will see written in one way, in another paper, you will see written in a different way, but just so that you know whenever you come across this, all these three things mean the same thing.
+
+312
+00:43:10,000 --> 00:43:15,000
+ Okay, now here is my next Google, we talked about a generative model, right?
+
+313
+00:43:15,000 --> 00:43:21,000
+ Now, can a generative model be used for a non-generative task?
+
+314
+00:43:21,000 --> 00:43:29,000
+ And this is not a ridiculous question, it can indeed be done and let me demystify what I'm saying here, okay?
+
+315
+00:43:29,000 --> 00:43:35,000
+ So that you can bold this Google at other AI experts when you encounter them, okay?
+
+316
+00:43:35,000 --> 00:43:47,000
+ So, what is a generative task? A generative task means that the task input is a label and the task output is data.
+
+317
+00:43:47,000 --> 00:43:56,000
+ Please see if you can remember this, right? Generative task means the task input is a label or maybe nothing and the task output is data.
+
+318
+00:43:56,000 --> 00:44:05,000
+ A generative model means that the model input is data, the model output is label.
+
+319
+00:44:05,000 --> 00:44:10,000
+ So, is it possible to use a generative model for a generative task?
+
+320
+00:44:10,000 --> 00:44:28,000
+ The answer is yes, if I could somehow invert the model for addressing this task and there is in fact such a notion of inversion of in a probabilistic model, okay?
+
+321
+00:44:28,000 --> 00:44:36,000
+ And so just to give you an example, let's say this is a generative model for two class data.
+
+322
+00:44:36,000 --> 00:44:46,000
+ What would this do? So, if I have two class data, let's say I want to generate data for cats and dogs or for spam and non-spam, right?
+
+323
+00:44:46,000 --> 00:44:57,000
+ First, I would sample a label. If the label comes out to be spam, then I have a distribution for words that look like words in a spam in it, right?
+
+324
+00:44:57,000 --> 00:45:13,000
+ And I will generate randomly generate a spam in it, right? Now, if I sample why the label and the value comes out to be a non-spam, then, you know, I have some standard distributions for how the words in a non-spam you may look like.
+
+325
+00:45:13,000 --> 00:45:16,000
+ So, I will generate words following that distribution, right?
+
+326
+00:45:16,000 --> 00:45:30,000
+ So, if I run this distribution or sample from this distribution often enough, what will I get? I will get, you know, as a data set where some instances are spam, some instances are non-spam, right?
+
+327
+00:45:30,000 --> 00:45:47,000
+ So, this is a generative model for two class data. Now, could I use this model for predicting whether an email is spam or non-spam? That is a non-generative task, right?
+
+328
+00:45:47,000 --> 00:46:03,000
+ I will be given an email and I have to classify using non-spam or spam. If I have this model given to me, can I use this model to accomplish that task?
+
+329
+00:46:03,000 --> 00:46:22,000
+ And this is how to do it, okay? So, and this is one of the most important rules in all of science, okay? I would go to the extent of saying this is probably as important and should be as famous as equal to mc2, okay?
+
+330
+00:46:22,000 --> 00:46:42,000
+ If you want to remember one rule from all of AI, that rule has to be Bayes' rule, okay? So, what does Bayes' rule say? But before getting into what Bayes' rule say, let us try to understand what Bayes' rule is trying to do.
+
+331
+00:46:42,000 --> 00:46:59,000
+ If I have a model that generates possible effects given a cause, okay? So, think of y as the cause and x as the effects of a particular cause.
+
+332
+00:46:59,000 --> 00:47:15,000
+ If I have a model that can generate possible effects given a cause, then can I use that model to predict possible causes given the effects, right?
+
+333
+00:47:15,000 --> 00:47:32,000
+ This is what Bayes' rule looks to do and this is how it does it, just following the rules of probability and condition of probability. So, p y of x is written in terms of p y and p of x is a y, okay?
+
+334
+00:47:32,000 --> 00:47:49,000
+ And of course, this needs to be normalized to make it a probability. So, the denominator is p of x, which is nothing but the sum over y, p of all values of y, p of y into p of x given y, right?
+
+335
+00:47:49,000 --> 00:48:05,000
+ Now, this is called Bayes' rule and this is sort of one of the fundamental rules of generative AI, okay? I know there is some famous commentator who went down in history by saying something like, remember the name, what was the name?
+
+336
+00:48:05,000 --> 00:48:15,000
+ I think he said, Carlos Greatweight or something like that. Of course, I have no pretentions of going down in history by saying this, but I will still say this, okay?
+
+337
+00:48:15,000 --> 00:48:25,000
+ Remember the name, Thomas Bayes, that is more important than Carlos Greatweight when it comes to AI. Okay?
+
+338
+00:48:25,000 --> 00:48:42,000
+ So, now, once we have understood Bayes' rule, let us come to what are the things that you would like to achieve if somebody wants you to create a generative model, right?
+
+339
+00:48:42,000 --> 00:48:54,000
+ So, if you have a class for the generative model, then what are the functions or methods that you must implement for that class to qualify it as a generative model, right?
+
+340
+00:48:54,000 --> 00:49:00,000
+ So, the first requirement is that it has to have a method called sample, right?
+
+341
+00:49:00,000 --> 00:49:10,000
+ So, what that means is given the data distribution with known or estimated parameters, you have to be able to draw new synthetic data points from it.
+
+342
+00:49:10,000 --> 00:49:14,000
+ And this has to be an efficient operation, right?
+
+343
+00:49:14,000 --> 00:49:24,000
+ It cannot be something that takes quadratic, well, we will see actually models that take quadratic complexity, but ideally it should be efficient, okay?
+
+344
+00:49:24,000 --> 00:49:30,000
+ The second is density estimation. What does that mean?
+
+345
+00:49:30,000 --> 00:49:46,000
+ So, I am not asking you to draw a sample, but I am giving you a sample and I am asking you, under your generative model, what is the probability or score of seeing this particular output?
+
+346
+00:49:46,000 --> 00:49:52,000
+ Could this output have come from your generative model? Can you give me a score, right?
+
+347
+00:49:52,000 --> 00:50:00,000
+ So, if that score is low, it would mean that this value could not have come from this institution or is less likely to come from the institution.
+
+348
+00:50:00,000 --> 00:50:07,000
+ If this value is high, then it means that, oh, I think this is really a value coming from this institution, right?
+
+349
+00:50:07,000 --> 00:50:15,000
+ So, this is called density estimation and please understand that density estimation is very different from sampling.
+
+350
+00:50:15,000 --> 00:50:31,000
+ When sampling, you are required to generate a new value. For density estimation, you will be given a value and you will be asked what is the probability of this particular value from this particular distribution, okay?
+
+351
+00:50:31,000 --> 00:50:49,000
+ The next is inference, okay? And what this means, I will have to wait a little bit to explain what inference means, but in many tasks, there is something called a hidden variable, right?
+
+352
+00:50:49,000 --> 00:51:04,000
+ For example, if you have to predict the hidden cause given the effect, right? For example, given the email, if you want to infer the label, that is called inference, right?
+
+353
+00:51:04,000 --> 00:51:12,000
+ There are other examples of inference, we will come to that. So, a generative model should also be able to do inference, okay?
+
+354
+00:51:12,000 --> 00:51:24,000
+ And inference has other uses. So, for example, creating a representation or encoding are also examples of inference, we will come to that, okay?
+
+355
+00:51:24,000 --> 00:51:36,000
+ The next task is learning or parameter estimation, right? So, you should be able to give a sample of data points to this class, right?
+
+356
+00:51:36,000 --> 00:51:45,000
+ And say that, look, I have seen these samples, can you estimate the parameters of your model from these sample data points, right?
+
+357
+00:51:45,000 --> 00:51:50,000
+ And this is the learning or the parameter estimation ability.
+
+358
+00:51:50,000 --> 00:52:07,000
+ And so, in some sense, what is required to do is, there is the data distribution, right? And there is the empirical distribution of the sample that is given to you.
+
+359
+00:52:07,000 --> 00:52:19,000
+ And you are required to find that theta, which somehow minimizes the distance between the true distribution and the data distribution, right?
+
+360
+00:52:19,000 --> 00:52:26,000
+ So, there is some notion of distance between distributions. So, there are many ways to measure distances between distributions.
+
+361
+00:52:26,000 --> 00:52:34,000
+ Something like KL divergence is one particular way to minimize distribution, distance between distributions.
+
+362
+00:52:34,000 --> 00:52:40,000
+ It is not the only one, but it is often used in machine learning for a particular reason, okay?
+
+363
+00:52:40,000 --> 00:52:59,000
+ So, it turns out that minimizing KL divergence between the data distribution and the true distribution is equivalent to maximizing log likelihood under the data, of the data under the data distribution, right?
+
+364
+00:52:59,000 --> 00:53:13,000
+ So, in some sense, KL maximizing or minimizing KL divergence is sort of used as the justification for why do you maximize likelihood of the data?
+
+365
+00:53:13,000 --> 00:53:24,000
+ Why is that a good thing? Oh, it is a good thing to do because, you know, doing this is one way to minimize the distance between the two distributions and the outside.
+
+366
+00:53:24,000 --> 00:53:35,000
+ Okay, alright. So, here is the next Google, right? So, can a deep model be non-neural?
+
+367
+00:53:35,000 --> 00:53:42,000
+ I mean, if you ask a so-called AI expert, you would say, what are you even talking about? Of course not.
+
+368
+00:53:42,000 --> 00:53:51,000
+ But you know what? The answer is a very trivial yes. You know, I did my PhD in 2006.
+
+369
+00:53:51,000 --> 00:54:04,000
+ I completed my PhD in 2006 and my PhD was on a subject which was all about deep distributions, but had nothing to do with neural networks, okay?
+
+370
+00:54:04,000 --> 00:54:15,000
+ So, what is really the difference between traditional and deep generative models? Okay, or I should have actually said neural generative models.
+
+371
+00:54:15,000 --> 00:54:26,000
+ So, the difference really is in how you model the conditional probability terms in the factorized likelihood, right?
+
+372
+00:54:26,000 --> 00:54:38,000
+ So, I had this p of x1, p of x2 given x1, p of x2 given x2. So, what kind of functions do you use for modeling these terms, right?
+
+373
+00:54:38,000 --> 00:54:47,000
+ In traditional generative models, these would typically be standard distributions, right? What do I mean by standard distributions?
+
+374
+00:54:47,000 --> 00:55:01,000
+ So, for categorical distributions or discrete distributions, these are, you know, geometric distributions, Poisson distribution, the Bernoulli distribution, the categorical distribution and so on, right?
+
+375
+00:55:01,000 --> 00:55:14,000
+ Now, when it wants to continuous distributions, the exponential distribution, the Gaussian distribution, the Laplace distribution, students' distribution and things like that, okay?
+
+376
+00:55:14,000 --> 00:55:18,000
+ This is how it used to be in traditional generative models.
+
+377
+00:55:18,000 --> 00:55:29,000
+ Now, what modern generative models do is for the same distributions, instead of using these traditional distributions, which are the standard distributions,
+
+378
+00:55:29,000 --> 00:55:33,000
+ what are used are deep neural networks.
+
+379
+00:55:33,000 --> 00:55:40,000
+ Now, this is a huge, huge, huge dump in terms of ability, right? And why is that?
+
+380
+00:55:40,000 --> 00:55:51,000
+ Because we know that a multi-layered neural network is able to approximate any distribution to arbitrary closeness, right?
+
+381
+00:55:51,000 --> 00:56:06,000
+ So, if you want to learn complex distributions in the real world, then doing so with neural networks as your conditional distributions is significantly more powerful than using the standard distribution, right?
+
+382
+00:56:06,000 --> 00:56:23,000
+ So, of course, what this requires is that you also have new breakthroughs in optimization algorithms, scalable implementations, et cetera, et cetera, which is exactly what has happened in the last, you know, 15 years or so, okay?
+
+383
+00:56:23,000 --> 00:56:28,000
+ So now, what are the challenges in generative modeling?
+
+384
+00:56:28,000 --> 00:56:40,000
+ Of course, we are trying to, so I said that the data is very high-dimensional, it has complex structure, and so, of course, it has a very complex high-dimensional distribution.
+
+385
+00:56:40,000 --> 00:56:48,000
+ And modeling such complex high-dimensional distributions requires very complex distributions with many parameters.
+
+386
+00:56:48,000 --> 00:57:01,000
+ And we know that unless you want to have so many parameters, you will have to make some simplifying assumptions such as Markov assumptions or IIT assumptions, which are unnatural and typically do not hold in the data.
+
+387
+00:57:01,000 --> 00:57:10,000
+ And if you are using a large number of parameters, then you have to have large data volumes to prevent overfitting, right?
+
+388
+00:57:10,000 --> 00:57:18,000
+ And working with such tremendously large data volumes involves a lot of very significant engineering challenges.
+
+389
+00:57:18,000 --> 00:57:31,000
+ And then as models become deeper or longer, you have this problem of exploding or vanishing gradients, and that requires many, many innovations to get over those.
+
+390
+00:57:31,000 --> 00:57:45,000
+ And finally, what we will see is that I sort of listed certain requirements from a generative model. What we will see is that satisfying all of those requirements simultaneously is very, very hard.
+
+391
+00:57:45,000 --> 00:57:52,000
+ If you have to do well on some of those requirements, well, you will fall short on some of the other requirements and so on.
+
+392
+00:57:52,000 --> 00:57:59,000
+ So there are different kinds of generative models, some of which do well on some requirements, but not so good on other requirements, etc.
+
+393
+00:57:59,000 --> 00:58:07,000
+ And finally, right, there is a huge problem when it comes to generative AI.
+
+394
+00:58:07,000 --> 00:58:11,000
+ How do I evaluate the quality of the output, right?
+
+395
+00:58:11,000 --> 00:58:26,000
+ So when the nature of the output is simple, such as a yes or no value, one of five different values, you know, a particular real value, then it is possible to have a notion of a gold standard value.
+
+396
+00:58:26,000 --> 00:58:32,000
+ And you can see how close your gold standard value is to the predicted value.
+
+397
+00:58:32,000 --> 00:58:37,000
+ But if you are asking somebody to generate an essay, right?
+
+398
+00:58:37,000 --> 00:58:44,000
+ I mean, how do you evaluate the quality of that essay? What is a gold standard? You cannot have a single gold standard for this, right?
+
+399
+00:58:44,000 --> 00:58:53,000
+ So I will show you examples where, you know, things are not as subjective as an essay. Let us say I am asking you to generate a program, right?
+
+400
+00:58:53,000 --> 00:58:59,000
+ So evaluating whether the program is a correct program or not is extremely difficult.
+
+401
+00:58:59,000 --> 00:59:10,000
+ So evaluation of generative models is very, very hard, and this is one of the biggest problems when it comes to working with generative AI.
+
+402
+00:59:10,000 --> 00:59:22,000
+ Now, one important thing that you will need to know when studying some of the later models, but I will keep it here so that you know that this is something important to learn is the notion of a transformation of a random period.
+
+403
+00:59:22,000 --> 00:59:35,000
+ So let us say you have a random variable x with some PDFP of x and let us say you have another variable y, that is that y is a function x, right?
+
+404
+00:59:35,000 --> 00:59:43,000
+ Now, what is, if I know the distribution of x, right, then what is the distribution of y, right?
+
+405
+00:59:43,000 --> 01:00:01,000
+ And for that, what you need to do is written on the last line. So this is the transformation rule for, you know, scalar values and what you see on the right hand side, you see a differential with a modular sign, right?
+
+406
+01:00:01,000 --> 01:00:11,000
+ And when it goes to vectors, right, this becomes something called a Jacobian matrix instead of particular value, right?
+
+407
+01:00:11,000 --> 01:00:18,000
+ So this is just something that I will require you to keep in mind for more complex distributions.
+
+408
+01:00:18,000 --> 01:00:29,000
+ But there's a problem, right, that computing the Jacobian is actually O of n cube, right, for an n by n matrix.
+
+409
+01:00:29,000 --> 01:00:45,000
+ So when the dimensionality of your data, let's say your data is 1000 by 1000 or something like that, then computing the Jacobian naively would become O of 1000 cube, which as you can imagine is extremely computationally challenging, right?
+
+410
+01:00:45,000 --> 01:00:57,000
+ So transformation of random variables is becomes crucial when working with generative AI, and this typically requires this transformation rule, which is computationally hard.
+
+411
+01:00:57,000 --> 01:01:06,000
+ This is one important thing to keep in mind, and this is something that needs to be addressed when building complicated generative models, okay?
+
+412
+01:01:06,000 --> 01:01:19,000
+ So this actually transformation of random variables is one way to go from a simple random variable to a more complex random variable.
+
+413
+01:01:19,000 --> 01:01:31,000
+ What does that mean? So let's say I sample a value from Gaussian, and then I can do whatever deterministic transformation to the Gaussian value I want, and that can be a different random variable, right?
+
+414
+01:01:31,000 --> 01:01:36,000
+ So now I have modeled a random variable, which is not a Gaussian anymore, right?
+
+415
+01:01:36,000 --> 01:01:48,000
+ But I know how to sample that using Gaussian. This is one way to create more complex variables from simple variables or more complex distributions from simple distributions.
+
+416
+01:01:48,000 --> 01:01:54,000
+ Another way to do that is called a mixture, okay?
+
+417
+01:01:54,000 --> 01:02:05,000
+ So if I have two different distributions, then I can mix these two simple distributions to create a more complex distribution, right?
+
+418
+01:02:05,000 --> 01:02:13,000
+ So as you know, a Gaussian distribution has a single mode, one mode, one peak, right?
+
+419
+01:02:13,000 --> 01:02:22,000
+ So now if somebody, if you see some data which has three peaks, of course, you cannot model that using one Gaussian, right?
+
+420
+01:02:22,000 --> 01:02:25,000
+ Because one Gaussian will never give you three peaks.
+
+421
+01:02:25,000 --> 01:02:30,000
+ So how can you model a data which physically has three peaks using a Gaussian?
+
+422
+01:02:30,000 --> 01:02:38,000
+ Well, the solution is actually to use three Gaussians and a mixture of three Gaussians.
+
+423
+01:02:38,000 --> 01:02:47,000
+ If you mix three Gaussians in some interesting way, you will get a distribution that has three peaks.
+
+424
+01:02:47,000 --> 01:02:52,000
+ And the typical notion of a mixture is called a complex composition, right?
+
+425
+01:02:52,000 --> 01:02:58,000
+ So let's say I assign a weight corresponding to each of the distributions.
+
+426
+01:02:58,000 --> 01:03:07,000
+ Let's say it is pi 1, pi 2, pi 3, and it is such that each of them is greater than 1 and the sum, sorry, greater than 0 and the sum to 1.
+
+427
+01:03:07,000 --> 01:03:14,000
+ So for example, pi 1 could be 0.5, pi 2 could be 0.25, pi 3 could be 0.25, right?
+
+428
+01:03:14,000 --> 01:03:25,000
+ And now when I create this distribution, which is pi 1 times the first Gaussian plus pi 2 times the second Gaussian plus pi 3 times the second Gaussian,
+
+429
+01:03:25,000 --> 01:03:30,000
+ this magically becomes a distribution with three peaks, right?
+
+430
+01:03:30,000 --> 01:03:32,000
+ And this is called a mixture distribution.
+
+431
+01:03:32,000 --> 01:03:38,000
+ This is another way of creating more complex distributions from simple distributions, right?
+
+432
+01:03:38,000 --> 01:03:40,000
+ So why am I talking about all this?
+
+433
+01:03:40,000 --> 01:03:49,000
+ Because generative AI is really about modeling very complex distributions that are seen in the real world, right?
+
+434
+01:03:49,000 --> 01:03:54,000
+ And so I am telling you what are the tools for creating complex distributions.
+
+435
+01:03:54,000 --> 01:04:03,000
+ So if I have simple distributions, I can somehow put these simple distributions together, I can combine them in some way, I can augment them in some way, right?
+
+436
+01:04:03,000 --> 01:04:05,000
+ To create more complex distributions.
+
+437
+01:04:05,000 --> 01:04:12,000
+ So this transformation of random variables is one and the mixing of distributions is one.
+
+438
+01:04:12,000 --> 01:04:20,000
+ And all through generative AI, you will see repeated news of these two techniques, okay?
+
+439
+01:04:20,000 --> 01:04:30,000
+ All right, now we are all set to talk about our first class of generative models, which are auto-regressive models, all right?
+
+440
+01:04:30,000 --> 01:04:33,000
+ So what are auto-regressive models?
+
+441
+01:04:33,000 --> 01:04:39,000
+ You know, this is the simplest kind of generative model you can think of.
+
+442
+01:04:39,000 --> 01:04:45,000
+ This just follows the chain rule of probability and nothing else, right?
+
+443
+01:04:45,000 --> 01:04:54,000
+ So if I have to model a sequence of 10 words, then this will say model the first word, condition or nothing.
+
+444
+01:04:54,000 --> 01:05:04,000
+ Model the second word, condition of the first word, model the third word, condition of the first two words, model the fourth word, condition of the first three words and so on.
+
+445
+01:05:04,000 --> 01:05:07,000
+ This is exactly the auto-regressive model.
+
+446
+01:05:07,000 --> 01:05:11,000
+ It makes no conditional independence assumptions at all.
+
+447
+01:05:11,000 --> 01:05:16,000
+ So in some sense, this is the simplest graphical model you can think of, okay?
+
+448
+01:05:16,000 --> 01:05:20,000
+ But there is a price for simplicity.
+
+449
+01:05:20,000 --> 01:05:21,000
+ What is the price?
+
+450
+01:05:21,000 --> 01:05:22,000
+ There are many prices.
+
+451
+01:05:22,000 --> 01:05:30,000
+ In fact, the first is that there has to be some linear ordering of the variables, right?
+
+452
+01:05:30,000 --> 01:05:35,000
+ When you model using an auto-regressive model.
+
+453
+01:05:35,000 --> 01:05:41,000
+ So this linear ordering is natural in some cases.
+
+454
+01:05:41,000 --> 01:05:44,000
+ So it is natural in terms of time series.
+
+455
+01:05:44,000 --> 01:05:47,000
+ It is natural in terms of line, natural language.
+
+456
+01:05:47,000 --> 01:05:53,000
+ You could say it is even natural in terms of code because anyway you write code from left to right.
+
+457
+01:05:53,000 --> 01:05:56,000
+ So code is also a sequence of characters, right?
+
+458
+01:05:56,000 --> 01:06:04,000
+ However, if you have to generate images, can you form a linear ordering of all the pixels in the image?
+
+459
+01:06:04,000 --> 01:06:06,000
+ Very certainly not natural, right?
+
+460
+01:06:06,000 --> 01:06:12,000
+ So there is no one linear ordering of the pixels in an image, but there are ways to do it.
+
+461
+01:06:12,000 --> 01:06:17,000
+ For example, you could use something like a raster scan, which goes from left to right and top to bottom.
+
+462
+01:06:17,000 --> 01:06:22,000
+ And then you can get one particular linear ordering of the pixels and images.
+
+463
+01:06:22,000 --> 01:06:30,000
+ In fact, if you have to generate images using an auto-regressive model, this is an unnatural thing that you have to do, okay?
+
+464
+01:06:30,000 --> 01:06:34,000
+ But what is the bigger problem, right?
+
+465
+01:06:34,000 --> 01:06:42,000
+ We have already seen that if you do not make any conditional independence assumptions, right?
+
+466
+01:06:42,000 --> 01:06:49,000
+ Then the number of parameters that you will need to use becomes exponential.
+
+467
+01:06:49,000 --> 01:06:58,000
+ In fact, if you think about the distribution of the nth random variable, depending on the first n minus one random variable,
+
+468
+01:06:58,000 --> 01:07:05,000
+ that distribution is going to be different depending on the specific values that the first n minus one random variable take, right?
+
+469
+01:07:05,000 --> 01:07:11,000
+ And we have seen that trying to do this naively requires an exponential number of parameters.
+
+470
+01:07:11,000 --> 01:07:15,000
+ It also requires exponential space to store and so on.
+
+471
+01:07:15,000 --> 01:07:23,000
+ So we have to have a way somehow to reduce the number of parameters that is required.
+
+472
+01:07:23,000 --> 01:07:28,000
+ And this is typically done using a neural network, okay?
+
+473
+01:07:28,000 --> 01:07:29,000
+ How do we do that?
+
+474
+01:07:29,000 --> 01:07:36,000
+ So let's say our random variables x1 to xn are binary random variables, right?
+
+475
+01:07:36,000 --> 01:07:38,000
+ Each of them take value 0, 1.
+
+476
+01:07:38,000 --> 01:07:43,000
+ So what is typically the distribution that we use to model binary random variables?
+
+477
+01:07:43,000 --> 01:07:45,000
+ It's a Bernoulli distribution.
+
+478
+01:07:45,000 --> 01:07:49,000
+ And what is the parameter of a Bernoulli distribution?
+
+479
+01:07:49,000 --> 01:07:52,000
+ It's a probability of head, rho, right?
+
+480
+01:07:52,000 --> 01:08:03,000
+ So what I will do is, in every case, I will make rho a function of all the previous values of x, right?
+
+481
+01:08:03,000 --> 01:08:14,000
+ So I will get a single value, which is the probability of head, which depends on the specific values taken by x1 to xi minus one.
+
+482
+01:08:14,000 --> 01:08:23,000
+ If I have such a function, right, then I have sort of gotten around this requirement of having exponential space, right?
+
+483
+01:08:23,000 --> 01:08:27,000
+ All that I have to store is just this function, right?
+
+484
+01:08:27,000 --> 01:08:34,000
+ And then I have to figure out how I can model this function with significantly fewer number of parameters, right?
+
+485
+01:08:34,000 --> 01:08:37,000
+ Now what about categorical random variables?
+
+486
+01:08:37,000 --> 01:08:41,000
+ Categorical random variables require multiple parameters.
+
+487
+01:08:41,000 --> 01:08:49,000
+ So the nature of the parameters that we need is, you know, probability of the first one, probability of the second one, probability of the third one.
+
+488
+01:08:49,000 --> 01:08:52,000
+ And this is typically done using a softmax function.
+
+489
+01:08:52,000 --> 01:09:03,000
+ So I need a softmax function that goes from xi minus x1 to xi minus minus one, and it gives you a set of values that are between 0 and 1, okay?
+
+490
+01:09:03,000 --> 01:09:09,000
+ Now, if I have a real value random variable, I know I need to model that using Gaussian.
+
+491
+01:09:09,000 --> 01:09:13,000
+ For each value of i, right, I will have a different Gaussian.
+
+492
+01:09:13,000 --> 01:09:14,000
+ How can I do that?
+
+493
+01:09:14,000 --> 01:09:23,000
+ I will make the mean and the variance of that particular Gaussian a function of all the previously seen values, right?
+
+494
+01:09:23,000 --> 01:09:27,000
+ So, and what kind of specific functions I can use, right?
+
+495
+01:09:27,000 --> 01:09:35,000
+ Oh, before I come to that, then how can I sort of, what are the things that we have to do with a generative model to remember?
+
+496
+01:09:35,000 --> 01:09:39,000
+ So the first few things are scoring and sampling, okay?
+
+497
+01:09:39,000 --> 01:09:44,000
+ Now, when it comes to scoring, you know, it's easy, right?
+
+498
+01:09:44,000 --> 01:09:52,000
+ So I know that I have to score the probability for each xi and I just have to multiply them, right?
+
+499
+01:09:52,000 --> 01:09:57,000
+ Or if it's a log, then I have to do the log of each of them and add them up, right?
+
+500
+01:09:57,000 --> 01:09:59,000
+ And how do I score each of them?
+
+501
+01:09:59,000 --> 01:10:07,000
+ Each of them is a Bernoulli or a Gaussian or a categorical and I have the parameter values so I can easily score it.
+
+502
+01:10:07,000 --> 01:10:14,000
+ And the more interesting thing is that I can do all of this in a parallelizable way.
+
+503
+01:10:14,000 --> 01:10:19,000
+ I don't have to wait to score px1 before I can score p of x2.
+
+504
+01:10:19,000 --> 01:10:24,000
+ I can score p of x3 at the same time as p of x1 and p of x2.
+
+505
+01:10:24,000 --> 01:10:27,000
+ So this is parallelizable in a straight forward way.
+
+506
+01:10:27,000 --> 01:10:33,000
+ However, during testing, it is going to be slow.
+
+507
+01:10:33,000 --> 01:10:34,000
+ Why is that?
+
+508
+01:10:34,000 --> 01:10:43,000
+ Because unless I have generated the value of x1, I do not know the parameter value for x2, right?
+
+509
+01:10:43,000 --> 01:10:45,000
+ Because it depends on the value of x1.
+
+510
+01:10:45,000 --> 01:10:47,000
+ So I cannot generate x2.
+
+511
+01:10:47,000 --> 01:10:53,000
+ If I have to generate x3, I need to know the parameter values for the distribution for x3.
+
+512
+01:10:53,000 --> 01:10:58,000
+ It depends on the specific values of x1 and x2, right?
+
+513
+01:10:58,000 --> 01:11:04,000
+ So my generation or sampling has to proceed step by step, right?
+
+514
+01:11:04,000 --> 01:11:10,000
+ This is the biggest problem of auto regression once, okay?
+
+515
+01:11:10,000 --> 01:11:12,000
+ Now, what about learning?
+
+516
+01:11:12,000 --> 01:11:15,000
+ You know, learning is also straightforward.
+
+517
+01:11:15,000 --> 01:11:22,000
+ If I know how to score the log likelihood, I can, you know, you already know about gradient descent from your previous lectures.
+
+518
+01:11:22,000 --> 01:11:30,000
+ So I can form mini batches and I can calculate the gradient using mini batches and I can take steps using the gradient.
+
+519
+01:11:30,000 --> 01:11:33,000
+ So learning is easy, right?
+
+520
+01:11:33,000 --> 01:11:36,000
+ So I just said it can be a function.
+
+521
+01:11:36,000 --> 01:11:41,000
+ Now, let us look at what kind of functions these can be, right?
+
+522
+01:11:41,000 --> 01:11:48,000
+ So let's take the simplest case where, you know, this is Bernoulli, right?
+
+523
+01:11:48,000 --> 01:11:57,000
+ So I need to have a single probability of head, which is a function of x1 to xn minus 1.
+
+524
+01:11:57,000 --> 01:12:04,000
+ So how can I take arbitrary values of x1 to xn minus 1 and get a value between 0 and 1?
+
+525
+01:12:04,000 --> 01:12:09,000
+ Well, I just first make a linear combination and then I pass it through a sigmoid.
+
+526
+01:12:09,000 --> 01:12:13,000
+ In fact, what you see on the right is actually called a perceptron, right?
+
+527
+01:12:13,000 --> 01:12:19,000
+ So I just create a perceptron, right? And that will give me a value for p of head.
+
+528
+01:12:19,000 --> 01:12:24,000
+ So I just have a perceptron for each node x of i, right?
+
+529
+01:12:24,000 --> 01:12:26,000
+ And this is a single-layer neural network.
+
+530
+01:12:26,000 --> 01:12:34,000
+ So I have actually created a neural autoregressive model using a linear number of parameters, okay?
+
+531
+01:12:34,000 --> 01:12:42,000
+ Now, if I want, I could make this more complex because I know that a linear neural network is not the most powerful neural network.
+
+532
+01:12:42,000 --> 01:12:49,000
+ So I could use a multi-layered perceptron using a single perceptron, right?
+
+533
+01:12:49,000 --> 01:12:57,000
+ And if I do that, for each p of head, I get, let's say, a two-layer neural network, right?
+
+534
+01:12:57,000 --> 01:13:03,000
+ Then you get this model, which is called the neural autoregressive density estimator, right?
+
+535
+01:13:03,000 --> 01:13:11,000
+ And this is an old model. So this is a two-layer neural AR model, right?
+
+536
+01:13:11,000 --> 01:13:20,000
+ And, you know, there are various simplified assumptions that are used instead of using so many different distributions for each position of x.
+
+537
+01:13:20,000 --> 01:13:30,000
+ What you do is you make this ai and ci parameters independent of i, so you just move the same a and c for all the positions.
+
+538
+01:13:30,000 --> 01:13:35,000
+ So by doing this, you just reduce the number of parameters, okay?
+
+539
+01:13:35,000 --> 01:13:49,000
+ Now, I still have a problem, right? And this is that though I have a linear number of parameters, my history is going to get longer and longer with increasing sequence length.
+
+540
+01:13:49,000 --> 01:13:58,000
+ So how do I get around this problem, right? And this is where transformers come in, okay?
+
+541
+01:13:58,000 --> 01:14:09,000
+ So what transformers allow us to do using the attention mechanism is to say that look, I know you have the entire history of x1 to xn minus 1,
+
+542
+01:14:09,000 --> 01:14:16,000
+ but you know what? This entire history is not equally important for the current position n, right?
+
+543
+01:14:16,000 --> 01:14:24,000
+ And you can learn which parts of the history are more important and which parts of the history are less important, right?
+
+544
+01:14:24,000 --> 01:14:35,000
+ And this is called the attention base, right? And you know, so and if you have to mask certain positions to make sure that this is auto-aggressive.
+
+545
+01:14:35,000 --> 01:14:42,000
+ And you know, there are encoder-decoder models using transformers, so part P5, all of these are encoder-decoder models,
+
+546
+01:14:42,000 --> 01:14:48,000
+ but you could also have decoder-only models, which is what we currently use most of the time.
+
+547
+01:14:48,000 --> 01:14:55,000
+ In the GPT family, palm, llama, Gemini, all of these are decoder-only models using transformers,
+
+548
+01:14:55,000 --> 01:15:02,000
+ but this is the basic idea behind auto-aggressive generated models, okay?
+
+549
+01:15:02,000 --> 01:15:10,000
+ Now, just to give you some idea of how such models are actually used in practice, right?
+
+550
+01:15:10,000 --> 01:15:15,000
+ I'll talk about something that we do in the current place where I work, right?
+
+551
+01:15:15,000 --> 01:15:20,000
+ So let's say that you want to do product search, right?
+
+552
+01:15:20,000 --> 01:15:27,000
+ So what does product search mean? I will enter some kind of a query using natural language.
+
+553
+01:15:27,000 --> 01:15:34,000
+ And my intent is to search for a product from some million-sized catalog, right?
+
+554
+01:15:34,000 --> 01:15:40,000
+ And maybe the products are stored as some kind of a noisy database or a knowledge base.
+
+555
+01:15:40,000 --> 01:15:46,000
+ Right? I say noisy because, you know, product descriptions uploaded by different sellers will have various kinds of noise.
+
+556
+01:15:46,000 --> 01:15:50,000
+ There will be spelling mistakes, there will be missing attributes, there will be all sorts of things, right?
+
+557
+01:15:50,000 --> 01:15:55,000
+ And these are typically stored as a database or a knowledge base.
+
+558
+01:15:55,000 --> 01:16:01,000
+ Now, how do you find whether some product exists in a database or a knowledge base?
+
+559
+01:16:01,000 --> 01:16:09,000
+ Traditionally, you would have to write a simple query or a sparkle query that would have to execute over that knowledge base,
+
+560
+01:16:09,000 --> 01:16:16,000
+ and it would find you whether the product that would require actually exists or not, or which products match your requirement, right?
+
+561
+01:16:16,000 --> 01:16:20,000
+ But this is extremely hard to do. Why is that?
+
+562
+01:16:20,000 --> 01:16:26,000
+ Because, well, first of all, you would need to know a SQL or sparkle, which common people do not know.
+
+563
+01:16:26,000 --> 01:16:30,000
+ And the other is knowledge of SQL and sparkle is not sufficient, right?
+
+564
+01:16:30,000 --> 01:16:36,000
+ Unless I know the schema of the specific database or specific knowledge base,
+
+565
+01:16:36,000 --> 01:16:41,000
+ I cannot write a SQL or a sparkle query for this database or this data, right?
+
+566
+01:16:41,000 --> 01:16:50,000
+ So very few people will be able to write a SQL query, let's say for Amazon, a big part, to retrieve something from the database, right?
+
+567
+01:16:50,000 --> 01:16:56,000
+ So the idea, where can, you know, generate an AI sitting here?
+
+568
+01:16:56,000 --> 01:17:10,000
+ So what generative AI will do here is that you will take the natural language query and you will translate that natural language query to a SQL or a sparkle program.
+
+569
+01:17:10,000 --> 01:17:19,000
+ That will now execute over the KB or the DB, right, to retrieve the relevant products, okay?
+
+570
+01:17:19,000 --> 01:17:31,000
+ This is going to happen automatically, so the generative AI is going to go from natural language description to a formal program that is going to do query over this DB or KB.
+
+571
+01:17:31,000 --> 01:17:36,000
+ Now, why is this hard to do for GPT-4, right?
+
+572
+01:17:36,000 --> 01:17:39,000
+ Why can't GPT-4 do this?
+
+573
+01:17:39,000 --> 01:17:45,000
+ Well, GPT-4 does not have access to the product catalog of Lipkart or Amazon, okay?
+
+574
+01:17:45,000 --> 01:17:52,000
+ It knows everything about the world, but this was proprietary, so it was not allowed to train on that, okay?
+
+575
+01:17:52,000 --> 01:18:01,000
+ So now if Amazon or Lipkart or any such e-commerce company had to build their own thing to do it, what would they have to do?
+
+576
+01:18:01,000 --> 01:18:13,000
+ So they would have to take, you know, some version of a state-of-the-art LLM and they won't have to train or fine tune it for their product as well.
+
+577
+01:18:13,000 --> 01:18:25,000
+ Now, this requires a lot of data, training data, and it also, I mean, this product catalog is going to update every so often, right?
+
+578
+01:18:25,000 --> 01:18:30,000
+ So how many times are you going to retrain or fine tune this product catalog, right?
+
+579
+01:18:30,000 --> 01:18:32,000
+ So this is extremely painful.
+
+580
+01:18:32,000 --> 01:18:45,000
+ And as I said, you know, pre-trained LLMs do not have knowledge of the specific KBE or DB, so, you know, post-training is difficult and in-context learning also does not work, right?
+
+581
+01:18:45,000 --> 01:18:47,000
+ How would you use in-context learning for this?
+
+582
+01:18:47,000 --> 01:18:55,000
+ Can I pass in the entire product catalog of Amazon or Lipkart into the prompt of an LLM?
+
+583
+01:18:55,000 --> 01:18:58,000
+ Of course, it's not going to fit in the prompt, right?
+
+584
+01:18:58,000 --> 01:19:01,000
+ And then here's a bigger problem, right?
+
+585
+01:19:01,000 --> 01:19:08,000
+ How often have you seen any of these LLMs say, "I do not know the answer"?
+
+586
+01:19:08,000 --> 01:19:10,000
+ It typically does not happen.
+
+587
+01:19:10,000 --> 01:19:14,000
+ They will always give you some answer, whether or not they know it.
+
+588
+01:19:14,000 --> 01:19:28,000
+ So if I use an LLM on, you know, this kind of a database, no matter what you search for, you will always get something, even though it has nothing like that in the product catalog, okay?
+
+589
+01:19:28,000 --> 01:19:32,000
+ So a lot of research actually needs to happen to get this to work.
+
+590
+01:19:32,000 --> 01:19:42,000
+ In fact, this is something that I work on in one of my research areas and also for the company that I work.
+
+591
+01:19:42,000 --> 01:19:53,000
+ So what you need are rag style models, not for documents, but for databases and analysis with some kind of adaptation for unanswerability.
+
+592
+01:19:53,000 --> 01:19:58,000
+ But I will tell you what is the biggest problem here, right?
+
+593
+01:19:58,000 --> 01:20:06,000
+ So every time you run this model, it's going to give you some program as an output, okay?
+
+594
+01:20:06,000 --> 01:20:13,000
+ Now, how do I verify whether this program is correct or incorrect?
+
+595
+01:20:13,000 --> 01:20:17,000
+ This program will almost never have a syntactic error.
+
+596
+01:20:17,000 --> 01:20:24,000
+ These models are so good that they're not going to make a syntax error or syntax particle or SQL.
+
+597
+01:20:24,000 --> 01:20:26,000
+ That is not going to happen.
+
+598
+01:20:26,000 --> 01:20:30,000
+ But it's very likely going to have some kind of a semantic error.
+
+599
+01:20:30,000 --> 01:20:37,000
+ But how would I, looking at the program, figure out whether this is correct or incorrect?
+
+600
+01:20:37,000 --> 01:20:45,000
+ If it is incorrect and it runs, it's either going to come back with nothing or it's going to come back with the wrong products.
+
+601
+01:20:45,000 --> 01:20:50,000
+ So using this is extremely distant, as you can imagine.
+
+602
+01:20:50,000 --> 01:20:52,000
+ There is no guarantee of correct.
+
+603
+01:20:52,000 --> 01:20:55,000
+ How do I figure out whether this program is right or not?
+
+604
+01:20:55,000 --> 01:20:59,000
+ So as I said, evaluation is extremely difficult.
+
+605
+01:20:59,000 --> 01:21:06,000
+ And in my mind, it's one of the biggest pitfalls at this point of generally real.
+
+606
+01:21:06,000 --> 01:21:09,000
+ So this is the summary of autoregressive models.
+
+607
+01:21:09,000 --> 01:21:12,000
+ So the green are the good parts.
+
+608
+01:21:12,000 --> 01:21:15,000
+ So it makes no modeling assumptions, which is great.
+
+609
+01:21:15,000 --> 01:21:20,000
+ It has efficient ways to sample and score, which is great.
+
+610
+01:21:20,000 --> 01:21:24,000
+ It has exact maximum likelihood learning, which is also great.
+
+611
+01:21:24,000 --> 01:21:26,000
+ But it requires ordering.
+
+612
+01:21:26,000 --> 01:21:29,000
+ It is simple but slow.
+
+613
+01:21:29,000 --> 01:21:34,000
+ And it cannot learn representations in an unsupervised way.
+
+614
+01:21:34,000 --> 01:21:45,000
+ Okay, so in the little bit of time that we have left, what I would want to tell you about very briefly is about latent variable models.
+
+615
+01:21:45,000 --> 01:21:49,000
+ So what are latent variables?
+
+616
+01:21:49,000 --> 01:21:57,000
+ So data often contains unrecorded variables, which are explained in the operator.
+
+617
+01:21:57,000 --> 01:22:02,000
+ For example, I talked about recording the heights of people in a population.
+
+618
+01:22:02,000 --> 01:22:08,000
+ Let's say you did this exercise for all the population of the world.
+
+619
+01:22:08,000 --> 01:22:12,000
+ Now here is something that was not recorded in data.
+
+620
+01:22:12,000 --> 01:22:16,000
+ Let's say the ethnicities of the people.
+
+621
+01:22:16,000 --> 01:22:22,000
+ And as we know, there is a very close correlation between ethnicity and height.
+
+622
+01:22:22,000 --> 01:22:27,000
+ People from certain ethnicities are much taller than people from certain other ethnicities.
+
+623
+01:22:27,000 --> 01:22:30,000
+ But this person never recorded.
+
+624
+01:22:30,000 --> 01:22:32,000
+ Only the heights were recorded.
+
+625
+01:22:32,000 --> 01:22:46,000
+ So if Xi be the observed height of the i-th person, I will denote Zi as the unobserved or the latent ethnic group of the i-th person.
+
+626
+01:22:46,000 --> 01:22:56,000
+ So is there some way that I could recover given Xi, can I create this encoding vector Zi?
+
+627
+01:22:56,000 --> 01:23:03,000
+ What would be the meaning of the encoding vector instead of the heights and recording their ethnicities?
+
+628
+01:23:03,000 --> 01:23:11,000
+ So you could think of this as some kind of an explanation or an encoding of my original data.
+
+629
+01:23:11,000 --> 01:23:27,000
+ So the task of encoding or latent variable inference is to recover such hidden explanations or underlying facts about the data that are not immediately apparent.
+
+630
+01:23:27,000 --> 01:23:35,000
+ And I would like to get to this encoding without requiring any observed labels.
+
+631
+01:23:35,000 --> 01:23:43,000
+ For example, nobody is going to give me training data for what the ethnicities are of the people whose heights were recorded.
+
+632
+01:23:43,000 --> 01:23:44,000
+ That was not done.
+
+633
+01:23:44,000 --> 01:23:48,000
+ And I cannot ask these people to go back and also record their ethnicities.
+
+634
+01:23:48,000 --> 01:23:49,000
+ It has already been done.
+
+635
+01:23:49,000 --> 01:23:51,000
+ That recording cannot be done anymore.
+
+636
+01:23:51,000 --> 01:23:53,000
+ Now what can I do?
+
+637
+01:23:53,000 --> 01:23:59,000
+ So here, as you can see, is that I have changed the model a little bit.
+
+638
+01:23:59,000 --> 01:24:06,000
+ This is very, very similar to the model that I showed to you about classification, if you remember.
+
+639
+01:24:06,000 --> 01:24:13,000
+ So earlier the label Y corresponded to a particular class, spam or non-spam.
+
+640
+01:24:13,000 --> 01:24:20,000
+ Here, Zi refers to the ethnicity, maybe some different values of ethnicities.
+
+641
+01:24:20,000 --> 01:24:22,000
+ There are k possible values.
+
+642
+01:24:22,000 --> 01:24:26,000
+ So Zi takes one of k possible values.
+
+643
+01:24:26,000 --> 01:24:32,000
+ The difference, if you will notice, is that Xi is shaded.
+
+644
+01:24:32,000 --> 01:24:37,000
+ Shaded indicates that these values are observed in the data.
+
+645
+01:24:37,000 --> 01:24:39,000
+ Zi is not shaded.
+
+646
+01:24:39,000 --> 01:24:44,000
+ What it means is that Zi, Zi are not observed in the data.
+
+647
+01:24:44,000 --> 01:24:52,000
+ And I will show you now what a huge difference this makes in terms of working with this model.
+
+648
+01:24:52,000 --> 01:25:01,000
+ But just to give you some other names that you may come across, this kind of a model is often called a mixture model.
+
+649
+01:25:01,000 --> 01:25:03,000
+ And why is this called a mixture model?
+
+650
+01:25:03,000 --> 01:25:10,000
+ Because you can imagine that there is one Gaussian distribution for the heights of people in one particular ethnicity.
+
+651
+01:25:10,000 --> 01:25:14,000
+ So if there are k different ethnicities, there are k Gaussian distributions.
+
+652
+01:25:14,000 --> 01:25:21,000
+ And this entire distribution is a mixture of this k distribution.
+
+653
+01:25:21,000 --> 01:25:25,000
+ So that is why this is called a Gaussian mixture model.
+
+654
+01:25:25,000 --> 01:25:27,000
+ Now, what is the problem?
+
+655
+01:25:27,000 --> 01:25:34,000
+ So if you have to learn this model, then I need to calculate the gradients with respect to theta.
+
+656
+01:25:34,000 --> 01:25:43,000
+ Now, the problem is when I try to calculate the p, the Zs were not observed.
+
+657
+01:25:43,000 --> 01:25:47,000
+ So I only know the distribution of t x, z.
+
+658
+01:25:47,000 --> 01:25:50,000
+ I do not know the distribution x.
+
+659
+01:25:50,000 --> 01:26:01,000
+ So to go to the distribution x, from the distribution of p x, z, I need to either sum or integrate out over possible sets.
+
+660
+01:26:01,000 --> 01:26:07,000
+ And this integral or sum is there inside the logarithm.
+
+661
+01:26:07,000 --> 01:26:11,000
+ And this makes the logarithm intractable.
+
+662
+01:26:11,000 --> 01:26:15,000
+ We do not know how to do this mathematically.
+
+663
+01:26:15,000 --> 01:26:21,000
+ So one way to get around this is something called an E n algorithm.
+
+664
+01:26:21,000 --> 01:26:26,000
+ And the insight for the E n algorithm is very simple.
+
+665
+01:26:26,000 --> 01:26:35,000
+ So if somebody had told, if somebody had guessed to begin with, what are the ethnicities of the different people?
+
+666
+01:26:35,000 --> 01:26:42,000
+ So when z is known, then the likelihood is very, very easy to complete.
+
+667
+01:26:42,000 --> 01:26:49,000
+ So maybe I could start off with some guess about what are the ethnicities of the different people.
+
+668
+01:26:49,000 --> 01:26:58,000
+ So using that guess, I will get some value of the parameter theta, which are the means and the variances of the different gaussians.
+
+669
+01:26:58,000 --> 01:27:08,000
+ And then starting from that guess, I will try to reclassify each person according to his or her ethnicity.
+
+670
+01:27:08,000 --> 01:27:23,000
+ Because now I have a classification model. So what the E step does is that it computes the posterior distribution over the different ethnicities using the currently estimated parameters theta.
+
+671
+01:27:23,000 --> 01:27:27,000
+ So these two steps are called the E steps and the M steps.
+
+672
+01:27:27,000 --> 01:27:33,000
+ So the E step, I am going to re-guess the values of ethnicities of everybody.
+
+673
+01:27:33,000 --> 01:27:46,000
+ And then in the follow up M step, using the latest guess, I am going to maximize the value of the parameters or the like, well, maximize the likelihood and find the corresponding value of the parameters.
+
+674
+01:27:46,000 --> 01:28:00,000
+ So it is actually magical that this algorithm that sounds quite ad hoc is actually an algorithm that has very nice guarantees in theory.
+
+675
+01:28:00,000 --> 01:28:06,000
+ This is called an iterative lower bound maximizing algorithm that converges in theory.
+
+676
+01:28:06,000 --> 01:28:12,000
+ But the pitfall with all things theory is that it converges to a local maximum.
+
+677
+01:28:12,000 --> 01:28:21,000
+ And if your likelihood function is multimodal, EM is extremely notorious for getting caught in local maximum.
+
+678
+01:28:21,000 --> 01:28:31,000
+ So what is done in practice is that you would run EM over and over again, the different starting points, and then, you know, that you hope that that lets you get beyond local maximum.
+
+679
+01:28:31,000 --> 01:28:33,000
+ Okay.
+
+680
+01:28:33,000 --> 01:28:44,000
+ Again, this is my next Google slide. So what I'll do is, so when I mean people talk a lot about RLHS, every other person will give you some yarn about RLHS.
+
+681
+01:28:44,000 --> 01:29:02,000
+ So whenever you come across a person, you know, you ask that person, if you know if there is any connection between the RL algorithm and the EM algorithm, and observe the reaction on that person's face and that will tell you how much that person knows actually about RL and AI.
+
+682
+01:29:02,000 --> 01:29:07,000
+ Now let's come to variation of our reports.
+
+683
+01:29:07,000 --> 01:29:15,000
+ Okay. So, I already talked about a finite mixture of Gaussians.
+
+684
+01:29:15,000 --> 01:29:25,000
+ Okay. Why is that a finite mixture of Gaussians? Because the zi took one of k different values.
+
+685
+01:29:25,000 --> 01:29:42,000
+ So there were a Gaussians which were mixed. But what happens if I now make z a real value or a real vector, then how many different Gaussians do I really have?
+
+686
+01:29:42,000 --> 01:29:56,000
+ I have an infinite number of Gaussians. So the mixture that I'm creating now is not a finite mixture of Gaussians. It's an infinite mixture of Gaussians.
+
+687
+01:29:56,000 --> 01:30:06,000
+ So you can imagine that that is so much more powerful in terms of what it can present compared to a finite mixture of Gaussians.
+
+688
+01:30:06,000 --> 01:30:21,000
+ So what is the model now? So now instead of sampling z from a Bernoulli distribution, I will sample z also from a Gaussian distribution with mean 0 and identity covariance.
+
+689
+01:30:21,000 --> 01:30:30,000
+ Okay. And then from that Gaussian, I'm going to, so once I have the parameter of the Gaussian, I will sample the value from the Gaussian.
+
+690
+01:30:30,000 --> 01:30:41,000
+ So I have an infinite number of Gaussians now for generating the x i. So this, you won't believe this, but this is the variational order in quotas.
+
+691
+01:30:41,000 --> 01:30:48,000
+ I do not know if anybody has talked to you about variational order in quotas like this, but this is the variational order in quotas.
+
+692
+01:30:48,000 --> 01:30:54,000
+ So where is the magic in all this? Well, the magic is not in defining the model.
+
+693
+01:30:54,000 --> 01:31:01,000
+ It's actually in coming up with all the other algorithms for this particular model. Okay.
+
+694
+01:31:01,000 --> 01:31:12,000
+ So why is this hard? As I've already told you, for phase root for inference, if I have to figure out the z given the x is, that is the encoding tough.
+
+695
+01:31:12,000 --> 01:31:16,000
+ I know the x, I want to find out the z, that is encoding.
+
+696
+01:31:16,000 --> 01:31:27,000
+ But the z given x requires this denominator. Right. And I've already said that this denominator is intractable for high dimensional set.
+
+697
+01:31:27,000 --> 01:31:38,000
+ Because if it is discrete, this summation is going to be a huge summation. If it isn't continuous, then you know, this analytical integral may not exist.
+
+698
+01:31:38,000 --> 01:31:44,000
+ So I do not know how to calculate the denominator. So how am I going to proceed?
+
+699
+01:31:44,000 --> 01:31:55,000
+ So I am going to gloss over the following slides, because clearly there isn't enough time to cover all of this in detail, but I will just give you a very high level idea.
+
+700
+01:31:55,000 --> 01:32:01,000
+ So what is used is something called variational approximation.
+
+701
+01:32:01,000 --> 01:32:12,000
+ So if I use the true distribution t of beta, then doing inference using the true distribution is not possible. It is intractable.
+
+702
+01:32:12,000 --> 01:32:26,000
+ So I will replace or approximate the true distribution with some other Q of phi, such that doing inference with the simpler distribution is simpler.
+
+703
+01:32:26,000 --> 01:32:31,000
+ It is more tractable using Q than using the original distribution.
+
+704
+01:32:31,000 --> 01:32:41,000
+ So this Q is called the variational distribution and the parameters of this variation distribution are inside, are the parameters of phi.
+
+705
+01:32:41,000 --> 01:32:55,000
+ And then I will sort of move the log inside the integral, and we know we cannot do that. If you do that, it does not remain an equality anymore, but it becomes an inequality.
+
+706
+01:32:55,000 --> 01:33:09,000
+ And this inequality is called tension inequality. So instead of giving you the likelihood, it actually gives you a lower bound on the likelihood, which is called the evidence lower bound or the elbow.
+
+707
+01:33:09,000 --> 01:33:20,000
+ And very interestingly, there is lower bound with style, when this Q is the same as the original distribution, then this is a perfect equality. There is no approximation.
+
+708
+01:33:20,000 --> 01:33:27,000
+ But if you use some other distribution which is not Q, not P, then it becomes a lower bound.
+
+709
+01:33:27,000 --> 01:33:45,000
+ And so what you do with variational learning is that you will see a similarity with EM. So you use inference where you actually optimize the lower bound with respect to phi.
+
+710
+01:33:45,000 --> 01:33:54,000
+ You are trying to find the best phi, such that this Q distribution comes as close as possible to the P distribution.
+
+711
+01:33:54,000 --> 01:34:05,000
+ And then once you have a new Q distribution, you just proceed just as before, like the EM algorithm with this Q distribution, and you iterate over this.
+
+712
+01:34:05,000 --> 01:34:16,000
+ And this is called variational learning. I am sorry I do not have time to get into more details, but I hope I have given you some idea of how variational learning.
+
+713
+01:34:16,000 --> 01:34:27,000
+ Now the problem, again, the reason I am giving you these terms is that you will hear these terms often when you learn about, or what you hear about, you know, VAEs.
+
+714
+01:34:27,000 --> 01:34:35,000
+ So I want to give you an idea of what these different terms mean, so that you can connect with this lecture.
+
+715
+01:34:35,000 --> 01:34:46,000
+ So the problem is that you will have to compute an expectation with respect to this Q distribution when you are trying to do inference.
+
+716
+01:34:46,000 --> 01:34:52,000
+ And we know that this analytical expectation is not always possible.
+
+717
+01:34:52,000 --> 01:35:05,000
+ So one way to approximate an analytical expectation is to do expectation using sample. This is called Monte Carlo execution.
+
+718
+01:35:05,000 --> 01:35:18,000
+ So I just take some sample values at fx, I take the average, sorry, I take some sample values of x, I take calculate the value of fx for all of those sample values, I take the average.
+
+719
+01:35:18,000 --> 01:35:29,000
+ And believe it or not, when my number of samples is large, then the sample average is a very close approximation of the expectation.
+
+720
+01:35:29,000 --> 01:35:43,000
+ This is called Monte Carlo execution. And this is the idea that is used in stochastic variation inference as opposed to, sorry, as compared to perfect or exact variation.
+
+721
+01:35:43,000 --> 01:35:52,000
+ And then the notion is that stochastic variation inference leads to very large variance when computing the expectation.
+
+722
+01:35:52,000 --> 01:35:57,000
+ So, you remember I talked about transformation of random variables.
+
+723
+01:35:57,000 --> 01:36:06,000
+ So in VAE, there is this beautiful transformation that is done, which is called the reparameterization trick.
+
+724
+01:36:06,000 --> 01:36:12,000
+ So to model Q of z, I will do something very straightforward.
+
+725
+01:36:12,000 --> 01:36:22,000
+ I will first draw a sample epsilon from a simple distribution, which is a normal distribution with mean 0 and variance 1.
+
+726
+01:36:22,000 --> 01:36:29,000
+ And then I will do a deterministic transformation to the simple normal variable.
+
+727
+01:36:29,000 --> 01:36:35,000
+ I will do z equal to mu plus sigma e.
+
+728
+01:36:35,000 --> 01:36:47,000
+ Now, the beautiful thing that happens is that now I don't have to take expectation over z, because z is a deterministic variable of a random value which is epsilon.
+
+729
+01:36:47,000 --> 01:36:52,000
+ So I just need to take the expectation over epsilon instead of over z.
+
+730
+01:36:52,000 --> 01:36:59,000
+ And this significantly reduces the sample variance. This is known as the reparameterization trick.
+
+731
+01:36:59,000 --> 01:37:14,000
+ So, I want you to notice, I have talked about VAEs for so long, I have not talked about neural networks anywhere.
+
+732
+01:37:14,000 --> 01:37:17,000
+ There are no neural networks so far.
+
+733
+01:37:17,000 --> 01:37:22,000
+ Now, I will tell you when neural networks play a role.
+
+734
+01:37:22,000 --> 01:37:29,000
+ So this is very, very important. Neural networks are not essential for deep learning.
+
+735
+01:37:29,000 --> 01:37:32,000
+ You can have deep models without neural networks.
+
+736
+01:37:32,000 --> 01:37:41,000
+ But when you plug neural networks into deep models, they become significantly more powerful.
+
+737
+01:37:41,000 --> 01:37:53,000
+ So, I have the regular VAE just as before, but what I will do is for these are the parameters of the Gaussian distribution.
+
+738
+01:37:53,000 --> 01:38:01,000
+ And I will use neural networks for modeling mu of z and sigma of z.
+
+739
+01:38:01,000 --> 01:38:05,000
+ And I will use multi-layered perceptron for this.
+
+740
+01:38:05,000 --> 01:38:11,000
+ So this is the first place where neural networks are used in VAEs.
+
+741
+01:38:11,000 --> 01:38:23,000
+ The second place where neural networks are used is that this variational distribution which is mu of z given x.
+
+742
+01:38:23,000 --> 01:38:28,000
+ I will use a neural network for this variational distribution.
+
+743
+01:38:28,000 --> 01:38:35,000
+ And this is called the recognition model or the encoder or the inference network.
+
+744
+01:38:35,000 --> 01:38:40,000
+ And I will use this one inference network that is shared between training and test.
+
+745
+01:38:40,000 --> 01:38:44,000
+ And this is called amortized variation methods.
+
+746
+01:38:44,000 --> 01:38:48,000
+ So, you see how I broke this into two parts.
+
+747
+01:38:48,000 --> 01:38:54,000
+ You can define variational auto-encoders without getting into neural networks at all.
+
+748
+01:38:54,000 --> 01:39:05,000
+ And then you can talk about how neural networks can use to make variational auto-encoders more powerful, more efficient.
+
+749
+01:39:05,000 --> 01:39:08,000
+ Here is another quick question.
+
+750
+01:39:08,000 --> 01:39:14,000
+ So what can you do with a variational auto-encoder that you cannot do with a standard auto-encoder?
+
+751
+01:39:14,000 --> 01:39:21,000
+ And the answer is that you cannot generate new samples using an auto-encoder.
+
+752
+01:39:21,000 --> 01:39:28,000
+ Because an auto-encoder uses a deterministic encoder and a deterministic decoder.
+
+753
+01:39:28,000 --> 01:39:33,000
+ It cannot generate a new value of x.
+
+754
+01:39:33,000 --> 01:39:36,000
+ You can try to do it. There are some ways for those don't work.
+
+755
+01:39:36,000 --> 01:39:42,000
+ So if you want to generate new values of x, you cannot do it using auto-encoder.
+
+756
+01:39:42,000 --> 01:39:50,000
+ So an auto-encoder is not a generating model, but VAE is a generating model.
+
+757
+01:39:50,000 --> 01:39:54,000
+ So here is the VAE summary.
+
+758
+01:39:54,000 --> 01:39:58,000
+ It learns latent representations in an unsupervised way.
+
+759
+01:39:58,000 --> 01:40:02,000
+ So it uses simple distributions to construct complex ones.
+
+760
+01:40:02,000 --> 01:40:07,000
+ And it uses inference networks to encode and it allows for efficient sampling.
+
+761
+01:40:07,000 --> 01:40:10,000
+ But what are the trade-offs?
+
+762
+01:40:10,000 --> 01:40:14,000
+ You are only able to obtain a lower bound on the density.
+
+763
+01:40:14,000 --> 01:40:19,000
+ You cannot calculate the exact density and learning is difficult.
+
+764
+01:40:19,000 --> 01:40:23,000
+ And there are many, many variants of the VAE.
+
+765
+01:40:23,000 --> 01:40:25,000
+ I talked about only the basis framework.
+
+766
+01:40:25,000 --> 01:40:29,000
+ These are info VAEs, VAE, RA, NNs and so on and so forth.
+
+767
+01:40:29,000 --> 01:40:40,000
+ By the way, Dali uses VAE for the image part and then it has a transformer for the text.
+
+768
+01:40:40,000 --> 01:40:48,000
+ I am really not sure we have much time to get into GANs, but I will give you a brief overview.
+
+769
+01:40:48,000 --> 01:40:54,000
+ So far, we have talked about learning with likelihood.
+
+770
+01:40:54,000 --> 01:41:03,000
+ Now the problem with this is that high likelihood does not always generate good samples.
+
+771
+01:41:03,000 --> 01:41:11,000
+ And I could get into an entire chapter on this, but I don't have time to get into that.
+
+772
+01:41:11,000 --> 01:41:20,000
+ But the point that I am making is that high likelihood does not always mean a good quality sample.
+
+773
+01:41:20,000 --> 01:41:25,000
+ You can have more samples with high likelihood and you can have great samples with more likelihood.
+
+774
+01:41:25,000 --> 01:41:33,000
+ So can we distinguish between distributions without having an explicit notion of likelihood?
+
+775
+01:41:33,000 --> 01:41:42,000
+ If somebody only gave me samples from two different distributions and I have no notion of their likelihood,
+
+776
+01:41:42,000 --> 01:41:49,000
+ can I be able to say whether these two sets of samples came from the same distribution or from different distribution?
+
+777
+01:41:49,000 --> 01:41:53,000
+ And I need efficient computation for doing this.
+
+778
+01:41:53,000 --> 01:41:56,000
+ So this is really some kind of a hypothesis test.
+
+779
+01:41:56,000 --> 01:42:03,000
+ I have one set of samples S1 which came from distribution P, sorry this should have been an S2, this is a typo.
+
+780
+01:42:03,000 --> 01:42:09,000
+ I have a second set of samples S2 which came from a different distribution Q, unknown to me.
+
+781
+01:42:09,000 --> 01:42:18,000
+ And what I am supposed to decide is whether P and Q are the same distribution or different distribution.
+
+782
+01:42:18,000 --> 01:42:28,000
+ Now, the idea of generative adversarial networks is that I will compare using a classifier.
+
+783
+01:42:28,000 --> 01:42:38,000
+ If it is hard for a classifier to decide whether a sample came from P or it came from Q,
+
+784
+01:42:38,000 --> 01:42:43,000
+ then these samples must be really close to each other.
+
+785
+01:42:43,000 --> 01:42:51,000
+ So I will learn a discriminator model D5 to distinguish between the two sets of samples.
+
+786
+01:42:51,000 --> 01:43:04,000
+ And if you are familiar with cross entropy loss, you will recognize what I have written below as some form of the cross entropy loss in terms of the discriminator model.
+
+787
+01:43:04,000 --> 01:43:17,000
+ Now, so what I have just said is that I will use the notion of a classifier to decide whether two sets of samples come from the same distribution or a different distribution.
+
+788
+01:43:17,000 --> 01:43:20,000
+ And this is called a discriminator model.
+
+789
+01:43:20,000 --> 01:43:37,000
+ So if the discriminator is easily fooled, then I know that the two distributions are close to each other and if the discriminator is not easily fooled, then I would think that the two distributions are sufficient to differentiate each other.
+
+790
+01:43:37,000 --> 01:43:52,000
+ Now, I will bring in the notion of a generator. So what is the task of a generator? The task of a generator is to generate samples that will fool the discriminator.
+
+791
+01:43:52,000 --> 01:44:01,000
+ If I am able to fool the descriptor, then I must be generating samples according to the two distributions.
+
+792
+01:44:01,000 --> 01:44:12,000
+ If the discriminator is easily able to say that no, no, the samples that you are generating are not like the samples from the two distribution, then I know that my samples are poor quality.
+
+793
+01:44:12,000 --> 01:44:26,000
+ But if the discriminator is unable to distinguish between the samples that I generate or a model generates and the samples from the two distribution, then I must be generating good quality samples.
+
+794
+01:44:26,000 --> 01:44:38,000
+ So I will try to learn a generator that fools the discriminator to the maximum extent possible. And this is a min-max optimization problem.
+
+795
+01:44:38,000 --> 01:44:47,000
+ And this is really what a GAN looks to do. So this is the framework for GAN learning. I will sample m training data points from D.
+
+796
+01:44:47,000 --> 01:44:56,000
+ I will sample m synthetic data points from V theta. I will update the discriminator parameters using gradient ascent.
+
+797
+01:44:56,000 --> 01:45:06,000
+ So notice the ascent versus descent because in one case I am trying to maximize, in another case I am trying to minimize. This is a min-max optimization problem.
+
+798
+01:45:06,000 --> 01:45:12,000
+ And you repeat this for a fixed number of epochs or until convergence and this is GAN learning.
+
+799
+01:45:12,000 --> 01:45:27,000
+ Again, note that I have not talked about a neural network anywhere so far. So GANs or the basic concept of GANs does have nothing to do with neural networks.
+
+800
+01:45:27,000 --> 01:45:37,000
+ But what are the issues with GANs? No well-defined density of x. So you cannot score. Learning latent representations is not straightforward.
+
+801
+01:45:37,000 --> 01:45:45,000
+ There is a problem for mode collapse and because of the min-max nature, the optimization is typically unstable.
+
+802
+01:45:45,000 --> 01:45:52,000
+ Now let us come to how neural architectures can be used to build better GANs.
+
+803
+01:45:52,000 --> 01:45:59,000
+ So you have learned the trick so far. What you will say is look, you have talked about the generator and discriminator.
+
+804
+01:45:59,000 --> 01:46:09,000
+ You ask, allow me to use neural network. I will use a neural network for both the generator and the discriminator and that will be a neural GAN and I will tell you that you are absolutely right.
+
+805
+01:46:09,000 --> 01:46:17,000
+ So use the right kind of neural network depending on the nature of your data and you will have a GAN for that kind of data.
+
+806
+01:46:17,000 --> 01:46:29,000
+ So if you are dealing with images, then use a convolution architecture and so DC GAN style GANs, these are GANs for images.
+
+807
+01:46:29,000 --> 01:46:43,000
+ So if you are trying to generate text data, then use a transformer and an attention-based architecture for the generator and that will give you the best quality GAN for text.
+
+808
+01:46:43,000 --> 01:46:50,000
+ And in fact, there are many variants of GANs. The bi-GAN is a variant of GAN that learns representation.
+
+809
+01:46:50,000 --> 01:47:03,000
+ Then instead of using scale divergence, you have f-GANs and wasp-GANs that use other kinds of divergences and then there is a better version of GANs for text, which is for text scale.
+
+810
+01:47:03,000 --> 01:47:09,000
+ So generative, adversarial, imitation learning and so on and so forth.
+
+811
+01:47:09,000 --> 01:47:17,000
+ So but what is the summary? So the good part in green is that likely put free model based on full sample test.
+
+812
+01:47:17,000 --> 01:47:29,000
+ It uses different forms of divergence and until 2021, GANs gave you the state-of-the-art image generation model and it is able to perform extremely fast sampling.
+
+813
+01:47:29,000 --> 01:47:36,000
+ Optimization is challenging and you cannot estimate the density because there is no notion of light.
+
+814
+01:47:36,000 --> 01:47:46,000
+ So other generative approaches, I don't think we have time, so I will just start upon and just mention that there is something called normalizing flows.
+
+815
+01:47:46,000 --> 01:47:52,000
+ In some sense, this is actually very, very related to VAEs.
+
+816
+01:47:52,000 --> 01:47:59,000
+ So in VAEs, you just had, you remember the reparameterization trick, you did that trick once.
+
+817
+01:47:59,000 --> 01:48:05,000
+ If you repeat that trick, that transformation trick many, many times, you get a normalization flow.
+
+818
+01:48:05,000 --> 01:48:08,000
+ Not normalization flow, normalizing flows.
+
+819
+01:48:08,000 --> 01:48:14,000
+ And some models that are based on normalizing flows are nice, real MVP flow, etc.
+
+820
+01:48:14,000 --> 01:48:24,000
+ And diffusion models, it's a little more complicated, but conceptually it's related to normalizing flows in the following way.
+
+821
+01:48:24,000 --> 01:48:34,000
+ Remember that when we did the reparameterization trick in the VAE, that was a deterministic transformation.
+
+822
+01:48:34,000 --> 01:48:40,000
+ I did mu or rather z equal to mu plus sigma e.
+
+823
+01:48:40,000 --> 01:48:51,000
+ Now here, when I convert the x from the z, I do a stochastic transformation.
+
+824
+01:48:51,000 --> 01:48:56,000
+ So instead of a deterministic transformation, every transformation is a stochastic transformation.
+
+825
+01:48:56,000 --> 01:49:01,000
+ And this is the essential difference between a diffusion model and a normalizing flow model.
+
+826
+01:49:01,000 --> 01:49:12,000
+ And the reason you need to know diffusion models, because the latest Dali version, stable diffusion vision, all of these are latent diffusion models.
+
+827
+01:49:12,000 --> 01:49:22,000
+ Okay, so I will not get into energy based models, but I will just tell you that these are based on undirected graphical models rather than directed graphical model.
+
+828
+01:49:22,000 --> 01:49:28,000
+ And last but not the least, evaluation of generating models, right.
+
+829
+01:49:28,000 --> 01:49:35,000
+ I have already mentioned to you that this is extremely hard, and there are multiple aspects that are required for evaluation.
+
+830
+01:49:35,000 --> 01:49:42,000
+ One is quality. What does quality mean? Are the samples likely under the data distribution?
+
+831
+01:49:42,000 --> 01:49:49,000
+ What is diversity? Do the samples cover the data distribution there, right?
+
+832
+01:49:49,000 --> 01:49:57,000
+ So you can see the tradeoff between this. If I am able to generate one perfect image of a cat, is this a good generative model?
+
+833
+01:49:57,000 --> 01:50:04,000
+ One image is of a perfect cat, but you can generate only one kind of cat. So it is important to have diversity.
+
+834
+01:50:04,000 --> 01:50:10,000
+ So you have to have the ability to generate different types of cat images, right?
+
+835
+01:50:10,000 --> 01:50:21,000
+ And then there is generalization, right? Are you only able to generate cat images that are very, very similar to the cats in your database, right?
+
+836
+01:50:21,000 --> 01:50:32,000
+ So this is called generalization. But here is the tricky thing, right? If you generalize way too much, then your human critique is going to tell you that you are hallucinating.
+
+837
+01:50:32,000 --> 01:50:43,000
+ Poor LLM, right? Anyway, and then the point is that it is hard to define metrics that cover all the different aspects.
+
+838
+01:50:43,000 --> 01:50:52,000
+ If you have to do that really, you need something called post facto human evaluation, but this is expensive, slow, unreliable, right?
+
+839
+01:50:52,000 --> 01:51:00,000
+ So here is the summary. So generative AI are models that mimic the data distribution and enable efficient sampling.
+
+840
+01:51:00,000 --> 01:51:04,000
+ These are firmly grounded with the concepts of probability.
+
+841
+01:51:04,000 --> 01:51:12,000
+ The tasks that you need to do with generative AI models are sampling, scoring, learning and inferring latent representation.
+
+842
+01:51:12,000 --> 01:51:20,000
+ Most important point to remember, not all generative models are good at all of these tasks.
+
+843
+01:51:20,000 --> 01:51:33,000
+ So depending on your task, you would have to choose a particular kind of generative model that is important for you, depending on which one of the sampling, scoring, learning and inferring is important for your task.
+
+844
+01:51:33,000 --> 01:51:43,000
+ And finally, as I said before, there's enormous potential for good, but we have to be very, very careful about adverse consequences, okay?
+
+845
+01:51:43,000 --> 01:51:52,000
+ So why do you learn foundations? You know, I have been learning AI for the last 25 years.
+
+846
+01:51:52,000 --> 01:52:02,000
+ I still think I have a very, very long way to go. I will never learn all of AI, but I enjoy learning AI every day.
+
+847
+01:52:02,000 --> 01:52:13,000
+ So this is the motivation you will never learn enough, but every day you will be able to learn something new, and hopefully this will be a full-fledged journey, okay?
+
+848
+01:52:13,000 --> 01:52:15,000
+ I'll stop there and take questions.
+
+849
+01:52:32,000 --> 01:52:59,000
+ Okay.
+
+850
+01:52:59,000 --> 01:53:15,000
+ Please read out the question if possible.
+
+851
+01:53:15,000 --> 01:53:18,000
+ Sir, can you stop sharing the screen, sir?
+
+852
+01:53:18,000 --> 01:53:33,000
+ Sir, I'll do that.
+
+853
+01:53:33,000 --> 01:53:37,000
+ Sir, I hope you can able to see the question, sir.
+
+854
+01:53:37,000 --> 01:53:48,000
+ Yeah, but I'm a little surprised about this question because I thought I answered that very clearly in my first slide, right?
+
+855
+01:53:48,000 --> 01:54:09,000
+ So when you're generating labels, that's not generative AI. When you're generating data, that's generative AI. So if you're doing classification, prediction, regression, anomaly detection, fraud detection, you know, that is not generative AI because you're generating labels.
+
+856
+01:54:09,000 --> 01:54:26,000
+ And yeah, I thought, you know, that's the first thing I tried to explain. But apparently I did not do a very good job.
+
+857
+01:54:26,000 --> 01:54:31,000
+ The core principle is behind our generative models.
+
+858
+01:54:31,000 --> 01:54:38,000
+ I'm really sorry, but I thought that is what I tried to do in the entire course, talk about the core principles.
+
+859
+01:54:38,000 --> 01:54:45,000
+ I thought I have to answer this question. I'll have to go over all my slides all over again, right?
+
+860
+01:54:45,000 --> 01:54:53,000
+ I thought I only talked about the core principles and nothing else.
+
+861
+01:54:53,000 --> 01:55:07,000
+ How do generative AI models, okay? So the short answer is, once you have estimated the parameters of a Gaussian, if you generate a sample from a Gaussian, is it going to look exactly like one of the data points in your Gaussian?
+
+862
+01:55:07,000 --> 01:55:11,000
+ The answer is no, right?
+
+863
+01:55:11,000 --> 01:55:19,000
+ If you have learned the Gaussian, then every value generated from the Gaussian is going to be different from all the samples that you see before.
+
+864
+01:55:19,000 --> 01:55:26,000
+ So that is, that is the power that you get by learning the parameters of a distribution, right?
+
+865
+01:55:26,000 --> 01:55:31,000
+ Now I will generate according to the distribution and these are not going to be the same as my training data points.
+
+866
+01:55:31,000 --> 01:55:47,000
+ I use my training data points only to learn my distribution. Well, I'll just throw away my training data points and generate only from the distribution.
+
+867
+01:55:47,000 --> 01:55:56,000
+ Ethical considerations. I do not know the difference between ethical, okay, let me think ethical considerations versus challenges.
+
+868
+01:55:56,000 --> 01:56:13,000
+ Look, so there are extremely important tasks that can be scaled up using AI, right? For example, if there was an AI tutor or an AI doctor.
+
+869
+01:56:13,000 --> 01:56:34,000
+ So, you know, I mean, the shortage of experienced tutors, experienced doctors, etc. in India cannot be overemphasized, right? So, potential, if generated AI is really successful, you could have a personalized tutor for each child.
+
+870
+01:56:34,000 --> 01:56:38,000
+ You could have a personalized doctor for every patient.
+
+871
+01:56:38,000 --> 01:56:43,000
+ However, however, there are a few things to take care of, right?
+
+872
+01:56:43,000 --> 01:56:54,000
+ One is you'll have to paint if this really worked, then what would happen to the likelihood of so many teachers and doctors? That's one question.
+
+873
+01:56:54,000 --> 01:57:12,000
+ The second is, are you sure that what this doctor is doing or the treatment that the doctor is doing or the teaching or the education that the teacher is providing is actually helping the student or the patient and not hermit, right?
+
+874
+01:57:12,000 --> 01:57:26,000
+ So, evaluation is a huge challenge for generating AI. So, I thought, you know, maybe that's the best way to summarize it. If you could do it right, there is immense benefit, but you have to worry about livelihoods.
+
+875
+01:57:26,000 --> 01:57:35,000
+ But whether you're doing it right or whether you're actually harming the consumer is very, very difficult to figure out at the current stage.
+
+876
+01:57:42,000 --> 01:57:55,000
+ Okay.
+
+877
+01:57:55,000 --> 01:57:59,000
+ Okay, then, are we done?
+
+878
+01:57:59,000 --> 01:58:02,000
+ Yes, sir, we are done with the Q&A, sir.
+
+879
+01:58:02,000 --> 01:58:16,000
+ Okay, thank you so much for your time and I hope that you got something from this lecture. But what I will again strongly recommend is, you may forget the lecture, but don't forget the textbooks that I pointed out.
+
+880
+01:58:16,000 --> 01:58:23,000
+ So, those are the places that you need to go to learn more about scientific AI. Okay.
+
+881
+01:58:23,000 --> 01:58:25,000
+ All right, thank you, sir. Bye.
+
+882
+01:58:25,000 --> 01:58:28,000
+ Thank you, sir. Thank you for the wonderful session and times.
+
+883
+01:58:28,000 --> 01:58:31,000
+ Bye.
+
+884
+01:58:32,000 --> 01:58:42,000
+ [BLANK_AUDIO]
+

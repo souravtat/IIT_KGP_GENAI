@@ -1,0 +1,100 @@
+1
+00:00:00,000 --> 00:00:10,000
+ [ Silence ]
+
+2
+00:00:30,000 --> 00:00:51,000
+ Yeah. Yeah. So, the screen is presenting for the question to any session so you can take it up, sir.
+
+3
+00:00:51,000 --> 00:00:58,000
+ Yeah, sure. Right. So, the first question is, is it possible to create our own generative image model?
+
+4
+00:00:58,000 --> 00:01:08,000
+ Yes. It is, of course, possible. However, it has become challenging nowadays to reach the quality of some kind of models, say, what mid-journey has,
+
+5
+00:01:08,000 --> 00:01:16,000
+ because it has gone through a lot of architectural tuning on their side and also it required a lot of training data to train those models.
+
+6
+00:01:16,000 --> 00:01:22,000
+ So, instead of that, what is available nowadays, a lot of checkpoints and a lot of models are open,
+
+7
+00:01:22,000 --> 00:01:31,000
+ imagination models are open source, so those are pre-trained checkpoints. So, you can either use those or if you want to train it for your particular purpose or application,
+
+8
+00:01:31,000 --> 00:01:44,000
+ you can fine-tune those instead of starting from scratch. So, that will give you one way to create your own generative image model.
+
+9
+00:01:44,000 --> 00:01:52,000
+ So, the next question is which generator is preferred, a GAN or VAE, and why does one have advantage over the other? Right.
+
+10
+00:01:52,000 --> 00:02:02,000
+ So, at this point, so GAN has gone through a lot of innovation culture, as you saw, and even I did not show all the, like, largest-sized GANs that are available,
+
+11
+00:02:02,000 --> 00:02:12,000
+ which mostly, like, NVDA has released a lot of large-scale GANs, and the same goes for VAE. So, both of those are nowadays equally capable,
+
+12
+00:02:12,000 --> 00:02:21,000
+ but as I said, GANs might be a bit more unstable for training. So, if you want, like, want to use it beyond just using the models as black box,
+
+13
+00:02:21,000 --> 00:02:27,000
+ say, if you want to train your own model or if you want to fine-tune it or something, VAE might be a better choice.
+
+14
+00:02:27,000 --> 00:02:32,000
+ And there is also another class of models that I pointed to earlier called diffusion models.
+
+15
+00:02:32,000 --> 00:02:42,000
+ So, that also allows creation of very high-fidelity images, and that usually has, like, allowed much more scale-up than VAE is even.
+
+16
+00:02:42,000 --> 00:02:54,000
+ So, that can be also a consideration here. So, if I were to rank them in terms of ease of use or ease of fine-tuning, it would be diffusion models better than VAE, better than GAN.
+
+17
+00:03:02,000 --> 00:03:07,000
+ Right. So, there are new texts now, like AI Agents and AgenTik AI Engineer.
+
+18
+00:03:07,000 --> 00:03:15,000
+ Yes, that's correct. So, a lot of work is now going towards building agents. So, and that, of course, has its own research questions.
+
+19
+00:03:15,000 --> 00:03:22,000
+ So, AgenTik development is slightly different from what the evolution of LNM required.
+
+20
+00:03:22,000 --> 00:03:29,000
+ So, that's why I did not cover it, because it will require, like, it will definitely require more time.
+
+21
+00:03:29,000 --> 00:03:40,000
+ So, the important or interesting research questions, there are, like, if you are trying to build an AgenTik system, there you have to think about how you orchestrate the steps to solve a particular problem.
+
+22
+00:03:40,000 --> 00:03:53,000
+ Right. So, LNM can give you very good responses to a given query. But as soon as you start pipelining steps, that is what is required for these AgenTik things, it starts to perform poorly.
+
+23
+00:03:53,000 --> 00:04:07,000
+ Because it cannot see the accuracy of the task beyond an individual prompt. Right. So, then you will have to bring in other evaluation metrics, maybe introduce multiple agents and have a pipeline which has evaluation in its intermediate steps.
+
+24
+00:04:07,000 --> 00:04:19,000
+ So, all of those questions comes into play. So, definitely, that's a very interesting direction and has its own research questions.
+
+25
+00:04:19,000 --> 00:04:31,000
+ Okay, I'll lift.
+

@@ -1,0 +1,1308 @@
+1
+00:00:00,000 --> 00:00:14,400
+ Welcome back after the break. So, let us continue our discussion over supervised machine learning
+
+2
+00:00:14,400 --> 00:00:20,720
+ and as I mentioned just before going to break, we are now going to talk about another classifier
+
+3
+00:00:20,720 --> 00:00:30,720
+ it is called support vector machine or SVM. So, today only you learnt about linear classifiers
+
+4
+00:00:30,720 --> 00:00:39,920
+ right like where you would like to differentiate between one class versus another class. So,
+
+5
+00:00:39,920 --> 00:00:48,600
+ let us just assume that this solid dots here they denote class 1 and the hollow dots here
+
+6
+00:00:48,600 --> 00:00:57,120
+ they denote class minus 1. Now, how can you differentiate them? Now, if you look at any
+
+7
+00:00:57,120 --> 00:01:02,480
+ linear classifiers like the ones which you have studied today, they would try to draw
+
+8
+00:01:02,480 --> 00:01:11,760
+ a decision boundary which separates these two classes. So, something like this. So, all
+
+9
+00:01:11,760 --> 00:01:19,520
+ the models will try to come up with this boundary which will the boundary means what? That this
+
+10
+00:01:19,520 --> 00:01:24,960
+ kind of distinguishes or this kind of separates the one class with another class. Now, in
+
+11
+00:01:24,960 --> 00:01:34,160
+ this case the solid class with a hollow class plus 1 and minus 1 correct and typically it
+
+12
+00:01:34,160 --> 00:01:42,800
+ takes some form like this like where w's are the weights you learn x is the x is the
+
+13
+00:01:42,800 --> 00:01:52,440
+ feature set and b is often called a bias or this is just an additional thing additional
+
+14
+00:01:52,440 --> 00:02:02,040
+ weight similar to w. Now, so when we apply such a model one decision
+
+15
+00:02:02,040 --> 00:02:09,160
+ boundary can be like this which I have drawn you may come up with a little better decision
+
+16
+00:02:09,160 --> 00:02:17,440
+ boundary like this someone can come up with another decision boundary like this or this.
+
+17
+00:02:17,440 --> 00:02:24,520
+ Now, see so whenever you are coming up with this decision boundaries they are all separating
+
+18
+00:02:24,520 --> 00:02:30,520
+ the two classes quite well right this is also separating the classes this is also separating
+
+19
+00:02:30,520 --> 00:02:36,600
+ the classes this is separating the classes in fact the one which I draw that also separates
+
+20
+00:02:36,600 --> 00:02:47,200
+ the classes. The question however is if you have so many different type of linear classifiers
+
+21
+00:02:47,200 --> 00:02:54,960
+ which one to choose like which one would be the best classifier? Now, to answer this question
+
+22
+00:02:54,960 --> 00:03:02,920
+ actually the whole concept of support vector machine came. So, the idea was that I would
+
+23
+00:03:02,920 --> 00:03:10,240
+ like to pick a classifier linear classifier which will have the largest surrounding margin.
+
+24
+00:03:10,240 --> 00:03:17,520
+ Now, what is margin? Margin is defined as the width that the boundary could be increased
+
+25
+00:03:17,520 --> 00:03:24,600
+ by before hitting a data point. So, if you see here that this particular point is like
+
+26
+00:03:24,600 --> 00:03:32,560
+ belonging to this yellow zone. So, the yellow margin is not very good in this case because
+
+27
+00:03:32,560 --> 00:03:39,160
+ what we are saying is that the margin should be such that there is no other data point
+
+28
+00:03:39,160 --> 00:03:46,160
+ in this margin like this shaded region should not have any other data point. Now, rather
+
+29
+00:03:46,160 --> 00:03:53,320
+ than this if you are so in this example the margin is like very small, but if your classifier
+
+30
+00:03:53,320 --> 00:03:59,240
+ was like this then you tend to get a much better margin see.
+
+31
+00:03:59,240 --> 00:04:12,400
+ So, this is the whole idea of SVM or linear SVM is we would like to get the linear classifier
+
+32
+00:04:12,400 --> 00:04:23,040
+ boundary which will provide us the maximum margin as possible. So, maximum margin linear
+
+33
+00:04:23,040 --> 00:04:32,360
+ classifier is the linear classifier which has the maximum margin. Now, the data points
+
+34
+00:04:32,360 --> 00:04:38,400
+ like this or this or this which actually fall within the margin or which fall at the boundary
+
+35
+00:04:38,400 --> 00:04:44,120
+ of the margin are called support vectors because support vectors are those data points that
+
+36
+00:04:44,120 --> 00:04:51,760
+ the margin actually pushes up against. So, this support vectors because they are called
+
+37
+00:04:51,760 --> 00:04:57,680
+ support vectors from this the name support vector machine actually came from. So, they
+
+38
+00:04:57,680 --> 00:05:03,800
+ are essentially talking about these data points these are the support vectors which determine
+
+39
+00:05:03,800 --> 00:05:07,640
+ the margin of a particular linear classifier.
+
+40
+00:05:07,640 --> 00:05:16,440
+ Now, why we would like to go with maximum margin classifier? So, first of all that if
+
+41
+00:05:16,440 --> 00:05:24,360
+ you look at it intuitively this feels the safest option that if you have a maximum
+
+42
+00:05:24,360 --> 00:05:31,960
+ margin classifier the chance of error is low. So, why if let us say this is your classification
+
+43
+00:05:31,960 --> 00:05:39,920
+ boundary that this is my classification boundary if a new data point is falling here I can
+
+44
+00:05:39,920 --> 00:05:45,280
+ immediately classify this data point to be plus 1 because I know that I have enough margin
+
+45
+00:05:45,280 --> 00:05:53,040
+ for error. While if you are looking at a classifier which is like this now if a point is lying
+
+46
+00:05:53,040 --> 00:06:05,000
+ here I cannot say whether this was really plus 1 or this is actually plus minus 1 because
+
+47
+00:06:05,000 --> 00:06:10,360
+ if you see the location of this new point this is much closer to the other data points
+
+48
+00:06:10,360 --> 00:06:18,680
+ in plus minus 1 than the data points in plus 1. So, margin if the margin is maximized a
+
+49
+00:06:18,680 --> 00:06:27,960
+ maximum margin classifier tends to have a lot of leeway where you can avoid making error
+
+50
+00:06:27,960 --> 00:06:31,160
+ in the classification.
+
+51
+00:06:31,160 --> 00:06:40,440
+ So, again like on the same topic or on the same point if we have made a small error in
+
+52
+00:06:40,440 --> 00:06:46,680
+ the location of the boundary if you are going with a maximum margin classifier this gives
+
+53
+00:06:46,680 --> 00:06:55,120
+ us the least chance of causing a misclassification. The model is immune to removal of any non-support
+
+54
+00:06:55,120 --> 00:06:59,800
+ vector. So, it does not matter whether you are removing this data points or removing
+
+55
+00:06:59,800 --> 00:07:05,420
+ some data points here because they are so further from the classification boundary that
+
+56
+00:07:05,420 --> 00:07:13,720
+ they do not impact your eventual performance. And generally empirically it has been observed
+
+57
+00:07:13,720 --> 00:07:17,200
+ that SVM works very well.
+
+58
+00:07:17,200 --> 00:07:24,840
+ Now, let us try to represent this idea little mathematically although we will not go through
+
+59
+00:07:24,840 --> 00:07:32,480
+ the entire proof because we do not have enough time for the full theoretical exploration,
+
+60
+00:07:32,480 --> 00:07:37,120
+ but I will just try to still give you a little flavor so that if you want you can also check
+
+61
+00:07:37,120 --> 00:07:45,960
+ out the proof through other sources. So, essentially if you when you consider a classifier boundary
+
+62
+00:07:45,960 --> 00:07:58,680
+ like this, so we kind of consider a zone where there are a lot of class 1 or 1 particular
+
+63
+00:07:58,680 --> 00:08:06,240
+ class data points. Similarly, on the other side there are zones where you have a lot
+
+64
+00:08:06,240 --> 00:08:12,200
+ of let us say negative data points. So, just think of this like this that you have crosses
+
+65
+00:08:12,200 --> 00:08:23,160
+ here, you have ticks here, you are coming with a decision boundary like this, so this
+
+66
+00:08:23,160 --> 00:08:30,440
+ is your decision boundary. So, this is the zone for let us say plus 1 class, this is
+
+67
+00:08:30,440 --> 00:08:46,100
+ a zone for minus 1 class. Now, you can actually think that I am going to draw another kind
+
+68
+00:08:46,100 --> 00:08:56,160
+ of line or a pen which separates the plus 1 zone from the actual classification boundary.
+
+69
+00:08:56,160 --> 00:09:04,240
+ Similarly, if I can draw another negative pen which separates the zone of like negative
+
+70
+00:09:04,240 --> 00:09:11,840
+ zone from the decision boundary. So, this is what is called a plus pen, this is what
+
+71
+00:09:11,840 --> 00:09:19,360
+ is called a minus pen and this is of course the classification boundary which we are talking
+
+72
+00:09:19,360 --> 00:09:27,640
+ about. Now, let us try to kind of derive this a little mathematically, so for that let us
+
+73
+00:09:27,640 --> 00:09:36,720
+ have a simple mathematical background. So, the length of a vector, so you know the vector
+
+74
+00:09:36,720 --> 00:09:45,840
+ is essentially vector has a direction like vector is a collection of like a collection
+
+75
+00:09:45,840 --> 00:09:53,320
+ of numbers, but which also has a direction, because otherwise you will have scalar values
+
+76
+00:09:53,320 --> 00:09:56,200
+ which does not have direction which are only numbers.
+
+77
+00:09:56,200 --> 00:10:05,560
+ Now, the length of a vector is called a norm, so in this case let us say the vector is something
+
+78
+00:10:05,560 --> 00:10:19,440
+ like W1, W2, W3, Wn the norm of W is denoted as this symbol like this is a symbol of norm
+
+79
+00:10:19,440 --> 00:10:28,120
+ and if you see you are essentially taking a square root after summing up all the individual
+
+80
+00:10:28,120 --> 00:10:40,400
+ data points within it and the norm can also be denoted by if you take the transpose of
+
+81
+00:10:40,400 --> 00:10:48,480
+ the vector and multiply that, so you get the norm square of this. So, this is again a property
+
+82
+00:10:48,480 --> 00:10:57,200
+ of a norm and in general as I mentioned that it has direction the unit vector on the particular
+
+83
+00:10:57,200 --> 00:11:03,960
+ direction of W is given by the vector divided by it is norm.
+
+84
+00:11:03,960 --> 00:11:09,800
+ And in general when we multiply two vectors especially when you take the dot product of
+
+85
+00:11:09,800 --> 00:11:17,640
+ two vectors it leads to a scalar value. So, essentially when W2 transpose W we are taking
+
+86
+00:11:17,640 --> 00:11:23,440
+ this actually leads to square this leads to a scalar value, so in this case the norm is
+
+87
+00:11:23,440 --> 00:11:31,320
+ essentially a scalar value and since so this you can think of this as if that you are taking
+
+88
+00:11:31,320 --> 00:11:36,040
+ the vector you are dividing it by the norm of the length of the vector and that way you
+
+89
+00:11:36,040 --> 00:11:42,120
+ are getting the direction of the vector through I mean essentially as I mentioned that the
+
+90
+00:11:42,120 --> 00:11:47,920
+ difference between scalar and vector quantity is that vectors have direction where scalars
+
+91
+00:11:47,920 --> 00:11:55,600
+ do not have and this is the way to know the distance of direction of a vector.
+
+92
+00:11:55,600 --> 00:12:07,440
+ Now why all this is important, now in our SVM example, so this is our this is one zone
+
+93
+00:12:07,440 --> 00:12:17,880
+ let us say this is our negative zone, this is our positive zone, this is our plus plane
+
+94
+00:12:17,880 --> 00:12:29,440
+ this is our minus plane. Now and this is our weight vector W, so the direction of this
+
+95
+00:12:29,440 --> 00:12:39,520
+ weight vector will be as we saw this. This is the margin of a classifier, so this is
+
+96
+00:12:39,520 --> 00:12:45,080
+ the decision boundary and the margin is essentially the distance between the plus plane and the
+
+97
+00:12:45,080 --> 00:12:50,520
+ minus plane. Now what is important here is you can actually represent the plus plane
+
+98
+00:12:50,520 --> 00:13:03,360
+ as Wt that means like this is my linear classification algorithm which is putting like where you
+
+99
+00:13:03,360 --> 00:13:09,080
+ are looking at the x vector which is the vector which is the feature vector of a particular
+
+100
+00:13:09,080 --> 00:13:15,240
+ data point you are multiplying that by the weight vector and of course like you have
+
+101
+00:13:15,240 --> 00:13:22,360
+ one additional constant but this value is going to be 1 because we are talking about
+
+102
+00:13:22,360 --> 00:13:29,720
+ the plus plane here for the minus plane we are taking the same value and taking it to
+
+103
+00:13:29,720 --> 00:13:39,340
+ be minus 1 and the decision boundary is essentially Wt transpose x plus p is equal to 0.
+
+104
+00:13:39,340 --> 00:13:50,880
+ Now so for y when it is plus 1 we get this that because the plus plane is Wt transpose
+
+105
+00:13:50,880 --> 00:13:58,240
+ x plus b is equal to 1 any data point which is beyond the plus plane will have value greater
+
+106
+00:13:58,240 --> 00:14:05,960
+ than is equal to 1. For negative class since the minus plane has the equation W transpose
+
+107
+00:14:05,960 --> 00:14:13,520
+ x plus b is equal to minus 1, so any value here will have either minus 1 or less. So
+
+108
+00:14:13,520 --> 00:14:17,800
+ in this side it will be less in this side it will be greater than 1.
+
+109
+00:14:17,800 --> 00:14:24,840
+ So if you combine everything if you just multiply the yi now you may wonder how do I get yi
+
+110
+00:14:24,840 --> 00:14:30,640
+ because yi is the outcome this we are talking about only the training data not about the
+
+111
+00:14:30,640 --> 00:14:40,200
+ test data okay. So for this we actually know the y values and the x values. So we apply
+
+112
+00:14:40,200 --> 00:14:46,200
+ that and we understand that this is going to be greater than is equal to 1 because when
+
+113
+00:14:46,200 --> 00:14:51,840
+ yi is minus 1 you are also getting this value to be minus 1. So when you multiply this minus
+
+114
+00:14:51,840 --> 00:14:57,680
+ and minus it becomes a plus, this value is plus this value is plus again when you are
+
+115
+00:14:57,680 --> 00:15:01,680
+ multiplying two positive quantities this will be plus.
+
+116
+00:15:01,680 --> 00:15:10,640
+ So effectively you get you cannot compress this two and you get this one single equation.
+
+117
+00:15:10,640 --> 00:15:16,880
+ Now one proof which I am not giving but you can check this online tutorial to understand
+
+118
+00:15:16,880 --> 00:15:23,960
+ the proof that the margin of these two classifiers given this is the positive pen and this is
+
+119
+00:15:23,960 --> 00:15:32,400
+ the negative pen is given by 2 by the norm of the weight vector w. This is a little complex
+
+120
+00:15:32,400 --> 00:15:39,760
+ proof it requires a lot of steps so I am skipping them for now but for now let us just assume
+
+121
+00:15:39,760 --> 00:15:45,960
+ that this is true that the margin of the classifier is 2 by the norm of w where w is the weight
+
+122
+00:15:45,960 --> 00:15:54,280
+ vector. So in that case essentially the whole finding the large margin classification or
+
+123
+00:15:54,280 --> 00:16:03,000
+ classifier boils down to this particular optimization problem.
+
+124
+00:16:03,000 --> 00:16:10,920
+ So we want to maximize the boundary m so this is equivalent to minimize the minimize 1 by
+
+125
+00:16:10,920 --> 00:16:20,600
+ m which is similar to half of norm square. And we know that the decision boundary needs
+
+126
+00:16:20,600 --> 00:16:26,720
+ to satisfy all the data points correctly and the data points will have an equation like
+
+127
+00:16:26,720 --> 00:16:36,440
+ this. This is something we saw for a positive so if my positive range is here or sorry let
+
+128
+00:16:36,440 --> 00:16:40,720
+ us say this is the negative range this is the positive range. So for the positive range
+
+129
+00:16:40,720 --> 00:16:46,000
+ you get y i to be positive and then the entire thing to be positive so it is greater than
+
+130
+00:16:46,000 --> 00:16:51,960
+ equal to 1 for the negative 1 y i is negative and the entire thing is negative so you again
+
+131
+00:16:51,960 --> 00:16:57,840
+ get the multiplication to be more than 1. Now this becomes a constrained optimization
+
+132
+00:16:57,840 --> 00:17:04,040
+ problem where you would like to minimize the value essentially that is same as maximizing
+
+133
+00:17:04,040 --> 00:17:11,640
+ the margin and you want to follow the constraint on the value of each individual data point
+
+134
+00:17:11,640 --> 00:17:17,680
+ in your training data. Now why you are doing all this because effectively you would like
+
+135
+00:17:17,680 --> 00:17:25,080
+ to know the w. So think about it what is the variable here. The variable here is essentially
+
+136
+00:17:25,080 --> 00:17:31,520
+ w and b x i is something which you know from the training data y i is something which again
+
+137
+00:17:31,520 --> 00:17:38,400
+ you know from the training data. So these are your feature set this is your output level
+
+138
+00:17:38,400 --> 00:17:44,680
+ you are trying to get only w and such a w so that like it also maximizes the margin of
+
+139
+00:17:44,680 --> 00:17:51,000
+ the classifier. Now it turns out that this constrained optimization problem is also not
+
+140
+00:17:51,000 --> 00:17:56,560
+ very easy problem to solve. So in fact to solve this there are a lot of mathematical trick
+
+141
+00:17:56,560 --> 00:18:03,520
+ people apply where they convert this this problem like this constrained optimization
+
+142
+00:18:03,520 --> 00:18:09,840
+ problem which is also called a primal problem to a dual problem.
+
+143
+00:18:09,840 --> 00:18:17,600
+ Now I am just going to show you the dual problem here. So essentially this particular alpha
+
+144
+00:18:17,600 --> 00:18:23,360
+ values are called Lagrange multipliers and this dual problem is also called a Lagrangian
+
+145
+00:18:23,360 --> 00:18:31,480
+ dual problem where all this alpha values are greater than is equal to 0 such that like
+
+146
+00:18:31,480 --> 00:18:41,920
+ the sum of alpha i y i is equal to 0. Then for a training data you know y i you know
+
+147
+00:18:41,920 --> 00:18:50,120
+ y j for the same training data i and j you know their feature set. So once you apply
+
+148
+00:18:50,120 --> 00:18:57,920
+ all this and you try solving this problem like with respect to like so essentially here
+
+149
+00:18:57,920 --> 00:19:06,520
+ what is happening is that you are trying to determine the value of alpha provided to all
+
+150
+00:19:06,520 --> 00:19:13,160
+ the different training data which you have. So essentially all the training data here
+
+151
+00:19:13,160 --> 00:19:20,760
+ with its own levels will have a specific alpha like alpha i is for the ith training level
+
+152
+00:19:20,760 --> 00:19:26,720
+ and then you apply this particular constrained optimization problem you solve this using
+
+153
+00:19:26,720 --> 00:19:34,280
+ some quadratic problem solver like Cplex is one tool which is often used after that you
+
+154
+00:19:34,280 --> 00:19:41,360
+ actually apply all the alpha value y i and x i values to get back the weight.
+
+155
+00:19:41,360 --> 00:19:49,200
+ So note where we started we wanted to compute the decision boundary and the decision boundary
+
+156
+00:19:49,200 --> 00:19:57,640
+ would be given by the weight value of W what we ended up getting we ended up getting the
+
+157
+00:19:57,640 --> 00:20:05,680
+ value of alpha which is again called a Lagrange multiplier and this multiplier value which
+
+158
+00:20:05,680 --> 00:20:14,920
+ we are getting effectively to allow us to get back the W which we are looking for.
+
+159
+00:20:14,920 --> 00:20:20,520
+ So essentially our goal was to get the weight vector W through all this process we are trying
+
+160
+00:20:20,520 --> 00:20:30,840
+ to get back the weight vector W. Now in SVM there is a very interesting thing which happens.
+
+161
+00:20:30,840 --> 00:20:38,520
+ So every alpha is essentially as I mentioned they are connected to each individual data
+
+162
+00:20:38,520 --> 00:20:50,520
+ points in the training data. Now many of the alphas will tend to be just 0 and effectively
+
+163
+00:20:50,520 --> 00:20:58,400
+ the weight vector W it becomes a linear combination of a very small number of data points and
+
+164
+00:20:58,400 --> 00:21:05,360
+ in fact these data points where the alpha was not 0 this small number of data points
+
+165
+00:21:05,360 --> 00:21:15,640
+ are called the support vectors. So from this the name support vector machine came the beauty
+
+166
+00:21:15,640 --> 00:21:22,360
+ of this is that the decision boundary essentially gets determined only by the support vector.
+
+167
+00:21:22,360 --> 00:21:31,520
+ So the W instead of going over the all the values of alpha y i and x i if you just have
+
+168
+00:21:31,520 --> 00:21:39,040
+ S support vectors so you can simply take the support vector and their corresponding x and
+
+169
+00:21:39,040 --> 00:21:46,480
+ y values and you can get back the weight vector that is it.
+
+170
+00:21:46,480 --> 00:21:53,520
+ So if we look at it this pictorially so you see that for almost all the non support vector
+
+171
+00:21:53,520 --> 00:22:01,120
+ which does not fall in the decision boundary the alpha values are 0 only the ones which
+
+172
+00:22:01,120 --> 00:22:06,960
+ fall on the I mean basically fall on either the positive plane or the negative plane they
+
+173
+00:22:06,960 --> 00:22:14,680
+ will have some alpha value which is non zero and you just have to consider them to determine
+
+174
+00:22:14,680 --> 00:22:23,720
+ the value of W and that way for any new test data point Z you can compute so now I know
+
+175
+00:22:23,720 --> 00:22:31,280
+ W I kind of know for the test data what is going to be the Z be again I know from the
+
+176
+00:22:31,280 --> 00:22:38,840
+ earlier equation I just simply apply this and by applying this we can get the value
+
+177
+00:22:38,840 --> 00:22:49,440
+ of the current test data point. So just to summarize what we have done so far.
+
+178
+00:22:49,440 --> 00:22:57,400
+ So we actually in SVM we get a list of training data alright then we say that we are going
+
+179
+00:22:57,400 --> 00:23:03,520
+ to apply a linear classifier classification algorithm on top of this. Now up to this all
+
+180
+00:23:03,520 --> 00:23:11,480
+ is fine you can apply any form of like linear classification algorithm to come up with a
+
+181
+00:23:11,480 --> 00:23:18,040
+ decision boundary. The problem is that with different values hyper parameter values or
+
+182
+00:23:18,040 --> 00:23:25,360
+ the choice of the actual linear classification algorithm you may come up with a lot of decision
+
+183
+00:23:25,360 --> 00:23:31,680
+ boundaries. So all the decision boundaries can in fact differentiate between the positive
+
+184
+00:23:31,680 --> 00:23:37,280
+ class and the negative class or any such classes very well.
+
+185
+00:23:37,280 --> 00:23:42,960
+ Problems are happening when we want to determine which classifier to choose because every classifier
+
+186
+00:23:42,960 --> 00:23:47,420
+ is working fine and you cannot just say that I am just going to randomly choose one classifier
+
+187
+00:23:47,420 --> 00:23:54,680
+ and just going to go with it. So in SVM the goal is to pick a linear classifier where
+
+188
+00:23:54,680 --> 00:24:03,000
+ the classifier boundary has a margin of error and this is the margin so essentially a margin
+
+189
+00:24:03,000 --> 00:24:10,080
+ consist of the space around the decision boundary where like you are not hitting another data
+
+190
+00:24:10,080 --> 00:24:14,000
+ point either on the positive side or on the negative side.
+
+191
+00:24:14,000 --> 00:24:22,640
+ So this whole region is called a margin and our goal in SVM is to maximize the margin alright.
+
+192
+00:24:22,640 --> 00:24:28,480
+ Now I understand that some of you may not have got the mathematical details because I went
+
+193
+00:24:28,480 --> 00:24:34,560
+ through that very fast and I also did not explain all the steps due to lack of time.
+
+194
+00:24:34,560 --> 00:24:40,160
+ But I would encourage you to go and look up the tutorial link which I have shared over
+
+195
+00:24:40,160 --> 00:24:47,320
+ on the slide and also you can also search on YouTube or in general like any online tutorial
+
+196
+00:24:47,320 --> 00:24:52,880
+ where you will get the understanding of the entire optimization process how that optimization
+
+197
+00:24:52,880 --> 00:24:56,160
+ function is created and how exactly it is solved.
+
+198
+00:24:56,160 --> 00:25:03,240
+ The bottom line is that even if we skip the theoretical foundation the beauty of SVM is
+
+199
+00:25:03,240 --> 00:25:10,600
+ that effectively for the classification boundary or the decision boundary which we were computing
+
+200
+00:25:10,600 --> 00:25:17,880
+ where we wanted to keep the margin to be the highest.
+
+201
+00:25:17,880 --> 00:25:25,520
+ It just turns out that the weight vector for that particular decision boundary can be determined
+
+202
+00:25:25,520 --> 00:25:30,800
+ just by looking at the support vectors for which the alpha like which we computed in
+
+203
+00:25:30,800 --> 00:25:37,440
+ that optimization process they are non-zero and in reality in any kind of classification
+
+204
+00:25:37,440 --> 00:25:45,840
+ problem you see that only a handful of data points in the training data they will contribute
+
+205
+00:25:45,840 --> 00:25:49,600
+ or they will become a support vector.
+
+206
+00:25:49,600 --> 00:25:56,440
+ So the whole idea of KNN was that during the test time you would like to compute which
+
+207
+00:25:56,440 --> 00:26:02,560
+ are my nearest data points look at the labels and then determine the level of the current
+
+208
+00:26:02,560 --> 00:26:08,240
+ test data point by looking at what the closest neighbors are saying and I told you that this
+
+209
+00:26:08,240 --> 00:26:12,440
+ is a very expensive process because we are doing almost all the operation during the
+
+210
+00:26:12,440 --> 00:26:14,080
+ test time.
+
+211
+00:26:14,080 --> 00:26:21,440
+ In case of SVM since we are dealing with only a few support vectors so we can actually look
+
+212
+00:26:21,440 --> 00:26:30,160
+ at support vector calculation and support vector base calculations to be a very tiny
+
+213
+00:26:30,160 --> 00:26:36,840
+ scaled down version of the time of computation we do we tend to do for KNN alright.
+
+214
+00:26:36,840 --> 00:26:44,360
+ So SVM tends to run faster than KNN and often times since there is a very nice theoretical
+
+215
+00:26:44,360 --> 00:26:50,920
+ background around it this tends to also provide a very good answer.
+
+216
+00:26:50,920 --> 00:26:53,840
+ Now so far we talked about only binary classification.
+
+217
+00:26:53,840 --> 00:27:02,880
+ Now in case of SVM unlike naive base here we cannot really compare among multiple classes.
+
+218
+00:27:02,880 --> 00:27:06,960
+ So the approach which SVM takes is like one versus all strategy.
+
+219
+00:27:06,960 --> 00:27:13,760
+ So if you are trying to make a multi-class classification with n classes you take one
+
+220
+00:27:13,760 --> 00:27:19,560
+ class as the one like you want to determine this class one versus all the rest.
+
+221
+00:27:19,560 --> 00:27:26,280
+ So you try to determine whether this particular point belongs to class one or any of the other
+
+222
+00:27:26,280 --> 00:27:32,320
+ points and if it does not belong to class one then you go to the next round where you
+
+223
+00:27:32,320 --> 00:27:36,560
+ try to differentiate between class two and any other data points kind of.
+
+224
+00:27:36,560 --> 00:27:41,280
+ So that way eventually one of the iterations you will get the correct class level.
+
+225
+00:27:41,280 --> 00:27:45,800
+ So this strategy is called one versus all strategy.
+
+226
+00:27:45,800 --> 00:27:53,880
+ We did not look at another aspect so so far we have been talking about only linearly like
+
+227
+00:27:53,880 --> 00:28:01,880
+ linear classifiers but support vector machine can also work with non-linear like non-linear
+
+228
+00:28:01,880 --> 00:28:02,880
+ classification problems.
+
+229
+00:28:02,880 --> 00:28:05,120
+ So I will just give you one example.
+
+230
+00:28:05,120 --> 00:28:14,240
+ So a linear classifier problem means that when your classes are like this you can simply
+
+231
+00:28:14,240 --> 00:28:19,480
+ come up with a decision boundary which can differentiate these two classes.
+
+232
+00:28:19,480 --> 00:28:34,040
+ But when you are you have a class like this right so your decision boundary cannot be
+
+233
+00:28:34,040 --> 00:28:35,040
+ a line.
+
+234
+00:28:35,040 --> 00:28:37,200
+ So it cannot be linear.
+
+235
+00:28:37,200 --> 00:28:41,440
+ So in this case let us say we looked at a circular decision boundary.
+
+236
+00:28:41,440 --> 00:28:46,200
+ So these are cases where it is a non-linear boundary which we are dealing with.
+
+237
+00:28:46,200 --> 00:28:51,080
+ Now so far the support vector machines we have talked about they are they work only
+
+238
+00:28:51,080 --> 00:28:56,680
+ with linear classification boundaries but there is something called a kernel trick like
+
+239
+00:28:56,680 --> 00:29:05,440
+ where kernel functions are used which allows the SVM to deal with non like non-linearly
+
+240
+00:29:05,440 --> 00:29:11,400
+ separable classes.
+
+241
+00:29:11,400 --> 00:29:16,600
+ Compared to some other methods like let us say naive base SVM is still time and space
+
+242
+00:29:16,600 --> 00:29:24,080
+ consuming but it is much better compared to let us say KNM.
+
+243
+00:29:24,080 --> 00:29:29,760
+ And we have to store all the support vectors so rather than a simple model we have to store
+
+244
+00:29:29,760 --> 00:29:35,640
+ all the support vectors and often time that creates or that adds to the space complexity.
+
+245
+00:29:35,640 --> 00:29:43,720
+ So with that this actually ends today's discussion on supervised machine learning where we have
+
+246
+00:29:43,720 --> 00:29:51,600
+ covered the cover three different classification models, naive base classification, support
+
+247
+00:29:51,600 --> 00:29:55,360
+ vector machine and KNM neighbor.
+
+248
+00:29:55,360 --> 00:30:06,120
+ So now it is time to take up a few questions.
+
+249
+00:30:06,120 --> 00:30:12,080
+ So why different method in neighborhood is being used any practical example.
+
+250
+00:30:12,080 --> 00:30:17,600
+ So I guess your question is related to the K nearest neighbor algorithm and you wanted
+
+251
+00:30:17,600 --> 00:30:22,720
+ to know why different distance metric is used.
+
+252
+00:30:22,720 --> 00:30:29,760
+ So look different distance metric is often used depending on the particular application
+
+253
+00:30:29,760 --> 00:30:37,040
+ scenario so and Euclidean distance is something which we often use like which is a very simple
+
+254
+00:30:37,040 --> 00:30:50,360
+ measure if you can place a particular if you can so let us say that you are trying to determine
+
+255
+00:30:50,360 --> 00:30:58,000
+ the distance between two data points in a in a in a map or let us say this you just
+
+256
+00:30:58,000 --> 00:31:03,320
+ want to determine the ideal distance between two places.
+
+257
+00:31:03,320 --> 00:31:08,800
+ So you look at a particular place A, you look at a particular place B, you look at the lat
+
+258
+00:31:08,800 --> 00:31:13,400
+ long of this place, you look at the lat long of the other place and you try to determine
+
+259
+00:31:13,400 --> 00:31:18,040
+ the distance between the two by looking at the Euclidean distance between the lat long.
+
+260
+00:31:18,040 --> 00:31:21,800
+ So when we say lat long essentially it is a two dimensional space right like you look
+
+261
+00:31:21,800 --> 00:31:25,960
+ at both the longitude and the latitude of both points and then you just compute the
+
+262
+00:31:25,960 --> 00:31:33,700
+ distance between that but that only gives you the ideal distance like if you can travel
+
+263
+00:31:33,700 --> 00:31:38,600
+ by let us say air this is the amount of travel you will have to do.
+
+264
+00:31:38,600 --> 00:31:43,680
+ But in reality you are often constrained by the physical road.
+
+265
+00:31:43,680 --> 00:31:49,840
+ So if there is no road which takes you from place A to place B this area distance is meaningless.
+
+266
+00:31:49,840 --> 00:31:54,640
+ So the Euclidean distance which we computed it does not actually tell the real situation
+
+267
+00:31:54,640 --> 00:31:58,200
+ better.
+
+268
+00:31:58,200 --> 00:32:04,000
+ So in such cases let us just assume that you live in a city where the city is like grids
+
+269
+00:32:04,000 --> 00:32:05,000
+ okay.
+
+270
+00:32:05,000 --> 00:32:12,320
+ So grid means that okay there is a point here then a road just goes from this point to this
+
+271
+00:32:12,320 --> 00:32:17,460
+ point then then there is one road like this then another road like this.
+
+272
+00:32:17,460 --> 00:32:23,280
+ So where the city is designed in right like a grid where you have parallel roads like
+
+273
+00:32:23,280 --> 00:32:28,480
+ this and parallel localization like both horizontally and vertically okay.
+
+274
+00:32:28,480 --> 00:32:37,080
+ So if you have a scenario like this and in reality such a kind of a nice grid like road
+
+275
+00:32:37,080 --> 00:32:41,160
+ network exist in Manhattan district in New York.
+
+276
+00:32:41,160 --> 00:32:47,160
+ So there if you want to compute distance between two different data points you will
+
+277
+00:32:47,160 --> 00:32:49,040
+ have to follow the road.
+
+278
+00:32:49,040 --> 00:32:55,440
+ So you will have to let us say go up or go down to catch the next intersection and then
+
+279
+00:32:55,440 --> 00:32:59,560
+ you will have to take right or left to reach the other place.
+
+280
+00:32:59,560 --> 00:33:06,400
+ So this kind of setup where you are just following the road and go to from one point to another
+
+281
+00:33:06,400 --> 00:33:13,200
+ point you can capture this in one distance metric called Manhattan distance or 11 distance.
+
+282
+00:33:13,200 --> 00:33:21,360
+ As the name suggests but because it can originated from this Manhattan district block or grid
+
+283
+00:33:21,360 --> 00:33:25,080
+ like road structure it is called Manhattan distance.
+
+284
+00:33:25,080 --> 00:33:30,160
+ So depending on the example, depending on the application scenario like whether you
+
+285
+00:33:30,160 --> 00:33:35,240
+ are trying to determine the distance between a driver or a passenger you will have to consider
+
+286
+00:33:35,240 --> 00:33:36,640
+ the road network.
+
+287
+00:33:36,640 --> 00:33:42,160
+ But at the same time if you are just trying to place let us say some like loud speaker
+
+288
+00:33:42,160 --> 00:33:48,480
+ you can actually look at the aerial distance there the road network does not matter.
+
+289
+00:33:48,480 --> 00:33:54,520
+ So depending on the application you pick a different distance metric and the similar
+
+290
+00:33:54,520 --> 00:34:01,640
+ thing is applied in case of classification like K nearest neighbor classification as well.
+
+291
+00:34:01,640 --> 00:34:10,840
+ So how to know which classifier is best suited for our requirements this is a very nice question
+
+292
+00:34:10,840 --> 00:34:16,240
+ and this is why the whole idea of cross-validation come into play as I mentioned.
+
+293
+00:34:16,240 --> 00:34:20,480
+ So you have a training data point, you do not know which classification algorithm to
+
+294
+00:34:20,480 --> 00:34:22,240
+ apply correct.
+
+295
+00:34:22,240 --> 00:34:29,280
+ So the best idea is that you apply multiple classification algorithms you look at the training
+
+296
+00:34:29,280 --> 00:34:34,840
+ data you I mean again so you split the training data into an actual training data and the
+
+297
+00:34:34,840 --> 00:34:41,800
+ validation data you train based on the actual training data you apply them on the validation
+
+298
+00:34:41,800 --> 00:34:42,800
+ data.
+
+299
+00:34:42,800 --> 00:34:47,760
+ Now the beauty of validation data is that for the validation data you have both the
+
+300
+00:34:47,760 --> 00:34:54,000
+ features that means you have the X value and you also know the level Y value because this
+
+301
+00:34:54,000 --> 00:34:58,320
+ is a part of the original training data set.
+
+302
+00:34:58,320 --> 00:35:06,360
+ So based on this level switch you have you can compute how many of your predictions were
+
+303
+00:35:06,360 --> 00:35:08,120
+ correct or wrong.
+
+304
+00:35:08,120 --> 00:35:12,400
+ So that way you can compute what is called an accuracy that how many times your prediction
+
+305
+00:35:12,400 --> 00:35:20,640
+ was correct and you apply different classifier models using this actual training data, apply
+
+306
+00:35:20,640 --> 00:35:27,760
+ them on the validation data compute the accuracy and finally pick the model or pick the classifier
+
+307
+00:35:27,760 --> 00:35:31,880
+ which gives you the best accuracy over that validation set.
+
+308
+00:35:31,880 --> 00:35:38,320
+ So this is how we can utilize or pick the classifier to work in a real world scenario.
+
+309
+00:35:38,320 --> 00:35:44,840
+ Next question, how are the data points falling in the margin in SVM?
+
+310
+00:35:44,840 --> 00:35:50,840
+ So the way margin is defined is that we are going to margin is the area around the decision
+
+311
+00:35:50,840 --> 00:35:56,480
+ boundary which we can expand until we hit a point.
+
+312
+00:35:56,480 --> 00:36:02,920
+ So this is why like always the margin ends with hitting a data point in either side of
+
+313
+00:36:02,920 --> 00:36:09,080
+ the decision boundary and these data points which fall along the margin they are called
+
+314
+00:36:09,080 --> 00:36:10,080
+ the support vectors.
+
+315
+00:36:10,080 --> 00:36:18,400
+ And as I showed that to compute like a level for a test data point essentially this support
+
+316
+00:36:18,400 --> 00:36:29,560
+ vectors are used and the data I mean the predicted value is computed.
+
+317
+00:36:29,560 --> 00:36:34,880
+ Again like I think this question came up earlier as well so the books I think some suggestion
+
+318
+00:36:34,880 --> 00:36:40,520
+ of the books will provide it not during the current session so you can check I think like
+
+319
+00:36:40,520 --> 00:36:46,160
+ will provide it offline like some good reference books where you can look at this topics.
+
+320
+00:36:46,160 --> 00:36:52,320
+ There are generally good some like good tutorials online tutorials which are also available
+
+321
+00:36:52,320 --> 00:36:57,000
+ but often time it is better to follow some book where you can read them in more detail.
+
+322
+00:36:57,000 --> 00:37:04,080
+ We will provide some reference book links later offline.
+
+323
+00:37:04,080 --> 00:37:06,960
+ Thanks a lot for attending the lecture today.
+
+324
+00:37:06,960 --> 00:37:12,880
+ We will meet again next week where we will continue talking about classification algorithms
+
+325
+00:37:12,880 --> 00:37:19,220
+ where we will cover decision tree and the ensemble methods like random forest.
+
+326
+00:37:19,220 --> 00:37:26,760
+ Thanks, have a very nice weekend.
+
+327
+00:37:26,760 --> 00:37:27,280
+ Thank you sir.
+

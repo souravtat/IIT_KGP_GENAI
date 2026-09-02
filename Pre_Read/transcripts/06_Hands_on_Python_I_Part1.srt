@@ -1,0 +1,2492 @@
+1
+00:00:00,000 --> 00:00:10,000
+ So, we are good to go, right?
+
+2
+00:00:10,000 --> 00:00:15,600
+ Yeah, audio is ok, they have said from their side.
+
+3
+00:00:15,600 --> 00:00:16,600
+ Ok.
+
+4
+00:00:16,600 --> 00:00:19,800
+ So, let us begin today's session.
+
+5
+00:00:19,800 --> 00:00:27,040
+ So, my name is Suman Kumar Bhera, I am one of the research scholars in IIT, Kharagpur.
+
+6
+00:00:27,040 --> 00:00:33,440
+ I had a session last week on the basics of Python and how to use some of the platforms
+
+7
+00:00:33,440 --> 00:00:40,760
+ like Anaconda's Jupyter Notebook and Google's Collab to do Python programming.
+
+8
+00:00:40,760 --> 00:00:47,560
+ So, now in this session today, what we will be learning, we will be learning two of the
+
+9
+00:00:47,560 --> 00:00:55,400
+ most important libraries named NumPy and Pandas, which are mainly used for data handling and
+
+10
+00:00:55,400 --> 00:00:57,360
+ data manipulations.
+
+11
+00:00:57,360 --> 00:01:05,160
+ So, apart from your course in artificial intelligence and machine learning, apart from using the
+
+12
+00:01:05,160 --> 00:01:12,000
+ machine learning models, you would be able to convert the data into those machine learning
+
+13
+00:01:12,000 --> 00:01:15,240
+ compatible formats.
+
+14
+00:01:15,240 --> 00:01:24,840
+ And even after getting the output, you may need to do some operations on the output to
+
+15
+00:01:24,840 --> 00:01:27,320
+ get it in the desired format.
+
+16
+00:01:27,320 --> 00:01:33,920
+ So, for those purposes, these two libraries are very much important.
+
+17
+00:01:33,920 --> 00:01:41,320
+ So, I hope everybody is with me and today I will be demonstrating the code in Google
+
+18
+00:01:41,320 --> 00:01:42,320
+ Collab.
+
+19
+00:01:42,320 --> 00:01:51,560
+ So, as you may remember from the last week's session that you would be required to login
+
+20
+00:01:51,560 --> 00:01:55,840
+ to your Google account in your Google Chrome browser.
+
+21
+00:01:55,840 --> 00:02:05,440
+ So, if I can have my screen on the display, I hope this font is good enough for everybody
+
+22
+00:02:05,440 --> 00:02:06,440
+ to view.
+
+23
+00:02:06,440 --> 00:02:11,040
+ So, here as you can see, I have my account logged in.
+
+24
+00:02:11,040 --> 00:02:19,680
+ So, if you are not logged in, so you will not have the facility provided by Google through
+
+25
+00:02:19,680 --> 00:02:23,640
+ this Collab platform which is used for Python programming.
+
+26
+00:02:23,640 --> 00:02:34,200
+ So, I would request everybody to login to their Google Collab, Google account and if
+
+27
+00:02:34,200 --> 00:02:44,120
+ they are not already logged in and open the Collabs link that has been already shared
+
+28
+00:02:44,120 --> 00:02:45,120
+ with you.
+
+29
+00:02:45,120 --> 00:02:52,760
+ So, I will just wait for one minute, so just to get everybody ready if they are already
+
+30
+00:02:52,760 --> 00:02:53,760
+ not.
+
+31
+00:02:53,760 --> 00:03:19,120
+ So, please open this Collab notebook that link has been shared to you.
+
+32
+00:03:19,120 --> 00:03:49,080
+ So, I hope everybody is okay with their Google account logged in.
+
+33
+00:03:49,080 --> 00:03:54,520
+ So, from here what I would want you to do?
+
+34
+00:03:54,520 --> 00:04:01,160
+ I want you to open a new notebook where you would actually code for yourself taking help
+
+35
+00:04:01,160 --> 00:04:06,800
+ of this notebook and whatever I am telling in this session.
+
+36
+00:04:06,800 --> 00:04:14,240
+ So, here coming on this file, what you in the third option there is new notebook in
+
+37
+00:04:14,240 --> 00:04:15,240
+ Drive.
+
+38
+00:04:15,240 --> 00:04:21,440
+ So, if you click this option a new notebook will be created and it will be the notebook
+
+39
+00:04:21,440 --> 00:04:28,040
+ will be automatically saved into your drive, your Google Drive through your login ID.
+
+40
+00:04:28,040 --> 00:04:53,080
+ So, coming here clicking on file you create a new notebook in Drive.
+
+41
+00:04:53,080 --> 00:05:11,600
+ So, here what we have clicking on this file and new notebook in Drive we have a fresh
+
+42
+00:05:11,600 --> 00:05:12,600
+ new notebook.
+
+43
+00:05:12,600 --> 00:05:23,040
+ Here you can change the name of the notebook suppose it is currently untitled 0 IP NYB
+
+44
+00:05:23,040 --> 00:05:24,600
+ that means IPython notebook.
+
+45
+00:05:24,600 --> 00:05:30,840
+ So, you go click on that name and delete whatever written is there that is written there and
+
+46
+00:05:30,840 --> 00:05:42,200
+ you change the name to NumPy Pandas or whatever you feel like you can give it any other name
+
+47
+00:05:42,200 --> 00:05:45,000
+ as per your choice.
+
+48
+00:05:45,000 --> 00:05:51,920
+ So, and here is a cell just let me give a recap.
+
+49
+00:05:51,920 --> 00:05:58,560
+ So, here there are two options one is code and another one is text.
+
+50
+00:05:58,560 --> 00:06:06,480
+ So, you just if you just want to put some description in it like in a cell like here
+
+51
+00:06:06,480 --> 00:06:10,320
+ a text cell has popped up because I clicked on this plus text.
+
+52
+00:06:10,320 --> 00:06:31,480
+ So, here you can write like this so, we will today and you just you do not need to do anything
+
+53
+00:06:31,480 --> 00:06:44,040
+ you just click enter and you have this so, this is the text you put on and if you click
+
+54
+00:06:44,040 --> 00:06:51,760
+ on this code a code cell will pop up with this kind of a button a play button type of
+
+55
+00:06:51,760 --> 00:06:52,760
+ thing.
+
+56
+00:06:52,760 --> 00:06:56,880
+ So, when you click on this play button the code that you have written in this particular
+
+57
+00:06:56,880 --> 00:07:00,120
+ cell gets executed.
+
+58
+00:07:00,120 --> 00:07:07,280
+ And here there is a connect button if you click on this connect then Google collab provides
+
+59
+00:07:07,280 --> 00:07:14,320
+ you the facility of RAM and CPU so, that you can execute your program.
+
+60
+00:07:14,320 --> 00:07:25,560
+ So, as you can see it is connecting and say you have your RAM and disk displayed here.
+
+61
+00:07:25,560 --> 00:07:34,280
+ So, you as you can see connected to Python 3 Google compute engine backend.
+
+62
+00:07:34,280 --> 00:07:49,840
+ So, let us start so, today as in the previous session also you have become familiar with
+
+63
+00:07:49,840 --> 00:07:52,240
+ this ID's data set.
+
+64
+00:07:52,240 --> 00:08:00,520
+ So, now in this course we will be in very depth learn what is this ID's data set what
+
+65
+00:08:00,520 --> 00:08:07,240
+ are the values that are present in here and the pre processing that are required before
+
+66
+00:08:07,240 --> 00:08:11,680
+ directly jumping into a machine learning algorithm or so.
+
+67
+00:08:11,680 --> 00:08:25,600
+ So, just to give you the brief introduction here in this cell here in this cell there
+
+68
+00:08:25,600 --> 00:08:34,600
+ is a link provided there is a link provided and if you just click on this link if you
+
+69
+00:08:34,600 --> 00:08:49,560
+ copy this link, if you copy this link and paste on your browser like this let us see
+
+70
+00:08:49,560 --> 00:08:51,360
+ what you can see.
+
+71
+00:08:51,360 --> 00:09:01,200
+ So, this link provided right here in this cell this cell right below this image of flowers
+
+72
+00:09:01,200 --> 00:09:08,120
+ and if you click on copy this link and paste it on your browser you will be redirected
+
+73
+00:09:08,120 --> 00:09:15,760
+ to something like this and if you zoom in you see some values some values.
+
+74
+00:09:15,760 --> 00:09:25,160
+ So, here this is one row and you will see a lot of rows present here, but one thing
+
+75
+00:09:25,160 --> 00:09:33,400
+ you need to you have to notice that the number of columns in each of this rows is similar
+
+76
+00:09:33,400 --> 00:09:36,560
+ that what is the number of columns present in here.
+
+77
+00:09:36,560 --> 00:09:46,200
+ So, first column, second column, third column, fourth column and fifth column.
+
+78
+00:09:46,200 --> 00:09:53,840
+ So, there are five columns in each of this rows if you scroll down there are five columns
+
+79
+00:09:53,840 --> 00:09:56,000
+ each of this rows.
+
+80
+00:09:56,000 --> 00:10:06,400
+ So, and there are these like floating point values like 5.1, 3.5, 1.4, 0.2 some of these
+
+81
+00:10:06,400 --> 00:10:13,620
+ values like till now not very much human understandable that what they are representing.
+
+82
+00:10:13,620 --> 00:10:20,160
+ And at the last column if you notice something like this iris setosa and if you scroll down
+
+83
+00:10:20,160 --> 00:10:29,200
+ down down down something like iris versicolor and if you scroll further down iris virginica.
+
+84
+00:10:29,200 --> 00:10:35,600
+ So, these are written in the last column.
+
+85
+00:10:35,600 --> 00:10:47,600
+ So, coming back to the Google Colab so, here what we have we have a picture ok.
+
+86
+00:10:47,600 --> 00:10:55,780
+ So, these iris setosa, iris versicolor and iris virginica these are actually three kind
+
+87
+00:10:55,780 --> 00:10:57,280
+ of flowers.
+
+88
+00:10:57,280 --> 00:11:03,920
+ So, these are the pictures of the flowers they are quite similar quite similar not exactly
+
+89
+00:11:03,920 --> 00:11:05,720
+ similar, but quite similar.
+
+90
+00:11:05,720 --> 00:11:12,280
+ So, there is a significant difference between an iris setosa and a rows that is very much
+
+91
+00:11:12,280 --> 00:11:22,720
+ evident, but iris setosa and iris versicolor has relatively less similarity compared to
+
+92
+00:11:22,720 --> 00:11:31,140
+ suppose some other flower like jasmine or rows somewhat like this.
+
+93
+00:11:31,140 --> 00:11:38,600
+ So, and in these flowers what do we have we have a petal and a sepal ok.
+
+94
+00:11:38,600 --> 00:11:46,160
+ So, this is a very nice picture and here we have petal and sepal.
+
+95
+00:11:46,160 --> 00:11:55,360
+ So, you understand what these three kind of flowers is and what are petal and sepal.
+
+96
+00:11:55,360 --> 00:12:01,320
+ So, I hope everybody is clear till this part they understand.
+
+97
+00:12:01,320 --> 00:12:09,760
+ So, getting back to the data set we were contemplating so, here what do we have we have certain values
+
+98
+00:12:09,760 --> 00:12:11,040
+ corresponding to it.
+
+99
+00:12:11,040 --> 00:12:16,400
+ So, now what do you have if you have when you are you want to do some machine learning
+
+100
+00:12:16,400 --> 00:12:21,520
+ deep learning thing you will have a lot of data ok.
+
+101
+00:12:21,520 --> 00:12:28,160
+ So, this data you need to understand that what is the input corresponding to that input
+
+102
+00:12:28,160 --> 00:12:35,760
+ what do we expect the machine learning algorithm to perform that is the output ok.
+
+103
+00:12:35,760 --> 00:12:42,400
+ So, for that purpose just to show you how to gain information regarding that till now
+
+104
+00:12:42,400 --> 00:12:46,120
+ we do not know what are these things like what are these values ok.
+
+105
+00:12:46,120 --> 00:12:57,600
+ So, this archive ok this archive I want you to look at this URL this archive I request
+
+106
+00:12:57,600 --> 00:13:03,960
+ you to this request you to go to this UCI machine learning repository that has the iris
+
+107
+00:13:03,960 --> 00:13:04,960
+ data set.
+
+108
+00:13:04,960 --> 00:13:12,920
+ So, if you just copy this part like this part that has been highlighted so, actually let
+
+109
+00:13:12,920 --> 00:13:34,360
+ me give this in the notebook so, link to UCI.
+
+110
+00:13:34,360 --> 00:13:48,840
+ So, if you actually go to this link copy it and you paste it.
+
+111
+00:13:48,840 --> 00:14:06,000
+ So, you are.
+
+112
+00:14:06,000 --> 00:14:23,360
+ So, this is the archive.
+
+113
+00:14:23,360 --> 00:14:46,320
+ So, you can see this is the link that I have posted and if you go to this link you will
+
+114
+00:14:46,320 --> 00:15:03,040
+ be redirected to this page you would be redirected to the page that has like check this out popular
+
+115
+00:15:03,040 --> 00:15:07,400
+ data sets new data sets etcetera ok.
+
+116
+00:15:07,400 --> 00:15:26,920
+ Now, when we are talking about iris let us click on this iris data set so, we are here.
+
+117
+00:15:26,920 --> 00:15:33,920
+ So, I will wait for 2 minutes for anyone who has not caught up till now ok.
+
+118
+00:15:33,920 --> 00:15:44,460
+ So, this is the data set and the link I have posted there and I request you to go to this
+
+119
+00:15:44,460 --> 00:15:50,200
+ UCI repository and click on the iris data and you will have something like this and those
+
+120
+00:15:50,200 --> 00:15:55,360
+ who have already opened it I would request them to go through whatever written in this
+
+121
+00:15:55,360 --> 00:16:11,400
+ page.
+
+122
+00:16:11,400 --> 00:16:28,840
+ So, this is the data set.
+
+123
+00:16:28,840 --> 00:16:52,200
+ So, this is the data set.
+
+124
+00:16:52,200 --> 00:17:12,320
+ So, I guess we can proceed further now I hope everybody is on the same page with me.
+
+125
+00:17:12,320 --> 00:17:19,560
+ So, here what do we have if we just take a minute to go through whatever in this page.
+
+126
+00:17:19,560 --> 00:17:25,120
+ So, this iris data set that is a very old data set, but that is popular.
+
+127
+00:17:25,120 --> 00:17:33,480
+ So, when you are forming the basis of machine learning a lot of examples come with this
+
+128
+00:17:33,480 --> 00:17:35,400
+ data set ok.
+
+129
+00:17:35,400 --> 00:17:41,040
+ So, here what you have see we are talking about some flowers, their petal, sepul.
+
+130
+00:17:41,040 --> 00:17:46,840
+ So, this subject area is biology the associated task that machine learning task that is associated
+
+131
+00:17:46,840 --> 00:17:52,240
+ with this is classification the feature type is real because if you remember the values
+
+132
+00:17:52,240 --> 00:17:59,600
+ provided here they are like real values ok instances 150 ok.
+
+133
+00:17:59,600 --> 00:18:09,520
+ So, if you actually check that there are actually 150 rows present in here 150 rows and number
+
+134
+00:18:09,520 --> 00:18:11,240
+ of features 4.
+
+135
+00:18:11,240 --> 00:18:17,400
+ So, actually when I was telling you that there are 5 columns in here and the last column
+
+136
+00:18:17,400 --> 00:18:21,600
+ is what type of flower it is and the other 4 are features.
+
+137
+00:18:21,600 --> 00:18:33,880
+ So, number of features 4 ok and if you scroll down so, here what you see variable type table
+
+138
+00:18:33,880 --> 00:18:44,080
+ ok, here what we have we have the information regarding to that those 4 columns.
+
+139
+00:18:44,080 --> 00:18:52,640
+ So, what do those 4 columns that contain those real values actually have.
+
+140
+00:18:52,640 --> 00:19:01,560
+ So, here you can see variable length, sepul length, sepul width, petal length and petal
+
+141
+00:19:01,560 --> 00:19:02,560
+ width.
+
+142
+00:19:02,560 --> 00:19:11,000
+ So, if you remember from the picture that is there on the colab notebook that has the
+
+143
+00:19:11,000 --> 00:19:19,720
+ picture that what is petal and sepul and corresponding to that petal and sepul their length and width
+
+144
+00:19:19,720 --> 00:19:21,320
+ are provided ok.
+
+145
+00:19:21,320 --> 00:19:29,520
+ So, for 150 samples they are petal length and petal width is provided and the unit is
+
+146
+00:19:29,520 --> 00:19:38,000
+ centimeter ok and here you have a nice description see missing values know and there is this last
+
+147
+00:19:38,000 --> 00:19:40,440
+ thing called class target categorical.
+
+148
+00:19:40,440 --> 00:19:48,400
+ So, there are 3 different kind of flowers iris setosa, iris versical and iris virginica
+
+149
+00:19:48,400 --> 00:19:49,400
+ ok.
+
+150
+00:19:49,400 --> 00:19:57,360
+ So, these things are provided ok and this is the baseline model performance that these
+
+151
+00:19:57,360 --> 00:20:03,560
+ things that you will be familiar in the upcoming classes ok.
+
+152
+00:20:03,560 --> 00:20:08,240
+ See exeboost classification has achieved this much accuracy if I zoom out of it.
+
+153
+00:20:08,240 --> 00:20:14,640
+ So, here is like 95 percent 100 percent like accuracy calculation.
+
+154
+00:20:14,640 --> 00:20:21,640
+ So, exeboost classification support vector machines the you will be familiar in the next
+
+155
+00:20:21,640 --> 00:20:27,320
+ classes using neural network classification how what type of accuracy they are achieving
+
+156
+00:20:27,320 --> 00:20:33,240
+ and finally, A would be to beat this accuracy.
+
+157
+00:20:33,240 --> 00:20:43,880
+ So, coming back to this like strange file now we have some understanding regarding the
+
+158
+00:20:43,880 --> 00:20:44,880
+ data.
+
+159
+00:20:44,880 --> 00:20:55,440
+ So, first 4 columns are sepul length, sepul length, sepul width, petal length and petal
+
+160
+00:20:55,440 --> 00:20:59,880
+ width for a corresponding sample of iris setosa in this line.
+
+161
+00:20:59,880 --> 00:21:05,960
+ So, we know what this row means this first row that is highlighted in blue first row
+
+162
+00:21:05,960 --> 00:21:13,080
+ means for a specific sample of iris setosa flower we have the sepul length 5.1, the sepul
+
+163
+00:21:13,080 --> 00:21:20,600
+ width 3.5, the petal length 1.4 and the petal width 0.2 ok.
+
+164
+00:21:20,600 --> 00:21:36,520
+ So, jumping on to our code here what we have we are importing some libraries let us copy
+
+165
+00:21:36,520 --> 00:21:46,000
+ this and paste it in the this blank notebook we have created ok.
+
+166
+00:21:46,000 --> 00:21:53,340
+ So, even if I forget to copy something from that original notebook to this notebook that
+
+167
+00:21:53,340 --> 00:21:54,960
+ we are working out right now.
+
+168
+00:21:54,960 --> 00:22:00,240
+ So, I would encourage you to obviously copy and run it if you are not actually typing
+
+169
+00:22:00,240 --> 00:22:01,240
+ the code.
+
+170
+00:22:01,240 --> 00:22:06,440
+ So, the best thing is learning it from there and typing the code all by yourself, but if
+
+171
+00:22:06,440 --> 00:22:12,920
+ you need to just copy paste something do it not a problem, but actually execute each and
+
+172
+00:22:12,920 --> 00:22:14,240
+ every individual cell.
+
+173
+00:22:14,240 --> 00:22:19,840
+ So, you would be getting the idea that what these things are.
+
+174
+00:22:19,840 --> 00:22:25,920
+ So, here what we have we are importing something import numpy as np.
+
+175
+00:22:25,920 --> 00:22:38,120
+ So, what this thing is as I said this numpy numpy is used for numbers numpy is used for
+
+176
+00:22:38,120 --> 00:22:39,120
+ numbers.
+
+177
+00:22:39,120 --> 00:22:44,360
+ So, we have a lot of numbers so, as you see as you have gone through the data set already.
+
+178
+00:22:44,360 --> 00:22:48,720
+ So, there are a lot of numbers we need to manipulate it and perform operations on to
+
+179
+00:22:48,720 --> 00:22:49,720
+ it.
+
+180
+00:22:49,720 --> 00:22:55,520
+ In the last session also you learned like if I take the easiest of the examples like
+
+181
+00:22:55,520 --> 00:23:01,120
+ you have lot of data you want to calculate the mean, median, mode all those things.
+
+182
+00:23:01,120 --> 00:23:08,720
+ So, these operations and a lot of important operations like calculating eigenvalue, eigenvector
+
+183
+00:23:08,720 --> 00:23:12,760
+ all those things are work of this numpy library.
+
+184
+00:23:12,760 --> 00:23:20,680
+ So, it has it has it is a library that has a lot of facilities a lot of things can be
+
+185
+00:23:20,680 --> 00:23:29,240
+ performed using this numpy and how we are actually calling it in our code like we have
+
+186
+00:23:29,240 --> 00:23:39,520
+ this notebook for ourselves and we want to call that numpy library on to it.
+
+187
+00:23:39,520 --> 00:23:56,800
+ So, here you write import numpy as np and if you just check the version of it
+
+188
+00:23:56,800 --> 00:24:01,840
+ you get some version like 1.26.4.
+
+189
+00:24:01,840 --> 00:24:17,720
+ So, those who are familiar with C code it is somewhat similar to has include stdio.h
+
+190
+00:24:17,720 --> 00:24:22,880
+ something like this when you write C program you include this that has the function definition
+
+191
+00:24:22,880 --> 00:24:25,320
+ of printf scanf all those things.
+
+192
+00:24:25,320 --> 00:24:32,940
+ So, in python we actually import things import the word import you understand general meaning
+
+193
+00:24:32,940 --> 00:24:40,840
+ and we are checking the version of numpy and as np that is not a big thing as np means
+
+194
+00:24:40,840 --> 00:24:48,120
+ for every line when we would be using numpy we just do not want to write numpy n-u-m-p-y
+
+195
+00:24:48,120 --> 00:24:49,120
+ everywhere.
+
+196
+00:24:49,120 --> 00:24:55,760
+ So, we just want to write n-p so, you can put any name here this is just a alias.
+
+197
+00:24:55,760 --> 00:25:03,640
+ So, even if you write numpy as np import numpy as hey hello something like this if you give
+
+198
+00:25:03,640 --> 00:25:10,600
+ it a strange name or you can play around with writing anything here and check the version
+
+199
+00:25:10,600 --> 00:25:21,760
+ it will give the same result see the same result is coming.
+
+200
+00:25:21,760 --> 00:25:27,040
+ So, just to give you a reminder so, if you are executing a particular cell use control
+
+201
+00:25:27,040 --> 00:25:35,680
+ enter that would control enter that would give you the execution of that cell or what
+
+202
+00:25:35,680 --> 00:25:42,000
+ you can do you can click on this play button type of thing here and that would run.
+
+203
+00:25:42,000 --> 00:25:49,960
+ So, usually do not I would not recommend you to write any name as alias here just use n-p
+
+204
+00:25:49,960 --> 00:25:57,640
+ because if you are going through a big code that is already there and you are trying to
+
+205
+00:25:57,640 --> 00:26:05,400
+ understand how things are going on in there you would find the np that is the normal practice
+
+206
+00:26:05,400 --> 00:26:07,040
+ that is the convention.
+
+207
+00:26:07,040 --> 00:26:15,000
+ So, you would find it here so, we are importing numpy as np and in the similar fashion what
+
+208
+00:26:15,000 --> 00:26:22,080
+ we are doing we are importing pandas as pd and these two would not be necessary as we
+
+209
+00:26:22,080 --> 00:26:27,520
+ proceed further in this course I would explain you that what are those things those are mainly
+
+210
+00:26:27,520 --> 00:26:38,480
+ used for plotting something ok. So, here what we have we have a comment that says load the
+
+211
+00:26:38,480 --> 00:26:44,320
+ ish data set ok. So, what we would like to do we would like to load the data and we have
+
+212
+00:26:44,320 --> 00:26:53,640
+ a url. So, in the url that link is provided where the data set was there some strange
+
+213
+00:26:53,640 --> 00:26:59,480
+ floating point values and corresponding to it class and now since we have gone through
+
+214
+00:26:59,480 --> 00:27:05,920
+ the website and we have learnt the details of the data what do we have we know the column
+
+215
+00:27:05,920 --> 00:27:12,520
+ names already ok. So, we have the column names which says sepal length sepal width petal
+
+216
+00:27:12,520 --> 00:27:18,000
+ length and petal width and the last one is species like each of those samples would belong
+
+217
+00:27:18,000 --> 00:27:30,320
+ to a species that is the label there and what we are doing using pd see this pd is the alias
+
+218
+00:27:30,320 --> 00:27:39,960
+ of pandas and read csv. Actually this file is that file if you actually download it if
+
+219
+00:27:39,960 --> 00:27:46,640
+ you actually download it you would be able to notice that it is a csv file and he from
+
+220
+00:27:46,640 --> 00:27:51,520
+ here also you would be able to notice that this is a csv csv means comma separated value.
+
+221
+00:27:51,520 --> 00:27:57,920
+ So, here 5.1 comma 3.1. So, all these values are comma separated. So, that is why that
+
+222
+00:27:57,920 --> 00:28:04,240
+ type of name that csv comma separated value you give the url the url where the data is
+
+223
+00:28:04,240 --> 00:28:10,320
+ provided and you provide the name of the columns that you have you already know about the data.
+
+224
+00:28:10,320 --> 00:28:33,360
+ So, if you write till this and if you actually execute it let us check what it gives. So,
+
+225
+00:28:33,360 --> 00:28:44,560
+ now it is somewhat understandable. So, what do we have we have the column description
+
+226
+00:28:44,560 --> 00:28:50,480
+ right there that first column is sepal length second is width petal length petal width and
+
+227
+00:28:50,480 --> 00:28:59,440
+ species and d 0 then 1 this 2 these are just row numbers and we have nice 3.5 these values
+
+228
+00:28:59,440 --> 00:29:05,360
+ corresponding to these things and we have a species corresponding to this id setosa.
+
+229
+00:29:05,360 --> 00:29:12,880
+ So, now you have a data set loaded with you. So, I will wait for 1 minute for anyone who
+
+230
+00:29:12,880 --> 00:29:37,120
+ has not caught up till this part and then we will jump to other things.
+
+231
+00:29:37,120 --> 00:29:55,360
+ So, here is the data set of the data set of the data set of the data set of the data set. So,
+
+232
+00:29:55,360 --> 00:30:24,160
+ here is the data set of the data set of the data set of the data set of the data set of the data
+
+233
+00:30:24,160 --> 00:30:39,360
+ set. So, I guess everybody is with me on the same page. So, now the thing is when we have
+
+234
+00:30:41,840 --> 00:30:47,520
+ this data set suppose this we have this data set that we wish to work on.
+
+235
+00:30:47,520 --> 00:30:57,760
+ So, suppose suddenly you wish to know the column names the columns that are present in the data.
+
+236
+00:30:58,880 --> 00:31:04,960
+ So, here you need to be familiar with one other like machine learning related term
+
+237
+00:31:05,600 --> 00:31:17,920
+ terminology that these things that are the values provided here are actually features
+
+238
+00:31:18,560 --> 00:31:25,120
+ and this thing is a label. You might be a little confused by now that what actually
+
+239
+00:31:25,120 --> 00:31:32,480
+ features and what actually label is if you are very much new in machine learning,
+
+240
+00:31:32,480 --> 00:31:40,400
+ but eventually you would learn so that is not a problem. So, suppose you wish to know the columns.
+
+241
+00:31:40,400 --> 00:31:48,800
+ So, column the columns are both feature names and label names. So, here you have the data set
+
+242
+00:31:48,800 --> 00:31:53,680
+ iris.df you click just put a dot right here and you write columns.
+
+243
+00:31:56,400 --> 00:32:02,320
+ And you execute that cell as I told you earlier using this play button or control enter and here
+
+244
+00:32:02,320 --> 00:32:08,320
+ you would have the column names. So, we have all the column names.
+
+245
+00:32:11,680 --> 00:32:22,320
+ And here as we proceed further you would be able to learn that this whole data set this whole data
+
+246
+00:32:22,320 --> 00:32:29,440
+ set this iris data set it is used mainly for classification tasks. So, what classification
+
+247
+00:32:29,440 --> 00:32:35,360
+ tasks like you have already seen there are three different kind of flowers and corresponding to
+
+248
+00:32:35,360 --> 00:32:40,720
+ those three different kind of flowers sepal length, sepal width, petal length and petal width values
+
+249
+00:32:40,720 --> 00:32:50,880
+ are provided. So, and as I told you the other terminology that something there exists called
+
+250
+00:32:50,880 --> 00:32:56,480
+ features and something there exists called label. So, all these four values like sepal length,
+
+251
+00:32:56,480 --> 00:33:01,680
+ sepal width and petal length, petal width these are features and corresponding to that the label
+
+252
+00:33:01,680 --> 00:33:13,200
+ species is provided. Now, suppose you do not know how many different species are corresponding to
+
+253
+00:33:13,200 --> 00:33:21,200
+ machine learning problem how many different labels are provided suppose there were four labels
+
+254
+00:33:22,480 --> 00:33:30,000
+ provided. So, we just wish to know that how many labels are there corresponding to which
+
+255
+00:33:30,000 --> 00:33:39,680
+ we need to do the classification. So, we have a certain code here to click to get to a new code
+
+256
+00:33:39,680 --> 00:33:44,640
+ cell what you can do you can click code here or you can when you are present here like this
+
+257
+00:33:44,640 --> 00:33:50,480
+ cursor is blinking you press escape and B. So, a new code would be there and you just
+
+258
+00:33:51,680 --> 00:34:01,360
+ write your code here. So, what do we have here? So,
+
+259
+00:34:04,000 --> 00:34:12,240
+ like even with English like language understanding you can understand it like we have written
+
+260
+00:34:12,240 --> 00:34:21,440
+ irish df. So, this irish df has all the data set and inside of it we are writing what species.
+
+261
+00:34:21,440 --> 00:34:30,480
+ So, you can intuitively understand that the species of this irish df this gives us the species that
+
+262
+00:34:30,480 --> 00:34:37,280
+ are provided like species you remember the names the isetosa iris fussy color all those things
+
+263
+00:34:37,280 --> 00:34:46,960
+ and what we are doing and on those values we just wish to have the unique values dot unique.
+
+264
+00:34:47,600 --> 00:34:52,320
+ So, that is a function that would give from all those values the unique one. So, if you
+
+265
+00:34:52,320 --> 00:34:59,520
+ actually executed what is what this is giving irisetosa iris fussy color iris virginica.
+
+266
+00:34:59,520 --> 00:35:08,880
+ So, these 3 values are provided. So, I will wait for 2 minutes for everybody to catch up till this
+
+267
+00:35:08,880 --> 00:35:24,800
+ part.
+
+268
+00:35:38,880 --> 00:35:58,800
+ So,
+
+269
+00:36:09,200 --> 00:36:20,000
+ I hope everybody has proceeded till this far. So, I hope we can like proceed further.
+
+270
+00:36:22,080 --> 00:36:30,880
+ So, just to give you a recap we imported these 2 important libraries numpy np and pandas and we
+
+271
+00:36:32,720 --> 00:36:39,440
+ from this website where this machine learning data set is provided and understanding the data set
+
+272
+00:36:39,440 --> 00:36:45,200
+ from the website reading some going through some documents we understand these some of
+
+273
+00:36:45,200 --> 00:36:50,960
+ these column names which should be later be recognized with the terms features and level.
+
+274
+00:36:50,960 --> 00:37:02,400
+ We are getting the data from this read csv command from this pandas pd library because those are
+
+275
+00:37:02,400 --> 00:37:09,280
+ comma separated values. So, all the values are separated by comma and we are getting the column
+
+276
+00:37:09,280 --> 00:37:21,520
+ names and we are getting the unique values that are present in the label. So, now getting back here
+
+277
+00:37:23,440 --> 00:37:32,960
+ what we need to do we need to learn a few basics related to numpy and pandas. So,
+
+278
+00:37:38,960 --> 00:37:46,160
+ so after we learn a few basics we will get back to that problem that we are handling
+
+279
+00:37:46,160 --> 00:37:57,680
+ regarding this iris data set because some of this some of this basic numpy and pandas operation
+
+280
+00:37:57,680 --> 00:38:05,360
+ will be necessary for you to understand the things that on high level for machine learning is used.
+
+281
+00:38:07,760 --> 00:38:16,880
+ So, here what we have we have the first example of numpy. So, remember we had in the last class
+
+282
+00:38:16,880 --> 00:38:24,800
+ we learned something called list. So, intuitively you can understand the list means a lot of maybe
+
+283
+00:38:24,800 --> 00:38:37,440
+ similar or dissimilar things. So, I guess in the previous example previous day I gave this
+
+284
+00:38:37,440 --> 00:38:45,120
+ list example list of the nano like all the fruits you need to buy from the grocery store
+
+285
+00:38:49,200 --> 00:38:57,280
+ and says things like that whatsoever. So, and you can understand in the similar manner we can
+
+286
+00:38:57,280 --> 00:39:07,760
+ create obviously create a list like this that will have all the numbers that we wish to work with.
+
+287
+00:39:11,520 --> 00:39:26,160
+ But this list things are somewhat slow somewhat slow this lists are. So, what we do we switch to
+
+288
+00:39:28,240 --> 00:39:36,720
+ arrays. So, not just because of slow these arrays have a lot of upper hand compared to
+
+289
+00:39:36,720 --> 00:39:43,520
+ lists because they provide us a lot of extra facilities that you would be able to understand
+
+290
+00:39:43,520 --> 00:39:48,960
+ eventually as we proceed further and as you develop your machine learning knowledge.
+
+291
+00:39:51,040 --> 00:40:01,520
+ So, what do we have here in this first line with the name that is a variable array 1d
+
+292
+00:40:01,520 --> 00:40:12,560
+ is equals to np dot array and this parenthesis inside this parenthesis like
+
+293
+00:40:16,080 --> 00:40:23,520
+ this is a parenthesis and this is a bracket and this is a curly brace. So,
+
+294
+00:40:24,720 --> 00:40:33,520
+ keep in mind do not be confused how the syntax is. So, if you mess up in this syntax. So,
+
+295
+00:40:33,520 --> 00:40:40,640
+ you will get a syntax error here. So, in this np dot array that means you are trying to create a
+
+296
+00:40:40,640 --> 00:40:46,800
+ numpy array with these numbers what you have you have inside this parenthesis
+
+297
+00:40:48,240 --> 00:40:57,840
+ a bracket and in that bracket you have some numbers. So, this is just an array full of numbers 1, 2,
+
+298
+00:40:57,840 --> 00:41:05,440
+ 3, 4, 5, 1 dimensional. So, you have a collection of numbers you can understand it like this you
+
+299
+00:41:05,440 --> 00:41:14,800
+ have a collection of numbers 1, 2, 3, 4, 5. Now, if you go to the second line that is written
+
+300
+00:41:14,800 --> 00:41:27,360
+ array 2d here also you can witness the same syntax np dot array and there is a parenthesis.
+
+301
+00:41:28,560 --> 00:41:32,640
+ This parenthesis I am talking about this start of the parenthesis and at the end of the line
+
+302
+00:41:32,640 --> 00:41:42,800
+ it is closing and here what do we have we have a 2d array. So, if you are not familiar with the term
+
+303
+00:41:42,800 --> 00:41:51,680
+ 2d array. So, you must be familiar with this term matrix. So, 2d array is essentially a matrix
+
+304
+00:41:51,680 --> 00:42:01,920
+ these parenthesis and brackets these are just fancy ways of writing a matrix like in a computerized
+
+305
+00:42:01,920 --> 00:42:12,080
+ way of writing a matrix. So, and here like let me give you let me explain this theoretically,
+
+306
+00:42:12,080 --> 00:42:16,640
+ but when actually you would execute the code you would be able to understand that what these things
+
+307
+00:42:16,640 --> 00:42:25,760
+ are. So, here the whole thing the whole matrix is enclosed by this bracket this bracket that
+
+308
+00:42:25,760 --> 00:42:34,800
+ is highlighted and it is closed at the end and each individual row each individual row of the
+
+309
+00:42:34,800 --> 00:42:41,680
+ matrix is enclosed in another bracket like 1, 2, 3 this is the first row that is enclosed
+
+310
+00:42:41,680 --> 00:42:49,280
+ in a bracket then 4, 5, 6 that is the second row that is enclosed in another bracket and
+
+311
+00:42:50,320 --> 00:42:56,640
+ in the same manner 7, 8, 9. So, you would be very much clear when you when we actually
+
+312
+00:42:58,320 --> 00:43:05,440
+ execute this. So, if you run this cell like I would encourage you if you have not already like
+
+313
+00:43:07,360 --> 00:43:15,360
+ coded this thing in the blank notebook. So, that is the first thing you should code that in the
+
+314
+00:43:15,360 --> 00:43:23,360
+ blank notebook by yourself and if you haven't already. So, you can copy paste it and when you
+
+315
+00:43:23,360 --> 00:43:32,160
+ actually execute it you get something like this. So, 1, 2, 3, 4, 5 list of numbers and 2D array now
+
+316
+00:43:32,160 --> 00:43:37,920
+ it is somewhat looking like a matrix isn't it. So, I hope all of you are familiar with what a
+
+317
+00:43:37,920 --> 00:43:44,240
+ matrix is. So, this is somewhat looking like a matrix still not properly how we write matrix in
+
+318
+00:43:44,240 --> 00:43:53,840
+ our mathematics in with pen and paper, but yeah somewhat like and that matrix is essentially
+
+319
+00:43:53,840 --> 00:43:59,840
+ let me check if I have a picture. So, this is the matrix that we are very much familiar with
+
+320
+00:43:59,840 --> 00:44:09,200
+ in our mathematics that same thing is written there just I told you that enclose this first row
+
+321
+00:44:10,400 --> 00:44:16,160
+ in a bracket the second row also in a bracket and third row also in a bracket and separate those
+
+322
+00:44:16,160 --> 00:44:22,720
+ brackets using commas and this whole thing is enclosed the whole matrix is enclosed in another
+
+323
+00:44:22,720 --> 00:44:35,680
+ bracket that is they are also the same technique is used. So, just 30 seconds I would be waiting
+
+324
+00:44:37,440 --> 00:44:43,680
+ for everybody to complete this part to get the understanding of 1D array and 1D array is also
+
+325
+00:44:43,680 --> 00:44:51,360
+ known as a vector. So, 1D array or vector and 2D array 2 dimensional array or matrix just to be
+
+326
+00:44:51,360 --> 00:45:07,280
+ familiar with please execute this cell.
+
+327
+00:45:21,360 --> 00:45:47,440
+ So, I hope we can proceed further. So, coming down to this coming down to the next cell what
+
+328
+00:45:47,440 --> 00:45:54,240
+ do we have like intuitively. So, if you are if you do not even belong to like coding background
+
+329
+00:45:54,240 --> 00:45:59,680
+ what I would encourage you I would encourage you to understand the coding things that are
+
+330
+00:46:00,720 --> 00:46:08,960
+ like with analogy to natural language like English like language. So, here what this thing print
+
+331
+00:46:09,760 --> 00:46:18,000
+ shape and array 2D dot shape. So, the 2D array that we have created we just want to know the shape
+
+332
+00:46:18,000 --> 00:46:29,040
+ of it the shape of it. So, here you can understand that how many rows and how many columns are present
+
+333
+00:46:29,040 --> 00:46:39,520
+ in that matrix or 2 dimensional array. So, we can understand that there are 3 rows 1 row 2 row
+
+334
+00:46:39,520 --> 00:46:46,720
+ 3rd row rows are enclosed by brackets. So, there are 3 rows and corresponding to those 3 rows 3
+
+335
+00:46:46,720 --> 00:46:56,720
+ columns. So, what this should actually give us array 2D dot shape it should be 3 and 3. So,
+
+336
+00:46:56,720 --> 00:47:07,760
+ it is 3 comma 3 this is the type of input. So, we have 3 rows and 3 columns that is the
+
+337
+00:47:10,400 --> 00:47:24,160
+ output here and coming to the second line print data type array 2D dot D type D type means data type.
+
+338
+00:47:24,160 --> 00:47:34,960
+ So, the things that are present in the array 2D what is their data type. So,
+
+339
+00:47:34,960 --> 00:47:43,440
+ dot D type gives you the data type of the elements and then what is this number of dimensions.
+
+340
+00:47:43,440 --> 00:47:51,360
+ So, how many dimensions like of what dimension that particular array is. So, I told you about
+
+341
+00:47:51,360 --> 00:47:58,080
+ this 1 dimensional array or vector then that is dimension is 1 then I told you about this
+
+342
+00:47:58,080 --> 00:48:06,400
+ 2 dimensional array or matrix. So, the dimension of a matrix is 2. So, you would get this value.
+
+343
+00:48:06,400 --> 00:48:14,720
+ So, I would encourage you to if you have not actually written this all by yourself. So,
+
+344
+00:48:14,720 --> 00:48:23,920
+ you can what you can do you can copy and paste and you can check its execution in the blank
+
+345
+00:48:23,920 --> 00:48:34,960
+ new book that you are working out. So, let us wait just for 30 seconds and then we will be back to
+
+346
+00:48:34,960 --> 00:48:46,240
+ 3D arrays.
+
+347
+00:49:04,960 --> 00:49:29,520
+ So, I hope everybody has understood the 1 dimensional arrays or vectors and 2 dimensional
+
+348
+00:49:29,520 --> 00:49:41,840
+ arrays and matrices. So, we would like to jump to 3D arrays. So, for understanding 3D arrays what
+
+349
+00:49:41,840 --> 00:49:50,000
+ I would suggest you I would suggest you to think about Rubik's cube. So, a Rubik's cube is very
+
+350
+00:49:50,000 --> 00:50:00,880
+ much of a good example of a 3D array. So, as I was saying that like when we have a Rubik's cube
+
+351
+00:50:01,520 --> 00:50:18,320
+ we can imagine that as a 3D array made of 3 2D arrays. So, what a Rubik's cube necessarily is
+
+352
+00:50:19,600 --> 00:50:33,680
+ a 3D array composed of 3 2D arrays. So, one on top of the other. So, 3 matrix like things
+
+353
+00:50:33,680 --> 00:50:45,600
+ on top of each other is forming a Rubik's cube. So, what we are doing in the same manner we are
+
+354
+00:50:45,600 --> 00:50:53,280
+ creating the 3D array. So, array is equals to NP dot array. So, we are putting these values.
+
+355
+00:50:53,280 --> 00:51:01,200
+ So, here what you see 1 2 3 that is itself a row and 4 5 6 that is another row of a matrix that
+
+356
+00:51:01,200 --> 00:51:12,400
+ matrix is enclosed till this part this highlighted part is a matrix a 2D array and another one just
+
+357
+00:51:12,400 --> 00:51:21,440
+ right beside it there is this is other 2D array and the whole thing the whole thing is enclosed
+
+358
+00:51:21,440 --> 00:51:30,320
+ the whole 3D array is enclosed by another bracket. So, if anybody is actually very much new to
+
+359
+00:51:30,320 --> 00:51:37,680
+ programming I would like encourage them to be very much cautious regarding these brackets.
+
+360
+00:51:37,680 --> 00:51:47,280
+ So, these brackets form how like what dimensional array you are actually creating and after these
+
+361
+00:51:47,280 --> 00:51:57,760
+ brackets inside though that parenthesis of NP dot array function what we are writing after the array
+
+362
+00:51:57,760 --> 00:52:04,240
+ we are putting a comma and we are writing D type int 32. So, if you remember from the previous cell
+
+363
+00:52:04,880 --> 00:52:11,200
+ the data type was integer 64. So, that is by default given integer 64,
+
+364
+00:52:11,200 --> 00:52:22,960
+ but now we do not want integer 64 we want integer 32. So, this is the bit number actually 32 is the
+
+365
+00:52:22,960 --> 00:52:32,400
+ number of bits. So, only 4 bytes will be reserved and for that purpose 8 bytes will be reserved.
+
+366
+00:52:32,400 --> 00:52:43,200
+ So, here so, please write the code for the 3D array in the blank notebook that you are
+
+367
+00:52:43,200 --> 00:52:51,520
+ using and if you get any error writing it by yourself then copy, but first please try to
+
+368
+00:52:51,520 --> 00:52:59,600
+ write it all by yourself. And here now the name of the array 3D array
+
+369
+00:52:59,600 --> 00:53:06,640
+ and we are checking the data type of it see the data type it is providing is integer 32.
+
+370
+00:53:09,200 --> 00:53:34,800
+ And check the dimension also.
+
+371
+00:53:39,200 --> 00:54:07,440
+ See when I check ARR dot end beam it is giving me 3. So, I will wait for 30 seconds to for
+
+372
+00:54:07,440 --> 00:54:21,200
+ everybody to catch up till now.
+
+373
+00:54:37,440 --> 00:54:55,200
+ So,
+
+374
+00:55:07,440 --> 00:55:21,200
+ so.
+
+375
+00:55:37,760 --> 00:56:02,560
+ So, now proceeding further I would request you to come to this cell that says something
+
+376
+00:56:02,560 --> 00:56:18,320
+ like this print first row of 2D array. If you actually remember the shape of the 2D array.
+
+377
+00:56:31,120 --> 00:56:34,640
+ If you actually remember the shape of the 2D array it looked something like this.
+
+378
+00:56:35,760 --> 00:56:46,480
+ So, this first thing was first row and remember one thing in Python numbering starts with 0.
+
+379
+00:56:46,480 --> 00:56:54,080
+ So, this row is indicated by 0, this row is indicated by 1 and this row is indicated by 2.
+
+380
+00:56:57,120 --> 00:57:02,080
+ And here if you come at the first statement first row of 2D array is
+
+381
+00:57:04,720 --> 00:57:14,240
+ inside that bracket what is what you need to provide row and column. So, now in place of row
+
+382
+00:57:15,600 --> 00:57:27,840
+ what is written 0. So, what I want I want the 0th row what I want I want the 0th row. And
+
+383
+00:57:29,200 --> 00:57:37,280
+ in column column columns place giving giving the column just like that gives that means all the
+
+384
+00:57:37,280 --> 00:57:47,760
+ columns. So, that means all the columns and in the second statement if it is it is written
+
+385
+00:57:47,760 --> 00:58:02,480
+ first column of 2D array 2D colon then 0. So, at place of row a column is given
+
+386
+00:58:04,160 --> 00:58:13,040
+ colon is given that means consider all the rows and 0 that means only the 0th column.
+
+387
+00:58:13,040 --> 00:58:23,280
+ So, 0th column is 147 first column is 258 and the second column is 369. So, that is given here.
+
+388
+00:58:25,040 --> 00:58:34,640
+ So, I would request you request everyone to catch up till this part and play with these indices.
+
+389
+00:58:35,360 --> 00:58:42,560
+ Instead of 0 try putting try giving 1 and try giving 2 and check what happens and around this
+
+390
+00:58:42,560 --> 00:58:48,800
+ colon also I would request you to give values like 1, 2 play with it by then. So, we will meet after
+
+391
+00:58:48,800 --> 00:58:58,400
+ this short break.
+
+392
+00:59:10,400 --> 00:59:28,000
+ So, I will see you in the next video. Thank you.
+
+393
+00:59:41,360 --> 00:59:50,000
+ Thank you.
+
+394
+01:00:10,400 --> 01:00:20,000
+.
+
+395
+01:00:40,640 --> 01:00:52,000
+.
+
+396
+01:01:10,400 --> 01:01:20,000
+ Thank you.
+
+397
+01:01:40,400 --> 01:01:50,000
+ Thank you.
+
+398
+01:02:10,400 --> 01:02:20,000
+ Thank you.
+
+399
+01:02:40,400 --> 01:02:50,000
+ Thank you.
+
+400
+01:03:10,400 --> 01:03:20,000
+ Thank you.
+
+401
+01:03:40,400 --> 01:04:04,000
+ Thank you.
+
+402
+01:04:10,400 --> 01:04:20,000
+ Thank you.
+
+403
+01:04:40,400 --> 01:04:54,000
+ Thank you.
+
+404
+01:05:10,400 --> 01:05:26,000
+ Thank you.
+
+405
+01:05:26,000 --> 01:05:36,000
+ Thank you.
+
+406
+01:05:36,000 --> 01:05:45,600
+ Thank you.
+
+407
+01:05:57,600 --> 01:06:01,600
+ Okay. So, welcome back everybody. Am I audible?
+
+408
+01:06:01,600 --> 01:06:16,960
+ Super, super fine. So, I hope I am audible. So, so far we have learned arrays of one dimension,
+
+409
+01:06:16,960 --> 01:06:25,440
+ two dimension and three dimension. Now, suppose what we want to do, we want to create a matrix
+
+410
+01:06:25,440 --> 01:06:32,480
+ like this. That is, I hope that is clearly visible on your screen, this matrix, right? That has the
+
+411
+01:06:32,480 --> 01:06:41,120
+ first row as 1.5, 2.5, 3.5, second row as 4.5, 5.5 and 6.5 and the third row as 7.5, 8.5 and 9.5.
+
+412
+01:06:41,120 --> 01:06:46,880
+ So, we have the picture of the matrix clear on your hand. So, I need to scroll down because
+
+413
+01:06:49,200 --> 01:06:57,360
+ the visual space is like quite limited. So, here what we are doing, we are creating this matrix.
+
+414
+01:06:57,360 --> 01:07:06,320
+ So, this is the name we are giving to the matrix says float array. And what we are doing, NP that
+
+415
+01:07:06,320 --> 01:07:15,040
+ numpy as I told you before that numpy has a lot of nice functions that we can be using while
+
+416
+01:07:15,040 --> 01:07:21,520
+ manipulating a lot of numbers. So, here one of the example is like this, np.arrange.
+
+417
+01:07:26,880 --> 01:07:29,600
+ So, what we are doing, we are arranging number
+
+418
+01:07:31,840 --> 01:07:38,400
+ from a certain value to a certain value. So, if you actually look at the first matrix,
+
+419
+01:07:39,440 --> 01:07:44,160
+ you are able to see the value starts from 1.5 and ends at 9.5.
+
+420
+01:07:46,000 --> 01:07:58,480
+ So, here what we have written, 1.5 at the start then a comma and then 10.5. So,
+
+421
+01:07:58,480 --> 01:08:06,720
+ we are starting from 1.5 and ending at 10.5. So, here actually instead of you need to notice this,
+
+422
+01:08:06,720 --> 01:08:21,360
+ instead of 9.5 we are giving 10.5. Because in the for loop also you have noticed if we are
+
+423
+01:08:21,360 --> 01:08:29,760
+ giving the range from 0 through 10, it goes from 0 to 9. So, you have to be careful about that
+
+424
+01:08:29,760 --> 01:08:35,360
+ and data type as floating point 64. And then what we are doing, intuitively you can understand
+
+425
+01:08:35,360 --> 01:08:42,880
+ dot reshape 3 comma 3. Because the shape of this matrix or two-dimensional array or two-dimensional
+
+426
+01:08:42,880 --> 01:08:50,720
+ vector also you can say is 3 cross 3; that means, 3 rows and 3 columns. So, we are arranging these
+
+427
+01:08:50,720 --> 01:09:01,040
+ numbers from 1.5 to 10.5 and we are reshaping it to 3.3 comma 3. And we are printing the
+
+428
+01:09:01,040 --> 01:09:09,120
+ floating point array. So, it would look something like this. So, there are actually 9 elements. So,
+
+429
+01:09:09,120 --> 01:09:30,720
+ 9 elements are reshaped into 3 comma 3 size array. So, let us play with this just for a single minute.
+
+430
+01:09:31,040 --> 01:09:53,520
+ So, suppose I am giving here 1 then 8. Let us give 1 then 9. And let us remove this reshape
+
+431
+01:09:54,480 --> 01:10:08,720
+ function and let us print it. Check what it gives. It gives me from 1 through 8 all these numbers.
+
+432
+01:10:08,720 --> 01:10:19,440
+ And there is a dot right beside every number. So, this dot actually means that 8.0. So,
+
+433
+01:10:19,440 --> 01:10:24,080
+ floating point because we have given the d type; that means, data type as floating point.
+
+434
+01:10:24,080 --> 01:10:30,160
+ If we change the floating 64 to integer 64 then this dot would disappear.
+
+435
+01:10:32,080 --> 01:10:39,520
+ I hope this thing will clear all your doubts if you were having anything by now. So, how many
+
+436
+01:10:39,520 --> 01:10:48,880
+ elements do we have? We have 8 elements. Now, suppose we wish to use this reshape function.
+
+437
+01:10:52,080 --> 01:11:01,840
+ So, using this reshape function on top of an array that has 8 elements, what shape we can derive?
+
+438
+01:11:04,560 --> 01:11:11,680
+ Like a matrix of how many rows and how many columns. We can give this like 4 comma 2.
+
+439
+01:11:12,560 --> 01:11:19,200
+ Now, what 4 comma 2 would mean? Like 4 rows and 2 columns. So, we are writing a reshape type of
+
+440
+01:11:19,200 --> 01:11:26,800
+ thing reshape R E S H P E reshape 4 comma 2 the intended value. So, if we execute this.
+
+441
+01:11:32,400 --> 01:11:45,280
+ So, I have written the spelling round. So, are we getting a matrix of 4 rows and 2 columns?
+
+442
+01:11:46,880 --> 01:11:55,120
+ So, think about this if we write 4 comma 3 here would that be successful?
+
+443
+01:11:57,520 --> 01:12:04,080
+ I want you to think for think this for a while like for 10 seconds just think about it if we
+
+444
+01:12:04,080 --> 01:12:24,400
+ give the reshape to 4 comma 3. Those who have guessed like this would be wrong
+
+445
+01:12:24,400 --> 01:12:32,720
+ are correct because 4 comma 3 that would mean a row of a matrix of 4 rows and 3 columns that would
+
+446
+01:12:32,720 --> 01:12:38,960
+ have 12 elements. So, we actually do not have 12 elements. So, it would run into an error.
+
+447
+01:12:40,080 --> 01:12:50,640
+ But what we can do? We can write 2 comma 4 right 2 rows and 4 columns.
+
+448
+01:12:54,400 --> 01:13:03,760
+ And when you are specifying a row size like given here with 2 column size would automatically
+
+449
+01:13:03,760 --> 01:13:10,480
+ can automatically be determined. You can understand that corresponding to a specific row size column
+
+450
+01:13:10,480 --> 01:13:17,520
+ size would be like already known you cannot put arbitrarily value right there. So, sometimes
+
+451
+01:13:17,520 --> 01:13:21,840
+ if you go through machine learning code you would encounter something like negative 1.
+
+452
+01:13:21,840 --> 01:13:27,120
+ So, what negative 1 does is essentially the same thing as explicitly mentioning the
+
+453
+01:13:29,600 --> 01:13:36,960
+ value. So, and one other thing you can do with this 8 element
+
+454
+01:13:38,240 --> 01:13:44,240
+ array. So, 2 comma 2 comma 2 if you write it like this and execute it what you would have
+
+455
+01:13:45,520 --> 01:13:52,480
+ just check this out what we have right try understanding the brackets. Those who have
+
+456
+01:13:52,480 --> 01:14:00,640
+ guessed correctly that we are getting a 3D matrix 3 dimensional matrix are correct. So,
+
+457
+01:14:05,440 --> 01:14:12,000
+ so this concept this reshaping concept would be important for you when you are working with
+
+458
+01:14:12,000 --> 01:14:18,160
+ data sets like like when you would be learning deep learning and convolutional neural networks
+
+459
+01:14:18,160 --> 01:14:26,400
+ all those thing then this like when you have a grayscale image that would be considered as a
+
+460
+01:14:26,400 --> 01:14:34,800
+ 2D 2 dimensional arrays with all those grayscale values and when we are talking about a an RGB image.
+
+461
+01:14:34,800 --> 01:14:42,000
+ So, for 3 different R, G and B 3 channels you have separate matrices of values. So,
+
+462
+01:14:42,000 --> 01:14:49,200
+ that would be considered as a 3D array. So, at that time you maybe need to use this reshape
+
+463
+01:14:49,200 --> 01:15:00,240
+ kind of thing and there a lot of time this negative 1 is used. So, what else you can do
+
+464
+01:15:02,000 --> 01:15:09,040
+ you can create a 0 arrays. So, now I hope I have given you the flavor of coding like how to understand.
+
+465
+01:15:09,040 --> 01:15:17,920
+ So, 0 array np dot 0s. So, you wish to make a an array full of 0s. So, 0 0 0 0 0 0 0 something
+
+466
+01:15:17,920 --> 01:15:28,720
+ like that and of what shape say 2 comma 3 shape and what would be the data type of those elements
+
+467
+01:15:28,720 --> 01:15:40,560
+ that is integer 64 ok in the same manner 1 array. So, array full of 1s ok. So, np dot 1s 2 comma 3
+
+468
+01:15:40,560 --> 01:15:48,000
+ of that same shape, but all the elements are now 1 instead of 0 and what is this full array. So,
+
+469
+01:15:48,000 --> 01:16:00,640
+ 2 of 2 comma 2 shape, but all the elements would be 99 ok and you can print those things. So,
+
+470
+01:16:00,640 --> 01:16:06,080
+ I would encourage you to please do this coding all by yourself. So, you would be able to understand
+
+471
+01:16:06,080 --> 01:16:13,920
+ I am printing the 0 array that has 2 rows and 3 columns all 0. So, please code it with me please
+
+472
+01:16:13,920 --> 01:16:22,160
+ or at least copy it and execute in your blank notebook to check the things that are going on
+
+473
+01:16:24,560 --> 01:16:45,680
+ 1 array and full array ok. So, let me wait for 1 minute.
+
+474
+01:16:54,560 --> 01:17:17,600
+ So, I hope everybody is done now we will jump back to the problem that we were tackling at the
+
+475
+01:17:17,600 --> 01:17:31,280
+ beginning of dot that irish data set.
+
+476
+01:17:48,080 --> 01:18:08,000
+ So, now in this cell what we are doing we had in irish data frame if you remember something
+
+477
+01:18:08,000 --> 01:18:16,560
+ called sepal length. So, the column that contains the sepal length for all those 150 samples we are
+
+478
+01:18:16,560 --> 01:18:23,040
+ taking that and we are converting that to a numpy array np dot array and we are in this
+
+479
+01:18:23,040 --> 01:18:32,240
+ variable what we are getting that array sepal length and in the same manner sepal width ok.
+
+480
+01:18:32,960 --> 01:18:42,960
+ So, please code this and what we are doing we are calculating the mean sepal length from all
+
+481
+01:18:42,960 --> 01:18:51,200
+ those 150 samples using this function np dot mean. So, as I was saying that compared to list
+
+482
+01:18:52,080 --> 01:18:57,280
+ arrays provide the numpy arrays provide a lot of facilities one of the some of those facilities
+
+483
+01:18:57,280 --> 01:19:04,800
+ you have already come across like reshaping like arranging value from in between ranges
+
+484
+01:19:04,800 --> 01:19:10,960
+ and now this is mean. So, you are getting the mean np dot mean. So, you do not need to explicitly
+
+485
+01:19:10,960 --> 01:19:16,400
+ write a program of calculating mean from all the values that we have what you can do you
+
+486
+01:19:16,400 --> 01:19:24,400
+ can just write this np dot mean and you would have a mean value and np dot std you can understand
+
+487
+01:19:24,400 --> 01:19:30,960
+ this is the standard deviation ok. So, what we are doing we are calculating the mean and standard
+
+488
+01:19:30,960 --> 01:19:42,720
+ deviation of sepal length and sepal width ok. So, we what we are printing we are printing the
+
+489
+01:19:44,400 --> 01:19:50,800
+ mean of sepal length and standard deviation of sepal width. So, this is coming something like this.
+
+490
+01:19:50,800 --> 01:19:58,960
+ So, this is like some linear algebra type of things that can be performed with numpy.
+
+491
+01:19:58,960 --> 01:20:14,240
+ So, let us wait for 30 seconds for everybody to catch up.
+
+492
+01:20:28,960 --> 01:20:52,640
+ So, proceeding further what we have we are doing some operation that has the we have already had
+
+493
+01:20:52,640 --> 01:20:59,600
+ all the sepal lengths in this variable right sepal length and for all the values in this
+
+494
+01:20:59,600 --> 01:21:09,760
+ sepal length variable which are greater than mean sepal length of 5.84 would be marked as true
+
+495
+01:21:09,760 --> 01:21:15,760
+ right here and the remaining would be false. So, all these operations are done using these
+
+496
+01:21:15,760 --> 01:21:23,120
+ facilities see just by using this greater than sign we can achieve this and we are printing
+
+497
+01:21:23,680 --> 01:21:34,880
+ there those large sepal. So, these particular flowers would have like already have large
+
+498
+01:21:34,880 --> 01:21:45,120
+ sepal lengths ok. I would request you to get the picture clear. So, at the so please code this
+
+499
+01:21:45,120 --> 01:21:52,560
+ on your own or copy paste and check out the output. So, by the time I would recapitulate a few things.
+
+500
+01:21:52,560 --> 01:21:59,760
+ So, what you had you had flowers 150 flowers and from those flowers you had the sepal lengths
+
+501
+01:22:02,080 --> 01:22:10,640
+ and you had it in a data frame of different columns. So, you had this column named sepal length and
+
+502
+01:22:12,160 --> 01:22:17,520
+ what we calculated we calculated the mean of all those values. So, the mean is saved in this
+
+503
+01:22:17,520 --> 01:22:24,800
+ variable mean sepal length and all the values that are present in that column if those values are
+
+504
+01:22:24,800 --> 01:22:31,440
+ greater than this mean sepal length then we are saving it in large sepal variable ok and we are
+
+505
+01:22:31,440 --> 01:22:39,040
+ printing it. So, it would have some true and false values true for large sepal that are greater than
+
+506
+01:22:39,040 --> 01:22:46,560
+ the mean and false for small sepal that are lower than the mean. And we are printing flowers with
+
+507
+01:22:46,560 --> 01:22:53,280
+ large sepal in the sepal length putting this large sepal value. So, here these are the
+
+508
+01:22:53,920 --> 01:22:59,440
+ large sepal you can check all these values are greater than 5.84 that was actually the mean
+
+509
+01:22:59,440 --> 01:23:12,960
+ sepal length ok. So, now here some pandas operations are described. So, Irish DF try to get the picture
+
+510
+01:23:12,960 --> 01:23:18,960
+ clear in your head Irish DF this part this had all the data set the big data set that you
+
+511
+01:23:19,600 --> 01:23:28,640
+ downloaded no not downloaded using the URL you had the data ok. Now, there is this bracket
+
+512
+01:23:28,640 --> 01:23:36,640
+ and inside this bracket what we are writing Irish DF and sepal length. So, you have all the sepal
+
+513
+01:23:36,640 --> 01:23:45,440
+ length and if those sepal lengths on those rows is greater than the mean sepal length then show me
+
+514
+01:23:46,160 --> 01:23:54,800
+ those rows from this Irish DF whole data set. So, here you see this 50, 51, 52 all these values
+
+515
+01:23:57,280 --> 01:24:07,520
+ then these values like 70 rows out of 150 rows have like a sepal length that is greater than
+
+516
+01:24:07,520 --> 01:24:27,600
+ the mean of those values ok. So, in this manner you will have it let me wait for 30 seconds for everybody to code it.
+
+517
+01:24:37,520 --> 01:24:55,600
+ So,
+
+518
+01:25:07,040 --> 01:25:13,200
+ ok I hope everybody has done till this part. So, here what we would be witnessing would be
+
+519
+01:25:13,200 --> 01:25:18,960
+ witnessing a few facilities provided by this pandas library. So, you have the whole Irish
+
+520
+01:25:18,960 --> 01:25:25,680
+ data set in this Irish DF data frame and what you are doing you are using this describe function
+
+521
+01:25:27,840 --> 01:25:34,800
+ using this describe function to describe intuitively you can understand describe all those
+
+522
+01:25:34,800 --> 01:25:41,600
+ things. So, you have this four columns and I told you that there are count 150 means 150
+
+523
+01:25:45,120 --> 01:25:51,040
+ samples are there and you have the mean corresponding to all those columns standard deviation all those
+
+524
+01:25:51,040 --> 01:26:00,320
+ things ok. And then what we are doing we are exploring some more pandas facilities here what
+
+525
+01:26:00,320 --> 01:26:09,600
+ we have write we have write dot head; that means, the first 5 values let me see ok. So,
+
+526
+01:26:09,600 --> 01:26:17,840
+ with this head what we are getting we are getting the first 5 check this out the row index 0, 1,
+
+527
+01:26:17,840 --> 01:26:28,160
+ 2, 3, 4; that means, 5 total 5 values are being shown here ok. And this is you probably have
+
+528
+01:26:28,160 --> 01:26:34,160
+ already understood see in the data frame also if you give a starting index and an ending index
+
+529
+01:26:34,160 --> 01:26:40,480
+ you would able to you would be able to get those values. So, here I hope you would be able to
+
+530
+01:26:40,480 --> 01:26:52,880
+ understand when we are giving 0 colon 10 from 0 through 9 we would be able to see ok. So,
+
+531
+01:26:54,560 --> 01:27:02,000
+ and here print the info we are printing the info that what whatever is present there and
+
+532
+01:27:02,000 --> 01:27:09,840
+ data types ok. So, some info would be there like range index 150 because 150 samples are here and
+
+533
+01:27:09,840 --> 01:27:18,720
+ entries starting from 0 through 149 ok. And when we are checking the d types corresponding to the
+
+534
+01:27:18,720 --> 01:27:24,880
+ data frames what we are getting the sample length is floating point 64 all these things are floating
+
+535
+01:27:24,880 --> 01:27:30,880
+ point 64 and species since it is in a string like format not integer not floating point
+
+536
+01:27:30,880 --> 01:27:39,280
+ that is why its d type is given as object. And there are total 150 values and null count means
+
+537
+01:27:40,000 --> 01:27:46,240
+ all the values are completely fulfilled in the data frame. So, none of the values are empty
+
+538
+01:27:46,240 --> 01:27:52,800
+ or given null or NAN not a number those type of things and how much memory it is using and all
+
+539
+01:27:52,800 --> 01:28:00,880
+ those things ok. And suppose we wish to get specific specifically how many
+
+540
+01:28:03,040 --> 01:28:08,800
+ values are there in the data frame of a specific species suppose we wish to have the number of
+
+541
+01:28:08,800 --> 01:28:16,400
+ iris setosa samples. So, here what like intuitively please try to understand if you are new iris df
+
+542
+01:28:16,400 --> 01:28:23,600
+ then species. So, species that was giving you the three kind of species and this is equals to is
+
+543
+01:28:23,600 --> 01:28:31,200
+ equals to means is that equal to. So, is that equal to iris setosa. So, if it is iris setosa
+
+544
+01:28:31,200 --> 01:28:40,320
+ then save it in the iris s. So, when we are giving iris s dot shape then that means actually
+
+545
+01:28:44,000 --> 01:28:54,800
+ 50 samples and five columns corresponding to it that is why the five value five columns
+
+546
+01:28:54,800 --> 01:29:03,280
+ for each of these rows we were having that is why. So, in the same manner you can get the
+
+547
+01:29:03,280 --> 01:29:10,240
+ versicolor also the same code is repeated here for versicolor that we just encountered for iris
+
+548
+01:29:10,240 --> 01:29:35,040
+ setosa ok. So, please do till this much and let me wait for one minute.
+
+549
+01:29:40,240 --> 01:29:45,040
+ So,
+
+550
+01:30:10,240 --> 01:30:31,440
+ ok. So, I hope everybody has done till that part. So, here what we are doing suppose all the
+
+551
+01:30:32,240 --> 01:30:38,720
+ feature values that were already provided in a data set you are not like satisfied with this
+
+552
+01:30:38,720 --> 01:30:43,840
+ and suppose you are your machine learning model does not work very well with all those
+
+553
+01:30:43,840 --> 01:30:52,000
+ corresponding values and you wish to include new features represented by columns in the data set.
+
+554
+01:30:52,640 --> 01:31:00,720
+ So, what you can do using this pandas. So, suppose here we had several lengths and several width.
+
+555
+01:31:00,720 --> 01:31:07,040
+ So, like multiplying several length with several width would obviously give you something like
+
+556
+01:31:07,040 --> 01:31:15,200
+ several area. So, I this is just an example I actually do not know that several area something
+
+557
+01:31:15,200 --> 01:31:24,640
+ like several area would actually be good for like for a machine learning model to understand
+
+558
+01:31:25,200 --> 01:31:30,480
+ the difference between three type of petals or three type of flowers or not. But just to show you
+
+559
+01:31:30,480 --> 01:31:38,320
+ how things take place. So, iris df several lengths and times several width and we are
+
+560
+01:31:38,320 --> 01:31:51,200
+ saving it in a new column called several area ok. So, we have several length several area
+
+561
+01:31:52,080 --> 01:32:00,560
+ and at the end we have a new column named several area, several area would be this times this several
+
+562
+01:32:00,560 --> 01:32:12,560
+ length time several width ok. So, I will wait for 30 seconds for you to check how you can
+
+563
+01:32:12,560 --> 01:32:29,600
+ generate a new column corresponding to some new values.
+
+564
+01:32:42,560 --> 01:33:06,800
+ So, I hope everybody is done. So, now we are at the like almost at the end of our session.
+
+565
+01:33:07,360 --> 01:33:13,440
+ So, here what we are trying to do we are trying to plot the data that we were having
+
+566
+01:33:15,600 --> 01:33:23,760
+ using some visualization things. So, here though those import libraries would be necessary
+
+567
+01:33:24,720 --> 01:33:54,400
+ like import mat plot lib and import c borne as sn sns ok. So, what we are doing we are doing a
+
+568
+01:33:54,800 --> 01:34:04,480
+ scatter plot with the data sns dot scatter plot like scatter the values like this and
+
+569
+01:34:07,440 --> 01:34:17,920
+ data is iris data x the x coordinate is several length the y coordinate is several width
+
+570
+01:34:18,880 --> 01:34:24,720
+ and u is species. So, you have the species here corresponding to each color and plt dot title
+
+571
+01:34:24,720 --> 01:34:32,480
+ means give the title give this title to the image. So, let us try to view this let me zoom out. So,
+
+572
+01:34:32,480 --> 01:34:40,560
+ here you have the thing. So, in blue color you have the scatter plot of iris setosa in orange
+
+573
+01:34:40,560 --> 01:34:51,200
+ you have iris versey color and in green you have iris virginica ok. So, just like out of nowhere
+
+574
+01:34:51,760 --> 01:34:57,840
+ try to imagine since we were like since the beginning we were considering this as a classification
+
+575
+01:34:57,840 --> 01:35:04,720
+ task that means classify between these three classes of flowers. So, suppose you have this
+
+576
+01:35:04,720 --> 01:35:11,520
+ scatter plot and think about this that you can clearly draw a line right here check out where
+
+577
+01:35:11,520 --> 01:35:17,600
+ the mouse is moving you can clearly draw a line right here and separate the iris setosa.
+
+578
+01:35:21,680 --> 01:35:28,560
+ Isn't that possible like you can easily separate this iris setosa because they are like far apart
+
+579
+01:35:28,560 --> 01:35:38,800
+ from this mixture of virginica and versicolor right. So, you understand this right by visualizing
+
+580
+01:35:38,800 --> 01:35:44,240
+ the data you would be able to understand the patterns of those data and those patterns would
+
+581
+01:35:44,240 --> 01:35:52,320
+ be later help you understanding the machine learning algorithm how those function ok.
+
+582
+01:35:52,320 --> 01:35:57,920
+ So, now what we are doing this pair plot is a nice thing pair plot means corresponding to
+
+583
+01:35:58,800 --> 01:36:07,840
+ each individual feature compare it with the other feature and plot it. So, intuitively you
+
+584
+01:36:07,840 --> 01:36:14,160
+ you would be able to understand if you visualize this whole image we are giving this iris df whole
+
+585
+01:36:14,160 --> 01:36:22,800
+ thing and use the hue. So, we would be able to understand it. So, previously we were plotting
+
+586
+01:36:22,800 --> 01:36:32,800
+ something like this something like this right corresponding to petal length and
+
+587
+01:36:34,720 --> 01:36:39,680
+ suppose sepal length sepal width something like this this was the image. So, in this image
+
+588
+01:36:40,640 --> 01:36:47,120
+ please check out the cursor in the in this image like the blue ones can be separated.
+
+589
+01:36:47,120 --> 01:36:54,160
+ Suppose just think about it taking a pencil you wish to draw a line on this image. So,
+
+590
+01:36:54,160 --> 01:37:00,160
+ drawing a line would separate the blue, but drawing a line would not separate how would you
+
+591
+01:37:00,160 --> 01:37:04,080
+ draw the line a straight line it is tough to draw a straight line right here right.
+
+592
+01:37:06,560 --> 01:37:16,000
+ So, now coming to this picture. So, here you can draw a straight line separating the blue values
+
+593
+01:37:16,880 --> 01:37:26,240
+ and see a straight line at this point between this mixture of orange and green would also
+
+594
+01:37:26,240 --> 01:37:38,960
+ separate this somewhat better than the previous one right. A line here and another line here
+
+595
+01:37:38,960 --> 01:37:47,280
+ somewhat it would better differentiate ok. So, corresponding to these values and check out
+
+596
+01:37:47,280 --> 01:37:51,840
+ all the other plots I would request you when you actually study this part.
+
+597
+01:37:53,680 --> 01:38:02,000
+ Check out how different type of features sepal width petal length would give you different
+
+598
+01:38:03,440 --> 01:38:08,640
+ visualizations through which like consider this this image right there it is very bad right.
+
+599
+01:38:09,200 --> 01:38:18,000
+ So, draw a line to separate the blue dot green dot from the orange dot it would be a messed up
+
+600
+01:38:18,000 --> 01:38:33,600
+ task right. So, these features like sepal width and sorry sepal width and sepal area that is a
+
+601
+01:38:35,040 --> 01:38:43,760
+ like bad feature and compare if you compare it with this one like petal width and petal length
+
+602
+01:38:43,760 --> 01:38:50,160
+ petal length is written here petal width is written here just two straight line one here and one here
+
+603
+01:38:52,160 --> 01:39:04,480
+ do your job right. So, coming to this part what we are doing we are plotting a correlation matrix
+
+604
+01:39:04,480 --> 01:39:13,600
+ ok. So, correlation you must have learned it in the mathematics session. So, corresponding to each
+
+605
+01:39:13,600 --> 01:39:20,480
+ feature and other feature what is the correlation. So, here you can see correlation of sepal length
+
+606
+01:39:20,480 --> 01:39:27,840
+ with sepal length is obviously one. So, sepal length with petal length see how the correlation is high
+
+607
+01:39:27,840 --> 01:39:36,000
+ between sepal length and petal length. So, that is a like these two are good features
+
+608
+01:39:36,720 --> 01:39:44,720
+ comparing petal length with sepal width this is bad right. In this manner you would be able to
+
+609
+01:39:44,720 --> 01:39:51,920
+ understand and at the end we are just using this C bond we are plotting this in a nice picture the
+
+610
+01:39:51,920 --> 01:40:01,600
+ same thing is in this colorful picture here and the last thing for now for today is when you have
+
+611
+01:40:04,480 --> 01:40:11,280
+ when like in the label section in the species column here in this dataset you have three
+
+612
+01:40:11,280 --> 01:40:16,560
+ values like the name of three flowers when you are actually training a machine learning model the
+
+613
+01:40:17,200 --> 01:40:23,840
+ model would not understand the names like that what you will have to do you will have to map
+
+614
+01:40:23,840 --> 01:40:31,840
+ those names onto numbers like sound fancy, but nothing tough like wherever in the dataset
+
+615
+01:40:31,840 --> 01:40:38,320
+ there is iris setosa write 0 there wherever there is iris versicolor in the dataset write 1 here
+
+616
+01:40:38,320 --> 01:40:47,280
+ there and wherever it is virginica write 2 there ok and using this code like iris df and I said map
+
+617
+01:40:48,400 --> 01:40:54,480
+ this is mapping right corresponding to a specific label you are mapping a number to it.
+
+618
+01:40:54,480 --> 01:41:02,000
+ So, map this thing and you will have if you print the head the first five values you will
+
+619
+01:41:02,000 --> 01:41:10,320
+ get here. So, here in the species you see all 0s because the top columns top rows were iris setosa
+
+620
+01:41:10,320 --> 01:41:19,920
+ and we have mapped 0 corresponding to 8. So, this much for today we will take a short break
+
+621
+01:41:19,920 --> 01:41:25,360
+ of two minutes and we will get back to question answer session I would encourage you to do these
+
+622
+01:41:25,360 --> 01:41:33,120
+ coding by again in the blank notebook that you have created.
+
+623
+01:41:55,360 --> 01:42:05,360
+ [BLANK_AUDIO]
+

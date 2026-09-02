@@ -1,0 +1,278 @@
+ And in a classification problem suppose let us say that there is two class classification
+ problem and suppose there are two classes red right you know for this, this is the value
+ of x 1, this is the value of x 2 and this is an object and suppose there is the blue
+ class. Now, if we have a linear function the linear
+ function cannot give us whether it is red or blue. So, the way we use a linear function
+ is we are going to find an equation a line you want to going to find a line and we are
+ going to say that this line distinguishes the red objects from the blue objects. So,
+ we want this line to separate the two classes. So, of course, this will only work if these
+ points are linearly separable otherwise also we may be able to separate the points, but
+ we have to find the error of the classification and we need to minimize the error ok.
+ So, what we will look at is a way of using a linear function for classification we call
+ this logistic regression, but logistic regression is basically not a regression problem, but
+ classification problem. And what it means is basically linear models for classification
+ the name is a misnomer. So, we are going to have linear models for classification.
+ Now, if we take a linear function y equal to theta 0 plus theta 1 x 1 suppose this is
+ the linear function this is going to give us a numerical value right. So, but the classification
+ is discrete value. So, what we are going to do is one way of looking at it is to take
+ a threshold we can say if suppose we have a threshold t. So, if we say if y is greater
+ than t, then we say class 1 or less than equal to t class 2. This is one way of using linear
+ functions for classification. Another way of using a linear function for classification
+ is to interpret this numerical value as a probability value. For this what we will want
+ to do is that if we have this linear function, we want to first make sure that with the output
+ of this linear function or the output of the model is a value between 0 and 1.
+ Because we are going to interpret the output of our model as a probability value and you
+ know that a probability is value between is between 0 and 1, but if you take a general
+ linear function it can have any value including negative value large values etcetera. So,
+ we want to impose a transformation we will talk about this particular transformation
+ later. So, we want to impose a transformation by applying the sigmoid function on this linear
+ function and the output of this transform function is between 0 and 1. So, sigmoid function
+ is one specific function whose output is between 0 and 1 and then after we apply this sigmoid
+ function we can say if this value is greater than 0.5 we treat it as class 1 and otherwise
+ is class 2 ok. So, if you have a linear function we can either use a threshold or we can convert
+ it into a probability value treat it as a probability and a probability more than half
+ and less than half based on this we can distinguish these two classes.
+ So, these are somewhat equivalent, but we will use this formulation ok let me rub this
+ up. Now, let us see what type of transformation we can do suppose we have you know there is
+ a function of Z right and this function we want to any value Z we want to map it between
+ 0 and 1. So, this red function that you are showing is a function which takes any value
+ of Z and squashes it between 0 and 1 ok. If you look at G at negative infinity it approaches
+ 0 at positive infinity it approaches 1 at 0 GZ is 0.5 ok. So, what I am showing is a
+ depiction of the sigmoid function which is given by this equation sigma Z equal to 1
+ by 1 plus e to the power minus Z it is such a function that if you apply this function
+ on any Z, any Z negative positive any value the output will be between 0 and 1 ok this
+ is the sigmoid function ok Z is any value in real and the output is between 0 and 1.
+ Now we will use this sigmoid function to our benefit ok. So, what we are going to do this
+ is my linear function what we have been talking about so far. So, we will take input as X
+ compute the linear function theta dot X or theta transpose X as we discussed and apply
+ the sigmoid on that and what we will get the output is a value between 0 and 1 and we will
+ interpret this as a probability of belonging to a particular class.
+ So, now because we have two classes this is binary classification problem we have two
+ classes we say 0 class and 1 class we have two classes we name them 0 and 1 and we say
+ output of this that is sigmoid of theta dot X is the probability of belonging to class
+ 1 and 1 minus H theta X is the probability of belonging to the class 0 ok. So, if we
+ want a classification not just a probabilistic value we can say if H theta X is greater than
+ equal to 0.5 then we say class 1 which is equivalent to saying Z equal to theta 2 X
+ greater than 0 because for the sigmoid function you know you can see you can just work it
+ out it is very easy simple function you can find at the point 0 the sigmoid function gives
+ sigmoid of 0 gives you 0.5 and if Z is positive sigmoid of Z is greater than 0.5 if Z is negative
+ sigmoid of Z is less than 0.5. So, Z equal to theta dot X greater than equal to 0 means
+ that H theta X is greater than 0.5 Z equal to theta dot X less than 0 means H theta X
+ is less than 0.5 ok. So, you can use thisyou know. So, you could actually use this threshold
+ function which greater than 0 means positive less than 0 means negative, but this threshold
+ function is not differentiable sigmoid function is a smooth version of the threshold function
+ and we will use it because we want to use gradient descent.
+ Any questions on this? Can you show the questions? Is there any way to select the optimal starting
+ value of theta you know when we do linear regression it does not matter what value of
+ theta you choose you will always get to the global minima. If you are doing more complex
+ functions then there are some tips and tricks which will be talked to in other classes ok.
+ Alpha part ok. So, alpha is you know. So, you have this function you find that there
+ is a gradient you take a small step alpha is the step size. If alpha is small you will
+ move from here to here, if alpha is large you will move from here to here, if alpha
+ is very large you will move from here to here. Does that answer your question? Ok thank you
+ let us resume. So, these questions you please take tell me whenever they are there ok.
+ So, what we said is that we want to use a linear function. So, we use a transformation
+ using the sigmoid function. So, that the output of the linear function takes me to a value
+ between 0 and 1 ok. Now so, what it means is that when sigma of z sigma of the linear
+ function is equal to 0 sorry equal to 0.5 that corresponds to the decision surface.
+ So, on one side we have class 1, the other side we have class 0. So, this is my class
+ 1 and these are my class 0 ok. Now, in order to learn this decision surface we want to
+ devise an optimization algorithm ok. Now, so for that we will come up with a specific
+ loss function, other loss functions are possible, but we will talk about this specific loss
+ function. So, for that let us fall back to the probabilistic interpretation. So, we want
+ that the decision surface is sigmoid of theta dot x is equal to 0.5 and we interpret probability.
+ So, we are saying that this sigmoid of theta dot x this is my model, my f theta x is equal
+ to sigmoid of theta dot x ok this is my model and we are interpreting f theta x as the probability
+ of belonging to class 1 ok. So, f sorry f theta x is probability of class 1 that is
+ probability y equal to 1 given x ok and 1 minus f theta x is probability of y equal
+ to 0 given x. So, this is the way we are interpreting the output of our model f theta. Now, given
+ this interpretation let us you know come up with a loss function. So, what do you want
+ if it is class 1 you want probability of y by x to be very close to 1, if it is class
+ 0 you want this probability to be very close to 0 ok.
+ Now, we want to measure whether it is how much it is close to 1, if the actual y is
+ 1 we want sigmoid of theta dot to be close to 1 this is the what we want, but we want
+ to be close you know close to 1 ok. So, how close to 1? So, if it is close to 1 our loss
+ is 0, if it is you know not so close to 1 we will have a loss and what is the loss we
+ define it as the negative log probability. So, y hat equal to sigmoid of theta dot x
+ and we say minus log y hat is my loss function. So, if y hat is 1 what is log of y hat it
+ is 0 just let me finish I will take the question. If y hat is 1 the loss is 0 ok. So, if you
+ plot minus log y hat this is the plot we are showing here, if you plot this when y hat
+ is 1 the loss is 0 and for other values of y hat y hat is between 0 and 1 this shows
+ the loss function ok. So, negative log y hat is taken as a measure of the loss.
+ Now, if the actual class is 0 the probability is given by 1 minus y hat and that should
+ be close to 0 again we take. So, 1 minus y hat that should be close to 1 y hat should
+ be close to 0 1 minus y hat should be close to 1. So, negative log of 1 minus y hat gives
+ me the loss ok. Now, if you take one particular example it can be y is 1 or y equal to 0 for
+ one example. Now, if y is 1 the loss is minus log y hat if y is 1 1 minus y is 0. So, the
+ second term can be ignored ok. And if y is 0 then the first term is 0 the second term
+ is 1. So, if y is 0 the first term is ignored the second term gives me minus log of 1 minus
+ y hat. So, I have a single equation which considers both the cases for y equal to 1 or y equal
+ to 0. If y equal to 1 only the first term is there second term becomes 0 if y equal
+ to 0 only the second term is there. So, this is an expression of my loss function for a
+ single example. Now, what is y hat? It is h theta x and what is h theta x? h theta x
+ is sigmoid of theta dot x ok. So, we write the loss function as minus y log h theta x
+ minus 1 minus y log 1 minus h theta x this is my loss function.
+ Now, I will take the question. Now, let us just we can put the question. How does gradient
+ descent minimize loss? I will come back to it after I finish you know otherwise I will
+ miss the flow. I think we will take this question if there are any particular question for this
+ thing that we are teaching now we can have the questions now. These questions refer to
+ what I taught earlier I will take this questions after I finish this part ok.
+ Any question for this part? Multiple class will coming to this we are only talking about
+ binary I told you very clearly. Now, we are talking about binary classification ok let
+ us resume. Questions on the first part we will take later ok. Now, let us come back
+ to what we were doing? Is there a way to clean everything? So, we use the negative
+ you know negative log loss. This is also called the cross entropy loss. This is a very popular
+ loss function for classification and what is this loss? It says you look at you know
+ suppose a particular class suppose the actual class is y equal to 1 or in a multiclass class
+ classification problem suppose the actual class is y equal to red. So, you look at what is
+ your model outputting as the probability? Ideally the model should output probability
+ equal to 1 whatever the model outputs you take the negative log probability of that
+ class ok. So, that is the loss for a single example and you sum it up and take the average
+ for m examples. This is your negative log loss. This is the negative log loss or cross
+ entropy loss for one example this is the average loss for m examples. So, this is the loss
+ function that we are going to consider and then now let us use our friend the gradient
+ descent algorithm. We said that for linear regression gradient descent algorithm is not
+ required because we have an analytical solution, but for logistic regression you know we do
+ not easily get an analytical solution for this where we have the minimum value of this
+ function, but we can still use gradient descent and the good news is that this function is
+ also a convex function. This is a convex function this has a single minima, so we can use gradient
+ descent. There is no analytical solution, but we can use gradient descent. So, the same
+ algorithm that we used earlier we can use here only because the equation is different its
+ gradient will be different ok. So, we have to now differentiate this function
+ with respect to theta 0 and theta 1 and we if we differentiate it right if we differentiate
+ it we find the solution that solution is this ok and we can use this in a same function
+ as we did earlier. Does the solution look similar to linear regression? Well it looks
+ similar, but it is not the same because h theta is different. What is h theta? It is
+ now sigmoid of theta dot x ok. So, this is my loss function for classification, this
+ is the partial derivative and we can use the gradient descent algorithm.
+ So, we repeat for each parameter that we have we do theta j equal to theta j minus alpha
+ times this ok and if there n plus 1 parameters we will simultaneously update these parameters
+ in one iteration and then we can do multiple iterations ok. Now, I did not show you how
+ to go from this expression to this expression. I can give it as an exercise you can work
+ it out or you know I can incorporate it in the slide. It is not a difficult thing, but
+ I did not want to do it you know that log z if you differentiate you get 1 by z and
+ if you do this you can easily come up with this.
+ Now, let us compare the solutions for linear regression and logistic regression. The forms
+ are the same, but here h theta x i is just theta dot x here h theta x i is sigmoid of
+ theta dot x ok. This is the solution that we get, but by using the gradient descent
+ and sigmoid is this function that we have shown. So, this h theta x and here h theta
+ x. Now, I come to your question the what we have shown is for two class classification,
+ but what we have three classes, four classes, ten classes right. This is an example of multi
+ class classification. Now, we want to still use linear models, but now if we have three
+ classes, five classes, ten classes one model will not be sufficient. So, what we are going
+ to do is that we are going to look at suppose there are three classes, we are going to look
+ at three linear functions or three sigmoid applied to linear functions, three logistic
+ functions you know sigmoid function is also called the logistic function that is why we
+ are called it logistic regression. So, we have one function to separate glue from
+ non-glue, another function to separate yellow from non-yellow, a third function to separate
+ red from non-red. So, we will now have three linear models. One for each class if you have
+ k classes for each class we have a linear and a linear model to separate that class from
+ the rest right. So, now we will have many parameters, we will have theta 1 vector and
+ the parameters for the first linear function, theta 2 vector for the second class and if
+ there are k classes we will have dot dot dot theta k for the kth classes. So, we will have
+ k linear functions, each one will have a number of parameters.
+ Now what we are going to do? We are going to say that sigmoid of theta 1 dot x is the
+ probability of class 1 given x, sigmoid of theta k dot x is probability of class k given
+ x. And we use the same loss function that we discussed earlier, we will have if a particular
+ object belongs to class i we will look at sigma of theta i dot x and we will take the negative
+ log of this as the loss of that ok. But before that wait before we come to that,
+ now for a particular input object x suppose there are three classes. So, we have found
+ theta 2 theta 3. So, we have found sigma of theta 2 dot x equal to probability plus 2
+ given x. Suppose this is class 3 given x. So, this is my P 1, this is P 2, this is P
+ 2. Now, so we could interpret these probabilities they do not sum up to 1. So, what we really
+ want is that we want to compute this expression so that they sum to 1 and for this what we
+ are going to do instead of separately finding out the probabilities. Now what we are going
+ to do is let me erase this. We are first instead of finding the probabilities first we could
+ find the probabilities first, but what is usually done is that you have this three linear functions
+ let us say theta 1 dot x 1 you know you do not apply any sigmoid do not apply the sigmoid.
+ We say that S 1 equal to theta 1 dot x 1 sorry x S 2 equal to theta 2 dot x S 3 equal to
+ theta 3 dot x. Now, we have not used any sigmoid function please note sorry I have S 1 S 2
+ S 3. Now, I want to transform from S 1 S 2 S 3 to P 1 P 2 P 3 such that each of P 1 P
+ 2 P 3 is between 0 and 1 and their sum equal to 1. So, sigma P i we want to be 1 this is
+ what we want. So, for that the transformation that is used is for probability y equal to
+ k given theta we say that you do exponential exponential of theta k x divided by summation
+ of exponential of theta j x. In this case let us simplify this. So, we will say e to
+ the power S 1 divided by e to the power S 1 plus e to the power S 2 plus e to the power
+ S 3 this is the this is equal to P 1. So, for P 2 we will have e to the power S 2 divided
+ by e to the power S 1 plus e to the power S 2 sorry and for P 3 we will have e to the
+ power S 3 divided by e to the power S 1 plus e to the power S 2 plus e to the power S.
+ So, given this linear functions three linear functions or in general k linear functions
+ we have a transformation which takes the outputs of this linear functions let us say S 1 is
+ through S 3 and converts them to values P 1 P 2 P 3 with sum 2 equal to 1 and each of
+ them is between 0 and 1. Now, that is my j theta that gives me my loss and we use the
+ negative log loss in order to find the loss. So, if you want to find the summation of the
+ loss we sum for the m examples and if you want to find average we will divide by m.
+ But for each example for each of the k classes I will only consider suppose this particular
+ example belongs to class 2. So, for class 2 I will consider the negative log of P 2. So,
+ only the term corresponding to class 2 we will take. So, we will take the term for class
+ 2 for all other term we will ignore this those terms right. Suppose example 1 belongs to
+ class 2 we will use P 2 example 2 belongs to class 1 we will use P 1 and take negative
+ log of P 1 and we will add them up for these m examples to get the total loss ok. This
+ is for multiclass classification. So, basically the outputs of the linear functions we use
+ this transformation to convert them to values which can be interpreted as probabilities and
+ this transformation is called the soft max transformation which has this form exponential
+ of you know sk divided by summation of exponential of Si ok.
+ So, with this I stop I will take questions first I will take questions on this topic
+ then we will take questions on the previous topic that we taught before the break. So,
+ first we will take questions on logistic regression. Why are we taking negative of log for the
+ loss function? So, as I explained right I want the probability to be 1. So, negative
+ log is one possible loss function where if y is 1 the loss is 0 for other values the
+ loss is more and this is the shape of the curve of the negative log. This is the shape
+ of the curve of the negative log. Does that answer your question? You could use other
+ loss function this is one of the popular loss function ok. The negative log function has
+ this particular form. How to determine which algorithm to apply? Which algorithm you know
+ it depends on the dataset for if the dataset is such that a simple linear model is sufficient
+ you can use a linear model if it is not you use other models there is no formula.
+ Why exponential function is chosen? You know basically an exponential function is just
+ one possible function you could use other functions this is the popular function. This
+ exponential function amplifies you know if you look at S 1, S 2, S 3 one of them is larger
+ it amplifies the value of the larger number ok. Instead of exponential you could have
+ taken S 1 square divided by sigmoid of S i square it is possible. This is the more popular
+ function this amplifies the larger value and this is one of the popular loss functions
+ that people use. Again you know there is nothing to say that this is the function you cannot
+ take other functions this is the popular functions that people use this has a nice solution and
+ you know in terms of the derivative and all that. Anything else we can now go back to
+ the previous questions.
+ How does gradient descent minimize loss? So, suppose this is your curve and you have chosen
+ a particular value of your parameter theta at step 0. Now you want to reduce the loss
+ to reduce the loss you see that if the gradient is in this direction the best value is in
+ the opposite direction. If gradient is in the in this direction upwards the best value
+ is in the opposite direction ok. If you take any particular value on a curve forget about
+ machine learning gradient descent machine learning etcetera. If you have any function
+ you want to find the minima of the function ok local minima of the function at this point
+ you find the derivative. If the derivative is positive that means the local minima is
+ in the negative direction. If the derivative is negative it means the local minima is in
+ the positive direction. So, if the derivative whatever is the derivative if you want to
+ go to a local minima you have to move in the opposite direction and that is what gradient
+ descent is doing ok. I hope you understand now. All these estimators satisfy unbiasedness
+ or that is not a requirement. What are the bare minimum criteria these estimators need
+ to follow? You see that these estimators that we are looking at you know first of all where
+ is the estimator? Estimator is when we are taking the average when we are taking the
+ average loss that is where the estimator lies. In the gradient descent algorithm we are estimating
+ the gradient based on m examples that is where the estimator is and we are using an unbiased
+ estimator mean is an unbiased estimator. After that we are using this optimization
+ algorithm the gradient descent which I just explained ok. The estimator the average is
+ the only estimator that we are using which is the mean and whose properties you have
+ already discussed it is unbiased inconsistent etc. Next question I understand that in both
+ cases we are updating theta by subtracting alpha multiplied by the slope. When the slope
+ is positive we subtract no no we are doing minus alpha slope. If slope is positive we
+ are going in the negative direction if the slope is negative we are going in the positive
+ direction. Alpha is always positive alpha is between 0 and 1 alpha is positive if slope
+ is negative we are taking a positive step if slope is positive we are taking a negative
+ step alpha is always positive any other question? At theta 0 theta 1 are all loss parameters
+ of each x theta 0 theta 1 are parameters. So, y equal to theta 0 plus theta 1 x right
+ theta 0 and theta 1 are parameters of the function or inlogistic regression we have
+ y equal to sigmoid of theta 0 plus theta 1 x that theta 0 and theta 1 are the parameters.
+ The loss function is with respect to the output and the desired output ok. So, we are trying
+ to by trying to minimize loss we are trying to find the optimum values of theta 0 and
+ theta 1 ok. Theta 0 theta 1 are the parameters suppose theta 0 and theta 1 are you know some
+ values 0.1 0.2 there will be some loss you will get loss l 1. If theta 0 theta 1 are
+ some other values let us say 0.3 0.1 you will get a different loss. Our objective is to
+ find that theta 0 theta 1 for which the loss is the smallest. So, loss is a function of
+ the parameters right when we have mean square loss the loss is function of the parameters
+ or we have negative log loss loss is a function of the parameters we want to find those values
+ of the parameters which minimize the loss. Can you go back to the question again I am
+ not sure I answer the question. This I have already answered theta 0 theta 1 are parameters
+ we modify the parameters. So, as to minimize loss any question after this good books offline
+ I will tell you some standard books on machine learning ok. Thank you ok sorry I kept you
+ waiting. Thank you ma'am.

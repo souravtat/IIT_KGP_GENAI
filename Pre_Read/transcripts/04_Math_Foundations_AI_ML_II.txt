@@ -1,0 +1,852 @@
+ So please join the live lectures only using your registered ID as standard is tracked
+ only with the registered ID and the login ID which you have purchased for the course.
+ If you have joined with registered ID, it will be captured, that ends will be captured and
+ you check any spelling mistakes when you enter during the session.
+ Otherwise, sign out from the login and re-login with the exact login ID.
+ So each every web page session will be unique and shared every week over email, community
+ and from course batch.
+ To set up the WebEx layout option for learners, go to the layout option showing it on the
+ screen at the top right hand side, click on the stack mode, again click on the stack mode
+ and below that you can see this enable full screen mode.
+ So just enable that also.
+ This will show you it in full screen mode for the presenter of the presenter.
+ So please put your queries in Q&A session.
+ So please be assured that if professors are unable to attend all your queries in Q&A session,
+ it will be answered and uploaded in our discussion room.
+ So for the assignment availability for the week 2, assignment will be enabled at 2 p.m.
+ For the week 1 assignments that mission deadline on 16th February that is tomorrow at 11 p.m.
+ And solution for the week 1 assignment will be available 17th February that is Monday
+ by 11 a.m.
+ So assignment evaluations will be done by IATKHB professors prior to the conclusion of the
+ course and will be made available on the portal.
+ You can access the evaluation commands once the assignment has been evaluated.
+ So kindly refer reference materials from course batch.
+ We'll walk into the portal.
+ You can go to the course batch.
+ You can refer the materials from reference section.
+ And other documents, pre-read materials will be available in the discussion room and answers
+ for the question answers, important supporting documents will be available in community.
+ So all the important documents are tagged in the highlight section for easy access.
+ Today we have a quiz for the week 1, so this will be available today, Saturday, 15th February
+ 2025 between 5 p.m. till 7 p.m.
+ The duration of the quiz will be 30 minutes.
+ So once you start that quiz, you should complete before 30 minutes, within 30 minutes.
+ Please ensure your network availability and the power backup during that taking that quiz.
+ Please try to attend your quiz by desktop only.
+ So don't try it in mobile, it's for better or easy access.
+ So results for that assessment quiz will be available at 9 p.m. on the same day.
+ To view the marks obtained, click on the terms taken, you'll be able to see the quiz answers.
+ Then WhatsApp notification adjusts will be sent only for those who have given consent
+ in the platform.
+ So please log into the platform, give the consent that I will show you during the break
+ time.
+ So you can give the notification adjust.
+ You will be getting the notification adjust only after giving the consent.
+ In case of any issues, if you want to connect with us, please reach out to us info.tcs.nobla.tcs.com.
+ Once again, thank you all for joining today's session.
+ Sir, over to you.
+ Okay.
+ Okay.
+ Thank you.
+ Yes.
+ So today we are going to start a new session.
+ As a statistical learning, we will talk about its fundamental aspects which are essential
+ for not only statistical understanding, but it is the foundation for machine learning especially.
+ We will try to bridge the gap between the languages where the machine learning practitioners
+ use and the statisticians use such that the flow of the understanding will be smooth.
+ And people have a more transparent perspective over the context.
+ So first let us start with statistical learning.
+ The learning procedure mostly in machine learning setup, it is a generalization from learning
+ by memorization to learning by generalization.
+ So initially whatever the information is gathered and passed to the machine, the extension
+ of that information for those segments of the data where the information is not available,
+ that is the job a machine learning problem must do.
+ And if we have little bit more prior knowledge about the mechanism, then it might create
+ certain bias based on the prior information or it may sync with the new data that are
+ coming to it.
+ So now when do we need to do the machine learning when the tasks are too complex or to be constructed
+ in one program and when the situations are adaptive.
+ I assume that in future courses, the experts will talk more details about these different
+ types of learning, but before going to that we just touch upon the aspects such that we
+ can connect it to the statistical aspect.
+ So most of the cases we divide the learning process either supervised learning or unsupervised
+ learning, in supervised learning the label to the data are present as a consequence at
+ the end of the day it becomes easier to train the data and to the segregation.
+ You can consider that classification problem is one of the supervised learning regression
+ problem is a supervised learning problem, but unsupervised learning where the levels
+ are not present to the data and from the data itself machine has to identify certain features
+ and segregate them in different buckets that is unsupervised learning.
+ So as a consequence the clustering can be considered as an unsupervised learning.
+ Now active and passive this is also another story which is similar to the previous one
+ when it is passive learning most of the cases levels are present, but when it is active
+ learning that the machine not only should learn the feature they also start to categorization
+ and rectify the information that they have it has gathered and modify it accordingly.
+ Then teacher student model when there is a large model already existing and we want to
+ implement a part or the entire model to another setup then there is a teacher student type
+ of model we call where a complete scenario is known, but something new is dataset is
+ there we want to invoke the existing infrastructure and the mechanism for the new setup and there
+ the teacher student model often used.
+ And online and batch learning in statistics online learning is also sometime known as the
+ surveillance problem and batch learning is known as the retrospective study.
+ So this is very important for signal detection as well as the machine learning problem sorry
+ not as well as the medical research.
+ So in the online problem the data are updated in a sequential order and the information are
+ also get enhanced as a consequence the inform the conclusion becomes dynamic.
+ On the other hand batch learning as it is retrospective we assume that a certain segment
+ of the data available we do analysis of the entire data as a whole in batch learning problem.
+ I am sure that future days the experts will go in deep with this type of learning processes
+ we are today we are going to make connection this type of thing with the statistical learning.
+ So what is the essence of statistical learning?
+ So we typically want to estimate some function that is the ultimate goal and that function
+ here we call it in short here we call it f some unknown function it could be anything
+ the purpose is mostly two one is prediction another is inference prediction means based
+ on that function f whatever the model we get from this f.
+ So f is for the model so f is for the model and from that model whatever prediction we
+ can do given one variable predict for the other that is known as the prediction problem.
+ So based on the model on the model predict one variable or more than one variable given
+ the other or other more than one variables we can do.
+ And inference is talking about the specification of model parameter.
+ So in short if we give an example the regression is a very prominent example we want to fit
+ a regression for that there will be certain function and based on an input variable or
+ the regression variable or the feature variable we want to predict the response variable that
+ is a prediction problem and whether a feature variable is will be present in the regression
+ model or not the coefficient associated to that feature variable is significant enough
+ or not.
+ So that is an inferential problem which is also crucial because if we do not require
+ a parameter or a feature in the model but still we keep on collecting the data that
+ means it will require a space in the storage it will require time for the collection and
+ fetching and retrieving and processing the data will be unnecessary which we do not want
+ for the sake of complexity of the problem.
+ In a broader sense we can address this problem in two different ways one is the parametric
+ method another is the non-parametric method when we talk about the parametric method the
+ models are driven by parameter often we write in the form f theta in such that theta is
+ the parameter and f is the function dependent on theta and there will be variable x y so
+ on and so forth associated to the function and non-parametric is the setup where definitely
+ there will be a function f which is also dependent on the variables but no such parameter is
+ associated with it but the restriction is often done like that f is continuous or f
+ is twice so f f prime f double prime exist so these type of assumptions are often made
+ to establish the mathematical theory for non-parametric setup and rest of the story goes for the
+ large number so establishment of the I mean the nice behavior for non-parametric method
+ often we require the large numbers which are not a problem and nowadays because of the
+ computer that we have plenty of data unless otherwise there is a specific type of problem
+ like biomedical problem or at the same time maybe say some sociological data analysis
+ so though in those cases really sometime the problem the data set is small so I hope I
+ could make little bit clear about the setup that there is a parametric structure to address
+ the problem there is a non-parametric structure the non-parametric structure flexibility is
+ more precision is comparatively less parametric structure if the assumption is correct the
+ precision is very high but if the assumption is wrong then definitely the precision is
+ low we will try to establish all those thing in a formal way now let us enter in the parametric
+ structure so whatever we consider as learning eventually in statistical term it is an estimation
+ problem so in estimation problem specifically for the parametric structure what we consider
+ that data given then model assumed and parameters estimated.
+ So try to see the entire structure that the data set is present with us and we have assumed
+ that the data are coming from a particular model there is no guarantee that the model
+ will be correct there is a method for validation definitely but at the very beginning there
+ is no guarantee that the model will be correct and then finally we estimate the model parameters
+ and find do the validation.
+ Now here is a catch now there is a catch that whether we will directly jump into the problem
+ for estimating the function or we can do it in a different way so the parametric structure
+ in non-parametric structure it is the way that we directly jump to the estimation of
+ the function but in a non-parametric structure there is certain flexibility.
+ So what we call demonstrate in this way so suppose this is the parameter space so this
+ is this thing we write as a script theta which is the parameter space.
+ On the other hand this is the function space or the model space ok so this is the model
+ space now suppose if I choose one point in the if I choose one point in the parameter
+ space that will be associated one model in the model space.
+ So there will be a one to one connection and if there is more than one parameter which
+ is giving only same model then that will be trouble so it is supposed to be one to one
+ mapping otherwise there will be trouble.
+ And with the advantage of this one our goal is to construct an estimation method such
+ that we can go to the true parameter in a very steady rate such that if I go to the
+ true parameter then we will converge to the true model we will also converge we will also
+ converge to the true model with a very high accuracy that is the fundamental idea.
+ So for example if I consider this regression structure which is very simple suppose a simple
+ linear regression structure data are scattered and we have a line.
+ So this line has a intercept and a slope.
+ So eventually it is beta naught plus beta 1 x this line.
+ Now this is the model space ok corresponding parameter space is this one that in 2D this
+ is beta naught line this is beta 1 line.
+ So for this straight line I have one point beta naught beta 1.
+ So one point here is giving one model here if I consider another point here that might
+ give certain different line here ok.
+ So that is the fundamental idea that if I have a point here I will get one model there.
+ Now if I approach to this point one beta naught beta 1 vector is approaching to this point
+ then gradually the lines will also become very close to this one and finally overlap
+ with that line.
+ So this this is the story of entire estimation problem or model parameter learning problem.
+ So gradually let us make it formal and try to explain the necessary terminologies which
+ will be useful for better understanding in future.
+ So this is how the parameter space and the model are associated with.
+ We will study few things which are the definition of the estimator estimator for the parameter,
+ some good properties of an estimator and different model estimation problem.
+ One is moment based estimation problem and rest are MLE and least square as an example
+ we will discuss both of them can be clubbed together under one umbrella which is known
+ as M estimator.
+ And when we say it is an M estimator it means that we get the estimator the choice of the
+ estimator after minimization or maximization of certain type of function.
+ In general it might be considered as a cost function but we get the estimator through
+ minimization or maximization so either minimization or maximization so this is the problem.
+ So let us start with the definition of an estimator to define an estimator first we
+ introduce a terminology which is known as statistic remember that s is not here only
+ up to c statistic a statistic is a function of data it is a function of data only if some
+ parameter value is known it could be involved there but if the parameter value is not known
+ then we should not consider it as a statistic and if a statistic is used for estimation
+ of a parameter or a function of a parameter then it is known as a estimator of that parametric
+ function.
+ So here we have written in general g theta g theta can be theta only and tx is statistic
+ which is a function of data if the data value is known then statistic itself has only one
+ value the statistic has only one value but if we consider the statistic as a function
+ of random variable then it is also a random variable.
+ So given the values of the data the statistic can take only one value given one set of data
+ but on the other hand if we consider the data in the form of random variable then the statistic
+ itself is a random variable and it will have a distribution so it is a random variable
+ and this one is a particular value, okay.
+ Given the data it is a particular value and in general it is a random variable.
+ So how to conceptualize the thing, suppose we are addressing a problem and each of you
+ each candidate of you are addressing the same problem.
+ So each of you are collecting data separately constructing the same statistic you know the
+ model you know everything how to do the analysis.
+ So you collect the data individually you collect go and for the field for survey and collect
+ the data and finally construct the test statistic to estimate the parameter.
+ So here you consider the situation which is very much obvious that each of you will get
+ different data and as you get different data that estimated value will be different for
+ each of you but each of you have only one data.
+ Now if we collect all the data or the all the all the statistic value that you have
+ calculated then and club together all the values then it is you will find a distribution
+ and the distribution will be the distribution of this random variable which is T of X, okay.
+ So now let us move forward for more formal definition, okay.
+ So before we go let me just give you one example such that which is a statistic which is not
+ a statistic it will be little bit clear.
+ So for example let us consider that X1, X2, Xn are random samples
+ from say normal mu sigma square where mu unknown sigma square unknown.
+ So here very simply I can write one function which is xi minus x bar whole square i running
+ from 1 to n 1 upon n and another function 1 upon n sum over xi minus x bar sorry xi
+ minus mu whole square i running from 1 to n. So as mu unknown this is a statistic and
+ this is not a this is not a statistic because mu is an unknown parameter which is involved
+ here, here only the data present no unknown parameter present hence it is a statistic.
+ And if the mu value known then also it will become a statistic otherwise not and if mu
+ known or mu unknown this could be used as an estimator of sigma square.
+ So this could be used as an estimator of sigma square but this could be used as an estimator
+ of sigma square only when mu know can be used as an estimator of sigma square when and in
+ that case it will become also a statistic. So that is the fundamental difference between
+ the notion of statistic and the estimator as an application of statistic.
+ Now few properties which we desire that an estimator will have the first and foremost
+ is the unbiasedness. So unbiasedness of an estimator eventually demands a theoretical
+ requirement which says that the expectation of the statistic value is same as the parameter
+ value or the function of the parameter value. And if it holds for all parameter theta then
+ only we will call it is an unbiased estimator. So otherwise it will not be considered as
+ an unbiased estimator. Now suppose let us have an example that X1, X2 again Xm random
+ square then notice that if I write this quantity sum over Xi square I running from 1 to n 1
+ upon n. So average of Xi square. So first of all it is a statistic. Without any doubt
+ it is a statistic. Now if I want to estimate sigma square can I use this one what will
+ be the situation. So notice that if I take the expectation so I can use definitely because
+ it is a statistic I can make use of it for estimating sigma square.
+ But if I want to study its feature if 1 to n expectation of Xi square which is integration
+ or whatever here from definition you can very easily go that expectation of Xi square I
+ running from 1 to n which is 1 upon n each of the term is mu square plus sigma I running
+ from 1 to n as a consequence it is mu square plus sigma. So definitely it is not an unbiased
+ estimator of sigma square. So it is not an unbiased estimator of sigma square because
+ you see that some added quantity is present. Now suppose if mu equal to 0 then expectation
+ of 1 upon so let us call gx or maybe some other function we are saying t. So let us call t
+ 1x expectation of t 1x is sigma square. But notice only when mu is specified to 0 it is
+ able to estimate unbiased lift for sigma square. But in general it is not true notice the condition
+ that expectation of tx equal to g theta for all theta. So here in this example what is
+ theta? Theta is a two component vector mu and sigma square. So for all possible values
+ tx is expectation of tx the mean of tx is not sigma square only for a particular value
+ of mu it is sigma square. So in general tx is not an unbiased estimator.
+ So there is a bias and the bias is mu square, mu square is the bias. So which is the gap
+ between the true value and the expected value that is known as the bias of the estimator.
+ And this is a technical statement that even though the estimator is unbiased estimator
+ it will exactly take the value of the true parameter that probability can be 0 ok. So
+ those who are little bit advanced in this area may focus on this otherwise it is not
+ necessary. Then we will come to the consistency.
+ Now before going to that let us try to see it another example. So here what we have seen
+ that we cannot estimate sigma square by the help of averaging Xi square variance we cannot
+ estimate by the averaging Xi square. Now can we to go in a different way if I consider
+ t2 of the data as x bar square which is 1 upon n sum over Xi I running from 1 to n and
+ then take the square. So consider the difference, here I have made the square then I have taken
+ the average, here I am doing the average and then I am taking the square.
+ Now if you look at any probability book that is suggested here x bar is following normal
+ mu sigma square by n. So in that situation this symbol is well accepted symbol and it
+ says that x bar follows normal mu sigma square by n. So as a consequence whatever we are
+ seeing here that if we take expectation of x bar square which will be no sorry which
+ will be mu square plus sigma square by n. So this quantity we can use so let us consider
+ a different way that can be used as an estimator of let us say we are talking about mu square.
+ So mu square hat is this one. Now notice this thing that this quantity is also biased but
+ the advantage is this that sigma square by n is going to 0 decreasing to 0 as n is increasing
+ to infinity. So that is what an advantage to us.
+ So we were willing to summarize the thing in this way that if we want to estimate mu
+ square again if we can use this expression as an estimator of mu square. But in that
+ case so if I use mu 2 hat as t 1 x then expectation of t 1 x that you have already seen that it
+ is sigma square plus mu square. So in that case this is biased and which does not go
+ to 0 which does not reduce to 0 as n goes to infinity.
+ So that is the fundamental thing that here the bias does not not going to 0 here the
+ bias is going to 0. So very natural we will prefer this one when the bias is going to
+ 0 if you have large sum. So consider that these 2 are the estimation of mu square problem.
+ So now we will give the formal definition and see try to explain with the diagrams.
+ So the notion of this type of estimator is known as the consistent estimator and estimator
+ Tn which is a function of n sample size. So n is the sample size is said to be consistent
+ for g theta if the difference between Tn and g theta that is becoming bounded that become
+ very very small as n goes to infinity. So the difference between the estimated value
+ and the true value their gap become very very small. So in a in a if you want to see in
+ an interval then suppose here is g theta then the estimator will lie with the very small
+ neighborhood of it or if you want to visualize it in a higher dimension then already we have
+ shown you that the estimator will fall within a very small neighborhood of the parameter
+ and as a consequence the model will come close to the true model.
+ So that is what we are looking for. So if we are very close to the parameter the true
+ models will be coming very the estimated models will be coming very close to the true one.
+ So that is the idea. So here we are considering the mean estimation problem for the data coming
+ from normal mu maybe say 1 ok. We are willing to estimate mean. So x bar is the estimator
+ mu hat as simple as that. So the blue one is the true mean and the red one is the sorry
+ blue one is the estimated mean the red one is the true mean as a consequence whatever
+ you can see that we have drawn 25 samples and each time 25 samples drawn the process
+ is is iterated for 10,000 time and this histogram you can observe. So this is how the distribution
+ of an estimator generate eventually. In practice it happens through the collection
+ of data in simulation you can do by the computer and this is the estimated distribution of
+ x bar and this is the blue one is the mean of the all mean of sample size 25 and the
+ red one is the true mean which is 0. So here you can see that the true mean location and
+ the estimated mean average is the same. If you increase the but here you notice the spread
+ spread is almost from minus 0.6 to plus 0.6. The same story repeats if you increase the
+ sample size but the spread has become less.
+ Again if you increase the sample size to 500 spread has become even smaller but the center
+ part remains same. The true value is well captured by the estimated one. If you combine
+ all these three histograms so the sample size 25 with blue, 50 with green and 500 with black
+ if you combine them you can see these smoothed out density functions of the unbiased estimator
+ for mean. All of them are unbiased very nicely centered at 0 but depending on the sample
+ size the spreads are different but the advantage is that if we increase the sample size it
+ becomes very very close to the true one and as a consequence as n goes to infinity it
+ will converge to the true one with a very high probability which is eventually the
+ demand of the consistency.
+ Now we have seen the feature of consistency for an unbiased estimator of mu via x bar
+ x bar is an unbiased estimator mu hat we have done this. Now let us talk about mu square
+ ok as we have discussed here the if we talk about the estimation of mu square we can use
+ this one t 2 x which is x bar square. Now x bar square if we see the distribution what
+ you will observe here that if we have 25 sample sizes so x 1, x 2, x n they follows normal
+ 0, 1 square maybe or sigma square whatever. Now what is mu square mu square is definitely
+ 0 undoubtedly but if I use x bar square as an estimator of mu square or maybe as we
+ mentioned then you can see that the estimator has a certain amount of bias it is falling
+ here it is not close to 0 ok. Now if you increase the sample size it become
+ little bit closer to 0 if you increase the sample size from 50 to 500 it becomes very
+ very close to 0 but not exactly 0. So the consistency holds although the unbiased property
+ is not there. Now if you combine all these three histograms so this is the true mean
+ which is the red line. Now if the sample size increases from 50 to sorry 25 to 50 and finally
+ we have 500. So this is how the bias reduces and the consistency increases with the variance
+ also decreases. So ultimately it is going to the true value with a very high accuracy
+ which is the demanding feature for the consistency. And notice one thing whatever may it be biasness
+ or unbiasedness is not a very big deal as long as the estimator is consistent.
+ So keep this thing in mind unbiasedness is a fairy tale we often cannot attain unbiasedness
+ for real life problem but consistency is such a demand which we must maintain otherwise
+ many uncertainty in the prediction and the model building will be there which will be
+ not good for any practice. Here are the also the cross sectional view example the same story
+ that I have told you for the mean estimation. Here you see that how the fluctuation decreases.
+ So if I have less number of observation the fluctuation is more as long as here this blue
+ line we have 25 observation the green line we have 50 observation. The fluctuations become
+ comparatively less and when we consider the 500 observation the fluctuation is even less
+ but all of them are fluctuating around me. So mu hat estimation problem here and this
+ is this estimation problem is mu square. So here the cross sectional view gives you the
+ clear idea how the histograms or the density function that you have seen are looking narrower
+ as the sample size increases. So and finally if you have one cross section
+ here another cross section here another cross section here you will get three density which
+ are nothing but the same that one you have already seen. So this is how the consistency
+ notion of the consistency is present in statistical analysis which is at the same time demanding
+ for any learning problem if the estimator is not consistent inevitably whatever you
+ do the end of the day the uncertainty in prediction will be huge which is not at all a demandable
+ thing. Now let us go for the accuracy measure.
+ So accuracy measure first let us talk about bias which we have already discussed that
+ bias is the gap between the true one and the estimated one. The true one is the expected
+ value of the true one whatever made me and g theta is the value which you are willing
+ to estimate. So as a consequence this is the measurement of bias. So bias when I am using
+ tx to estimate g theta. So that is the way we try to represent and that should be true
+ for all parameter theta. Now notice the thing that bias when we talk about we do not use
+ any absolute value. So only the positive biasness negative biasness is also used positive biasness
+ means this expected value is larger than the true value and negative biasness is the expected
+ value is smaller than the true value. But in general if g theta is a vector value parameter
+ like beta naught beta 1 for regression then individually for beta naught beta 1 you can
+ talk about biasness. But as a vector it is either unbiased or it is biased. So upward
+ bias or positively biased negatively biased that story can be told only for one parameter
+ or one parametric function. If you have more than one parameter or parametric function
+ no point to talking about upward bias or downward bias.
+ Now this gap is considered in real line that means individually term by term gap you are
+ considering and that is the bias. If you want to accumulate them then you can take the absolute
+ value and take the sum or other way we try to represent the thing in terms of the square
+ distance. So here for one variable or one parameter the mean squared error mean squared
+ error so the terminology itself represents the expression. So mean for mean this is the
+ mean. So the mean is represented by this expectation squared error is this quantity. So Tx minus
+ g theta whole square that is the squared error you take the expectation and that is eventually
+ becomes the mean squared error. Mean squared error and that should be defined for all parameter
+ theta. Now if we do a little bit decomposition of this one for that you can use a simple
+ trick for a class 7 level not even beyond that. With inside it you use the two term
+ minus expectation of x sorry you just implement a adjustment negative of expectation of Tx
+ plus expectation of x. So this adjustment you do inside it take the square expand it
+ take the expectation you will be done and what you will get you will get this decomposition
+ which is known as a bias variance decomposition. So bias variance decomposition splits the
+ mean squared error into two non-negative term as it is variance it is non-negative as it
+ is bias squared definitely it is also non-negative. So this bias variance decomposition tells you
+ that how much fluctuation the estimator has and how much away it is from the true value.
+ Now why we prefer this one so computation of MSC is comparatively easy that is the first
+ fundamental thing. Second fundamental thing is this one that if the MSC of the estimator
+ goes to 0 as n goes to infinity then definitely the Tnx is a consistent estimate. So that
+ is the biggest advantage that is why people prefer mostly to go by the MSC. MSC takes
+ care two thing together one is the variance another is the bias. So what does it say it
+ says two thing that the fluctuation of the estimator is reducing MSC is going to 0 means
+ variance is going to 0 bias is going to 0 that means fluctuation is reducing at the
+ same time the estimator is going to the true value of the parameter.
+ So you try to observe this thing that suppose you have a scenario where this is the true
+ parameter theta and you have an estimator which is having distribution here and as a
+ consequence it has certain amount of bias. So bias means this gap. Now what is the what
+ is happening if the MSC is going to 0? MSC is going to 0 means you are having another
+ estimator as n goes to infinity its bias is reducing maybe say it is coming closer to
+ here from say 50 sample to 500 sample. So it is becoming closer to here and its fluctuation
+ the thickness that is what we have told you in the last lecture the cartosis is increased.
+ So now the bias has reduced and eventually as the n even more increases the fluctuation
+ decreases and as a consequence the bias is also so maybe the true mean is coming here.
+ So as a consequence the bias reduces bias is going to 0 and variance is also going to
+ 0. So this is how when the bias and variance both
+ of them reduces we are going to have a consistent estimator for the parameter which is a sufficient
+ condition. And those type of estimator where the it is becoming unbiased as n goes to infinity
+ then it is known as the asymptotically unbiased estimator. Notice that for a biasness we just
+ use L1 norm or eventually what you know as the absolute distance. On the other hand the
+ MSC is using L2 norm which is also known as the Euclidean distance.
+ So based on Euclidean distance we construct MSC based on L1 distance or the absolute distance
+ if we are focusing only in the magnitude then we are using L1 norm and we are getting the
+ bias amount from there. So let us not make it more technical. Here I am giving you one
+ exercise which you can do by simulation if you are not technical enough with the language
+ of the subject. Still you can do the simulation that x1, x2, xn iid distribution for random
+ variable mu variance sigma square I am not specifying the distribution ok.
+ So it could be normal you can do it for normal but for normal even proving this thing is
+ much more easier. You can use it for normal or some other variables but keep the mean
+ fixed keep the variance fixed that is the idea mean fixed variance fixed. Then Tn x
+ is x bar s1 square is 1 upon n minus 1 xi minus x bar and s2 square 1 upon n xi minus x.
+ So try to check already I have done that simulation that Tn x is an unbiased estimator
+ for mu s1 square is an unbiased estimator of sigma square this thing little bit algebra
+ you have to do for your make your hand dirty and s2 square is an asymptotically unbiased
+ estimator as n goes to infinity it will be. For normal distribution it is pretty simple
+ but for non-normal distribution it requires little bit work.
+ Now on the contrary to our general perception that s2 square which is a biased estimator
+ or asymptotically unbiased estimator it has mse less compared to the mse that of the s1
+ which is unbiased estimator and you will be able to see that if you do the simulation.
+ The same story you can observe in ridge regression ridge regression I hope will be taught in
+ your regression course that when the inversion is not possible for x transpose x matrix the
+ regression fitting then we introduce a certain amount of bias.
+ So suppose the parameter say beta i is here if we only go for the unbiased estimator it
+ has a huge fluctuation. But if we go for a certain amount of bias estimator it has very
+ less fluctuation as a consequence it has a very less fluctuation as a consequence the
+ bias estimator although it is biased it will have a less mse compared to the unbiased estimator.
+ So it is not I mean impractical or rare situation that the biased estimator is often giving
+ the better mse compared to the unbiased estimator. So what is the takeaway that consistency is
+ the ultimate goal for an estimation or learning problem that we are looking for unbiased is
+ good even if we do not get unbiased we have nothing to be I mean disappointed as long
+ as we have an estimator which is consistent may not be unbiased that also very good for
+ the estimation problem.
+ Now we can discuss few methods of estimation one of them is the method of movement which
+ is a pretty simple method. Method of movement means we will estimate the parameters or through
+ a moment equality. So what does it mean if I have the parameter f theta and the function
+ f theta then we will calculate the parameter value through the equation solving and the
+ equations will be constructed in this form. So I am talking about two problems which you
+ will be able to see that how they are connected and how they are different.
+ So first of all x i is following normal mu sigma square. So expectation of x first order
+ raw moment is mu which is estimated by x bar which is 1 upon n sum over x i i running
+ from 1 to n. So this is the expectation. Now on the other hand sigma square variance
+ of x which is sigma square which is estimated by 1 upon n sum over x i minus x bar whole
+ square i running from 1.
+ So here you can see that given the data so this is from the data. So this is the data
+ analog of mean this is the data analog of variance. So these two things are from using
+ the data and these two things are theoretical. Equate them sorted here it is already sorted.
+ But if you consider another situation where say y i's are following gamma alpha lambda
+ then expectation of y equal to alpha for lambda expectation of variance of y variance of y
+ equal to alpha by lambda square. So in this scenario what we will have alpha upon lambda
+ equal to y bar sample mean as we have constructed here alpha upon lambda square equal to so
+ let us call that h 1 square or may be a square in this context so a square.
+ Now you see that the right hand side computation remains same for a given set of data but the
+ left hand side computation they become different as a consequence whatever we have we can solve
+ it very easily for alpha and lambda. Remember this thing here alpha is the shape parameter
+ lambda is the rate parameter. Lambda is not scale parameter here it is the rate parameter
+ that is why the mean has become alpha upon lambda and the variance has become alpha upon
+ lambda square. Now for example as many unknown parameters you have that many equations you
+ have to construct and finally solve them for all those unknown parameters.
+ So if it is k construct k such equations and it is preferred that as many lowest order
+ moment we can use better use that that is the way of approach. Now here for the given
+ set of data I have tried to show you this method of moment the true parameter for normal
+ is sorry. True parameter is considered to be 1.3 and the method of moment estimate has
+ become this one the true sigma is this and the method of moment estimator is this one.
+ So as a consequence if that means we have used this model and as a consequence you can
+ see that how the curves become close to one another this is the CDF the black one is the
+ true one the red one is the estimated one and how close they are even with the method
+ of moment estimation and this is how the histogram of the data and the PDFs are also very close
+ enough and there will be certain situations where the moments theoretically will not exist.
+ One such example is if we consider fx equal to 1 by pi 1 plus x square. So this is a situation
+ which is known as the quasi distribution this is quasi distribution with mu equal to 0 mu
+ is the location parameter sigma is the scale parameter 1 or or another random variable
+ for discrete setup you can consider if I am remembering correctly say k square pi square
+ 6 I mean k equal to 1 after so on. So if if we consider this summation this type of situation
+ the mean does not exist as a consequence the higher dimension does not exist. So sorry
+ higher higher moments does not exist. So we cannot go for the method of moment estimation
+ we require some other estimator which are typically used as maximum likelihood estimator.
+ So let us have a break and after that we will continue with the maximum. So now let us continue
+ with estimation process which is eventually a learning process and this is how any model
+ parameter can be estimated or trained the model training can be done.
+ Now the fundamental aspect of model training now what we will discuss is based on the cost
+ function. So and in a general class it is known as an aim estimator two examples we
+ will talk about will not go in the details calculation of all of them but how and their
+ approaches and how the mechanism should work that is the thing we will talk in this setup.
+ I am sure that in future you will get the scope of specific you are working out all
+ this thing in a specific examples and for real data today hypothetically or theoretically
+ let us conceptualize the thing later on you will have more details examples and the hands
+ on associated to it for the time being let us see how what are the core of the thing
+ and how it works. So first of all the maximum likelihood estimate which is a very popular
+ estimator in statistics and machine learning this estimator tries to visualize or that
+ consider the data in such a way that we have observed a data that means it is the most
+ likely data.
+ So I am repeating we observe a data because it is the most likely data and we want to
+ get out information based on this assumption. So if I consider a particular probability
+ distribution very simply I am saying say this is one probability for one probability for
+ 2, 3, 4, 5, 6, 7 so on and on. Very easily one can identify that the 3 is the most likely
+ data of this distribution. On the other hand if you consider a continuous distribution this
+ is the value which is most likely ok for which the pdf or pmf has the highest peak that is
+ eventually the more. Now here as we consider this one it is a pdf or pmf so the parameter
+ is unknown or may be a fixed constant may be known may be unknown and the probability
+ distribution you can see accordingly. Now if you the story of the maximum likelihood
+ is told in this way that suppose x1, x2, xn they are the random sample from a particular
+ distribution f theta they are iid that means they are random sample theta is the unknown
+ parameter from the parameter space then the joint pdf of x1, x2, xn is this that means
+ they are product and then comes the notion of the likelihood.
+ So what does it say that I have the joint pdf x1, x2, xn based on that and a parameter
+ theta. Now if I plug in the values of x i's with whichever numerical value I have observed
+ from the data then it will be a function of theta then it will be a function of theta
+ only what we write in the form l theta given x. After plugging in the value of x i's in
+ the data from the data we consider the expression of the joint density as a function of the
+ parameter which is known as the likelihood function and we want to maximize the likelihood
+ for the estimation of theta. Why we do that the idea is same as I have
+ told you that we assume that the data is the most likely data that is why we have observed.
+ So eventually we are doing a back calculation or back calculation such that we can portray
+ the given data as the most likely data or the given data is the mode of the distribution.
+ So with an example let us diagrammatic example let us try to conceptualize then we will go
+ for the mathematics. So suppose we have an x follows normal mu 1 sigma 1 for the simplicity
+ and the observed value of x is 5.45. So this is observed and that value is here.
+ Now for which pdf this 5.45 has the maximum height. So the pdf will look based on the
+ normal distribution. So fx is e to the power minus half x minus mu divided by 1 whole square
+ divided by root 2 pi into 1. So this is the pdf. Now if I choose the particular value
+ of mu equal to 1.5 then this is the black pdf and its value at 5.45 you can see it is here.
+ Then if I choose the mu equal to 3.5 then it is the yellow pdf and its value the value
+ of 5.45 evaluated on this yellow pdf is here. On the other hand if we choose the value of
+ mu as 6.5 then we have the green pdf for which the value of 5.45 evaluated on the green pdf
+ is here. At the same time if we choose the mu value as 5 then the pdf value is here and
+ finally if we choose the pdf value as 5.45 then the pdf value is here. So eventually
+ this is the search process. So I am searching for all possible values of mu and for each
+ value of mu I am calculating the expression e to the power minus half 5.45 minus mu whole
+ square divided by pi that is l mu given data. So this is how it looks and for each mu I
+ am calculating this value this value this value. So for different different values of
+ mu I am getting this number. I am looking for that mu which will give me the highest
+ value and that is what is done by the maximum likelihood estimate.
+ So now let us make it formal that l theta given data is this function. We want to maximize
+ this function with respect to theta r max means eventually the maxima that means the
+ value of theta for which l theta is attaining maximum or eventually it is the log of l theta
+ is attaining the maximum. It is we can use log because log is a function which is defined
+ on the positive part of real axis and pdf are always non negative. If the pdf value
+ the joint density value is 0 then it is not in the competition. If it is non 0 we can
+ take the log and we can compare often taking log is much more easier that that is the thing
+ you can see for normal distribution itself.
+ Because even even if you take the log if you take the log of this expression rest all of
+ them will become constant ultimately you have to deal with x i x minus mu by 1 whole square.
+ So this is the expression the negative half. So after taking log you will get this type
+ of expression. So dealing with this expression is much more easier than the exponent and
+ so on and so forth. So taking log is often useful. So this is how maximum likelihood
+ estimation is often obtained. MLE has few properties like it need not be unique well
+ we can show you certain examples. It need not be an unbiased estimator. So for example
+ 1 upon n sum over x i minus x bar whole square i running from 1 to n that is the MLE of sigma
+ square which is a biased estimator. MLE need not be unique. So MLE is always a consistent
+ estimator. This proof is little long but it holds. MLE is asymptotically normally distributed
+ up to certain regularity condition. If the range of the random variable is free from
+ the parameter that means it is not like normal distribution, binomial distribution or something.
+ Not of this form, not of this form that x follows uniform 0 theta. So here the range
+ depends on 0 to theta. So upper bound is given. The range depends on 0 to theta in that case
+ it will not hold and likelihood is mootly differentiable after third order derivative
+ and the integration can be interpreted. So these are the technical requirements. Apart
+ from that likelihood is a very well behaving estimator often difficult to get but that
+ is a computational issue. For that people do many Markovchen Monte Carlo method or people
+ also do gradient descent method. All those types of optimization techniques can be used
+ for getting the solution but that the difficulty does not stop us for obtaining the solution.
+ Here let me give you one example where the consistency uniqueness is a issue. Suppose
+ instead of normal you have the density like this e to the power minus x minus mu mod instead
+ of square it is mod divided by 2 fx. Suppose this is the density and if you have n such
+ observation then it is sum over running i running from 1 to n and 2 to the power n it
+ will be. As a consequence you can see that it will look like this. Normal is this smooth
+ and this is double exponential. A potential model for the error distribution when sometime
+ normal you are not using or you are doing a regression problem when the error are considered
+ the measurement error is considered to be the absolute distance then this is a very
+ potential one for the error model. Now if you go by this one the MLE of mu is
+ the median is the sample median. And in the last lecture we have discussed that the sample
+ median can be unique if the observation n if n is got to keep odd number of observation
+ then it has a unique median if n is even then it has non-unique median. So as a consequence
+ MLE can be non-unique this is the counter is. So here I have just tried to demonstrate.
+ Suppose you are getting many messages in your either cell phone or WhatsApp or many. So
+ first 10 messages of your first 10 messages of the day you are considering and how many
+ of them are the proper message and rest all are promo or you can consider the how many
+ of them are promo messages and rest of them are valid message.
+ So these are 50 such days trial hypothetically 50 such days trial and you are willing to
+ check what is the proportion of the promo messages are entering. So these are the these
+ are the 50 observations that we have and from there I am constructing the binomial PDF.
+ So P to the power x i 1 minus P to the power n so 10 minus x i product over i running from
+ 1 to 50. So 50 days I have taken the data and definitely n choose x so this is 10 choose
+ 50. So this is how the PDF looks and product over all the PDF and we are looking for the
+ value of so this is L P given data. So this is the likelihood function for the parameter
+ P and given the data x 1, x 2, x n. So 50 observations I have I want to maximize the
+ likelihood. So here for simplicity I have done it for grid search and here you can see
+ that it has taken certain peak and the base value is the estimate of the P.
+ Now instead of the product of the densities if I take the log likelihood then the same
+ story you will be observing the location of the maxima has remain unaltered but the function
+ have changed and both in both of the cases MLE is observed to be 7.72 where the true
+ value true value was 0.7. So it is a close one based on the 50 observation if you increase
+ the observation it will get much more closer value.
+ Finally speaking we can what we should do we should take log of this we should take derivative
+ with respect to P equate with 0 and solve it ultimately P hat MLE will come as say x
+ bar whatever observation x bar divided by 10. So that will be the MLE in this situation.
+ So it is a very simple problem that one can very easily do but my emphasize for this example
+ was that if you take log the maxima will be unchanged and taking after taking log the
+ problem much much will be much more easier to handle and well here the advantage is that
+ that you can take the differentiation but differentiation is one of the way for obtaining
+ the maxima even if it is not differentiable like this function that we have discussed.
+ If the function is not differentiable with with respect to the parameter still we can
+ manage to obtain the minima or the maxima whatever we are looking for if it is MLE depending
+ on the minimum of this exponent is eventually gives us the maximum. So ultimately it is
+ an MST. So this is the take away from this example. Now the problem becomes much more
+ interesting if we have more than one distribution and that more than one distribution and their
+ mixture. So let me just try to emphasize the thing that mixture distribution means you
+ have two competing or two or more such distributions one is this one another might be this one.
+ So end of the day what is happening with certain probability I will go to this rate distribution
+ and draw a sample with certain probability I will go to this rate distribution and draw
+ a sample with 1 minus that probability I will go to this distribution and a sample.
+ Again I will flip a coin I will go to this distribution I will draw a sample again I
+ will flip a coin I will go might be again going to this distribution and draw a sample.
+ So in this way the mixture distribution is constructed or conceptualized it is not like
+ that I will have an observation from here and I will have an observation from here and
+ get a linear combination of that it is not that one. Mixed there means we will draw from
+ only one distribution at each time which distribution I will draw that will be a probabilistic
+ decision. So mixture distribution is a very good model
+ for the more complex densities because eventually the density appear to us like maybe like this.
+ So this red curve or the blue curve will not be known visible to us we will only have this
+ pink curve as a whole. So the mixture distribution can be used for more complex or sophisticated
+ data. Hidden mark for hidden markup model it is a definite application. Incomplete data
+ model also can be treated in a mixture distribution. So without going for the technicalities I am
+ just giving you the s m that it is again a maximum likelihood problem, m stivation problem
+ on, but it has a certain variable which is missing that means from which distribution
+ the data is coming that level is missing. So here the z is the level in substance.
+ So it has been integrated out with respect to z and we have the likelihood of the parameter
+ and the data. This type of maximum likelihood problem is solved in EM algorithm. In EM algorithm
+ it has two steps one step is the expectation step. So in there the expectation is taken
+ for the unobserved value of the data given the observed part and the estimated parameter
+ at stage t for the iteration, for the likelihood we take the expectation and then we write
+ the complete likelihood and we do the maximization and repeat the process until you convert to
+ a particular precise solution. So here I am trying to show you another example
+ the source of the data is given. So eventually the data will look like this. We will have
+ no distinction from where the data are coming. So this is a typical example of the mixture
+ distribution and originally if you want to look then this is one distribution this is
+ another distribution. But end of the day we see only the black one. The job is to find
+ the parameter mu 1, mu 2, sigma 2, sigma 1 and this is pi 1, pi 2 such that pi 1 plus
+ pi 2 equal to 1. So all these parameters are supposed to be estimated in a mixture distribution.
+ So here is another example of the data Gaussian mixture model. So here you can see that there
+ are two mixture distribution but eventually it is looking little bit non Gaussian because
+ they are mixed. They are not the linear combination of normal. Linear combination of normal is
+ again normal that is the thing we will show you in the next lecture. But here what you
+ can see that the this blue the green one yellow one both of them are normal itself but they
+ are mixture is no longer normal ok. So this is how the mixture distribution looks and
+ we can evaluate or the parameter values from the data.
+ So here I am showing you one example for the sake of demonstration that 272 observation
+ of two variables we will go one variable first and then for the two variables. So this is
+ an usually known as the faithful data for the eruption of a spring. So it has two component
+ the eruption time and the waiting time. So there is a gap between two eruptions that
+ is the waiting time and when the eruption starts how long it will continue that is the
+ eruption time. So we have assumed that there are two normal
+ distribution one with parameter mu 1 sigma 1 another with parameter mu 2 sigma 2 and
+ with probability p for the shorter waiting time probability 1 minus p for the longer
+ waiting. So the marginal pdf is a linear combination of the pdf it is not the linear combination
+ of the data. Now marginal pdf is the linear combination of the or the convex combination
+ of the pdf. Now in each step each step and m step and the steps I have already explicitly
+ written and the code is have provided to you. I know only art so I have written the code
+ in art you can copy paste the code in charity we will get it converted to python whatever
+ language you want. So now here if Z equals to 1 it is giving
+ the shorter length if it is 0 for the longer length of waiting time. So this is how the
+ expectation of Z i is at each step and then again write down the complete likelihood.
+ So notice this is the marginal likelihood this is marginal when the labels are not known
+ this is the complete when the labels are plugged in. So based on that we repeat the process
+ and after repetition we will converge to a particular value which are close enough to
+ one another and in that case we stop the iteration.
+ And here you can see that there is a two such pillars multimodal distributions we call one
+ is fitted for the green one another is the red one and the combined pdf which is the
+ marginal pdf that is shown in the dotted blue card. So this is for one dimension and for
+ two dimension also here the eruption time and waiting time. So for one margin whatever
+ this is the eruption and the waiting so whatever we have done this is for waiting time.
+ So for this one we have done we have another component which is the duration of eruption
+ and combining together you have this is one cluster this is another cluster. So this is
+ eventually a clustering problem solving. So this is you can say it is a mixture Gaussian
+ fitting you can see it is an EM algorithm problem but end of the day it is solving clustering
+ problem. So that is why the understanding of the MLE is very much important and it is
+ a model driven clustering problem. It is not like K-means clustering it is a model driven
+ clustering problem we have the parameter we have the distribution and eventually we are
+ considering the data as a mixture of different models.
+ So here we can obtain all the parameter values of specific distribution and the mixing probabilities
+ as well through EM algorithm. Now with a short note to another criteria of estimation which
+ is very popular for regression known as the least square estimation. So here as of now
+ we have maximized the likelihood so one maximization problem another is least square estimation
+ that means square error is minimized. So that is that could be another criteria of estimation.
+ So consider the simple linear regression model that y the mean value of y is a linear function
+ of x and consider the normal distribution for the error. So as a consequence yi's are
+ following normal distribution as always data given x i's are constants yi's are random
+ variable and epsilon i's ok. So I have ok so epsilon i's are the error ok. So they
+ are random error they are independently and identically distributed ok.
+ Now the least square problem is for one two variables it is very simple you can consider
+ the true value true value and the predicted value their difference make it square and
+ try to minimize this square error. You can take it absolute value that is also a valid
+ problem but the advantage of squaring it is it will be differentiable. If we take absolute
+ value here it will not be differentiable ok. Now with a notation s suffix x y is this beta
+ if we differentiate this quantity with respect to beta naught beta 1 and equate with 0 solve
+ it with doing all this stuff we will get this one and this. I am not doing this thing because
+ nowadays software will do it for you ok. So these simple things will be easily dealt by
+ the software. So beta 1 hat can be written down in this form s suffix x y divided by
+ s suffix double x s suffix double x means it will be sum over x i minus x bar whole square.
+ So each y i's will be replaced by x i itself ok similarly y i and beta naught is this.
+ So you can very easily get the prediction line as this one. So if you plug in a new value
+ of x naught you will get the value of y. So this is the prediction problem as well as
+ the estimation problem together. Now in statistics the inferential problem is very much important
+ because we need to know whether these values are significantly close to certain number
+ or not or they are close to 0 or not. So these are the thing that is very much important
+ in statistical aspect and sometime of the machine learning problem as well. So here the schematic
+ diagram that this is the red line is the fitted line the blue dots are the data. So this much
+ is the gap between the data and the predicted line and e i is the error we want to minimize
+ the square n. So that is the whole idea. Here is a complete worked out example that
+ x is a regressor variable feature variable y is the response variable as a consequence
+ we call calculate all the necessary thing and finally end up with this prediction line.
+ This is a very simple structure anybody and everybody can do. Notice one thing as of now
+ this prediction structure we have never used normality. Normal assumption of the error
+ we have done at the very beginning but we have never used normality.
+ So up to this much prediction line through least square method you can get without assumption
+ of normality but if you need to check the significant value for each of the parameter
+ beta naught, beta 1 and so on and so forth you require the normality assumption which
+ makes the life much more easier. Otherwise some resampling techniques can be implemented.
+ We can make it more general for more feature earlier it was only up to this much. Now you
+ can incorporate more variables more feature vector this thing we will talk in the great
+ details in the next lecture. And the similar way we can construct the model but here the
+ least square condition will the entire model will look like y is the response variable
+ x is the feature matrix, beta is the parameter, epsilon is the error vector. So this is error
+ vector, true error vector this is response and this is feature and this is the model
+ parameter. As a consequence we need to minimize the
+ least square error and obtain the value of the beta. Now let us see that the square error
+ so y is a vector x is a matrix beta is a vector end of the day y minus x beta is also a vector
+ n component vector. So that vector transpose the same vector it eventually boils down to
+ this expression for more variables of x i ok. Here you have only one x value here you
+ have k such component of x i and the same thing in you can write in a matrix notation
+ like this. Now open the I mean just follow the note from the previous lecture there we
+ have given you how to differentiate with respect to a vector, differentiate this entire expression
+ with respect to the beta vector this component will vanish you will have contribution from
+ here you will have contribution from here and equate with a 0 vector solve it you will
+ get beta hat that means the estimated value of beta as this.
+ Now here is the simple linear regression structure what is the straight line so this is another
+ important data of people often use the cells with respect to the advertisement in different
+ platform TV or TV and radio. So if I use only TV it is a simple linear regression problem
+ if I have more than one regressors then it is eventually giving us a plane. So the red
+ dots are the data and the plane is the fitted regression surface of the plane. Now few geometric
+ property that is important here to be noticed that if I want to predict the value of y what
+ I can do I can use x and use the estimated value of beta which eventually gives me a
+ matrix like this multiplied by y and interestingly this matrix is the projection matrix of any
+ vector y in the feature space. Feature space means whatever x matrix I have if I consider
+ all possible linear combination of the column x 1 x 2 x and first column is 1 and so first
+ column is 1. If I consider all possible linear combination of all these columns then the
+ space that we generate that is known as the feature space. So as a consequence this PX
+ matrix what it what it is doing here any y variable response variable it brings it down
+ to the feature space and regression is only that nothing more than that can be done by
+ a prior regression. And what is the estimated error that is the true value of y minus the
+ estimated value of y which can be written as identity minus Px into y.
+ Now you have this e vector and this estimated vector or the predicted vector y take their
+ dot product and do the calculation you will get 0 vector which means that this predicted
+ value and the true value so this is the error. So this much is the error and this is the
+ prediction they are perpendicular to each other geometrically that is given here. And
+ if we consider the covariance of them it will eventually become 0 which eventually lead
+ to independence if the normal distribution assumption is present otherwise not. So covariance
+ 0 is will be okay but independence will be only because of normality this thing we will
+ elaborate in the next lecture. And added advantage of this model is with
+ another dataset I am just schematic diagram I am giving. So here is the stock 1 is predicted
+ via stock 2 and stock 3 with a simple linear regression model say y equal to stock 1 is
+ beta 0 plus beta 1 x 1 plus beta 2 x 2. So this is stock 2 this is stock 3 but if we add
+ so based on this you get this model but if we add another component if we add another
+ component to it say beta 3 x 1 x 2 that is also possible. If we add another component
+ still we can solve that problem but the model will become much more adjustable with the
+ interaction effect of stock 1 and stock 2 and instead of straight flat plane you have
+ a twisted plane or twisted surface. So this is what the generalization of interaction
+ we can do in the model but everything falls under the least square minimization problem
+ and which we can solve through the square error minimization as an M estimation problem
+ for entire setup. So before concluding let us have a demonstration of this EM algorithm
+ whatever I have shown you here if the software supports let me just give it a try RStudio
+ okay so that may I have the screen yes thank you.
+ So that data set that we have already talked about the waiting time for eruption and by
+ various two normal distributions we are trying to show their EM approach for solution let
+ us see the diagram. So you see that the histograms are fixed from the data and as the iteration
+ moves the densities are adjusting themselves such that it will converge to an optimal situation
+ where the successive iterations are almost closed enough for obtaining the true parameter
+ value. So deliberately I have chosen the parameter which is a little bit away from the true one
+ and such that the convergence takes little bit more time.
+ So here okay so finally we have got this one. So with the iteration you can see that
+ it has taken 32 iterations to have almost consecutively similar value in the successive
+ iteration. So this is how EM approaches but there is a chance that it might get stuck
+ with the local optimal value. So I think I should stop now if I have queries let us
+ have it. The code is appended with the BDF. Could you please provide an example of active
+ and passive. So in active so whatever the learning you are seeing in EM algorithm that
+ is an active learning. Eventually we do not say much about the parameters the data itself
+ at the algorithm itself adjust with the thing but in passive learning if we specify the
+ parameter labeling and we estimate individually the parameter then that is a passive learning.
+ What was the other name of the online learning in statistics? So online learning in statistics
+ sometimes is known as a surveillance process. So if a process is going on it is often done
+ for signals as well as the statistical quality control. That if a process is set on if certain
+ changes happening we are supposed to detect the change as early as possible. So that is
+ a surveillance problem or online term is nowadays also very much popular in statistical learning.
+ But for the static learning what is that is known as the retrospective study and it is
+ not exactly online but say for example phase 4 clinical trials when study suppose when
+ people take medicine for a particular disease or a person is taking then the person usually
+ take more than one disease a more than one medicine for the treatment. And if the person
+ is getting some ADR adverse drug reaction or the side effect like what we say then there
+ is a repository you can report that because of this group of medicines I am having this
+ much of this side effect and then it is a causal analysis which is done at the phase
+ 4 of clinical trials that for which combination of or for the which medicine this side effect
+ is happening. So it is also important that as early as possible
+ the detection is done it will be better to take a preventive action for the entire system
+ of the or the fatality. Are we trying to estimate the distribution of the given data set using
+ the statistic and assuming the model yes. So data set given model assumed and statistics
+ are used to obtain the parameter value or approximate the parameter value which is nothing but
+ the either in statistics it is estimation process in machine learning it is a learning
+ process as simple as that.
+ Another non-statistic background and getting very difficult for understanding the class
+ can you please suggest how can I proceed a general query from many participants definitely.
+ So it is recommended that you first take up one very easy reading book and one very easy
+ going YouTube lecture whatever is possible for you. Easy reading book I think I have
+ suggested one that Miller and Miller's Jay Freud's mathematical statistic that is a book
+ what anybody will be able to read or maybe one more book I will suggest the organizer
+ will communicate to you the from that book I have taken this regression example model
+ fitting this that one no not this. So another book maybe I will suggest which will be even
+ more easier but at least one one basic book you have to see read out otherwise it will
+ be definitely problematic.
+ And in YouTube lecture well there are many lectures available in the website you can
+ see one lecture series is also available at my home page in Google my Google home page
+ if you find it is useful you can go for it basic probability statistics and little bit
+ of inference is completely done there with required details and examples it has been
+ worked out completely. So I hope it will be useful for you book suggestion I will share
+ with you one I have shared and two book suggestion is already there in my home page also one
+ is little advanced and the another one is basic the Miller's Miller is very basic another
+ one also I will upload there or maybe I will share with you coordinator thank you can you
+ please elaborate more on IID distribution of the data provided an example are there some
+ other types of data distribution similar criteria. So what does it mean IID so we say X and
+ Y are IID or X1, X2, Xn are IID IID means independently and identically distributed.
+ So I am talking about X and Y such that it will be general can be generalized for X1
+ so suppose the core is this suppose this is the CDF of X, so that is capital F X, FXT
+ this is the CDF of X and if Y has to be IID with X that means the CDF of Y will overlap
+ on the CDF of X. So it might be GYT but whatever may be F or G you call does not matter so
+ this is GYT they will overlap that means probability X less than equal to T is same as probability
+ capital Y less than equal to T for or T belongs to real number this is one of the aspects
+ for simplicity I am writing in this way and second thing is the impact X will not influence
+ the distribution of Y, Y will not influence the distribution of X so they are independent.
+ So that means probability XY they belongs to the set A cross B as a Cartesian product
+ which is probability X belongs to A, Y into probability Y belongs to P and this AB is
+ of this type of set minus infinity to T1 minus infinity to T2 this is the technical meaning.
+ So they are not interacting with each other so they are not influencing one another distribution
+ that means independence and whatever may be that point you choose their probability will
+ be same up to that point that is identical CDF these two combiningly known as independently
+ and identically distributed which distribution that is that we are not specifying but these
+ two common features are shared among themselves and you can extend the same story for infertility.

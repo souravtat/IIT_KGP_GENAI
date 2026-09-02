@@ -1,0 +1,2088 @@
+1
+00:00:00,000 --> 00:00:12,840
+ So, welcome back. So, in the last half we have discussed that how to summarize the data
+
+2
+00:00:12,840 --> 00:00:20,440
+ in a descriptive format which is a mere summarization. It cannot capture the whole feature of the
+
+3
+00:00:20,440 --> 00:00:31,040
+ data. Two of the dataset might have the same summary variables but there might be inherent
+
+4
+00:00:31,040 --> 00:00:40,800
+ features are different for different datasets. So, one step ahead to capture all the features
+
+5
+00:00:40,800 --> 00:00:48,320
+ of the data is through the empirical distribution function which is very easy to construct but
+
+6
+00:00:48,320 --> 00:00:57,080
+ it has a very nice feature. The empirical distribution function f and t which is may
+
+7
+00:00:57,080 --> 00:01:04,200
+ counting how many observations are there in the sample which are less than equals to t
+
+8
+00:01:04,200 --> 00:01:09,800
+ divided by the total number of observations which in a sophisticated notation you can
+
+9
+00:01:09,800 --> 00:01:17,800
+ write that indicator variable x i less than equal to t. So, this I mean bold 1 x i less
+
+10
+00:01:17,800 --> 00:01:25,800
+ than equal to t can take either value 0 or 1. So, it will scan on all x i values, it
+
+11
+00:01:25,800 --> 00:01:30,960
+ will check whether it is less than equal to t or not less than equal to t. If the condition
+
+12
+00:01:30,960 --> 00:01:36,680
+ satisfied x i less than equal to t it will consider one otherwise 0. So, it is a sum
+
+13
+00:01:36,680 --> 00:01:45,080
+ of the string binary string either 0 or 1 and ultimately we divide the thing by n so
+
+14
+00:01:45,080 --> 00:01:53,200
+ it is the average. So, depending on this number you can see that if you take that value of
+
+15
+00:01:53,200 --> 00:02:00,320
+ t very very less I mean like going to minus infinity this number will be definitely 0
+
+16
+00:02:00,320 --> 00:02:08,280
+ and if you take a very large value of t then this number is going to be 1. So, that within
+
+17
+00:02:08,280 --> 00:02:15,560
+ that restriction which is the feature of probability, probability always lying between 0 and 1
+
+18
+00:02:15,560 --> 00:02:22,920
+ you can have this step function where if you consider very less number of observations
+
+19
+00:02:22,920 --> 00:02:29,800
+ 10 observations then it is a jump over different locations where the data are jump amount
+
+20
+00:02:29,800 --> 00:02:37,000
+ of jump is everywhere 1 upon n wherever there is a data there is a jump and the jump amount
+
+21
+00:02:37,000 --> 00:02:42,200
+ is 1 upon n. So, and the entire graph is going from 0 to 1.
+
+22
+00:02:42,200 --> 00:02:49,080
+ Now, if you increase the sample size the red graph becomes the green one the more finer
+
+23
+00:02:49,080 --> 00:02:57,240
+ jump 1 upon 100, but that also have the same feature it is going from 0 to 1 non decreasing
+
+24
+00:02:57,240 --> 00:03:05,760
+ way and if you make it 10000 then you can see that you get the blue graph and this blue
+
+25
+00:03:05,760 --> 00:03:13,600
+ graph is almost overlapping on the true graph which is the black one. So, what you can visualize
+
+26
+00:03:13,600 --> 00:03:21,400
+ that this simple function will approximate the probability as n goes to infinity.
+
+27
+00:03:21,400 --> 00:03:28,640
+ So, if you have a large sample the probabilistic feature of the data that means how many observations
+
+28
+00:03:28,640 --> 00:03:35,800
+ less than equal to a certain number that is very nicely and tightly captured by this empirical
+
+29
+00:03:35,800 --> 00:03:48,920
+ distribution function. So, every time we if you want to check say within say a to b within
+
+30
+00:03:48,920 --> 00:04:05,400
+ a to b within a to b may be say here a equal to 0.1 to here it is say 1 within this range
+
+31
+00:04:05,400 --> 00:04:21,320
+ how many how much probability is there. So, theoretically it should be the height
+
+32
+00:04:21,320 --> 00:04:31,240
+ cap based on the black graph. So, height cap based on the black graph, but from the data
+
+33
+00:04:31,240 --> 00:04:38,720
+ itself if you consider the blue one then from this number of the blue graph to this number
+
+34
+00:04:38,720 --> 00:04:45,760
+ of the blue graph that much gap is good enough to estimate how many observations are here
+
+35
+00:04:45,760 --> 00:04:53,320
+ and that can be done for any value a and b. So, this is how probabilistic structure of
+
+36
+00:04:53,320 --> 00:05:01,600
+ the data can be very easily computed from the given data set.
+
+37
+00:05:01,600 --> 00:05:12,080
+ Now let us move on for this mile per gallon data set of the car data if you consider the
+
+38
+00:05:12,080 --> 00:05:18,120
+ number based on the number of cylinders. So, there are three categories of cars with
+
+39
+00:05:18,120 --> 00:05:26,600
+ 4 cylinders, 6 cylinder and 8 cylinder. The proportionate value for 4 cylinder is 3.37
+
+40
+00:05:26,600 --> 00:05:37,720
+ something for 6 cylinder is 2.2187 and 8 cylinder is 0.475. So, if you want to construct
+
+41
+00:05:37,720 --> 00:05:55,840
+ empirical CDF from that data. So, this one. So, before any below 4 everything 0 at 4 there
+
+42
+00:05:55,840 --> 00:06:08,680
+ is a jump and this amount of jump is same as this one. So, this the next amount of jump
+
+43
+00:06:08,680 --> 00:06:17,840
+ is the value associated to this one and the final jump is the largest jump. So, that value
+
+44
+00:06:17,840 --> 00:06:29,480
+ is associated to this one. So, empirical CDF is a step function by construction and it
+
+45
+00:06:29,480 --> 00:06:43,000
+ is continuous from this side. So, if you approach from top or the right it is continuous in
+
+46
+00:06:43,000 --> 00:06:48,600
+ this way, but here the jump discontinuity is happening.
+
+47
+00:06:48,600 --> 00:06:56,240
+ You can have another categorization whether it is manual or automated. So, if we consider
+
+48
+00:06:56,240 --> 00:07:02,360
+ manual here and the automated here. So, binary classification of the data either it is manually
+
+49
+00:07:02,360 --> 00:07:08,480
+ operated or automatic operated. So, then also the proportional deviation gives you another
+
+50
+00:07:08,480 --> 00:07:14,400
+ empirical CDF and these are the data for discrete valued random variable.
+
+51
+00:07:14,400 --> 00:07:21,560
+ Now, if you want to see the continuous valued structure for the all 32 observations at the
+
+52
+00:07:21,560 --> 00:07:27,720
+ mile per gallon, if you want to calculate the empirical CDF function it will be looking
+
+53
+00:07:27,720 --> 00:07:41,600
+ like this. So, this one I have not described here so that part I am not considering. So,
+
+54
+00:07:41,600 --> 00:07:54,760
+ is this information transferable in a summarized form? Look whatever we are doing here we need
+
+55
+00:07:54,760 --> 00:08:03,800
+ to track all of the data point and the jump. So, that also it is summarizing whatever we
+
+56
+00:08:03,800 --> 00:08:13,320
+ are willing to summarize, but it computational cost or the if you want to see everything
+
+57
+00:08:13,320 --> 00:08:18,200
+ in terms of the knowledge transfer or the information transferring it is same as the
+
+58
+00:08:18,200 --> 00:08:27,920
+ entire data set nothing summarized as such. So, the next way of summarization that we
+
+59
+00:08:27,920 --> 00:08:41,920
+ are invoking here is based on the probability distribution function which is a theoretical
+
+60
+00:08:41,920 --> 00:08:50,440
+ version of the empirical CDF. So, why not the graph that we are seeing we will have
+
+61
+00:08:50,440 --> 00:08:56,820
+ a smooth approximation of that and that smooth approximation will be easily transferable
+
+62
+00:08:56,820 --> 00:09:04,440
+ information for us. So, in that case if we have a theoretical object which is a function
+
+63
+00:09:04,440 --> 00:09:11,160
+ capital F which is moving from real number to 0 to 1 because it is a probability and
+
+64
+00:09:11,160 --> 00:09:15,960
+ it will capture the probability capital X less than equal to small x or x belongs to
+
+65
+00:09:15,960 --> 00:09:22,120
+ minus infinity to x for any real number x and that is known as the cumulative distribution
+
+66
+00:09:22,120 --> 00:09:26,840
+ function. So, here we have a very easy toy example suppose
+
+67
+00:09:26,840 --> 00:09:36,440
+ you roll on two dice and consider the sum of the phase values. So, the values can be
+
+68
+00:09:36,440 --> 00:09:45,240
+ between 2 to 12. So, it can be 1 1. So, it is 2 and it can be at most 6 6. So, it is
+
+69
+00:09:45,240 --> 00:09:56,880
+ 12. So, if you consider that experiment. So, from here very easily you can see that all
+
+70
+00:09:56,880 --> 00:10:07,120
+ possible combinations we have 2 to 12 all the probabilities are assigned here this part
+
+71
+00:10:07,120 --> 00:10:13,120
+ we will call later on at as a probability mass function or probability density function.
+
+72
+00:10:13,120 --> 00:10:17,600
+ But on the other hand the right hand side whatever you are seeing nothing but the CDF
+
+73
+00:10:17,600 --> 00:10:23,880
+ as it is a discrete value random variable this empirical CDF is almost looking like
+
+74
+00:10:23,880 --> 00:10:32,760
+ the the usual CDF. But for continuous valued random variable I am coming with the example
+
+75
+00:10:32,760 --> 00:10:42,200
+ first. So, for continuous valued random variable if this the smooth curve is the CDF and the
+
+76
+00:10:42,200 --> 00:10:49,600
+ contribution from different segment of the data the green part is contributing here the
+
+77
+00:10:49,600 --> 00:10:54,800
+ dark yellow part is contributing here the blue part is contributing from here to here
+
+78
+00:10:54,800 --> 00:11:00,760
+ the purple or the pink part is contributing from here to here and then again yellow is
+
+79
+00:11:00,760 --> 00:11:10,120
+ here and then the gray in the top one. So, this change is a very gradual change and now
+
+80
+00:11:10,120 --> 00:11:17,160
+ we are trying to track back. So, first try to see how we are approaching we are approaching
+
+81
+00:11:17,160 --> 00:11:23,880
+ from the data from the any data set we can always construct the empirical CDF.
+
+82
+00:11:23,880 --> 00:11:30,320
+ Now if we have an empirical CDF can we have an approximation of that function if it is
+
+83
+00:11:30,320 --> 00:11:35,800
+ a discrete valued random variable nothing to be approximated. If it is a continuous
+
+84
+00:11:35,800 --> 00:11:42,800
+ valued random variable we have we are willing to have an approximation for that one maintaining
+
+85
+00:11:42,800 --> 00:11:57,680
+ a certain thing like this that if I integrate or some one function I will get the CDF and
+
+86
+00:11:57,680 --> 00:12:03,240
+ this function is a non-negative function if I integrate that one over the range I will
+
+87
+00:12:03,240 --> 00:12:11,880
+ get the CDF. So, this this function either in this integration form or in the summation
+
+88
+00:12:11,880 --> 00:12:16,840
+ form it is known as the probability density function.
+
+89
+00:12:16,840 --> 00:12:23,200
+ So, if it is discrete it is in terms of the summation if it is continuous it is in terms
+
+90
+00:12:23,200 --> 00:12:30,840
+ of the integration not a big deal that one, but the advantage of this. So, if you if we
+
+91
+00:12:30,840 --> 00:12:41,180
+ consider from this diagram A to diagram B. So, the first jump is of amount this the second
+
+92
+00:12:41,180 --> 00:12:50,400
+ jump is of amount this and so on and so forth. So, this is how if you consider the sum of
+
+93
+00:12:50,400 --> 00:12:53,840
+ the height of the first pillar and second pillar you will you are supposed to reach
+
+94
+00:12:53,840 --> 00:13:00,360
+ here and second pillar third pillar fourth pillar you are supposed to reach here. So,
+
+95
+00:13:00,360 --> 00:13:06,960
+ in that way PDF and PMF for discrete value random sorry CDF and PMF of the discrete
+
+96
+00:13:06,960 --> 00:13:10,480
+ value random variables are associated with it.
+
+97
+00:13:10,480 --> 00:13:15,720
+ On the other hand if you have the continuous value random variable. So, this is the PDF
+
+98
+00:13:15,720 --> 00:13:24,560
+ of standard normal normal 0 1s and distribution if you integrate this function you will get
+
+99
+00:13:24,560 --> 00:13:34,520
+ this CDF this CDF often might not have a closed form. So, the construction of the PDF from
+
+100
+00:13:34,520 --> 00:13:40,480
+ the data is nothing but a back calculation back calculation in the way if you have a
+
+101
+00:13:40,480 --> 00:13:54,320
+ smooth approximation for the CDF curve FX get a derivative it will give you the PDF
+
+102
+00:13:54,320 --> 00:14:01,860
+ or in the other hand you have the histogram you smooth it out whatever may be the way
+
+103
+00:14:01,860 --> 00:14:15,120
+ integration minor that thing sorry FX you will get. So, either we do the approximation
+
+104
+00:14:15,120 --> 00:14:23,040
+ here or we do the approximation here. So, this is the fundamental structure of obtaining
+
+105
+00:14:23,040 --> 00:14:31,880
+ a probabilistic characterization of a distribution from the data whatever textbook distribution
+
+106
+00:14:31,880 --> 00:14:42,760
+ that you see from say normal gamma weibull log normal everything is originated through
+
+107
+00:14:42,760 --> 00:14:53,440
+ the approximation of the real data with a known function which is easy to deal with nothing
+
+108
+00:14:53,440 --> 00:14:58,520
+ extra has been done then there are certain property of transformation which can give
+
+109
+00:14:58,520 --> 00:15:06,240
+ the genesis of the other from the old one that is a separate mathematical construction.
+
+110
+00:15:06,240 --> 00:15:14,840
+ But inherently starting from this normal distribution it is always or the scientist always has tried
+
+111
+00:15:14,840 --> 00:15:24,520
+ to do that you approximate the histogram with a known function which is a non-negative function
+
+112
+00:15:24,520 --> 00:15:31,400
+ very nicely easily integrable function and you integrate that function you will get the
+
+113
+00:15:31,400 --> 00:15:41,880
+ probability distribution that is how the thing works it is simply a back calculation.
+
+114
+00:15:41,880 --> 00:15:54,640
+ Now, we are moving another aspect which is a which is the linear algebra part. So, next
+
+115
+00:15:54,640 --> 00:15:59,800
+ day we will combine this probabilistic approach and the linear algebra part whatever we are
+
+116
+00:15:59,800 --> 00:16:07,680
+ going to discuss now together and we will discuss multivariate structure as well as
+
+117
+00:16:07,680 --> 00:16:18,400
+ at its estimation and application part ok. So, the thing why we are going to introduce
+
+118
+00:16:18,400 --> 00:16:25,240
+ you this vector structure because we will not only discuss about only one variable whatever
+
+119
+00:16:25,240 --> 00:16:31,880
+ we have studied so far often we will have more than one variables together and as a
+
+120
+00:16:31,880 --> 00:16:40,240
+ consequence we need to hold all the data together we have to analyze all the data together ok.
+
+121
+00:16:40,240 --> 00:16:47,400
+ So, it is not a component wise analysis can lead us to the correct information we have
+
+122
+00:16:47,400 --> 00:16:55,760
+ to analyze more than one variables together and for that we need some matrix algebra very
+
+123
+00:16:55,760 --> 00:17:03,120
+ basic matrix algebra not a advanced one. So, we consider the vector addition. So, here
+
+124
+00:17:03,120 --> 00:17:12,640
+ vector by vector we mean a component which or a mathematical object which has more than
+
+125
+00:17:12,640 --> 00:17:21,440
+ one component. So, typically this u is a vector if you multiply a constant with u you will
+
+126
+00:17:21,440 --> 00:17:27,880
+ get another vector v is another vector you multiply another constant you will get another
+
+127
+00:17:27,880 --> 00:17:36,280
+ vector. So, it is eventually scaling A, U, B, V they are the scaling of the value of
+
+128
+00:17:36,280 --> 00:17:44,240
+ U in with different magnitude after that if you add them. So, that is nothing but vector
+
+129
+00:17:44,240 --> 00:17:51,760
+ addition that you have learned from long back I hope it will help you to revise and visualize
+
+130
+00:17:51,760 --> 00:18:00,280
+ the thing. So, depending on the vector itself it has a magnitude and a direction as simple
+
+131
+00:18:00,280 --> 00:18:09,000
+ as that and then again scaling to the vector it inflates or shrinks the magnitude then
+
+132
+00:18:09,000 --> 00:18:18,040
+ after that you will do the addition. Then what mathematically we get we get a linear
+
+133
+00:18:18,040 --> 00:18:28,080
+ combination linear combination. So, linear combination how it is important or applicable
+
+134
+00:18:28,080 --> 00:18:34,400
+ to us because we are willing to get information from the data.
+
+135
+00:18:34,400 --> 00:18:42,440
+ So, how we give the weightage to different features that is important. So, giving weightage
+
+136
+00:18:42,440 --> 00:18:49,040
+ to different features it can be done only through linear combination the name can be
+
+137
+00:18:49,040 --> 00:18:55,640
+ differently used in different subjects, but mathematically it is known as the if people
+
+138
+00:18:55,640 --> 00:19:01,400
+ also call it is a weighted average yes this is true the linear combination weighted average
+
+139
+00:19:01,400 --> 00:19:07,440
+ is a special case of linear combination. So, linear combination is the more general
+
+140
+00:19:07,440 --> 00:19:14,880
+ structure you can do many thing taking average requires some restriction on the weight.
+
+141
+00:19:14,880 --> 00:19:24,960
+ So, the important aspect that it is also because addition is commutative the linear combination
+
+142
+00:19:24,960 --> 00:19:32,240
+ is also commutative in this structure. Scalar multiplication to a vector is turn by turn
+
+143
+00:19:32,240 --> 00:19:43,240
+ multiplication. If I multiply alpha to a vector each component of a vector is multiplied.
+
+144
+00:19:43,240 --> 00:19:55,640
+ Now, let us come to the and this will consider all possible applications like sum of the
+
+145
+00:19:55,640 --> 00:20:04,120
+ vector sum of the vector very easily you can observe this is it. Suppose if I want to write
+
+146
+00:20:04,120 --> 00:20:13,680
+ sum over xi I run from 1 to n which I can write 1 vector transpose x vector where x vector
+
+147
+00:20:13,680 --> 00:20:29,960
+ is x 1 x 2 x n whole transpose and 1 vector is all component 1 whole transpose. So, as
+
+148
+00:20:29,960 --> 00:20:37,880
+ a consequence this entire thing we can combine together which is nothing but 1 vector dot
+
+149
+00:20:37,880 --> 00:20:45,480
+ product x vector. So, sum you can write in this way average if you want to take average
+
+150
+00:20:45,480 --> 00:20:55,200
+ or sample mean that is 1 upon n 1 upon n 1 upon n which is x power. So, vector representation
+
+151
+00:20:55,200 --> 00:21:09,440
+ makes the thing much more easier. Now, let us variable selection how can you do? Suppose
+
+152
+00:21:09,440 --> 00:21:19,040
+ I want to choose 3 variables out of or 2 variables out of 3 variables. So, say for example if
+
+153
+00:21:19,040 --> 00:21:29,080
+ I have a matrix with 3 variables that is the example will be of matrix multiplication as
+
+154
+00:21:29,080 --> 00:21:35,040
+ well. So, say for example I have 3 variables first variable x 1 second variable x 2 third
+
+155
+00:21:35,040 --> 00:21:49,560
+ variable. So, 3 feature vectors I have. So, x 1 1 x 1 2 x 1 n sorry I should write in
+
+156
+00:21:49,560 --> 00:22:18,840
+ may be x11, x21, xn1, x second column, 1, 2, x22, xn2, x13, x23, xn3. So suppose this
+
+157
+00:22:18,840 --> 00:22:28,560
+ is a matrix of feature vector and the matrix has dimension n cross 3. I am not willing
+
+158
+00:22:28,560 --> 00:22:33,520
+ to take all the feature vector, I am willing to take only the first feature vector and
+
+159
+00:22:33,520 --> 00:22:36,480
+ the third feature vector.
+
+160
+00:22:36,480 --> 00:22:50,640
+ Now what I need at the end is the outcome as n such observation with two components.
+
+161
+00:22:50,640 --> 00:23:02,720
+ So here I need to multiply with another matrix which is again 3 cross 2. So 3 cross 2 how
+
+162
+00:23:02,720 --> 00:23:08,880
+ can we construct? The first feature vector I am looking for 1, second feature vector
+
+163
+00:23:08,880 --> 00:23:17,000
+ I do not want, third feature vector I do not want. Then the next feature vector what I
+
+164
+00:23:17,000 --> 00:23:21,480
+ want is the third one. So first feature vector I do not want, second feature vector I do
+
+165
+00:23:21,480 --> 00:23:29,960
+ not want, third one I want. So if you multiply now you will get x11 will come, x21 will
+
+166
+00:23:29,960 --> 00:23:40,720
+ come and xn1 will come. Similarly, x13 will come, x23 will come, xn3 will come. So deliberately
+
+167
+00:23:40,720 --> 00:23:51,800
+ we can remove the second column. But it is not necessary that we will have such a easy
+
+168
+00:23:51,800 --> 00:23:59,560
+ construction that only one feature vector I will be extracting out. We might have instead
+
+169
+00:23:59,560 --> 00:24:07,520
+ of 3 we might have 30,000 feature vectors and may be say 200 we are willing to extract
+
+170
+00:24:07,520 --> 00:24:12,240
+ from there or we are willing to have a linear combination of all of them.
+
+171
+00:24:12,240 --> 00:24:19,800
+ So I need to combine, I can have a vector here which will give the linear combination
+
+172
+00:24:19,800 --> 00:24:26,240
+ of all of the features and it will construct another one. So this thing will be applicable
+
+173
+00:24:26,240 --> 00:24:35,960
+ for say principal component regression or even principal component analysis itself variable
+
+174
+00:24:35,960 --> 00:24:43,000
+ selection. So all this stuff you can do with the matrix multiplication. And matrix multiplication
+
+175
+00:24:43,000 --> 00:24:50,560
+ eventually happening row multiplied with column and that is the thing what we have
+
+176
+00:24:50,560 --> 00:25:00,120
+ just mathematically written here matrix multiplication as well as well as their addition, subtraction
+
+177
+00:25:00,120 --> 00:25:06,080
+ I hope this is pretty simple for you. Addition if we do for a matrix then it is term by term
+
+178
+00:25:06,080 --> 00:25:12,840
+ addition or subtraction. If we do matrix multiplication then definitely we go for this
+
+179
+00:25:12,840 --> 00:25:23,040
+ way the row and column interaction whatever we have. Now another important aspect is block
+
+180
+00:25:23,040 --> 00:25:32,320
+ matrix, block matrix eventually splits the entire matrix into say in this way 4 or even
+
+181
+00:25:32,320 --> 00:25:41,640
+ more than that blocks. Now block matrix product can follow this structure but where the block
+
+182
+00:25:41,640 --> 00:25:49,600
+ matrix is important definitely variable selection is one important aspect because we need not
+
+183
+00:25:49,600 --> 00:25:53,000
+ require all the feature vectors often.
+
+184
+00:25:53,000 --> 00:26:21,080
+ Another important aspect is if we are willing to predict a subset of vector given the other
+
+185
+00:26:21,080 --> 00:26:41,880
+ subset of vector. So suppose the x vector has component x1, x2, xk, xk+1 up to xn.
+
+186
+00:26:41,880 --> 00:26:51,320
+ Now given the value of xk+1 up to xn I am willing to predict the value of this part.
+
+187
+00:26:51,320 --> 00:26:57,560
+ It is in that case the application of this block matrix or the inversion of this block
+
+188
+00:26:57,560 --> 00:27:07,480
+ matrix will be very much useful. This is a very genuine problem because we may not always
+
+189
+00:27:07,480 --> 00:27:13,440
+ require to predict only one value. We may require to predict more than one values together
+
+190
+00:27:13,440 --> 00:27:21,480
+ which is often important for image classification and the predictive value of or classification
+
+191
+00:27:21,480 --> 00:27:29,320
+ of the image and the prediction of the image.
+
+192
+00:27:29,320 --> 00:27:40,200
+ Next transpose by operation it is very easy for understanding. So each row becomes column.
+
+193
+00:27:40,200 --> 00:27:44,280
+ So whatever is the first row here that becomes the first column here where the second row
+
+194
+00:27:44,280 --> 00:27:51,040
+ that is the second column and third row is the third column. By construction it is very
+
+195
+00:27:51,040 --> 00:27:59,240
+ simple but by application it is important because most of the cases when we are dealing
+
+196
+00:27:59,240 --> 00:28:07,920
+ with regression problem we have the number of observation is much more compared to the
+
+197
+00:28:07,920 --> 00:28:17,360
+ number of feature vector. And as a consequence the matrix or the linear system of equations
+
+198
+00:28:17,360 --> 00:28:26,320
+ that we need to solve there the number of variables present is comparatively less compared
+
+199
+00:28:26,320 --> 00:28:29,520
+ to the number of observation or the number of equation.
+
+200
+00:28:29,520 --> 00:28:37,280
+ And then you come up with a matrix which is something like this that this is x matrix
+
+201
+00:28:37,280 --> 00:28:47,120
+ feature matrix then beta vector and then y vector which is the response vector well added
+
+202
+00:28:47,120 --> 00:28:57,720
+ some error but you notice that this is n cross say k plus 1 or if there are k features then
+
+203
+00:28:57,720 --> 00:29:05,920
+ it is n cross k plus 1 and in this case n is much much larger than k. And as long as
+
+204
+00:29:05,920 --> 00:29:13,160
+ it is a square it is a rectangular matrix you have no scope to invert it.
+
+205
+00:29:13,160 --> 00:29:25,240
+ And the beta vector beta vector is an element from it is a k plus 1 component vector and
+
+206
+00:29:25,240 --> 00:29:32,360
+ this x being a rectangular matrix you cannot invert it. But on the other hand x transpose
+
+207
+00:29:32,360 --> 00:29:42,480
+ x which is a k plus 1 cross k plus 1 matrix it might be invertible. So the transpose has
+
+208
+00:29:42,480 --> 00:29:50,200
+ a very important role in regression analysis and many other applications.
+
+209
+00:29:50,200 --> 00:30:03,360
+ And its symmetry also helps us a lot. Trace of a matrix. Trace of a matrix mathematically
+
+210
+00:30:03,360 --> 00:30:13,560
+ means only the sum of the diagonal elements. But in terms of application what does it mean?
+
+211
+00:30:13,560 --> 00:30:21,900
+ So say for example if I study the variation of more than one random variable such that
+
+212
+00:30:21,900 --> 00:30:33,640
+ their variances are captured so say for example x1, x2, x3 and their variances variance of
+
+213
+00:30:33,640 --> 00:30:44,600
+ x1 variance of x2 variance of x3. This part we have not defined so we are not going to
+
+214
+00:30:44,600 --> 00:30:53,180
+ in discussion. But if we consider the sum of the diagonal elements that is the trace
+
+215
+00:30:53,180 --> 00:31:04,020
+ and as an application if we study the dispersion matrix of a vector then so dispersion matrix
+
+216
+00:31:04,020 --> 00:31:09,660
+ or the variance covariance matrix of a vector then the trace of that matrix is eventually
+
+217
+00:31:09,660 --> 00:31:15,160
+ giving us the total variation of the entire system.
+
+218
+00:31:15,160 --> 00:31:22,540
+ And that total variation of the system again you can see that it is interchangeable that
+
+219
+00:31:22,540 --> 00:31:28,500
+ means variance of x1 plus x2 plus x3 it is the sum. So sum is commutative. So trace of
+
+220
+00:31:28,500 --> 00:31:34,940
+ a is same as trace of a transpose not only that trace of a plus b equal to trace of b
+
+221
+00:31:34,940 --> 00:31:42,580
+ plus a it is same as trace of a plus trace of b not even trace of a b equal to trace
+
+222
+00:31:42,580 --> 00:31:54,700
+ of b a. So although the dimension of a b need not be the same of the dimension of b a but
+
+223
+00:31:54,700 --> 00:32:01,020
+ still trace of a b equal to trace of b a let me give you one example which is very common
+
+224
+00:32:01,020 --> 00:32:09,780
+ and very frequently used. So say for this very easy vector 1 vector column vector all
+
+225
+00:32:09,780 --> 00:32:22,780
+ component 1 okay and what is 1 transpose 1 that means this is first this is a row vector
+
+226
+00:32:22,780 --> 00:32:34,140
+ 1, 1, 1, 1, 1 and then column vector 1, 1, 1, 1, 1 a trivial to see that it is n okay.
+
+227
+00:32:34,140 --> 00:32:43,300
+ But so as n is a 1 cross 1 matrix right here if you consider this is a matrix it is 1 cross
+
+228
+00:32:43,300 --> 00:32:50,380
+ 1 matrix. So the trace of this quantity is nothing but same as n nothing special about
+
+229
+00:32:50,380 --> 00:32:57,380
+ it. But you consider the other way round trace of 1 vector as a column vector 1 vector as
+
+230
+00:32:57,380 --> 00:33:08,820
+ a row vector. Now if you do the multiplication you will get a matrix all component 1. Now
+
+231
+00:33:08,820 --> 00:33:16,060
+ implement the definition of trace of 1 transpose 1 it is nothing but the sum of all diagonal
+
+232
+00:33:16,060 --> 00:33:28,100
+ elements and that is n. So that is same as trace of 1 transpose 1 is a simple example
+
+233
+00:33:28,100 --> 00:33:35,100
+ but it is a something which is striking and it has immense use in statistics and also
+
+234
+00:33:35,100 --> 00:33:40,980
+ the data science. Doing many calculations become much more easier using this property
+
+235
+00:33:40,980 --> 00:33:53,300
+ of the trace and many results become analytically interpretable.
+
+236
+00:33:53,300 --> 00:34:04,460
+ So matrix inverse I have told you notice one thing most of them are just formula few remark
+
+237
+00:34:04,460 --> 00:34:17,020
+ I want to make here. It is a process where A B inverse is B inverse A inverse provided
+
+238
+00:34:17,020 --> 00:34:23,980
+ A and B both are invertible okay. That means both of them are square matrix and both of
+
+239
+00:34:23,980 --> 00:34:33,980
+ them are having non-zero determinant okay. So determinant of A not equal to 0 determinant
+
+240
+00:34:33,980 --> 00:34:40,500
+ of B not equal to 0 and they are square matrix definitely. On the other hand A B inverse is
+
+241
+00:34:40,500 --> 00:34:50,180
+ B inverse A inverse it is sometime we call it as a socks and shoe law because when we
+
+242
+00:34:50,180 --> 00:34:56,360
+ wear first we wear the socks and then we wear the shoe but when we do the reverse process
+
+243
+00:34:56,360 --> 00:35:03,700
+ the remove then first we remove the shoe and then we remove the socks. So remember this
+
+244
+00:35:03,700 --> 00:35:07,580
+ operational identity.
+
+245
+00:35:07,580 --> 00:35:17,300
+ Next thing that I want to tell you that already I have told that when you have a block matrix
+
+246
+00:35:17,300 --> 00:35:23,580
+ it is inverse will be very much applicable when you are trying to predict a vector given
+
+247
+00:35:23,580 --> 00:35:31,100
+ another vector and there you need to use this formula for the computational ease I am not
+
+248
+00:35:31,100 --> 00:35:39,260
+ going for the derivation or anything. The third one either the last one is a very important
+
+249
+00:35:39,260 --> 00:35:48,380
+ has very important application because often the error computation or the evaluation of
+
+250
+00:35:48,380 --> 00:35:57,460
+ the process is done in such a way which is often known as a jackknife method or live
+
+251
+00:35:57,460 --> 00:36:04,980
+ one out method. Live one out method means you have a data set and you have want to fit
+
+252
+00:36:04,980 --> 00:36:11,660
+ a model for the entire data set you want to cross check whether the fitted model is good
+
+253
+00:36:11,660 --> 00:36:19,620
+ one or not for that what we do is first we remove one observation from the entire data
+
+254
+00:36:19,620 --> 00:36:27,100
+ based on n minus 1 observation we fit the entire data and then whatever data we have
+
+255
+00:36:27,100 --> 00:36:32,940
+ kept aside we predict the value of the data and cross check how much gap is happening.
+
+256
+00:36:32,940 --> 00:36:38,900
+ The next step remove the second data do the entire calculation based on the n minus 1
+
+257
+00:36:38,900 --> 00:36:44,660
+ data and again you predict the second data and cross check how much gap is happening
+
+258
+00:36:44,660 --> 00:36:53,140
+ between the data. In that way you complete the entire set with n elements and end of
+
+259
+00:36:53,140 --> 00:36:59,340
+ the day you will have a very nice assessment of how good the model fitting is and that
+
+260
+00:36:59,340 --> 00:37:07,220
+ is often known the statistics it is known as the jackknife evaluation or it is popularly
+
+261
+00:37:07,220 --> 00:37:10,300
+ known as the live one out method.
+
+262
+00:37:10,300 --> 00:37:16,980
+ Now you see that if we go for this evaluation process it requires a huge computational
+
+263
+00:37:16,980 --> 00:37:23,460
+ cost because based on n minus 1 observation you are fitting the same model or estimating
+
+264
+00:37:23,460 --> 00:37:28,460
+ the parameters of the same model or learning the parameters of the same model again and
+
+265
+00:37:28,460 --> 00:37:37,140
+ again and again. So it requires a huge cost in terms of space and time, memory and time
+
+266
+00:37:37,140 --> 00:37:44,500
+ and that thing in linear regression analysis you can directly avoid that computation you
+
+267
+00:37:44,500 --> 00:37:50,020
+ can completely avoid through this result.
+
+268
+00:37:50,020 --> 00:37:58,420
+ So here if you have the entire matrix if you want to remove one column or one row so that
+
+269
+00:37:58,420 --> 00:38:03,620
+ row and that row transpose will be coming here. So suppose in that structure it will
+
+270
+00:38:03,620 --> 00:38:09,420
+ be x transpose x and the row that you are willing to remove may be the ith row and the
+
+271
+00:38:09,420 --> 00:38:17,860
+ ith row transpose then the decomposition of this entire quantity inverse I think I have
+
+272
+00:38:17,860 --> 00:38:32,540
+ made a mistake this should be inverse. So this quantity inverse will be this one.
+
+273
+00:38:32,540 --> 00:38:43,020
+ So as a consequence whatever the recomputation process leaving one data out that will be
+
+274
+00:38:43,020 --> 00:38:51,820
+ at your hand just knowing or fitting the entire model only once together for the all data
+
+275
+00:38:51,820 --> 00:39:02,100
+ rest all computational outcome will be governed by this analysis. So it helps us to reduce
+
+276
+00:39:02,100 --> 00:39:09,940
+ the cost and time a lot. So these mathematical expressions are very much useful for ease
+
+277
+00:39:09,940 --> 00:39:16,900
+ of computation and the inversion formula is pretty easy that if whatever the matrix you
+
+278
+00:39:16,900 --> 00:39:24,860
+ need to take the adjoints of them and divided by the determinant of the entire matrix and
+
+279
+00:39:24,860 --> 00:39:30,740
+ as this quantity comes in the denominator you also need to maintain that the determinant
+
+280
+00:39:30,740 --> 00:39:35,860
+ of A naught equals to 0 and that is how you get the inverse.
+
+281
+00:39:35,860 --> 00:39:42,980
+ The challenge comes when theoretically it is determinant is not equal to 0 but computationally
+
+282
+00:39:42,980 --> 00:39:49,340
+ the determinant is close to 0 very very close to 0 that definitely whatever elements you
+
+283
+00:39:49,340 --> 00:39:58,060
+ are getting as an inverse they often gives us trouble and in statistics and mathematics
+
+284
+00:39:58,060 --> 00:40:05,900
+ we have technique to deal with in statistics we call it a singular value decomposition.
+
+285
+00:40:05,900 --> 00:40:11,100
+ In mathematics we call it singular value decomposition in statistics we have its application in terms
+
+286
+00:40:11,100 --> 00:40:18,900
+ of PCA. So we will touch upon all those stuff.
+
+287
+00:40:18,900 --> 00:40:25,340
+ So to do PCA or the singular value decomposition what we require we require the compute the
+
+288
+00:40:25,340 --> 00:40:34,940
+ Eigen values of a square symmetric matrices or at least the square matrices we require.
+
+289
+00:40:34,940 --> 00:40:40,980
+ The trace has a nice connection with the Eigen values the sum over diagonal element is same
+
+290
+00:40:40,980 --> 00:40:48,300
+ of the Eigen values and the determinant of a matrix is the product of the Eigen values
+
+291
+00:40:48,300 --> 00:40:56,740
+ and the power matrix directly transfer to the power of the Eigen values inverse of Eigen
+
+292
+00:40:56,740 --> 00:41:03,340
+ of a matrix is Eigen values of the inverse of a matrix is 1 upon the Eigen values provided
+
+293
+00:41:03,340 --> 00:41:11,340
+ none of them are 0. So it is trivially true but because any Eigen value is 0 that means
+
+294
+00:41:11,340 --> 00:41:18,260
+ the determinant itself is 0 because the determinant of a matrix determinant of a matrix is nothing
+
+295
+00:41:18,260 --> 00:41:24,660
+ but the product of the Eigen values. So if any Eigen value is 0 so product is 0 determinant
+
+296
+00:41:24,660 --> 00:41:31,020
+ is 0 the matrix is not invertible if all of them are non-zero then definitely you have
+
+297
+00:41:31,020 --> 00:41:37,620
+ this structure that the inverse of the Eigen inverted matrix as the Eigen value is same
+
+298
+00:41:37,620 --> 00:41:42,820
+ as the reciprocal of the Eigen value. So here is a very nice toy example of computation
+
+299
+00:41:42,820 --> 00:41:49,700
+ of Eigen value suppose a is a matrix it is a square matrix need not be a symmetric matrix
+
+300
+00:41:49,700 --> 00:42:00,140
+ then the Eigen value of this matrix is nothing but the determinant of a minus lambda i. So
+
+301
+00:42:00,140 --> 00:42:10,860
+ here it is 2 cross 2 matrix that determinant equals to 0 and this equation this is a equation
+
+302
+00:42:10,860 --> 00:42:26,260
+ in lambda and this equation is known as the characteristic equation characteristic equation
+
+303
+00:42:26,260 --> 00:42:39,700
+ to after solving this equation the solution of lambda we get is 5 and minus 2 here you
+
+304
+00:42:39,700 --> 00:42:45,420
+ can give work it out it is very simple so 1 minus that means the determinant of this
+
+305
+00:42:45,420 --> 00:42:54,780
+ matrix 1 minus lambda 2 minus lambda so 1 minus lambda into 2 minus lambda minus 4 into
+
+306
+00:42:54,780 --> 00:43:05,240
+ 3 equals to 0. So this is the characteristic equation we call it q lambda then 4 into 3
+
+307
+00:43:05,240 --> 00:43:11,700
+ so maybe I should ok so that is good. So now you solve it and you solve after solving
+
+308
+00:43:11,700 --> 00:43:20,420
+ this you will be getting the solution and after getting the solution we need to reconstruct
+
+309
+00:43:20,420 --> 00:43:30,940
+ the equation that means in the form of first you focus here that suppose if we take lambda
+
+310
+00:43:30,940 --> 00:43:38,260
+ equal to 5 then 1 minus lambda becomes minus 4 and 2 minus lambda becomes minus 3.
+
+311
+00:43:38,260 --> 00:43:47,380
+ So 4 minus 4 3 minus 3 and x that equals to 0 so it row sum equal to 0 column sum equal
+
+312
+00:43:47,380 --> 00:43:53,820
+ to 0. So to take the row sum we just need sorry this row sum is 0 the first row sum
+
+313
+00:43:53,820 --> 00:44:00,300
+ is 0 second row sum is 0 so for that I just need a vector 1 1 you have already seen the
+
+314
+00:44:00,300 --> 00:44:06,080
+ example that if you need to take the sum of a vector you just need to use the vector 1
+
+315
+00:44:06,080 --> 00:44:11,140
+ 1 1 each and you do the dot product it will give you this.
+
+316
+00:44:11,140 --> 00:44:17,660
+ Similarly if you use lambda equal to minus 2 you will get this set of equation and if
+
+317
+00:44:17,660 --> 00:44:29,540
+ you want to solve them so 3 4 4 3 just similar magnitude with opposite sign so minus 4 3
+
+318
+00:44:29,540 --> 00:44:45,100
+ I think that is that is 1 will be good enough for having the other value of the eigenvector.
+
+319
+00:44:45,100 --> 00:44:53,940
+ Now what is the importance so this eigenvalue and eigenvector here it tries to say that
+
+320
+00:44:53,940 --> 00:45:03,740
+ for this matrix we have 2 associated eigenvectors which one is this one another is this one
+
+321
+00:45:03,740 --> 00:45:16,660
+ such that if I multiply this matrix with this vector then it is equivalent to multiply
+
+322
+00:45:16,660 --> 00:45:26,900
+ this vector with this eigenvalue. So in the multiplication of this vector by this matrix
+
+323
+00:45:26,900 --> 00:45:46,700
+ is same as multiplying so you see that 1 4 3 2 1 4 3 2 this is the matrix multiply with
+
+324
+00:45:46,700 --> 00:45:57,780
+ one of the eigenvector which is 1 1 which is coming as 1 4 multiply it is 5 5 which
+
+325
+00:45:57,780 --> 00:46:07,940
+ is eventually 5 times 1 1 so multiplying this vector by a matrix is same as multiplying
+
+326
+00:46:07,940 --> 00:46:16,820
+ the same vector with a constant lambda. So matrix multiplication eventually becomes a
+
+327
+00:46:16,820 --> 00:46:22,540
+ equivalent to a constant multiplication and when that thing happens then that vector is
+
+328
+00:46:22,540 --> 00:46:31,700
+ the eigenvector of that matrix and the associated value is the eigenvalue of that vector. So
+
+329
+00:46:31,700 --> 00:46:39,100
+ this is how geometrically the interpretation of eigenvalue and eigenvector is. The application
+
+330
+00:46:39,100 --> 00:46:47,900
+ is definitely the well studied principal component analysis regression analysis okay gradually
+
+331
+00:46:47,900 --> 00:46:50,700
+ we will talk about that.
+
+332
+00:46:50,700 --> 00:46:59,820
+ So principal component analysis what we do is that when we have a huge amount of data
+
+333
+00:46:59,820 --> 00:47:07,380
+ or variables like you can consider the handwritten image classification problem or the iris data
+
+334
+00:47:07,380 --> 00:47:16,660
+ that we have in many software the built-in data that setosa, varsical or virginica these
+
+335
+00:47:16,660 --> 00:47:21,540
+ three categories and petal length, petal width, seper length, seper width all these variables
+
+336
+00:47:21,540 --> 00:47:30,720
+ are present. So all four variables need not be important for classification purpose or
+
+337
+00:47:30,720 --> 00:47:39,620
+ prediction purpose. So we can do a principal component analysis like this we can construct
+
+338
+00:47:39,620 --> 00:47:46,540
+ the matrix X transpose X or the variance covariance matrix and from there we can calculate the
+
+339
+00:47:46,540 --> 00:47:56,660
+ eigenvalues and eigenvectors. So just to give a sketch may be later on so eigenvectors lambda
+
+340
+00:47:56,660 --> 00:48:05,500
+ 1 greater than lambda 2 greater than lambda 3 so on and so forth lambda k is greater than
+
+341
+00:48:05,500 --> 00:48:13,180
+ equals to 0 we are not preferred and corresponding to lambda 1 the eigenvector is V1 corresponding
+
+342
+00:48:13,180 --> 00:48:18,780
+ lambda 2 eigenvector is V3 so on and so V2 so on and so forth.
+
+343
+00:48:18,780 --> 00:48:25,100
+ Now we need to stop somewhere the stopping rule we will discuss later on we will not
+
+344
+00:48:25,100 --> 00:48:33,100
+ consider all of them but some of them we will consider and the data will be projected on
+
+345
+00:48:33,100 --> 00:48:42,780
+ all these eigenvectors or eigendirections. So X dot product with this eigenvector so
+
+346
+00:48:42,780 --> 00:48:55,220
+ this is the score one then again X vector projected or the eigendirection that is S2.
+
+347
+00:48:55,220 --> 00:49:04,220
+ So in this way you will get another vector for data X and that you can do for each X
+
+348
+00:49:04,220 --> 00:49:14,380
+ as a consequence what you will get is nothing but a matrix calculated by all these vectors
+
+349
+00:49:14,380 --> 00:49:25,220
+ V1 V2 up to V say M as many you want to incorporate and here you have the entire data matrix.
+
+350
+00:49:25,220 --> 00:49:31,660
+ So matrix multiplication with this one you will get another set of feature vectors which
+
+351
+00:49:31,660 --> 00:49:40,820
+ is of lesser dimension but important information will be captured there. So as you can understand
+
+352
+00:49:40,820 --> 00:49:49,900
+ that the variable selection matrix multiplication and through eigenvalue identifications all
+
+353
+00:49:49,900 --> 00:50:02,500
+ these things are important for data analysis part. So when you will do hands on you will
+
+354
+00:50:02,500 --> 00:50:10,180
+ be able to connect all those stuff very easily projection is another thing which is the generalized
+
+355
+00:50:10,180 --> 00:50:24,100
+ notion of regression we let me see how much content I have left with so we can cover.
+
+356
+00:50:24,100 --> 00:50:35,900
+ So projection means in physics perspective or geometry perspective suppose I have a vector
+
+357
+00:50:35,900 --> 00:50:48,420
+ here and I have this XY plane and consider another vector which I if you will be nice
+
+358
+00:50:48,420 --> 00:50:58,220
+ if I have certain color maybe this is the color. Suppose this is a vector I have and
+
+359
+00:50:58,220 --> 00:51:03,980
+ I want to project this vector on XY plane so that means eventually I am looking in this
+
+360
+00:51:03,980 --> 00:51:19,020
+ way that I have a light source here which is projecting this arrow on this XY plane.
+
+361
+00:51:19,020 --> 00:51:26,420
+ And that means the shadow is falling on this XY plane and if the shadow is falling in this
+
+362
+00:51:26,420 --> 00:51:34,300
+ XY plane now suppose this is a new object on the XY plane what will be the shadow of
+
+363
+00:51:34,300 --> 00:51:39,460
+ the shadow it will be nothing but itself it will be nothing but itself. So if you have
+
+364
+00:51:39,460 --> 00:51:48,020
+ a free vector in the entire large space its projection in a smaller subspace will bring
+
+365
+00:51:48,020 --> 00:51:53,540
+ that vector in that smaller subspace but if you are in that smaller subspace if you consider
+
+366
+00:51:53,540 --> 00:51:59,060
+ the projection on that subspace you will get the same vector itself.
+
+367
+00:51:59,060 --> 00:52:09,580
+ So the that operation this projection operation we can do with a matrix multiplication very
+
+368
+00:52:09,580 --> 00:52:18,020
+ easily and this matrix multiplication this suppose this will give some vector v and and
+
+369
+00:52:18,020 --> 00:52:27,780
+ that suppose this is z vector and we get this v vector but again p of v is again v and that
+
+370
+00:52:27,780 --> 00:52:42,140
+ is true for all z because p of v means p of p of z equal to v and that is true for all
+
+371
+00:52:42,140 --> 00:52:54,380
+ z that means p of z equal to v p of z equal to v p of v equal to v so p square v equal
+
+372
+00:52:54,380 --> 00:53:17,380
+ to oh sorry just a second okay so sorry and v v is nothing but p of z okay.
+
+373
+00:53:17,380 --> 00:53:23,260
+ So this is the thing happening and that is happening for all z as a consequence we have
+
+374
+00:53:23,260 --> 00:53:31,540
+ the identity p square equal to p the projection matrix always satisfies this identity and
+
+375
+00:53:31,540 --> 00:53:40,540
+ this feature is known as p is an idempotent matrix and if p is an idempotent matrix then
+
+376
+00:53:40,540 --> 00:53:47,740
+ one identity minus p is also idempotent matrix the trace idempotent matrix has Eigen values
+
+377
+00:53:47,740 --> 00:53:54,100
+ either 0 or 1 so the trace computation of that idempotent matrix becomes much more
+
+378
+00:53:54,100 --> 00:54:02,620
+ easier in that scenario and the entire regression is nothing but a game of projection okay.
+
+379
+00:54:02,620 --> 00:54:09,980
+ So whatever you do the regression analysis is a projection of that data the response
+
+380
+00:54:09,980 --> 00:54:16,140
+ variable y in the regress in the space of the regressor variable we cannot go beyond
+
+381
+00:54:16,140 --> 00:54:24,780
+ that whatever we want to do okay so that is how they are connected with each other.
+
+382
+00:54:24,780 --> 00:54:35,140
+ Now let us consider few more things which are important so already we have considered
+
+383
+00:54:35,140 --> 00:54:42,860
+ about the dot product and in more sophisticated technical aspect we call it inner product
+
+384
+00:54:42,860 --> 00:54:52,000
+ people often write in this way sorry a b does not matter so in for real value vector it
+
+385
+00:54:52,000 --> 00:54:57,700
+ is a transpose b that is sum over a i p i. Now if you consider a transpose a that is
+
+386
+00:54:57,700 --> 00:55:04,300
+ sum over a i square but here what you can see that it is the Euclidean distance from
+
+387
+00:55:04,300 --> 00:55:17,380
+ 0 vector to this a any component a so if you have this the length square is nothing but
+
+388
+00:55:17,380 --> 00:55:20,180
+ this quantity.
+
+389
+00:55:20,180 --> 00:55:30,580
+ Now notice that always this measure of distance might not be useful for us okay we need to
+
+390
+00:55:30,580 --> 00:55:42,180
+ consider more generalized version of notion of error which typically want to use the scale
+
+391
+00:55:42,180 --> 00:55:50,820
+ adjustment okay and sometimes make it unit free. Here notice that sum over a i square
+
+392
+00:55:50,820 --> 00:55:58,340
+ a transpose a that thing hypothetically I can write a vector transpose identity vector
+
+393
+00:55:58,340 --> 00:56:06,140
+ identity matrix a vector I hope all of you will agree with it. But this identity is very
+
+394
+00:56:06,140 --> 00:56:13,180
+ nice to deal with but it may not consider all the necessary information suppose each
+
+395
+00:56:13,180 --> 00:56:24,820
+ of the component of ai's have different scaling and that scaling is giving us impact so one
+
+396
+00:56:24,820 --> 00:56:32,260
+ measurement in kilometer and another measurement is micrometer okay suppose a has two component
+
+397
+00:56:32,260 --> 00:56:38,340
+ a 1 and a 2 one measurement is in kilometer another measurement is in micrometer.
+
+398
+00:56:38,340 --> 00:56:45,940
+ So if we consider sum over a i square only the observation in terms of kilometer that
+
+399
+00:56:45,940 --> 00:56:54,180
+ will lead to the conclusion the impact of the micrometer might not be so impactful.
+
+400
+00:56:54,180 --> 00:57:01,460
+ So say for example the change in a parts of a vehicle that change has happened a little
+
+401
+00:57:01,460 --> 00:57:11,020
+ bit change and it is affecting in kilometer the mileage okay so as a consequence the if
+
+402
+00:57:11,020 --> 00:57:18,900
+ we want to have a combined impact or combined variation if I go by this measurement it will
+
+403
+00:57:18,900 --> 00:57:24,620
+ be always driven by the kilometer but the root cause of the change is the change happened
+
+404
+00:57:24,620 --> 00:57:31,220
+ in the parts and that is more important that thing is not reflecting here.
+
+405
+00:57:31,220 --> 00:57:39,700
+ So if I can have a matrix m which is scaling down these two things say for example m if
+
+406
+00:57:39,700 --> 00:57:49,780
+ I consider say 1 upon say sigma 1 square 1 upon sigma 2 square which is which could
+
+407
+00:57:49,780 --> 00:58:00,740
+ be the scaling factor then if I use a transpose m a vector which will be nothing but using
+
+408
+00:58:00,740 --> 00:58:10,580
+ this formula a transpose m a equal to a i a i a j m i j which is nothing but say a 1
+
+409
+00:58:10,580 --> 00:58:23,420
+ square by sigma 1 square plus a 2 square by sigma 2 square.
+
+410
+00:58:23,420 --> 00:58:30,940
+ Now you can see that the scaling has been adjusted for both of the variable they have
+
+411
+00:58:30,940 --> 00:58:38,580
+ now a reasonable impact on the final conclusion not only that if here I have assumed that
+
+412
+00:58:38,580 --> 00:58:45,580
+ these two quantities are 0 if they are non-zero quantity then also this general expression
+
+413
+00:58:45,580 --> 00:58:56,300
+ will be able to help us so for that we need a matrix m which is symmetric that means m
+
+414
+00:58:56,300 --> 00:59:04,340
+ transpose equal to m and determinant of m is greater than 0 if I replace this identity
+
+415
+00:59:04,340 --> 00:59:12,860
+ matrix with a matrix m like this then I can still have a reasonable notion of the distance
+
+416
+00:59:12,860 --> 00:59:20,860
+ and this structure is known as the quadratic form why it is quadratic form consider that
+
+417
+00:59:20,860 --> 00:59:27,940
+ this m i j are the coefficient and a i a j they are variable each a i and a j has power
+
+418
+00:59:27,940 --> 00:59:34,660
+ 1 so in this expression all component has power 2 this is power 1 this is power 1 so
+
+419
+00:59:34,660 --> 00:59:46,160
+ all component has power 2 that is why it is known as a quadratic form.
+
+420
+00:59:46,160 --> 00:59:51,700
+ Well based on the quadratic form we can also obtain the maximum eigenvalue or the minimum
+
+421
+00:59:51,700 --> 01:00:00,460
+ eigenvalue it has again application on the PCA and normalization of the data in ridge
+
+422
+01:00:00,460 --> 01:00:07,460
+ regression lasso regression all those types you will be able to see and finally we have
+
+423
+01:00:07,460 --> 01:00:17,820
+ the data and we do the rotation through a matrix or a transformation with a matrix which
+
+424
+01:00:17,820 --> 01:00:28,900
+ has the particular property such that its columns are orthonormal to each other and
+
+425
+01:00:28,900 --> 01:00:38,740
+ that one is giving a transpose equal to a inverse leading to a transpose a transpose
+
+426
+01:00:38,740 --> 01:00:47,300
+ equal to a transpose a equal to identity. Now if you take the determinant of a transpose
+
+427
+01:00:47,300 --> 01:00:54,780
+ which is same as the determinant of a determinant of a transpose and equal to the determinant
+
+428
+01:00:54,780 --> 01:01:02,460
+ of identity which is 1 now determinant of a and a transpose they are same so determinant
+
+429
+01:01:02,460 --> 01:01:09,980
+ of a square equal to 1 as a consequence determinant of a is either plus or minus so this one is
+
+430
+01:01:09,980 --> 01:01:27,540
+ an impact of I mean of a situation where it preserves the square norm.
+
+431
+01:01:27,540 --> 01:01:34,820
+ That means if you consider the norm in this form the square distance that is preserved
+
+432
+01:01:34,820 --> 01:01:42,060
+ with this transformation which is often important technically it is known as an isometric transformation
+
+433
+01:01:42,060 --> 01:01:47,940
+ but for simplicity you can in terms of Euclidean norm. So Euclidean norm on the square norm
+
+434
+01:01:47,940 --> 01:01:56,180
+ is preserved through this orthogonal transformation and the advantage or you can see this is a
+
+435
+01:01:56,180 --> 01:02:03,020
+ rotation matrix any object we have you can rotate the so any object you have you can
+
+436
+01:02:03,020 --> 01:02:11,620
+ rotate the object with angle theta entire object for that purpose this you can use this matrix
+
+437
+01:02:11,620 --> 01:02:18,620
+ but again more generally for this idempotent sorry this orthogonal matrix what as it is
+
+438
+01:02:18,620 --> 01:02:25,860
+ preserving the norm so distance between any two point on this body rigid body the distance
+
+439
+01:02:25,860 --> 01:02:29,620
+ remains same. So as a general perspective for the rigid
+
+440
+01:02:29,620 --> 01:02:35,580
+ body transformation you can use this rotation matrix in statistics or data science we have
+
+441
+01:02:35,580 --> 01:02:43,140
+ its application through PCA because when we do PCA we get a rotation of the entire data
+
+442
+01:02:43,140 --> 01:02:49,900
+ with the data driven coordinate system and then we do the projection so whatever eigenvectors
+
+443
+01:02:49,900 --> 01:02:59,780
+ that we have discussed so far for this principle this one I hope I have done here.
+
+444
+01:02:59,780 --> 01:03:06,980
+ So this one this V1 V2 Vk if based on that whatever matrix if we can construct based
+
+445
+01:03:06,980 --> 01:03:15,740
+ on all these vectors V1 V2 Vk they will construct an orthogonal matrix and rest of the job will
+
+446
+01:03:15,740 --> 01:03:22,860
+ become much more easier because it will give us uncorrelated variables.
+
+447
+01:03:22,860 --> 01:03:32,620
+ I think with that and this is few not even calculation help such that you can do the
+
+448
+01:03:32,620 --> 01:03:40,140
+ matrix differentiation and it has huge application to the optimization problem if you go do
+
+449
+01:03:40,140 --> 01:03:45,100
+ the gradient descent if you do the least square whatever you want to do you need to do the
+
+450
+01:03:45,100 --> 01:03:49,220
+ vector differentiation so you can make use all of them.
+
+451
+01:03:49,220 --> 01:03:54,940
+ I think with that note I should stop here if you have any query I will be happy to take
+
+452
+01:03:54,940 --> 01:04:08,760
+ the questions and based on your feedback and all those stuff we will go for. So you can
+
+453
+01:04:08,760 --> 01:04:15,580
+ see my home page for few I think it is not clear few books suggestions are given there
+
+454
+01:04:15,580 --> 01:04:28,140
+ in the front page and if you have so one book I am definitely suggesting David C. Lay linear
+
+455
+01:04:28,140 --> 01:04:41,200
+ algebra and its application. So it is a very nice book easy reading book without any help
+
+456
+01:04:41,200 --> 01:04:45,660
+ of any instructor with very nice diagrams and applications.
+
+457
+01:04:45,660 --> 01:04:53,200
+ So anybody and everybody can read this one and few statistics books are also suggested
+
+458
+01:04:53,200 --> 01:04:59,620
+ there Miller and Miller will be a good one to start with without any background. So if
+
+459
+01:04:59,620 --> 01:05:04,720
+ you want and the probability lecture note is also there so you can have a look there.
+
+460
+01:05:04,720 --> 01:05:14,000
+ Rest now let us have some questions if we have can numerically countable data set be
+
+461
+01:05:14,000 --> 01:05:27,240
+ a numerical countable data be function as well. Yes of course because the countable data
+
+462
+01:05:27,240 --> 01:05:34,320
+ is a function of the input of the random variable.
+
+463
+01:05:34,320 --> 01:05:41,320
+ So here we consider the random variable as I have told that the person we choose and
+
+464
+01:05:41,320 --> 01:05:50,080
+ the number of sibling the person has. So this number is a random number the person has associated
+
+465
+01:05:50,080 --> 01:05:58,400
+ with. So the input is the person information the output is the number of siblings. So definitely
+
+466
+01:05:58,400 --> 01:06:04,440
+ it is a function of which input is the identity of that person the output is the number of
+
+467
+01:06:04,440 --> 01:06:13,220
+ sibling of that person. So in that case it is definitely a function.
+
+468
+01:06:13,220 --> 01:06:19,760
+ Will there be any possibility that the data can be classified as a combination of categorical
+
+469
+01:06:19,760 --> 01:06:29,440
+ and numeric. Yes of course there are situations where the variables are categorical as well
+
+470
+01:06:29,440 --> 01:06:40,320
+ as numerical and in that case we can still do the classification problem. I think the
+
+471
+01:06:40,320 --> 01:06:46,360
+ question data can be classified as combination of categorical and numerical. Well some component
+
+472
+01:06:46,360 --> 01:06:54,680
+ can be categorical some component can be numerical of course and if you have those type of situation
+
+473
+01:06:54,680 --> 01:07:01,960
+ where you have category and the categories are measured by numerical then that is a very
+
+474
+01:07:01,960 --> 01:07:07,280
+ easy example of nominal data sorry ordinal data.
+
+475
+01:07:07,280 --> 01:07:16,600
+ And most of the cases we do Poisson regression type of analysis for those types. What is
+
+476
+01:07:16,600 --> 01:07:23,680
+ the difference between the random vector or feature vector. So well the random vector
+
+477
+01:07:23,680 --> 01:07:32,000
+ is definitely from a perspective of little bit more theoretical aspect. The random vector
+
+478
+01:07:32,000 --> 01:07:41,400
+ means a vector valued outcome of a single input in the construction of the random variable.
+
+479
+01:07:41,400 --> 01:07:48,640
+ Feature vector is the realized value of the random vector used for the further data analysis.
+
+480
+01:07:48,640 --> 01:07:57,000
+ So eventually the random vector is used as a feature vector for the further data analysis.
+
+481
+01:07:57,000 --> 01:08:01,440
+ Random vector is a theoretical object. Feature vector is the realized value of the random
+
+482
+01:08:01,440 --> 01:08:12,640
+ vector. Why should we consider the square error, not cube error or any other power.
+
+483
+01:08:12,640 --> 01:08:28,920
+ Can I have the screen once again. So why we are using square error instead of cube error.
+
+484
+01:08:28,920 --> 01:08:39,880
+ The thing is square error always have a Euclidean notion is useful. So eventually the error notion
+
+485
+01:08:39,880 --> 01:08:55,960
+ is norm. I mean first we have the difference x and y. Then it is absolute value and then
+
+486
+01:08:55,960 --> 01:09:07,520
+ it is power. So power could be 1, power could be 2, power could be 3. So if they are vector
+
+487
+01:09:07,520 --> 01:09:14,720
+ it is x minus y vector. So this is another vector. Take term by term absolute value.
+
+488
+01:09:14,720 --> 01:09:22,680
+ Then if the absolute value power 1 that is usually known as L1 norm, L2 norm. So L1 norm
+
+489
+01:09:22,680 --> 01:09:36,720
+ is sum over xi minus yi i running from 1 to n. It is also known as a taxi cab distance
+
+490
+01:09:36,720 --> 01:09:43,640
+ like this or going like this. It is known as a taxi cab distance. Either you go from
+
+491
+01:09:43,640 --> 01:09:50,040
+ here in this way or you go directly here and go there or it is also known as a Manhattan
+
+492
+01:09:50,040 --> 01:10:03,600
+ distance. L2 norm is eventually going by the radius. So this is x1 y1, this is x2 y2.
+
+493
+01:10:03,600 --> 01:10:16,160
+ So the x1 minus x2 square plus y1 minus y2 square root of that and that is L2 norm.
+
+494
+01:10:16,160 --> 01:10:23,800
+ Now you can make it general for any in functional analysis usually it is given as an LP norm.
+
+495
+01:10:23,800 --> 01:10:37,680
+ So you can have x minus y their absolute value after that power p or often they write in
+
+496
+01:10:37,680 --> 01:10:48,720
+ the topic. So they write in this way LP norm. So any power you can use but remember first
+
+497
+01:10:48,720 --> 01:10:54,280
+ you take the absolute distance and then take the power. If you do not take the absolute
+
+498
+01:10:54,280 --> 01:11:02,160
+ distance there will be positive negative component and if you raise by the power or by an odd
+
+499
+01:11:02,160 --> 01:11:13,880
+ number then the sign will have an impact you will not get a proper notion of the distance.
+
+500
+01:11:13,880 --> 01:11:19,560
+ What is the real application and reason for finding the skewness or interquartile distance
+
+501
+01:11:19,560 --> 01:11:29,640
+ or peakness or cutoff. So the skewness means say for example the tilt of the distribution
+
+502
+01:11:29,640 --> 01:11:36,480
+ either it is have a longer tail to the larger value or the longer tail to the less value
+
+503
+01:11:36,480 --> 01:11:45,440
+ and if that tilt is present in the data we need not or not prefer to go by the mean.
+
+504
+01:11:45,440 --> 01:11:52,600
+ Mean in that case the if the data is upward bias mean will not be always be pulled by
+
+505
+01:11:52,600 --> 01:11:59,160
+ the upward bias the central part of the data will not be well represented by the mean.
+
+506
+01:11:59,160 --> 01:12:08,800
+ So to deal with the data which have positive or negative skewness we will prefer to go
+
+507
+01:12:08,800 --> 01:12:17,000
+ by its different quantities not by the mean in that case. So skewness and skewness measure
+
+508
+01:12:17,000 --> 01:12:23,640
+ gives us that warning that we should not always go by the mean in that case. Interquartile
+
+509
+01:12:23,640 --> 01:12:30,880
+ distance is all another application because in interquartile distance is a distribution
+
+510
+01:12:30,880 --> 01:12:38,080
+ free measurement for measuring skewness and kurtosis skewness also can be captured by
+
+511
+01:12:38,080 --> 01:12:46,040
+ the quartile. This measurement theoretically assumes that the moments are finite like mean
+
+512
+01:12:46,040 --> 01:12:54,560
+ median variance and all other higher order moment they are finite but interquartile distance
+
+513
+01:12:54,560 --> 01:13:00,400
+ is a distribution free measure for any distribution you can make use of that.
+
+514
+01:13:00,400 --> 01:13:06,760
+ So this is more like non parametric structure and skewness as I have told that the skewness
+
+515
+01:13:06,760 --> 01:13:12,880
+ keeps the assurity that if the skewness is very high then the very very high then the
+
+516
+01:13:12,880 --> 01:13:19,320
+ data will almost behave like a constant compared to the other values which have very less
+
+517
+01:13:19,320 --> 01:13:27,600
+ skewness okay. So skewness less means we have to be careful and take care of its scaling
+
+518
+01:13:27,600 --> 01:13:38,200
+ and the variation more I mean more seriously than the skewness if the skewness is high
+
+519
+01:13:38,200 --> 01:13:44,080
+ you be relaxed with that part of the data but if the skewness is low you have to be
+
+520
+01:13:44,080 --> 01:13:49,840
+ very much careful and incorporating all details of that part of the data in a thoroughly and
+
+521
+01:13:49,840 --> 01:13:59,160
+ properly in your analysis that is the ground level indication from the measurement of skewness
+
+522
+01:13:59,160 --> 01:14:05,840
+ okay. Thank you.
+

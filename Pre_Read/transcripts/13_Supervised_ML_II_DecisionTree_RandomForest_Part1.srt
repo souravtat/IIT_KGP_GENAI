@@ -1,0 +1,1944 @@
+1
+00:00:00,000 --> 00:00:14,720
+ Hello everyone, good morning, welcome to the second session of today's lectures.
+
+2
+00:00:14,720 --> 00:00:20,580
+ So here we I am going to talk about supervised machine learning which we started discussing
+
+3
+00:00:20,580 --> 00:00:28,840
+ last week and today particularly I am going to cover decision tree and random forest.
+
+4
+00:00:28,840 --> 00:00:32,000
+ So before that let us just get a quick recap.
+
+5
+00:00:32,000 --> 00:00:37,060
+ I know that you have been working on this even through the hands-on tutorial.
+
+6
+00:00:37,060 --> 00:00:44,520
+ You have been looking at the classification problems but still just a little recollection.
+
+7
+00:00:44,520 --> 00:00:55,720
+ So classification is essentially a mapping between set of features to a set of level
+
+8
+00:00:55,720 --> 00:00:57,760
+ or a particular level.
+
+9
+00:00:57,760 --> 00:01:06,680
+ So in case of binary classification for example we have a record where each record has x which
+
+10
+00:01:06,680 --> 00:01:13,880
+ are the attributes or features or independent variable whatever we may want to call it and
+
+11
+00:01:13,880 --> 00:01:22,520
+ y is the class or the level or the output and in binary y is either 0 or 1.
+
+12
+00:01:22,520 --> 00:01:31,040
+ In case of multi-class classification y can take more than two classes.
+
+13
+00:01:31,040 --> 00:01:37,360
+ Classification task is to learn a model that maps the attribute set to the corresponding
+
+14
+00:01:37,360 --> 00:01:45,120
+ class level so that whenever a new data point comes we can immediately through the model
+
+15
+00:01:45,120 --> 00:01:55,480
+ we can immediately predict what is the likely level for this particular input test.
+
+16
+00:01:55,480 --> 00:02:02,260
+ Now if you recall last week we have talked about three classifiers, knife base, nearest
+
+17
+00:02:02,260 --> 00:02:05,800
+ neighbor and support vector machines.
+
+18
+00:02:05,800 --> 00:02:13,160
+ Today we are going to talk about decision tree and we would talk about ensemble classifiers.
+
+19
+00:02:13,160 --> 00:02:19,320
+ Example network or deep neural network which is like more popularly known as deep learning
+
+20
+00:02:19,320 --> 00:02:24,240
+ that will be covered in subsequent lectures.
+
+21
+00:02:24,240 --> 00:02:27,440
+ So let us first look at decision tree.
+
+22
+00:02:27,440 --> 00:02:34,920
+ So before that let us take an example classification problem and this classification problem is
+
+23
+00:02:34,920 --> 00:02:37,440
+ a simple problem.
+
+24
+00:02:37,440 --> 00:02:45,240
+ So here we want to decide whether to play tennis on a particular day, so this is our
+
+25
+00:02:45,240 --> 00:02:50,560
+ model or this is the model which we want to build that given the weather condition of
+
+26
+00:02:50,560 --> 00:02:57,160
+ a particular day the model is going to predict whether there will be a tennis match or not.
+
+27
+00:02:57,160 --> 00:03:03,960
+ Now in order to train this model let us say the club where the tennis is being played
+
+28
+00:03:03,960 --> 00:03:12,440
+ they have collected last 14 days of data, the weather condition on those 14 days and
+
+29
+00:03:12,440 --> 00:03:17,600
+ the corresponding status like whether actually a match was played or not.
+
+30
+00:03:17,600 --> 00:03:25,880
+ So as you can see for example you look at day 1, day 1, in day 1 the outlook was sunny
+
+31
+00:03:25,880 --> 00:03:33,800
+ temperature was hot, humidity was high and wind was weak and on that day there was no
+
+32
+00:03:33,800 --> 00:03:37,280
+ game which was played.
+
+33
+00:03:37,280 --> 00:03:46,960
+ On the other hand if you look at day 4 outlook was rain, temperature was mild, humidity was
+
+34
+00:03:46,960 --> 00:03:54,240
+ high, wind was weak on that day a match was played.
+
+35
+00:03:54,240 --> 00:04:02,560
+ So similarly you have such a history of 14 days and every day what was the weather condition
+
+36
+00:04:02,560 --> 00:04:07,200
+ and whether a match was played or not.
+
+37
+00:04:07,200 --> 00:04:16,520
+ Now since we are dealing with two levels here, one is whether a match was played or another
+
+38
+00:04:16,520 --> 00:04:23,320
+ is whether the match was not played yes or no, so this is a binary classification problem
+
+39
+00:04:23,320 --> 00:04:33,360
+ and this outlook, temperature, humidity and wind these four are the features.
+
+40
+00:04:33,360 --> 00:04:41,120
+ So they are also called categorical features because they can pick values from certain
+
+41
+00:04:41,120 --> 00:04:42,280
+ fixed categories.
+
+42
+00:04:42,280 --> 00:04:51,120
+ So for example the outlook can be sunny, overcast or rain, temperature can be hot, mild or cool.
+
+43
+00:04:51,120 --> 00:04:57,000
+ So similar like that, it can also have numerical features, now in this example there was no
+
+44
+00:04:57,000 --> 00:05:02,560
+ such example of numerical features but let us say if instead of bucketizing the temperature
+
+45
+00:05:02,560 --> 00:05:09,960
+ as like hot or mild or cool, if we just use the centigrade temperature like exactly the
+
+46
+00:05:09,960 --> 00:05:16,920
+ temperature is less than 20 degree centigrade or 30 degree centigrade or 40 degree centigrade
+
+47
+00:05:16,920 --> 00:05:22,480
+ in that case it would have been a numerical feature.
+
+48
+00:05:22,480 --> 00:05:30,520
+ Now with this background let us see how a decision tree can be built using this training
+
+49
+00:05:30,520 --> 00:05:33,720
+ data which we have.
+
+50
+00:05:33,720 --> 00:05:43,120
+ So essentially we are going to construct a decision tree like this that where this is
+
+51
+00:05:43,120 --> 00:05:52,400
+ a node, so this is also called a root node, these are internal nodes and these are the
+
+52
+00:05:52,400 --> 00:05:56,160
+ leaf nodes.
+
+53
+00:05:56,160 --> 00:06:04,280
+ So decision tree essentially enforce a hierarchical hierarchy of rules to make a prediction.
+
+54
+00:06:04,280 --> 00:06:14,520
+ So this internal nodes and the root node they test the rule and in the leaf node you see
+
+55
+00:06:14,520 --> 00:06:18,960
+ that ultimate decision is there.
+
+56
+00:06:18,960 --> 00:06:26,640
+ So decision tree learning is essentially learning such a tree from the level training data as
+
+57
+00:06:26,640 --> 00:06:32,660
+ we saw earlier those like 14 days of match data whether a match was played or not depending
+
+58
+00:06:32,660 --> 00:06:37,960
+ on the weather condition.
+
+59
+00:06:37,960 --> 00:06:43,320
+ Now the basic idea behind decision tree is generally very simple.
+
+60
+00:06:43,320 --> 00:06:51,800
+ We would like to recursively partition the entire training data into homogeneous regions.
+
+61
+00:06:51,800 --> 00:06:56,140
+ Now what is meant by homogeneous region?
+
+62
+00:06:56,140 --> 00:07:03,000
+ homogeneous region is one where all the training input will have the same level.
+
+63
+00:07:03,000 --> 00:07:06,080
+ So let us just see one example.
+
+64
+00:07:06,080 --> 00:07:11,760
+ So let us say this is our entire training data with the corresponding levels.
+
+65
+00:07:11,760 --> 00:07:18,800
+ So here as the picture suggests there are three levels red, blue and green and the training
+
+66
+00:07:18,800 --> 00:07:26,040
+ data like all these dots denote a particular data point.
+
+67
+00:07:26,040 --> 00:07:35,000
+ Now the goal of or in this case a homogeneous region is to divide the entire training space
+
+68
+00:07:35,000 --> 00:07:41,000
+ or the data space into regions where only one type of level is present.
+
+69
+00:07:41,000 --> 00:07:50,640
+ So for example here this is one homogeneous region because here there is only blue levels.
+
+70
+00:07:50,640 --> 00:07:56,160
+ Similarly here there is there are only red data points.
+
+71
+00:07:56,160 --> 00:08:04,200
+ Similarly you can continuously divide and eventually after this division like we have
+
+72
+00:08:04,200 --> 00:08:10,600
+ just divided the entire training data space into smaller subspaces which we are calling
+
+73
+00:08:10,600 --> 00:08:17,960
+ as homogeneous region where essentially there is just like one single class level data with
+
+74
+00:08:17,960 --> 00:08:21,560
+ a single class level is present.
+
+75
+00:08:21,560 --> 00:08:29,920
+ Now do we always want such a scenario like where all the points are just one class level?
+
+76
+00:08:29,920 --> 00:08:37,760
+ Ideally yes but in reality they may still have some training data point which do not
+
+77
+00:08:37,760 --> 00:08:45,240
+ belonging to the exactly one class level but the majority of the levels in a particular
+
+78
+00:08:45,240 --> 00:08:54,120
+ region will be of one type and that constitutes a homogeneous region.
+
+79
+00:08:54,120 --> 00:09:02,640
+ So now if we can let us say divide the entire training data into such homogeneous regions
+
+80
+00:09:02,640 --> 00:09:10,880
+ in that case within each group we can simply fit a supervised learner and that supervised
+
+81
+00:09:10,880 --> 00:09:15,520
+ learner is going to predict the majority level.
+
+82
+00:09:15,520 --> 00:09:25,800
+ Now we will come or we will discuss this in more detail a little later.
+
+83
+00:09:25,800 --> 00:09:36,080
+ Now let us look at what happens when a particular test input is given and how its level is predicted.
+
+84
+00:09:36,080 --> 00:09:46,120
+ So let us say that we have divided the whole region into this homogeneous regions and essentially
+
+85
+00:09:46,120 --> 00:09:52,840
+ homogeneous region means that each of the this black lines which have created the homogeneous
+
+86
+00:09:52,840 --> 00:09:57,240
+ regions they correspond to some rule.
+
+87
+00:09:57,240 --> 00:10:08,480
+ So the first rule is let us say that in terms of feature 1 or X1 our this line this black
+
+88
+00:10:08,480 --> 00:10:17,040
+ line correspond to this rule whether X1 value is greater than 3.5 or not.
+
+89
+00:10:17,040 --> 00:10:27,600
+ You see that actually this rule divides the entire space into this part and this part.
+
+90
+00:10:27,600 --> 00:10:31,200
+ Now of course this itself is not sufficient.
+
+91
+00:10:31,200 --> 00:10:36,240
+ So you need to also consider the feature 2 or X2.
+
+92
+00:10:36,240 --> 00:10:43,000
+ So my first line here the line here this correspond to X2 is equal to 2.
+
+93
+00:10:43,000 --> 00:10:49,480
+ So we are defining another rule whether X2 is greater than 2 or not.
+
+94
+00:10:49,480 --> 00:10:56,800
+ If yes then we are talking about this region if no we are talking about this region.
+
+95
+00:10:56,800 --> 00:11:03,120
+ Now if no we are talking about this region then this entire thing is only red.
+
+96
+00:11:03,120 --> 00:11:13,900
+ So if a particular input falls here then we will immediately predict that has to be red.
+
+97
+00:11:13,900 --> 00:11:21,760
+ On the other hand if you look at this particular region in this region X1 is greater than 3.5
+
+98
+00:11:21,760 --> 00:11:23,880
+ X2 is also greater than 2.
+
+99
+00:11:23,880 --> 00:11:38,540
+ So X1 greater than sorry this should be X1 greater less than 3.5 it is not greater than
+
+100
+00:11:38,540 --> 00:11:40,800
+ so sorry for the typo.
+
+101
+00:11:40,800 --> 00:11:50,040
+ So if X1 is less than 3.5 and X2 is greater than 2 we are essentially in this particular
+
+102
+00:11:50,040 --> 00:11:51,040
+ region.
+
+103
+00:11:51,040 --> 00:11:55,160
+ So there are a lot of red dots there.
+
+104
+00:11:55,160 --> 00:12:10,000
+ So let me just change the color a little bit or also just like remove this.
+
+105
+00:12:10,000 --> 00:12:24,920
+ So essentially we have now yeah so we have one rule whether X1 is less than 3.5 so that
+
+106
+00:12:24,920 --> 00:12:28,160
+ actually that correspond to this particular line.
+
+107
+00:12:28,160 --> 00:12:34,240
+ So this divides the entire space into two regions the right hand side and the left hand
+
+108
+00:12:34,240 --> 00:12:35,240
+ side.
+
+109
+00:12:35,240 --> 00:12:41,160
+ Now in the left hand side now our first rule is this line so this line correspond to X2
+
+110
+00:12:41,160 --> 00:12:42,520
+ is equal to 2.
+
+111
+00:12:42,520 --> 00:12:48,360
+ So if X2 is greater than 2 then we are talking about this region if X2 is less than 2 we
+
+112
+00:12:48,360 --> 00:12:51,600
+ are talking about this region correct.
+
+113
+00:12:51,600 --> 00:12:59,120
+ Now if X2 is greater than 2 in that case X2 is greater than 2 and X1 is less than 3.5
+
+114
+00:12:59,120 --> 00:13:04,080
+ so that is this particular region.
+
+115
+00:13:04,080 --> 00:13:11,240
+ So if any point comes here in that case it will be predicted as red.
+
+116
+00:13:11,240 --> 00:13:17,800
+ When X1 is less than 3.5 and X2 is greater than 2 then we are talking about this particular
+
+117
+00:13:17,800 --> 00:13:24,560
+ region and as the color suggest that region is green.
+
+118
+00:13:24,560 --> 00:13:33,880
+ So now let us move to the right part so this correspond to X1 which is okay I am I think
+
+119
+00:13:33,880 --> 00:13:36,440
+ sorry I am just making some silly mistakes.
+
+120
+00:13:36,440 --> 00:13:43,120
+ So essentially this is actually 3.5 more than 3.5 so I just like didn't notice the yes
+
+121
+00:13:43,120 --> 00:13:44,720
+ and no level.
+
+122
+00:13:44,720 --> 00:13:53,240
+ So when X1 is 3.5 we are essentially in this region and in that region if X2 is greater
+
+123
+00:13:53,240 --> 00:13:56,000
+ than 3 that means this.
+
+124
+00:13:56,000 --> 00:14:02,960
+ So this is dividing it into again 2 regions the one lower and the one upper.
+
+125
+00:14:02,960 --> 00:14:10,520
+ In the lower region our X1 value is greater than 3.5 and X2 value is greater than 3.
+
+126
+00:14:10,520 --> 00:14:18,240
+ So in that case we are predicting so in that case we are predicting green otherwise we
+
+127
+00:14:18,240 --> 00:14:28,640
+ are predicting red.
+
+128
+00:14:28,640 --> 00:14:35,840
+ Now let us see for a particular test input what happens in this case the test input is
+
+129
+00:14:35,840 --> 00:14:43,400
+ actually belonging to the green point like the test input is denoted as the black dot
+
+130
+00:14:43,400 --> 00:14:46,480
+ here.
+
+131
+00:14:46,480 --> 00:14:53,400
+ Now after this decision 3 is created now I am just going to predict what happens with
+
+132
+00:14:53,400 --> 00:14:54,960
+ the test input.
+
+133
+00:14:54,960 --> 00:15:00,760
+ Now see the test input the X1 value is greater than 3.5 that is not correct.
+
+134
+00:15:00,760 --> 00:15:06,880
+ So it goes to the left hand side X2 is greater than 2 that is yes.
+
+135
+00:15:06,880 --> 00:15:14,040
+ So in that case this actually followed this path and we make the decision that here the
+
+136
+00:15:14,040 --> 00:15:18,980
+ class level is green.
+
+137
+00:15:18,980 --> 00:15:27,120
+ So you see that once the decision tree is constructed properly it is a very efficient
+
+138
+00:15:27,120 --> 00:15:30,720
+ algorithm at the test time.
+
+139
+00:15:30,720 --> 00:15:39,400
+ So if you look at this particular example when a particular test input has come we just
+
+140
+00:15:39,400 --> 00:15:48,560
+ made 2 comparisons we checked whether a particular feature X1 whether it is greater than 3.5
+
+141
+00:15:48,560 --> 00:15:54,080
+ and whether another feature X2 whether that is greater than 2 that is it.
+
+142
+00:15:54,080 --> 00:15:58,640
+ Only 2 feature value comparisons we have made.
+
+143
+00:15:58,640 --> 00:16:05,440
+ On the other hand if we were to use something like a K nearest neighbor the K nearest neighbor
+
+144
+00:16:05,440 --> 00:16:09,640
+ would have compared distances from all the training input.
+
+145
+00:16:09,640 --> 00:16:16,400
+ So that way it is much, much costly at the test time because if there are in this example
+
+146
+00:16:16,400 --> 00:16:19,400
+ there are so many training inputs.
+
+147
+00:16:19,400 --> 00:16:26,040
+ Now if a particular test input has come in that case the test input would have been compared
+
+148
+00:16:26,040 --> 00:16:31,880
+ with all the training inputs then we would have found the nearest let us say 5 or 6 neighbors
+
+149
+00:16:31,880 --> 00:16:38,200
+ or 7 neighbors and then picked the level which is majority in the neighborhood.
+
+150
+00:16:38,200 --> 00:16:44,140
+ But the initial comparison to figure out who are the actual neighbors that would have
+
+151
+00:16:44,140 --> 00:16:50,520
+ costed a lot of time.
+
+152
+00:16:50,520 --> 00:16:56,760
+ Now here the root node essentially actually consists of all the training input and it
+
+153
+00:16:56,760 --> 00:17:04,200
+ decides like where to go as we move down the tree each internal node also deals with a
+
+154
+00:17:04,200 --> 00:17:10,720
+ subset of training inputs and effectively the leaf nodes deal with the least possible
+
+155
+00:17:10,720 --> 00:17:17,240
+ training input where there is not much variability in terms of the class levels.
+
+156
+00:17:17,240 --> 00:17:26,480
+ So mostly the leaf nodes we try to make them deal with only homogeneous regions.
+
+157
+00:17:26,480 --> 00:17:31,880
+ Now there are still some considerations when we are building decision trees what should
+
+158
+00:17:31,880 --> 00:17:35,000
+ be the size of the shape of the tree.
+
+159
+00:17:35,000 --> 00:17:43,360
+ So for example like what should be the number of internal nodes and leaf nodes.
+
+160
+00:17:43,360 --> 00:17:51,000
+ So see that there is no rule saying that you have to only have two decisions against a
+
+161
+00:17:51,000 --> 00:17:54,200
+ particular internal node.
+
+162
+00:17:54,200 --> 00:18:01,960
+ So you could have had another decision like this.
+
+163
+00:18:01,960 --> 00:18:10,560
+ So it is not necessary that every tree just need to have like two decisions.
+
+164
+00:18:10,560 --> 00:18:17,240
+ So that is one the branching factor of internal node as I mentioned.
+
+165
+00:18:17,240 --> 00:18:20,880
+ Then how many leaf nodes do you want to have?
+
+166
+00:18:20,880 --> 00:18:23,480
+ How many internal nodes do you want to have?
+
+167
+00:18:23,480 --> 00:18:26,040
+ What is going to be the depth of the tree?
+
+168
+00:18:26,040 --> 00:18:32,280
+ Like is it going to be let us say three depth or four levels or five levels?
+
+169
+00:18:32,280 --> 00:18:36,280
+ How much deep do you want to make the tree?
+
+170
+00:18:36,280 --> 00:18:41,640
+ Then the second question is the split criteria at the internal node.
+
+171
+00:18:41,640 --> 00:18:48,360
+ So we have a rule like earlier the point like where I was getting a little confused was because
+
+172
+00:18:48,360 --> 00:18:55,080
+ of this comparison either the answer is yes or no and accordingly you would take one particular
+
+173
+00:18:55,080 --> 00:19:01,480
+ root through the tree or path through the tree.
+
+174
+00:19:01,480 --> 00:19:06,200
+ So to determine which is going to be this rule or which is going to be the condition
+
+175
+00:19:06,200 --> 00:19:12,200
+ on which we are branching to different leaf nodes.
+
+176
+00:19:12,200 --> 00:19:16,320
+ So that itself is something which we will have to decide.
+
+177
+00:19:16,320 --> 00:19:23,760
+ So that is the split criteria.
+
+178
+00:19:23,760 --> 00:19:30,720
+ So should we go for another classified to determine the split criteria or should we just do some
+
+179
+00:19:30,720 --> 00:19:36,840
+ simplest test to just identify whether we are doing it correctly or not.
+
+180
+00:19:36,840 --> 00:19:38,440
+ What to do at the leaf node?
+
+181
+00:19:38,440 --> 00:19:44,880
+ So leaf node is making the final decision but if all are all levels are the same like
+
+182
+00:19:44,880 --> 00:19:50,080
+ if it is truly homogeneous then there is no problem but sometimes you may not be able to
+
+183
+00:19:50,080 --> 00:19:52,720
+ distinguish it very cleanly.
+
+184
+00:19:52,720 --> 00:19:57,600
+ So you may have a mix of two class levels even in a leaf node.
+
+185
+00:19:57,600 --> 00:20:03,320
+ So what to do in that case like should we make a constant prediction for each test input
+
+186
+00:20:03,320 --> 00:20:09,920
+ which comes there or should we use something like a nearest neighbor based prediction but
+
+187
+00:20:09,920 --> 00:20:14,840
+ only looking at the inputs which are there at the leaf node.
+
+188
+00:20:14,840 --> 00:20:20,880
+ So these are many different options which we have.
+
+189
+00:20:20,880 --> 00:20:25,360
+ The question is which one to pick.
+
+190
+00:20:25,360 --> 00:20:31,040
+ Often time cross validation which we discussed in the last class cross validation is typically
+
+191
+00:20:31,040 --> 00:20:37,960
+ used to decide many of these questions like whether we want to go with a particular size,
+
+192
+00:20:37,960 --> 00:20:40,480
+ we want to go through a particular depth.
+
+193
+00:20:40,480 --> 00:20:49,360
+ So all these things are typically decided based on the cross validation performance.
+
+194
+00:20:49,360 --> 00:20:56,800
+ Now let us look at or let us spend a little bit more time on the split criteria what can
+
+195
+00:20:56,800 --> 00:21:03,600
+ be done to figure out like how to split at internal nodes.
+
+196
+00:21:03,600 --> 00:21:10,700
+ Now recall that root node deals with the entire training set when we come to the internal
+
+197
+00:21:10,700 --> 00:21:16,440
+ nodes they typically receive a subset of all the training inputs.
+
+198
+00:21:16,440 --> 00:21:23,440
+ But our idea is that whatever the splitting criteria may be we would want a scenario where
+
+199
+00:21:23,440 --> 00:21:30,600
+ after the split it is made then in the next branch we want to reduce impurity as much
+
+200
+00:21:30,600 --> 00:21:31,840
+ as possible.
+
+201
+00:21:31,840 --> 00:21:38,240
+ So what is meant by impurity or on the other hand what is meant by a pure group or purity?
+
+202
+00:21:38,240 --> 00:21:45,480
+ A pure group means that most of the inputs for that group will have the same level or
+
+203
+00:21:45,480 --> 00:21:47,280
+ output.
+
+204
+00:21:47,280 --> 00:21:50,380
+ So let us just look at two examples.
+
+205
+00:21:50,380 --> 00:21:58,360
+ So let us say this was the internal node and in internal node we have four red data points
+
+206
+00:21:58,360 --> 00:22:04,000
+ and four blue data points so this is the distribution.
+
+207
+00:22:04,000 --> 00:22:09,200
+ So as you see that when the training data points came here you have equal number of
+
+208
+00:22:09,200 --> 00:22:13,440
+ red data points equal number of blue data points.
+
+209
+00:22:13,440 --> 00:22:20,000
+ Now suppose your criteria is such that it ended up having in the left hand side you ended
+
+210
+00:22:20,000 --> 00:22:28,600
+ up having two red nodes and two or let us say two examples which are red and two blue
+
+211
+00:22:28,600 --> 00:22:29,600
+ examples.
+
+212
+00:22:29,600 --> 00:22:33,440
+ On the right hand side also you have two red examples two blue examples.
+
+213
+00:22:33,440 --> 00:22:40,440
+ So this is not a very good split because you started with a uniform distribution of class
+
+214
+00:22:40,440 --> 00:22:46,840
+ levels in that particular internal node if even after you split them if you end up getting
+
+215
+00:22:46,840 --> 00:22:54,560
+ the same uniform distribution then there is no value of this splitting you are not helping
+
+216
+00:22:54,560 --> 00:23:01,240
+ in the classification process rather compared to that a much better split is such which
+
+217
+00:23:01,240 --> 00:23:06,760
+ even if it takes an uniform distribution of equal number of blue and red nodes but it
+
+218
+00:23:06,760 --> 00:23:13,960
+ ends up dividing them in groups such that in each group either you get like a majority
+
+219
+00:23:13,960 --> 00:23:20,560
+ of red levels and a minority of blue levels or you get a majority of blue levels and a
+
+220
+00:23:20,560 --> 00:23:22,940
+ minority of red level.
+
+221
+00:23:22,940 --> 00:23:31,800
+ So that way although you started with a uniform distribution you end up with a skewed distribution.
+
+222
+00:23:31,800 --> 00:23:38,240
+ So this is actually considered as a good split and this intuition is utilized when we start
+
+223
+00:23:38,240 --> 00:23:44,000
+ building a decision tree.
+
+224
+00:23:44,000 --> 00:23:47,440
+ Now how do we measure this purity?
+
+225
+00:23:47,440 --> 00:23:53,840
+ So purity is measured using a particular metric called entropy.
+
+226
+00:23:53,840 --> 00:23:56,460
+ Entropy is a measure of purity.
+
+227
+00:23:56,460 --> 00:24:05,140
+ So in very simple terms what entropy measures is the randomness in distribution alright.
+
+228
+00:24:05,140 --> 00:24:12,880
+ So for example when we are dealing with a uniform distribution there is very high randomness
+
+229
+00:24:12,880 --> 00:24:23,640
+ why so let us say that you close your eyes and you try to pick a sample from a particular
+
+230
+00:24:23,640 --> 00:24:27,720
+ set of let us say set of balls.
+
+231
+00:24:27,720 --> 00:24:32,040
+ Now the balls are either blue balls or red balls.
+
+232
+00:24:32,040 --> 00:24:41,200
+ Now when there is a very high randomness and my eyes are closed there is almost equal probability
+
+233
+00:24:41,200 --> 00:24:46,040
+ that I will pick a red ball or a blue ball.
+
+234
+00:24:46,040 --> 00:24:52,760
+ You cannot say for certain or you cannot be certain that you are going to pick only one
+
+235
+00:24:52,760 --> 00:24:57,760
+ colored ball because like your distribution is uniform so you have almost equal number
+
+236
+00:24:57,760 --> 00:25:02,480
+ of red balls and blue balls so you have almost like 50% probability that you will pick a
+
+237
+00:25:02,480 --> 00:25:05,120
+ red ball or a blue ball.
+
+238
+00:25:05,120 --> 00:25:11,840
+ So in such cases where the randomness is very high the entropy measure will be high I will
+
+239
+00:25:11,840 --> 00:25:16,080
+ come to how it is exactly measured but I am just giving you an intuition.
+
+240
+00:25:16,080 --> 00:25:23,320
+ On the other hand let us say that you know that a particular set has most of the balls
+
+241
+00:25:23,320 --> 00:25:24,320
+ there are blue.
+
+242
+00:25:24,320 --> 00:25:30,120
+ Let us say 90% are blue balls and 10% are red balls.
+
+243
+00:25:30,120 --> 00:25:38,560
+ In that case you are essentially dealing with even if you are just picking one ball randomly
+
+244
+00:25:38,560 --> 00:25:45,680
+ there is a very high chance that the ball will be blue.
+
+245
+00:25:45,680 --> 00:25:52,080
+ So here the randomness is much lower so in other words if you see that the probability
+
+246
+00:25:52,080 --> 00:25:57,720
+ of both the options are almost equal in that case there is very high randomness.
+
+247
+00:25:57,720 --> 00:26:03,360
+ If you see that the probability of one option is much higher than the probability of another
+
+248
+00:26:03,360 --> 00:26:06,320
+ there is lower randomness.
+
+249
+00:26:06,320 --> 00:26:09,160
+ So in the first case the entropy would be much higher.
+
+250
+00:26:09,160 --> 00:26:14,560
+ In the second case the entropy would be much lower and this is why you started with uniform
+
+251
+00:26:14,560 --> 00:26:16,120
+ distribution here.
+
+252
+00:26:16,120 --> 00:26:25,420
+ So there the entropy was very high you ended up with a skewed distribution and in the skewed
+
+253
+00:26:25,420 --> 00:26:28,080
+ distribution the entropy is low.
+
+254
+00:26:28,080 --> 00:26:36,680
+ So we want a split which goes from high entropy to low entropy.
+
+255
+00:26:36,680 --> 00:26:45,400
+ So low entropy means that there is high purity less uniform level distribution and we want
+
+256
+00:26:45,400 --> 00:26:52,280
+ the split that give the highest or largest reduction in entropy before split versus after
+
+257
+00:26:52,280 --> 00:26:53,280
+ split.
+
+258
+00:26:53,280 --> 00:26:56,720
+ In fact this reduction is also called information gain.
+
+259
+00:26:56,720 --> 00:27:01,560
+ So again going back to our example of this blue balls and red balls so essentially when
+
+260
+00:27:01,560 --> 00:27:10,080
+ you are just blindly picking a ball there is a 50% in the initial case there was a 50%
+
+261
+00:27:10,080 --> 00:27:16,400
+ chance that you pick a red ball versus a blue ball correct.
+
+262
+00:27:16,400 --> 00:27:23,200
+ Now in the next distribution where you have 90% blue balls and 10% red balls you are more
+
+263
+00:27:23,200 --> 00:27:24,200
+ certain.
+
+264
+00:27:24,200 --> 00:27:27,120
+ So you have more information about what you are going to pick.
+
+265
+00:27:27,120 --> 00:27:30,920
+ So you are now more confident about picking a blue ball.
+
+266
+00:27:30,920 --> 00:27:37,040
+ So you have gained some inside information about like although you do not know for like
+
+267
+00:27:37,040 --> 00:27:42,200
+ 100% certainty that you are going to pick a blue ball but you are now much well equipped
+
+268
+00:27:42,200 --> 00:27:46,600
+ to predict that I am going to pick a blue ball alright.
+
+269
+00:27:46,600 --> 00:27:52,440
+ So this gain in information is defined as information gain this is another measure and
+
+270
+00:27:52,440 --> 00:27:59,000
+ entropy as I mentioned entropy actually measures the purity of the distribution alright.
+
+271
+00:27:59,000 --> 00:28:05,080
+ So let us now look at them in a bit more formal manner.
+
+272
+00:28:05,080 --> 00:28:13,320
+ So we will cover the exact formula for them in just like in a couple of slides.
+
+273
+00:28:13,320 --> 00:28:20,460
+ So basically the technique to split at internal node is such that every node decides which
+
+274
+00:28:20,460 --> 00:28:27,840
+ outgoing branch and input should be sent to and this can be done by testing the value
+
+275
+00:28:27,840 --> 00:28:30,440
+ of single feature at a time.
+
+276
+00:28:30,440 --> 00:28:42,320
+ So in this case let us say I am just determining whether I am going to pick a particular single
+
+277
+00:28:42,320 --> 00:28:47,080
+ feature and accordingly I am going to divide.
+
+278
+00:28:47,080 --> 00:29:01,240
+ Now with this approach so on other hand like in one approach you just make a horizontal
+
+279
+00:29:01,240 --> 00:29:06,800
+ split and in that approach all features and all possible values of each feature need to
+
+280
+00:29:06,800 --> 00:29:17,000
+ be evaluated and we need to select the feature which we want to pick at every internal node
+
+281
+00:29:17,000 --> 00:29:25,840
+ and on the other hand like you can also try to learn a classifier where we would have
+
+282
+00:29:25,840 --> 00:29:33,440
+ to every internal node the decision is based on actually learning a decision boundary and
+
+283
+00:29:33,440 --> 00:29:38,680
+ based on the decision boundary we will send it to the left child or the right child.
+
+284
+00:29:38,680 --> 00:29:44,640
+ Now in general these are more common like where we look at a single feature pick the
+
+285
+00:29:44,640 --> 00:29:53,400
+ one which is giving you the maximum benefit and in fact all ID3 C4.5 algorithm these are
+
+286
+00:29:53,400 --> 00:30:00,400
+ very popular algorithms they all use this a single feature at a time concept.
+
+287
+00:30:00,400 --> 00:30:07,280
+ On the other hand more advanced decision tree methods also use some internal classifiers
+
+288
+00:30:07,280 --> 00:30:15,020
+ at every internal node so for example let us say you actually run a simple SVM to determine
+
+289
+00:30:15,020 --> 00:30:22,680
+ the classes or the split at the internal level so this happens only at a advanced TT method.
+
+290
+00:30:22,680 --> 00:30:30,160
+ So for now we are going to stick to this particular method where we are picking a single feature
+
+291
+00:30:30,160 --> 00:30:36,720
+ at a time but the goal is to identify which feature is giving us the best possible result.
+
+292
+00:30:36,720 --> 00:30:42,400
+ So for example here one feature may lead to an horizontal split of the training data another
+
+293
+00:30:42,400 --> 00:30:45,800
+ feature may lead to a vertical split of the training data.
+
+294
+00:30:45,800 --> 00:30:53,400
+ We have to compute the entropy before the split the entropy after the split and we are
+
+295
+00:30:53,400 --> 00:30:59,320
+ going to pick the feature which leads to the highest possible or largest possible drop
+
+296
+00:30:59,320 --> 00:31:06,680
+ in entropy as we mentioned in the earlier slide.
+
+297
+00:31:06,680 --> 00:31:15,060
+ So essentially like there can be multiple questions for example given some training data so let
+
+298
+00:31:15,060 --> 00:31:19,680
+ us say this training data was given and we ended up getting this particular decision
+
+299
+00:31:19,680 --> 00:31:25,360
+ tree but how do we know whether this decision tree is the best possible or optimal decision
+
+300
+00:31:25,360 --> 00:31:26,840
+ tree.
+
+301
+00:31:26,840 --> 00:31:33,640
+ Now in general constructing decision tree is a very complex algorithmic problem in fact
+
+302
+00:31:33,640 --> 00:31:39,640
+ those of you who have done some quotes on theoretical computer science would understand
+
+303
+00:31:39,640 --> 00:31:42,000
+ that this problem is called NP heart problem.
+
+304
+00:31:42,000 --> 00:31:49,440
+ So these are problems which are quite hard to solve and often time we use some kind of
+
+305
+00:31:49,440 --> 00:31:53,280
+ a greedy strategy to construct a good decision tree.
+
+306
+00:31:53,280 --> 00:31:59,160
+ Now to do this we use the training data to figure out which rules should be tested at
+
+307
+00:31:59,160 --> 00:32:04,720
+ every node we will show some example there.
+
+308
+00:32:04,720 --> 00:32:11,320
+ Now the question is that like how to decide which rules to test and in what order.
+
+309
+00:32:11,320 --> 00:32:19,040
+ So we apply this so we look at the training data to figure out which rules to be tested
+
+310
+00:32:19,040 --> 00:32:24,960
+ and we apply the same rules on the test input to route them along the tree until they reach
+
+311
+00:32:24,960 --> 00:32:29,640
+ some leaf node where the prediction is going to be made.
+
+312
+00:32:29,640 --> 00:32:35,160
+ So these rules are organized in the decision tree such that most informative rules are
+
+313
+00:32:35,160 --> 00:32:36,160
+ tested first.
+
+314
+00:32:36,160 --> 00:32:41,000
+ So note the word most informative so this actually gives you the intuition that we want
+
+315
+00:32:41,000 --> 00:32:47,960
+ to go after information gain that means the drop in entropy before the split and after
+
+316
+00:32:47,960 --> 00:32:48,960
+ the split.
+
+317
+00:32:48,960 --> 00:32:55,840
+ So the rules are this is kind of decided based on that so as the animation such is like how
+
+318
+00:32:55,840 --> 00:32:58,520
+ to assess the informativeness of a rule.
+
+319
+00:32:58,520 --> 00:33:05,440
+ So essentially informativeness of a rule is of related to the extent of the purity.
+
+320
+00:33:05,440 --> 00:33:14,960
+ More informative rules yield purer splits as we will see here in the example.
+
+321
+00:33:14,960 --> 00:33:19,800
+ So again we are back to the playing tennis example.
+
+322
+00:33:19,800 --> 00:33:25,560
+ So let us say that every internal node in the decision tree which we are building for
+
+323
+00:33:25,560 --> 00:33:31,400
+ the playing tennis example is going to test the value of one feature.
+
+324
+00:33:31,400 --> 00:33:38,600
+ So if you remember there are these features like outlook, temperature, humidity and wind
+
+325
+00:33:38,600 --> 00:33:44,480
+ and based on these features and the corresponding values we are making a decision whether game
+
+326
+00:33:44,480 --> 00:33:50,000
+ will be played or not and we want to come up with a decision tree like this.
+
+327
+00:33:50,000 --> 00:33:55,520
+ But the question is that whether outlook should be the root node or should humidity be the
+
+328
+00:33:55,520 --> 00:33:59,600
+ root node or wind should be the root node.
+
+329
+00:33:59,600 --> 00:34:06,400
+ So now we will have to decide why does it make more sense to test the feature outlook
+
+330
+00:34:06,400 --> 00:34:16,400
+ first or in other words like to put outlook in the root node.
+
+331
+00:34:16,400 --> 00:34:22,080
+ So here the answer is that of all the features it is most informative.
+
+332
+00:34:22,080 --> 00:34:28,080
+ Now of course like I am not an oracle like who can tell that without actually computing
+
+333
+00:34:28,080 --> 00:34:34,080
+ this so we are going to compute this but for the moment just assume that outlook is the
+
+334
+00:34:34,080 --> 00:34:40,280
+ most informative feature and that is why we have put outlook in the root node.
+
+335
+00:34:40,280 --> 00:34:46,200
+ In fact it has the highest information gain as the root node.
+
+336
+00:34:46,200 --> 00:34:51,920
+ Now let us come to formally define entropy and information gain.
+
+337
+00:34:51,920 --> 00:34:58,440
+ So let us just assume that we have a set of labeled input S.
+
+338
+00:34:58,440 --> 00:35:05,460
+ So this S you can think of your training data set and we have C classes.
+
+339
+00:35:05,460 --> 00:35:15,520
+ So C in case of binary classification C means 2 classes like class 1 and class 2.
+
+340
+00:35:15,520 --> 00:35:22,000
+ If it is multiclass classification you may have multiple classes like class 1, class 2,
+
+341
+00:35:22,000 --> 00:35:29,920
+ class 3 and PC you can get as the fraction of inputs which belong to class C.
+
+342
+00:35:29,920 --> 00:35:35,440
+ So there is a particular class C and we are defining the input.
+
+343
+00:35:35,440 --> 00:35:46,200
+ Now entropy of this whole set is defined as hs to be minus summation of P log P or in
+
+344
+00:35:46,200 --> 00:35:53,680
+ other words PC is the fraction of class C inputs we take that and then we multiply that by
+
+345
+00:35:53,680 --> 00:35:59,920
+ logarithmic of PC and we sum all of them up and this is a negative sum.
+
+346
+00:35:59,920 --> 00:36:05,400
+ So we take the negative of that and then sum all of them.
+
+347
+00:36:05,400 --> 00:36:11,840
+ Now suppose so this is what we are getting so this we are getting at the set S level.
+
+348
+00:36:11,840 --> 00:36:18,920
+ So this is let us say set S, this has class let us say cross and tick.
+
+349
+00:36:18,920 --> 00:36:24,360
+ For every class we are determining the fraction of class C inputs.
+
+350
+00:36:24,360 --> 00:36:30,480
+ So for example here the fraction of class cross input is half, this is the fraction
+
+351
+00:36:30,480 --> 00:36:34,080
+ of class tick input this is also half.
+
+352
+00:36:34,080 --> 00:36:41,000
+ So we are just going to take like half log half and 2 times this and then we are going
+
+353
+00:36:41,000 --> 00:36:43,360
+ to take the sum.
+
+354
+00:36:43,360 --> 00:36:53,040
+ So sum is essentially in this case so when I say sum so this is essentially we are when
+
+355
+00:36:53,040 --> 00:37:03,440
+ we are just like summing it up like half log half it we are talking about like 2 additions
+
+356
+00:37:03,440 --> 00:37:08,960
+ of this is 2 and then we put a minus.
+
+357
+00:37:08,960 --> 00:37:16,280
+ So this is going to be the entropy of this particular set S.
+
+358
+00:37:16,280 --> 00:37:25,360
+ Now suppose this S set is then further divided to be 2 subset S1 and S2 and S1 let us say
+
+359
+00:37:25,360 --> 00:37:32,520
+ we have 1 tick and 1 cross, S2 we have 1 tick and 1 cross.
+
+360
+00:37:32,520 --> 00:37:42,600
+ Basically we are going to compute the entropy of S1 entropy of S2 and then we are going
+
+361
+00:37:42,600 --> 00:37:49,200
+ to compute information gain as the reduction of entropy after split.
+
+362
+00:37:49,200 --> 00:37:59,240
+ So HS we know HS is that original entropy which we computed then we computed HS1 HS2
+
+363
+00:37:59,240 --> 00:38:04,840
+ so we are taking HS1 we are taking HS2 and we are normalizing with respect to the number
+
+364
+00:38:04,840 --> 00:38:10,320
+ of data points went to each of this subsets.
+
+365
+00:38:10,320 --> 00:38:18,040
+ So we are now just computing this so this was our original entropy this is the resultant
+
+366
+00:38:18,040 --> 00:38:23,720
+ entropy after the split and we are taking an weighted sum of that and information gain
+
+367
+00:38:23,720 --> 00:38:26,120
+ is the difference between these two.
+
+368
+00:38:26,120 --> 00:38:37,380
+ So this was after split and this is before split so this is before split this is after
+
+369
+00:38:37,380 --> 00:38:49,480
+ split we take the difference as information gain.
+
+370
+00:38:49,480 --> 00:38:55,760
+ Now in general uniform sets like where all classes are roughly equally present actually
+
+371
+00:38:55,760 --> 00:38:58,000
+ have very high entropy.
+
+372
+00:38:58,000 --> 00:39:05,040
+ Just recall the red ball blue ball example which I gave that when there is high randomness
+
+373
+00:39:05,040 --> 00:39:12,000
+ so then there is high entropy but when the distribution is skewed the entropy is lower.
+
+374
+00:39:12,000 --> 00:39:17,400
+ So if you can go from a higher entropy system to a lower entropy system we will have more
+
+375
+00:39:17,400 --> 00:39:23,480
+ information gain and we will try to get rules which can lead to this.
+
+376
+00:39:23,480 --> 00:39:33,040
+ So in our earlier example we see that we actually went so in one kind of split so in this split
+
+377
+00:39:33,040 --> 00:39:38,760
+ we started with an uniform distribution we ended up having two uniform distributions.
+
+378
+00:39:38,760 --> 00:39:46,400
+ So this is not a very good split because here the entropy decay was not much in fact in
+
+379
+00:39:46,400 --> 00:39:51,280
+ this case like you can compute and see that it is almost like information gain is 0.
+
+380
+00:39:51,280 --> 00:39:57,960
+ Well on the other hand here you are starting with an uniform distribution but you ended
+
+381
+00:39:57,960 --> 00:40:05,440
+ up with two skewed distribution so it has very high entropy these two are having low
+
+382
+00:40:05,440 --> 00:40:10,920
+ entropy so here the information gain will be much higher.
+
+383
+00:40:10,920 --> 00:40:16,280
+ So this is a much better split compared to this split.
+
+384
+00:40:16,280 --> 00:40:22,200
+ So whatever feature is giving us a split like this we are going to pick that compared to
+
+385
+00:40:22,200 --> 00:40:26,560
+ another feature which are giving us split like this.
+
+386
+00:40:26,560 --> 00:40:42,720
+ So this is a no this is yes when we are trying to select a feature on which we want to split.
+
+387
+00:40:42,720 --> 00:40:50,160
+ Now let us try to work it out using our tennis example.
+
+388
+00:40:50,160 --> 00:41:01,360
+ So first for this whole data we have 4 features again outlook, temperature, humidity, wind.
+
+389
+00:41:01,360 --> 00:41:09,320
+ Now let us just for example take the feature wind and let us try to consider whether taking
+
+390
+00:41:09,320 --> 00:41:17,720
+ feature wind as the root node that will lead to a good reduction in entropy that means
+
+391
+00:41:17,720 --> 00:41:20,200
+ a high information gain.
+
+392
+00:41:20,200 --> 00:41:26,400
+ Now root contains all the examples so in this case if you just work it out the H s will
+
+393
+00:41:26,400 --> 00:41:31,240
+ become 0.94 when we are taking the wind.
+
+394
+00:41:31,240 --> 00:41:46,520
+ So why out of 14 days there were nine days for which the game was played sorry so out
+
+395
+00:41:46,520 --> 00:42:00,120
+ of nine days so you had the wind weak wind on nine of the days and in five of the days
+
+396
+00:42:00,120 --> 00:42:07,800
+ you had wind was strong.
+
+397
+00:42:07,800 --> 00:42:17,800
+ Now so that is why like you got this kind of entropy when you are only considering once
+
+398
+00:42:17,800 --> 00:42:32,560
+ again let me just clear this out once and then we can just start again.
+
+399
+00:42:32,560 --> 00:42:41,200
+ So let us just use this example let us take what happens when we take let us say wind
+
+400
+00:42:41,200 --> 00:42:43,560
+ as the root node.
+
+401
+00:42:43,560 --> 00:42:51,240
+ So now root contains all the examples now in this case wind has two data points like
+
+402
+00:42:51,240 --> 00:42:59,840
+ either the wind is strong or wind is weak and you have two scenarios whether the match
+
+403
+00:42:59,840 --> 00:43:03,100
+ was played or the match was not played.
+
+404
+00:43:03,100 --> 00:43:09,320
+ Now nine out of 14 days the match was played and five out of 14 days the match was not
+
+405
+00:43:09,320 --> 00:43:10,400
+ played.
+
+406
+00:43:10,400 --> 00:43:19,760
+ So this was the overall entropy value when we are considering all the training data.
+
+407
+00:43:19,760 --> 00:43:27,320
+ So this is 9 by 14 because this is the case for which match was played log 9 by 14 and
+
+408
+00:43:27,320 --> 00:43:29,720
+ then like you know that this is a negative sum.
+
+409
+00:43:29,720 --> 00:43:38,960
+ So again like minus 5 by 14 log 5 by 14 and you get an entropy of 0.94.
+
+410
+00:43:38,960 --> 00:43:48,840
+ Now based on the feature wind we now just distinguish them between weak and strong.
+
+411
+00:43:48,840 --> 00:43:54,880
+ So this is the set of inputs where the wind was weak and this is the set of inputs where
+
+412
+00:43:54,880 --> 00:44:01,960
+ the wind was strong out of all the cases where wind was weak six days match was played two
+
+413
+00:44:01,960 --> 00:44:03,800
+ days match was not played.
+
+414
+00:44:03,800 --> 00:44:12,720
+ So this has an entropy 0.811 on the other hand is strong that means the cases where
+
+415
+00:44:12,720 --> 00:44:18,080
+ the wind was strong three days match was played three days match was not played the entropy
+
+416
+00:44:18,080 --> 00:44:19,080
+ is one.
+
+417
+00:44:19,080 --> 00:44:25,840
+ So if you look at the overall information gain when we use wind as the root feature
+
+418
+00:44:25,840 --> 00:44:34,080
+ it is HS minus S weak S strong and this boils down to 0.048.
+
+419
+00:44:34,080 --> 00:44:39,420
+ So this was my information gain.
+
+420
+00:44:39,420 --> 00:44:45,480
+ In the similar procedure we can compute the information gain for outlook if we used outlook
+
+421
+00:44:45,480 --> 00:44:52,040
+ as the root feature we can compute the information gain for humidity if we used humidity as the
+
+422
+00:44:52,040 --> 00:44:55,320
+ root feature and temperature as the root feature.
+
+423
+00:44:55,320 --> 00:45:04,960
+ Now we combine the information gain of wind was 0.048, outlook was 0.246, humidity was
+
+424
+00:45:04,960 --> 00:45:10,760
+ 0.151 and temperature was 0.029.
+
+425
+00:45:10,760 --> 00:45:17,800
+ Now if we compare all of them we can see that 0.246 was the highest value.
+
+426
+00:45:17,800 --> 00:45:29,520
+ So the outlook feature actually gave the best possible information gain and hence, hence
+
+427
+00:45:29,520 --> 00:45:36,160
+ we pick outlook as the root node.
+
+428
+00:45:36,160 --> 00:45:40,600
+ Now this is just to compute the root node.
+
+429
+00:45:40,600 --> 00:45:43,840
+ We will also have to compute the internal nodes.
+
+430
+00:45:43,840 --> 00:45:47,840
+ So how to grow the tree that what to do at the next level, what would be the internal
+
+431
+00:45:47,840 --> 00:45:53,760
+ node or what would be the feature which we will use as the splitting criteria.
+
+432
+00:45:53,760 --> 00:46:00,680
+ So we actually iterate this whole process for every node along the line.
+
+433
+00:46:00,680 --> 00:46:08,400
+ So once we select the root node then we follow it up with like other internal nodes and we
+
+434
+00:46:08,400 --> 00:46:14,680
+ continue doing that and we continue growing the tree.
+
+435
+00:46:14,680 --> 00:46:21,080
+ So first it was outlook, then we have to decide what to take.
+
+436
+00:46:21,080 --> 00:46:29,520
+ So we compute, so for the level 2 we can compute the information gain again.
+
+437
+00:46:29,520 --> 00:46:36,000
+ So for temperature the information gain was 570, for humidity the information gain was
+
+438
+00:46:36,000 --> 00:46:41,640
+ 970 and wind the information gain was 0.019.
+
+439
+00:46:41,640 --> 00:46:51,120
+ Now since humidity led to the highest information gain, so we pick humidity as the next feature
+
+440
+00:46:51,120 --> 00:46:53,640
+ at level 2 left node.
+
+441
+00:46:53,640 --> 00:47:00,880
+ Similarly for level 2 right node we will pick another one.
+
+442
+00:47:00,880 --> 00:47:12,880
+ Now here for example there was one extra leaf node or one leaf node where we got a scenario
+
+443
+00:47:12,880 --> 00:47:18,640
+ where every point here was leading to one class level ES.
+
+444
+00:47:18,640 --> 00:47:27,360
+ So if you look at this when outlook is overcast we have 4 days and all 4 days match was played.
+
+445
+00:47:27,360 --> 00:47:34,440
+ So this particular case we do not need any further split because it is already we are
+
+446
+00:47:34,440 --> 00:47:42,000
+ at a point where every class level here is pointing to ES.
+
+447
+00:47:42,000 --> 00:47:45,900
+ So we are only concerned about the left node and right node.
+
+448
+00:47:45,900 --> 00:47:53,680
+ For left node we got humidity which actually led to the best highest information gain.
+
+449
+00:47:53,680 --> 00:48:01,240
+ We will do it for the right hand side and we can verify by computing the information
+
+450
+00:48:01,240 --> 00:48:07,200
+ gain that here taking the feature wind actually leads to highest information gain.
+
+451
+00:48:07,200 --> 00:48:12,240
+ So here we take wind.
+
+452
+00:48:12,240 --> 00:48:14,480
+ Now this can go on and on right.
+
+453
+00:48:14,480 --> 00:48:17,720
+ So we will have to also stop growing a tree.
+
+454
+00:48:17,720 --> 00:48:22,800
+ So we started with the root node, we now have multiple internal nodes, we also got some
+
+455
+00:48:22,800 --> 00:48:23,800
+ leaf nodes.
+
+456
+00:48:23,800 --> 00:48:28,720
+ At certain time we will have to decide that okay enough of it we just stop the process
+
+457
+00:48:28,720 --> 00:48:31,000
+ of building the tree at this point.
+
+458
+00:48:31,000 --> 00:48:34,400
+ So what is the stopping criteria?
+
+459
+00:48:34,400 --> 00:48:42,840
+ So we stop when either the node consists of only training examples having the same level.
+
+460
+00:48:42,840 --> 00:48:52,400
+ So if it has become pure, I mean there is no way we can further divide it or we have
+
+461
+00:48:52,400 --> 00:48:59,520
+ although like the set has not become pure but we have tried out all possible features.
+
+462
+00:48:59,520 --> 00:49:05,000
+ So there is no more features to test.
+
+463
+00:49:05,000 --> 00:49:11,120
+ Third is that the decision tree starts to overfit.
+
+464
+00:49:11,120 --> 00:49:19,200
+ Now this is something earlier Sabasachi was alluding in his the demonstrations that look
+
+465
+00:49:19,200 --> 00:49:26,360
+ at certain time your model can also overfit like where you can do very well with your
+
+466
+00:49:26,360 --> 00:49:32,800
+ training data but as soon as you hit a test data point then your accuracy start going
+
+467
+00:49:32,800 --> 00:49:33,800
+ low.
+
+468
+00:49:33,800 --> 00:49:39,120
+ In fact this can be checked by looking at the validation set accuracy that ideally the
+
+469
+00:49:39,120 --> 00:49:43,680
+ validation set accuracy should be high like we do not want to do very well only with the
+
+470
+00:49:43,680 --> 00:49:48,720
+ training data, we want to do well with the test data.
+
+471
+00:49:48,720 --> 00:49:56,120
+ So now if we continue trying to fit the model so that it does very well with the training
+
+472
+00:49:56,120 --> 00:50:00,320
+ data we may lose out on the test time performance.
+
+473
+00:50:00,320 --> 00:50:05,020
+ So this is called overfitting and at certain point the decision tree will start to overfit
+
+474
+00:50:05,020 --> 00:50:10,800
+ and we close or we stop growing the tree at that point.
+
+475
+00:50:10,800 --> 00:50:16,440
+ So here if we can look at let us say this is the test accuracy and this is the validation
+
+476
+00:50:16,440 --> 00:50:21,720
+ accuracy you see at certain point the test accuracy may continue to grow but the validation
+
+477
+00:50:21,720 --> 00:50:32,960
+ accuracy may start dropping and at that point we should stop growing the tree further.
+
+478
+00:50:32,960 --> 00:50:37,880
+ And one thing is important is that like if we want to obsess too much on purity then
+
+479
+00:50:37,880 --> 00:50:39,840
+ it can lead to overfitting.
+
+480
+00:50:39,840 --> 00:50:46,800
+ So we might be okay with let us say a scenario where 80% of the class levels are of one type
+
+481
+00:50:46,800 --> 00:50:52,320
+ and 20% are of another type that is okay because that will help us prevent the tree from going
+
+482
+00:50:52,320 --> 00:50:53,800
+ too much.
+
+483
+00:50:53,800 --> 00:51:00,720
+ So it is okay to have leaf node that is not fully pure let us say that the probability
+
+484
+00:51:00,720 --> 00:51:08,440
+ of red can be 3 by 8, probability of green can be 5 by 8 and we can simply take the majority
+
+485
+00:51:08,440 --> 00:51:12,500
+ value and that is perfectly fine.
+
+486
+00:51:12,500 --> 00:51:20,720
+ So at this moment let us just take a small break and let us convene again after 5 minutes
+

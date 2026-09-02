@@ -1,0 +1,2608 @@
+1
+00:00:00,000 --> 00:00:13,500
+ Hi guys, very good morning. My name is Athef Hassan and I am a PhD student at the AI department
+
+2
+00:00:13,500 --> 00:00:21,080
+ of IIT Kharagpur. So we will be going over the hands-on session now for BERT. So as Sir
+
+3
+00:00:21,080 --> 00:00:26,960
+ has already talked about the BERT model, now we will be going over the hands-on session
+
+4
+00:00:26,960 --> 00:00:32,160
+ and see how things are actually coded in the real world.
+
+5
+00:00:32,160 --> 00:00:36,800
+ So the very first thing that we want to do is, so the very first thing that we want to
+
+6
+00:00:36,800 --> 00:00:42,960
+ do is we want to pip install certain libraries. For example, transformers, torch metrics and
+
+7
+00:00:42,960 --> 00:00:50,840
+ data sets and we will see why this is really important alright. So the transformers library
+
+8
+00:00:50,840 --> 00:00:57,280
+ is from Hugging Face. It provides you all the latest transformer models that are available.
+
+9
+00:00:57,280 --> 00:01:05,040
+ In fact a lot of models that have been trained by the community are also available on this
+
+10
+00:01:05,040 --> 00:01:09,520
+ library. So you will find a lot of state of the art models available here. So this is
+
+11
+00:01:09,520 --> 00:01:17,000
+ provided by Hugging Face. Then we have torch metrics. So this library actually provides
+
+12
+00:01:17,000 --> 00:01:29,120
+ us with a lot of classes that allow us to get all the metrics that are required for
+
+13
+00:01:29,120 --> 00:01:32,800
+ classification and other tasks, object detection and so on.
+
+14
+00:01:32,800 --> 00:01:37,920
+ So we do not really need to write our own accuracy metric or precision or F score or
+
+15
+00:01:37,920 --> 00:01:41,840
+ recall metrics. These are already provided in torch metrics and you can just call them
+
+16
+00:01:41,840 --> 00:01:48,020
+ and use it. And pip install data sets, so this allows us to download certain data sets
+
+17
+00:01:48,020 --> 00:01:56,040
+ that are not available on Python as is. So after we have installed these libraries we
+
+18
+00:01:56,040 --> 00:02:06,760
+ will move on. So the first thing that we will do is we will load up the libraries alright.
+
+19
+00:02:06,760 --> 00:02:11,640
+ So now that we have installed them we will load up those libraries but we will also load
+
+20
+00:02:11,640 --> 00:02:17,800
+ a few other libraries such as pandas, numpy, RE stands for regular expression. Then from
+
+21
+00:02:17,800 --> 00:02:23,360
+ the transformers library we want to load the auto tokenizer, birth model, birth for sequence
+
+22
+00:02:23,360 --> 00:02:27,000
+ classification, birth config classes alright.
+
+23
+00:02:27,000 --> 00:02:33,080
+ What TQDM is something that I use personally. It really provides a nice progress bar, a
+
+24
+00:02:33,080 --> 00:02:37,300
+ very nice smooth progress bar which tells you how much time is remaining and what are
+
+25
+00:02:37,300 --> 00:02:43,720
+ the, so what is the speed of each iteration. So you get an idea of how much time your model
+
+26
+00:02:43,720 --> 00:02:48,960
+ will take or your code will take to run. So it is a nice decorative library, I would
+
+27
+00:02:48,960 --> 00:02:53,480
+ recommend people using it and it is very easy to use as well. And we will show it, I will
+
+28
+00:02:53,480 --> 00:03:00,400
+ show it during the coding session. Then there are certain other classes and we will go over
+
+29
+00:03:00,400 --> 00:03:05,000
+ them as we go through the code.
+
+30
+00:03:05,000 --> 00:03:11,120
+ Now the first thing that we want to do is, so before we start off with the code just
+
+31
+00:03:11,120 --> 00:03:19,400
+ one important line here. So device equals to torsion device. So what this does is basically
+
+32
+00:03:19,400 --> 00:03:28,320
+ it tells PyTorch to use either the GPU or the CPU as per the availability. So this is
+
+33
+00:03:28,320 --> 00:03:32,800
+ a very important line of code that I would recommend everyone to have. So you do not
+
+34
+00:03:32,800 --> 00:03:38,080
+ just write torsion device CUDA or you do not just write torsion device CPU, rather you
+
+35
+00:03:38,080 --> 00:03:45,480
+ tell PyTorch that if CUDA is available then use the GPU otherwise use the CPU. So device
+
+36
+00:03:45,480 --> 00:03:49,640
+ automatically takes up whatever device you are going to, whatever device you have on
+
+37
+00:03:49,640 --> 00:03:52,640
+ your computer.
+
+38
+00:03:52,640 --> 00:04:01,240
+ Next up we will go to the pre-processing part of the notebook. So the very, the most important
+
+39
+00:04:01,240 --> 00:04:08,640
+ aspect of any machine learning or any practical machine learning or deep learning situation
+
+40
+00:04:08,640 --> 00:04:15,840
+ is data. So how do you process the data, what kind of data do we have, what to do with that
+
+41
+00:04:15,840 --> 00:04:21,480
+ data, this is extremely important. Because at the end of the day, if you go into the
+
+42
+00:04:21,480 --> 00:04:28,840
+ industry, you will be finding terms like data science. So the word data science itself has
+
+43
+00:04:28,840 --> 00:04:33,640
+ the word data in it. So data is extremely important and how well you process the data
+
+44
+00:04:33,640 --> 00:04:39,800
+ really will provide you with how good a performance you get from a model. Because at the end of
+
+45
+00:04:39,800 --> 00:04:44,980
+ the day, please remember that garbage in is equal to garbage out. This is a very famous
+
+46
+00:04:44,980 --> 00:04:53,280
+ quote in the AI community. So you want to make sure that your model, that your data is as
+
+47
+00:04:53,280 --> 00:04:58,840
+ processed as possible so that all the relationships between the data, between the input and the
+
+48
+00:04:58,840 --> 00:05:03,880
+ target come out so that the model can utilize those relationships and give you the best
+
+49
+00:05:03,880 --> 00:05:12,080
+ of results. So most if not all of your time should be spent on how you improve the data.
+
+50
+00:05:12,080 --> 00:05:15,840
+ Because models are already available and you can download n number of models and utilize
+
+51
+00:05:15,840 --> 00:05:20,400
+ them, but the data part is something that comes from domain knowledge and I recommend
+
+52
+00:05:20,400 --> 00:05:24,600
+ spending as much time as possible on pre-processing the data.
+
+53
+00:05:24,600 --> 00:05:31,880
+ So here we will go over some pre-processing pipeline. So first before we begin with the
+
+54
+00:05:31,880 --> 00:05:36,280
+ pre-processing, what is this notebook about? So in this notebook, we will be going over
+
+55
+00:05:36,280 --> 00:05:44,400
+ the BERT model, but more importantly, the task here is to take IMDB reviews. So what
+
+56
+00:05:44,400 --> 00:05:49,480
+ is IMDB reviews? You probably have heard about the IMDB website, which actually provides
+
+57
+00:05:49,480 --> 00:05:56,840
+ you with ratings and reviews about movies. So what we will do is we will pick up around
+
+58
+00:05:56,840 --> 00:06:04,680
+ 25,000 movies and we will try to train and test a model and see what is the sentiment
+
+59
+00:06:04,680 --> 00:06:11,960
+ of those reviews. So why is this important? So just to give some context, the IMDB website,
+
+60
+00:06:11,960 --> 00:06:17,880
+ it provides you with reviews and ratings about movies. So it tells you the sentiment about
+
+61
+00:06:17,880 --> 00:06:22,400
+ a movie, what kind of sentiment people have for a movie and this is really important for
+
+62
+00:06:22,400 --> 00:06:29,160
+ actors and movie directors to understand quickly and even the advertisers as well to understand
+
+63
+00:06:29,160 --> 00:06:36,240
+ quickly how well the movie is performing so that they can change their course of action
+
+64
+00:06:36,240 --> 00:06:44,160
+ based on the sentiment of the movies. Now the problem is that the reviews that are provided,
+
+65
+00:06:44,160 --> 00:06:49,960
+ they have to be manually tagged by someone and there are many, many reviews. So based
+
+66
+00:06:49,960 --> 00:06:54,640
+ on the reviews, you want to have an aggregated understanding of how well the movie is performing
+
+67
+00:06:54,640 --> 00:07:02,360
+ or rather I can say the aggregated sentiment. So how do we do this? Well IMDB has been kind
+
+68
+00:07:02,360 --> 00:07:07,960
+ enough to provide a large database, around there are 50,000 reviews but we will be using
+
+69
+00:07:07,960 --> 00:07:15,720
+ 25,000 of them. So the 25,000 reviews, they have categorically classified each of those
+
+70
+00:07:15,720 --> 00:07:22,040
+ reviews as positive or negative and that is what you are basically concerned with. How
+
+71
+00:07:22,040 --> 00:07:27,680
+ much positive, how much negative can be I guess taken from the ratings but more importantly
+
+72
+00:07:27,680 --> 00:07:33,360
+ we want to understand how well you are performing through the reviews because ratings can have
+
+73
+00:07:33,360 --> 00:07:38,880
+ a different biasness altogether. So a lot of actual information even on Amazon for example
+
+74
+00:07:38,880 --> 00:07:45,000
+ how, what are the different aspects that your product is performing well on is actually
+
+75
+00:07:45,000 --> 00:07:50,320
+ available in the reviews and not in the ratings themselves. So you want to use the reviews
+
+76
+00:07:50,320 --> 00:07:55,780
+ which is the gold mine of information and you want to be able to generate or build a
+
+77
+00:07:55,780 --> 00:08:02,840
+ model that can actually predict over time or automatically predict whether particular
+
+78
+00:08:02,840 --> 00:08:08,440
+ review is positive or negative and then people can use this model for other tasks.
+
+79
+00:08:08,440 --> 00:08:14,200
+ So this is our overall task that you want to perform today. So we will start off with
+
+80
+00:08:14,200 --> 00:08:21,480
+ the preprocessing pipeline now. So we have this function preprocess. So what does this
+
+81
+00:08:21,480 --> 00:08:27,400
+ do? It takes some input x, what is this x? It is going to be some string. So it is going
+
+82
+00:08:27,400 --> 00:08:32,640
+ to take this string and it is going to clean up the string. So how are we cleaning it?
+
+83
+00:08:32,640 --> 00:08:38,600
+ Now remember IMDB is an online website and we download the data from there. So obviously
+
+84
+00:08:38,600 --> 00:08:44,800
+ it is going to contain a lot of HTML content which is basically how data exists online.
+
+85
+00:08:44,800 --> 00:08:51,520
+ So there are going to be HTTP different HTTP s for example here we have added HTTP s as
+
+86
+00:08:51,520 --> 00:08:58,960
+ one of the criteria for removing. So if you find something like HTTP s plus which is multiple
+
+87
+00:08:58,960 --> 00:09:08,560
+ s's or single s or just HTTP you want to remove that or rather we replace it with just a space.
+
+88
+00:09:08,560 --> 00:09:16,040
+ Similarly you want to remove all of these characters. For example in HTML you have these opening
+
+89
+00:09:16,040 --> 00:09:22,240
+ brackets and these closing brackets as well to denote HTML content. So we are going to
+
+90
+00:09:22,240 --> 00:09:31,280
+ remove all of that by replacing them with just a space. Similarly we will also be removing
+
+91
+00:09:31,280 --> 00:09:36,640
+ all of these extra s's that might be there. So there are a lot of times when the website
+
+92
+00:09:36,640 --> 00:09:42,840
+ makes errors and these kind of errors are dumped onto the content. So you want to remove all
+
+93
+00:09:42,840 --> 00:09:47,480
+ of that as well. And you can obviously go wild and add as many regular expressions as
+
+94
+00:09:47,480 --> 00:09:58,560
+ required to remove or clean your data as granularly as possible but we will stick to this for
+
+95
+00:09:58,560 --> 00:10:05,760
+ now. So once we have cleaned the data for the HTML tags and content we are going to reduce
+
+96
+00:10:05,760 --> 00:10:14,200
+ the size of the data. Sorry we are going to remove the leading and the trailing spaces,
+
+97
+00:10:14,200 --> 00:10:19,800
+ white spaces from your string and then return this string. So now your string has been cleaned
+
+98
+00:10:19,800 --> 00:10:23,800
+ and stripped of all leading white spaces or any new line characters and so on which are
+
+99
+00:10:23,800 --> 00:10:31,440
+ not viewable. So this is a pre-process function.
+
+100
+00:10:31,440 --> 00:10:37,400
+ Next up we will go to some of the helper functions. These functions are not really required for
+
+101
+00:10:37,400 --> 00:10:42,640
+ this particular session but I will go over them anyway. These are actually important
+
+102
+00:10:42,640 --> 00:10:47,800
+ functions if you want to save your model or if you want to load your model. Rather this
+
+103
+00:10:47,800 --> 00:10:53,200
+ is an old way so what people usually do is they take an object, whatever object it may
+
+104
+00:10:53,200 --> 00:10:58,800
+ be. So Python provides this pickle library. So all this is doing is it is going to take
+
+105
+00:10:58,800 --> 00:11:04,360
+ any object that you have and save it as is. So that next time you load the object it is
+
+106
+00:11:04,360 --> 00:11:08,680
+ going to load up just the way you were running previously. So you can save anything, you can
+
+107
+00:11:08,680 --> 00:11:14,840
+ save lists, you can save arrays, you can save dictionaries. In fact you can save PyTorch
+
+108
+00:11:14,840 --> 00:11:19,800
+ models as well but that is not the recommended way but in any case you can do it in this
+
+109
+00:11:19,800 --> 00:11:20,800
+ manner.
+
+110
+00:11:20,800 --> 00:11:28,880
+ The idea here is you just open the file, you have a file, for example whatever file name
+
+111
+00:11:28,880 --> 00:11:34,680
+ you provide. They are going to create a pointer to that file and then you are going to dump
+
+112
+00:11:34,680 --> 00:11:40,640
+ that file. So whatever object you have you are going to dump that object into this file.
+
+113
+00:11:40,640 --> 00:11:49,400
+ So here bw means write and r means read. So what is this b decided? b means binary. So
+
+114
+00:11:49,400 --> 00:11:57,200
+ I like to save my files in binary format because they allow us to actually compress the object
+
+115
+00:11:57,200 --> 00:12:02,200
+ that you are saving and it is also secure because no one can actually open and understand
+
+116
+00:12:02,200 --> 00:12:07,240
+ what is written there. For example JSON files you can actually save them as text files but
+
+117
+00:12:07,240 --> 00:12:12,640
+ then they can be viewed by anyone. So if you want that extra security privilege you can
+
+118
+00:12:12,640 --> 00:12:20,480
+ actually convert your file to binary. So first of all what we do is we open up, we add a pointer
+
+119
+00:12:20,480 --> 00:12:27,880
+ to whatever file you want, we want and then in that to that pointer whatever the pointer
+
+120
+00:12:27,880 --> 00:12:34,360
+ is pointing we will save the object and then close that pointer. So that saves our file
+
+121
+00:12:34,360 --> 00:12:39,000
+ and similarly for reading the file we again have to open a pointer to that file and then
+
+122
+00:12:39,000 --> 00:12:45,080
+ we have to call pickle.load and this will load the model or object whatever it is in
+
+123
+00:12:45,080 --> 00:12:51,240
+ that exact format as was previously saved by you and then you can obviously close the
+
+124
+00:12:51,240 --> 00:12:57,960
+ pointer and then use the data or object whatever it is.
+
+125
+00:12:57,960 --> 00:13:03,600
+ So next up we actually come to the data cleaning pipeline. So the very first thing that we
+
+126
+00:13:03,600 --> 00:13:12,480
+ did was we pre process the data. So as you can see here we are taking the data frame
+
+127
+00:13:12,480 --> 00:13:20,520
+ so we are expecting a pandas data frame as input to this particular function. So we take
+
+128
+00:13:20,520 --> 00:13:26,680
+ this data frame and we apply the pre process function that we just had that we just talked
+
+129
+00:13:26,680 --> 00:13:33,000
+ about. So this pre process function expects strings as you can see we are calling the
+
+130
+00:13:33,000 --> 00:13:39,360
+ apply function of pandas and what this apply function does is that it takes this pre whatever
+
+131
+00:13:39,360 --> 00:13:48,920
+ function that we pass and it will apply to every single input where each input is a string.
+
+132
+00:13:48,920 --> 00:13:57,520
+ So that is what we are going to do. So we are expecting pandas data frame which consists
+
+133
+00:13:57,520 --> 00:14:03,760
+ of the text column and we are going to take that text column and apply this pre processing
+
+134
+00:14:03,760 --> 00:14:12,920
+ function to clean our text or reviews of all the HTML content. So that is the very first
+
+135
+00:14:12,920 --> 00:14:18,440
+ thing that we do here. Next up what you want to do is as sir has already talked about I
+
+136
+00:14:18,440 --> 00:14:24,640
+ believe is the CLS and the SEP tokens. So the CLS token is the very first token that
+
+137
+00:14:24,640 --> 00:14:34,040
+ we provide to the BERT model. So the BERT model expects a CLS token and a SEP token.
+
+138
+00:14:34,040 --> 00:14:39,280
+ So what is this CLS token? I believe Sir has talked about this. So this CLS token is in
+
+139
+00:14:39,280 --> 00:14:46,080
+ a way going to the vector representation of this token is going to contain all of the
+
+140
+00:14:46,080 --> 00:14:53,600
+ sentence level information. So we can use this CLS token to actually perform classification
+
+141
+00:14:53,600 --> 00:15:01,320
+ and ideally the CLS token should capture all the information about the entire sentence.
+
+142
+00:15:01,320 --> 00:15:07,240
+ And it also marks the beginning of a sentence because every sentence begins with a CLS token.
+
+143
+00:15:07,240 --> 00:15:13,520
+ So what we are going to do first is we are going to add the CLS token. So we add the
+
+144
+00:15:13,520 --> 00:15:19,760
+ CLS token, we prepend it and then we take the remaining string whatever string we have
+
+145
+00:15:19,760 --> 00:15:25,100
+ and we add to that. So what this means is basically we are concatenating the CLS token.
+
+146
+00:15:25,100 --> 00:15:31,360
+ As you can see there is a space here as well. So we take the CLS token and we prepend it
+
+147
+00:15:31,360 --> 00:15:36,600
+ to a sentence and where is the sentence coming from? As you can see the sentence is coming
+
+148
+00:15:36,600 --> 00:15:45,360
+ from the data frame dot text column. So now all our sentences with the CLS token is contained
+
+149
+00:15:45,360 --> 00:15:51,380
+ in the sentences variable.
+
+150
+00:15:51,380 --> 00:15:55,760
+ Next we come to the labels. So obviously we need the labels as well which is either positive
+
+151
+00:15:55,760 --> 00:16:00,520
+ or negative. So it is a binary, it is going to be a binary classification task. So that
+
+152
+00:16:00,520 --> 00:16:05,760
+ is what we have done here. So we are taking all of the labels from the data frame. Now
+
+153
+00:16:05,760 --> 00:16:10,560
+ our labels and our sentences are divided into the sentences variable and the labels
+
+154
+00:16:10,560 --> 00:16:18,880
+ variable we do not really need the data frame now.
+
+155
+00:16:18,880 --> 00:16:30,140
+ So now we move on to the model specific processing of the data. So if you remember when I was
+
+156
+00:16:30,140 --> 00:16:37,080
+ talking about different models like BERT, T5, there are the models as well. What these
+
+157
+00:16:37,080 --> 00:16:42,920
+ models do is that they expect their input to be tokenized in a certain way. So what
+
+158
+00:16:42,920 --> 00:16:50,040
+ is tokenization? It basically means breaking down your words or basically you take a string
+
+159
+00:16:50,040 --> 00:16:54,280
+ and you want to tokenize it. It means you want to break it down into tokens or what
+
+160
+00:16:54,280 --> 00:16:59,680
+ are tokens? They are the basic unit of a sentence. Now there can be many basic units, many different
+
+161
+00:16:59,680 --> 00:17:04,080
+ types of basic units. For example you can take a sentence and you can break it down into
+
+162
+00:17:04,080 --> 00:17:09,760
+ words, individual words. How would you do that? You can do it based on space. There
+
+163
+00:17:09,760 --> 00:17:16,080
+ are a lot of sophisticated libraries out there that break on a lot of other things. For example
+
+164
+00:17:16,080 --> 00:17:22,520
+ you would not always have very clean text. You might have words that are actually joined
+
+165
+00:17:22,520 --> 00:17:27,440
+ together. You do not have a space in between or you have a word with a full stop. Then
+
+166
+00:17:27,440 --> 00:17:32,000
+ you might have some quotation marks and so on. So there are a lot of sophisticated tokenizers
+
+167
+00:17:32,000 --> 00:17:39,200
+ out there that actually break down your sentences into words, quotations, full stops and everything
+
+168
+00:17:39,200 --> 00:17:47,200
+ else. But that is the basic, you can always select a single word as a base unit or as
+
+169
+00:17:47,200 --> 00:17:57,440
+ a token of your entire sentence. Or you could also break it down into individual characters.
+
+170
+00:17:57,440 --> 00:18:03,640
+ So you can always break it down into each alphabet. For example the word fox, you break
+
+171
+00:18:03,640 --> 00:18:09,280
+ it down into f, o, x and all of these would become tokens and so on. So as you can imagine,
+
+172
+00:18:09,280 --> 00:18:14,320
+ if you break it down into words, you would have fewer tokens. If you break it down into
+
+173
+00:18:14,320 --> 00:18:19,200
+ characters, you would have a large number of tokens. And then there is something in between
+
+174
+00:18:19,200 --> 00:18:25,760
+ which is called subword. So why did this come into the picture? Well, let us go over the
+
+175
+00:18:25,760 --> 00:18:32,320
+ history of it. So if you look at words, words can have a lot of spelling mistakes or there
+
+176
+00:18:32,320 --> 00:18:38,480
+ can be a large number of words. Now for example, if you take the English dictionary, there
+
+177
+00:18:38,480 --> 00:18:45,160
+ are probably around 900 or 1000 words, probably more. I am not really updated with that fact.
+
+178
+00:18:45,160 --> 00:18:51,940
+ But there are a lot of words in the dictionary. So if you break our sentences down into words
+
+179
+00:18:51,940 --> 00:18:57,760
+ and remember that later on, when we are working with the model, you probably remember that
+
+180
+00:18:57,760 --> 00:19:04,640
+ models do not work with text exactly. They do not work with strings per se. But rather
+
+181
+00:19:04,640 --> 00:19:10,240
+ we need to convert these strings into vector representations. Now as you can imagine, I
+
+182
+00:19:10,240 --> 00:19:19,040
+ think sir also talked about this. Each vector is probably of size 768 dimensions. I assume
+
+183
+00:19:19,040 --> 00:19:26,760
+ a floating representation that comes to 8 bytes, 8 bytes of information per dimension.
+
+184
+00:19:26,760 --> 00:19:32,880
+ So that is 768 into 8 and then there are probably like 10,000 words or something. So if you
+
+185
+00:19:32,880 --> 00:19:39,120
+ multiply that with that number of words, you can actually imagine how large the vector
+
+186
+00:19:39,120 --> 00:19:48,840
+ representation becomes. So we do not want to work with such a large dataset. What you
+
+187
+00:19:48,840 --> 00:19:53,080
+ want to do is you want to reduce it further. So now how can we reduce it further? Well,
+
+188
+00:19:53,080 --> 00:19:58,480
+ you can always break it down into characters like f, o, x because as you can imagine there
+
+189
+00:19:58,480 --> 00:20:02,840
+ are only very limited number of characters. For example, alphabets and then there are some
+
+190
+00:20:02,840 --> 00:20:08,760
+ alphanumeric characters as well. But now the problem is taking you would have
+
+191
+00:20:08,760 --> 00:20:13,640
+ a large number of tokens. So for example, if you are reading let us say a book, a book
+
+192
+00:20:13,640 --> 00:20:19,520
+ might have let us say around somewhere around 20,000 to 30,000 words. But now if you break
+
+193
+00:20:19,520 --> 00:20:27,680
+ it down into alphabets, now your tokens become way over a million. And reading all of that,
+
+194
+00:20:27,680 --> 00:20:33,880
+ keeping all of that context contained is very difficult for any model. So we want to come
+
+195
+00:20:33,880 --> 00:20:38,640
+ up with a middle ground somewhere and that is where the idea of subword comes in. The
+
+196
+00:20:38,640 --> 00:20:46,760
+ idea is that if you look at the word going, you might see the word go which is go and
+
+197
+00:20:46,760 --> 00:20:54,280
+ ing which is another word. Now the idea is going is composed of the subwords go which
+
+198
+00:20:54,280 --> 00:20:59,400
+ is again another word and then ing which is utilized in a lot of other words as well.
+
+199
+00:20:59,400 --> 00:21:05,720
+ For example, forgiving, running and so on. So the researchers came up with the idea that
+
+200
+00:21:05,720 --> 00:21:12,360
+ you want to break this, if you break the words down into these subwords, a lot of these subwords
+
+201
+00:21:12,360 --> 00:21:21,200
+ are unique and you can actually use them to build other words as well. So the idea that
+
+202
+00:21:21,200 --> 00:21:27,960
+ was used in BERT and a lot of other models as well is this subword tokenization. So what
+
+203
+00:21:27,960 --> 00:21:32,240
+ we will be doing is we will be taking these words and breaking them down into subwords
+
+204
+00:21:32,240 --> 00:21:37,280
+ and coincidentally turns out that you do not need that many subwords actually.
+
+205
+00:21:37,280 --> 00:21:46,200
+ For example, BERT is trained I think on around 30,000 tokens which is around 30,000 subwords.
+
+206
+00:21:46,200 --> 00:21:52,600
+ So there are different models like for example, recent models come have their own tokenization
+
+207
+00:21:52,600 --> 00:21:59,200
+ techniques. So what hugging face has done is that it has provided us with the tokenizes
+
+208
+00:21:59,200 --> 00:22:06,080
+ for each model. So every model, not every model but quite a few models have their own
+
+209
+00:22:06,080 --> 00:22:10,480
+ tokenization system. So what hugging face has done is that along with the model they
+
+210
+00:22:10,480 --> 00:22:17,880
+ also provide us with that particular models tokenization system. So this auto tokenizer
+
+211
+00:22:17,880 --> 00:22:25,600
+ class, this is a wrapper built on the entire or of the tokenization classes and it actually
+
+212
+00:22:25,600 --> 00:22:37,020
+ when you pass the for example here, when you pass the model name what it will do is immediately
+
+213
+00:22:37,020 --> 00:22:44,280
+ find the corresponding tokenizer and it will bring and it will give it to you in the tokenizer
+
+214
+00:22:44,280 --> 00:22:53,040
+ variable. So the auto tokenizer is a very nice functionality that we have.
+
+215
+00:22:53,040 --> 00:22:58,920
+ Next up what we are going to do is once we have the tokenizer for BERT in this case BERT
+
+216
+00:22:58,920 --> 00:23:03,960
+ based uncased model, we are going to use that tokenizer to obviously tokenize the sentences
+
+217
+00:23:03,960 --> 00:23:09,920
+ which is contained in the sentences variable. So now our words have been broken down, our
+
+218
+00:23:09,920 --> 00:23:17,160
+ sentence has been broken down into different words.
+
+219
+00:23:17,160 --> 00:23:24,960
+ Now if you remember as we have talked about, so this should actually been opening and closing
+
+220
+00:23:24,960 --> 00:23:33,600
+ brackets. So as we have talked about the CLS is the opening for a sentence and the SEP
+
+221
+00:23:33,600 --> 00:23:38,320
+ is the separator or the end of a particular sentence, it marks the end of a particular
+
+222
+00:23:38,320 --> 00:23:46,120
+ sentence. So why is this important? If you remember when you are training on the GPU,
+
+223
+00:23:46,120 --> 00:23:52,400
+ the GPU expects data to be of the exact same size but that is not the case for sentences
+
+224
+00:23:52,400 --> 00:23:58,620
+ or for text input. You can have maybe a thousand word sentence or a paragraph, you can also
+
+225
+00:23:58,620 --> 00:24:01,200
+ have a hundred word paragraph.
+
+226
+00:24:01,200 --> 00:24:12,080
+ But now the thing is our model or PyTorch expects the GPU expects these inputs to be
+
+227
+00:24:12,080 --> 00:24:17,440
+ of the same size so that processing can take place accordingly. It can be a fast, we can
+
+228
+00:24:17,440 --> 00:24:24,840
+ process quickly. So if you want to do that you need to add padding. So what is padding?
+
+229
+00:24:24,840 --> 00:24:31,640
+ So the idea is we, let us say we decide or conquer on a certain number of words which
+
+230
+00:24:31,640 --> 00:24:36,160
+ make up a paragraph. For example, you can understand that when writing a review, people
+
+231
+00:24:36,160 --> 00:24:42,640
+ usually start by giving some introduction about themselves and most of the information
+
+232
+00:24:42,640 --> 00:24:46,560
+ is available either in the middle or the end or maybe you can think of it in a reverse
+
+233
+00:24:46,560 --> 00:24:51,480
+ manner as well that most of the information is available at the beginning until the middle
+
+234
+00:24:51,480 --> 00:24:52,480
+ portion.
+
+235
+00:24:52,480 --> 00:25:00,000
+ So in any case whatever idea you have, whatever domain knowledge you contain you have, you
+
+236
+00:25:00,000 --> 00:25:06,040
+ can use that information to limit the paragraph size. So certain paragraphs that are over
+
+237
+00:25:06,040 --> 00:25:14,680
+ let us say in this particular case we are utilizing 140 words or sub words. So whatever
+
+238
+00:25:14,680 --> 00:25:21,960
+ sentence you have has over 140 words, we will chop them off. So we will be using only up
+
+239
+00:25:21,960 --> 00:25:29,600
+ till the first 140 words. This is for processing efficiency but it also is a lot of wasteful
+
+240
+00:25:29,600 --> 00:25:36,000
+ information might also be removed or a lot of noise could also be removed in doing so.
+
+241
+00:25:36,000 --> 00:25:42,000
+ So now you might have sentences that are longer than 140 but what about sentences that are
+
+242
+00:25:42,000 --> 00:25:47,480
+ shorter than 140, what are we going to do about them? Well we will add pads or we will
+
+243
+00:25:47,480 --> 00:25:53,680
+ basically add the zero character to it. So we can actually tell the model not to pay attention
+
+244
+00:25:53,680 --> 00:25:57,920
+ and we will see about that later on but for now just remember that to make them of equal
+
+245
+00:25:57,920 --> 00:26:05,480
+ size either we chop off a long sentence or we add zeros or what we call pads. So padding,
+
+246
+00:26:05,480 --> 00:26:11,240
+ we will add that to the end of the sentence. So to make sure that when we have padding
+
+247
+00:26:11,240 --> 00:26:16,000
+ to make sure that something else, the sentence actually ended and those zero characters are
+
+248
+00:26:16,000 --> 00:26:25,320
+ not part of the sentence, we add the character sep and the sep token is actually used for
+
+249
+00:26:25,320 --> 00:26:31,400
+ BERT pre-training as well because they probably sort of talked about this. They use two different
+
+250
+00:26:31,400 --> 00:26:35,800
+ sentences and then they say whether this sentence entails the other sentence or follows the
+
+251
+00:26:35,800 --> 00:26:41,960
+ other sentence or not. So they are using it for classification purpose as well.
+
+252
+00:26:41,960 --> 00:26:47,560
+ So always remember that the sep denotes separation between two sentences or rather in this particular
+
+253
+00:26:47,560 --> 00:26:53,360
+ case it denotes the end of a sentence. So that is exactly what we have done here, we
+
+254
+00:26:53,360 --> 00:27:02,400
+ are saying that the maximum length of a particular string is going to be 140 words and then
+
+255
+00:27:02,400 --> 00:27:08,960
+ what we are doing here is we are taking up till the max length minus 1 because you want
+
+256
+00:27:08,960 --> 00:27:21,760
+ to include the sep token as well. So finally what we want to do is we now have tokenized
+
+257
+00:27:21,760 --> 00:27:29,280
+ sentences of the same size as all of them of the same size. Now we want to convert these
+
+258
+00:27:29,280 --> 00:27:36,840
+ tokens into numbers because these numbers are going to be used in a dictionary.
+
+259
+00:27:36,840 --> 00:27:44,480
+ So the idea is that you have your string, you take your string and you map it to a number
+
+260
+00:27:44,480 --> 00:27:49,920
+ and then that number will tell you what vector representation to look at. So we are going
+
+261
+00:27:49,920 --> 00:27:56,500
+ to have a dictionary that is going to contain your word or tokens to numbers and then we
+
+262
+00:27:56,500 --> 00:28:02,160
+ are going to have a dictionary which is also known as the embedding layer. We are going
+
+263
+00:28:02,160 --> 00:28:07,120
+ to take that dictionary which is going to hold the id or the number and the corresponding
+
+264
+00:28:07,120 --> 00:28:15,160
+ vector representation. So for that purpose what we need to do is we need to convert our
+
+265
+00:28:15,160 --> 00:28:20,640
+ tokens to id which is again a very nice function that is provided by PyTorch it will automatically
+
+266
+00:28:20,640 --> 00:28:31,960
+ do that for you and then we also add the padding. So we also add the padding which is basically
+
+267
+00:28:31,960 --> 00:28:39,960
+ just 0 that is it.
+
+268
+00:28:39,960 --> 00:28:46,400
+ Remember that these 0 characters are not really required we want to make sure that the network
+
+269
+00:28:46,400 --> 00:28:54,160
+ does not involve this 0 character in performing any computations and what is the main computation
+
+270
+00:28:54,160 --> 00:28:59,800
+ in any transformer model it is basically self-attention or the attention cross attention self-attention
+
+271
+00:28:59,800 --> 00:29:06,960
+ whatever it may be. So we want to make sure that the model knows that these characters
+
+272
+00:29:06,960 --> 00:29:13,100
+ you do not need to pay attention to. So what we do is we create an attention mask which
+
+273
+00:29:13,100 --> 00:29:18,840
+ basically tells you it is either 1s or 0s so 1s would denote that you want to pay attention
+
+274
+00:29:18,840 --> 00:29:23,880
+ to these particular characters so what we will have is let us say a long sentence of
+
+275
+00:29:23,880 --> 00:29:29,560
+ multiple words and we convert those words into numbers so we have let us say 1, 20,
+
+276
+00:29:29,560 --> 00:29:35,240
+ 30, 33, 19 and so on and then we have lots of 0s. So what you want to tell the model
+
+277
+00:29:35,240 --> 00:29:43,440
+ is for each of the numbers before the first 0 set them as 1 so now you have an attention
+
+278
+00:29:43,440 --> 00:29:48,560
+ mask variable that has all 1s for the words that are involved in the computation and the
+
+279
+00:29:48,560 --> 00:29:54,440
+ remaining portion that is going to contain all the 0 characters of the pads are going
+
+280
+00:29:54,440 --> 00:30:00,960
+ to have 0 which means that you do not want to pay attention to these variables.
+
+281
+00:30:00,960 --> 00:30:06,360
+ So this is the attention mask and finally we will be returning so we will be returning
+
+282
+00:30:06,360 --> 00:30:33,720
+ the ideas that we just created the labels and the attention masks.
+
+283
+00:30:33,720 --> 00:30:39,720
+ So what we will do is we can we will first run let us run each library and I would like
+
+284
+00:30:39,720 --> 00:30:47,280
+ to show some what the text looks like. So let us run each of the cells until now that
+
+285
+00:30:47,280 --> 00:30:52,120
+ we have talked about so this will take a bit of time to install because there are lot of
+
+286
+00:30:52,120 --> 00:31:10,360
+ things to install along with these libraries a lot of dependencies actually.
+
+287
+00:31:10,360 --> 00:31:33,120
+ You can also run these cells if you are following this particular session.
+
+288
+00:31:33,120 --> 00:32:02,960
+ So in any case as the library gets installed we will go over the remaining portion of the
+
+289
+00:32:02,960 --> 00:32:12,480
+ notebook. What I want to do is while we actually run these cells I would like to show what
+
+290
+00:32:12,480 --> 00:32:16,600
+ the ideas look like and what the tokenizers look like and there are certain things that
+
+291
+00:32:16,600 --> 00:32:21,280
+ I also want to talk about when we actually tokenize the sentence there are certain things
+
+292
+00:32:21,280 --> 00:32:27,160
+ that you will find which are quite interesting. So in any case what we will do is we will
+
+293
+00:32:27,160 --> 00:32:33,280
+ first load up the data. So we talked about the preprocessing now we come to the part
+
+294
+00:32:33,280 --> 00:32:37,600
+ where we are going to load the data and then actually apply all the preprocessing that
+
+295
+00:32:37,600 --> 00:32:48,160
+ we just talked about. So I believe the cells are done so we have installed all the libraries.
+
+296
+00:32:48,160 --> 00:33:11,920
+ So we will load up whatever library we have. So again this is going to take some time so
+
+297
+00:33:11,920 --> 00:33:19,080
+ again it is done actually. So we will move on to the next cell. So if we actually see
+
+298
+00:33:19,080 --> 00:33:24,080
+ the device what is the device containing right now because we have a runtime which is T4 which
+
+299
+00:33:24,080 --> 00:33:30,080
+ is the T4 I think this is the TPU. So if we run this device you will see that it is actually
+
+300
+00:33:30,080 --> 00:33:36,920
+ device type is of CUDA. So we now have the CUDA or the GPU and we can run all our models
+
+301
+00:33:36,920 --> 00:33:42,400
+ and all of our processing on the GPU if required.
+
+302
+00:33:42,400 --> 00:33:53,680
+ So we will run these cells. Now we are going to load up the IMDB dataset we have the load
+
+303
+00:33:53,680 --> 00:34:00,600
+ dataset functionality and what we will do is we will take the train set that we have
+
+304
+00:34:00,600 --> 00:34:04,920
+ and we are going to convert it into pandas. So it is going to be converted into data frame
+
+305
+00:34:04,920 --> 00:34:09,600
+ and we are going to do the same thing with the test partition of the data set as well.
+
+306
+00:34:09,600 --> 00:34:18,960
+ So let us run this. So this green progress bar that you are seeing this actually comes
+
+307
+00:34:18,960 --> 00:34:25,800
+ from TQDM. So TQDM again so it provides you with what is the progress of your loop and
+
+308
+00:34:25,800 --> 00:34:31,600
+ what are the iterations, how fast they are running and so on.
+
+309
+00:34:31,600 --> 00:34:39,320
+ So now we have our data. So what we did was we wrote display dftrain.head. So what this
+
+310
+00:34:39,320 --> 00:34:45,640
+ will do is take the training portion of the dataset and it will show few rows from there.
+
+311
+00:34:45,640 --> 00:34:51,040
+ So we can see there are a lot of different reviews I rented I am curious yellow. So curious
+
+312
+00:34:51,040 --> 00:34:59,160
+ yellow is another probably a movie that was seen by people. I am curious yellow is again
+
+313
+00:34:59,160 --> 00:35:06,640
+ someone talking about that and so on. So as you can imagine we have a very bare bones
+
+314
+00:35:06,640 --> 00:35:13,480
+ preprocessing pipeline where we are removing where we are only picking the first 140 words.
+
+315
+00:35:13,480 --> 00:35:19,600
+ But as you can imagine people are actually they start by talking about how they rented
+
+316
+00:35:19,600 --> 00:35:24,920
+ the movie or where they went to watch the movie and so on. So these are not really information
+
+317
+00:35:24,920 --> 00:35:30,120
+ that is required to understand the sentiment of the reviews. So maybe what we could have
+
+318
+00:35:30,120 --> 00:35:36,000
+ done or you could actually try out later is that instead of taking the first 140 you take
+
+319
+00:35:36,000 --> 00:35:40,520
+ somewhere from the middle and then you decide where you want to do, where you want to take
+
+320
+00:35:40,520 --> 00:35:46,600
+ from somewhere from the middle so that you get those 140 words are the exact information
+
+321
+00:35:46,600 --> 00:35:55,320
+ that is required and not just noise. So now what I would like to see is what is
+
+322
+00:35:55,320 --> 00:36:06,560
+ the size of this dataset. So we can see that by running the len command. So as you can
+
+323
+00:36:06,560 --> 00:36:15,520
+ see there are 25,000 training files and what are the number of test files? Let us see what
+
+324
+00:36:15,520 --> 00:36:28,480
+ are we calling it DF value. So we have 25,000 validation or test files as well.
+
+325
+00:36:28,480 --> 00:36:33,600
+ Now you can see in the data itself there are lots of stars here right. So we want to remove
+
+326
+00:36:33,600 --> 00:36:43,280
+ all of this and this is where the where our preprocessing pipeline comes into the picture.
+
+327
+00:36:43,280 --> 00:36:50,240
+ So we are going to run the cleaning pipeline that we just talked about. We are going to
+
+328
+00:36:50,240 --> 00:36:55,680
+ do it once for the training and once for the test datasets. So what are we going to get
+
+329
+00:36:55,680 --> 00:37:04,720
+ in return? It will be the IDs, the labels and the masks. So before we run this let us do
+
+330
+00:37:04,720 --> 00:37:18,800
+ something. So what we will do is we will take these sentences, let us pick one sentence
+
+331
+00:37:18,800 --> 00:37:25,560
+ and we will see what the sentence looks like. So let us say data frame we are going to take
+
+332
+00:37:25,560 --> 00:37:41,280
+ the text portion and we will see what the sentence looks like before we call the preprocessing
+
+333
+00:37:41,280 --> 00:37:46,480
+ function that we have and after the preprocessing function and let us call it quit for now.
+
+334
+00:37:46,480 --> 00:37:54,680
+ So this will basically stop the execution of the code and we can just look at what the
+
+335
+00:37:54,680 --> 00:38:14,640
+ lines look like. So we will run this cell again and let us try this out.
+
+336
+00:38:14,640 --> 00:38:25,200
+ So you can see we have the very first sentence that we have is the non-pre-processed or raw
+
+337
+00:38:25,200 --> 00:38:31,520
+ data. So you can see there are capitalizations and there is a lot of capitalizations and
+
+338
+00:38:31,520 --> 00:38:38,800
+ because we did dot lower we call the dot lower function. So now we have the sentences in
+
+339
+00:38:38,800 --> 00:39:01,000
+ lower case. So let us see what the sentences look like.
+
+340
+00:39:01,000 --> 00:39:10,800
+ So I guess in this particular situation there is not a lot of cleaning that is required
+
+341
+00:39:10,800 --> 00:39:24,440
+ here because I do not see any HTML content. So let us just go over and see. So there is
+
+342
+00:39:24,440 --> 00:39:52,600
+ not much HTML content.
+
+343
+00:39:52,600 --> 00:39:58,320
+ So here we see a little bit of HTML content and you will see what has happened here. So
+
+344
+00:39:58,320 --> 00:40:09,680
+ these BRs they basically are your break statements. So just like your backslash in string content
+
+345
+00:40:09,680 --> 00:40:18,040
+ similarly on websites you have BR which basically tells you which talks about the break statement.
+
+346
+00:40:18,040 --> 00:40:23,520
+ So again we wanted to remove all of this. So as you can see after married men there is
+
+347
+00:40:23,520 --> 00:40:27,640
+ a full stop and we directly begin with what we have removed these things because we do
+
+348
+00:40:27,640 --> 00:40:38,240
+ not actually require them. So our pre-processing this pre-processed function is successful.
+
+349
+00:40:38,240 --> 00:40:53,000
+ So now that we have this we can remove. So we will be pre-pending the CLS not really fun
+
+350
+00:40:53,000 --> 00:40:57,320
+ but yeah what we want to do is we want to look at what the tokenized sentences look
+
+351
+00:40:57,320 --> 00:41:13,520
+ like. So let us check this out.
+
+352
+00:41:13,520 --> 00:41:43,200
+ So let us see what the tokenized sentence looks like. Oh so I guess our session has
+
+353
+00:41:43,200 --> 00:41:52,080
+ restarted on collapse so we will have to run this all over again which is unfortunate.
+
+354
+00:41:52,080 --> 00:42:19,200
+ This should be a lot faster now. So that cell is done. So we have run these cells let us
+
+355
+00:42:19,200 --> 00:42:26,280
+ quickly run them over. Now we will look at what the data looks like. So it is going to
+
+356
+00:42:26,280 --> 00:42:32,920
+ download the IMDb data set once again. So now we have the data set. So let us look at
+
+357
+00:42:32,920 --> 00:42:56,920
+ what the tokenized sentences look like. So what it is doing right now is actually downloading
+
+358
+00:42:56,920 --> 00:43:06,600
+ or rather what this progress bar is doing is actually running through this entire. So
+
+359
+00:43:06,600 --> 00:43:11,760
+ this tokenization is happening. So it is running over the entire tokenization. So it is giving
+
+360
+00:43:11,760 --> 00:43:17,260
+ us a nice progress bar. So now we can see what the data looks like. What the tokenized sentence
+
+361
+00:43:17,260 --> 00:43:25,040
+ looks like. So we have the CLS token pre-pended. Then if you remember the sentence I rented
+
+362
+00:43:25,040 --> 00:43:31,920
+ and I am curious yellow from my video store. So you can see that each for example here
+
+363
+00:43:31,920 --> 00:43:39,560
+ I is one particular character or one particular word rented becomes another word and so on.
+
+364
+00:43:39,560 --> 00:43:50,880
+ So we can ignore the error message right now. It is not really required. So here is something
+
+365
+00:43:50,880 --> 00:43:58,680
+ interesting. So what you see is that for example usually under and then there is funded. The
+
+366
+00:43:58,680 --> 00:44:06,480
+ word funded has been broken down into these hashtags. Hashtags and then you have the word.
+
+367
+00:44:06,480 --> 00:44:13,760
+ So what this tells the model is that with these hashtags it means that these words
+
+368
+00:44:13,760 --> 00:44:20,280
+ are sub words. For example under is an entire word in itself. But funded has been broken
+
+369
+00:44:20,280 --> 00:44:29,920
+ down into f u and then n d e d alright. So to denote these sub words we have these hashes.
+
+370
+00:44:29,920 --> 00:44:34,940
+ So you have double hashes to denote these sub words. This is what I wanted to show you.
+
+371
+00:44:34,940 --> 00:44:43,520
+ So you will actually find this a lot in across the entire sentence. So for example den and
+
+372
+00:44:43,520 --> 00:44:48,320
+ beri. So you can imagine if there was a word like den beri then it was broken down into
+
+373
+00:44:48,320 --> 00:45:00,880
+ the sub word den and the word beri which again in themselves are actually words.
+
+374
+00:45:00,880 --> 00:45:05,800
+ And there are a lot of other areas where you can see them as well. So that is something
+
+375
+00:45:05,800 --> 00:45:14,880
+ that which I wanted to show you guys. So we can remove this and once we have our so we
+
+376
+00:45:14,880 --> 00:45:20,800
+ now have our tokens what we want to now see is what those tokens look like for each sentence
+
+377
+00:45:20,800 --> 00:45:29,480
+ in terms of words or IDs. So let us look at them. So we will again tokenize the sentences.
+
+378
+00:45:29,480 --> 00:45:35,120
+ So we will look at the first tokenized sentence and then what we will do is we will look at
+
+379
+00:45:35,120 --> 00:45:59,520
+ the IDs alright. So let us look at the first ID and we will return here
+
+380
+00:45:59,520 --> 00:46:14,600
+ rather if you do not want the error that we got what we can do is we can return an umpire.
+
+381
+00:46:14,600 --> 00:46:30,680
+ So let us run this again. So this will tokenize all of the sentences once again and we will
+
+382
+00:46:30,680 --> 00:46:55,880
+ do it one more time just to you know make sure that we see all of the things that are required.
+
+383
+00:46:55,880 --> 00:47:04,640
+ So this has printed out the tokenized sentence as is. And now you can see what these words
+
+384
+00:47:04,640 --> 00:47:13,400
+ have been converted to the specific ID. So CLS ID is 101 the word I has the ID 1045 rented
+
+385
+00:47:13,400 --> 00:47:21,900
+ as the ID 12,524 and so on. So now all of these words have been converted into the corresponding
+
+386
+00:47:21,900 --> 00:47:28,040
+ numbers and then we will be going to use those numbers to take the corresponding vector representations
+
+387
+00:47:28,040 --> 00:47:33,760
+ and then train the model. So the vector representations also get trained. So each word is going to
+
+388
+00:47:33,760 --> 00:47:40,000
+ get their own learned vector representation right.
+
+389
+00:47:40,000 --> 00:47:44,240
+ So finally we are done with our preprocessing pipeline these are certain things that I wanted
+
+390
+00:47:44,240 --> 00:47:52,520
+ to show you if you are if you have the notebook you can actually run each cell and follow
+
+391
+00:47:52,520 --> 00:47:59,480
+ along. So we will tokenize again just to make sure that none of those 0s are there that
+
+392
+00:47:59,480 --> 00:48:08,680
+ we were just returning. So this can run for now. Now we will move on to the data loader
+
+393
+00:48:08,680 --> 00:48:16,200
+ section. So now in the data loader section what we will be doing is we will be taking
+
+394
+00:48:16,200 --> 00:48:23,320
+ the preprocessed data that we just have and we will be converting it into data set and
+
+395
+00:48:23,320 --> 00:48:29,720
+ then into the data loader. So what is this data set? It is a simple wrapper that basically
+
+396
+00:48:29,720 --> 00:48:36,200
+ allows you to fetch it is an iterator that allows you to fetch samples from whatever
+
+397
+00:48:36,200 --> 00:48:43,200
+ data that you have. So this is PyTorch's way PyTorch's iterator that it utilizes this
+
+398
+00:48:43,200 --> 00:48:48,960
+ underlying functionality we call it the iterator which basically iterates over your data and
+
+399
+00:48:48,960 --> 00:48:56,280
+ picks samples as required. And what is the data loader? The data loader takes this iterative
+
+400
+00:48:56,280 --> 00:49:02,320
+ data set and then breaks it down into chunks. So the iterator picks one sample at a time
+
+401
+00:49:02,320 --> 00:49:10,400
+ when the data loader calls for a particular sample it will pick that sample and it will
+
+402
+00:49:10,400 --> 00:49:15,960
+ it will provide it to you and then the data loader will take all of those multiple samples
+
+403
+00:49:15,960 --> 00:49:20,920
+ and build a batch for you and then give that batch to you.
+
+404
+00:49:20,920 --> 00:49:28,520
+ So that is what the entire idea here is. So the tensor data set it is again a nice class
+
+405
+00:49:28,520 --> 00:49:33,800
+ that is provided by PyTorch where you can pass your whatever variables you have and
+
+406
+00:49:33,800 --> 00:49:40,520
+ it will convert it into a tensor data set. And then you can use this you can pass this
+
+407
+00:49:40,520 --> 00:49:44,880
+ data set to the data loader where you can specify what is a batch size whether you want to shuffle
+
+408
+00:49:44,880 --> 00:49:51,720
+ it or not number of workers and so on. So we want to separate data loaders one for one
+
+409
+00:49:51,720 --> 00:49:59,200
+ where the shuffle is false and one where the shuffle is true. So that is what we have done
+
+410
+00:49:59,200 --> 00:50:09,280
+ here.
+
+411
+00:50:09,280 --> 00:50:15,320
+ So now that we have a data set so as you can see we each sentence or each sentence is of
+
+412
+00:50:15,320 --> 00:50:22,240
+ 140 words. So we have made sure that all of our sentences are 140 words and how many sentences
+
+413
+00:50:22,240 --> 00:50:27,040
+ are there or how many reviews are there is around 25000 reviews. So we have exactly that
+
+414
+00:50:27,040 --> 00:50:40,600
+ many IDs, labels sorry A masks and labels. So now we have generated the data loader.
+
+415
+00:50:40,600 --> 00:50:50,960
+ Let us run this. So we have generated the data loader successfully. Now one thing to
+
+416
+00:50:50,960 --> 00:50:56,400
+ remember is that this tensor data set expects all your variables to be of type tensor and
+
+417
+00:50:56,400 --> 00:51:02,760
+ that is the exact reason why we converted our IDs, labels and attention masks to tensor.
+
+418
+00:51:02,760 --> 00:51:07,560
+ So once we convert to tensor you can actually pass them directly to the data set and we
+
+419
+00:51:07,560 --> 00:51:14,560
+ create a data set for you. Now why does PyTorch require this iterable? Why do we need this
+
+420
+00:51:14,560 --> 00:51:20,200
+ extra step before the data loader? It is because the tensor data set or any data set custom
+
+421
+00:51:20,200 --> 00:51:26,400
+ data set that you build in PyTorch using the data set class what it does is that it gives
+
+422
+00:51:26,400 --> 00:51:30,520
+ you one sample at a time. So now what you can do is instead of sequentially fetching
+
+423
+00:51:30,520 --> 00:51:36,440
+ your examples you can actually use the data loader to fetch multiple examples at the same
+
+424
+00:51:36,440 --> 00:51:42,800
+ time. So ideally what we do is we run a for loop and then you pick a batch of samples.
+
+425
+00:51:42,800 --> 00:51:47,760
+ So you will be going even if you pick a batch of samples you will be going one at a time.
+
+426
+00:51:47,760 --> 00:51:53,320
+ But what PyTorch allows you to do is you can actually pick multiple examples at the same
+
+427
+00:51:53,320 --> 00:52:04,400
+ time. So how do we do that? So you can call num workers. Sorry, so this will obviously
+
+428
+00:52:04,400 --> 00:52:12,600
+ be in the data loader. So we can actually call something called num workers. And you
+
+429
+00:52:12,600 --> 00:52:18,840
+ can set it to some values. I believe the default value is 0. As you can see it is being shown
+
+430
+00:52:18,840 --> 00:52:25,040
+ here. The default value is 0 which means your text will be taken sequentially. But when
+
+431
+00:52:25,040 --> 00:52:30,880
+ you set it to let us say some value let us say 4. So now what is going to happen is that
+
+432
+00:52:30,880 --> 00:52:37,960
+ the PyTorch data loader is going to call the tensor dataset or the dataset class of PyTorch
+
+433
+00:52:37,960 --> 00:52:42,600
+ at the same time. And there will be 4 such processes. So there will be 4 such calls at
+
+434
+00:52:42,600 --> 00:52:46,960
+ the same time. So you are picking samples parallelly. And when you are doing that you
+
+435
+00:52:46,960 --> 00:52:52,120
+ can obviously imagine how fast your training is going to be. Because now you are not limited
+
+436
+00:52:52,120 --> 00:52:58,480
+ to sequential batching and sequential training. But rather you now have parallel processing
+
+437
+00:52:58,480 --> 00:53:08,200
+ and parallel training. Now what we are going to do is we are going
+
+438
+00:53:08,200 --> 00:53:14,880
+ to create the model. Now there are many ways of creating this model. I think we had talked
+
+439
+00:53:14,880 --> 00:53:20,240
+ about this in the previous in some of the previous lectures that you can do either transfer
+
+440
+00:53:20,240 --> 00:53:25,040
+ learning, you can do training from scratch or you can just use a pre-trained model as
+
+441
+00:53:25,040 --> 00:53:33,200
+ this. So there are all of these 3 ways can actually be utilized to load your BERT model.
+
+442
+00:53:33,200 --> 00:53:40,040
+ And how do we do that? So I have actually taken the time to add these comments so that
+
+443
+00:53:40,040 --> 00:53:45,080
+ you know exactly how to load the model in which scenario. So for example if you want
+
+444
+00:53:45,080 --> 00:53:51,360
+ to load the BERT model without any pre-trained weights. So in that case and you want to train
+
+445
+00:53:51,360 --> 00:53:56,920
+ the BERT just you want to just train the architecture on your very large dataset.
+
+446
+00:53:56,920 --> 00:54:02,640
+ Then ideally what you want to do is you want to load it without the pre-trained weights.
+
+447
+00:54:02,640 --> 00:54:09,120
+ So how do we do that? Well hugging face provides you with something called the config file.
+
+448
+00:54:09,120 --> 00:54:13,480
+ This config file basically contains it is a JSON file I believe it contains all of the
+
+449
+00:54:13,480 --> 00:54:19,640
+ information that is required by the BERT model to build the BERT model actually. So you can
+
+450
+00:54:19,640 --> 00:54:23,560
+ actually go into the config file and change certain things and your architecture would
+
+451
+00:54:23,560 --> 00:54:30,560
+ end up changing. So if you want to load the pre-trained model what we do is we actually
+
+452
+00:54:30,560 --> 00:54:38,280
+ load our own config file. So this comes from the BERT config we are loading from the pre-trained
+
+453
+00:54:38,280 --> 00:54:42,760
+ model BERT base and case. So what this tells us is that you just directly want to load
+
+454
+00:54:42,760 --> 00:54:49,760
+ the BERT architecture. So you want to use all the configurations that are required to
+
+455
+00:54:49,760 --> 00:54:57,600
+ define the BERT architecture and all of that goes into the config variable.
+
+456
+00:54:57,600 --> 00:55:05,080
+ So we can actually have a look. So let us comment out all of this and let us comment
+
+457
+00:55:05,080 --> 00:55:18,640
+ all of the other lines. And let us run this and see what the config file looks like. So
+
+458
+00:55:18,640 --> 00:55:24,120
+ you can see the BERT config has architectures BERT for Marceline because this is the model
+
+459
+00:55:24,120 --> 00:55:31,320
+ that we have loaded and all of these different hyper parameters are what define the architecture.
+
+460
+00:55:31,320 --> 00:55:35,500
+ So we have attention, probability, dropout, probability. So what this means is that when
+
+461
+00:55:35,500 --> 00:55:41,000
+ you perform the self-attention if you remember we have the softmax variable at the end. So
+
+462
+00:55:41,000 --> 00:55:47,500
+ now you have probabilities. So you can actually what hugging face of the official PyTorch
+
+463
+00:55:47,500 --> 00:55:52,800
+ implementation does is that they add extra dropout on top of those probabilities. So certain
+
+464
+00:55:52,800 --> 00:56:02,280
+ probabilities can be dropped out by a probability of 0.1 or 10%. Then we have for example, what
+
+465
+00:56:02,280 --> 00:56:08,160
+ is the activation function used here? So the activation function is GELU. This is another
+
+466
+00:56:08,160 --> 00:56:12,080
+ kind of activation function. Then we have different dropout probabilities. You can see
+
+467
+00:56:12,080 --> 00:56:17,880
+ the hidden size is 768. If you wanted you can actually change the size of the, changing
+
+468
+00:56:17,880 --> 00:56:25,120
+ this hidden size to actually come up with a different model. So let us try seeing that.
+
+469
+00:56:25,120 --> 00:56:41,240
+ So we will run this again and we will print the model. So you can see we printed the configuration
+
+470
+00:56:41,240 --> 00:56:45,480
+ file and then we printed the model as well. So you can see the embedding size over here
+
+471
+00:56:45,480 --> 00:56:53,640
+ the vocab size is 30,522. This is our vocab size and each as I talked about earlier each
+
+472
+00:56:53,640 --> 00:57:01,520
+ word has a corresponding 768 dimension vector representation.
+
+473
+00:57:01,520 --> 00:57:05,600
+ So these are the word embeddings. Then we have position embeddings which is again 512
+
+474
+00:57:05,600 --> 00:57:16,440
+ cross 768. So 512 here is the number of tokens that the BERT model expects. And then we have
+
+475
+00:57:16,440 --> 00:57:23,680
+ the BERT model you can see the in features is 768 and so on. So maybe what we can do
+
+476
+00:57:23,680 --> 00:57:29,840
+ is let us check this out. So we can go for config and because this is a dictionary. Let
+
+477
+00:57:29,840 --> 00:57:42,600
+ us see if what happens if we change the size of the hidden, hidden dimensions. Let us set
+
+478
+00:57:42,600 --> 00:57:48,080
+ it to 700. So I am doing this for the very first time. So I do not know. Let us see if
+
+479
+00:57:48,080 --> 00:58:00,560
+ this runs or not. So as you can see this is actually given an error because what PyTorch
+
+480
+00:58:00,560 --> 00:58:06,600
+ what hugging face is done is that they have made this BERT config file read only. So you
+
+481
+00:58:06,600 --> 00:58:13,040
+ cannot assign any values to it. So this becomes a totally different. So it is read only and
+
+482
+00:58:13,040 --> 00:58:19,720
+ it cannot be modified at runtime. So we actually cannot do this. So if you wanted to do this
+
+483
+00:58:19,720 --> 00:58:24,960
+ you would have to create your own config file.
+
+484
+00:58:24,960 --> 00:58:31,720
+ So in any case the idea behind this method of loading the model is to basically load
+
+485
+00:58:31,720 --> 00:58:36,120
+ the model without any pre trained weights. This is how you would probably want to train
+
+486
+00:58:36,120 --> 00:58:42,680
+ your model from scratch. But this is something probably we do not require at the moment.
+
+487
+00:58:42,680 --> 00:58:47,160
+ Now if you want to load your model for pre training that is you just want to load the
+
+488
+00:58:47,160 --> 00:58:52,440
+ model as is with the weights. So if you want to load the model with the weights this is
+
+489
+00:58:52,440 --> 00:58:58,720
+ how you go about it. So right now what you want to do is you want to perform classification.
+
+490
+00:58:58,720 --> 00:59:06,480
+ So PyTorch or hugging face provides us with this BERT for sequence classification class
+
+491
+00:59:06,480 --> 00:59:12,000
+ that you can call and it will actually create the BERT model and then add a classification
+
+492
+00:59:12,000 --> 00:59:18,560
+ layer on top. And we will see what that looks like.
+
+493
+00:59:18,560 --> 00:59:31,520
+ So we have this. Let us print this out and see what happens. So it is downloading a few
+
+494
+00:59:31,520 --> 00:59:38,760
+ things including the model weights. So now the weights have been downloaded. We can actually
+
+495
+00:59:38,760 --> 00:59:43,800
+ look at the model and you will see that I think this is what Saraz also talked about.
+
+496
+00:59:43,800 --> 00:59:50,600
+ We have the encoders and there are 12 such layers of the encoder and then because BERT
+
+497
+00:59:50,600 --> 00:59:55,040
+ is an encoder only model. So once the encoders are done you can see there is something called
+
+498
+00:59:55,040 --> 01:00:02,000
+ a BERT pooler. So what this does is it takes a 768 dimension vector which is from the CLS
+
+499
+01:00:02,000 --> 01:00:07,400
+ token and then provides a 768 dimension on top. So you can imagine you have the BERT
+
+500
+01:00:07,400 --> 01:00:14,200
+ model. You can imagine a black box and then finally from the CLS token you apply another
+
+501
+01:00:14,200 --> 01:00:18,240
+ linear layer and then you apply tanh on top of it.
+
+502
+01:00:18,240 --> 01:00:24,600
+ So now you have a 768 dimension vector and then you can see that on top of that we have
+
+503
+01:00:24,600 --> 01:00:30,480
+ the 768 cross 2. So you have the BERT model we get the 768 dimension from there which is
+
+504
+01:00:30,480 --> 01:00:36,720
+ the BERT pooler and then we apply tanh and then again drop out and then finally we have
+
+505
+01:00:36,720 --> 01:00:49,640
+ the linear model which is the feed forward or the single layer perceptron and we apply
+
+506
+01:00:49,640 --> 01:00:55,560
+ a matrix 768 cross 2 dimension matrix. So what this does is that it takes that 768 dimension
+
+507
+01:00:55,560 --> 01:01:01,080
+ and then converts it into 2. So now we have binary classification task. So this is how
+
+508
+01:01:01,080 --> 01:01:13,480
+ we are going to go about this particular problem statement.
+
+509
+01:01:13,480 --> 01:01:21,760
+ Now for example you might also want to let us say replace the last layer. So maybe you
+
+510
+01:01:21,760 --> 01:01:26,640
+ are doing some task and you do not have a binary classification task. You can have a
+
+511
+01:01:26,640 --> 01:01:32,600
+ n dimension classification task or n dimensional classification problem. So for that purpose
+
+512
+01:01:32,600 --> 01:01:38,720
+ what we will do is we can actually replace the final layer that we had. So the BERT model
+
+513
+01:01:38,720 --> 01:01:43,320
+ then we had the BERT pooler and then finally we have the classifier. So we can access the
+
+514
+01:01:43,320 --> 01:01:52,080
+ model.classifier in this manner and we can actually change the number of output neurons.
+
+515
+01:01:52,080 --> 01:02:16,720
+ So let us check this out. So we need to print this as well. So this is the old model, it
+
+516
+01:02:16,720 --> 01:02:22,880
+ has 768 cross 2. Now we have replaced it with the 10 dimensions or with 10 neurons in the
+
+517
+01:02:22,880 --> 01:02:33,960
+ output layer. So we can see that it has now become 768 cross 10. So I hope this is clear.
+
+518
+01:02:33,960 --> 01:02:39,840
+ But for now we just want 2 neurons in the output because it is a binary classification
+
+519
+01:02:39,840 --> 01:02:48,760
+ task. Now you might also want to actually train some of the layers and or rather fine
+
+520
+01:02:48,760 --> 01:02:56,160
+ tune some of the layers and keep all the other layers fixed or frozen. So for that purpose
+
+521
+01:02:56,160 --> 01:03:02,160
+ what I have done or what you can do rather is you can run a loop through the model to
+
+522
+01:03:02,160 --> 01:03:07,400
+ the model layers and then for example here I have said that if I find the classifier
+
+523
+01:03:07,400 --> 01:03:13,520
+ layer or the BERT encoder layer number 9 or BERT encoder layer number 10, we are going
+
+524
+01:03:13,520 --> 01:03:20,280
+ to set the param that requires grad variable to true. So what this does is that it tells
+
+525
+01:03:20,280 --> 01:03:26,440
+ PyTorch that you want to train only these particular layers. So you want to compute the gradients
+
+526
+01:03:26,440 --> 01:03:32,200
+ and update the layers or the parameters of these layers with those gradient values and
+
+527
+01:03:32,200 --> 01:03:38,520
+ all other layers should have the gradient set to false. So no gradient updates will
+
+528
+01:03:38,520 --> 01:03:40,920
+ happen here.
+
+529
+01:03:40,920 --> 01:03:46,000
+ And finally we have also calculated the total number of parameters which is basically going
+
+530
+01:03:46,000 --> 01:03:50,680
+ through the entire model and then wherever we have required grad set to true we are going
+
+531
+01:03:50,680 --> 01:04:00,720
+ to add it. So param dot numal is a nice function that actually adds up all of the which tells
+
+532
+01:04:00,720 --> 01:04:05,280
+ you how many number of elements you have in a particular tensor. So we are going to use
+
+533
+01:04:05,280 --> 01:04:10,840
+ that to find the total number of parameters. So you can see that the total number of parameters
+
+534
+01:04:10,840 --> 01:04:26,600
+ is quite large. I think it is about 14, I believe it is 14 million parameters, 14 million
+
+535
+01:04:26,600 --> 01:04:35,640
+ parameters. So that is a pretty large model that you are going to work with.
+
+536
+01:04:35,640 --> 01:04:39,960
+ So now that I have converted into back to true, so you can see the number of parameters
+
+537
+01:04:39,960 --> 01:05:04,160
+ has slightly reduced. So now our data is done, our model is done, we will now move on to
+
+538
+01:05:04,160 --> 01:05:11,800
+ the training portion and see what happens here. So training in Colab with this sized
+
+539
+01:05:11,800 --> 01:05:18,520
+ model is a little difficult. So I would recommend it running on your servers if you have one.
+
+540
+01:05:18,520 --> 01:05:21,600
+ But anyways if you want to run it on Colab you can actually reduce the batch size and
+
+541
+01:05:21,600 --> 01:05:25,200
+ run it. So it would not be an issue.
+
+542
+01:05:25,200 --> 01:05:31,360
+ So there are certain things that I would like to talk about. The first thing is that always
+
+543
+01:05:31,360 --> 01:05:40,880
+ try to use the Adam W optimizer for your transform model. So it has been empirically shown that
+
+544
+01:05:40,880 --> 01:05:47,160
+ the Adam W optimizer works really well for transformers. And what is this Adam W optimizer?
+
+545
+01:05:47,160 --> 01:05:53,360
+ Well right at the beginning we had something called gradient descent or we have this stochastic
+
+546
+01:05:53,360 --> 01:05:58,720
+ gradient descent optimizer. So what it does is that it randomly picks a batch of samples,
+
+547
+01:05:58,720 --> 01:06:05,000
+ a mini batch as you call it. So it picks a batch of samples and randomly and then you
+
+548
+01:06:05,000 --> 01:06:12,520
+ train on that. You apply gradient descent on that batch and train your model.
+
+549
+01:06:12,520 --> 01:06:23,760
+ Then came Adam which basically has this idea of momentum and second order variable that
+
+550
+01:06:23,760 --> 01:06:31,120
+ it uses to optimize your model. Then comes Adam W. So what Adam W does is that certain
+
+551
+01:06:31,120 --> 01:06:37,680
+ researchers what they found was that the Adam optimizer had some issue in its formulation
+
+552
+01:06:37,680 --> 01:06:45,120
+ for the regularization formulation that it had some issues in it. So what they did was
+
+553
+01:06:45,120 --> 01:06:52,680
+ they fixed that problem and then they proposed Adam W which is basically Adam weight regularized
+
+554
+01:06:52,680 --> 01:06:56,800
+ version of Adam. So that is what the W stands for.
+
+555
+01:06:56,800 --> 01:07:03,000
+ So it turns out this by fixing that formulation they were actually able to train transformers
+
+556
+01:07:03,000 --> 01:07:11,440
+ much better. And it works and Adam W works really well for transformers and also for
+
+557
+01:07:11,440 --> 01:07:16,160
+ other networks in general. But I would recommend using Adam W because that is the recommendation
+
+558
+01:07:16,160 --> 01:07:24,160
+ by state of the art labs out there. They recommend to use Adam W for transformers.
+
+559
+01:07:24,160 --> 01:07:30,440
+ And whenever you are using Adam W just a few tips and tricks for training. So whenever
+
+560
+01:07:30,440 --> 01:07:36,360
+ you are using Adam W or Adam in fact you want to use small learning rates. And when you
+
+561
+01:07:36,360 --> 01:07:41,040
+ have very deep models as well you want to use small learning rates these are certain
+
+562
+01:07:41,040 --> 01:07:47,760
+ tricks that you can use to quickly train your model. But if you had let us say an SGD optimizer
+
+563
+01:07:47,760 --> 01:07:55,280
+ you would have to set a very large learning rate like maybe 0.1 or 0.01.
+
+564
+01:07:55,280 --> 01:08:00,720
+ Then we have the cross entropy we are going to use the cross entropy loss and we have
+
+565
+01:08:00,720 --> 01:08:05,120
+ the from torch matrix we are going to call the accuracy class and we are going to say
+
+566
+01:08:05,120 --> 01:08:23,960
+ that is going to be a binary classification problem. So now what we will do is we will
+
+567
+01:08:23,960 --> 01:08:33,120
+ train the model. So we are going to go over certain number of epochs that we have specified.
+
+568
+01:08:33,120 --> 01:08:37,480
+ These two variables are basically going to save all the losses. And you can actually
+
+569
+01:08:37,480 --> 01:08:44,520
+ maybe you know print them out and check them out on the mat plot labor C bond library or
+
+570
+01:08:44,520 --> 01:08:50,840
+ favorite plotting libraries and see how the loss evolves over time.
+
+571
+01:08:50,840 --> 01:08:53,760
+ Now the very first thing that we are going to do is we are going to set the model to
+
+572
+01:08:53,760 --> 01:08:59,920
+ training. So model what model.train does is that it will make sure that your model is
+
+573
+01:08:59,920 --> 01:09:05,400
+ in training mode that is all the updates happen because in model.eval drop out batch normalization
+
+574
+01:09:05,400 --> 01:09:10,920
+ all of this is stopped. No updates happen there. So you want to make sure that the model is
+
+575
+01:09:10,920 --> 01:09:18,240
+ in training phase and all the updates happen. So what is something that you require here?
+
+576
+01:09:18,240 --> 01:09:24,040
+ So for each in each epoch you will be iterating over your entire data batch by batch and training
+
+577
+01:09:24,040 --> 01:09:30,640
+ your model. So in each patch what do we have? We have the IDs, we have the labels and we
+
+578
+01:09:30,640 --> 01:09:35,920
+ have the attention masks. And we are going to pass all of this information to the but
+
+579
+01:09:35,920 --> 01:09:43,080
+ for sequence classification model. So the first thing that we do is we remove all of
+
+580
+01:09:43,080 --> 01:09:54,440
+ the gradients that might be on the computation graph then we move on to the we actually take
+
+581
+01:09:54,440 --> 01:10:02,600
+ up all of the IDs, the masks and the labels and we are going to convert them into onto
+
+582
+01:10:02,600 --> 01:10:08,480
+ the GPU. So all the data always is initialized and exists on the CPU. So we need to transfer
+
+583
+01:10:08,480 --> 01:10:13,200
+ them to the GPU and then all the training happens and is transferred back to the CPU.
+
+584
+01:10:13,200 --> 01:10:21,120
+ So that is why we need to make sure that all our inputs are actually moved over to the
+
+585
+01:10:21,120 --> 01:10:25,800
+ GPU. If you see we have actually done that for the model as well. So we have done model.to
+
+586
+01:10:25,800 --> 01:10:34,720
+ device. So we are going to do that here as well. Then we will perform, we will pass the
+
+587
+01:10:34,720 --> 01:10:39,680
+ data to the model. So we are passing the X IDs and the attention masks and then we are
+
+588
+01:10:39,680 --> 01:10:45,800
+ going to update our predictions with the predictions and the labels that we have.
+
+589
+01:10:45,800 --> 01:10:52,400
+ We calculate the loss which is based on whatever output our model produces. So birth or sequence
+
+590
+01:10:52,400 --> 01:11:00,480
+ classification that this particular model the way you access the output of the model
+
+591
+01:11:00,480 --> 01:11:07,240
+ is by taking the preds. So the output will be in softmax, the softmax version we do not
+
+592
+01:11:07,240 --> 01:11:11,840
+ actually need the softmax because cross entropy loss already handles this first. So the cross
+
+593
+01:11:11,840 --> 01:11:20,720
+ entropy loss expects the raw values and not the softmax or the probabilities. So the raw
+
+594
+01:11:20,720 --> 01:11:26,480
+ values are called logits and you can access them by typing preds.logits because the preds
+
+595
+01:11:26,480 --> 01:11:32,680
+ is where all the predictions of the model exist. So we pass the loss, in the loss function
+
+596
+01:11:32,680 --> 01:11:39,880
+ we pass the raw predictions by model and the labels.
+
+597
+01:11:39,880 --> 01:11:46,280
+ And then we obviously save the loss and we calculate the, we compute the gradients and
+
+598
+01:11:46,280 --> 01:11:54,160
+ then we update the gradients. We do the exact same thing for the test data set as well or
+
+599
+01:11:54,160 --> 01:12:00,320
+ the validation data set. We first set a model to eval mode. So by setting a model to eval
+
+600
+01:12:00,320 --> 01:12:06,440
+ mode will allow us, will make sure that batch normalization and dropout such layers are
+
+601
+01:12:06,440 --> 01:12:11,680
+ not updated. And then we are going to run through all of this but obviously we do not
+
+602
+01:12:11,680 --> 01:12:17,360
+ need to update the loss and so that is exactly what we are doing here. We are not updating
+
+603
+01:12:17,360 --> 01:12:25,880
+ the loss values by running loss.backwardoroptimizer.step. So this is the overall picture. So you
+
+604
+01:12:25,880 --> 01:12:39,000
+ can actually run this and this is training relatively faster because we have a T4 GPU.
+
+605
+01:12:39,000 --> 01:12:47,920
+ I think this is the TPU or yeah, it is the GPU. The GPU is there. So it is going to train
+
+606
+01:12:47,920 --> 01:12:51,040
+ pretty fast. So it is going to take some time to train but yeah, this was basically the
+
+607
+01:12:51,040 --> 01:12:58,640
+ overall notebook and you can actually modify this and you can do a lot of things for example
+
+608
+01:12:58,640 --> 01:13:03,520
+ as I talked about changing where you want to take the reviews from say you get better
+
+609
+01:13:03,520 --> 01:13:09,960
+ classification accuracy, you can do a lot of things, better preprocessing, maybe changing
+
+610
+01:13:09,960 --> 01:13:14,760
+ the dimensionality of the BERT model by loading your own configuration and seeing how that
+
+611
+01:13:14,760 --> 01:13:20,600
+ performs and so on. So there are lot of directions that you can go with. Yeah, so I hope this
+
+612
+01:13:20,600 --> 01:13:29,400
+ works out. Thank you.
+
+613
+01:13:29,400 --> 01:13:47,560
+ We can move on to the questions that if anybody has. So the question is pre-training decoder.
+
+614
+01:13:47,560 --> 01:13:54,560
+ Will it have sequential steps as it has a feedback kind of approach between layers. Yes, so it
+
+615
+01:13:54,560 --> 01:14:01,880
+ has a sequential step. So when you are training, if you look at all of that logic, how the
+
+616
+01:14:01,880 --> 01:14:06,960
+ data is passed through the model exists in the forward pass. So if you open up the source
+
+617
+01:14:06,960 --> 01:14:11,440
+ code of the decoder, you will find that if you want to understand that logic, you can
+
+618
+01:14:11,440 --> 01:14:16,400
+ actually go and look at the forward pass of the model and you will find that it goes through
+
+619
+01:14:16,400 --> 01:14:25,600
+ the model sequentially. So yeah, the decoder part is the data is forward pass in a sequential
+
+620
+01:14:25,600 --> 01:14:36,080
+ manner. Next question. Right, so the question is could you please explain how we are reaching
+
+621
+01:14:36,080 --> 01:14:44,400
+ a binary classification task after using TANH in BERT puller. So let's go back to the model.
+
+622
+01:14:44,400 --> 01:14:51,200
+ So as you can see, the BERT, what the BERT model does is after the final layer, right.
+
+623
+01:14:51,200 --> 01:14:57,720
+ So after this, so there are around 12 BERT layers, right, which is the BERT encoder layers.
+
+624
+01:14:57,720 --> 01:15:04,160
+ So after the final layer, each token has its corresponding vector representation as output
+
+625
+01:15:04,160 --> 01:15:12,960
+ and I think Sir had talked about this. So each after the final layer, each word or each
+
+626
+01:15:12,960 --> 01:15:17,580
+ token has its own vector representation. So if there are 512 tokens, then you would have
+
+627
+01:15:17,580 --> 01:15:26,240
+ a 512 cross 768 dimension matrix, right. So now what you want to do is you want to take
+
+628
+01:15:26,240 --> 01:15:34,520
+ only the CLS token because as I talked about previously, all of the sentence information
+
+629
+01:15:34,520 --> 01:15:41,920
+ is said to be contained in the CLS token. So what BERT puller does is that it takes
+
+630
+01:15:41,920 --> 01:15:50,000
+ from out of all of these vector representations at 512 cross 768 vector representation, it
+
+631
+01:15:50,000 --> 01:15:54,880
+ takes the CLS token vector representation and passes it through a linear layer which
+
+632
+01:15:54,880 --> 01:16:04,800
+ is just 768 cross 768. So out of that entire 512 cross 768, we take the first one, so
+
+633
+01:16:04,800 --> 01:16:12,280
+ that is just a 768 dimension vector and we run it through a single, we multiply it through
+
+634
+01:16:12,280 --> 01:16:19,880
+ a matrix which is of 768 cross 768. So you get a vector of dimension 768, right.
+
+635
+01:16:19,880 --> 01:16:24,840
+ Now you apply tanh on top of that. So applying tanh just means that you are normalizing your
+
+636
+01:16:24,840 --> 01:16:31,120
+ values between -1 to 1, okay. So if you look at the logit output that you get, it is supposed
+
+637
+01:16:31,120 --> 01:16:36,480
+ to be between -1 to 1.
+
+638
+01:16:36,480 --> 01:16:41,720
+ So now you have the 768 dimension vector which is basically a non-linear transform version
+
+639
+01:16:41,720 --> 01:16:47,640
+ of whatever CLS vector representation that we had and then again on top of this, we are
+
+640
+01:16:47,640 --> 01:16:53,240
+ going to apply another linear layer which is of dimension 768 cross 2. So again we are
+
+641
+01:16:53,240 --> 01:16:59,840
+ going to multiply this 768 dimension vector with a matrix of dimension 768 cross 2 to
+
+642
+01:16:59,840 --> 01:17:03,960
+ give us the two neurons or two outputs, right.
+
+643
+01:17:03,960 --> 01:17:11,640
+ So now we have a two dimension output which is basically a binary classification problem.
+
+644
+01:17:11,640 --> 01:17:19,000
+ So now either, so if let us say it is class 1 or output would be 0, 1 and if it is class
+
+645
+01:17:19,000 --> 01:17:25,720
+ 0 or output would be 1, 0. So whatever index is the highest value will be considered as
+
+646
+01:17:25,720 --> 01:17:31,840
+ that particular class. So if the index 0 has the highest value, it is a 0.9 and the other
+
+647
+01:17:31,840 --> 01:17:38,360
+ has 0.1 then index 0 is going to be considered as class 0.
+
+648
+01:17:38,360 --> 01:17:46,440
+ Similarly, if index 1 has the highest value, let us say 0.7 then in class 1 will be considered
+
+649
+01:17:46,440 --> 01:17:53,360
+ as the output of the model. So that is how we are converting the BERT model output to
+
+650
+01:17:53,360 --> 01:18:02,120
+ from BERT pooler right up to the classifier layer. Next question. So that is all the questions
+
+651
+01:18:02,120 --> 01:18:08,440
+ there were. So thank you so much and I hope you have, thank you for participating in the
+
+652
+01:18:08,440 --> 01:18:11,440
+ session. I hope you have a nice weekend. Thank you.
+

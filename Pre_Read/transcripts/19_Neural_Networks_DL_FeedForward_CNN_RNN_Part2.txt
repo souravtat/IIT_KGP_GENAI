@@ -1,0 +1,499 @@
+ So, welcome back. So, if you are having any questions please you know keep them. So, we
+ are already noting down. So, towards the end we will have a long question answering session.
+ So, at that time we will discuss. Let us go back to composition of transformation. So,
+ the discussion that we had was that basically how you can design the architecture of neural
+ network ok. For you to understand this you have to understand how a neural network operate
+ ok. So, you see this is where sort of the term learning representation or representation
+ learning comes into picture. So, this is another term you would have heard which is called
+ representation learning right. So, what happens is each neuron in the neural network can be
+ thought of as computing a useful I so, representation slash here I would use more the word feature
+ ok representation or features of the input ok. In particular every layer is computing
+ a useful representation of the input. So, if let us let us go into one example to make
+ it very clear ok. So, you see these green data points are some data points in a x y space
+ ok and blue data points are some other data points ok. Now, you see you can do this kind
+ of a feature transformation. What is the feature transformation that we are doing? We are computing
+ for every data point from its x and y value this particular two numbers. First is R what
+ is R as you all know from your geometry knowledge R is nothing, but the radial distance of this
+ particular point from the origin right this distance is R ok.
+ So, this is the first thing that you compute and the other thing that you compute is this
+ theta ok which is let me try to do it like this. So, for example, for this point this
+ is going to be theta right this is going to be the theta and this you already know from
+ your geometry. Now, consider this particular feature space where you are so, so R you can
+ say is one useful feature it is the radius it is one useful feature of this particular
+ data point theta is another useful feature which is the angle of this data point ok.
+ Now you you now construct another space ok this space you represent each data point x
+ axis value using R and its y axis value using theta ok. So, how will this particular distribution
+ of points look like it will look like this because you see x axis is R. So, now now this
+ particular distance is R right this particular distance is R ok. So, for the green point
+ R will be much smaller than the blue point here and y axis value is theta ok y axis value
+ is theta. So, each point has some theta ok ok. So, now now two three things you should
+ observe first is you can have simply this R as a representation for a particular point
+ ok. It is a useful feature in this particular problem see you your task is to segregate
+ the green point from the blue point ok this red line here is the separator line ok. So,
+ so this this red line is able to separate. So, if you just have a particular radial distance
+ you are able to separate the green point from the blue point. So, R is a useful feature,
+ but R is not a complete representation of the point, but it is a useful representation
+ ok. When you take R and theta together they form a complete representation of the point
+ because you can compute the x y back from R and theta ok.
+ But for the purpose of this task for the purpose of segregating blue and green only the R is
+ sufficient you can understand that right even if you do not have theta. So, if I have one
+ neuron which is computing the R and then there is another neuron which is able to put a threshold
+ on this R ok. Then that is good enough for this particular computation ok. So, this is
+ the key idea. So, here R is a useful representation ok. So, let me just erase this. So, this is
+ a useful representation ok may not be complete you can also have a complete representation
+ which is given by R from a theta ok. The representation is useful because the end task becomes much
+ simpler in this R theta space ok than it was in the original space ok. So, this is how
+ the neural networks operate. Every layer of a neural network computes a useful representation
+ of the input feature ok and then it the next layer uses this particular useful representation
+ of the input feature to further compute some other useful feature ok.
+ This is one thing there is another term that you will hear a lot in this context is that
+ these are distributed representation. So, what does it mean by saying that these are
+ distributed representation? The key idea here is that you see for each data point you can
+ compute its useful feature which is R independently of all other data points and you can also
+ do this in parallel ok. So, that is why this is called a distributed representation which
+ means that the representation of one particular data point does not depend on the representation
+ of the other data points. It only depends on the particular neural network weight or weights
+ of that particular layer ok. So, this is the idea behind the distributed representation
+ and neural networks operate by learning layers of increasingly useful distributed representation
+ ok. So, representations are formed hierarchically in each layer progressively becoming more
+ useful for the end task ok. That is why neural networks are also called feature encoders
+ ok. Now, here notice another thing up till now whatever representation I have showed
+ either this R or this other representation that we showed here using this H 1 and H
+ 2 ok. Both these representations I have constructed manually ok, but now in neural networks what
+ happens is you need not construct the representation manually you can learn the representation ok.
+ So, that is why you sometimes will see that this neural network models are also called
+ automatic feature learning model or representation learning model ok ok. So, here is another example
+ to drive home the point that basically what you can think is you can think of a neural
+ network as a composition of the feature transformation. So, what is happening here? So, let us say
+ you have for a particular patient the age, gender and the stage of their cancer ok and
+ let us say what you want to compute is the probability of being alive survivability
+ or something like that ok. So, what you can see is basically that there
+ are let us say two types of feature encoders. So, this is the whole neural network ok. So,
+ the first part the top left part is this particular hidden representation what it is doing? It
+ is giving high weightage to age and high weightage to the stage of cancer and it is predicting
+ something ok. The second one is giving more weightage to gender and maybe age and stage
+ of cancer. So, you can say that roughly the first neuron is capturing information which
+ is the interaction between age and stage of cancer. So, maybe if the age is high and the
+ stage is also high the probability of being alive is low or something like that ok. So,
+ this is one way to think about it. On the other hand the there is also a gender
+ component. So, maybe one gender has a higher probability of surviving cancer than the second
+ gender. So, in that case this particular neuron is capturing that particular feature ok.
+ And now the final layer is basically taking the output of these two neuron and trying
+ to construct a final layer which is a linear layer which is a basically sort of a linear
+ model. It is not exactly a linear model it is a linear separator, but the model is non-linear
+ of the you know the final output ok. So, this is this is the composition of transformation
+ view. So, this is you can think of this as this is one particular transformation, this
+ is the second transformation and then this is the composition of transformation and
+ transformation two ok. Now, what you can see is that. So, there is one result which says
+ that a neural network with simply one hidden layer is a uniform function approximator.
+ What does this mean? You take any function F there are certain conditions. So, the function
+ has to be smooth function ok, its derivative has to be bounded etcetera ok. If that is
+ the case then this particular function. So, the function will take different values for
+ different input point A and let us say you have learned a one layer one two layer neural
+ network basically a neural network with one hidden layer ok. Let us call that F dashed
+ of A ok. So, the difference between these two or the distance. So, this is the norm
+ function right. So, the distance between these two for different x values will be less than
+ or equal to some epsilon for all x ok. So, this is what it means ok. So, for all input
+ x the difference between the output of the neural network and the actual function F will
+ be very low for all x ok. So, it is possible to construct for every F that kind every F
+ satisfying certain properties that kind of a neural network ok.
+ Now this is a very shallow neural network ok. So, if you construct a neural network with
+ only one hidden layer this will be called a shallow neural network ok. And you can very
+ easily learn using existing algorithm you can very easily learn this kind of a neural
+ network. The problem is that not all functions can be efficiently represented with a single
+ hidden layer. So, what do we mean by this? We mean to say that there are certain functions
+ for which if you have to construct which can be approximated by a neural network of this
+ form. Let us say this is the neural network ok. So, this is basically computing F of x
+ this is just x ok. So, you can compute this F dash of x can compute F of x for a function.
+ But the number of the number of let us say hidden unit that you will require here will
+ be exponentially large or will be very large ok. So, it is a good. So, which means what
+ does that mean? That means that since every layer is every neuron is connected to every
+ neuron you will need to have weights here and you will need to have weights here. So, the
+ number of weights will also be very very large ok. And as you know if the number of so weights
+ are parameters of the neural network, if the number of weights is very very large the
+ number of data points and the amount of computation that is needed to train this neural network
+ will also be very very large ok. So, this is the problem with shallow neural network ok.
+ The solution is to have deeper representation with which is the composition that we talked
+ about that you build representations in one layer then you compose those representations
+ to build representation in another layer ok. Let me just show with an example what I mean
+ ok. So, suppose you have the input as an image ok. If you directly try to build let
+ us say a face recognition or a face detector event neural network let us say ok. You it
+ may not be you may need it may be possible ok with just one hidden layer, but the number
+ of neurons. So, here you can see that each pixel is an input and also like in. So, this
+ is the layer 1 the first hidden layer. So, this is layer 1 ok the first hidden layer.
+ Here also each pixel corresponds to one output maybe there are certain number of channels
+ which are being showed here we will come to that when we discuss convolutional neural
+ network, but essentially you are saying that the number of outputs is roughly of the same
+ order as the number of inputs ok, but if you try to achieve this face detection in one layer
+ maybe it is possible to achieve that, but the number of output neurons that you will
+ need in this layer will be very very large ok. But here you see it is possible to achieve
+ edge detection using one layer of transformation. So, using one neuron you can achieve this
+ edge detection here ok. Then taking the edge detector output as the input in one layer
+ you can maybe say object path detector maybe corner detector or something like a like a
+ circle detector or small polygon edge detector something like that ok. This kind of things
+ you can construct ok and then maybe you can compose those to finally construct a face
+ detector which is maybe a composition of some polygon some circle some triangle and so on
+ and so forth ok. So, this is the this is what I mean by saying
+ that there is merit in having a deep neural network even though you know theoretically
+ it may be possible to achieve this using a single layer ok.
+ Now, yeah so then some people ask so the people ask the question what is like when do we call
+ a neural network deep. So, like I said deep learning is nothing but learning with neural
+ network ok, but it is learning with deep neural network. So, then the question is how deep
+ is deep ok and so I am just giving a ballpark number here. So, this is not set in stone
+ or anything ok, but maybe three four layer is not so deep ok. So, if you use three or
+ maybe even four layers then it is a shallow neural network after that it becomes a deep
+ neural network. Now, then the question is why do we need to make this segregation between
+ a deep neural network and shallow neural network ok and the reason is these kind of practical
+ problems that you encounter when you try to train a deep neural network, but these problems
+ are not so much encountered when you try to train a shallow neural network.
+ So, what is the what is the problem? First problem is so all neural networks you need
+ to use back propagation algorithm that is not a that is common between deep and shallow
+ neural network. For designing deep neural network you need a modular approach. So, what
+ I just showed here? So, maybe you have to have an idea of what kind of representation
+ you are trying to achieve in each layer. So, like first layer is A j, second layer is object
+ part maybe not each layer, but you know for many layers you need to have an idea of what
+ kind of representation you are trying to achieve. This is the first thing.
+ The second more important problem is that of vanishing gradients. So, as the number
+ of layers increase what happens is when you try to back propagate the error to learn the
+ way we will see the exact method in a minute. The gradient starts becoming very very low.
+ What happens is that that causes training to be very very slow or sometimes it just stops
+ training. So, that is the other problem that you need specialized training method for deep
+ neural network in order to tackle the vanishing gradient problem which you do not need for
+ the shallow neural network. So, these are the main reasons why this deep neural network
+ is basically thought of as from a practical point of view as somewhat different than the
+ shallow neural network. And yeah, so this is like the key point which is that it has
+ been shown again and again in multiple different applications that this hierarchical buildup
+ of useful features in a deep manner is much more helpful than if you try to fit a shallow
+ neural network. So, we will come to this training of deep neural networks in a minute.
+ Now let us discuss how we train a neural network. So, how do we train a neural network? So,
+ this is the neural network. So, broadly these are the steps. What are the steps? You randomly
+ initialize. So, when you have a neural network, so first at this point in time you know what
+ is the architecture of the neural network which means you know how many layers are there,
+ you know how many neurons are there in each layer and mostly in this particular lecture
+ we are talking about fully connected layer. Of course, you can also not have fully connected
+ layers, it will still work. But for simplicity of understanding today let us discuss only
+ fully connected layers. So, that means you also know which neuron is connected to which
+ neuron. So, everything is fixed now. So, if the architecture of the neural network
+ is fixed as you know the weight matrices which is W kj and W ji in this particular case these
+ are also fixed as I as we discussed earlier. So, what you do is you initialize these weight
+ matrices with random value at the time of training. Then using this random weight you
+ feed the input x. So, first of all you have a training dataset D. What is this training
+ dataset going to be like? So, this training dataset is going to be like x i comma y i
+ right input is x i, your input is x i and your output is y i and now you have i is equal
+ to 1 to capital N. So, you have capital N many training data points which we discussed in
+ the beginning. So, maybe you have 1 million training data points it is very common to
+ have 1 million training data points today. So, for each input now you feed the input
+ into the neural network and then you do the forward propagation calculation. The forward
+ propagation calculation we have already seen how to do. So, first you come from layer 1
+ you compute layer 2 from that you compute layer 3 and so on and so forth. So, this is
+ the forward propagation calculation and then finally, you compute the predicted output
+ ok. After you compute the predicted output let us call the predicted output something
+ like y i hat and you have the true output also in the training data which is y i. So,
+ now you compute you compare the predicted output with true output and you compute the
+ error. So, depending on what the output is a different errors can be computed and then
+ so, these errors are sometimes also called loss. So, there is a loss function which basically
+ depends on of course, the parameters of the neural network let us call the parameter something
+ like theta. So, theta here just for simplicity is w k j matrix and w j i matrix right the
+ two matrices ok. And now this theta and also it depends on the input x i and the true level
+ y i ok. And another way of thinking about it is suppose your neural network is f. So,
+ your neural network is of course, parameterized by theta ok. So, suppose your neural network
+ is outputting y hat i which is is equal to f of x i then you can also say this is a loss
+ between f theta of x i which is y hat and y i ok. So, you compare this y hat which is
+ f theta of x i with y i ok. So, this is how you compute the loss. Now you compute the
+ total loss which is summation over i is equal to 1 to capital N l of x i and y i let us
+ say and also theta of course ok. And then you minimize this total loss by adjusting the
+ parameter. So, what you do you adjust the parameter theta such that this total loss
+ is minimized. So, you minimize this total loss with respect to theta. So, that is the
+ training problem of neural network ok. So, that is the overall scheme. Now how is this
+ achieved? Of course, you have a neural network like this. So, algorithmically you put in
+ the training inputs get the output ok. So, then you compare the output to the correct
+ answers to look at the loss function j. So, this is this is. So, we are calling the loss
+ function j here ok. We are calling the loss function j ok and then we adjust the weights
+ and repeat ok. So, let us let us see how this goes on ok.
+ Now before we do this this procedure is called a gradient descent procedure ok. So, now what
+ is this gradient descent procedure? Let us see ok. So, the first step is clear I am going
+ to quickly go over this pass input calculate each layer get output which is y hat. Evaluate
+ j of y i y hat which is the loss function ok. So, these steps are pretty clear. Now the
+ this step is calculate gradient of the loss function with respect to the parameter ok.
+ So, what is the loss function? So, let me see. So, what is the loss function? So, remember
+ we can think of neural network as this function approximator which is f from x to y. So, neural
+ network is a mapping from x to y ok. f is a complex computation involving many weights
+ w ok. For a given structure the weights define the function ok. So, like I said f of theta
+ x is equal to y hat right. Now when we say j of f of x basically this j becomes a function
+ of theta because you see both x and y are known ok. Only thing that is not known is
+ theta which we have to minimize with respect to x ok. So, how do we do this gradient descent?
+ We do the following ok. We compute the partial derivative of this function j ok. So, j here
+ is the total loss function. Remember j is earlier we were writing as f of xi comma yi,
+ but also actually your j of theta is summation over i is equal to 1 to capital N this thing
+ ok. So, it is this total loss. So, this particular j is the total loss over all xi's and yi's
+ ok. xi's and yi's are data point ok. So, it is the total loss over all xi's and yi's.
+ Of course, theta's consist of all the w's. So, may be w k j etcetera etcetera. So, there
+ are many w's ok. Now you compute this partial derivative of j with respect to every w k
+ ok, every parameter k ok. So, how many partial derivatives are going to be there? As many
+ as there are parameters ok. So, as many as there are parameters or weights in the neural
+ network you are going to compute that many partial derivative ok. So, if we and this
+ is going to be a very complex structure ok. So, there may be multiple layers, each layer
+ may have a different size weight matrix ok. So, all these need to be kept track of by
+ the software which is implementing this back propagation algorithm ok, but suppose you
+ are able to compute this particular gradient which is this del of j comma w k ok ok. So,
+ I will come to the backward pass in a minute, but suppose you are able to do that what happens
+ to the updation step. So, you do this particular update which is the gradient descent update
+ which is that every parameter. So, here you see the parameter is being denoted by w ok.
+ The w t is basically the parameter in time step t and w t plus 1 is the parameter in
+ time step t plus 1 ok. So, initially you random. So, initially what you have? You have w 0
+ ok. w 0 you have initialized randomly ok. From w 0 you compute w 1 through this particular
+ equation. What is the equation? The equation is the gradient descent step which is that
+ w t plus 1 is w t minus eta t times this partial derivative with respect of the loss with respect
+ to that parameter w that we have computed ok. So, this is the step. This step we will
+ run iteratively until these w's are no longer changing which also happens when this particular
+ gradient becomes 0 ok. These are these are well known results from optimization theory
+ we I am not going to discuss it here ok, but this is the case ok. So, sounds good. So,
+ if you have the partial derivative which is also called the gradient with respect to each
+ parameter then you can do this step ok. Question is how do you your neural network is a complex
+ function? So, here is a complex neural network structure right. So, this particular so in
+ the final layer you are computing this yeah. So, this j you are computing here in the final
+ layer right. So, the question is how do you compute this particular gradient for each
+ w k ok that is the question ok and the answer is that just like you did layer by layer forward
+ propagation you have to do a layer by layer backward propagation ok.
+ So, first here you have this j of y i comma y i hat ok. From that you compute the derivative
+ of j with respect to the third layer parameter. So, here w t 3 is denoting all the third
+ layer parameters ok. Once you have these gradients then you can compute the gradients of the
+ second layer parameter ok and then you can compute the gradient of the first layer parameter
+ ok. This is how you do the backward path computation. So, this is the formula for the whole thing
+ ok. Let me first try to derive the formula in a simpler network ok and then we will see
+ how this goes ok. So, consider this very very simple. So, I have changed the notation just
+ so that the calculation because this is a complex calculation. So, that the calculation
+ is very simple. So, what is the calculation? You have x as the input. So, this is x ok
+ x is the input. It is a two layer neural network first layer produces this output z ok. Not
+ the first layer does not produce the output. This is the intermediate activation you can
+ say ok. So, this z is the input to the activation function f is the activation function and
+ a is the output of the activation function. So, this layer produces output a. This layer
+ is x, x goes through this produces z, z goes through the activation function produces a.
+ Then the final layer is s which is again a linear function of the output produced by
+ this a ok. So, this is the neural network architecture that we want to see and what
+ is our ask? Our ask is that we want to compute the derivative of s with respect to both u
+ and w. So, our parameters are u and w and we want to compute derivative of s with respect
+ to u ok. So, first derivative of s with respect to u is very simple to compute. What is it
+ going to be? It is simply going to be it is simply going to be this a whatever is the
+ activation output here. So, if you have in this layer if you have this a 1 and a 2. So,
+ what is so let us say your s is going to be nothing but u i u 1 a 1 plus u 2 a 2 right
+ here ok. So, what is the derivative of s with respect to let us say u 1 it is simply going
+ to be a 1 ok. So, that is simple to compute because that is the output layer that is the
+ final layer ok. Now, what is the derivative of s with respect
+ to let us say this w i j this is what we want to compute ok. How do we compute this? So,
+ we compute derivative of s, s is u transpose a ok. Now, what is the derivative of a with
+ respect to w i j? So, u does not depend on w i j ok. So, this simply become derivative
+ of a with respect to w i j ok. So, what is the derivative of a with respect to w i j?
+ Again a if you remember a depends on z right a is f of z. So, you further use the chain
+ rule to say derivative of a i with respect to z i and then derivative of z i with respect
+ to w i j. Now, what is this term? This term is f dashed of z i and what is this term?
+ This term is z i with respect to w i j this is nothing, but if you see ok z i with respect
+ to w i j is simply x i right ok. So, sorry z i with respect to w i j. So, it is going
+ to be x j yeah. So, derivative of this is z i with respect to w i j is going to be x
+ j ok ok. So, what do we have here? We have u i times f dashed z i times x j ok. This
+ is the derivative of w i j which is this particular parameter let us say with respect
+ to the previous layer error ok. Now, if we see what was the derivative of let us see.
+ So, yeah ok. So, what was ok? So, you can see that there are few signals that you need
+ to take into account ok. So, what is the first signal? First signal is this upstream error.
+ What is the upstream error? This is u i times f dashed z i ok. This is the upstream error
+ signal ok. This is as I have written here the gradient of the error with respect to
+ the activation in the current nodes ok. So, sometimes this is further split into the upstream
+ error. So, as you are coming back in the neural network this can also split into more and
+ more error signals ok. And the other thing is this downstream input which is in this
+ particular case x j ok. So, just to be clear this is the layer where
+ you are computing the error. This is the layer where so, let me just erase this. So, this
+ is the layer because the w i j's are part of this layer right. So, this is the layer
+ where you are computing the error. You are getting this if you remember is input from
+ here error signal from upstairs and the derivative of the activation function. So, f dashed x
+ times u i times this x this was the computation right if you remember here ok. So, this is
+ the x j this is w i j ok and this is a i ok. So, your derivative let me say once more derivative
+ of f with respect to w i j this is w i j this is x j this is a i ok. This is going to be
+ equal to we have done this derivation already and this is u i of course this is u i ok.
+ This is going to be u i time f dashed z i time x j ok. So, this is the derivative and
+ you can see you need the error signal the signal here is basically the error signal
+ that is coming from top ok. So, that is why you need to calculate from top down ok. So,
+ this is the back propagation algorithm ok. Now, so up till now this is clear ok. So,
+ you now know. So, this is basically for this deep neural network your formulas should come
+ out to be something like this you should do the calculation by hand because this calculation
+ will take more time you do the calculation by hand and check that this is actually the
+ case ok. Now, let me come to this particular thing ok now what is the difference between
+ training deep neural networks and shallow neural networks ok? So, in as I said now you
+ can understand that you are multiplying many many upstream error signals into computing
+ the derivative in this layer. So, let us say it is a 100 layer neural network ok; that
+ means, you are propagating back 100 different error signals to finally compute the derivative
+ of error e with respect to the parameters w in this particular layer ok.
+ This derivative is going to be very very small ok because you are multiplying this many numbers
+ and these numbers are generally small numbers ok. Sometimes they also explode that is the
+ other side, but for the most common problem is the vanishing gradient problem. So, what
+ happens if this number is small if this number is small what you recall your weight update
+ now. So, W t plus 1 is equal to W t minus this learning rate eta t times this gradient
+ of error with respect to W right. Now, this number is very small which means the change
+ in W will be very very small which means it will take a long long time to learn this particular
+ weight. What is the solution? The solution is something called unsupervised pre training.
+ So, what is unsupervised pre training? What you do is first you learn the initial pre
+ training weights of this particular layer by using an auto encoder network. So, you forget
+ about so let me just erase this. So, you forget about this neural network for the timing this
+ portion of the neural network which is a very deep neural network. You simply recreate,
+ you simply try to recreate the input from this particular layer ok. You simply try to
+ recreate the input from this particular layer and this you can think is something like you
+ are learning a representation you may not be able to fully recreate the input, but you
+ are trying to do something. The advantage of this is that this particular
+ network is now a very shallow network. So, you can update the parameter of this particular
+ network very very fast. So, then you have some initial parameter W 0 which are trained
+ or achieved using what is called this supervised fine tuning ok. So, this is unannotated data
+ ok you train. So, you train the first hidden layer, fix the parameters for the first hidden
+ layer then train the second hidden layer in this manner and then once you have trained
+ all the initial layer then you go ahead and do the back propagation on the entire neural
+ network. This is going to be very very fast. So, this is sometimes called unsupervised
+ pre-training of deep neural network and this achieve a much much faster training as compared
+ to the traditional back propagation type training ok. So, this completes the all the theory portion
+ of the neural network ok. Briefly, let us look at how this particular
+ thing can be implemented using a software called PyTorch. This will be taught in much
+ much more detail in the lab class ok, but just to give you an idea you need to write
+ this Python program which will basically import all the Torch libraries. So, this is importing
+ all the Torch libraries ok. Then you need to have all the hyper parameter. So, for example
+ let us say I am trying to now define a neural network which will process let us say MNIST
+ images and you know MNIST images are 28 cross 28 images ok. So, then you have basically
+ your input size or the number of neurons in the input layer is going to be 784. Hidden
+ size let us say we have taken 128 ok. Then we have taken number of classes which is also
+ going to be the size of the output layer ok. Then we have defined some other things like
+ how many epochs we want to train, what is the batch size, how many input data points
+ do you want to consider at a time. This basically this is related to the speed of the training
+ of the neural network ok. And then finally, learning rate which is the eta ok ok. And
+ now then you can define the neural network model like this. So, you see what we have
+ done is now we have defined these three layers basically the fully connected layer 1 which
+ is NN dot linear and its size is input size cross hidden size ok. Then we have a ReLU
+ activation function and then finally, we have another layer which is hidden size cross
+ number of classes ok. And then we have to also define the forward path ok, how the forward
+ computation goes. So, we take X ok and we readjust it a little bit and then we feed
+ X to the fully connected layer, then the output is fed to the ReLU layer and then the output
+ is fed to the other fully connected layer ok. So, the ReLU is actually not a layer here
+ it is an activation function ok. And this is basically the actual pi dot code for training
+ a multi-layer perception which can not training, but defining the model of the multi-layer
+ perception ok. Yeah and if you just run this code. So, so maybe I will provide this code
+ as a auxiliary as a extra file, you can just go through the whole code and then you can
+ see that you can basically train the neural network to achieve about 96 percent accuracy.
+ This is a very simple problem of course, for real world problems like this you need a more
+ complex neural network architecture which we will discuss in the next discussion ok.
+ And you can also compute a confusion matrix ok. So, with that I will stop and I will take
+ questions ok. We will take we can take questions straight away I think yeah ok.
+ Why are we using W transpose in which see here we are not using W transpose here we
+ are simply using W. So, in particular all the transposition. So, let me let me just
+ maybe show in a in a like just give me one minute I will just yeah. So, you see suppose
+ your W is let us say let us say 2 cross 3 ok. So, suppose you have a neural network
+ like this. So, you have x 1 or rather you have a layer like this x 1 x 3 and you have
+ output let us say h 1 and h 2 ok. Now, you have W i j is connecting. So, suppose you
+ have W i j which is connecting from x i to h j ok. So, how will it be? It will be so
+ your W matrix will be looking like this W 11, W 12, W 13 right sorry. So, then so if
+ it is connecting from x i to h j then you will have W 11, W 12, W 21, W 22 and W 31,
+ W 32 right why because your i is 3 your i varies from 1 to 3 and your j varies from 1 to 2
+ ok. Now, think about this i want to compute h j which is equal to summation over W i j
+ x i i is equal to 1 to 3 ok. If I multiply this is my W if I do a matrix multiplication
+ with x, x is going to be x 1, x 2 and x 3 ok. So, if I do a W times x what will happen?
+ It will not be the dimensions are not agreeing right. So, in that case we have to do a W
+ transpose x in that case you will see that W transpose x will basically be computing
+ this ok. So, your h 1 will be W like let me just erase this portion now ok.
+ So, so, so your W transpose is going to look like what? It is going to look like this now
+ W 11, W 12, W 21, W 22 and W 31, W 32. If I now multiply this with x i, x 1, x 2 and
+ x 3 ok. So, this times this is h 1, this times this is h 2 ok. So, the dimensions agree.
+ So, that is why you sometimes do W transpose. Is there any way to determine how many hidden
+ layers and you need in a layer should we have in a neural network ok. Yes, so the main strategy
+ that you should follow. So, you should have a educated guess that how many hidden features
+ or how many representations you need in the hidden layer ok.
+ Now, suppose you think that it should be at least five, you train your neural network
+ using just five units ok. You just define a neural network which has five as the number
+ of hidden units and you train it and you calculate the test set error ok. And now if you see
+ that or you do not even have to calculate the test set error, you first calculate the
+ training set error itself ok. And if you see your training set error is very high then
+ you have two choices either your number of hidden layers is not correct ok. In that case
+ you can increase the number of hidden layer or in each of the layers your number of units
+ is not correct ok. So, then you have to increase the number of units in a hidden layer ok.
+ You can have both options ok. So, you can try try and increasing the number of layers.
+ The positive of increasing the number of layers is that as I discussed you you will be creating
+ much more efficient neural networks. The deep neural networks are more efficient. So, you
+ need less number of hidden units ok. But the flip side of that is that your training time
+ will increase and if you go very very deep then you may have to use specialized training
+ techniques to train your neural networks. So, after you have gone let us say till four
+ or five hidden layer, you should probably start increasing the number of units in each
+ of these hidden layer ok. So, yeah so it is a trial and error process.
+ There is no there is no foolproof way of knowing exactly how many. You have to have a initial
+ guess that I will use initially you try two layer neural network with a certain number
+ of units in a given layer ok. And then if your training set error is very high you keep
+ increasing the number of layer and the number of units in each layer in order to achieve
+ a particular training error rate which is satisfactory to you.
+ How cyclic network be neural network? Earlier you mentioned cyclic graphs are not neural
+ network. Yes so that is what I mentioned that cyclic graphs are not neural network. So,
+ for example if you see yeah a graph I do not know if it is visible a graph like this ok
+ a graph like this is not a neural network. Whereas a directed acyclic graph directed
+ acyclic graph is a neural network. So, if you have a directed acyclic graph something
+ like this ok it is a neural network. So, you can for example have very very complicated
+ graph like this this is a valid neural network ok. But this one is not a neural network because
+ there is a directed acyclic cycle. So, the way to understand which one is a neural network.
+ So, here I mean so like I said there are I think there are two things that need to be
+ mentioned. There is a particular type of neural network called multilayer perceptron or something
+ also called sometimes also called feed forward neural network ok or sometimes also called
+ fully connected neural network ok all of them they mean the same thing. These are the types
+ of neural network that we discussed today for simplicity ok.
+ So, for example this one is not that type of neural network ok this is a general neural
+ network, but this is still a neural network because it is a network of neuron ok, but
+ this is not a valid neural network I hope this is clear right.
+ It understood the ZOR problem ok. So, let me go to the ZOR problem slide ok. So, this
+ is the ZOR problem ok yeah. So, in this slide you see what is the output the output. So,
+ first of all what is the input? Input is 0 comma 0 for this. So, each of these is data
+ point. So, this is a data point, this is a data point, this is a data point, this is
+ a data point ok. This is 1 comma 1, this is 1 comma 0 and this is 0 comma 1 ok. Output
+ the y for this one is going to be 0, for this one is going to be 0 that is why minus the
+ negative minus thing is written here, this one is going to be 1 ok and this one is going
+ to be 1. So, that is why plus is written here ok. So, that is the ZOR problem this is the
+ function you have to approximate using a neural network ok.
+ And this is the neural network that we designed we discussed this maybe we do not have the
+ time to go through that entire discussion now. So, you can see the all the calculation
+ is given here ok. So, you will see that you are using two hidden neurons H 1 and H 2.
+ H 1 neuron calculation for all the four points is given here ok. H 2 neuron calculation for
+ all the four points is given here. What you will what you can see if you go through this
+ is that H 1 is representing this particular boundary, H 2 is representing this particular
+ boundary ok. And then the final neuron here Y that calculation is given here ok that is
+ representing the final output where these two will come out to be 1 which is these two point
+ and this and this will come out to be 0 ok. So, this you can check. Why bias taking both
+ negative and positive value depending on what ok. So, bias you see like I told. So, what
+ is the purpose of bias? So, let me just maybe go back to the bias line yeah right. So, the
+ purpose of bias is to actually shift this activation function ok. So, suppose you have
+ F of W transpose X plus D. W transpose X by the way as you understand is summation over
+ W i X i i is equal to 1 to D ok. So, suppose this is 0 what will be the or let us say instead
+ of this being 0 let us say this is plus 1. What will be the output of the sigmoid function?
+ It will be plus 1 ok. Now, suppose you want that output of the sigmoid function to be
+ 0 when this summation is plus 1, but plus 1 when this summation is plus 2 ok. So, what
+ you can do? You can set B to be minus 1. So, then when W. So, I am just writing here W
+ transpose X and W transpose X plus B and then output S these are the three things ok. So,
+ if W transpose X is plus 1 then W transpose X plus B is going to be 0. So, output is going
+ to be what? Output is going to be 0 ok or maybe like let us take this to be 1.1 something
+ like that. So, then this is minus 0.1. So, output is going to be 0. When it is plus 2
+ W transpose X is plus 2 then it is going to be plus 0.9. So, output is going to be 1.
+ You can see from this particular equation this particular graph. So, what you have done
+ effectively by setting B to be minus 1.1 what you have done is you have earlier the decision
+ boundary was at 0 W transpose X is equal to 0. Now, you have moved to W transpose X is
+ equal to 1 1 plus 1 1.1. So, the decision boundary is now at 1.1. So, that is the purpose
+ of the bias. In the given example we are selecting weight like 20 or 0.6 how are we deriving
+ those weights? Yes. So, like I said I am for the example I am coming up with the weight
+ right. In real life you do not have to come up with the weight ok, but here I am coming
+ up with the weight yeah. So, here I am coming up with the weight by simply inspecting what
+ should be the output. So, for example, for this yellow line my weights are 20 20 and
+ minus 10. Why am I saying this? Because for the yellow line you see when the input is
+ 0 0 it should be 0 for all others it should be 1. So, sigma of minus 10 is 0 for all others
+ it is 1. So, instead of 20 we could have also taken something like 30 30, but then what
+ do I have to do? So, so so minus 10 will work here ok, but for this one if I take let us
+ say 30 30 ok. Now, you see I want this one to be 0 ok. So, if I take this to be minus
+ 30 this to be minus 30 ok. Now, this summation for 1 1 data point will become what minus
+ 60 ok. So, so now this one should be 0 ok. So, how much ok. So, plus 30 will work for
+ this one because it is going to be the resultant. So, plus 30 the resultant will be 30, but
+ now if I say 30 30 and plus 30 here let us say ok. This one will also become negative
+ you can see right because no this one will not become negative sorry if I take 40 here
+ let us say then this will not work because minus 40 into 1. So, consider the case where
+ if I take this to be minus 40 ok, then this data point will not be correctly satisfied.
+ So, you have to take the weight such that all of these outputs are satisfied ok. So,
+ that is how we are deriving the point. In general whenever we are deriving the weight
+ we are deriving it based on the output of that layer. So, here we know output of each
+ neuron beforehand this is going to be the output of each neuron that is why we can come
+ up with the weight. Weights are not unique there can be many weights which will lead
+ to this particular output ok. So, this is the end of the question answering
+ session. Thank you very much.

@@ -1,0 +1,524 @@
+ Welcome back, so now we will talk about adaptation, something which is extremely important for
+ transfer learning, so in this case we will look into different technical aspects of adaptation,
+ the objective would be to take the source model, pretend model and we try to see how
+ we can adopt this particular model to the target task that we have, so we will see different
+ sorts of challenges and then how we can like you know use some methodologies to tackle
+ some of these problems and so on so forth, so the question is how to adapt, you know
+ it is all about taking one particular model, applying to a new task, so there are several
+ things that we have to keep in mind, first of all the architectural modifications, you
+ know now again stepping back for a while, what we are trying to achieve in this case,
+ we have a pre-trained model, existing model and we would like to make some changes to
+ the model for a new task without retraining for this particular task from scratch, because
+ we have limited data for the target task, we might have computational burden, computational
+ limitations and so on so forth, so the question is how much we should change to the pre-trained
+ model architectures for adaptation and there are various degrees of changes, change only
+ one layer, two layer, three layer, all sorts of things and we will see different kinds
+ of modifications for this adaptation.
+ Second thing is optimization schemes, now it is not only that you know the architectural
+ modification will give you all the necessary things, you need to also look into the optimization
+ schemes to deal with this little bit of extra training that you need in order to adapt to
+ the new task, so which ways to train during adaptation, what schedule you should follow,
+ what should set the learning rate and all sorts of things and third, can we use more
+ signals for example, the multitasking architectures, can we use signals from multiple tasks simultaneously
+ or you can ensemble things from different places and so on so forth, so these are some
+ of these things that we basically need to look into when we are trying to do adaptation.
+ Now as a programmer and as a designer, the adaptation is something extremely critical
+ for the deep learning, the pre-training and deep learning models.
+ So let us look into the architectural changes, what we can do because often and almost always
+ we have to do the architectural changes because we take one existing model, we make some changes
+ and we apply to a new task.
+ So broadly we achieve these things in two ways, number one we keep the pre-trained model
+ internals unchanged, we do not even touch upon the internals, what we do, we do a very
+ shallow thing like we add some classifier on top for example, if your objective is to
+ do image classification and you already have say pre-trained image vectors, then you simply
+ add one classification layer on top like polyconnected layer, softmax layer and so on so forth.
+ So you just add classifier on the top embedding at the bottom, use outputs as features and
+ so on so forth, so without changing the internal structure of this model, the model remains
+ same as is only few changes here and there.
+ The second thing is basically modifying the pre-trained model internal architecture and
+ that is something little bit more intricate than the previous one and like the situation
+ where this thing needs to be done is basically that if the task that we are dealing with
+ is very different from what we already had, this whole task.
+ So in a situation like this we may need to like initialize the encoder decoder slightly
+ different way, we may need to play with the encoder architectures and so on so forth.
+ We may need to add some adapters, special kind of things and so on and we will see in
+ a moment how you can do all of this thing.
+ So this is the first example of keeping your model architecture unchanged almost.
+ You just do little bit of very shallow processing on top of the existing model.
+ So what we do in this case, we simply remove the pre-training task head.
+ So if the architect is something like this, this is for example the original architecture,
+ so what we do is simply go and remove this particular one and we simply add for example
+ as one more layer something like this here.
+ So if there are four classes, we simply go and add and this is a fully connected layer
+ or maybe it could be a softmax layer something like this.
+ So you take out topmost layer, assuming that this particular task is for say image classification
+ and you have to do some kind of image segmentation or something like that.
+ We take out the layer for image classification, we add one more layer suitable for image segmentation
+ and simply get things done.
+ So in language model for example what we do, we basically add a particular layer depending
+ upon the task that we are dealing with whether this is a process of tagging, whether classification
+ and other things and so on and so forth.
+ In a sense that we don't touch upon the other layers only we remove the top one and then
+ make the changes.
+ And this is something actually pretty common, comparatively very light weight and very easy
+ to do in programming as well.
+ Here we can add target specific layers on top or the bottom of the piton layer is also
+ you can be added in the top layer or the bottom layer specific to the particular target.
+ Again we are not going to change the internals of this particular architecture.
+ The architecture remains the same, only the top or the bottom layers can be changed depending
+ upon the task that we are dealing with.
+ So often what we add, we add basically a single linear layer on top of the piton model and
+ again retrain this particular model with the little bit of data that we have for the target
+ task.
+ So another one is basically more complex tasks for example we have to do, we can use the separate
+ models for input, for output and so on and so forth.
+ And this kind of architecture is extremely useful when we have to basically do the interaction
+ between different tasks and the embeddings are not available beforehand and so on and
+ so forth.
+ So something like this.
+ So in a situation like this what we can do, we can basically use the multiple inputs coming
+ from different possible signals and basically we can concatenate all of the signals to a
+ single vector and simply pass it along to the corresponding architectures.
+ Once again we are not changing these architectures in any way, we are simply using these input
+ signals or changing this output layer just to adapt to the corresponding target task
+ that we are dealing with.
+ Now the more challenging thing is basically modifying the model internals.
+ In the previous case very little changes like either you change little bit in the input layer
+ or you change little bit of the output layer and so on so forth.
+ So in this case we would like to play with the changes in the model internals.
+ The structure will go through numerous changes and we have to do little bit more processing.
+ So this is required when the target task is structurally very different from the source
+ task because we have taken the model from the source task to different trying to apply
+ to a target task so if they are structurally very different the same architecture might
+ not work very well.
+ So in a situation like this we have to change the structure of this model some internals.
+ So, for example, you pretend to the single input sequence but you are trying to adapt
+ to a task with several input sequences for example.
+ Say your objective was sentence classification, you are applying this for next sentence prediction
+ tasks.
+ So typical approach that we follow in this case, we pretend the model's weight to initialize
+ as much as possible of a structurally different target task model.
+ So whatever weight we had in the original model we will use that and then basically on top
+ of this we are going to retrain this model based on the target data that we have.
+ So often what we do is basically use following your language models to initialize encoder
+ and decoder parameters for machine translation.
+ So if our objective is to do machine translation for example, we can basically learn or basically
+ lend the weights from the encoders and decoders and then straightaway apply for the machine
+ translation task.
+ So this is something that basically we could do here and there can change a lot of changes
+ in this model architectures.
+ Now for task specific modifications, we need to basically do, we need to add some capabilities.
+ So we provide the pretend models with capabilities and this such that they are useful for the
+ target tasks.
+ So one of the common thing for example we do in say that language processing or in vision
+ models and so on and so forth adding skip connections, residual connections or attentions
+ and so on and so forth.
+ So in the simpler case when we are not modifying these architectures, we are not adding anything
+ like that.
+ We are simply adding one more extra layer on top of it say fully connected layer, soft
+ back layer and so on and so forth.
+ No skip connection, no residual connection, no attention, nothing like that.
+ But in this case because the target task is more demanding, structurally different than
+ the source task, we are going to add say for example NLP, the attention layers or say in
+ image we can use the residual connections like in ResNet and so on and so forth.
+ So one of the major goals in adaptation that we must use the least number of parameters
+ because the amount of data that we have is lesser compared to what we should have and
+ therefore the number of parameter that we should use in a situation like this should
+ be lesser than the original model.
+ So we basically have to do less parameter tuning because this is anyway going to be fine tuning
+ on sitting on top of this original model.
+ So it is very useful given the increasing size of this model parameters and we generally
+ add the bottleneck modules to achieve this called adapters.
+ Adapter is typically a connecting component between different layers of the pretend models.
+ So one of these adapters could be basically additional attention layer or it could be
+ say for example the skip connection between two layers and so on and so forth.
+ So this picture is something like this that there are different kinds of layers.
+ So the A1 adapter is basically connecting this particular layer if I number this in
+ this way 3 and 4.
+ So this A1 is basically connecting 1 to 2, specific kind of adapter which will fulfill
+ to some extent of course cannot fully fulfill the demand that we are having for the target
+ task to some extent can fulfill the requirement and the limitations of this pretend model.
+ Then A2 is connecting these two layers adapter.
+ This is connecting these two layers and adapter and so on so forth.
+ So as I mentioned the adapters could be something like the residual connections or the attentions
+ and so on so forth.
+ So the broad objective of the adapters basically is to fine tune this features little more given
+ the nature of the task that we are dealing with.
+ If the task is complex we require more fine tuning and therefore we have to be very careful.
+ So as I mentioned the common thing that we do is residual connections in parallel to
+ an existing layer so we can add residual connections between two different layers and so on.
+ So often we do like we basically interleave these adapters in between different layers
+ so that they can learn better representations from different layers.
+ And so this could be different for example when this is a vision task we could add the
+ convolutional kind of things.
+ When you are dealing with NLP tasks we can add the self attention layers and so on so
+ forth because the goals are different and therefore the adapters that we basically play
+ with are different.
+ So this is one good reference where they have used adapters to adapt these new models to
+ the new tasks and achieved good performance even with the limited amount of data on the
+ target domain.
+ Next important component is weight update schedule.
+ Now let us step back for a moment and try to think about on which set of we are standing
+ so far.
+ So we have original model, pretend model, we made some changes here and there maybe
+ the simple changes like at top or at bottom or maybe like the model internals and so on
+ so forth.
+ So as you know a typical deep learning model is nothing but a collection of parameters
+ that means the weights and biases.
+ So the moment you make any changes to the model we have to learn this new weights accordingly
+ as nicely as possible.
+ So because somewhere we are making some changes, somewhere things are constant.
+ So what strategies we should take to update the weights and that is a very critical thing
+ in deep learning pre-training as deep learning like the domain adaptation or this transfer
+ learning and deep learning.
+ So the question is we have to update weights for sure but in which order this is something
+ extremely critical and how should we do that?
+ There could be many strategies to do that.
+ So in which order we should do it and how should we do that?
+ But the main goal that we have to keep in mind is that that in doing so we must not
+ overwrite the information already there in the pre-trained models because the pre-trained
+ models giving us the necessary background and the backbone on which we will be standing.
+ Now if by adding new things we are going to change the weights to a great deal then the
+ models are going to be changed a lot.
+ So the original information will be lost and therefore this seriously questions the capabilities
+ of this model, generalizations of this model on the new data and so on and so forth.
+ So while for sure we have to change the weights we have to keep in mind that we are not going
+ to overwrite the existing information.
+ So common approach for weight update is basically from top to bottom.
+ So you have multiple layers for example 1, 2, 3, 4 and every layer have some weights.
+ So I consider this w1, this is w2, w3 and so on so forth.
+ So the common approach that we follow very cost effective, easy to implement and all
+ sorts of things is basically update from top to bottom.
+ So you progressively in time we simply freeze the other layers, the weights in the other
+ layers and simply update a particular layer one at a time from top to bottom that is very
+ common.
+ For example when I am trying to change this particular weight w3, w2 and w1 they will
+ remain constant.
+ I am not going to do anything on this.
+ Then once I am done with w3 I achieved a good performance based on the data that I have
+ in the target domain then I will basically freeze this one then I will go to the w2,
+ make some changes while keeping other things frozen and then simply proceed.
+ The other thing is basically progressively in intensity.
+ So the learning rate is something is extremely critical for good optimization for getting
+ the right objective for speeding up this model and so on so forth.
+ Now the question is how we should vary the learning rates?
+ What should the schedule for varying the learning rates?
+ And then progressively versus the pre-tent model the regularization stuff.
+ How we can basically make the model little regularized so that we do not lose any information
+ that we already had.
+ So in weight freezing what we do and that is the main intuition which drives the weight
+ freezing is that we train all layers on data with different distribution and tasks like
+ if we try to do that may lead to instability and poor solutions.
+ There is a main concern that we have that we simultaneously try to learn all the layers
+ and so on so forth may dismantle the entire thing that we have learnt because the data
+ that we are dealing with very small in quantity and we cannot do very much.
+ So then why not take this particular approach where we are not going to dismantle everything
+ simultaneously.
+ We simply take one at a time, make the changes, freeze it and then take the others.
+ That is the more or less this idea.
+ So we take individual layers, we adapt it to the new task, see how they are performing
+ on the new task and simply freeze it and then proceed.
+ So this something is called the layer wise training which is very old technique invented
+ by one of the pioneers of deep learning back in 2006 and that is still widely used in the
+ transfer learning based on the deep learning models.
+ There are other approaches, very common approaches like chain thaw, gradual unfreezing, sequential
+ unfreezing and so on so forth.
+ So here what we do, freezing all but the top layer.
+ So I freeze all the layers except the top layer and then simply go and train it because
+ this only one layer I am going to make changes to.
+ So extremely fast, requires little data and so on so forth.
+ But optimization wise is probably not the right thing to do, is probably going to sacrifice
+ this accuracy little bit, it may lose the generalizability of this model and so on so
+ forth but is very cost effective and also requires lesser amount of data.
+ The second approach is called the chain thaw.
+ So in this case we no longer dealing with only a single layer, we are dealing with multiple
+ layers but we train one layer at a time, we train a new layer something like this then
+ train one layer at a time then what we do basically something like this then we train
+ all layers.
+ So gradually we will basically increase this intensity of training.
+ When we basically added a new layer, we first train that then we have to make changes to
+ the other existing layers because no longer they are very well connected.
+ So we change, make changes to the layers one at a time and once this is done then we train
+ all layers.
+ Now one might be questioning that whether this is optimal thing to do, right?
+ Suddenly this is not an optimal thing to do but when you are done with the second step
+ training one layer at a time then you already have a good initial points and therefore standing
+ on top of these when you train on all layers the things become little faster.
+ The third approach is called gradual unfreezing.
+ So in this case we will unfreeze one layer after another, initially everything is present
+ we only unfreeze one layer after another.
+ In the previous case we are freezing all else but only one but in this case we are taking
+ the reverse approach, we will unfreeze one layer and then simply proceed make the changes
+ and simply move on.
+ So this is an example of like this gradual unfreezing one layer after the another one,
+ something like this we will do.
+ The final thing is called sequential unfreezing, now in all previous cases we are dealing with
+ the weights associated with the different layers and so on so forth.
+ But there are many hyper parameters that are extremely critical for models performance
+ and I do not know yet how to deal with them.
+ So in this case in the sequential unfreezing what we do we fine tune the additional parameters
+ for different epochs gradually.
+ So as you know in training what happens?
+ Training happens to multiple epochs, first epoch you take all data, you make changes,
+ second epoch you take other data, the same data but in a different sequence you make
+ changes and so on so forth.
+ So while we are basically proceeding epoch by epoch we would like to fine tune this additional
+ parameters to the hyper parameters, they are not model parameters like weights and biases
+ but they are extremely important parameters and we will try to basically control them
+ nicely so that they can do very good job on the target task.
+ So for example you can fine tune pretend parameters without embedding layers for several epochs
+ and then see what happens.
+ And you train all layers until convergence, something like this we could do gradually.
+ So in sequential unfreezing finally what we do we train all parameters jointly, once we
+ have done this sequentially after epoch by epoch finally we will train all parameters
+ jointly to achieve better results.
+ Now I must add in this is that that none of this approaches can guarantee the optimal
+ performance, they are good balance between the effectiveness and the computational efficiency
+ and the generalizability because you are operating on limited computing budget, we are operating
+ on lesser amount of data.
+ So all these the heuristics approaches that we have seen so far they can tackle some of
+ the limitations to some extent but they certainly are not full proof approaches and one needs
+ to basically adapt to the new tasks depending upon the performance.
+ So one simple guideline that one can follow is that you look at the loss functions how
+ they are basically behaving and so on so forth and then basically you can choose that which
+ layers are actually affecting more.
+ So you probably can focus on those layers which are affecting more, less on the layers
+ which are affecting less and so on so forth.
+ The another important thing is regularization because the setup we are operating on is something
+ like this that we have a pre-trained model which is trained on large volume of data and
+ we are trying to apply this model on new tasks sort of trying to adapt this particular model
+ in new tasks and we are going to basically make some changes here and there but at the
+ same time we are not we must not lose the original information.
+ So if we let the parameters change a lot then they can dismantle the original learning
+ that we had.
+ So in addition to all of the things that we have seen so far we also need to add a regularization
+ term so that the parameters in the new model or the learned parameter in the new models
+ they remain as close to as the original model.
+ So it is very popular L2 regularization that we apply in most of these learning models we
+ can apply.
+ So we simply add this particular term to the original objective function for the new task
+ and we of course need to control the hyperparameter associated with this particular expression.
+ So something like this is happening here.
+ So we have for example this original model that we are having here and then we adapt
+ to this particular new model something like that L1 prime, L2 prime, L1 prime and E prime
+ and so on and so forth okay and they will have their own sets of new parameters.
+ So the regularization term that we are dealing with is basically we will try to look into
+ the difference between the original model parameters of different layers and the new
+ model parameters of the new architecture that we are dealing with.
+ The third important thing and this is extremely critical because this can overshoot the good
+ optimal point often and can also speed up the training.
+ So scheduling the learning rate that's a very critical component in this not only in
+ the pre-training of the deep learning models or the transfer learning but this is also
+ very critical for training the normal model as well.
+ So what we like to do?
+ The main idea is that we would like to use lower learning rates to avoid overwriting existing
+ information because if you set a very big learning rate okay they can basically take
+ your model to some other point and as a result you know you can have the overwriting of existing
+ information that you had in the original model.
+ So to tackle this problem what we do basically do?
+ We take this approach is that in the lower layers typically we capture general information
+ in a standard deep net that's the general belief is that the lower layers will capture
+ general information and as you move up gradually they will modify the information or the features
+ specific to a particular task that we are dealing with okay.
+ So keeping in mind this observation what we do?
+ So early in training the new model still needs to adapt to the target distribution okay because
+ the new model that we have we have added few layers top or at the bottom we also probably
+ have modified the internals little bit for example adding new attention layer or adding
+ say skip connection and so on so forth so we need to basically train all these new parameters
+ okay.
+ So while we are very early in the training with respect to the new data or the target
+ data that we have we need to adapt the distribution nicely and then in the late in training the
+ model is close to convergence so we have to be little more careful in setting the learning
+ rate as well okay so these three observations basically have to keep in mind while we are
+ setting this thing.
+ So one of the very effective learning rate schedule for transfer learning based on the
+ deep learning is something like this that again it is driven by the observation that
+ lower layers capture general information so we would like to use lower learning rates
+ for lower layers.
+ So essentially what we do we use a particular scheme where the learning rates will be adapted
+ to a particular layer so alpha is a constant in this case and the alpha i is basically
+ associated with a particular layer and d to the power i d is a basically constant factor
+ and i is a layer so as you basically go up then it will basically you know modify this
+ particular learning rate with respect to the layer depth and it will set accordingly okay
+ as opposed to a fixed learning rate like alpha it will be different for different layers.
+ So these are basically some of the main I would say the strategies to deal with the
+ architectural changes when you make to adapt this new models to the new tasks.
+ Now one of the common things that we do often like this is something that not exactly related
+ to pre-training this can be done simultaneously as well as multitask learning okay.
+ So in the setup something like this happens like we simultaneously undertake multiple
+ tasks using a single network we do not want to use different networks for different tasks
+ but rather only one network for different tasks okay and what we like to avoid we like
+ to avoid having different like the models for different tasks okay because the general
+ assumption is that that if the network is big enough then at least the lower layers
+ can learn some common representations for tasks which share some commonality okay and
+ standing on those assumptions can I come up with some architectures which will have
+ lesser number of parameters which will require lesser number of data and so on so forth.
+ So there are broadly two basic forms of MTL is hard parameter sharing and soft parameter
+ sharing.
+ So in hard parameter sharing so the models basically share weights between different tasks
+ okay for example in this case so in this particular branch there is a common thread
+ you can see okay nothing specific to particular tasks okay you can think about these are basically
+ different blocks of individual models for example if you take transformer the transformer
+ blocks if you take residual network it could be residual blocks and something like that
+ very common but near the end of this network you can add two, three different branches
+ or three, four whatever the number depends on the number of tasks that you are dealing
+ with different branches okay which will basically do the task specific things and these blocks
+ will basically have different sets of parameters okay.
+ So this set is basically shared parameters and then only at the top level you have different
+ parameters for different tasks and we call this hard parameter sharing.
+ The second component or second very common approach that we follow is called soft parameter
+ sharing so instead what we have in this case we will have say for example separate threads
+ for separate tasks that we deal with so if you have three tasks we have separate threads
+ but at the same time these separate models will also exchange information between themselves
+ through the cross talks or cross links okay again they are different links they are all
+ parameterized so something like you have a separate weight say w1, w2 it is a weight
+ matrix and so on so forth 3, 4 and so on.
+ So the cross talks will have these parameters associated with them so they will exchange
+ the vectors so the representation learned in different blocks for the different tasks
+ okay so that they can share information between themselves.
+ So in vision one of the very popular architectures in MTL is called shared trunk okay so in this
+ case what happens is that just like this one of this thing that in a hard parameter sharing
+ we have seen in this case so all the entire thing there is a big trunk you know which
+ is basically very common and so you have to do end tasks at the end of it okay from a
+ particular image so image classification, image segmentation, object detection and all
+ sorts of things okay so I naturally I do not want to do many things okay increasing the
+ number of parameters in my model and so on so forth.
+ So again the assumption is that the shared trunk will produce generally enough information
+ which we can further fine tune to achieve our end goals several goals so all that basically
+ you have to do at end of it so this is the final representation okay this one and end
+ of it you can basically add this many branches number of the number of branches equals to
+ the number of tasks that you have and accordingly you can basically add some little heads which
+ will be responsible for basically you know serving your purpose.
+ Cross stitching is another approach in multitask learning so in this case what happens is that
+ you use separate network for each task okay if you obtain tasks you use separate network
+ but the input to each layer is basically a linear combination of output from the previous
+ layer of each network so as you can as you can see from this particular figure so this
+ is basically there are two tasks only we are dealing with task A and task B task A and
+ task B so because this particular network is responsible for task A this particular
+ network is responsible for task B and they have identical structure okay there is one
+ important constraint in this case in cross stitching and the parallel blocks in the network
+ for example this block and this block okay so the representation coming from the parallel
+ blocks okay will basically will be shared between these networks and through a linear
+ combination okay so these weights you can see the alpha basically the linear combination
+ of weights is coming from different blocks okay so linear combination will be done based
+ on the representation which are coming from the parallel blocks okay so it will never
+ happen something like this for example the information exchange will never happen something
+ like this okay only through this corresponding parallel blocks some okay something like this
+ and of course this particular model has many more parameters than a typical model that
+ we have seen like shared trunk and so on and so forth but if the tasks are very different
+ to each other for example in this case the cross stitching is a much better architecture
+ compared to the shared trunk approach because in that case we are assuming that they substantially
+ share the amount of features another approach is prediction distillation so in this case
+ what happens is that you know we again use lot of parameters in this particular model
+ so first we do predictions for each task and then these predictions are again combined
+ using a multimodal network to produce the final output okay so this is two level training
+ that we do okay first we basically apply one set of network then we use another network
+ common network for multimodal distillation then it will generate vectors and then we
+ basically fine tune this vector to produce this final output and I will end with this
+ particular architecture so this is the nlp application is very common so in this case
+ say for example you have architecture like transformer or bot okay something like this
+ we can have or you have can have any other architectures okay so they will produce common
+ representations for language okay nothing specific to particular task and then you can
+ take the corresponding parts from this particular network to produce different sorts of things
+ for example textual similarity relation extraction you would like to do some kind of inference
+ or reasoning named entity recognition and so on and so forth okay the only thing that
+ you need to be careful about is that while you are picking things from the pretend model
+ in this case you have to choose the right thing okay so one thing you probably notice
+ in this case here is that while we are doing textual similarity okay we are no longer using
+ all hidden vectors okay the CLS token is good enough in this case okay because CLS token
+ is the ultimate representation for the entire text that will be good enough but if we are
+ doing say for example sequence tagging like named entity recognition then it's probably
+ better to use all the information that we have so hidden vectors from different places
+ in the network so in that case we will basically combine all the hidden vectors that we have
+ in this particular network so depending upon the task one has to decide which portion of
+ the representation that you have learned from the basic model will be useful for this particular
+ task and on top of this you add the corresponding like this head for a specific task and optimize
+ it using these target data that we have okay so I will stop here so if you have any question
+ I can take up this questions okay so the question is why do we need transfer learning so as
+ I mentioned we do transfer learning primarily for two things number one is that when we
+ have lesser amount of data in the target task or target domain and second thing when we
+ have the computational constraint because training deep networks from scratch on a new
+ task will require both lot of computational power as well as a lot of annotated data so
+ when you lack this thing then transfer learning is a is a viable thing to do it won't give
+ you as much accuracy as you typically get when you try to learn a big models from scratch
+ but that's a better alternative when you have these constraints the second question is how
+ does the data distribution affect the quality of knowledge transfer so this is one of the
+ most critical thing and that actually makes and breaks the quality of output that you
+ get so often if the data distribution is very different from the one you had in the original
+ model okay you might have unstable model in the sense that that you might get good performance
+ on whatever little that that you have in the target domain but if the domain changes little
+ bit here and there the data changes little bit here and there that might affect a lot
+ so to tackle that one approach is basically to tackle this problem is basically adding
+ regularization term to this particular model so that you don't over feed too much to the
+ little data that you have for the target task third question is does data augmentation help
+ transfer learning so data augmentation indeed helps transfer learning because you already
+ have very little data for the target task so if you do data augmentation little bit
+ then it can have it can add little bit of variety to the target task and that in turn
+ help learn the model better and improve the generalization of this model why do we often
+ fine tune the deeper layers so as I mentioned repeatedly that we often fine tune the deeper
+ layers so reason is that that the initial layers or the layers like sitting at near
+ the embedding layers and so on so forth so they capture the general information so general
+ representations and as a result so they can be fine tuned or modified to serve different
+ other purposes okay so if we try to fine tune those layers then we basically lose the general
+ information and we have very little opportunity to get those information back in the top layers
+ so as a result we can basically pick out the relevant part from the vectors that we are
+ getting from the shallow layers and we can modify it depending upon the task that we
+ were dealing with next question is what is the relationship between the layer freezing
+ and the optimality of the objective function okay that's a very that's a very involved
+ question so you might recall that layer freezing is basically while we are trying to update
+ the weights we often we cannot do that like the entire network we cannot do that so we
+ do layer freezing okay so we are freezing a particular layer we won't let it change
+ okay and we are basically changing a particular other layer so naturally it does not give
+ you the optimal solution like the objective function may not achieve the right value at
+ the end of it but that's a viable alternative because the objective is to minimize the
+ computational cost and this is one way you can achieve this one so to summarize the whole
+ thing is that we cannot get the optimal solution for the objective function by layer freezing
+ but just to reduce the computational burden we adopt this particular strategy.
+ The next question is while fine-tuning a pre-tent model how do we schedule the learning rates
+ okay so as you know the learning rates are extremely critical component in optimization
+ so if they are big you may over shoot the destination if they are small it may take
+ lot of time okay so while you fine-tune the pre-tent models typically when you are starting
+ off we can keep the learning rates little high okay we can keep the learning rates for
+ the deeper layers little high and the low for the shallow layers simply because if we
+ set the learning rates to be very high for the shallow layers then basically we are going
+ to lose the general information that we have learned and as a result we may not recover
+ that while we are trying to fine-tune the deeper layers okay the next question is is
+ batch normalization helpful in transfer learning so batch normalization is a very important
+ regularization technique in transfer learning or rather in any deep learning so it is also
+ true for transfer learning as well so it does help because this basically helps regularize
+ this model better so when you are trying to adopt a model a changed model to a new data
+ they will also go through lot of changes the distribution of this output layers in intermediate
+ layers and so on and so forth and the batch normalization will regularize those changes
+ okay and as a result it will achieve better generalization okay the next question is since
+ data scarcity is a major issue in transfer learning why can't we use gain or generative
+ adversarial network to generate more data and train a model what is the potential downside
+ okay in fact the answer to the first question is if we do use gain to generate more data
+ this kind of data augmentation technique okay in a different way they do use that one so
+ yes this is a viable alternative to augment data using gain but the potential downside
+ is this that if the target data target data that we have have very little variety then
+ the gain will end up generating very similar kind of data okay so it will produce something
+ like rich gets richer kind of model as a result those who are present in the data will benefit
+ from it those who are not present are very less in numbers they will not benefit from
+ it so yes if the diversity of the data even in the original in the original the target
+ task is good enough then gain could be a very good approach otherwise that could be risky
+ thing to do.
+ Next question is can transfer learn models be attacked so as you know the attack is a
+ very common thing in deep learning models like people can basically attack a learn model
+ and get the original data even if you do not have the original data available okay so just
+ like other models transfer learn models can be also attacked okay people can actually
+ you know apply the attack methods to get back the data but it is less risky compared to
+ the original models because of the additional fine tuning that we have done okay so unlike
+ the original models where we basically know more or less how the models were trained and
+ so on so forth so attack methods can relatively easily get back the original data.
+ With the final and the last question what is the consequence of transferring based on
+ a pre-tent model trained on highly imbalanced data okay that is again a general problem
+ for any deep learning or any machine learning problem so if the pre-tent model was trained
+ on highly imbalanced data that means it tends to do very well on the majority of this data
+ and not so well on the rare data now if on the target domain or on the target tasks the
+ data is coming from for example the rare category okay the model might go through a lot of changes
+ because there is a mismatch between data distribution in the pre-tent model and in
+ the new domain okay so the parameter might change a great deal that has some consequences
+ in terms of losing the general information that we had in the original model okay so
+ these are the questions the pre-structured question that I had and I thank you all of
+ you for attending this and if you have any other question you can reach out to me through
+ my emails and I am happy to respond to your questions.

@@ -1,0 +1,45 @@
+ So, we are back with the question answer session and so the first question is what is the difference
+ between data type integer and integer 64. So, see the when we were doing the coding there
+ were integer 64 then integer 32 you can even use integer 16, 16. So, actually if I go in
+ depth this involves the concept of bits and bytes. So, how many bytes would be in the computer
+ memory would be used for representing a specific numbers converting it to its binary value.
+ So, not going into its depth. So, if you just specify it like in the data type d type
+ of the array if you just write i and t it would somewhat take the default one that is
+ I guess 64 if I am not wrong and changing the 64 to 32 or 16 that would have less number
+ of bits representing a number. So, when we are talking about very large numbers high taking
+ this integer 64 is better because more number of bits are reserved to represent a number
+ in the computer memory. So, next question please why the double squared bracket for 2D arrays
+ actually yeah and in the example that is those are curly braces given, but actually their
+ brackets would be there that is the convention of writing 2D arrays in python. So, actually
+ not for any specific purpose we are giving that. So, for 2D arrays you are supposed to
+ write it like that so that python understands it if like some days before some new version
+ of python comes that makes use of anything else suppose angular bracket brackets instead
+ of square brackets then we would have to give angular brackets. So, those are that is convention
+ of using the square brackets. So, next question please can we form a 2D array
+ from a 1D array a defined in MPIN yeah this is a very good question; obviously we can
+ create a 2D array. So, when we were teaching learning the reshape function so when we have
+ this 1D array of 8 elements 1D array of 8 elements suppose 0 through 7 so we have 8
+ elements and when we were reshaping it dot reshape 2 comma 3 so 2 rows and 3 columns.
+ So, now that is a 2D array or a matrix of 2 rows and 3 columns. So, obviously what we
+ are doing from 1D array we can converting it to a 2D array not just 2D array we can
+ convert it to 3D array also. So, when we are talking about 8 elements if you reshape it
+ to 2 comma 2 comma 2; that means, 2 rows and 2 columns and of 2 different 2D matrices.
+ So, you might be having a trouble understanding this, but if you play around if you use that
+ reshape function if you try to write code on your own for defining 3D arrays you would
+ be clear how and even I would encourage you to even go higher dimension like try 4 dimension
+ or 5 dimension and check how things appear try to print them ok.
+ Next question please can I define the sepal length and width manually rather than taking
+ it from ish df taken from ish data url how to do that ok. So, obviously you can manually
+ do everything it is not at all necessary for you to get the data through url what you can
+ do when we open the url in our browser tab what you can do you can save it and possibly
+ it would be saved in a dot CSV file that is comma separated value and you can using pandas
+ you can read the that file that you have downloaded through by giving it specific location in
+ that pd dot read CSV function and you would be able to get the data on your own and instead
+ of sepal length width these are these are conventionally the values of sepal length
+ and width. So, we go through that in the description of the data. So, we are getting this instead
+ of this you can give your wishing other names whatever you wish, but the aim is to correct
+ the correct it correctly predicting like correctly doing the classification task. So, today like
+ very naively I told you drawing lines in between those different scatter plot points and next
+ week onwards you would be actually learning machine learning models which like magnificently
+ do this works for us of classification and another thing regression you would learn.
+ So, next question please done. Thank you.

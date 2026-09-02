@@ -1,0 +1,1018 @@
+ Okay, thank you, thank you all for joining the session, so we will be talking about advanced
+ deep learning basically focusing on natural energy processing aspect of deep learning.
+ Particularly, we will cover the topics of transformers and BERT, now you have already
+ gone through certain lectures around NLP and also on deep learning, but I will just give
+ a brief introduction to the topic before I will talk about the architectures here.
+ So, what is NLP in general, I mean this is one way we can describe what is NLP, so typically
+ you want to make computers understand what we are writing or speaking, so think about
+ doing something for internet web pages, so it is already written by human, so the web
+ pages you want to summarize that, so you have to first understand what is written and
+ then you do something like understand what we write and make computers write and also
+ speaking with that, so this typically covers most of the applications that we have in NLP,
+ so you want them to understand what we are writing and we also want them to write.
+ Now, why we talk about NLP, typically we are using NLP in our daily lives and so many applications
+ so you want to design, implement and test systems that can process natural language
+ for practical applications and these can be like numerous, you can think about like very
+ early applications, machine translations and even web search, and to everything around
+ summarization, question answering, dialogues, classification, there are so many applications
+ where you would like to process natural language and this would be various practical application
+ that you can come up with.
+ Now, depending on the kind of applications that you are targeting there are certain paradigms
+ that are defined, so for example, it may be about sentiment analysis, so you are given
+ a piece of text and you want to find out what is the class, so maybe in sentiment analysis
+ positive negative neutral and text can be the movie review or hotel review, right, news
+ articles grouping, you are given lot of news articles, you want to group them according
+ to various topics, so this is again a classification problem, so where you are given a piece of
+ text and you want to classify into one of the predefined categories, there can be other
+ paradigm for example, named anti recognition or code mixing part of speech tag where you
+ are given a sequence and you need to find out what is the tag for each word like in
+ part of speech tagging I went to the market, for each word you would like to give a tag
+ like what is I, what is went to the market, for each word you want to define a tag, right,
+ so this is not open the entire sentence, per word you are defining a tag, so this is what
+ is called sequence labeling and then there are application where you generate the text
+ as an output, like machine translation you are given a source language input and you
+ want to generate something in the target language, translateration, abstract summarization, you
+ are given an input document, you want to summarize in your own words, right, chatbots, you want
+ to generate a response, so you are all text generation paradigms, so these are three main
+ paradigms that we typically talk about in an LP and what kind of methods do we use,
+ so you see very early methods were like Alizar that was a completely rule based pattern based
+ chatbot that would converse with people and then slowly there were statistical language
+ models, we went to Neal probabilistic language models and 2013 was the time when deep learning
+ really took over in the field of NLT, right, before that we used to develop features for
+ different problems and use models like SVMs and regression and CRFs, so in 2013 when word
+ vectors were introduced that is where the field completely changed, so now you can have represent
+ each word using a vector, right and that was what was used as an input to every other architecture
+ of deep learning, whether it is recurrent neural networks or the transfer model that
+ we will talk about, right, so how do you feed the words, you typically take the word embeddings
+ for that and that is how you feed to the transfer model, so transfer model is one of the main
+ like you say crucial points in this journey of NLP, so and then into the year 2018-19
+ the bird came, so this introduced the idea of field training, so you see these are the
+ two important terms when you talk about GPT, so you have pre-training, you have transformer,
+ so in GPT P stands for pre-training and P for transformer and G is for generative, right,
+ so that is where and I mean, so the main advances happen in this field, so we will talk about
+ transfer model, we will talk about pre-training and GPT models are the generative models,
+ okay and you all I mean know this field from chat GPT, right, now I am going to when it
+ was introduced and then I mean, everyone came to know about this field of NLP, large language
+ models and so on, right and I think this field is moving at a very fast pace, so much and
+ so now I mean, we do not even interact with the code, I mean we can just interact through
+ prompts, we can just give a prompt to the LLM like GPT 4 and so on and you can get your
+ work done, right, so that is why I mean Karpathi had this very famous tweet, the hottest new
+ programming language is English, so you can simply now prompt in English and you can expect
+ to get your I mean task done, okay, so before transformers what was the main architecture
+ that NLP was using, so they were mainly recurrent neural networks in the field of deep learning,
+ so what is recurrent neural networks, you will feed the words using the word embeddings,
+ so you feed the embeddings for each word and it will have some identity states, so
+ you will feed the word embedding, it will go through a hidden state, so you keep on
+ feeding new words, you keep on getting a recurrent hidden state that captures information up
+ to that word, so that is what happens and any point of time if you want to get an output,
+ you apply an output from that, so that is how this paradigm was used for all the different
+ things, so like if you want to do classification for the antisequence, I will keep on getting
+ the representation up to hn and then at the final representation, I will apply an output
+ vector to get the final output, class output, if you are doing sequence labeling, I need
+ output at every token, so fine I will, for each hidden state, I will apply an output
+ matrix to get an output, if you are doing language modeling, that is you want to predict
+ the next word, fine given the previous word, you predict the next word, yeah, and if you
+ want to do tax generation, I first give my input, get the encodings and using the final
+ hidden state in general, I use that as a context to start generating my output, so this is
+ how RNN could capture all of these paradigms, right, using a simplified architecture, and
+ yeah, 2017 was the time when transformers were introduced and since then they have been
+ the go-to model for any architecture you can see recently, so this was the paper attention
+ is all you need from mainly Google brain and University of Toronto, and we will discuss
+ in detail about this architecture today, so along with transformer, the another model
+ that, another idea that has become very, very important and prevalent is the pre-training
+ idea, that I can pre-train in language model using a lot of data and then this can be used
+ from various kind of tasks, right, so in general, I mean all of these models that you can see
+ here, like including GPT-3, Palm models, Bloom, Chinchilla and Galactica, OPT and all, so
+ they are all pre-trained models, and the reason is that I mean, why pre-training is so important
+ along with transformer because just, it is not that transformers are always better than
+ RNN, so what made them better was the idea of transfer learning and pre-training, that
+ you can pre-train a large model, transformer model and then you can use that for variety
+ of tasks, right, so transformers have become the go-to model for building large pre-trained
+ language models, which can be adapted for various tasks, and I mean, so we have seen great results
+ for transformer architecture, so you can see, I mean this is Chatbot Arena, one of the popular
+ benchmarks of LLMs and the main models from Gemini, Claude and ChatGPT, they are all transformer
+ based models, including the open source models like Lama 3 from Meta, they are all open source
+ models, based on the transformer architecture, and it is not that they have worked only for
+ language domain, they have shown very good results across domains, including say, proteins
+ modeling, proteins modeling images, systems and different, different kind of data, right,
+ so they are generalized architecture that can be used for different sorts of data, including
+ images, audio and so on, okay, so then let us go back to the idea of transformers, so
+ what is this model, how does it really work, what is the core principles behind this model,
+ so the main idea behind this model is the idea of attention, right, so we will try to
+ start defining it very simply and then we will see what is the actual formalism that
+ the transformer uses for attention, so what is the idea of attention, see in general the
+ way you can define it, is that suppose you are given a set of vector values, right, so
+ you have some values v1 to vn, and let us say you have a query, what attention tells
+ you is a method by which I can use a weighted average of these values dependent on the query,
+ so I will do a weighted average of v1 to vn depending on the query, right, so if you change
+ the query from q1 to q2, the weighted average you will get will be different, it is not
+ a simply an average value of the vectors, you will get a different weighted vector depending
+ on changing the query, right, so this is the general idea of attention, so this weighted
+ sum you can think of it as a selective summary of the information that is contained in the
+ values, right, and where the query will find out where to focus on, right, and another
+ way you can see, see this n is not important, you can have a 5 different values, you can
+ have 10 different values, 20 different values, so you can have an arbitrary set of representations,
+ and this gives you a way in which you can get a fixed size representation from that,
+ right, so this n is not important, n can be 10, 20, 50, 100, but I can still get a fixed
+ size representation out of that, right, so this is another very important point about
+ attention, now yeah we will come back to this, I mean how exactly attention works, so why
+ is attention is the model that people consider, because in recurrent new networks what used
+ to happen, so let us say this is the input, you are giving some input, so x 1 to x n,
+ what you get, you get the hidden states h 1 to h n, I get hidden states corresponding
+ to each word, and this hidden state captures information up to that particular word, right,
+ the problem with this architecture was that I cannot compute h 2 unless I have h 1, right,
+ so to get the hidden state of h 2 I need to have the hidden state of h 1, so there is
+ a dependency, so I cannot compute all h 1 to h n in parallel, I have to do it sequentially,
+ I will first compute h 1, use that to compute h 2 to h 3 and so on, so it is always sequential
+ computation, but we know I mean when deep learning what is important is that to do things
+ in parallel, you have to parallelize the things, so how do I ensure that I can still compute
+ the representations for each word in parallel, right, and that is what was achieved through
+ attention as we will see, so here I cannot compute a future RNA identity state unless
+ I compute the past RNA identity states, right, so there is a dependency involved in RNA's,
+ now transformer we will see, we will try to remove the dependency, how exactly we will
+ do that, let us understand it, so what is a transformer architecture, so it was introduced
+ in this paper as an encoder-decoder architecture, later on we will see, you can use it simply
+ as an encoder, also simply as a decoder, right, so that is not so important, so it understand
+ what is the core ideas behind this architecture, so this is a transformer and you can think
+ of it as encoder-decoder architectures right now and later we will see encoder only and
+ decoder only transformers also, so what does encoder do, right, what is the task of encoder,
+ so we will use encoder-decoder whenever our task involves an input sentence, right, so
+ this is an input sentence in French and I want to generate some text, right, so this
+ can be translation, this is in another language, same English, so encoder will take the French
+ sentence here and decoder will generate the English translation, now what is the task
+ of the encoder, the task of the encoder is that it produces a very good representation
+ of the input, so that means at the end, if you think of it as a black box, what you want
+ to get are some good representations of the 3 words that you have provided as input, right,
+ so this is what encoder will do, so a sophisticated representation of the source sequence, right,
+ now this is what the decoder will focus on generate its output, so the decoder will use
+ these representations to be able to generate its output, so I am a student, right and decoder
+ in transformer generates output one word at a time, so I will first generate i, it will
+ feed i here, generate m, feed m, generate a and so on and this is what we will typically
+ call as auto-aggressive generation, I generate one word at a time, so this is what typically
+ transformer decoder architecture looks like, now when we say encoder, decoder it is not
+ a single layer, so you will have like multiple layers of encoders, multiple layers of decoder,
+ so in the original transformer paper, so there were 6 encoders and 6 decoders, what it means
+ there are 6 layers of encoders, 6 layers of decoders, okay, now we will understand the
+ one particular layer, right and we will see the other layers are just a copy of that different
+ weights, they do the same task, so what is one particular layer, so this is like one
+ encoder layer, what actually happens in that one encoder layer, so I feed the words, how
+ do I feed the words, I feed the words through embeddings, what are embeddings, they are
+ dense representations of the word that captures semantics, so two similar words will have
+ similar vectors, right, so I feed the embeddings for thinking and machines as the input, the
+ first thing that happens in a layer, transformer encoder layer is that self-attention, so attention
+ will ensure that the word thinking gets context of all the other words in the input and gets
+ a good representation, context of representation, so this is the representation for thinking,
+ similarly the machines will get the representations by looking at the surrounding words, so we
+ will get the representation for machines, now this is the self-attention output, to that
+ we apply feed forward neural network, okay, so we apply feed forward neural network that
+ is the second thing that happens and we get the output of feed forward neural network,
+ right, now there are certain things that are maintained in this, for example, let us say
+ I feed a 512 dimension embedding, so this is 512 dimension, so I always maintain these
+ dimensions whenever I have an output of a block, so that means this will also be 512
+ dimension, this will also be 512 dimension and how does it help because now you see this
+ output will become the input to the next layer, so to the second layer the input becomes this
+ particular output of the first layer, it is the input to the next layer, so that means
+ you have, you do not have to worry about thinking different dimensions of matrices across layers,
+ you have the same dimensions in all the layers, so 512 dimension input across all the layers,
+ 512 dimension output across all the layers, what you can vary is this 512, this is what
+ we will define as a model dimension, so you can say I will use 1024, 768, I will vary
+ this model dimension, fine everything else will change according to that, right, so this
+ is what happens, right, so in the first layer you have the static token embeddings but then
+ you get a representation through the processing of any layer and that becomes the input to
+ the next layer and this keeps on happening across layers in the transformer, okay.
+ Now let us go back to adhesion again, like what is the intuition, so think about the
+ sentence, the chicken didn't cross the street road because it, right, now what should be
+ the properties of it, what should be the representation for it, now it itself does not tell too much
+ unless you know what it refers to, right, so suppose I have two different sentences,
+ two different completions because it was too tired, it was too wide, right, so what do
+ you see now, so in the first sentence the it should refer to too tired should be the chicken
+ and too wide should be the road, right, it should represent the chicken enrolled in the
+ two sentences, so and that is what you want to know, I mean in the self-adhesion you want
+ to know which word I should focus on in the entire sentence, right, so that I can get a
+ good representation of myself, otherwise it itself may not be sufficiently to tell you
+ whether it refers to the chicken or the road, right, so you need that contextual representation
+ for this, so this is what attention will do, it will build up a contextual embedding of
+ a word by selectively integrating information from the surrounding words, right, and this
+ is what we will say, a word attends to some neighboring words more often than others,
+ so it is not a simple weighted average, I mean simple average of all the embeddings,
+ it will see which word I should attend more on, right, we should, what I will focus more
+ on to get a contextual representation, okay, and this is what the blog from Google showed,
+ this was a picture from the blog itself, so they showed this actually happens, so suppose
+ this is your layer K of the transformer and this is layer K plus 1, so in the layer K
+ plus 1 the next layer it was found the word it referred to chicken in this case, it was
+ too tired it actually referred to the chicken, right, more than the road, and this is what
+ I mean was the ideal case, let us see another intuition for self-attention, right, so you,
+ so now we will talk, introduce one more thing, so till now we talked about using a query
+ we will take a weighted average of the values, but we use something else called key, so it
+ has a key value and query, right, and this is very similar to what we do in retrieval
+ system, so let us take a scenario, suppose you are searching for videos on youtube, right,
+ so what you do you give a query, so you have a query that you type in the search bar, now
+ how do you, how does the search work, typically each video, so in some video you call them
+ the value, right, but the way search happens there are certain metadata with the video,
+ for example the title of the video, description, call that the key of the video, so each video
+ will have some metadata, say the key and its corresponding value, so k1v1, k2v2, k3v3
+ across videos, so when you search what happens, you do not search with the values directly,
+ you search with the keys, you match the query with the metadata, and let us say you find
+ out this has the highest match, what you will do, you will retrieve the value v2, right,
+ you will retrieve the value, or let us say somebody says you make a summary video from
+ all of these, what you will do you say, which of these key has the highest value, let us
+ say key 2 has a score of 0.8, k1 has a score of 0.1, and k3 has a score of 0.1, so what
+ I will do I will take 80% of video 2, 10% of video 1, 10% of video 3 and create a summary,
+ right, out of that, now that is what actually happens in attention, so you have query, you
+ have a set of keys, set of values, you match the query with the keys, you find which key
+ has the highest match with the query, and you will give a more weightage to its corresponding
+ value, right, so this is a very good way to understand self-attention, so this is what
+ will happen, so this word, we will have a query from this word, and all the words, they
+ will, you will have a key as well as value for each word, right, and what you will do
+ this query will, you will find a similarity of this query with all the keys and then take
+ a weighted average of all the values, right, so each word will have a key and a value,
+ okay, now how, in mathematical form, how does this attention really work, so now let us
+ look into the detail, right, so we talk about theory, query, key and value, right, but what
+ we have at our disposal right now is only the embedding, so when we have a word like
+ chicken or the road, I only have the embeddings of that word, right, whatever I mean 512 dimension
+ or whatever I choose as the model dimension, they will have some representation, right,
+ now I want to use that to get all these query key and value, now how do I get that, right,
+ so generally what is done, so say, okay, I want to use the same embedding to get query
+ key and value, so fine, I use a learnable projection matrix to convert this into query
+ key and value, so I learn three different projections, one is query matrix, key matrix
+ and value matrix, three different matrices, right, so what will, what will happen with
+ the query matrix, so say, my xi is 1 cross 512 and wq is 512 cross 64, I will get a 64
+ dimension representation, right, so I multiply the embedding with this projection matrix,
+ so that I can get a query, same way, this is 1 cross 512 and this may be 512 cross 64,
+ I get again another 64 dimension representation, 1 cross 512, 512 cross 64, I get 1 cross
+ 64 dimension representation, so that means I need three different learnable matrices
+ that will convert my embeddings into query key and value for each word, so that means
+ I will get this query key and value differently for each word because they depend on the embeddings
+ and then they are multiplied with the three matrices, query key and value matrix, okay,
+ so that means I have now three representations for a same word, query key and value, right,
+ now see we want, given a word you want to focus on any neighboring word, so, so current
+ element xi would like to find its similarity with qj, so what is done, so I want to find
+ similarity of current element with everything else, so I generate the query from here, so
+ query is used from here and from the jth word I use the key and value, so kj and vj comes
+ from here, right, query comes from the word that you want to match with everything else
+ and for every other word you will get the query and the key and the value, right and
+ how do you find similarity, you can simply use a dot product, so I find qi times kj is
+ the dot product and each summing of xj we will sum up vj, we will take a weighted average
+ of vj, right, now let us look at it like it from an example, so suppose you sentences
+ the beetle drove off, so what I do I first get the embeddings for each word, I have
+ the embedding for the embedding for beetle, embedding for drove, embedding for off, then
+ what I will do, I will multiply these embeddings with the three matrices, query key and value,
+ you see the same matrix across all the words, for all the words, so I do not have different
+ query key value for each word, right, for all words we have the same matrix, so find
+ I will multiply the embedding with this matrix and I get k1, sorry q1, k1, v1, q2, k2, v2,
+ q4, k4, v4, I get the query key and value for all the words, right, this is the first
+ step that I do, next let us say I am interested in one word, so my focus is on the word beetle,
+ so I will use beetle to find the selective summing from all the neighbors, so where will
+ my query come from, query will come from beetle, right, this will be my query and they will
+ my keys come from, because I want to match similarity of query with all the keys, keys
+ will come from all the words in the sentence, so this will be k1, even including this word
+ k2, k3, k4, so I find similarity of q with k1, k2, k3 and k4, this is the next step
+ I do, okay, then what I want to add finally as the output the values, right, remember
+ the idea of searching on YouTube, so I want to compare my query with all the metadata,
+ the keys, then whichever has the highest similarity I take corresponding value, now what may happen
+ when I do similarity, similarity can be a cosine similarity, this can be in the range from minus
+ 1 to 1, right, so I can get a similarity like 0.8, 0.9, minus 0.2, 0.5, so how do I use
+ them to get a weighted average of the values, right, now sometimes they are negative and
+ sometimes positive, right, so what I do I convert them to a probability distribution,
+ so that I can convert, I can my weights are all positive and they add up to 1, so how
+ do I convert any real numbers, a set of real numbers into a probability distribution, so
+ they are very standard take that we use in deep learning, it is a softmax take, so what
+ is softmax I will simply take e to the power 0.8, e to the power 0.9, e to the power minus
+ 0.2, e to the power 0.5, you know once we put exponential to the power something it
+ is all positive, right, so they are all positive things and then because they would not add
+ up to 1 as it is, so I divide by this normalization, summation of all these values, right, I add
+ over all the values, right and that is all, so I have this attentionist course, right,
+ the similarity for each word divide by similarity for all the words, but exponential, softmax.
+ So lambda 2, lambda 3, lambda 4 now are all greater than 0 for sure and they will add
+ up to 1, now that we have this lambda, I will take a weighted average of all the values
+ that will be my self attention output, so I will take a weighted average lambda i v i
+ of all the 4 values and that will give me the output, this is the output for this word.
+ Now, now coming back to the question, right, remember in what we said, given a word its
+ hidden representation cannot be completed in parallel, so you have to first compute
+ h 1, use that to compute h 2 and so on, can you do in parallel and transformers, yes,
+ because there is no dependence between how you compute the output of beta versus how
+ you compute the output for the, because for output of the you will take the query from
+ the and you will multiply with the keys for all other words, right and this has no dependence
+ on whatever you are doing with the beta, so you can do attention self attention computation
+ in parallel for all the words, right. So, I can in parallel compute all the self attention
+ because they do not interact with each other, right, so that is why this is very, very efficient
+ you can parallelize this operation. Now in equations, I mean this has been called
+ as one of the most important formula in deep learning, like since 2017, 18, so what you
+ do in terms of equation, fine, from each word you have the embeddings, now you multiply
+ these embeddings with these 3 matrices query k and value, now for 2 words x i and x j what
+ is the attention score, you take the query from x i, you take the key from x j and multiply
+ them, now there is also a normalization that happens that is divided by square root of
+ d k is called a scaling factor, what is d k dimension of the keys, right, we will discuss
+ briefly why we divided by square root of d k, but we divided by the square root of the
+ dimension of the keys, right. And now once I have the score for x i, x j,
+ I use that to compute my final softmax, so I use a score, take a softmax over all the
+ scores of x i with all the other words and compute the attention and then I take a weighted
+ average of all the values, sigma alpha i j v j, this gives me the attention output for
+ the word x i, right, left just shows a very nice tweet telling the equation like one of
+ the most important formula in deep learning, okay, now let us try a problem, so this becomes
+ very clear to you, so let us say we have 2 words flying an arrow and you are given some
+ 6 dimension embeddings for each, right, so flying has 6 dimension vector, arrow also
+ has a 6 dimension vector, suppose you want to use self-prediction to represent the word
+ flying, right, in the first encoder, now see to represent this I need to know what is my
+ projection matrices, the w, q, w, k, w, what are my 3 projection matrices, now in this
+ toy example we have taken a very simplistic way that is for the first attention had the
+ query key and value are just the 2 dimension from the input, so I will take the first
+ 2 dimension this becomes my query, right, so my q 1 is simply 0, 1, my k 1 is simply
+ the next dimension that is 1, 1, v 1 is 1, 0, similarly q 2 is 1, 1, k 2 is 0 minus 1
+ and v 2 is minus 1, right. Now, so this is the first step you need, right,
+ you need to get that query key and value, now you can also ask me what was the corresponding
+ matrix w, q such that you get this, right, so what will be that, so this will be you
+ have this let us say the first one 0, 1, 1, 1, 1, 0, so this is 1 cross 6 and you want
+ to get a 2 dimension output you have to multiply the 6 cross 2 matrix, right, because this
+ matrix is ensuring that you take the first 2 dimensions only, so what should be that
+ the values, so you can work it out it will be 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, so
+ that when you multiply what will be the output, here you take just the first dimension that
+ is where you have the 1 and then you take the second dimension that is where you have
+ the 1, so answer will be 0 and 1 that is my q 1, right, that is the matrix in this particular
+ toy example. Now, so once you have the query key and value
+ for both the words, what is the next step, what do you want to do, I want to get the
+ self-condition output for the word flying, the first word, right, so what do I need,
+ I need query for this word, I need key for both the words, I need value for both the
+ words, right, if I have that I can compute the output, so let us see, so we have this
+ is the query for the word and these are the 2 words, the keys for both the words and these
+ are values for both the words, so how does it work, so let us say you are doing scaling,
+ so let us compute, so we have query 1 dot k 1 divided by square root of dk, so what
+ is dk dimension of the key, that is 2, right, so q 1 dot k 1 will be 0 times 1 plus 1 times
+ 1, 1 divided by square root of 2, fine, what will be q 1 dot k 2, so q 1 dot k 2 will be
+ minus 1 by square root of 2, right, so you have 2 different outputs, the dot product outputs,
+ what you will do next, you convert them to softmax, you take a softmax over this, so
+ this will be roughly 0.7 and minus 0.7, so you take e to the power 0.7, e to the minus
+ 0.7 divided by e to the power 0.7 plus e to the minus 0.7, right, and you get 2 values
+ x 1 and 1 minus x 1, they will add up to 1, right, you can compute what is x 1, so you
+ get 2 values, x 1 1 minus x 1, right, they will add up to 1, now what is x 1, you try
+ to compute, now what is my output for the first foot, I will take a weighted average
+ of the values, what are the weights, x 1 times v 1 plus 1 minus x 1 times v 2, this will
+ be x 1, first dimension will be x 1 minus 1 minus x 1, second dimension will be just
+ 1 minus x 1, that will be the output, right, if once you get the value of x 1, you can
+ get the final output of your attention, that is your a 1, this is how the attention works,
+ right, and this you can do for the second word also, you can now take the query from
+ second word, key from both the words, you can compute, you get the output, what will
+ be a 2, so you try this on your own, ok, now given this idea of attention, what is the
+ next thing, so how does, so we have, so now coming back to the whole picture, we are still
+ talking about the first encoder of transformers, we are trying to understand how does the self
+ attention work, right, so we talked about self attention, but in general what is done,
+ you have multiple hats for self attention, right, so this is called multi hat attention,
+ so what it means is that you do not just work with a single set of query key and value matrices,
+ you have multiple set of query key and value matrix, so you can have one set hat 1, attention
+ hat 1, WQ1, WK1, WV1, you may have attention hat 2, which is WQ2, WK2, WV2, a separate
+ set of the query key and value matrices and so on, whatever hat K, WQ, KWK, KWUK, right,
+ you may have K different hats, so K different tuples of this query key and value matrices,
+ and that means that also means I will get different outputs from each of these, so here
+ this may be the output from the first hat, second hat and up to whatever the last hat,
+ so how do I use that together to make a final representation, very easy, I will say I simply
+ concatenate, concatenation means just putting them one after another, so one after another
+ I put them, so let us say each of these output, what is the dimension for each of the output,
+ what am I doing an average of, I am doing an average of all the values, so each output
+ is of the dimension of dV, right, and let us say we have h attention hats, so dV times
+ h, so this output is of dimension h times dV, now remember I have to always convert them
+ output into the same model dimension D that I started with, if this was D I have to bring
+ it back to D, that is why I have another matrix WO that will take this h dV back to D, so
+ this WO dimension is h dV times D, h dV times D, so it will convert it back to the D dimension
+ output of self-denial, so you may have this question like why do we need to do multi hat
+ attention, why cannot we simply use one hat, so we talked about one generation hat, WQ,
+ KW, why do we need to have multiple copies, the reason typically this is seen in deep
+ learning I mean, so if you have just one way of projection here, forces the model to only
+ find one way in which you can project an input to query gain value, you can only focus on
+ one aspect, right, so what if I want to look at multiple present the sentence at once on
+ different different aspects, right, let us say for bird eye, I may want to focus on differentiate
+ for different regions, so for all these different regions we will try to define different of
+ Q, K and V matrices, right, and each attention hat performs the computation independently
+ and then output of each hat, all the hats are combined by concatenation, so each hat looks
+ at different things, for example this paper I tried to do this analysis that they can
+ be hats, for example positional hats that will simply look at the neighbors, they will focus
+ more on the neighbors, there are syntactic hats that will point to tokens with a specific
+ syntactylation like a word may focus on the subject or an object and so on, adjective
+ to add to the noun and so on, and they can be hats that point to the rear words in the
+ sentence, so you can have different hats that have different tasks, and that is why your
+ each of the projection matrices are independent, so you have WQ1, WK1, WV1 for head 1, and
+ another hat you can have WQI, WKI, WVI, right, so you can have different attention hats different
+ matrices for that, they are all variable parameters, so how does it look like, so you see I start
+ with the 1 cross D dimension input embedding, right, the input, and I have it for all the
+ words in the sentence, for different attention hat I compute WK1, WV1, WQ1, head 1, head
+ 2, WK2, WV2, WQ2, and by that I get an output, so I have an output for the first hat 1 cross
+ DV, second hat 1 cross DV, head 8, 1 cross DV, each hat I have output of 1 cross DV dimension,
+ so together I concatenate all of these, I get a 1 cross HDV output, dimension output,
+ now I want to convert it back to D, so I have a matrix WO that is HDV times T that converts
+ it back to 1 cross DV, you see I come back to the same dimension as my input, and this
+ is the output of self-admission block, so we have many linear parameters, all of these
+ WKW, QW, WV across all the hats are learnable, and this final WO is also linear parameters,
+ right, so now if you try to find out I mean more on dimensions, in the original transform
+ paper the D was 512, the modern dimension was 512, the query key in value each was 64
+ dimension each, right, that means what is the dimension of WQ1, that will be 512 cross
+ 64, same with WKWB, right, for each hat the output is DV dimension, that is 64 dimension,
+ and I had 8 attention hats that means totally this output is 512 dimension, now what will
+ be the dimension of W2, WO this will be 512 cross 512, now if you try to find out what
+ are the number of parameters I need here, let us see what are the number of parameters
+ I need a single encoder, number of parameters for self-admission, so let us say I have a
+ model dimension D, so D is my model dimension, so H is the number of attention hats, and
+ let us say DQ, DK, DV are the dimensions of query key in value, for simplicity what is
+ done, so we take DQ as DK as DV as DYH, generally that is what is done, okay, but in general
+ you do not need to ensure this, because you are taking a dot product of Q and K, so Q
+ and K should always be the same, but you are allowed to use a different DV, but I mean
+ that will just complicate the things, so by default they are all kept the same as DYH,
+ so now how many parameters you need, you have H attention hats, for each of the attention
+ hat you have 3 matrices, query key in value what are the dimensions of these, D times
+ D by H, right, plus you have a WA matrix that take H times DV times D, right, so what is
+ it come out to be, so this is 3D square plus H times DV, DV is D by H, H times D by H cross
+ D which is also D square, so totally there you have 4D square parameters for self attention
+ and D is 512 if you take D is equal to 512, if you take D is equal to 512, 512 cross 512
+ will be like 2.25 million into 4, roughly 1 million, so roughly you have 1 million parameters
+ if you have model dimension as 512, in just the self attention 1 million parameters, fine,
+ now what next, so what you did, you took the input embeddings and used the neighboring
+ words to get a self attention output, but till now there are no non-linearities that you
+ did, they are all linear transformation that you did, so self attention is simply performing
+ a re averaging of the value vectors, nothing else right, you are doing a re averaging of
+ the value vectors by different ways, so how do I introduce some non-linearities, so typically
+ what is done, once you have the output of self attention, you apply a feed forward model,
+ feed forward layer to the output of attention and that will give a non-linear activation,
+ so how is it done, so let us say this is the self attention output, so D dimension output
+ of self attention, you apply an up projection, so you have an up projection, then you apply
+ a non-linearity and then you have a down projection and this dimension is same as D, that is what
+ is done, so let us say you need two matrices to go from the self attention output to the
+ hidden layer and then another matrix W to go to hidden layer to the output of feed forward,
+ so what are the dimensions of each, typically by default this W 1 is 4, I mean, so you have
+ this 1 cross D and you do D cross 4 D, so you take it to 4 D dimension right, 4 times
+ dimension of the original input and then W 2 is again 4 D cross D, bring it back to D
+ dimension right, there are some bias terms that we are not considering too much here,
+ so how many parameters you need, W 1 is D cross 4 D, 4 D square and W 2 is again 4 D
+ cross D, that is 4 D square, totally you need 8 D square parameters right, so 1 million
+ in the self attention and roughly this will be roughly 2 million, so that means each encoder
+ block needs roughly 3 million parameters right, with a model dimension of 512, okay, now the
+ next problem that comes in fine, I am doing it, I have multiple layers in the encoder,
+ how do I ensure that this will work seamlessly and I do not come up with various issues when
+ I train with deep networks, so there are various tricks that I use, so like in CNNs it was
+ found when you increase the layers, it does not work and that is why you have to do some
+ skip connections, residual connections, so you apply this trick also to transformers,
+ the residual connections and because you do residual connections, you do skip connections,
+ you have to normalize again, so you do layer normalization and then you have the scale
+ dot plot attention that we anyway talked about, so let us see the tricks briefly, so first
+ is the residual connection, so what is the idea, so you see what is happening, you take
+ the original embedding, at the self attention you get the output of self attention, so this
+ is the embedding and you have the self attention output right, self attention output of X i,
+ this is your X i and then you want to directly apply feed forward, so in residual connection
+ you avoid that what you say okay, I will add X i to this, so that is why you have an add,
+ so plus X i, this is called skip connection, you add this input back and this is what is
+ become the input to the next block, so this gives you a skip connection, a direct connection
+ from the input to here right by doing this addition, otherwise you may have completely
+ lost this input, you have simply take a self attention, but you have forgotten the original
+ input embedding, so this will add the original input embedding to this and now to this you
+ apply the feed forward right, so this is the addition, so you do the addition of the input
+ and you keep on doing it, so once you have some vector here, you get the feed forward
+ on this, you again add back this chip, so this in principle what it is doing, the original
+ input is going directly to the last layer right and this keeps on happening every layer,
+ so you have this addition, this is your connection part in transformers and this also prevents
+ network from forgetting the original embedding, because you are feeding it back right, as
+ X i is just a transformation, you are feeding the original input again adding to that okay,
+ then what is the second trick, because you are doing addition, so what may happen you
+ keep on increasing the values right, you are keeping original the output of self attention,
+ you add X i to that, so you keep on increasing the values, so you somehow have to bring them
+ back to the some standard mean and standard deviation, so this is done by layer normalization
+ right, so you because the input they keep shifting, you are adding the input again and
+ again, so you the mean and value standard deviation will keep on shifting, so the solution
+ is that you can normalize to 0 mean and standard deviation always, so once you do addition
+ you again come back to 0 mean and standard deviation and the idea is very simple, you
+ take all the vectors, find the mean, find the standard deviation and then given a vector
+ you say okay, I will subtract the mean and divide by the standard deviation plus an epsilon,
+ so that there is no whenever they are all uniform, you are not dividing by 0, this is just a
+ small positive quantity, to avoid division by 0 right, so you do that and you get the
+ output self attention output, I mean the output at every layer after normalization, subtract
+ the mean divide by the deviation and you get the output okay, so suppose you are like mean
+ this are the values, what you will do, you will take the mean of each, you will take
+ the mean, you will take the standard deviation and then what will be the corresponding output
+ after normalization, you will say okay 1 minus the mean 4 divide by standard deviation right,
+ for this 3 minus 4 divide by 2.03, 5 minus 4 divide by 2.03, so you will take them to
+ some very mean 0 standard deviation 1 right and you work with that, so that even you keep
+ on adding the input, you are bringing them back to mean 0 standard deviation, it becomes
+ easy to train your model, so these are the tricks that I used when you train large models
+ and then you do scale dot product attention, so what is that, so you have, remember we
+ talked about q i dot k j divide by square root of d k right, so why do you need to divide
+ by square root of d k, so idea is this that okay, your q i and k j had let us say they
+ were mean 0 standard deviation 1, I want to ensure that the value I get as a real to dot
+ product is also mean 0 standard deviation 1 right, but that does not happen right, so
+ when you do q dot k, so what is q dot k, q dot k is q 1 k 1 plus q 2 k 2 and so on.
+ Now if its mean is again 0, because if you once you take an expectation of this, this
+ will be expectation of q 1 k 1 plus q 2 k 2 and they are independent, so you say expectation
+ of q 1 times expectation of k 1 which are both 0, this is fine, the problem comes in
+ the variance, so what will be variance, this will be expectation of q dot k square minus
+ q dot k square minus expectation of q dot k square right, variance is expectation of
+ x square minus expectation of x square, now expectation of q dot k is 0, so this comes
+ terms out to be 0, but what is expectation of q dot k square right, now q dot k square
+ will have terms like q 1 square k 1 square up to q n square k n square plus cross terms
+ to q 1 k 1 q 3 k 3 like that right q i, so these cross terms will all go to 0 when you
+ do expectation, but expectation of each of these is 1 right, so then what will happen
+ because this is the variance, so one you keep on adding 1, how many times as the dimensions
+ are there in q and k right, that is why this instant division becomes the variance becomes
+ dk dimension of the key, you could have also said it as dq dimension of query because they
+ are the same, now you want to bring it back to variance 1 what you have to do divide by
+ square root of dk, so once you divide by square root of dk what will happen, so q 1 square
+ k 1 square divide by dk right, so you will have 1 by dk 1 by dk dk times you get a variance
+ of 1 right, that is the essential idea of dividing by square root of dk okay, so now
+ let us we are ready to look at the entire transfer block, so we start with the words
+ the beetle drove off, we get the embeddings for each word, I apply multi hat self-attention
+ which will give me the same dimension output, next I do skip connection, I add it back right,
+ so I have the skip connection and because I am doing adding this back residual connection
+ I have to normalize it, so I have a layer normalization right and this will become the
+ input to my feed forward network, so I apply feed forward layer here, again I do the same
+ thing I do a skip connection, I do a normalization layer normalization right, so this I have
+ to keep on repeating this every time I do an operation, so I do a skip connection, I
+ do a normalization, now this is where I get the output of the first layer, so this is
+ from the first layer right and this will become the input to the second layer right and so
+ on and then the second layer will process similarly with different set of weights and
+ the output of the second layer will become the input to the third layer right, so this
+ is one way you can see it it transform a block, you get the embeddings, you apply self-attention
+ layer, you add the original input back and normalize and then you apply feed forward
+ to this, add it back and normalize right, so this is how you can see the all the operations
+ in a transformer and go to block okay, so this is how an complete transformer block
+ looks like, now there is still a major problem, I hope you can spot that, so that is right
+ now the representation of a beetle we know this can be computed in parallel right for
+ all the words, but it does not depend on position, if I change the position of the words I permute
+ them and I say drove of the beetle I will get the same representation for all the words
+ right, so it does not depend on the position of the each word in the sentence, so the order
+ does not matter here, so how do I bring in the position of a word into the picture right,
+ so what do I need to do so that the position also becomes important right and comes into
+ consideration, so that is why we introduce the position encoding of the words, so what
+ I will do I will have the word embedding plus I will add some additional information that
+ will tell me what is the position of that word, so I explicitly encode the position
+ information of the words, so that when I am taking dot products and everything I know
+ okay I am taking a dot product of the word that is three positions before me or two positions
+ after me and so on right, so I add a fixed quantity to the embedding activations and
+ is what I call as the position embedding okay, now how do I compute this position embedding
+ I mean there are various ways of doing that the original transformer paper said okay you
+ can use some sign and cosign of different periods, now what is the idea, so you see first of
+ all what how many values do you need for position embeddings, so there will be something like
+ how many positions a model can support, let us say model can support up to 512 positions
+ I have position 1, 2, 512 right or let me call it a different value, so let us say 500
+ positions a model let us say can only support up to 500 positions right, then in each position
+ I have a embedding right, so in each position I have 512 dimension embedding, so that means
+ I need 512 cross 500 parameters as a position embedding parameters, each position in each
+ dimension of them any what should be the value, so there are two things one is the position
+ second is the dimension, so what was the trick that they followed they said okay for each
+ dimension I will use a separate sine wave or cosine wave right, so this is like for dimension
+ 4 I will follow this wave, dimension 5 I will follow this wave, dimension 6 I will follow
+ this wave, dimension 7 yeah whatever I mean each dimension have a separate wave with different
+ period right, alternatively sine and cosine, so in one position sine, cosine and non right
+ the dimension right, so dimension is done what will I do of the positions right, so
+ for each dimension I will have a separate wave, so this is like let us say these are
+ the 512 dimensions of the ith words position embedding, but how will the across positions
+ how will the values change across position 1 to 500, so this is okay you just take the
+ value of this embedding different position this is let us say I am focusing on dimension
+ 4 right, at position 1 I will take its value, position 2, position 3, position 4 and so
+ on, position 20 right, so I will sample this wave at different positions I will get the
+ value and now you can do the same for all the other waves, so at position 20 what is
+ the value of dimension 5 this is the value, dimension 4 this is the value, dimension 7
+ is the value and dimension 6 this is the value right, so you have this 500 plus 512 things
+ by taking different waves for different dimensions and sampling at different positions right,
+ so you get this 500 plus 512 thing, 512 other dimensions and 500 are the number of positions
+ right, it is starting from 01 to 499 and so on, so I have this matrix completely decidable
+ I mean you completely know this matrix by this particular form, so you fix those right,
+ now one can also say fine like this is one way but I can also learn them like what is
+ the best possible position embeddings, so later models also try to learn this, so what
+ you can do you can learn a position embedding matrix right of shape 1 cross n right and
+ so each position you have a 1 cross n that is 512 dimension embedding and you learn it
+ for all the positions that you need, so that means you can have 500 cross 512 as the additional
+ level parameters and that means once I train it with the model, the model tells you what
+ are the best values of these positions and the word fish for example, if it comes at
+ position 3 versus position 17 I can have different embeddings, position embeddings for that right,
+ so that means what will happen finally for each one I will have the word embedding, I
+ will have the position embedding right and then I simply add them, so take a word like
+ thinking machines, I take the embedding for the word plus I add the position embeddings,
+ I get this as the input to the block and then I apply my normal self-attention, air normalization
+ feed forward and this is my output, so you apply position embedding only at the layer
+ 1 input, you do not need to apply it again and again right and this can be either learned
+ or you can use some tricks like sinusoidal embeddings. So now, so this is how you can
+ see a transfer with two encoders, you can put the output here as the input to the next
+ encoder and so on, you can have 6 encoders, 12 encoders and so on and then I can now start
+ applying the decoder also to that right, so this is now the encoder block and this is
+ the decoder block, decoder block is slightly different, I mean nearly the same there are
+ certain changes that you have that you will see in decoder compared to the encoder right,
+ so how is the decoder different, so I think we will see that after a small break, so we
+ will take a small break now and after the break we will come back and start understanding
+ what is a decoder architecture and transformer, how it is different from the encoder that
+ we have seen till now okay, yeah we will come back after the break, so till now what we
+ have discussed the transformer encoder architecture, so where the main modules for multi head self
+ attention and a feed forward network, of course we had other things like add and normalize,
+ we had the position embeddings right and together defines my encoder and we saw this
+ as roughly 4d square plus 8d square, so that is 12d square parameters per layer and each
+ layer will have same number of parameters, so if you want to find out number of parameters
+ in an encoder you can simply say 12d square into number of layers right, like if you take
+ the original transformer, so you will have 3 million into 6, so 18 million parameters
+ in just the encoder right, now how is decoder different right, I mean if you see here the
+ decoder has 3 things, self attention looks similar, feed forward looks similar, but there
+ is one extra thing called encoder decoder attention, why, because what is the task the
+ decoder, see encoder will finally produce some contextual representation of the input,
+ the decoder is supposed to look at that right and produce its output, at the same time it
+ will also look at its previous word that they generated, that is why you had 2 attention,
+ one is to focus on only the previous generation and second to focus on the encoder representation,
+ that is why you have 2 different attention here, self attention and also encoder decoder
+ cross attention and after that you do for feed forward right, so even in self attention
+ there is slight change why, because when you are training you want to feed do things in
+ parallel right, so what you will do, so I will feed the word like I am a student, this
+ in your generation I am a student, so you know this is what you have to generate right,
+ so and you want to start computing a loss in the decoder, so decoder will anyway do its
+ self attention and everything feed cross attention, feed forward layer by layer, finally at the
+ last layer you will generate some cross entropy loss, you will have cross entropy loss, what
+ is that minus log probability of the next token say m, cross entropy loss minus log
+ probability of the next token that you want to generate and you know what is the token
+ I have to generate anyway at the training time, so this phenomena as you know is called
+ teacher forcing, so you force the ground to token to be the input to the next, so that
+ means you already know what is the input to an entire sequence right, so just like encoder
+ I could compute in parallel right, I do not have to do one by one, so I can compute everything
+ in parallel at the training time because I know the entire sequence at the input, so
+ I can compute in parallel all the representations, the problem there is the different thing I
+ have to do here is, if I know that the next word is a and my task is also the next word
+ is a does not make sense, so at m if I know my next word is a through position I am reading
+ and I have to predict the next word as a that means I already have information I can I am
+ not learning much, so I have to somehow ensure that the transfer model does not look at the
+ future words right, I mean it only looks at the current word and the previous words that
+ is all in the decoder, so the only thing you do in the decoder in the attention is that
+ I do not allow the any token to look at the future tokens and everything else is same,
+ so how do you do that you say ok I have this attention matrix, so let us say I have attention
+ matrix square matrix each word I which word j it can look at and if I cannot look at j
+ I will put minus infinity, so what you do in all the future things you put minus infinity
+ right, so this can only look at itself this can look at previous word itself up to itself
+ right cannot look at future token and this is what is done minus infinity right, so
+ that it is just in the upper triangle you put it to minus infinity, so it cannot look
+ at future tokens but the things can happen in parallel right, so and you compute your
+ loss everything right in parallel you do not have to do auto regressively during training
+ at decoding at inference time you will still have to do in auto regressively one by one,
+ so this is one thing the self-admission is masked you put a mask minus infinity to the
+ future tokens, second thing so this is how it will look like the upper triangle will
+ be set to minus infinity right, the second thing that happens in decoder is that encoder
+ decoder attention, so that means the decoder will focus on that encoder repentations, so
+ let us say the other encoder repentations and at some point of decoder I am I have the
+ output of the self-admission, how would I focus all on the encoder remember, so this
+ would my query will have to come from here and where will key and value come from because
+ I have to focus on the encoder the key and value will have to come from here, that means
+ the key and value are residing here and the query matrix will be here right, so again I
+ need query key and values right and then query key values and W O everything, so that my
+ self-attention encoder decoder attention output is also obtained right, so in decoder first
+ I will have the self-attention output then I will have the encoder decoder attention output
+ and then I apply feed for pretend, so what is encoder decoder definition very similar
+ except that the query will come from the decoder and key and value will come from the encoder
+ right, so you will have again same learnable matrices W Q for encoder decoder W K for encoder
+ decoder W V for encoder decoder right and then you will also have W O for encoder decoder
+ same matrices multiple hats all of this will again repeat right except that the key and
+ value is coming from encoder and query is coming from the decoder right, that is the
+ only change that happens okay, now in decoding so you will keep on doing self-attention cross
+ attention cross attention feed forward right and finally across after all the layers you
+ get the output embedding output embedding, now I want to compute the loss right, I know
+ my ground tooth is I at the start I my ground tooth is I I want to generate I, so how do
+ I convert an embedding that is say 512 dimension, how do I use that to compute the loss right,
+ I know the ground tooth is I, so the way it is done is that I project it to the vocabulary
+ space my vocabulary space is may be huge 50,000 words 100,000 unique words and I get a distribution
+ probably distribution I need the distribution for the ground tooth work and I take minus
+ log probability of the ground tooth work as my loss cross entropy loss, so I keep on accumulating
+ this so this is minus log probability of I minus log probability of m a student I keep
+ on accumulating it that becomes my loss and all these parameters that you are seeing here
+ are trained via this loss, so you keep on accumulating this loss and train all these
+ parameters via this right, so something like I have this embedding output I have a linear
+ layer that will project in the vocabulary size right, now these will be some real values
+ so apply softmax, softmax will convert into probabilities and I take the I have the ground
+ tooth token, so I take the minus log probability of this the ground tooth token index and that
+ will become my loss right, it is as simple as that, so softmax is again coming in the
+ picture for converting the real values into distribution probability distribution from
+ which you can compute your loss ok, now transformers can also be used as language models what
+ is a language model you simply predict the next word right, so you see it is very easy,
+ so once I have the words I have the final, so this because I am predicting the next word
+ this will come into the decoder transformer only as a decoder, so I will simply use a
+ transformers as a decoder model and I keep on getting the representation for each word
+ and wherever I need the next word what I will do, this is a d dimension I convert it to
+ my vocabulary dimension, so how, so I had an embedding matrix that converted the original
+ input into embedding dimensions, so to convert a model dimension into vocabulary I use an
+ embedding layer d cross b right, so I will get a v dimension projection and I get a distribution
+ from that probabilities and from that I can generate a word right, the word with the highest
+ probability, so typically that is what is done, so why we use an embedding, so remember
+ so we did not specify in the beginning, so what will happen, so suppose I have an input
+ I am a student, so I you can simply feed as a one hot, I is one everything else is zero
+ in your vocabulary right and then you have an embedding matrix that will take that will
+ give me the actual embedding for the word I, so this will give me the d dimension, this
+ v dimension d dimension and this is some d cross v dimension embedding matrix, so this
+ can also be a learnable parameter in your model, so this embedding matrix, so that given
+ any word one hot representation you get this embedding right, so this is what is done in
+ the embedding side, we simply took it as if it is given to us, but you can have this matrix,
+ now when you want to generate the output at the final decoder you have a d dimension output
+ right, I want to convert into a vocabulary dimension, so you can see I can again reuse
+ this matrix, so e transpose this will convert this d to vocabulary dimension, so here it
+ converted a v to d, now I can convert it from d to v using the transpose of this embedding
+ and this is what we can call it as an embedding layer right, because in language modeling
+ what is my task given the sequence till now predict the next word, so I simply predict
+ the next word right from the output of decoder what is the next word, I take the word with
+ the highest probability and this becomes my next word right, so now I take the output
+ at the final token, I multiplied with an embedding layer, I get q logits, I apply softmax, I get
+ the probabilities, now if you are training I will take the minus log probability of the
+ correct token, if I am finally doing inference I will take the word with the highest probability
+ and there are many other decoding methods along with that that one can use right, so
+ this is how a transformer language model looks like, so suppose this is my i th word, i ferries
+ embedding, position embedding, I go through multiple layers, get the representation at
+ the final layer once I get the representation, I apply this unembedding matrix, I apply softmax,
+ I have the probabilities for all the tokens, I sample a token from that as per the distribution,
+ so now if you want to look at what are the number of parameters I will have in transformer
+ encoder decoder, so encoder we saw will be 12 D square into L, L is the number of layers
+ right because 4 D square in self-attention, 8 D square in the feed forward per layer,
+ what about decoder, see decoder has again self-attention is must, but number of parameters
+ do not change because of that, so it will have 4 D square per layer, feed forward again
+ will have 8 D square, what extra it has, it has encoder decoder attention, so for encoder
+ decoder it will have again the same thing except that query will reside here and key
+ and value will be at the encoder output, so you will have n w o, so you will again have
+ 4 D square parameters for the cross-attention, so total you have 16 D square per layer, so
+ 16 D square into L, so that means if you are using encoder decoder architecture for L layers
+ you may need 12 D square plus 16 D square that is 28 D square parameters per layer right
+ into L, now if you are simply using a decoder only transformer, how many parameters you
+ need, so decoder does not need an encoder decoder attention, decoder means there is only decoder,
+ so you use that when you have a simply language model right, you are simply given the previous
+ words you are generating the next word, there is no encoder right, so there is no encoder
+ decoder attention, so decoder only have mask self-attention, it has feed forward network,
+ that means it has simply 12 D square into number of layers that many parameters, so that means
+ the number of parameters in encoder only model and decoder only model are the same, but if
+ you have encoder decoder model, you will have more parameters because of cross-attention
+ ok.
+ So, now given this idea about the transformer architecture, let us see how do you pre-train
+ these architectures and we will see an example from bird, so how do you pre-train, what is
+ the idea of pre-train right, so in general how does the deep learning typically works,
+ so let us say I have a task of spam detection right, so that means I have a text and I have
+ some labels right, so I will pass this text to some neural network and I will train it
+ to predict the correct label in that spam not spam and I will train its weights right,
+ so typically start from random weights and I train it to some weights that are fine tuning
+ or whatever you want to call it, so you use these weights at the inference time to detect
+ with the detection, the problem is that in NLP there are huge number of applications
+ and huge number of domains, so I can talk about say customer support application where
+ I have given being given some E manuals and I have some question I want to answer the
+ question, so this is a domain of E manuals, I may have legal domain, I have given a contract,
+ I want to extract certain clauses from that, I may be given financial domain, I want to
+ extract what is the XPLL tag for each numeral, I may be given biomedical domain where I have
+ to do what are the proteins genes, what are interactions between that, so you see there
+ are so many domains, so many applications in each domain, so many languages, if I have
+ to follow this pattern right, I mean what I have to do for every problem I will start
+ from scratch right, I will get lot of data and I will get some model, I will get some
+ model, but this model does not work for any other problem right, so I will start from
+ scratch, I will get one model for classification right, theta classification, say financial
+ domain, another model for theta classification in biomedical domain and so on, another model
+ for Hindi and Bengali and so on, so you will have different models for each domain, each
+ language and for doing all that you need lot of data and for every task, every domain,
+ every language you need lot of data right and that is not scalable, I mean how do you
+ get such huge amount of data right, we are not so cheap, so and that is what is the issue,
+ I mean so in the new networks, so typically when you have a sentence, I need the word
+ embeddings, so let us say I can get word vectors directly, but then I have a whole lot of architecture
+ of the self-prediction and feed forward layer like so many parameters we saw, every task
+ you need separate data for training all of these will be like huge amount of data required
+ right, you may need 100 million parallel sentences for each pair, language pair translation,
+ so right and that means the data I have should be sufficient enough, so that I can learn
+ all aspect of a language just from the data right, if I do random initialization, so that
+ is why the idea came, why do I need to do random initialization always right, why cannot
+ I do something else, so can I not obtain a good enough initialization first and from
+ there I start for any task right, so this is where the pre-training fine-tuning paradigm
+ took over, I mean so idea was that okay, so what you do, you take a model start from scratch,
+ but you pre-train it starting from random rate on some very general data, where you
+ have abundance right available, so huge data available and you do not need people to label
+ the data for you right, so what can we task like predict the next one, you do not need
+ people to tell you what is the next word, you take any Wikipedia article you know what
+ is the next word from the previous sequence, so I simply train a model to predict the next
+ word right or something similar and you train it, so that it learns a lot about the language
+ already and that means and then after that you say okay, now you give me a task like
+ classification, I will simply change the model around the pre-trained weights and tune it
+ for classification, sentiment analysis or summarization all these applications, so how
+ does the field change, so in transfer learning, so I want to train a new network language
+ model on washed corpus where I do not need human labels right and so I do not need no
+ human labels required and once I have learned this pretend this, I use this knowledge to
+ transfer to any target task right and this has become a has been a very successful idea,
+ so because if I do simply so much learning, I need like millions of examples thousands
+ of example for every task right and but if you take a language model as a starting point
+ a pre-trained model, you get much smaller examples, you need much smaller number of
+ examples to do that, so what is a model learn from pre-training, so text you see what we
+ are doing, we are taking a large body of text and simply asking model to predict the next
+ word right, now if I do it over the enormous data like what kind of knowledge the model
+ can really learn right, so for example let us say this will be one sentence, there can
+ be canines everywhere, one dog in the front roof and two and you have to predict the next
+ word dogs, so what do you learn, you learn the plural of dog is dogs right, similarly
+ here it was not just big, it was enormous right, you need from big how do you get superlative
+ of big enormous right, the author of a rumor one's own age, so you need you learn what
+ who is the author, you need real world knowledge while doing next word prediction right, this
+ is all your training signal, you are training the model to predict wolf after given the
+ sentence, the doctor told me that predicting the pronoun right, and you can see this can
+ also introduce biases like you may have lot of data that is telling that here you are
+ predicting he rather than she and that can also introduce bias in your model that we
+ hear a lot about, so you are doing a lot of different kind of prediction, the square
+ root of 4 is 2 right, I mean you are learning also mathematics by doing this prediction,
+ so that is why language model it is pretend on a huge amount of data, it is doing next
+ word prediction for all kind of things right, so it is gaining different different kind
+ of knowledge, grammatical knowledge, mathematical knowledge, domain specific knowledge, names
+ of entities, names of people associating different things, so it learns all that through pre-training
+ right, and this can be transferred to in a task right, where it needs that, and this
+ is what is the pre-training fine-tuning paradigm, so you take you start from scratch right,
+ you start from scratch and but you do pre-training first things like language modeling, so what
+ you do you keep on passing a word and predict the next word, if you does not predict you
+ compute cross entropy loss, update your parameters right, I mean minus loc probability of correct
+ token, update your parameters, for training you only need the loss right, and then you
+ feed teacher forcing predict to complete loss, keep on committing loss, train the model,
+ so theta goes to theta pre-trained, now once you have a pre-trained model, you simply fine
+ tune it with small number of examples for different task, I want to now the theta fine
+ tune on classification, theta fine tune on sequence labeling right, and this will be
+ very small number like something like 1 K example, and this may be like millions and
+ billions of words, but this is done only once, and this you will do many times right, pre-trained
+ ones fine tune many times, compare it to where originally what you have to do, if you have
+ to start from theta and you have to directly go to theta classification, theta sequence
+ labeling, there you need like thousands of data like 100 K, 1 million right data points,
+ and this was very difficult to get so much data for each task, each language, each domain,
+ but now this is easy, so you can simply go from here to pre-trained model, once right
+ you do pre-training, release the model, and then everyone can go and fine tune right,
+ so that is what happened with BERT, so people fine tune BERT once, it was released like
+ it was used hundreds and thousands of times, since it was released, because you can now
+ simply start from that and tune it for a particular task, now when you talk about pre-trained
+ they can be two three different architectures, like I can pre-train only decoders, yeah there
+ is a slight issue here, so you can read like that, so I will tell this is decoder model,
+ you pre-train only encoders, there is an encoder decoder right, an example of just a decoder
+ select GPD model, GPD is just a decoder model, Claude is just a decoder model, Lama, Mistal
+ they are all decoder models, encoder you have the BERT family, BERT is an encoder model,
+ and encoder decoder you have Flanty 5 and BERT are the examples of encoder decoder models,
+ so encoder decoder has both, encoders has only encoders, so it will have bi-directional
+ and decoder will only go from, will only look at the previous token, not the future token,
+ so this is causal attention right, so three different architectures, and how do I pre-train
+ them, so I can pre-train encoders only, encoder decoder only, decoders only, so I will start
+ with just an encoder architecture, I have to understand what is the loss, how do I complete
+ the loss, so that I can update all my parameters, same for encoder decoder, decoder, and what
+ is my constraint, I do not need, I do not want to use human labels, I need to use all
+ the data available on the web, I do not need want to get human labels, just take the data
+ on the web and compute some loss, update my parameters, now among three which of the,
+ which architecture do you think is the easiest to pre-train, if you have all the data on
+ the web, now you may think about it, but it looks like decoder is the easiest, because
+ in decoder what you will do, you will simply predict the next word, so I can predict the
+ next word every time, why can't I do that in encoder, because encoder has bi-directional
+ context, so I cannot predict the next word, because I have to get context from both previous
+ words and the future words, so I cannot predict the next word, because I already know the
+ next words here, so how do I use encoder, how do I pre-train encoder, so this was again
+ very interesting, so you see what will happen, let us say I went to the market, if I want
+ to pre-train encoder I have to actually feed all of this in the encoder as the embedding,
+ and the last layer I get the representation of the last layer, and then I have to get
+ some loss, but all the sentences already known to me, so what will I really predict, so what
+ is the idea that they did, they said fine, I will use masks, I mean they had this very
+ nice idea that I will use masks, so yeah before corona times, so this is what, so what was
+ the masking here, so they said okay, say I went to the store, was the original sentence
+ in my data, so what did they say okay I have to predict some words, let me remove some
+ words and mask them, that means the model does not know what is the input, I do not
+ know they were bent here, I do not know there is store here, so what is the word I will
+ put there, I will put a mask, a placeholder mask, so that means my input is I mask to
+ put a mask, okay now I will do my encoding like my self-attention feed forward and all,
+ I get the final representation, then what will I do, the task is now at the final representation
+ at this token, you predict what was the input, what should have been the input, the input
+ should have been bent, at here you predict the input should have been stored, how will
+ the model figure that out, so idea is that if you have a good contextual representation,
+ you can know what should have been the word at this particular point, given the surrounding
+ words, that is the idea, but given the surrounding words you predict what should have been the
+ word at this position and that is why it is called a masked language model, you are not
+ predicting the next token, you are predicting the token that you have masked already, right,
+ so and how exactly they did that, they said okay if I simply do this, if I simply mask
+ some tokens and predict that, the model may get complicit and say I will only give good
+ representation whenever there is a mask in and I will predict the word, but otherwise
+ I will not care, but my huge case will be attached time, you are giving me a sentence,
+ I want to get a good contextual representation, right, I will not have mask at the run time,
+ so what will I do, so they say okay to ensure that the model gives a good representation
+ for all the words, they said okay to randomly sometimes I will replace a word with a random
+ word, you see I pitch that to the store, I mean pitch that does not make sense in the
+ sentence and I will predict what is the output, that means the model should figure out at
+ this point they should have been went and sometime I will keep the word as it is and
+ I still predict, so that the model has to make a good representation at all the words,
+ right, including mask or even if there is a normal word it has to make a good representation,
+ so they did it like some 15 percent of tokens total out of this 15 percent 80 percent times
+ they masked, that means overall 12 percent times a token was masked, 10 percent of times
+ it was rib based with a random token that means 15 into 10, 1.5 percent and 10 percent
+ of the times you leave the word unchanged but you still figure that out, so that means
+ again 1.5 percent time out of 15, so that is how they and they will only compute loss
+ for this 15 percent of the tokens, right, so that is for the BERT model and BERT model
+ they had released like a base model, a large model, base model had 12 layers, 768 model
+ dimension, 12 attention heads, 110 million parameters and BERT large had 12, 24 layers,
+ 1024 dimension, 16 attention heads and 340 million parameters and it used a vocabulary
+ of 30,000, now this is very small because it is used the idea byte pair encoding, so
+ it did not use the words but the sub words, so it used the sub words, so a long word will
+ be broken into its sub words to represent in the vocabulary, right and it was trained
+ on book corpus and English Wikipedia you see already 3.3 million words and it was done
+ on a that time it took like roughly 4 days on 64 TPU chips, but then I mean you pretend
+ only once and then it was fined in like many, many times, so yeah another view of seeing
+ the word BERT model, so you you have the sentence or is the sentence in your data you mask some
+ tokens and you play some token by some random words and you predict what should have been
+ the word at these positions after you get that good representation and from there you
+ have the loss minus the probability of the correct token, from the loss you train all
+ your parameters, so you do the sufficient number of times you have the good parameters
+ with you, right and then once you have the parameters then you can use that for any task
+ later on, like in the paper what they showed they can use for task like sentence pair classification
+ you are given two sentence classified whether they are similar sentence whether they are
+ contradicting each other and so on, how do you feed two sentence they said ok you have
+ a CLS token sentence 1, separator sentence 2 and you get the embedding for all the tokens
+ you predict the label, how do you do classification I have a specific token CLS token I feed the
+ entire sentence token 1 to n and for the CLS token I will predict the representation and
+ from that I will predict the class, right and similarly for question answering I will
+ CLS token I put question, separator, paragraph and predict what is the span in the paragraph
+ that answers my question and I may have some sentence tagging task where I am given a sentence
+ each word I have to predict what is the label for that word, so remember we talked about
+ we will first pretend it, so bird was a pretending part but to use it for any of these tasks
+ you have to do fine tuning, so you are pretending followed by fine tuning, so what is this fine
+ tuning involved right, so pretending already gave you the all the weights but now I want
+ to fine tune it for a particular task, so let us say I am doing single sentence classification,
+ so what will happen I am given a sentence and I have to classify into one of the labels
+ let us say I have three labels positive negative neutral, so I have a sentence, so let us say
+ token 1 to token n, this is a sentence, now in bird while pre-turning they had introduced
+ a specific token called CLS token, so you put CLS before the center sequence, right,
+ so this is your input, now you went go through the entire transform a bird pre-tent model,
+ so after the last layer you will get a the same dimension output, so bird used the model
+ dimension of 768, so you have a 768 dimension output at for each of the input, right and
+ the CLS token was specially designed for classification, so what you will do, so from the 768 dimension
+ CLS token embedding, now you try to predict the class, so that means I just need to predict
+ use a fully connected layer 768 cross 5 that cross 3 there are three labels that will convert
+ the 768 dimension into 3 class output, right and you do softmax, right over there you get
+ the probabilities and you have the minus law probability for the correct class, so I only
+ read this additional 768 cross 3 parameters and then I can find in my model, now you have
+ option whether you want to fine tune and architecture also, so people do that sometime
+ or you want to leave it as it is only train this additional parameters, right and that
+ is how you do for all other tasks like pair by sentence classification, there is some
+ pattern by which you feed it CLS token, sentence 1, separators, sentence 2 and predict for the
+ class labels at C, sequence labeling you are predicting for every token, so every token
+ you have the representation and then you predict a label for every token, right, so you will
+ have the number of parameters additional parameters you need will depend on what are the different
+ tags that you have, so if you are using 50 different tags I will use 768 dimension and
+ convert it to 50 dimension, 768 cross 50 that is how I can use some additional parameters
+ to fine tune for sequence labeling task K times dh, dh is the model dimension and K is
+ the number of tags that you have, part of speech tagging very similar you get the representation
+ you apply a layer that will convert the representation to the number of tags dimension, so all of
+ this becomes very easy once you have a between model you only need a small amount of data
+ and they did a benchmarking over this standard blue architecture and that had multiple tasks
+ like linguistic accessibility, COLA task, sentiment analysis task, paraphrase detection
+ task, sentence similarity task, analy task and so on and they try to find out what are
+ the performance of birth compared to the previous architectures that were there, so what they
+ found that across tasks the birth base and large models but outperforming the previous
+ models that were proposed, right and you see I mean on an average they are much high improvements
+ that compared to the previous models and that is where the birth model became very very
+ popular, the same model could be used for all the tasks that you have in the benchmark,
+ right and this was simply pretend encoders, right, pretend encoder you can use it for
+ any classification task, sequence labeling task, sentence payer task, question answering,
+ right everything, now the other two ways you can do pretending is if I take encoder decoder
+ models or the decoder models, now encoder decoders if I take the question is how do
+ I convert an input sentence, see in the data I just have sentences into some input and
+ some output, right there are various ways of doing that, so how exactly they did this
+ they said okay let us say this is my sentence, thank you for inviting me to your party last
+ week, so I have to convert some input and some output from here, so what will my input
+ they said okay let me corrupt this sentence, so I removed something, so I removed foreign
+ writing put it by some sentinel X, removed large put by sentinel Y, so this will be
+ my input to the model, what is the output, output will be what should come under X what
+ should come under Y, so what will be X will have foreign writing Y should have last and
+ then you end with G, so now once you input output you know what to fill in encoder, this
+ will go into encoder and this will be the predicted by the decoder, right, so once you
+ know what is predicted by the decoder you can compute the loss, decoder loss is easy
+ minus the probability of the correct token, so keep on computing the loss for the decoder
+ add it and train all your parameters, so like that you can take huge data and train your
+ encoder decoder architecture, so this is what was T5 model, so text to text transfer transformer
+ they train in that manner and then they showed they can use it for different different tasks
+ like I can use for translation, I put source at the input, target at the output, I can
+ use it even for things like I have two sentences, find out similarity, my decoder can even generate
+ a number, similarity is 3.8, right, I have a sentence at the input, a document as the
+ input and you summarize it, you generate the summary at the output, so encoder decoder architecture,
+ so and then finally decoder is the simplest, training decoder is the simplest because you
+ want to simply predict the next word, so you take the data and keep on predicting the next
+ word, so I feed the data W1 predict W2, teacher forcing, put it back predict next word, so
+ keep on doing that, I do not need to do any changes and I can compute loss for all 100
+ percent of the tokens, that I was not able to do with encoder models, every token predict
+ next word, compute loss and use that, right, so and the GPT model this came very same same
+ time as BERT roughly, so very similar architecture, it had slightly more parameters, why because
+ they used slightly higher vocabulary, so they had roughly 10 K more tokens in vocabulary
+ and 10 K into 768, if you do this will be roughly like 7 million difference from the
+ BERT parameters, so this was the GPT model and then slowly all other models like GPT,
+ GPT 2, GPT 3, chat GPT and all came in, right, now I am not going into details about the
+ other architectures, the focus of this lecture was mainly to introduce the transformer architecture
+ and tell you what is pre-training and briefly discuss what is a BERT architecture, right,
+ so where you pre-train encoders, so we talked about all these interesting ideas, I hope
+ this became clear to you, so overall to conclude, so transformer architecture along with the
+ pre-training idea has transformed the field of AI, particular in the field of NLP and
+ this has been backbone for most of the foundation models that we see in text, vision, multimodal
+ and so on, so with that I will end now and we can take some questions.
+ Could you please explain where the dimension 1 cross dv changing to 1 cross h dv, right,
+ so what I will do, I will just use one of the slide where there is some space to explain
+ this, so let me know what happens in self-attention, so in single hat, so you have h hats, so think
+ about one hat, right, one hat, you are what you are doing, you are taking a query key
+ and value and your output is a weighted average of all the values and each values of dimension
+ dv, so single hat you have dv dimension output, right, dv is the dimension of the value, now
+ think about having h hats, so each hat has dv dimension output, now what do you do with
+ that, you simply concatenate them one after another, right, so output of first hat, second
+ hat, hatchet hat and you concatenate them one after another, so how many dimensions you
+ will have, you will have h dv, so that is how the 1 cross dv from a single attention
+ hat got transformed to 1 cross h dv for h attention hats, right, I hope that is clear.
+ Why do we consider taking dq is equal to dk, is it by convention, very good question you
+ see, so why do we take dq is equal to dk, see depends on how you are computing your
+ self-attention, so what is the self-attention formulaism, so you take a vector, so you take
+ two words x i and x j, I get the key value and query from the for i th word, the query
+ key and value from the j th word, right, now for self-attention let us say I take from
+ the i th word and j th word, query comes from the i th word and the key comes from the j
+ th word, so that means I will do q i dot q j divide by square root of dk, now I am doing
+ a dot root of query from i and key of j, now what is the dimension of query i, so query
+ i's dimension is dq, so q i is dimension dq and k j is dimension dk, so if I am doing
+ a dot product they too have to have the same dimensions, that is why we take dq is equal
+ to dk, and I mean of course there are other formulations of attention that were not so
+ popular in transformers where you put some multiplicative matrix in between, so you can
+ have q i, k j and put some matrix in between, now if you put a matrix in between what can
+ happen you can now use the matrix to change the dimensions, so then you may be allowed
+ to use different dimensions, but if you use the standard self-attention framework you have
+ to have the same dimensions, so that you can use a dot product between them, no other questions.
+ Okay then, so yeah thank you all for participating and we will have a hands on session following
+ this, thank you.
