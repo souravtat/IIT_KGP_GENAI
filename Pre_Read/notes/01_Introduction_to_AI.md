@@ -11,6 +11,8 @@
 This introductory lecture covers the fundamental concepts of AI — from how natural intelligence inspires machine learning, through classical feature extraction and classifiers, to modern deep neural networks and generative models.
 
 ---
+![Feature Space Boundary](../Images/01_intro/feature_space_boundary.png)
+![Traditional ML](../Images/01_intro/Traditional_ML.png)
 
 ## 1. Natural Intelligence & Pattern Recognition `[0:00 – 3:00]`
 
@@ -29,7 +31,11 @@ flowchart LR
 
 ---
 
+
+
 ## 2. Feature Vectors & Descriptors `[3:00 – 12:00]`
+
+![Descriptors](../Images/01_intro/descriptors.png)
 
 ### 2.1 What is a Feature Vector? `[4:46 – 7:00]`
 
@@ -46,6 +52,8 @@ A **feature vector** is a numerical representation of an object — think of it 
 ### 2.2 Types of Descriptors `[7:00 – 12:00]`
 
 **Boundary descriptors** — describe the *outline/shape* of an object:
+
+
 - Fourier Descriptors
 - Chain Codes
 - Polygon Approximation + Autoregressive Model
@@ -92,6 +100,8 @@ Given a curved boundary:
 1. Approximate it with a polygon (n vertices)
 2. Measure internal angles: α₁, α₂, α₃, ..., αₙ (scanned clockwise or anticlockwise)
 3. Treat this angle sequence as a "time series"
+![Boundary Descriptor](../Images/01_intro/boundary_descriptors1.png)
+
 
 ### 3.2 The Autoregressive (AR) Model `[11:18 – 12:30]`
 
@@ -119,6 +129,8 @@ Each angle αᵢ is predicted as a linear combination of the *p* previous angles
 
 ### 3.3 Adding Statistical Moments `[12:34 – 15:15]`
 
+
+![Boundary Descriptor](../Images/01_intro/boundary_descriptors2.png)
 For finer detail, each polygon segment is also analyzed:
 1. Normalize the curved segment between two polygon vertices so area under it = 1
 2. This turns it into a probability density function P(R) vs R
@@ -130,6 +142,7 @@ For finer detail, each polygon segment is also analyzed:
 | 3rd | Skewness | Left/right asymmetry of the curve |
 | 4th | Kurtosis | How peaked or flat the curve is |
 
+![Boundary Descriptor feature](../Images/01_intro/boundary_descriptors_features.png)
 The final feature vector concatenates AR coefficients + statistical moments → a richer shape descriptor.
 
 > **Jargon**: *Statistical Moments* — Numerical summaries of a distribution's shape. The mean (1st moment) is the center, variance (2nd) is the spread, skewness (3rd) tells you if it leans left or right, kurtosis (4th) tells you if it's pointy or flat compared to a Gaussian. Higher moments capture increasingly fine shape details.
@@ -199,7 +212,16 @@ Uses Bayes' theorem to assign class labels:
 
 $$P(\text{class} | \mathbf{x}) = \frac{P(\mathbf{x} | \text{class}) \cdot P(\text{class})}{P(\mathbf{x})}$$
 
+![Bayes Classifier](../Images/01_intro/Bayes_classifier_rule.png)
+
+ Given an unknown feature vextor X which class it belongs P(w|X)
+
+ ![Bayes Equation](../Images/01_intro/bayes_equ.png)
+  ![Bayes Equation](../Images/01_intro/bays_equ2.png)
+
 ```python
+
+
 # Pseudocode
 posterior = (likelihood * prior) / evidence
 # i.e.
@@ -213,6 +235,48 @@ predicted_class = "bird" if prob_bird_given_x > prob_dog_given_x else "dog"
 Classify by picking the class with highest posterior probability.
 
 > **Jargon**: *Bayes' Theorem* — A formula for updating beliefs. Given prior knowledge about class proportions (P(class)) and how likely the observed features are for each class (P(x|class)), compute the probability of each class given the observation. It's the mathematical foundation of spam filters, medical diagnosis, etc.
+
+##  Bayesian Classification Revisited `[1:06:00 – 1:16:14]`
+
+Given an unknown feature vector **x**, classify using the class-conditional probability density:
+
+### The Multivariate Gaussian Class-Conditional PDF
+
+$$P(\mathbf{x} | \omega_i) = \frac{1}{(2\pi)^{d/2} |\Sigma_i|^{1/2}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu}_i)^T \Sigma_i^{-1} (\mathbf{x} - \boldsymbol{\mu}_i)\right)$$
+
+```python
+# Pseudocode: probability of observing features x, assuming class i
+import numpy as np
+
+def class_conditional_prob(x, mean_i, cov_i):
+    d = len(x)
+    diff = x - mean_i                                    # how far x is from class center
+    exponent = -0.5 * diff.T @ np.linalg.inv(cov_i) @ diff  # scaled distance
+    normalization = 1 / (((2 * np.pi) ** (d/2)) * np.sqrt(np.linalg.det(cov_i)))
+    return normalization * np.exp(exponent)
+```
+
+> *Reads as*: "How likely is it to see feature vector x if it came from class i? Measure the distance from x to the class center (accounting for the class's shape/spread via covariance), then convert that distance to a probability. Closer to center = higher probability."
+
+> *Example*: If bird features cluster around mean=[2,3] with tight spread, and x=[2.1, 3.2] — that's close, so P(x|bird) will be high. If x=[8, 1] — that's far away, so P(x|bird) will be near zero.
+
+| Symbol | Meaning |
+|--------|---------|
+| **x** | Unknown feature vector (d-dimensional) |
+| ωᵢ | Class i (e.g., "bird" or "dog") |
+| μᵢ | Mean vector of class i (computed from training data) |
+| Σᵢ | Covariance matrix of class i (computed from training data) |
+| d | Number of dimensions in feature vector |
+
+### Classification Rule
+
+1. Compute P(bird | **x**) and P(dog | **x**) using Bayes' theorem
+2. Assign **x** to whichever class has higher posterior probability
+
+> **Jargon**: *Class-Conditional Probability* P(x|ωᵢ) — "How likely would I observe these features if this object were actually a bird?" Computed using the multivariate Gaussian formula above, where each class has its own mean and covariance learned from labeled training examples.
+
+> **Math Note**: *Multivariate Gaussian* — The generalization of the bell curve to multiple dimensions. Instead of one mean and one variance, you have a mean vector (center in N-D space) and a covariance matrix (shape of the elliptical contours). The exponent term (x - μ)ᵀΣ⁻¹(x - μ) is the *Mahalanobis distance* — measuring how far x is from the class center, accounting for the shape of the class distribution.
+
 
 ### 6.2 Support Vector Machines (SVM) `[31:14 – 33:00]`
 
@@ -275,7 +339,21 @@ tanh    = lambda x: math.tanh(x)               # squashes to (-1, 1)
 
 ### 7.3 The XOR Problem `[39:57 – 44:00]`
 
-A single neuron (perceptron) can only learn **linearly separable** functions (AND, OR). XOR requires a non-linear boundary — this needs **multiple layers**.
+A single neuron (perceptron) can only learn **linearly separable** functions (AND, OR). 
+![AND](../Images/01_intro/AND.png)
+![AND_Neuron](../Images/01_intro/AND_Dia.png)
+
+![OR](../Images/01_intro/OR.png)
+
+
+![XOR_Non_linear](../Images/01_intro/XOR_not_single_speration.png)
+![XOR_Neuron](../Images/01_intro/XOR_TT.png)
+
+![XOR_dia](../Images/01_intro/XOR_dia.png)
+
+
+
+XOR requires a non-linear boundary — this needs **multiple layers**.
 
 ```
 XOR Truth Table:        Why it's not linearly separable:
@@ -322,6 +400,9 @@ flowchart LR
 
 ### 9.2 Autoencoders `[45:30 – 48:00]`
 
+![Auto Encoder dia1](../Images/01_intro/Autoencoder_dia.png)
+![Auto Encoder dia2](../Images/01_intro/Autoencode_dia_image.png)
+
 A neural network that learns to compress data into a lower-dimensional representation and then reconstruct it.
 
 ```mermaid
@@ -336,12 +417,19 @@ flowchart LR
 
 ### 9.3 Convolutional Neural Networks (CNN) `[50:43 – 55:00]`
 
+![Gabor Filter](../Images/01_intro/gabor_filter.png)
+
 CNNs use **kernels** (small weight matrices) that slide over the input, detecting local patterns (edges, textures, shapes):
+
+![CNN Architectire](../Images/01_intro/cnn_archi.png)
 
 ```
 Input Image → [Conv + ReLU] → [Pool] → [Conv + ReLU] → [Pool] → [FC] → Output
               (detect edges)   (shrink)  (detect shapes)  (shrink)  (classify)
 ```
+
+![CNN kernel](../Images/01_intro/cnn_dia.png)
+![CNN kernel trainable](../Images/01_intro/cnn_filter_trainable.png)
 
 | Term | Meaning |
 |------|---------|
@@ -349,6 +437,8 @@ Input Image → [Conv + ReLU] → [Pool] → [Conv + ReLU] → [Pool] → [FC] �
 | Feature Map | Output of applying one kernel across the image |
 | Pooling | Downsampling to reduce spatial size (max pooling = take largest value in a window) |
 | Stride | How many pixels the kernel moves each step |
+
+
 
 > **Jargon**: *Convolution* — Mathematically, sliding a filter over an input and computing the dot product at each position. Intuitively: "does this local region match the pattern this filter detects?" Each filter specializes in detecting one type of pattern.
 
@@ -370,6 +460,8 @@ Input Image → [Conv + ReLU] → [Pool] → [Conv + ReLU] → [Pool] → [FC] �
 ## 11. Bias Term & Augmented Vectors `[59:00 – 1:01:00]`
 
 The lecture shows how the bias simplifies math by augmenting the feature vector:
+
+![bias](../Images/01_intro/bias.png)
 
 **Without bias**: The decision boundary equation is `ax₁ + bx₂ + c = 0` (3 parameters)
 
@@ -399,46 +491,6 @@ This trick absorbs the bias into the weight vector, making the math (and backpro
 
 ---
 
-## 12. Bayesian Classification Revisited `[1:06:00 – 1:16:14]`
-
-Given an unknown feature vector **x**, classify using the class-conditional probability density:
-
-### The Multivariate Gaussian Class-Conditional PDF
-
-$$P(\mathbf{x} | \omega_i) = \frac{1}{(2\pi)^{d/2} |\Sigma_i|^{1/2}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu}_i)^T \Sigma_i^{-1} (\mathbf{x} - \boldsymbol{\mu}_i)\right)$$
-
-```python
-# Pseudocode: probability of observing features x, assuming class i
-import numpy as np
-
-def class_conditional_prob(x, mean_i, cov_i):
-    d = len(x)
-    diff = x - mean_i                                    # how far x is from class center
-    exponent = -0.5 * diff.T @ np.linalg.inv(cov_i) @ diff  # scaled distance
-    normalization = 1 / (((2 * np.pi) ** (d/2)) * np.sqrt(np.linalg.det(cov_i)))
-    return normalization * np.exp(exponent)
-```
-
-> *Reads as*: "How likely is it to see feature vector x if it came from class i? Measure the distance from x to the class center (accounting for the class's shape/spread via covariance), then convert that distance to a probability. Closer to center = higher probability."
-
-> *Example*: If bird features cluster around mean=[2,3] with tight spread, and x=[2.1, 3.2] — that's close, so P(x|bird) will be high. If x=[8, 1] — that's far away, so P(x|bird) will be near zero.
-
-| Symbol | Meaning |
-|--------|---------|
-| **x** | Unknown feature vector (d-dimensional) |
-| ωᵢ | Class i (e.g., "bird" or "dog") |
-| μᵢ | Mean vector of class i (computed from training data) |
-| Σᵢ | Covariance matrix of class i (computed from training data) |
-| d | Number of dimensions in feature vector |
-
-### Classification Rule
-
-1. Compute P(bird | **x**) and P(dog | **x**) using Bayes' theorem
-2. Assign **x** to whichever class has higher posterior probability
-
-> **Jargon**: *Class-Conditional Probability* P(x|ωᵢ) — "How likely would I observe these features if this object were actually a bird?" Computed using the multivariate Gaussian formula above, where each class has its own mean and covariance learned from labeled training examples.
-
-> **Math Note**: *Multivariate Gaussian* — The generalization of the bell curve to multiple dimensions. Instead of one mean and one variance, you have a mean vector (center in N-D space) and a covariance matrix (shape of the elliptical contours). The exponent term (x - μ)ᵀΣ⁻¹(x - μ) is the *Mahalanobis distance* — measuring how far x is from the class center, accounting for the shape of the class distribution.
 
 ---
 
