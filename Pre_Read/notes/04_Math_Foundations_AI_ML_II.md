@@ -136,6 +136,8 @@ flowchart LR
 ```txt
 -------------Explanation--------------------
 ```
+# Statistic vs. Estimator
+
 ## The core intuition
 
 Before diving into formulas, the key question this lecture answers is:
@@ -147,6 +149,16 @@ Before diving into formulas, the key question this lecture answers is:
 
 An **estimator** is simply a *statistic that has been assigned a job*: to guess the value of some unknown population parameter (like μ or σ²).
 
+---
+
+## Background you need first
+
+- **Population parameter (θ)**: A fixed but *unknown* number describing the whole population (e.g., true mean μ, true variance σ²). You never observe it directly.
+- **Random sample X₁, X₂, ..., Xₙ**: n observations drawn from a distribution — here, a Normal distribution N(μ, σ²), meaning bell-curve-shaped data with mean μ and spread (variance) σ².
+- **Random variable**: A quantity whose value depends on chance/the sample drawn. Since your data X₁...Xₙ are random, *any function built from them* is also random — it would come out differently if you re-sampled.
+
+---
+
 ## Definition 1: Statistic
 
 | Term | Meaning |
@@ -154,6 +166,79 @@ An **estimator** is simply a *statistic that has been assigned a job*: to guess 
 | **Statistic** | Any function T(**X**) of the random variables (data) that does **NOT** contain any unknown parameter. |
 | Why it matters | Because it's built only from data, you can always compute its value once you have the data — nothing "secret" is needed. |
 | Bonus fact | Since it's a function of random data, a statistic is *itself* a random variable — it has its own distribution, and would take a different value if you drew a new sample. |
+
+**Notation:**
+- **T(X)** — statistic as a function of the *random variables* X (before you collect data). This is the random-variable version.
+- **T(x)** — same function but evaluated at the *actual observed numbers* x (after data collection). This is one fixed, realized number.
+
+---
+
+## Definition 2: Estimator
+
+| Term | Meaning |
+|---|---|
+| **Estimator** | A statistic T(**X**) that is *specifically used* to approximate/guess an unknown parametric function g(θ) (e.g., g(θ) = μ, or g(θ) = σ²). |
+| **Estimate** | The actual realized *number* you get when you plug in your observed data x into the estimator: T(**x**). It's one specific value, not a random variable. |
+
+**Notation shortcut (used loosely, but know the difference):**
+- ĝ(θ) = T(**x**) → the **estimate** (a specific number, e.g., "3.2") — for a *particular sample*.
+- ĝ(θ) = T(**X**) → the **estimator** (a random variable, a recipe/formula) — before data is plugged in.
+
+The "hat" (^) symbol always means *"our best guess of..."* — e.g., σ̂² means "our estimate of σ²".
+
+---
+
+## Worked Example (from the lecture)
+
+Say X₁, ..., Xₙ are random samples from N(μ, σ²) — μ and σ² are the true, unknown mean and variance.
+
+**Case A — IS a statistic ✅**
+
+$$
+\hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2
+$$
+
+- Here **X̄** = sample mean = (1/n)ΣXᵢ — computed *entirely from your data*.
+- Nothing in this formula requires knowing the true μ or σ².
+- ✅ You can calculate this the moment you have your n data points.
+- Since it's a valid statistic *and* it's being used to guess σ², it also qualifies as an **estimator** of σ².
+
+**Case B — NOT a statistic ❌**
+
+$$
+\frac{1}{n}\sum_{i=1}^{n}(X_i - \mu)^2
+$$
+
+- This formula uses **μ**, the *true population mean* — which is unknown in real life.
+- ❌ You cannot compute this in practice because you don't know μ.
+- So this is **not a statistic** (it's sometimes called a "quasi-statistic" or theoretical quantity) — **unless μ happens to be known** (a special case).
+- **Special case called out in the notes**: *if μ is known* (rare, but possible in some problems), then this formula suddenly becomes computable, and can be used as an **estimator of σ²**.
+
+**Key contrast:** Same-looking formula, one small swap (X̄ vs μ) — determines whether it's a real-world-usable statistic or just a theoretical construct.
+
+---
+
+## Quick comparison table
+
+| | Statistic | Estimator |
+|---|---|---|
+| Definition | Function of data only, no unknown parameters | A statistic *used* to estimate g(θ) |
+| Can always compute from data? | Yes | Yes (it's a type of statistic) |
+| Is it random? | Yes (has a distribution) | Yes (same reason) |
+| Purpose | General building block | Specifically aimed at guessing a parameter |
+| Example | X̄ (sample mean) | X̄ used to estimate μ |
+
+> Every estimator is a statistic, but not every statistic is deliberately being used as an estimator (though most are, in inference contexts).
+
+---
+
+## Analogy
+
+Think of a **statistic** as any tool you can build using only materials you actually have in your garage (your data). A formula that needs μ is like a blueprint that requires a part you don't own — you can draw it, but you can't build it. An **estimator** is just a statistic-tool that you've decided to use for a specific purpose: measuring something you can't directly see (the true parameter).
+
+---
+
+**Memory hook:** *A statistic is what you CAN compute from data alone; an estimator is that same computable thing used to GUESS the parameter you can't see.*
 
 
 ```txt
