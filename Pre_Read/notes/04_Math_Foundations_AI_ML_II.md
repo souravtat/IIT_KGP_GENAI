@@ -34,6 +34,12 @@ This lecture bridges statistics and machine learning by formalizing the estimati
 
 ### 1.2 The Essence of Statistical Learning `[09:03 – 11:58]`
 
+What Is Statistical Learning?
+In essence, statistical learning refers to a set of approaches for estimat-ng some unknown function f. Such learning has two major purposes
+• Prediction → Based on the model predict me raisable given the other s
+• Inference  -> Specification of the model parameter
+
+
 The goal is to estimate some unknown function **f** for two purposes:
 
 ```mermaid
@@ -50,6 +56,12 @@ flowchart LR
 
 ## 2. Parametric vs. Non-Parametric Methods `[11:58 – 14:36]`
 
+How Do We Estimate the unknown function f?
+- Parametric
+- Non-parametric Methods
+
+
+
 | Aspect | Parametric | Non-Parametric |
 |--------|-----------|---------------|
 | Assumptions | Known distribution family f(θ) | f is continuous, smooth (mild assumptions) |
@@ -58,9 +70,40 @@ flowchart LR
 | Data requirement | Smaller samples OK | Often needs large n |
 | Example | Linear regression, Gaussian models | Kernel density estimation, k-NN |
 
+
+**Example** :  Parametric vs Non-Parametric — Regression vs Trees
+
+| Aspect              | Regression (Parametric)          | Trees (Non-Parametric)              |
+|---------------------|-----------------------------------|--------------------------------------|
+| Assumption          | Linear relationship               | None — just splits on data           |
+| Flexibility         | Low (misses curves)               | High (captures any shape)            |
+| Small data          | Works well                        | Prone to overfit                     |
+| Grows with data?    | No — always same # coefficients   | Yes — deeper/more splits             |
+
+**Intuition:** Regression is like fitting a **ruler** to your points (fixed shape, 2 numbers: slope + intercept). A tree is like **drawing boxes** around clusters of similar points — the more data, the more/smaller boxes it can draw.
+
+
 > **Jargon**: *Parametric model* — A model fully specified by a finite set of parameters θ. Like a class with fixed fields — you just need to fill in the values.
 
 > **Jargon**: *Non-parametric model* — A model not constrained to a fixed parameter set. Like a dynamically-sized data structure that grows with the data.
+
+**Explanation**
+
+*Regression (Parametric)*:
+
+- Assumes a fixed form: y = β0 + β1x1 + β2x2 + ... + ε
+- Model = just the β coefficients. Learn them (e.g., via OLS), and you’re done — fixed number of parameters no matter how much data you have.
+- Rigid: if the real relationship is curved/non-linear, the straight-line assumption is just wrong, no matter how much data you feed it (high bias).
+- Data-efficient: works fine with small n, precise if the linear assumption holds.
+
+*Tree-based methods (Non-Parametric)*:
+
+- No assumed formula. The tree just keeps splitting the data based on feature thresholds (e.g., age < 30, income > 50k) until regions are pure/homogeneous.
+- Model complexity grows with the data — more data → deeper trees, more splits, more “parameters” (split rules). Not fixed in advance.
+- Flexible: can capture non-linear patterns, interactions, weird shapes automatically — no need to guess the right formula.
+- Needs more data: with few samples, trees overfit easily (memorize noise instead of a pattern) — high variance.
+
+
 
 ---
 
@@ -89,6 +132,36 @@ flowchart LR
 > **Jargon**: *Statistic* — A function of the observed data only (no unknown parameters). When viewed as a function of random variables, it's itself a random variable with a distribution.
 
 > **Jargon**: *Estimator* — A statistic used to approximate an unknown parameter or function of parameters. Like a function that computes a "best guess" from data.
+
+```txt
+---------------------------------
+```
+## The core intuition
+
+Before diving into formulas, the key question this lecture answers is:
+
+> **"Can I actually compute this number just from my data — or do I need to secretly know the true population value first?"**
+
+- If you can compute it **using only the data you observed** → it's a **statistic**.
+- If computing it requires you to **know the true (unknown) parameter** (like the real population mean μ) → it's **not a statistic** — it's just a theoretical quantity you could never actually calculate in real life.
+
+An **estimator** is simply a *statistic that has been assigned a job*: to guess the value of some unknown population parameter (like μ or σ²).
+
+## Definition 1: Statistic
+
+| Term | Meaning |
+|---|---|
+| **Statistic** | Any function T(**X**) of the random variables (data) that does **NOT** contain any unknown parameter. |
+| Why it matters | Because it's built only from data, you can always compute its value once you have the data — nothing "secret" is needed. |
+| Bonus fact | Since it's a function of random data, a statistic is *itself* a random variable — it has its own distribution, and would take a different value if you drew a new sample. |
+
+
+```txt
+----------------Explanation-----------------
+```
+
+
+
 
 ### 4.2 Unbiasedness `[27:49 – 32:22]`
 

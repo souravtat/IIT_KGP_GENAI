@@ -51,6 +51,9 @@ A **feature vector** is a numerical representation of an object — think of it 
 
 ### 2.2 Types of Descriptors `[7:00 – 12:00]`
 
+
+**Handcrafted features:**
+
 **Boundary descriptors** — describe the *outline/shape* of an object:
 
 
