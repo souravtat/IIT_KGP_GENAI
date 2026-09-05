@@ -134,7 +134,7 @@ flowchart LR
 > **Jargon**: *Estimator* — A statistic used to approximate an unknown parameter or function of parameters. Like a function that computes a "best guess" from data.
 
 ```txt
----------------------------------
+-------------Explanation--------------------
 ```
 ## The core intuition
 
@@ -157,7 +157,7 @@ An **estimator** is simply a *statistic that has been assigned a job*: to guess 
 
 
 ```txt
-----------------Explanation-----------------
+--------------Explanation----------------------
 ```
 
 
