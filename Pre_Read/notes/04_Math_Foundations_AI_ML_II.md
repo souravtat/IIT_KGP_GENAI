@@ -876,6 +876,60 @@ flowchart TD
 > **Jargon**: *Gaussian Mixture Model (GMM)* — A mixture of K Gaussian distributions. A model-based approach to clustering that gives soft assignments (probabilities) rather than hard labels like K-means.
 
 ---
+```txt
+----------------------------Explanation Starts-------------------------
+```
+# EM Algorithm for Mixture Models
+
+## The Problem: What is a Mixture Model?
+
+**Intuition first:** Imagine you have exam scores for a whole school, but secretly the school has two groups of students — "regular" and "advanced" — and each group scores around a different average. If you just look at everyone's scores together, you won't see one bell curve — you'll see **two bumps** (bimodal distribution).
+
+The catch: **you don't know which group each student belongs to.** That group label is *hidden* — statisticians call this a **latent variable**.
+
+> **Latent variable (Z)** — an unobserved variable that would explain the data if we knew it. Here, Z = "which group/cluster does this data point belong to?"
+
+![mixture](../Images/04_math/mixture.png)
+
+### The formula
+
+$$f(x) = \sum_{k=1}^{K} \pi_k \cdot f_k(x;\theta_k), \quad \sum_k \pi_k = 1$$
+
+
+
+| Symbol | Meaning |
+|---|---|
+| K | Number of hidden groups/components |
+| pi_k | Mixing weight — probability a point comes from group k. All pi_k sum to 1. |
+| f_k(x; theta_k) | Distribution of group k (e.g. Gaussian with mean mu_k, std sigma_k) |
+| f(x) | Overall observed distribution — weighted blend of all groups |
+
+**Why normal MLE doesn't work:** because Z is unknown, the likelihood becomes a sum inside a log — no clean closed-form solution.
+
+- l(theta, x, z) = **complete likelihood** — easy to compute IF hidden labels z were known.
+- l(theta, x) = integral over z of l(theta, x, z) = **marginal likelihood** — the real (hard) likelihood of observed x only.
+
+---
+
+## The Solution: EM Algorithm
+
+**Core idea:** guess the group memberships, optimize parameters as if that guess were true, repeat until stable.
+
+> **EM = Expectation-Maximization.** Iterative MLE method for hidden/missing data. Alternates E (guess hidden state) and M (optimize params). Likelihood never decreases each iteration.
+
+
+
+
+
+
+**Contrast:** K-means gives hard labels; EM/GMM gives probabilities (e.g. 60%/40%) — useful for overlapping clusters.
+
+---
+
+**Memory hook:** *EM = "guess who's in which group (E), then update the group's stats using that guess (M), repeat till stable."*
+```txt
+-------------------------------Explanation Ends------------------------------------
+```
 
 ## 9. Least Squares Estimation `[1:36:53 – 1:44:05]`
 

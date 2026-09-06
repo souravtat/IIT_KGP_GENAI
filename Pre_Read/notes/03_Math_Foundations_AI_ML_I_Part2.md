@@ -136,6 +136,9 @@ $$X_{n \times 3} \cdot \begin{bmatrix} 1 & 0 \\ 0 & 0 \\ 0 & 1 \end{bmatrix} = X
 selector = np.array([[1, 0], [0, 0], [0, 1]])  # Select cols 1, 3
 X_selected = X @ selector
 ```
+![matmul_scaling](../Images/03_math/matmul_scaling.png)
+
+![matmul](../Images/03_math/matmul.png)
 
 > **Jargon**: *Feature selection* — Choosing a subset of input variables for model training. Reduces dimensionality, noise, and overfitting. Matrix multiplication provides the algebraic framework.
 
