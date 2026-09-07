@@ -94,6 +94,111 @@ $$h_\theta(\mathbf{x}) = \boldsymbol{\theta}^T \mathbf{x} = \sum_{j=0}^n \theta_
 
 > **Jargon**: *Model Parameters (θ)* — The tunable numbers (θ₀, θ₁, ..., θₙ) that define exactly which line/plane/hyperplane the hypothesis represents. Learning = finding the best θ.
 
+```txt
+----------------------------------Explanation Starts------------------------------
+```
+# Matrix Multiplication as a "Column Picture" — House Price Example
+
+## Clarification
+
+- **X = actual data** (feature values from the training examples)
+- **θ = parameters** (weights learned by the model)
+- Prediction = **Xθ** (data matrix times parameter vector)
+
+## Setup
+
+**θ (parameters, learned by the model) — a single column vector:**
+
+θ = [ 50, 30, 10 ]ᵀ
+
+## Why the ᵀ appears on θ and on the extracted columns
+
+Writing a column vector vertically takes multiple lines:
+
+θ =
+[ 50 ]
+[ 30 ]
+[ 10 ]
+
+To write the *same* column vector inline (one line), the convention is:
+
+θ = [50, 30, 10]ᵀ
+
+Read it as: "write the numbers as a row, then transpose to make it a column."
+The ᵀ here does **not** perform any new computation — it's purely a
+formatting trick so the column vector fits on one line of text/markdown.
+
+**X (actual data — 3 training examples, each row = one house):**
+
+| | x0 | x1 (size) | x2 (bedrooms) |
+|---|---|---|---|
+| Row 1 | 1 | 2.1 | 3 |
+| Row 2 | 1 | 1.6 | 3 |
+| Row 3 | 1 | 2.4 | 4 |
+
+We compute predictions as `Xθ`.
+
+### Same logic applies to the extracted columns of X
+
+The x1 column of X, written vertically, is:
+
+[ 2.1 ]
+[ 1.6 ]
+[ 2.4 ]
+
+Written inline: [2.1, 1.6, 2.4]ᵀ — same vector, same values, just compact notation.
+
+## The column picture
+
+Since θ is a single column, `Xθ` is one linear combination of the **columns of X**, where each column of X is scaled by the matching entry in θ:
+
+Xθ = 50 · (x0 column) + 30 · (x1 column) + 10 · (x2 column)
+
+Where the columns of X are:
+
+- x0 column = [1, 1, 1]ᵀ
+- x1 column = [2.1, 1.6, 2.4]ᵀ
+- x2 column = [3, 3, 4]ᵀ
+
+## Step 1 — Scale each column by its θ
+
+| Scaling | Column | Scaled result |
+|---|---|---|
+| 50 × | [1, 1, 1]ᵀ | [50, 50, 50]ᵀ |
+| 30 × | [2.1, 1.6, 2.4]ᵀ | [63, 48, 72]ᵀ |
+| 10 × | [3, 3, 4]ᵀ | [30, 30, 40]ᵀ |
+
+## Step 2 — Sum the three scaled columns element-wise
+
+| Row | 50-col | 30-col | 10-col | Sum | Result |
+|---|---|---|---|---|---|
+| 1 | 50 | 63 | 30 | 50+63+30 | 143 |
+| 2 | 50 | 48 | 30 | 50+48+30 | 128 |
+| 3 | 50 | 72 | 40 | 50+72+40 | 162 |
+
+## Result
+
+Xθ = [143, 128, 162]ᵀ
+
+| Example | Predicted price h_θ(x) | Actual price y |
+|---|---|---|
+| 1 | 143 | 400 |
+| 2 | 128 | 330 |
+| 3 | 162 | 369 |
+
+## Key takeaway
+
+`Xθ` can be read two equivalent ways:
+
+1. **Row picture** (dot products) — each row of X dotted with θ → one prediction per example.
+2. **Column picture** (shown above) — each column of X scaled by its matching θ entry, then all columns summed → same result, viewed as "how much each feature contributes to every prediction simultaneously."
+
+Both are the same computation — the column picture just makes visible how much weight (θ) each feature (x0, x1, x2) contributes across the whole dataset at once.
+
+```txt
+-----------------------------Explanation Ends---------------------------------------
+```
+
 ### 3.4 Training vs. Testing Pipeline `[13:54 – 15:04]`, `[23:16 – 24:50]`
 
 ```mermaid
@@ -184,9 +289,13 @@ flowchart LR
 
 ### 5.1 Approach 1 — Calculus / Closed-Form (Normal Equation) `[46:41 – 52:11]`
 
+![closed form](../Images/08_lr/closed_form.png)
+
 At the minimum of a convex function, the derivative (gradient) is exactly **0**. Setting ∂J/∂θⱼ = 0 for every parameter and solving the resulting system of equations gives an exact formula:
 
 $$\hat{\boldsymbol{\theta}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}$$
+
+![mvr](../Images/08_lr/multi_variate_regr.png)
 
 ```python
 import numpy as np
@@ -200,6 +309,8 @@ theta = np.linalg.inv(X.T @ X) @ X.T @ y   # X: (m x n+1) matrix, includes the b
 **Limitation**: Closed-form solutions exist for linear regression, but most other model types (logistic regression, neural networks) have no such formula — hence the need for a general iterative method.
 
 ### 5.2 Approach 2 — Gradient Descent (Iterative) `[52:23 – 1:09:28]`
+
+![gradient decent](../Images/08_lr/grad_decent.png)
 
 The idea: start with any guess for θ, then repeatedly nudge θ in the direction that reduces the loss, using the slope (gradient) of the loss surface as a compass.
 
@@ -246,6 +357,8 @@ def gradient_descent_step(theta, X, y, alpha):
 
 ### 5.3 Choosing the Learning Rate α `[1:03:31 – 1:04:23]`
 
+![step size](../Images/08_lr/step_size.png)
+
 | α too small | α too large |
 |-------------|-------------|
 | Converges, but takes many iterations (slow) | May overshoot the minimum and fail to converge |
@@ -255,7 +368,14 @@ def gradient_descent_step(theta, X, y, alpha):
 
 > **AI Expert Note**: This is the seed idea behind modern *learning-rate schedules* and adaptive optimizers (Adam, RMSProp) used in deep learning — they automate the "start big, shrink later" strategy.
 
+![partial derivative](../Images/08_lr/partial_derivative.png)
+![convergence](../Images/08_lr/convergence.png)
+
 ### 5.4 Batch Gradient Descent `[1:08:00 – 1:09:15]`
+
+![batch gd](../Images/08_lr/batch_gd.png)
+
+![batch gradient descent](../Images/08_lr/)
 
 Computing the gradient over **all** m training examples every step is accurate but slow for large datasets. **Batch gradient descent** approximates the gradient using a smaller subset (e.g., 10 of 200 examples) per step.
 
@@ -269,6 +389,12 @@ flowchart LR
 ```
 
 > **Jargon**: *Batch Gradient Descent* — Using a subset of the training data (rather than the full set) to estimate the gradient at each step. Trades a slightly noisier gradient estimate for a large speedup — still provably converges, just potentially needing more (cheaper) steps. (Note: in most modern literature this specific "small subset" variant is called **mini-batch gradient descent**; "batch" alone often refers to using the *full* dataset — be aware both terms appear in practice.)
+
+**Batch GD** is slower per step because it must touch every one of the m examples before taking a single update — but the gradient direction it computes is exact/stable. SGD updates immediately after each example (fast per step, cheap), trading accuracy of direction for update frequency.
+
+There’s also a middle ground — Mini-batch GD — which uses a small subset (e.g., 32/64/128 examples) per update. This is what’s used in practice for large datasets: cheaper than full-batch, less noisy than pure SGD.
+
+Key takeaway: the “batch” in batch GD refers to how many examples are used to estimate one gradient step (all of them), not to a performance optimization trick. If your dataset is huge, batch GD can actually be the slowest option per iteration.
 
 ### 5.5 Q&A Highlights from the Lecture
 

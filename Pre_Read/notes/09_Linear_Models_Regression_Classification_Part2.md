@@ -91,6 +91,84 @@ Combined into a single formula (only the "active" term survives depending on y):
 
 $$L(\theta) = -y\log(h_\theta(\mathbf{x})) - (1-y)\log(1 - h_\theta(\mathbf{x}))$$
 
+```txt
+---------------------------------Explanation Starts-------------------------
+```
+### 3a. Start from the Binomial distribution
+
+The Binomial PMF gives the probability of $r$ successes in $n$ independent trials:
+
+$$P(r) = C(n,r) \cdot p^r \cdot (1-p)^{n-r}$$
+
+$C(n,r)$ ("n choose r") counts the number of *orderings* of successes/failures across the $n$ trials (e.g., $n=3, r=2$ → HHT, HTH, THH → 3 orderings, so $C(3,2)=3$).
+
+### 3b. Set n = 1 → this is the Bernoulli case
+
+A single trial ($n=1$) with outcome $y \in \{0,1\}$:
+
+$$P(y) = C(1,y) \cdot p^y \cdot (1-p)^{1-y}$$
+
+Evaluate the coefficient:
+- $C(1,0) = 1$ (1 way to pick 0 successes out of 1 trial)
+- $C(1,1) = 1$ (1 way to pick 1 success out of 1 trial)
+
+So $C(1,y) = 1$ always — with only one trial there's nothing to "order," so the coefficient trivially disappears:
+
+$$P(y) = p^y \cdot (1-p)^{1-y}$$
+
+This is the **Bernoulli PMF** — Binomial with $n = 1$.
+
+### 3c. Apply to logistic regression ($p = \hat{y}$)
+
+$$p(y|x) = \hat{y}^y \cdot (1-\hat{y})^{1-y}$$
+
+**Check both cases:**
+- $y = 1$ → $\hat{y}^1 \cdot (1-\hat{y})^0 = \hat{y}$ ✓
+- $y = 0$ → $\hat{y}^0 \cdot (1-\hat{y})^1 = 1-\hat{y}$ ✓
+
+Whichever term isn't "active" gets exponent 0 → becomes 1 → drops out of the product. This recovers the exact piecewise definition in section 2, but as one closed-form expression.
+
+> **Binomial vs. Bernoulli:** Binomial = many trials, has a $C(n,r)$ coefficient counting arrangements. Bernoulli = single trial ($n=1$), coefficient is always 1, so it's omitted. Logistic regression treats each training example $x^{(i)}$ as one independent Bernoulli trial with outcome $y^{(i)}$.
+
+## 4. From likelihood to loss
+
+Take the log (turns product into sum, monotonic so preserves the argmax):
+
+$$\log p(y|x) = y \log(\hat{y}) + (1-y)\log(1-\hat{y})$$
+
+We want to **maximize** this log-likelihood over the training data. Equivalently, **minimize its negative** → this defines the per-example loss:
+
+$$
+\text{Loss}(\hat{y}, y) = -y\log(\hat{y}) - (1-y)\log(1-\hat{y}) = -\big[y\log(h_\theta(x)) + (1-y)\log(1-h_\theta(x))\big]
+$$
+
+This is the **negative log-likelihood / cross-entropy loss**.
+
+## 5. Full cost function (average over m examples)
+
+$$
+J(\theta) = -\frac{1}{m}\sum_{i=1}^{m} \Big[ y^{(i)} \log\big(h_\theta(x^{(i)})\big) + (1-y^{(i)}) \log\big(1 - h_\theta(x^{(i)})\big) \Big]
+$$
+
+## 6. Why log loss instead of squared error?
+
+| Reason | Explanation |
+|---|---|
+| **Derived from MLE** | Not arbitrary — falls directly out of maximizing the Bernoulli log-likelihood of the true labels. |
+| **Convexity** | Squared error composed with sigmoid is **non-convex** (multiple local minima) → gradient descent can get stuck. Log loss is **convex** in $\theta$ → gradient descent converges to the global minimum. |
+| **Penalizes confident wrong predictions harshly** | As $\hat{y} \to 0$ while $y = 1$, $-\log(\hat{y}) \to \infty$. Squared error gives only a mild, bounded penalty here — too weak a signal. |
+| **Clean gradient** | Combined with the sigmoid derivative, $\frac{\partial J}{\partial \theta}$ simplifies to the same form as linear regression: $\frac{1}{m}\sum_i (h_\theta(x^{(i)}) - y^{(i)}) x^{(i)}$ — simple and efficient to optimize. |
+
+## 7. Intuition from the plot (y = 1 case)
+
+- If $h_\theta(x)$ is close to 1 (correct, confident) → loss ≈ 0.
+- If $h_\theta(x)$ is close to 0 (wrong, confident) → loss → ∞ (steep penalty).
+
+This asymmetric, unbounded penalty is exactly what makes log loss effective for classification — it strongly discourages confidently wrong predictions.
+
+```txt
+---------------------------------Explanation Ends-------------------------
+```
 ```python
 import math
 def cross_entropy_loss(y, y_hat):
