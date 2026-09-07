@@ -97,104 +97,149 @@ $$h_\theta(\mathbf{x}) = \boldsymbol{\theta}^T \mathbf{x} = \sum_{j=0}^n \theta_
 ```txt
 ----------------------------------Explanation Starts------------------------------
 ```
-# Matrix Multiplication as a "Column Picture" — House Price Example
-
-## Clarification
-
-- **X = actual data** (feature values from the training examples)
-- **θ = parameters** (weights learned by the model)
-- Prediction = **Xθ** (data matrix times parameter vector)
+# Matrix Multiplication for Linear Regression — θᵀX Format (Features as Rows, Examples as Columns)
 
 ## Setup
 
-**θ (parameters, learned by the model) — a single column vector:**
+**θ (parameters, learned by the model)** — a column vector:
 
-θ = [ 50, 30, 10 ]ᵀ
+$$
+\theta =
+\begin{bmatrix}
+50 \\
+30 \\
+10
+\end{bmatrix}
+\quad \text{shape } (n+1) \times 1 = 3 \times 1
+$$
 
-## Why the ᵀ appears on θ and on the extracted columns
+**X (actual data)** — organized with **rows = features, columns = examples**:
 
-Writing a column vector vertically takes multiple lines:
+$$
+X =
+\begin{bmatrix}
+1   & 1   & 1   \\
+2.1 & 1.6 & 2.4 \\
+3   & 3   & 4
+\end{bmatrix}
+\begin{array}{l}
+\leftarrow x_0 \text{ (intercept)} \\
+\leftarrow x_1 \text{ (size)} \\
+\leftarrow x_2 \text{ (bedrooms)}
+\end{array}
+\quad \text{shape } (n+1) \times m = 3 \times 3
+$$
 
-θ =
-[ 50 ]
-[ 30 ]
-[ 10 ]
-
-To write the *same* column vector inline (one line), the convention is:
-
-θ = [50, 30, 10]ᵀ
-
-Read it as: "write the numbers as a row, then transpose to make it a column."
-The ᵀ here does **not** perform any new computation — it's purely a
-formatting trick so the column vector fits on one line of text/markdown.
-
-**X (actual data — 3 training examples, each row = one house):**
-
-| | x0 | x1 (size) | x2 (bedrooms) |
+| | Example 1 | Example 2 | Example 3 |
 |---|---|---|---|
-| Row 1 | 1 | 2.1 | 3 |
-| Row 2 | 1 | 1.6 | 3 |
-| Row 3 | 1 | 2.4 | 4 |
+| x0 | 1 | 1 | 1 |
+| x1 (size) | 2.1 | 1.6 | 2.4 |
+| x2 (bedrooms) | 3 | 3 | 4 |
+| y (actual price) | 400 | 330 | 369 |
 
-We compute predictions as `Xθ`.
+## Formula: Ŷ = θᵀX
 
-### Same logic applies to the extracted columns of X
+Since X has **features as rows and examples as columns**, we transpose θ so the inner dimensions match:
 
-The x1 column of X, written vertically, is:
+$$
+\underbrace{\theta^T}_{1 \times 3} \cdot \underbrace{X}_{3 \times 3} \;\longrightarrow\; \underbrace{\hat{Y}}_{1 \times 3}
+$$
 
-[ 2.1 ]
-[ 1.6 ]
-[ 2.4 ]
+## Setting up the multiplication
 
-Written inline: [2.1, 1.6, 2.4]ᵀ — same vector, same values, just compact notation.
+$$
+\theta^T =
+\begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+$$
 
-## The column picture
+$$
+\hat{Y} =
+\begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+\cdot
+\begin{bmatrix}
+1   & 1   & 1   \\
+2.1 & 1.6 & 2.4 \\
+3   & 3   & 4
+\end{bmatrix}
+$$
 
-Since θ is a single column, `Xθ` is one linear combination of the **columns of X**, where each column of X is scaled by the matching entry in θ:
+Each output element is the **dot product of θᵀ with one column of X** (one column = one example):
 
-Xθ = 50 · (x0 column) + 30 · (x1 column) + 10 · (x2 column)
+$$
+\hat{y}_j = \theta_0 x_{0j} + \theta_1 x_{1j} + \theta_2 x_{2j}
+$$
 
-Where the columns of X are:
+## Computing each example (column-by-column dot products)
 
-- x0 column = [1, 1, 1]ᵀ
-- x1 column = [2.1, 1.6, 2.4]ᵀ
-- x2 column = [3, 3, 4]ᵀ
+**Example 1** — multiply θᵀ by column 1 of X:
 
-## Step 1 — Scale each column by its θ
+$$
+\begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+\cdot
+\begin{bmatrix} 1 \\ 2.1 \\ 3 \end{bmatrix}
+= 50(1) + 30(2.1) + 10(3) = 50 + 63 + 30 = 143
+$$
 
-| Scaling | Column | Scaled result |
-|---|---|---|
-| 50 × | [1, 1, 1]ᵀ | [50, 50, 50]ᵀ |
-| 30 × | [2.1, 1.6, 2.4]ᵀ | [63, 48, 72]ᵀ |
-| 10 × | [3, 3, 4]ᵀ | [30, 30, 40]ᵀ |
+**Example 2** — multiply θᵀ by column 2 of X:
 
-## Step 2 — Sum the three scaled columns element-wise
+$$
+\begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+\cdot
+\begin{bmatrix} 1 \\ 1.6 \\ 3 \end{bmatrix}
+= 50(1) + 30(1.6) + 10(3) = 50 + 48 + 30 = 128
+$$
 
-| Row | 50-col | 30-col | 10-col | Sum | Result |
-|---|---|---|---|---|---|
-| 1 | 50 | 63 | 30 | 50+63+30 | 143 |
-| 2 | 50 | 48 | 30 | 50+48+30 | 128 |
-| 3 | 50 | 72 | 40 | 50+72+40 | 162 |
+**Example 3** — multiply θᵀ by column 3 of X:
 
-## Result
+$$
+\begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+\cdot
+\begin{bmatrix} 1 \\ 2.4 \\ 4 \end{bmatrix}
+= 50(1) + 30(2.4) + 10(4) = 50 + 72 + 40 = 162
+$$
 
-Xθ = [143, 128, 162]ᵀ
+## Assembling the result
 
-| Example | Predicted price h_θ(x) | Actual price y |
-|---|---|---|
-| 1 | 143 | 400 |
-| 2 | 128 | 330 |
-| 3 | 162 | 369 |
+$$
+\hat{Y} = \theta^T X =
+\begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+\begin{bmatrix}
+1   & 1   & 1   \\
+2.1 & 1.6 & 2.4 \\
+3   & 3   & 4
+\end{bmatrix}
+=
+\begin{bmatrix} 143 & 128 & 162 \end{bmatrix}
+\quad \text{shape } 1 \times 3
+$$
 
-## Key takeaway
+## Predicted vs. Actual
 
-`Xθ` can be read two equivalent ways:
+| | Example 1 | Example 2 | Example 3 |
+|---|---|---|---|
+| ŷ (predicted) | 143 | 128 | 162 |
+| y (actual) | 400 | 330 | 369 |
+| error (ŷ − y) | −257 | −202 | −207 |
 
-1. **Row picture** (dot products) — each row of X dotted with θ → one prediction per example.
-2. **Column picture** (shown above) — each column of X scaled by its matching θ entry, then all columns summed → same result, viewed as "how much each feature contributes to every prediction simultaneously."
+## Cost (mean squared error)
 
-Both are the same computation — the column picture just makes visible how much weight (θ) each feature (x0, x1, x2) contributes across the whole dataset at once.
+$$
+J(\theta) = \frac{1}{2m} \sum_{j=1}^{m} \left( \hat{y}_j - y_j \right)^2
+$$
 
+With m = 3:
+
+$$
+J(\theta) = \frac{1}{2 \cdot 3} \left[ (-257)^2 + (-202)^2 + (-207)^2 \right]
+= \frac{1}{6} \left[ 66049 + 40804 + 42849 \right]
+= \frac{149702}{6}
+\approx 24950.33
+$$
+
+## Interpretation
+
+- Each column of $\hat{Y}$ corresponds to exactly one training example — the layout matches X's columns.
+- The θᵀX layout is efficient because it's a **single matr
 ```txt
 -----------------------------Explanation Ends---------------------------------------
 ```
