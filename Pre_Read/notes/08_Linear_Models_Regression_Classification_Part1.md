@@ -200,11 +200,21 @@ $$
 
 ## Assembling the result
 
-## Assembling the result
+
 
 $$\hat{Y} = \theta^T X$$
 
-$$\hat{Y} = \begin{bmatrix} 50 & 30 & 10 \end{bmatrix} \cdot \begin{bmatrix} 1 & 1 & 1 \\ 2.1 & 1.6 & 2.4 \\ 3 & 3 & 4 \end{bmatrix}$$
+
+$$
+\hat{Y} =
+\begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+\cdot
+\begin{bmatrix}
+1   & 1   & 1   \\
+2.1 & 1.6 & 2.4 \\
+3   & 3   & 4
+\end{bmatrix}
+$$
 
 $$\hat{Y} = \begin{bmatrix} 143 & 128 & 162 \end{bmatrix}$$
 
