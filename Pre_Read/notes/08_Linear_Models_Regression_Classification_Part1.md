@@ -203,6 +203,7 @@ $$
 $$
 \hat{Y} = \theta^T X =
 \begin{bmatrix} 50 & 30 & 10 \end{bmatrix}
+\cdot
 \begin{bmatrix}
 1   & 1   & 1   \\
 2.1 & 1.6 & 2.4 \\
@@ -210,8 +211,9 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix} 143 & 128 & 162 \end{bmatrix}
-\quad \text{shape } 1 \times 3
 $$
+
+Shape: $1 \times 3$
 
 ## Predicted vs. Actual
 
