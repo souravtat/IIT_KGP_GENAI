@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BIC Batch 3 — Comprehensive Programme Document</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #222;
+    font-size: 16px;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: #1a3a5c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-title { text-align: center; flex: 1; }
+  .header-title p {
+    color: #a8c4e0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-title h1 {
+    color: #f5c518;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .walmart-badge {
+    background: #0071ce;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── Tabs ── */
+  .tabs-nav {
+    display: flex;
+    background: #12283f;
+    padding: 0 32px;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: transparent;
+    border: none;
+    color: #a8c4e0;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 22px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all .15s ease;
+  }
+  .tab-btn:hover { color: #fff; background: rgba(255,255,255,.05); }
+  .tab-btn.active {
+    color: #f5c518;
+    border-bottom: 3px solid #f5c518;
+    background: #f4f6f9;
+    color: #1a3a5c;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Info bar ── */
+  .info-bar {
+    background: #fff;
+    border-left: 4px solid #f5c518;
+    margin: 20px 32px 0;
+    padding: 14px 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    border-radius: 2px;
+  }
+  .info-bar strong { color: #1a3a5c; }
+
+  /* ── Section label ── */
+  .section-label {
+    margin: 20px 32px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a3a5c;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #f5c518;
+    padding-bottom: 4px;
+  }
+
+  /* ── Table ── */
+  .table-wrap { margin: 0 32px 32px; overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  }
+  thead tr th {
+    background: #1a3a5c;
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+  }
+  #schedule th:nth-child(1) { width: 72px; }
+  #schedule th:nth-child(2) { width: auto; }
+  #schedule th:nth-child(3) { width: 148px; }
+  #schedule th:nth-child(4) { width: 150px; }
+  #schedule th:nth-child(5) { width: 148px; }
+
+  tbody tr td {
+    padding: 12px 16px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e8ecf0;
+    line-height: 1.6;
+  }
+
+  .week-cell {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+    background: #1a3a5c;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .badge-theory     { background: #d1ecf1; color: #0c5460; }
+  .badge-lab        { background: #d4edda; color: #155724; }
+  .badge-industry   { background: #fff3cd; color: #856404; }
+  .badge-ceremony   { background: #f8d7da; color: #721c24; }
+  .badge-onboarding { background: #e2e3e5; color: #383d41; }
+
+  .session-desc { font-size: 15px; color: #333; }
+
+  .sched { font-weight: 600; color: #1a3a5c; font-size: 15px; white-space: nowrap; }
+  .sched .date { font-size: 16px; }
+  .sched .time { font-size: 14px; color: #555; }
+
+  tr.industry-row { background: #fffbea; border-left: 4px solid #f5c518; }
+  tr.industry-row .week-cell { background: #f5c518; color: #1a3a5c; }
+
+  .instructor-cell { font-size: 14px; color: #444; }
+  .instructor-iit     { background: #cce5ff; color: #004085; padding: 3px 10px; border-radius: 3px; display: inline-block; font-size: 13px; }
+  .instructor-tanmay  { background: #d6d8db; color: #383d41; padding: 3px 10px; border-radius: 3px; display: inline-block; font-size: 13px; }
+  .instructor-faculty { background: #c3e6cb; color: #155724; padding: 3px 10px; border-radius: 3px; display: inline-block; font-size: 13px; }
+  .instructor-special { background: #f8d7da; color: #721c24; padding: 3px 10px; border-radius: 3px; display: inline-block; font-size: 13px; margin-bottom: 3px; }
+
+  .assign-cell { text-align: center; vertical-align: middle; }
+  .assign-badge {
+    display: inline-block; font-size: 13px; font-weight: 600;
+    padding: 5px 12px; border-radius: 4px; white-space: nowrap; line-height: 1.5;
+  }
+  .assign-prog { background: #e8d5f5; color: #5a1d8a; }
+  .assign-desc { background: #fce5cd; color: #7a3500; }
+  .assign-none { color: #bbb; font-size: 14px; }
+
+  .legend {
+    margin: 0 32px 12px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    align-items: center;
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
+
+  .footer {
+    background: #1a3a5c;
+    color: #a8c4e0;
+    font-size: 14px;
+    padding: 12px 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .footer a { color: #f5c518; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  .schedule-note {
+    margin: 0 32px 16px;
+    background: #fffbea;
+    border-left: 4px solid #f5c518;
+    padding: 12px 16px;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .schedule-note strong { color: #856404; }
+
+  /* ── Generic content card (Quiz / DOs / FAQ tabs) ── */
+  .content-wrap { margin: 20px 32px 32px; }
+  .card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    color: #1a3a5c;
+    font-size: 19px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #f5c518;
+    padding-bottom: 6px;
+  }
+  .card h3 {
+    color: #1a3a5c;
+    font-size: 16px;
+    margin: 4px 0 10px;
+  }
+  .card p { line-height: 1.65; margin-bottom: 10px; font-size: 15px; }
+  .card ul, .card ol { margin: 0 0 10px 22px; line-height: 1.65; font-size: 15px; }
+  .card li { margin-bottom: 6px; }
+  .card a { color: #0071ce; }
+  .callout {
+    background: #fffbea;
+    border-left: 4px solid #f5c518;
+    padding: 10px 14px;
+    font-size: 14.5px;
+    color: #555;
+    border-radius: 2px;
+    margin: 10px 0;
+  }
+  .callout strong { color: #856404; }
+
+  /* Quiz dates table */
+  .quiz-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .quiz-table th {
+    background: #1a3a5c; color: #fff; padding: 10px 14px; text-align: left; font-size: 14px;
+  }
+  .quiz-table td { padding: 10px 14px; border-bottom: 1px solid #e8ecf0; font-size: 14.5px; }
+  .quiz-table tr:nth-child(even) td { background: #fafbfc; }
+
+  /* DOs / DON'Ts two column */
+  .dos-donts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .dos-donts-grid { grid-template-columns: 1fr; } }
+  .dos-card { border-top: 4px solid #155724; }
+  .donts-card { border-top: 4px solid #721c24; }
+  .dos-card h2 { color: #155724; border-bottom-color: #155724; }
+  .donts-card h2 { color: #721c24; border-bottom-color: #721c24; }
+  .dos-card li::marker { color: #155724; font-weight: 700; }
+  .donts-card li::marker { color: #721c24; font-weight: 700; }
+
+  /* FAQ accordion */
+  .faq-section-title {
+    color: #fff;
+    background: #1a3a5c;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    border-radius: 4px;
+    margin: 22px 0 10px;
+  }
+  .faq-item {
+    border: 1px solid #e8ecf0;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: #f8fafc;
+    border: none;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a3a5c;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inherit;
+  }
+  .faq-q:hover { background: #eef2f6; }
+  .faq-q .arrow { transition: transform .15s ease; color: #0071ce; font-size: 13px; }
+  .faq-item.open .faq-q .arrow { transform: rotate(90deg); }
+  .faq-a {
+    display: none;
+    padding: 12px 16px 16px;
+    font-size: 14.5px;
+    color: #333;
+    line-height: 1.65;
+    border-top: 1px solid #e8ecf0;
+    background: #fff;
+  }
+  .faq-item.open .faq-a { display: block; }
+  .faq-a ul { margin: 6px 0 6px 20px; }
+  .faq-a li { margin-bottom: 4px; }
+
+  /* ── Disclaimer Modal ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,20,35,.72);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: #fff;
+    max-width: 520px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,.35);
+  }
+  .modal-head {
+    background: #1a3a5c;
+    color: #f5c518;
+    padding: 16px 22px;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .modal-body { padding: 20px 22px; font-size: 15px; line-height: 1.7; color: #333; }
+  .modal-body a {
+    display: inline-block;
+    margin-top: 10px;
+    word-break: break-all;
+    color: #0071ce;
+    font-weight: 600;
+  }
+  .modal-actions { padding: 14px 22px 22px; text-align: right; }
+  .modal-btn {
+    background: #0071ce;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-btn:hover { background: #005ba1; }
+
+  @media print {
+    .tabs-nav, .modal-overlay { display: none !important; }
+    .tab-panel { display: block !important; }
+    html, body {
+      background: #fff !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .header, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Disclaimer Modal -->
+<div class="modal-overlay" id="disclaimerModal">
+  <div class="modal-box">
+    <div class="modal-head">⚠ Disclaimer</div>
+    <div class="modal-body">
+      Please <strong>bookmark this link</strong> for future reference to the BIC Batch 3 programme folder (schedule, materials &amp; documents):
+      <br/>
+      <a href="https://my.wal-mart.com/:f:/g/personal/a0s1iyj_homeoffice_wal-mart_com/IgC-PfYehgb9T6csYP5Gd0dpAaXM1OyoU533I6EgehENLtM?e=wHMoWL" target="_blank" rel="noopener">
+        https://my.wal-mart.com/:f:/g/personal/a0s1iyj_homeoffice_wal-mart_com/IgC-PfYehgb9T6csYP5Gd0dpAaXM1OyoU533I6EgehENLtM?e=wHMoWL
+      </a>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn" onclick="document.getElementById('disclaimerModal').classList.remove('active')">Got it, Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-logo">
+    <div style="background:#fff;color:#1a3a5c;font-weight:900;font-size:13px;padding:8px 12px;border-radius:4px;line-height:1.3;text-align:center;">
+      IIT<br>KHARAGPUR<br><span style="font-size:9px;color:#888;">AI4ICPS I</span>
+    </div>
+  </div>
+  <div class="header-title">
+    <p>IIT Kharagpur AI4ICPS I Hub Foundation</p>
+    <h1>Best In Class: GenAI Accelerator Program - Cohort 3</h1>
+  </div>
+  <div class="walmart-badge">W</div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs-nav">
+  <button class="tab-btn active" data-tab="schedule" onclick="showTab('schedule', this)">📅 Schedule</button>
+  <button class="tab-btn" data-tab="quiz" onclick="showTab('quiz', this)">📝 Quiz &amp; Assignment Timeline</button>
+  <button class="tab-btn" data-tab="dosdonts" onclick="showTab('dosdonts', this)">✅ DO's &amp; DON'T's</button>
+  <button class="tab-btn" data-tab="faqs" onclick="showTab('faqs', this)">❓ FAQs</button>
+  <button class="tab-btn" data-tab="marking" onclick="showTab('marking', this)">📊 Marking Logic</button>
+</div>
+
+<!-- ══════════════════════ TAB 1: SCHEDULE ══════════════════════ -->
+<div class="tab-panel active" id="schedule">
+
+  <div class="info-bar">
+    <strong>Programme Structure:</strong> Each week consists of academic sessions delivered by <strong>IIT Kharagpur Faculty &amp; Teaching Associates</strong>, covering both theory and hands-on labs.
+    Following select weeks, a dedicated <strong>Industry Expert / Walmart SME Led Session</strong> (highlighted in gold ★ below) will be conducted with a focus on Walmart-specific scenarios,
+    use cases, and real-world applications.
+  </div>
+
+  <div class="section-label">LIVE VIRTUAL INSTRUCTOR LED SESSION CURRICULUM AND SCHEDULE</div>
+
+  <div class="legend">
+    <span><div class="legend-dot" style="background:#e2e3e5;border:1px solid #383d41;"></div> Onboarding</span>
+    <span><div class="legend-dot" style="background:#d1ecf1;border:1px solid #0c5460;"></div> Theory</span>
+    <span><div class="legend-dot" style="background:#d4edda;border:1px solid #155724;"></div> Hands-On Lab</span>
+    <span><div class="legend-dot" style="background:#fffbea;border:1px solid #f5c518;"></div> ★ Industry Expert / Walmart SME Led Session</span>
+    <span style="color:#7a3500;font-weight:600;">Office Hours (26 Oct &amp; 11 Nov, 7–8 PM)</span>
+    <span><div class="legend-dot" style="background:#e8d5f5;border:1px solid #5a1d8a;"></div> Programming Assignment</span>
+    <span><div class="legend-dot" style="background:#fce5cd;border:1px solid #7a3500;"></div> Descriptive Assignment</span>
+  </div>
+
+  <div class="schedule-note">
+    <strong>Schedule Note:</strong> Sessions generally run <strong>6:00 PM – 8:00 PM IST</strong>, except the Week 1 &amp; Week 2 hands-on labs on <strong>17 Sep</strong> and <strong>24 Sep</strong>, which run <strong>7:00 PM – 9:00 PM IST</strong>.
+    Industry Expert / Walmart SME Led Sessions run <strong>6:00 PM – 7:00 PM IST</strong> on <strong>21 Sep, 26 Oct, 2 Nov &amp; 11 Nov</strong>. On <strong>26 Oct</strong> and <strong>11 Nov</strong>, an additional <strong>Office Hours</strong> slot (<strong>7:00 PM – 8:00 PM IST</strong>) will follow for doubt clarification.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>WEEK</th>
+          <th>SESSION TITLE &amp; DESCRIPTION</th>
+          <th>SCHEDULE (IST)</th>
+          <th>INSTRUCTOR</th>
+          <th>ASSIGNMENT</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- WEEK 0 -->
+        <tr>
+          <td class="week-cell" rowspan="1">WEEK<br>0</td>
+          <td>
+            <span class="badge badge-onboarding">Onboarding</span><br>
+            <span class="session-desc">Onboarding to Course — Walmart B2B Advanced AI Certification Programme, Cohort 3</span>
+          </td>
+          <td class="sched">
+            <div class="date">09 Sep 2026</div>
+            <div class="time">11:00 AM – 12:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Rajdeep Ghosh</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+        <!-- WEEK 1 -->
+        <tr>
+          <td class="week-cell" rowspan="3">WEEK<br>1</td>
+          <td>
+            <span class="badge badge-theory">Theory</span><br>
+            <span class="session-desc">Introduction to Generative AI — Tokenizers, Embedding, Transformer Models (Self-Attention, Positional Encoding), Self-Attention</span>
+          </td>
+          <td class="sched">
+            <div class="date">16 Sep 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Dr. Mainack Mondal</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Running Pre-trained LLMs (HuggingFace), Exploring Embeddings &amp; Tokenization</span>
+          </td>
+          <td class="sched">
+            <div class="date">17 Sep 2026</div>
+            <div class="time">7:00 PM – 9:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Rajdeep Ghosh</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-desc">Descriptive<br>Assignment</span></td>
+        </tr>
+        <tr class="industry-row">
+          <td>
+            <span class="badge badge-industry">★ Industry Expert / Walmart SME Led Session</span><br>
+            <span class="session-desc"><strong>LLM Landscape &amp; Model Selection</strong></span>
+            <div style="margin-top:7px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Description:</strong> Survey of frontier models, open-source vs closed-source tradeoffs, comparison methods, how to select the right model.
+            </div>
+            <div style="margin-top:5px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Learning Outcome:</strong> Participants understand how to build and apply a model-selection framework across cost, latency, quality, and deployment constraints to choose the right provider/model for a given use case.
+            </div>
+          </td>
+          <td class="sched">
+            <div class="date">21 Sep 2026</div>
+            <div class="time">6:00 PM – 7:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-tanmay">Tanmay Dhote</span></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+        <!-- WEEK 2 -->
+        <tr>
+          <td class="week-cell" rowspan="2">WEEK<br>2</td>
+          <td>
+            <span class="badge badge-theory">Theory</span><br>
+            <span class="session-desc">Advanced Prompt Engineering — Chain-of-Thought (CoT), Tree of Thought, Auto Prompt Optimization, and Adversarial Prompting</span>
+          </td>
+          <td class="sched">
+            <div class="date">23 Sep 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Dr. Koustav Rudra</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Advanced Prompt Engineering with OpenAI GPT — Exercises using Customer Support Tickets, Customer Reviews &amp; Ratings, Search Queries, and Product Catalog datasets</span>
+          </td>
+          <td class="sched">
+            <div class="date">24 Sep 2026</div>
+            <div class="time">7:00 PM – 9:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Nilanjan Sinhababu</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-prog">Programming<br>Assignment</span></td>
+        </tr>
+
+        <!-- WEEK 3 -->
+        <tr>
+          <td class="week-cell" rowspan="2">WEEK<br>3</td>
+          <td>
+            <span class="badge badge-theory">Theory</span><br>
+            <span class="session-desc">Multimodal GenAI: Text, Image &amp; Code — Diffusion Models, Stable Diffusion, DALL-E, Codex</span>
+          </td>
+          <td class="sched">
+            <div class="date">30 Sep 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Prof. Amlan Chakrabarti</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-desc">Descriptive<br>Assignment</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Creative AI Lab — Generating Images with Stable Diffusion</span>
+          </td>
+          <td class="sched">
+            <div class="date">01 Oct 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Nilanjan Sinhababu</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+        <!-- WEEK 4 -->
+        <tr>
+          <td class="week-cell" rowspan="2">WEEK<br>4</td>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Auto-Code Lab with Codex &amp; Claude</span>
+          </td>
+          <td class="sched">
+            <div class="date">07 Oct 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Nilanjan Sinhababu</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-prog">Programming<br>Assignment</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-theory">Theory</span><br>
+            <span class="session-desc">Retrieval-Augmented Generation (RAG) — Search, Retrieval, RAGAS Metrics</span>
+          </td>
+          <td class="sched">
+            <div class="date">08 Oct 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Dr. Pawan Goyal</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+        <!-- WEEK 5 -->
+        <tr>
+          <td class="week-cell" rowspan="3">WEEK<br>5</td>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Implementing RAG using LangChain + FAISS / ChromaDB</span>
+          </td>
+          <td class="sched">
+            <div class="date">14 Oct 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Nilanjan Sinhababu</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-prog">Programming<br>Assignment</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-theory">Theory</span><br>
+            <span class="session-desc">Advanced NLP &amp; Ethical AI — Sentiment Analysis &amp; Explainable AI (XAI)</span>
+          </td>
+          <td class="sched">
+            <div class="date">15 Oct 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Dr. Mainack Mondal</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+        <tr class="industry-row">
+          <td>
+            <span class="badge badge-industry">★ Industry Expert / Walmart SME Led Session</span><br>
+            <span class="session-desc"><strong>Improving RAG Performance</strong></span>
+            <div style="margin-top:7px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Description:</strong> Optimising Pre-retrieval (chunking, query understanding), retrieval (hybrid search, embedding fine-tuning), post-retrieval (reranking, compression).
+            </div>
+            <div style="margin-top:5px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Learning Outcome:</strong> Participants understand how to improve RAG performance through targeted techniques at the pre-retrieval, retrieval, and post-retrieval stages.
+            </div>
+          </td>
+          <td class="sched">
+            <div class="date">26 Oct 2026</div>
+            <div class="time">6:00 PM – 7:00 PM</div>
+            <div class="time" style="color:#7a3500;font-weight:600;">Office Hours: 7:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-tanmay">Tanmay Dhote</span></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+        <!-- WEEK 6 -->
+        <tr>
+          <td class="week-cell" rowspan="3">WEEK<br>6</td>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Advanced NLP Lab — Sentiment Analysis on Customer Feedback Datasets</span>
+          </td>
+          <td class="sched">
+            <div class="date">28 Oct 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Rajdeep Ghosh</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-desc">Descriptive<br>Assignment</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Explainable AI (XAI) Lab — Practical Application of LIME and SHAP</span>
+          </td>
+          <td class="sched">
+            <div class="date">29 Oct 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Dr. Sabyasachi Mukhopadhyay</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+        <tr class="industry-row">
+          <td>
+            <span class="badge badge-industry">★ Industry Expert / Walmart SME Led Session</span><br>
+            <span class="session-desc"><strong>Context Engineering</strong></span>
+            <div style="margin-top:7px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Description:</strong> What context engineering is and why it matters, types of context, implementing it, failure modes.
+            </div>
+            <div style="margin-top:5px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Learning Outcome:</strong> Participants can identify context types and failure modes in multi-step/agentic systems.
+            </div>
+          </td>
+          <td class="sched">
+            <div class="date">2 Nov 2026</div>
+            <div class="time">6:00 PM – 7:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-tanmay">Tanmay Dhote</span></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+        <!-- WEEK 7 -->
+        <tr>
+          <td class="week-cell" rowspan="3">WEEK<br>7</td>
+          <td>
+            <span class="badge badge-theory">Theory</span><br>
+            <span class="session-desc">Agentic AI — ReAct, LangGraph, Inference Stack, MCP, Operational Readiness</span>
+          </td>
+          <td class="sched">
+            <div class="date">03 Nov 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Prof. Amlan Chakrabarti</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">Agentic AI Lab — Reasoning Core, Tool Integration, Memory, and Ops Readiness</span>
+          </td>
+          <td class="sched">
+            <div class="date">04 Nov 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Rajdeep Ghosh</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-prog">Programming<br>Assignment</span></td>
+        </tr>
+        <tr class="industry-row">
+          <td>
+            <span class="badge badge-industry">★ Industry Expert / Walmart SME Led Session</span><br>
+            <span class="session-desc"><strong>LLM Systems in Production</strong></span>
+            <div style="margin-top:7px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Description:</strong> Moving from pilot to production, cost optimization, routing, batching, caching, gateway patterns, guardrails.
+            </div>
+            <div style="margin-top:5px;font-size:14px;color:#555;line-height:1.6;">
+              <strong style="color:#856404;">Learning Outcome:</strong> Participants understand the architecture needed to take a pilot to production, applying routing, batching, caching, gateway, and guardrail patterns to control cost and survive real traffic.
+            </div>
+          </td>
+          <td class="sched">
+            <div class="date">11 Nov 2026</div>
+            <div class="time">6:00 PM – 7:00 PM</div>
+            <div class="time" style="color:#7a3500;font-weight:600;">Office Hours: 7:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-tanmay">Tanmay Dhote</span></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+        <!-- WEEK 8 -->
+        <tr>
+          <td class="week-cell" rowspan="3">WEEK<br>8</td>
+          <td>
+            <span class="badge badge-lab">Hands-On Lab</span><br>
+            <span class="session-desc">The RoI Layer Lab — Implementing Guardrails, Evals, and LLMOps in Agents</span>
+          </td>
+          <td class="sched">
+            <div class="date">12 Nov 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-iit">IIT KGP TA</span><br><small>Nilanjan Sinhababu</small></td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="badge badge-theory">Theory</span><br>
+            <span class="session-desc">Agentic Use Cases — Deep Dive into Agentic E-Commerce Architectures</span>
+          </td>
+          <td class="sched">
+            <div class="date">13 Nov 2026</div>
+            <div class="time">6:00 PM – 8:00 PM</div>
+          </td>
+          <td class="instructor-cell"><span class="instructor-faculty">IIT KGP Faculty</span><br><small>Prof. Amlan Chakrabarti</small></td>
+          <td class="assign-cell"><span class="assign-badge assign-desc">Descriptive<br>Assignment</span></td>
+        </tr>
+        <tr style="background:#fff0f3;">
+          <td>
+            <span class="badge badge-ceremony">🎓 Closing Ceremony</span><br>
+            <span class="session-desc">Closing Ceremony</span>
+          </td>
+          <td class="sched">
+            <div class="date">13 Nov 2026</div>
+            <div class="time">8:00 PM – 8:15 PM</div>
+          </td>
+          <td class="instructor-cell">
+            <span class="instructor-special">Dr. Plaban Bhowmick</span><br>
+            <span class="instructor-special">Mr. Dipyaman Banerjee</span>
+          </td>
+          <td class="assign-cell"><span class="assign-none">—</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════ TAB 2: QUIZ & ASSIGNMENT TIMELINE ══════════════════════ -->
+<div class="tab-panel" id="quiz">
+  <div class="content-wrap">
+
+    <div class="card">
+      <h2>Quiz Timeline</h2>
+      <p>Quizzes are scheduled for <strong>Tuesdays, 12:00 PM – 4:00 PM</strong> based on your poll response, except for the week of 9th November. Since <strong>10th November is a holiday (Diwali)</strong>, the quiz for that week is scheduled for <strong>Thursday, 12th November</strong>.</p>
+      <p>Learners must appear for the quiz anytime within the active window. Once the window closes, the quiz gets disabled and will not be re-activated.</p>
+
+      <h3>Quiz Dates</h3>
+      <table class="quiz-table">
+        <thead><tr><th>Date</th><th>Window</th></tr></thead>
+        <tbody>
+          <tr><td>22nd Sep</td><td>12:00 PM – 4:00 PM</td></tr>
+          <tr><td>29th Sep</td><td>12:00 PM – 4:00 PM</td></tr>
+          <tr><td>6th Oct</td><td>12:00 PM – 4:00 PM</td></tr>
+          <tr><td>13th Oct</td><td>12:00 PM – 4:00 PM</td></tr>
+          <tr><td>20th Oct</td><td>12:00 PM – 4:00 PM</td></tr>
+          <tr><td>27th Oct</td><td>12:00 PM – 4:00 PM</td></tr>
+          <tr><td>3rd Nov</td><td>12:00 PM – 4:00 PM</td></tr>
+          <tr><td>12th Nov <em>(rescheduled — 10th Nov is Diwali)</em></td><td>8:00 PM – 11:59 PM</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Assignment Timeline</h2>
+      <p>Assignments open every <strong>Friday, 12:00 AM</strong> and close on the following <strong>Thursday, 23:59 PM</strong>.</p>
+      <div class="callout"><strong>Example:</strong> Assignment 1 opens 18th September 12:00 AM and closes 24th September 23:59 PM.</div>
+      <p>Refer to the <a href="javascript:void(0)" onclick="goToTab('marking')"><strong>Marking Logic</strong></a> tab for details on how your final score will be calculated.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ TAB 3: DO'S & DON'T'S ══════════════════════ -->
+<div class="tab-panel" id="dosdonts">
+  <div class="content-wrap">
+    <div class="dos-donts-grid">
+
+      <div class="card dos-card">
+        <h2>✅ DO's</h2>
+        <ul>
+          <li>Watch out for an email from <a href="mailto:moodle_support@iitkgp.ac.in">moodle_support@iitkgp.ac.in</a> and access your LMS account.</li>
+          <li>Bookmark the <a href="https://ai4icps-upskilling.in/login/?lang=en" target="_blank" rel="noopener">LMS portal (IIT-KGP LMS)</a> and save your user ID and password locally.</li>
+          <li>Leverage IIT-KGP faculty during the session to get your doubts clarified through Q&amp;A. Discussion forums will be created for each week's session in the LMS portal — you can post queries related to the weekly topic. <strong>SLA for IIT-KGP to revert is 24 to 48 hours.</strong></li>
+          <li>Please make sure to go through the prerequisites before the live session every week to enhance your understanding of the topic.</li>
+          <li>Attendance in live sessions is tracked. If you are unable to attend a live session, ensure that you watch the recorded material prior to the next session. Submit your input in the <a href="https://forms.cloud.microsoft/r/K9ZsZMD0ij" target="_blank" rel="noopener">Recording Acknowledgement Form</a> so your attendance for the missed session will be captured.</li>
+          <li>Make sure you complete all the quizzes and assignments on time. <strong>There will not be any extension of timeline or re-attempt provided once the window is closed.</strong></li>
+          <li>Quizzes will be released every <strong>Tuesday between 12–4 pm</strong>. You have a 4-hour window to finish the quiz and submit. <strong>Assignments will be opened every Friday 12:00 AM and close on the following Thursday, 23:59 pm.</strong></li>
+          <li>There will be a 2-week capstone project released by IIT Kharagpur after the technical sessions are over. You must complete the project on time; there will not be any extension of the deadline, so plan your work accordingly.</li>
+          <li>Provide feedback through surveys or during office hours to help improve the program.</li>
+          <li>Please RSVP all the invites that you receive from "Global Tech Academy/Ashwin Srivathsaav" for this program.</li>
+          <li><strong>Kindly create an email rule for this program in your Outlook</strong> so that you are not missing any critical communication sent from "Global Tech Academy/Ashwin Srivathsaav".</li>
+          <li>Kindly bookmark the <a href="https://my.wal-mart.com/:f:/g/personal/a0s1iyj_homeoffice_wal-mart_com/IgC-PfYehgb9T6csYP5Gd0dpAaXM1OyoU533I6EgehENLtM?e=wHMoWL" target="_blank" rel="noopener">BIC Folder_Batch 3</a> for your ease of reference — this folder has the learning materials, general documents, and prerequisites, updated on a weekly basis.</li>
+          <li>We have created a Teams channel — as a mandatory action, please enable notifications for the <a href="https://teams.microsoft.com/l/channel/19%3AlJByHxAOVmrKsUwFhsd53kPJmZo4_y9CCfHxx6IMIjU1%40thread.tacv2/Batch%203%20-%20Best%20In%20Class%20-%20GenAI%20Accelerator%20Progra?groupId=5c658d4e-7db0-4759-a1db-5316ce54785e&amp;tenantId=3cbcc3d3-094d-4006-9849-0d11d61f484d" target="_blank" rel="noopener">Batch 3 - BIC - GenAI Accelerator Program</a> link.</li>
+          <li>While joining the Zoom link, please ensure you log in with your Walmart credentials, so your Walmart email ID is captured accurately. IIT Kharagpur will validate weekly attendance using the email address captured by Zoom.
+            <div class="callout" style="margin-top:8px;">
+              <strong>Example:</strong> A correct email is ashwin.srivathsaav@walmart.com. If you join Zoom with a misspelled Walmart ID, a Gmail/home-office ID, or any other non-official ID, IIT cannot match your email to their records and you may be marked "No Show." Always use your official walmart.com email address with correct spelling.
+            </div>
+          </li>
+          <li>If joining a session via a meeting room, <strong>also log in with your Walmart ID so attendance is captured.</strong></li>
+          <li>If a session exceeds its scheduled duration, please be patient — the faculty may be ensuring a topic is thoroughly covered for a comprehensive learning experience.</li>
+        </ul>
+      </div>
+
+      <div class="card donts-card">
+        <h2>🚫 DON'T's</h2>
+        <ul>
+          <li>Don't skip the bridge course.</li>
+          <li>Don't skip any of the live sessions conducted by IIT Kharagpur and Walmart Internal Expert/SME Led sessions.</li>
+          <li><strong>Don't forward any invites related to this program to peers/team.</strong></li>
+          <li><strong>Don't forward the Teams channel to your colleagues</strong> — <a href="https://teams.microsoft.com/l/channel/19%3AlJByHxAOVmrKsUwFhsd53kPJmZo4_y9CCfHxx6IMIjU1%40thread.tacv2/Batch%203%20-%20Best%20In%20Class%20-%20GenAI%20Accelerator%20Progra?groupId=5c658d4e-7db0-4759-a1db-5316ce54785e&amp;tenantId=3cbcc3d3-094d-4006-9849-0d11d61f484d" target="_blank" rel="noopener">Batch 3 - BIC - GenAI Accelerator Program</a>.</li>
+          <li>Don't multitask during sessions.</li>
+          <li>Don't disrupt or dominate the sessions.</li>
+          <li>Don't delay submitting your capstone project — no extension will be given.</li>
+          <li>Don't miss any quiz/programming assignments — all of these count towards your final grading.</li>
+          <li>Do not request offline or in the Teams channel for re-attempt/extension of timeline in case you missed a quiz/programming assignment.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ TAB 4: FAQs ══════════════════════ -->
+<div class="tab-panel" id="faqs">
+  <div class="content-wrap">
+    <div class="card">
+      <h2>BIC: GenAI Accelerator Program FAQs</h2>
+
+      <div class="faq-section-title">Access &amp; Logistics</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Will the calendar be blocked for Live Instructor Led Sessions? <span class="arrow">▶</span></button>
+        <div class="faq-a">You will receive the Zoom invitation closer to the start date of the live sessions.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do we access the IIT-KGP Moodle LMS? <span class="arrow">▶</span></button>
+        <div class="faq-a">You will receive an email from <a href="mailto:moodle_support@iitkgp.ac.in">moodle_support@iitkgp.ac.in</a> which will have login credentials to access the LMS.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I reset my IIT-KGP Moodle LMS password if I forgot or lost it? <span class="arrow">▶</span></button>
+        <div class="faq-a">Go to the login page, click "Lost Password," and follow the instructions to reset your password.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can we download bridge course material? <span class="arrow">▶</span></button>
+        <div class="faq-a">The bridge course material is not available for download.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Will I be able to access the recordings after the course is over? <span class="arrow">▶</span></button>
+        <div class="faq-a">Recordings will be accessible for one year from the course start date.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">When will weekly session recordings be uploaded and where can I find them? <span class="arrow">▶</span></button>
+        <div class="faq-a">Both Wednesday and Thursday session recordings will be uploaded by Friday noon. Learners can access the recordings from the IIT-KGP LMS portal.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Whom should I contact for access/connectivity related issues? <span class="arrow">▶</span></button>
+        <div class="faq-a">Kindly drop an email to <a href="mailto:globaltechacademy@walmart.com">globaltechacademy@walmart.com</a> / <a href="mailto:Ashwin.Srivathsaav@walmart.com">Ashwin.Srivathsaav@walmart.com</a>.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Whom should I contact if I have not received my login credentials for the LMS? <span class="arrow">▶</span></button>
+        <div class="faq-a">Kindly drop an email to <a href="mailto:globaltechacademy@walmart.com">globaltechacademy@walmart.com</a> / <a href="mailto:Ashwin.Srivathsaav@walmart.com">Ashwin.Srivathsaav@walmart.com</a>.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do we need VPN to access the LMS or the live course? <span class="arrow">▶</span></button>
+        <div class="faq-a">VPN is <strong>not</strong> required to access the LMS or the live course.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">I can't download or upload assignments because access is blocked. What steps should I take? <span class="arrow">▶</span></button>
+        <div class="faq-a">Directly copy and paste this link for downloading/uploading assignments: <a href="https://ai4icps-upskilling.in/mod/assign/view.php?id=162" target="_blank" rel="noopener">https://ai4icps-upskilling.in/mod/assign/view.php?id=162</a></div>
+      </div>
+
+      <div class="faq-section-title">Scheduling &amp; Timings</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is the timing for Live Instructor Led Sessions? <span class="arrow">▶</span></button>
+        <div class="faq-a">Sessions are scheduled every Wednesday and Thursday (except Week 8), starting September 16th through November 13th. See the <strong>Schedule tab</strong> of this document for the full week-by-week breakdown. <em>*Schedule is subject to change based on requirement.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How are we going to address queries related to the course? <span class="arrow">▶</span></button>
+        <div class="faq-a">All questions will be addressed by IIT faculty members during the ILT session. Additionally, discussion forums are available for each session in the LMS for posting queries, which will also be answered by the teaching assistants.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can we change the session timings? <span class="arrow">▶</span></button>
+        <div class="faq-a">The schedule is set according to IIT-KGP professors' teaching times and cannot be changed.</div>
+      </div>
+
+      <div class="faq-section-title">Curriculum &amp; Content</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Given the rapid changes in AI, is it possible to adjust the curriculum as needed over the next six months? <span class="arrow">▶</span></button>
+        <div class="faq-a">The curriculum was recently framed and finalized through collaboration between the fellows and IIT-KGP. Any additional updates or new elements will be addressed during the session.</div>
+      </div>
+
+      <div class="faq-section-title">Certification</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Will I receive a certificate from IIT KGP upon completion of this program? <span class="arrow">▶</span></button>
+        <div class="faq-a">
+          <ul>
+            <li><strong>Certificate of Participation (CoP):</strong> Awarded to participants securing less than 35% marks.</li>
+            <li><strong>Certificate of Completion (CoC):</strong> Awarded to participants securing at least 35% marks.</li>
+            <li><strong>Certificate of Achievement (CoA):</strong> Awarded to participants securing at least 70% marks.</li>
+            <li><strong>Certificate of Merit (CoM):</strong> Awarded to participants securing at least 90% marks.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Where can I see my certificate? <span class="arrow">▶</span></button>
+        <div class="faq-a">Your certificate will be available on the IIT-KGP LMS portal.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Will I get a certificate if I leave Walmart or if I am serving notice period? <span class="arrow">▶</span></button>
+        <div class="faq-a">Yes, you will still be eligible to receive a certificate based on the certification criteria above.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How will I get my certificate if my last working day is approaching? <span class="arrow">▶</span></button>
+        <div class="faq-a">We will send your certificate to your HRBP, and you can coordinate with them to collect it.</div>
+      </div>
+
+      <div class="faq-section-title">Capstone Project</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">When is the Capstone Project scheduled? <span class="arrow">▶</span></button>
+        <div class="faq-a">A separate session related to the Capstone Project will be scheduled once the live sessions are over.</div>
+      </div>
+
+      <div class="faq-section-title">Tools &amp; Infrastructure</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Which tool is used for hands-on labs, and can I use a personal account? <span class="arrow">▶</span></button>
+        <div class="faq-a">Google Colab is currently used for this program. Kindly access it with your personal Gmail account — it is permissible to use a personal Gmail account.</div>
+      </div>
+
+      <div class="faq-section-title">Communication &amp; Channels</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Are there channels for program updates or contacting the organizers? <span class="arrow">▶</span></button>
+        <div class="faq-a">We've set up a Teams channel and added all confirmed associates: <a href="https://teams.microsoft.com/l/channel/19%3AlJByHxAOVmrKsUwFhsd53kPJmZo4_y9CCfHxx6IMIjU1%40thread.tacv2/Batch%203%20-%20Best%20In%20Class%20-%20GenAI%20Accelerator%20Progra?groupId=5c658d4e-7db0-4759-a1db-5316ce54785e&amp;tenantId=3cbcc3d3-094d-4006-9849-0d11d61f484d" target="_blank" rel="noopener">Batch 3 - BIC - GenAI Accelerator Program</a>. Please enable channel notifications to receive important information.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is the discussion forum for one-on-one conversations, or can multiple participants join and discuss openly? <span class="arrow">▶</span></button>
+        <div class="faq-a">Discussion forums allow multiple participants and have their queries addressed openly.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is the 2-hour ILT session interactive, given the large batch size? <span class="arrow">▶</span></button>
+        <div class="faq-a">Due to the batch size and session duration, verbal participation will not be possible. However, you are encouraged to submit questions via chat, and the Training Administrative team will address them accordingly.</div>
+      </div>
+
+      <div class="faq-section-title">Others</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there an understanding from leadership to help participants allocate 10–20% of their bandwidth to this program? <span class="arrow">▶</span></button>
+        <div class="faq-a">You have been nominated by HR People Partners and Chiefs of Staff in consultation with pillar leads, and they are aware and in alignment with your participation.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there any fee payable if a participant is unable to complete the course or leaves Walmart during the course tenure? <span class="arrow">▶</span></button>
+        <div class="faq-a">There are no fees required from participants for this learning program. However, we expect all participants to complete the course and attend the live sessions, as full participation is essential for the program's effectiveness for both you and us. We are also making a significant investment in this program, and your commitment is greatly appreciated.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">In case of travel, is it acceptable to review the pre-recorded materials using a personal laptop? <span class="arrow">▶</span></button>
+        <div class="faq-a">Yes, the course can be accessed through a personal device.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How is this program classified? Is it recognized as a master's, a diploma, or another category? <span class="arrow">▶</span></button>
+        <div class="faq-a">This is a certificate program.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ TAB 5: MARKING LOGIC ══════════════════════ -->
+<div class="tab-panel" id="marking">
+  <div class="content-wrap">
+    <div class="card">
+      <h2>Marking Logic for B2B Advanced AI Course</h2>
+      <p>For this 8-week online certification program, there are <strong>8 quizzes</strong> and <strong>8 assignments</strong> (4 descriptive and 4 programming).</p>
+      <ul>
+        <li>The <strong>best 6 quizzes out of 8</strong> will be considered. Each quiz carries <strong>10 marks</strong>.</li>
+        <li>The <strong>best 2 programming assignments out of 4</strong> will be considered. Each programming assignment carries <strong>20 marks</strong>.</li>
+        <li>The marks for the <strong>descriptive assignments will not be considered</strong> in the evaluation.</li>
+        <li>The <strong>capstone project carries 100 marks</strong>.</li>
+      </ul>
+
+      <h3>Overall Marking Distribution</h3>
+      <table class="quiz-table">
+        <thead><tr><th>Component</th><th>Calculation</th><th>Marks</th></tr></thead>
+        <tbody>
+          <tr><td>Quizzes</td><td>10 × 6</td><td>60</td></tr>
+          <tr><td>Programming Assignments</td><td>20 × 2</td><td>40</td></tr>
+          <tr><td>Capstone Project</td><td>100 × 1</td><td>100</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>Total = 200 marks</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <span>Best In Class: GenAI Accelerator Program - Cohort 3</span>
+  <span>Confidential · For Internal Distribution Only</span>
+  <span>AI4ICPS I · IIT Kharagpur, India</span>
+</div>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function goToTab(id) {
+    const btn = document.querySelector('.tab-btn[data-tab="' + id + '"]');
+    showTab(id, btn);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleFaq(btn) {
+    btn.parentElement.classList.toggle('open');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('disclaimerModal').classList.add('active');
+  });
+</script>
+
+</body>
+</html>
