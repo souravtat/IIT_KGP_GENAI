@@ -1,0 +1,36 @@
+1. Create an OpenAI account
+	Go to the official OpenAI Platform:
+	OpenAI API Platform
+	Click Sign up.
+	Create an account using your email or supported login provider.
+	Verify your account if prompted.
+
+You can use an existing ChatGPT/OpenAI account as well.
+
+2. Set up API billing
+
+Important: ChatGPT and the OpenAI API are billed separately. Having a ChatGPT subscription does not automatically give you API credits.
+
+	Open the OpenAI Platform.
+	Go to Settings → Billing.
+	Add your payment method.
+	Purchase API credits if your account requires prepaid billing.
+
+OpenAI currently uses prepaid billing for new API accounts; the minimum credit purchase is $5, with $10 as the default purchase amount.
+
+For initial coding/testing, you can start with a small amount such as $5 and monitor your usage.
+
+3. Create an API key
+	Open OpenAI API Keys
+	Click Create new secret key.
+	Give it a name.
+	Create the key.
+	Copy the API key immediately and store it securely.
+
+It will look approximately like:
+
+sk-proj-xxxxxxxxxxxxxxxxxxxxxxxx
+
+Never share this key or commit it to GitHub.
+
+4. Set the API key in your Operating System (OPENAI_API_KEY="sk-proj-your-key-here") or keep a copy of it.

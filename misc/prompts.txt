@@ -1,0 +1,184 @@
+Codex Prompt Testing List
+==========================
+
+Project 1: Calculator Application in Python
+-------------------------------------------
+
+1. Create a basic calculator application
+Prompt:
+Create a Python calculator application with a clean, modular structure. Support addition, subtraction, multiplication, and division. Put each operation in a separate function and provide a simple command-line interface. Add basic input validation and handle division by zero gracefully.
+
+2. Inspect the calculator code
+Prompt:
+Review the calculator application you just created. Check every function for correctness, edge cases, naming, structure, and potential bugs. Do not modify the code yet. Give me a concise list of issues and suggested improvements.
+
+3. Test the calculator functions
+Prompt:
+Create a test suite for the calculator functions. Test normal cases, negative numbers, zero, floating-point values, and division by zero. Use Python's unittest or pytest framework. Run the tests and report the results.
+
+4. Fix issues found during testing
+Prompt:
+Run the existing calculator tests. Identify any failures or bugs and fix the implementation. Do not change the expected behavior unless the test itself is clearly incorrect. Run the tests again after making the changes.
+
+5. Add power functionality
+Prompt:
+Add a power operation to the calculator using a separate function. Update the command-line interface and tests. Follow the existing project structure and coding style.
+
+6. Add square-root functionality
+Prompt:
+Add a square-root operation to the calculator. Handle invalid inputs such as negative numbers gracefully. Update the CLI and test suite accordingly.
+
+7. Add percentage functionality
+Prompt:
+Add percentage calculation to the calculator. First inspect the existing design and implement the feature consistently with the current architecture. Add appropriate tests and update the CLI.
+
+8. Improve the CLI
+Prompt:
+Improve the calculator's command-line interface so that users can select operations from a numbered menu, enter values interactively, and continue performing calculations until they choose to exit. Preserve all existing functionality.
+
+9. Improve error handling
+Prompt:
+Review the calculator's input and error handling. Make it robust against invalid numbers, empty input, unsupported operations, division by zero, and invalid square-root input. Add tests for all relevant error cases.
+
+10. Refactor the calculator
+Prompt:
+Refactor the calculator for maintainability without changing its behavior. Look for duplicated code, unclear names, unnecessary complexity, and poor separation of responsibilities. Keep the implementation simple and readable. Run the tests afterward.
+
+11. Add calculation history
+Prompt:
+Add a calculation-history feature. Store successful calculations during the current session and provide a command to display the history. Update the tests and CLI.
+
+12. Add clear-history functionality
+Prompt:
+Extend the calculator so users can clear the current calculation history. Add tests for empty history, populated history, and clearing history.
+
+13. Add documentation
+Prompt:
+Add useful docstrings and comments to the calculator code. Create a README explaining how to install, run, test, and use the application. Keep the documentation concise and accurate.
+
+14. Perform a complete code review
+Prompt:
+Act as a senior Python developer and perform a complete review of this calculator project. Inspect the implementation, tests, error handling, project structure, documentation, and user experience. Identify concrete improvements and prioritize them by importance. Do not make changes yet.
+
+15. Implement the review recommendations
+Prompt:
+Based on your previous code review, implement the highest-value improvements. Avoid unnecessary features and preserve existing behavior. Run the full test suite and summarize what changed and whether all tests pass.
+
+
+Project 2: HAAI Search - Search Engine Web Interface
+----------------------------------------------------
+
+16. Create the initial HAAI Search webpage
+Prompt:
+Create a modern search-engine interface called "HAAI Search" using only HTML and CSS. Include a centered logo/title, search input, search button, and a clean responsive layout. Make the design look like a real search engine rather than a generic form. Do not use JavaScript yet.
+
+17. Inspect the webpage
+Prompt:
+Review the HAAI Search HTML and CSS. Check the structure, semantic HTML, responsiveness, accessibility, spacing, typography, and visual consistency. Do not modify the files yet. List the issues and suggested improvements.
+
+18. Improve the visual design
+Prompt:
+Improve the HAAI Search interface to look more polished and professional. Keep the existing concept but improve typography, spacing, buttons, search box, alignment, and responsive behavior. Avoid adding unnecessary dependencies.
+
+19. Add a search-results page
+Prompt:
+Extend HAAI Search by creating a realistic search-results interface. Include a search bar at the top and several example search results with titles, URLs, and snippets. Use only HTML and CSS for now. Keep the visual style consistent with the homepage.
+
+20. Add navigation elements
+Prompt:
+Add a simple header/navigation area to HAAI Search with the site name and useful navigation links. Make sure it remains clean and responsive on smaller screens.
+
+21. Add JavaScript search behavior
+Prompt:
+Add JavaScript functionality to HAAI Search so that entering a query and submitting the search form displays matching results from a small local dataset. Keep the implementation client-side and simple. Preserve the existing HTML/CSS design.
+
+22. Check the search functionality
+Prompt:
+Test the HAAI Search functionality thoroughly. Check empty queries, normal queries, multiple results, no-result queries, special characters, and repeated searches. Identify and fix any bugs you find.
+
+23. Add a result-count indicator
+Prompt:
+Add a result-count indicator to the search-results page, such as "About 12 results". Make the count update dynamically based on the locally available search results.
+
+24. Add filtering
+Prompt:
+Add a simple filter system to HAAI Search so users can filter results by category. Use a small set of categories and make the filtering work with the existing local dataset. Keep the UI simple and responsive.
+
+25. Add sorting
+Prompt:
+Add sorting options to HAAI Search results, such as relevance and title. Implement the sorting using the existing local dataset and update the UI without breaking the current search behavior.
+
+26. Add pagination
+Prompt:
+Add client-side pagination to the HAAI Search results. Display a fixed number of results per page and provide previous/next controls. Handle first-page and last-page states correctly.
+
+27. Improve accessibility
+Prompt:
+Audit the HAAI Search interface for accessibility. Check semantic elements, labels, keyboard navigation, focus states, color contrast, button names, and screen-reader-friendly structure. Fix the issues you find without changing the overall visual design.
+
+28. Improve mobile responsiveness
+Prompt:
+Test and improve HAAI Search for mobile, tablet, and desktop screen sizes. Fix overflowing elements, spacing problems, font sizes, search-bar behavior, navigation, and result layout. Do not introduce unnecessary frameworks.
+
+29. Add dark mode
+Prompt:
+Add a dark-mode option to HAAI Search. Use CSS variables where appropriate and add a simple toggle. Preserve the existing design and make sure both modes have readable text and sufficient contrast.
+
+30. Add loading and empty states
+Prompt:
+Improve the HAAI Search user experience by adding a loading state, no-results state, and error state. Keep the implementation lightweight and make sure each state is visually clear and accessible.
+
+31. Validate the complete frontend
+Prompt:
+Perform a complete review of the HAAI Search project. Check HTML validity, CSS issues, JavaScript logic, accessibility, responsiveness, search behavior, empty states, filtering, sorting, pagination, and dark mode. Do not change anything yet; report the problems you find.
+
+32. Fix all identified frontend issues
+Prompt:
+Fix the issues identified in your previous review. Make the smallest reasonable changes necessary, preserve existing functionality, and avoid introducing new dependencies. Afterward, test the complete interface and summarize the changes.
+
+33. Add more search features
+Prompt:
+Inspect the current HAAI Search implementation and suggest five useful search-engine features that can be implemented without a backend. Rank them by usefulness and implementation difficulty. Do not implement them yet.
+
+34. Implement the best additional feature
+Prompt:
+Implement the highest-value additional search feature you recommended. Integrate it cleanly with the existing HAAI Search code, update the UI if necessary, and test the feature thoroughly.
+
+35. Final production-readiness review
+Prompt:
+Act as a senior frontend engineer performing a production-readiness review of HAAI Search. Inspect all project files and evaluate code quality, accessibility, responsiveness, security concerns, maintainability, performance, and user experience. Do not modify the code. Provide a prioritized list of recommendations.
+
+36. Final cleanup
+Prompt:
+Based on the production-readiness review, make only the necessary improvements to HAAI Search. Remove dead code, fix obvious issues, improve maintainability, and preserve the current functionality and design. Test everything after the changes and provide a concise summary.
+
+
+Suggested Codex Workflow
+------------------------
+
+For the calculator:
+1. Create the project
+2. Inspect the code
+3. Add tests
+4. Run tests
+5. Add a feature
+6. Test the feature
+7. Refactor
+8. Review
+9. Fix review findings
+10. Final test
+
+For HAAI Search:
+1. Create the HTML/CSS interface
+2. Inspect the design
+3. Improve the design
+4. Add search results
+5. Add JavaScript search
+6. Test search behavior
+7. Add filtering/sorting/pagination
+8. Test edge cases
+9. Improve accessibility and responsiveness
+10. Add dark mode
+11. Perform a complete review
+12. Fix issues
+13. Final production-readiness review

@@ -1,0 +1,172 @@
+------------------------------------------------------------------------------------------
+
+COURSE: GEN AI
+TOPIC: Hands-on Lab: Creative AI Lab on generating images with Stable Diffusion
+DUE-DATE: 08 OCTOBER 2026
+
+INSTRUCTIONS:
+1. Do not modify any tag in this file. Just type your answers in the designated place.
+2. Do not change the file name and/or extension.
+3. Upload this file after answering in the portal.
+
+------------------------------------------------------------------------------------------
+
+<<< QUESTION 1 >>>
+
+Explain how Stable Diffusion generates an image from a text prompt. Describe the roles of the text encoder, latent space, noise, denoising process, and decoder. Use an example relevant to Walmart.
+
+### WRITE ANSWER BELOW ###
+
+Stable Diffusion generates an image from a text prompt by running a denoising process in a compressed latent space, guided by the prompt at every step. 
+ 
+Text Encoder: The prompt is passed through a pretrained CLIP text encoder, producing a sequence of contextual embedding vectors that capture the 
+prompt’s meaning. These embeddings are injected into the denoising network via cross-attention at every single denoising step — not just once — 
+so the model continuously “checks the prompt” as it refines the image.
+ 
+ Latent Space: Rather than working directly on full-resolution pixels, Stable Diffusion uses a VAE (Variational Autoencoder) to compress a 
+ real image x into a much smaller latent representation z (e.g., 512×512×3 pixels → 64×64×4 latent). All noising and denoising happens in this 
+ compact z-space, which is what makes Stable Diffusion fast compared to pixel-space diffusion models.
+ 
+Noise (forward process): During training, a real image’s latent z₀ is progressively corrupted with Gaussian noise over many steps until, at step T, 
+it’s indistinguishable from pure random noise. 
+At generation time, there’s no real image to start from — generation begins directly from pure random noise in latent space. 
+
+
+Denoising process (reverse process): A UNet is trained to predict the noise added at each step, conditioned on both the current noisy latent and 
+the text embeddings (via cross-attention). That predicted noise is converted into a score (direction toward higher probability/more realistic data), 
+and the network iteratively removes noise step by step, walking from pure noise back to a clean latent that represents a realistic image — 
+guided by the prompt throughout via classifier-free guidance (mixing the conditional and unconditional score predictions to control how strongly 
+the output matches the prompt).
+
+Decoder: Once the reverse process reaches a clean latent z₀, the VAE’s decoder upsamples it back into a full-resolution pixel image.
+
+Example of Walmart:
+Generating product lifestyle imagery from text — e.g., prompting “a modern grey sofa in a sunlit living room” to auto-generate catalog/marketing 
+images showing the same furniture item staged in different room styles and settings, without needing a physical photoshoot for every variation.
+
+
+
+
+
+<<< QUESTION 2 >>>
+
+How would you design an effective Stable Diffusion prompt for generating an e-commerce image of a product? Explain the importance of the subject, environment, composition, lighting, and style.
+
+### WRITE ANSWER BELOW ###
+
+Stable Diffusion Prompt:
+A white men’s Nike running shoe, UK size 8, with blue side stripes and the Nike swoosh logo [subject], placed on a seamless white studio 
+background [environment], photographed at a 3/4 angle close-up with the shoe centered and ample negative space [composition], under soft diffused 
+studio lighting with subtle shadow beneath the shoe [lighting], in the style of clean, high-resolution e-commerce product photography [style].
+
+Subject must be unambiguous and detailed enough that the model doesn’t hallucinate wrong colors/logos/materials.
+
+Environment should usually be a neutral, non-distracting background (white/grey studio) for catalog listings, since Walmart/e-commerce platforms typically require clean backgrounds with no competing visual elements.
+
+Composition controls whether you get a usable catalog-standard shot (centered, consistent angle across all product photos in a catalog)
+
+Lighting is what sells realism and material quality — flat/harsh lighting makes products look cheap or fake, while proper soft studio lighting with controlled shadows is the industry standard for product trust and perceived quality.
+
+Style keyword (e.g., “e-commerce product photography,” “studio catalog shot”) anchors the model toward the clean, professional aesthetic customers expect.
+
+<<< QUESTION 3 >>>
+
+Explain the effect of guidance scale and inference steps in Stable Diffusion. Why are these parameters important when generating product images for an e-commerce platform?
+
+### WRITE ANSWER BELOW ###
+
+Guidance scale:
+In a classifier free guidance one diffusion model is trained such that it can act both conditionallyP(x|y) and unconditionallyp(x).
+Now at a denoising step, the vague instinct which is unconditional nudges moderately towards clean image whereas conditional has a greater effect.
+
+∇x log Pλ(x|y) = (1−λ)·∇x log P(x) + λ·∇x log P(x|y)
+
+Here λ is the guidance scale. If λ=1 then it removed the unconditional part and recovers the plain guidance generation.
+However when  λ>1 then it exaggarates the conditional signal trading some diversity for prompt fidelity.
+
+Inference Steps:
+The reverse/denoising process you learned: x_T → x_{T-1} → ... → x_1 → x_0, walking from pure noise down to a clean image, 
+one small Langevin-style step at a time. 
+Inference steps = how many of these denoising steps you actually run at generation time.
+
+More inference steps → each denoising step is smaller/more gradual → finer, more precise refinement → better detail, fewer artifacts, but slower generation
+
+Fewer inference steps → each step has to “jump” further → faster generation, but risk of incomplete denoising — blurry details, muddled textures, structural artifacts (e.g., warped shapes, incorrect proportions) because the model didn’t get enough gradual refinement passes to converge properly.
+
+Why are these parameters important when generating product images:
+
+Too few steps risks product images with blurry textures, malformed logos, or distorted shapes — unacceptable for a catalog image customers rely on to judge the actual product.
+
+Too many steps adds unnecessary compute cost/latency when generating at scale (e.g., thousands of SKU images), with diminishing quality returns past a certain point (typically ~30-50 steps is the practical sweet spot for most modern samplers).
+
+For e-commerce, we want enough steps to guarantee crisp, artifact-free detail (since product accuracy and visual trust matter directly to purchase decisions), balanced against generation cost at scale if you’re batch-producing images for a large catalog.
+
+Guidance scale (λ): needs to be high enough that the generated image actually reflects the specific product described (correct color, correct logo placement, correct shape) rather than drifting into a generic/unrelated variation — fidelity to the product description is non-negotiable for retail listings.Okay
+Inference steps: needs to be high enough to avoid visual artifacts/blur that would misrepresent the product’s actual appearance, balanced against the cost of generating at catalog scale.
+
+In practice, guidance scale and inference steps must be tuned together, not independently — e.g., Stable Diffusion’s defaults (~7-8 guidance scale, ~30-50 steps) balance both concerns for most product photography use cases.
+
+<<< QUESTION 4 >>>
+
+A Stable Diffusion model generates a product image for "a blue 1-liter insulated water bottle with a black cap," but the output contains a green bottle with a different cap. Why can this happen, and how could you improve the consistency of the generated image?
+
+### WRITE ANSWER BELOW ###
+
+This might have happened because of multiple factors.
+
+Attribute binding failure (the most common cause of exactly this symptom): Diffusion models’ cross-attention mechanism sometimes fails to correctly bind an adjective to its specific noun when a prompt has multiple objects/attributes in one sentence.
+
+Training data bias / prompt ambiguity: if “insulated water bottle” strongly co-occurs with green in the model’s training data (e.g., many popular insulated bottles are green/steel-colored in product photography datasets), the model’s learned prior can override a weaker color instruction
+
+Seed/random variance: a single generation is one sample from a distribution — any individual sample can land on an atypical, incorrect-looking result purely from randomness in the noise jitter, even with good settings.
+
+Low guidance scale produces vague/off-prompt images broadly.
+
+Too few inference steps causes blur/artifacts/malformed shapes.
+
+In order to improve the consistency.
+
+Increase guidance scale (your point — still valid, e.g., 7-9) to strengthen prompt adherence generally.
+
+Increase inference steps (your point — valid for reducing artifacts, e.g., 30-50), but note this fixes blur/malformation, not necessarily wrong attributes.
+
+Prompt engineering for attribute binding: restructure the prompt to reduce ambiguity — e.g., explicit ordering, repetition, or separating clauses: “a 1-liter insulated water bottle, bottle body is blue, cap is black”
+
+Use image-to-image / inpainting with a reference: for strict product accuracy (critical in e-commerce, as in your earlier answer), the more reliable production approach is often providing a reference product image (actual photo or 3D render) and using image-to-image conditioning or ControlNet (shape/color conditioning) rather than relying purely on text-to-image.
+
+
+
+
+<<< QUESTION 5 >>>
+
+Design a high-level Stable Diffusion workflow for Walmart to automatically generate lifestyle images for thousands of products. Explain the major stages and mention two potential risks.
+
+### WRITE ANSWER BELOW ###
+
+
+Major Stages of the Workflow:
+Product Data Ingestion: Pull structured product metadata from Walmart’s catalog system — title, category, color, material, dimensions, existing product photos (if any). This becomes the raw input for prompt construction, not something a human writes per-product.
+
+Automated Prompt Construction: Programmatically generate structured prompts per product using a template that fills in subject/environment/composition/lighting/style from the metadata (your point, but automated rather than manual) — e.g., "{color} {material} {product_type}, placed in {environment template}, {composition template}, {lighting template}, {style template}". For thousands of SKUs, this must be templated/rule-based or LLM-assisted, not hand-written per item.
+
+Reference-Conditioned Generation (not pure text-to-image): Since exact product fidelity matters (as established in your earlier answers), the workflow should use the existing real product photo as an image-to-image or ControlNet conditioning input, combined with the text prompt — rather than pure text-to-image, which risks wrong colors/shapes.
+
+Batch Generation with Tuned Parameters: Run generation at scale with guidance scale (~7-9) and inference steps (~30-50) tuned.
+
+
+Automated Quality Control / Filtering: Critical missing stage — run generated images through automated checks (e.g., a vision-language model or CLIP similarity score comparing generated image against the original product description/photo) to flag mismatches (wrong color, missing logo, distorted shape) before they ever reach a human reviewer or go live.
+
+Human-in-the-loop Review: For flagged or borderline cases, route to a human reviewer rather than auto-publishing — especially important at launch, before trusting the pipeline’s QC fully.
+
+
+Publish to Catalog / CDN: Approved images get pushed into the product listing pipeline.
+
+Two Risks:
+Product misrepresentation / legal-compliance risk: as explored in the bottle example, generated images can show incorrect colors, logos, or shapes that don’t match the actual shipped product. In retail, this isn’t just a quality issue — it creates real legal/return-rate/customer-trust risk
+
+Scale/cost and latency risk: generating lifestyle images for “thousands of products” at high guidance scale + 30-50 inference steps is computationally expensive (GPU-hours at scale). Without careful infra planning (batching, model optimization, caching repeated backgrounds/environments), this could become a significant cost and turnaround-time bottleneck, especially if the catalog is large or updated frequently.
+
+
+
+
+

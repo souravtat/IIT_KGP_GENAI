@@ -1,0 +1,28 @@
+1. Create an Anthropic account
+	Go to the official Anthropic Console:
+	Anthropic Console
+	Click Sign Up.
+	Create an account using your email or supported login method.
+	Verify your email if required.
+	Complete the initial account setup.
+
+
+2. Add billing/credits
+
+Claude Code uses the Anthropic API, so you generally need API access with available credits/payment configured.
+
+	Open the Console.
+	Go to Settings / Billing.
+	Add a payment method.
+	Purchase/add API credits if required.
+
+**Your Claude.ai subscription and Anthropic API billing are separate. Having a Claude chat subscription does not necessarily mean you have API credits.
+
+3. Generate an API key
+	Open Anthropic Console
+	Go to Settings.
+	Find API Keys.
+	Click Create Key / Create API Key.
+	Give it a name.			
+	Create the key.
+	Copy the API key immediately and store it securely.
