@@ -1,0 +1,492 @@
+[
+  {
+    "query_id": "Q01",
+    "query": "what should i wear to my friend's wedding, i'm a guy",
+    "intent": "product",
+    "probe": "vocab_gap",
+    "relevant_sku_ids": [
+      "SKU-001233",
+      "SKU-001234",
+      "SKU-001235",
+      "SKU-001236",
+      "SKU-001237",
+      "SKU-001238",
+      "SKU-001239",
+      "SKU-001240",
+      "SKU-001241",
+      "SKU-001242",
+      "SKU-001243",
+      "SKU-001244",
+      "SKU-001245",
+      "SKU-001246",
+      "SKU-001247",
+      "SKU-001248"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [
+      "recommends formalwear, not casual apparel"
+    ],
+    "demo": true
+  },
+  {
+    "query_id": "Q02",
+    "query": "outfit for a job interview",
+    "intent": "product",
+    "probe": "vocab_gap",
+    "relevant_sku_ids": [
+      "SKU-001233",
+      "SKU-001234",
+      "SKU-001235",
+      "SKU-001236",
+      "SKU-001237",
+      "SKU-001238",
+      "SKU-001245",
+      "SKU-001246",
+      "SKU-001247",
+      "SKU-001248"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q03",
+    "query": "something nice to wear to a work christmas party",
+    "intent": "product",
+    "probe": "vocab_gap",
+    "relevant_sku_ids": [
+      "SKU-001257",
+      "SKU-001258",
+      "SKU-001259",
+      "SKU-001260",
+      "SKU-001261",
+      "SKU-001262",
+      "SKU-001263",
+      "SKU-001264",
+      "SKU-001265",
+      "SKU-001266",
+      "SKU-001267",
+      "SKU-001268",
+      "SKU-001233",
+      "SKU-001234",
+      "SKU-001235"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q04",
+    "query": "gift for my sister under 40 dollars",
+    "intent": "product",
+    "probe": "vocab_gap",
+    "relevant_sku_ids": [
+      "SKU-001269",
+      "SKU-001270",
+      "SKU-001271",
+      "SKU-001272",
+      "SKU-001273",
+      "SKU-001274",
+      "SKU-001275",
+      "SKU-001276",
+      "SKU-001277",
+      "SKU-001278",
+      "SKU-001279",
+      "SKU-001280",
+      "SKU-001281",
+      "SKU-001282",
+      "SKU-001283",
+      "SKU-001284",
+      "SKU-001285",
+      "SKU-001286",
+      "SKU-001287",
+      "SKU-001288",
+      "SKU-001289",
+      "SKU-001290",
+      "SKU-001291",
+      "SKU-001292"
+    ],
+    "expected_filters": {
+      "price_max": 40
+    },
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q05",
+    "query": "i need to dress up for a formal event tonight",
+    "intent": "product",
+    "probe": "vocab_gap",
+    "relevant_sku_ids": [
+      "SKU-001233",
+      "SKU-001234",
+      "SKU-001235",
+      "SKU-001236",
+      "SKU-001237",
+      "SKU-001257",
+      "SKU-001258",
+      "SKU-001259",
+      "SKU-001260",
+      "SKU-001261"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q06",
+    "query": "RN-4412",
+    "intent": "product",
+    "probe": "exact_token",
+    "relevant_sku_ids": [
+      "SKU-001293"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": true
+  },
+  {
+    "query_id": "Q07",
+    "query": "do you have the CS-2280 in stock",
+    "intent": "product",
+    "probe": "exact_token",
+    "relevant_sku_ids": [
+      "SKU-001303"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q08",
+    "query": "looking for style WB-5510",
+    "intent": "product",
+    "probe": "exact_token",
+    "relevant_sku_ids": [
+      "SKU-001313"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q09",
+    "query": "LB-3120 belt",
+    "intent": "product",
+    "probe": "exact_token",
+    "relevant_sku_ids": [
+      "SKU-001323"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q10",
+    "query": "price on BC-1190",
+    "intent": "product",
+    "probe": "exact_token",
+    "relevant_sku_ids": [
+      "SKU-001333"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q11",
+    "query": "red running shoes under $50 in size 10",
+    "intent": "product",
+    "probe": "attribute_constrained",
+    "relevant_sku_ids": [
+      "SKU-001347",
+      "SKU-001348",
+      "SKU-001493",
+      "SKU-001494",
+      "SKU-001495"
+    ],
+    "expected_filters": {
+      "color": "Red",
+      "size": "10",
+      "price_max": 50
+    },
+    "expected_answer_facts": [],
+    "demo": true
+  },
+  {
+    "query_id": "Q12",
+    "query": "blue running shoes size 11 cheap",
+    "intent": "product",
+    "probe": "attribute_constrained",
+    "relevant_sku_ids": [
+      "SKU-001360",
+      "SKU-001496",
+      "SKU-001497",
+      "SKU-001498"
+    ],
+    "expected_filters": {
+      "color": "Blue",
+      "size": "11",
+      "price_max": 70
+    },
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q13",
+    "query": "white dress shirt size large",
+    "intent": "product",
+    "probe": "attribute_constrained",
+    "relevant_sku_ids": [
+      "SKU-001397",
+      "SKU-001398",
+      "SKU-001499",
+      "SKU-001500",
+      "SKU-001501"
+    ],
+    "expected_filters": {
+      "color": "White",
+      "size": "L"
+    },
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q14",
+    "query": "navy dress shirt xl under 45",
+    "intent": "product",
+    "probe": "attribute_constrained",
+    "relevant_sku_ids": [
+      "SKU-001439",
+      "SKU-001440"
+    ],
+    "expected_filters": {
+      "color": "Navy",
+      "size": "XL",
+      "price_max": 45
+    },
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q15",
+    "query": "grey winter coat for a kid size 8 under 80",
+    "intent": "product",
+    "probe": "attribute_constrained",
+    "relevant_sku_ids": [
+      "SKU-001447",
+      "SKU-001505",
+      "SKU-001506",
+      "SKU-001507"
+    ],
+    "expected_filters": {
+      "color": "Grey",
+      "size": "8",
+      "price_max": 80
+    },
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q16",
+    "query": "plain cotton t shirt for men",
+    "intent": "product",
+    "probe": "near_duplicate",
+    "relevant_sku_ids": [
+      "SKU-001508",
+      "SKU-001509",
+      "SKU-001510",
+      "SKU-001511",
+      "SKU-001512",
+      "SKU-001513",
+      "SKU-001514",
+      "SKU-001515"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [
+      "should surface distinct products, not eight colours of one shirt"
+    ],
+    "demo": false
+  },
+  {
+    "query_id": "Q17",
+    "query": "crew socks",
+    "intent": "product",
+    "probe": "near_duplicate",
+    "relevant_sku_ids": [
+      "SKU-001516",
+      "SKU-001517",
+      "SKU-001518",
+      "SKU-001519",
+      "SKU-001520",
+      "SKU-001521",
+      "SKU-001522",
+      "SKU-001523"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q18",
+    "query": "baseball cap",
+    "intent": "product",
+    "probe": "near_duplicate",
+    "relevant_sku_ids": [
+      "SKU-001524",
+      "SKU-001525",
+      "SKU-001526",
+      "SKU-001527",
+      "SKU-001528",
+      "SKU-001529",
+      "SKU-001530",
+      "SKU-001531"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q19",
+    "query": "i need a couple different caps for my sons",
+    "intent": "product",
+    "probe": "near_duplicate",
+    "relevant_sku_ids": [
+      "SKU-001524",
+      "SKU-001525",
+      "SKU-001526",
+      "SKU-001527",
+      "SKU-001528",
+      "SKU-001529",
+      "SKU-001530",
+      "SKU-001531"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q30",
+    "query": "i need a suit and a dress shirt for my wedding",
+    "intent": "product",
+    "probe": "multi_intent",
+    "relevant_sku_ids": [
+      "SKU-001233",
+      "SKU-001234",
+      "SKU-001235",
+      "SKU-001236",
+      "SKU-001237",
+      "SKU-001238",
+      "SKU-001393",
+      "SKU-001394",
+      "SKU-001395",
+      "SKU-001396",
+      "SKU-001397",
+      "SKU-001398",
+      "SKU-001399",
+      "SKU-001400"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [
+      "should retrieve both a suit and a separate dress shirt, not just one"
+    ],
+    "demo": true
+  },
+  {
+    "query_id": "Q20",
+    "query": "running shoes with a lot of cushioning that are still lightweight",
+    "intent": "product",
+    "probe": "deep_rank",
+    "relevant_sku_ids": [
+      "SKU-001565",
+      "SKU-001566",
+      "SKU-001567"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q21",
+    "query": "warm winter coat that isn't bulky to pack",
+    "intent": "product",
+    "probe": "deep_rank",
+    "relevant_sku_ids": [
+      "SKU-001589",
+      "SKU-001590",
+      "SKU-001591"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q22",
+    "query": "high compression leggings that aren't see through",
+    "intent": "product",
+    "probe": "deep_rank",
+    "relevant_sku_ids": [
+      "SKU-001616",
+      "SKU-001617",
+      "SKU-001618"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q23",
+    "query": "down jacket warm enough for zero degrees",
+    "intent": "product",
+    "probe": "thin_description",
+    "relevant_sku_ids": [
+      "SKU-001169",
+      "SKU-001180",
+      "SKU-001182"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q24",
+    "query": "stretchy work pants for men",
+    "intent": "product",
+    "probe": "thin_description",
+    "relevant_sku_ids": [
+      "SKU-001185",
+      "SKU-001187",
+      "SKU-001188",
+      "SKU-001189",
+      "SKU-001192",
+      "SKU-001197",
+      "SKU-001198",
+      "SKU-001201",
+      "SKU-001202",
+      "SKU-001204",
+      "SKU-001205",
+      "SKU-001206"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  },
+  {
+    "query_id": "Q25",
+    "query": "100 percent merino wool sweater that won't itch",
+    "intent": "product",
+    "probe": "thin_description",
+    "relevant_sku_ids": [
+      "SKU-001211",
+      "SKU-001215",
+      "SKU-001216",
+      "SKU-001223",
+      "SKU-001224",
+      "SKU-001229",
+      "SKU-001230"
+    ],
+    "expected_filters": {},
+    "expected_answer_facts": [],
+    "demo": false
+  }
+]
