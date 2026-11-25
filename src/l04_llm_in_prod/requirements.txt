@@ -1,0 +1,7 @@
+streamlit
+openai
+httpx
+chromadb
+python-dotenv
+# optional, step 7 observability — app runs fine without it (see components.py track shim)
+opik

@@ -1,0 +1,53 @@
+------------------------------------------------------------------------------------------
+
+COURSE: GEN AI
+TOPIC: Hands-on Agentic AI Lab: Reasoning core, tool integration, memory, and operations readiness
+DUE-DATE: 22 November,2026
+
+INSTRUCTIONS:
+1. Do not modify any tag in this file. Just type your answers in the designated place.
+2. Do not change the file name and/or extension.
+3. Upload this file after answering in the portal.
+
+------------------------------------------------------------------------------------------
+
+<<< QUESTION 1 >>>
+
+A teammate wants the news agent to follow two new rules: "Only read articles from trusted news domains" and "Never read more than 3 articles for a single question." Their plan is to add both sentences to AGENT_SYSTEM_PROMPT. Using the lab's principle that "tools are where policy lives", explain why this plan is not reliable on its own. Where in the code should each rule actually be enforced, and what role (if any) should the system prompt still play?
+
+### WRITE ANSWER BELOW ###
+
+"Only read articles from trusted news domains" is a broad system prompt as LLM does not have the decisive power to select which one is trusted or not. Rather the better approach is to use the appropiate tool description and allow the system prompt to read the tool description in order to select for the tools.
+
+
+<<< QUESTION 2 >>>
+
+In the Section 5 live demo, the agent clearly made several LLM calls (one per loop step, plus the input filter, grounding check, and entity extraction), yet the output ends with "[This run: 0 calls | Session total: 0 calls]". Look at how CostGuard and run_agent are written and explain why the counter stays at zero. What does this mean for the "hard ceiling on API calls" the lab claims to provide, and why is a bug like this especially dangerous when it sits inside a guardrail rather than a normal feature?
+
+### WRITE ANSWER BELOW ###
+
+
+<<< QUESTION 3 >>>
+
+A user has the following conversation with the memory-enabled agent:
+
+Turn 1: "How are OpenAI and Anthropic competing for enterprise customers?"
+After Turn 1, the entity store contains: {"company": "Anthropic", "person": "Sam Altman", "topic": "enterprise AI"}
+
+Turn 2: "What did Sam Altman say about their pricing?"
+Trace what EntityMemory.resolve() turns the Turn 2 question into, and what the agent will then search for. Explain what went wrong, and whether the output grounding check would catch this mistake. What does this reveal about storing only the most recent value per entity type and resolving references with regex before the agent runs?
+
+### WRITE ANSWER BELOW ###
+
+
+
+
+
+
+
+
+
+
+
+
+

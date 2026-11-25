@@ -1,2 +1,5 @@
 .venv
 .venv_flan
+.env
+.venv*/
+__pycache__/

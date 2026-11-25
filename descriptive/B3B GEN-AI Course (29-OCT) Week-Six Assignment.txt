@@ -1,0 +1,87 @@
+------------------------------------------------------------------------------------------
+
+COURSE: GEN AI
+TOPIC: Hands-on Advanced NLP Lab: Sentiment analysis on customer-feedback datasets
+DUE-DATE: 05 November,2026
+
+INSTRUCTIONS:
+1. Do not modify any tag in this file. Just type your answers in the designated place.
+2. Do not change the file name and/or extension.
+3. Upload this file after answering in the portal.
+
+------------------------------------------------------------------------------------------
+
+<<< QUESTION 1 >>>
+
+An online marketplace wants to automatically analyse thousands of customer reviews every day. Initially, the company has limited computing resources, but it may invest in more powerful models later. Propose a suitable NLP modelling strategy for this situation. Explain how the company should compare different approaches and decide whether the additional computational cost is justified.
+
+### WRITE ANSWER BELOW ###
+
+Initially, the company should use a Bag-of-Words representation with a simple classifier such as Naive Bayes, since it requires relatively little computation for training and prediction. This provides a baseline. Later, it can compare this with a pretrained sentiment-analysis model, a frozen pretrained encoder with a trained classification head, or a fine-tuned model.All approaches should be evaluated using the same representative held-out customer reviews. Compare precision, recall, F1-score and the confusion matrix, alongside training time, prediction speed, memory requirements and operating cost. A more powerful model is justified only if its improvement meaningfully reduces important errors, such as missing negative reviews, while remaining affordable and fast enough to process the daily volume. Otherwise, the simpler model should be retained.
+
+
+<<< QUESTION 2 >>>
+
+Consider these two reviews of the same smartphone:
+
+Review A: “The camera is amazing, but the battery barely lasts half a day.”
+Review B: “The camera is not bad, although I expected much better battery life.”
+
+Explain why a text classification system might struggle to interpret these reviews correctly. Discuss the linguistic and contextual challenges involved and suggest ways to investigate and reduce such errors.
+
+### WRITE ANSWER BELOW ###
+
+Both reviews mention two aspects of the smartphone: the camera and the battery. In Review A, “amazing” expresses positive sentiment about the camera, whereas “barely lasts half a day” expresses dissatisfaction with the battery. A classifier assigning one overall sentiment label may hide this difference.
+
+Review B introduces negation and implied dissatisfaction. “Not bad” generally means mildly positive or acceptable, rather than negative. “I expected much better battery life” expresses disappointment, even though it contains the positive word “better”. The conjunctions “but” and “although” connect contrasting opinions. A simple Bag-of-Words model ignores word order and may struggle to capture these relationships.
+
+To investigate errors, manually examine misclassified reviews and group them by challenges such as negation, mixed sentiments and implied expectations. To reduce errors, preserve important negation words during preprocessing, compare the baseline with a contextual model such as BERT, and use aspect-based sentiment analysis to assign separate sentiments to the camera and battery. Evaluate whether these changes improve predictions on held-out, manually labelled reviews.
+
+<<< QUESTION 3 >>>
+
+A customer-support team wants to automatically route incoming messages to the appropriate department. However, new types of complaints appear frequently, and the team cannot afford to label thousands of examples for every new category. Design an NLP-based solution for this problem. Explain how the system could handle previously unseen categories and what precautions should be taken before deploying it.
+
+### WRITE ANSWER BELOW ###
+
+The team could use a pretrained language model for zero-shot classification, providing descriptions of the complaint categories and their corresponding departments. This avoids training a separate classifier from scratch for every category. If necessary, a few labelled examples can be included in the prompt to clarify category boundaries through few-shot prompting.
+
+When a new category is identified, its description and department mapping can be added without retraining the model. However, the system should not assume that every message belongs to an existing category. Unmatched or ambiguous complaints should be referred to a human reviewer. Embeddings can also help group similar unmatched complaints so that staff can identify emerging categories.
+
+Before deployment, evaluate routing accuracy and per-category precision and recall on representative, manually labelled messages, including new and ambiguous complaint types. Protect customer information, treat complaint text as data rather than instructions, and check processing speed and cost. Begin with human oversight and monitor incorrect routing as complaint patterns change.
+
+<<< QUESTION 4 >>>
+
+ An e-commerce company receives a review saying: “The delivery was surprisingly quick, the packaging was damaged, and customer support refused to help.” The company wants to use this review to identify operational problems and customer dissatisfaction. Explain how an NLP system could convert this unstructured review into structured, actionable information. Also discuss why a single overall sentiment label may be insufficient.
+
+### WRITE ANSWER BELOW ###
+
+The company could use aspect-based sentiment analysis to identify the aspects mentioned in the review and associate each with its sentiment and supporting evidence. This converts the text into structured information such as:
+
+
+Delivery:“surprisingly quick”	Sentiment: "Positive"
+Packaging:“was damaged”  Sentiment: "Negative"
+Customer support: “refused to help” Sentiment: "Negative"
+
+The system can identify clauses and use their context to link opinions to the relevant aspects, rather than relying only on conjunctions. These records can be routed to the responsible teams and aggregated across reviews to identify recurring problems.
+
+A single overall sentiment label is insufficient because it hides the difference between satisfactory delivery, damaged packaging and unhelpful support. Even an overall negative label would not reveal which operations require attention.
+
+<<< QUESTION 5 >>>
+
+A company deploys an NLP model that automatically prioritises customer complaints. After deployment, it discovers that some complaints are assigned low priority despite receiving high confidence scores from the model. Explain how the company should investigate this problem, assess the trustworthiness of the model's confidence scores, and decide when a complaint should be referred to a human reviewer.
+
+### WRITE ANSWER BELOW ###
+
+The company should manually inspect complaints incorrectly assigned low priority and compare predictions with priorities assigned by human reviewers using clear guidelines. It should investigate whether errors arise from ambiguous language, missed context, inconsistent training labels, too few urgent examples, or differences between training data and current complaints. Sentiment and emotion alone should not determine priority; the actual issue and its consequences matter.
+
+High confidence does not guarantee correctness. The company should assess confidence calibration by grouping predictions into confidence ranges and checking their actual accuracy on representative, manually labelled complaints. For example, predictions with confidence around 90% should be correct approximately 90% of the time. It should also examine the confusion matrix and recall for high-priority complaints, since overall accuracy may hide urgent cases incorrectly classified as low priority. If confidence is unreliable, recalibrate the scores using separate labelled validation data and reassess performance.
+
+Complaints should be referred to a human when confidence is low, the message is ambiguous or unfamiliar, or it indicates a potentially serious issue, even when the model confidently predicts low priority. Review thresholds should reflect the cost of missing urgent complaints. A sample of high-confidence, low-priority predictions should also be audited regularly to detect systematic errors.
+
+
+
+
+
+
+
+
